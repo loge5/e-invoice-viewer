@@ -1,7 +1,7 @@
 ---
 id: 0004
 title: Map CII invoice header data to the field model
-status: reviewed
+status: implemented
 created: 2026-11-16
 depends_on: [0003]
 ---
@@ -113,3 +113,17 @@ All sample invoices are defined in [fixtures.md](../docs/fixtures.md).
 
 - German labels: the KoSIT XRechnung visualization ships German BT names under
   Apache 2.0 and can serve as the reference for wording.
+
+## Progress
+
+- **Done** — `e_invoice_viewer_core::fields::map_invoice` implemented for CII
+  (`crates/core/src/fields/`: `mod.rs` mapping engine and locations,
+  `cii.rs` business-term table, `display.rs` display rules and code lists).
+  CII samples A and B added under `crates/core/tests/fixtures/cii/`; 13 tests
+  in `crates/core/tests/map_cii_header.rs`. No new dependency. UBL returns
+  `MapError::UnsupportedSyntax` until 0006.
+- **Verified** — 2026-11-16: `cargo test --workspace` 43 passed (13 new);
+  `cargo fmt --all --check`, `cargo clippy --workspace --all-targets -- -D
+  warnings` and architecture check clean. Manual smoke run on a real
+  Factur-X invoice: all six sections mapped in < 1 ms.
+- **Next** — none; set to `implemented` by the author on 2026-11-16.

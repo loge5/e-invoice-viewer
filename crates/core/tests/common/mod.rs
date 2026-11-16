@@ -133,3 +133,94 @@ fn save(doc: &mut Document) -> Vec<u8> {
     doc.save_to(&mut out).expect("save test PDF");
     out
 }
+
+/// Content of a sample invoice from `tests/fixtures` (see docs/fixtures.md).
+pub fn fixture(relative_path: &str) -> String {
+    let path = format!(
+        "{}/tests/fixtures/{relative_path}",
+        env!("CARGO_MANIFEST_DIR")
+    );
+    std::fs::read_to_string(&path).unwrap_or_else(|error| panic!("{path}: {error}"))
+}
+
+/// Replaces exactly one occurrence of `from` in `xml`, failing loudly if the
+/// fixture does not contain it.
+pub fn replace_once(xml: &str, from: &str, to: &str) -> String {
+    assert_eq!(
+        xml.matches(from).count(),
+        1,
+        "expected exactly one {from:?}"
+    );
+    xml.replacen(from, to, 1)
+}
+
+/// Namespace prefixes used in field locations.
+const LOCATION_PREFIXES: [(&str, &str); 4] = [
+    (
+        "rsm",
+        "urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100",
+    ),
+    (
+        "ram",
+        "urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100",
+    ),
+    (
+        "udt",
+        "urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100",
+    ),
+    (
+        "qdt",
+        "urn:un:unece:uncefact:data:standard:QualifiedDataType:100",
+    ),
+];
+
+/// Evaluates a simple absolute location path such as
+/// `/rsm:A/ram:B[2]/ram:C` and returns the texts of all selected elements.
+pub fn select(xml: &str, location: &str) -> Vec<String> {
+    let doc = roxmltree::Document::parse(xml).expect("well-formed fixture");
+    let mut current = vec![doc.root()];
+    for step in location
+        .strip_prefix('/')
+        .expect("absolute path")
+        .split('/')
+    {
+        let (qname, position) = match step.split_once('[') {
+            Some((qname, rest)) => (
+                qname,
+                Some(
+                    rest.trim_end_matches(']')
+                        .parse::<usize>()
+                        .expect("position"),
+                ),
+            ),
+            None => (step, None),
+        };
+        let (prefix, name) = qname.split_once(':').expect("prefixed name");
+        let namespace = LOCATION_PREFIXES
+            .iter()
+            .find(|(known, _)| *known == prefix)
+            .map(|(_, namespace)| *namespace)
+            .unwrap_or_else(|| panic!("unknown prefix {prefix}"));
+        current = current
+            .into_iter()
+            .flat_map(|node| {
+                let matching: Vec<_> = node
+                    .children()
+                    .filter(|child| {
+                        child.is_element()
+                            && child.tag_name().namespace() == Some(namespace)
+                            && child.tag_name().name() == name
+                    })
+                    .collect();
+                match position {
+                    Some(position) => matching.get(position - 1).copied().into_iter().collect(),
+                    None => matching,
+                }
+            })
+            .collect();
+    }
+    current
+        .iter()
+        .map(|node| node.text().unwrap_or_default().to_string())
+        .collect()
+}
