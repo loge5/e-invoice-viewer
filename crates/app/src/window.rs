@@ -7,6 +7,7 @@ use adw::prelude::*;
 use e_invoice_viewer_core::document::{self, Document};
 use gtk::{gio, glib};
 
+use crate::xml_pane::XmlPane;
 use crate::{fields_view, pdf_view, texts};
 
 const DEFAULT_SIZE: (i32, i32) = (1200, 800);
@@ -23,7 +24,12 @@ pub struct Window {
     start_page: adw::StatusPage,
     pdf_pane: gtk::Stack,
     pdf_picture: gtk::Picture,
-    fields_pane: gtk::Box,
+    note_slot: gtk::Box,
+    fields_container: gtk::Box,
+    view_stack: gtk::Stack,
+    fields_toggle: gtk::ToggleButton,
+    xml_toggle: gtk::ToggleButton,
+    xml_pane: XmlPane,
     paned: gtk::Paned,
     /// File name of the shown invoice, `None` in the start view.
     current: Rc<RefCell<Option<String>>>,
@@ -82,11 +88,43 @@ impl Window {
         pdf_pane.add_named(&pdf_scroller, Some("page"));
         pdf_pane.add_named(&pdf_message, Some("message"));
 
+        let note_slot = gtk::Box::new(gtk::Orientation::Vertical, 0);
+        let fields_container = gtk::Box::builder()
+            .orientation(gtk::Orientation::Vertical)
+            .vexpand(true)
+            .build();
+        let xml_pane = XmlPane::new();
+        let view_stack = gtk::Stack::builder().vexpand(true).build();
+        view_stack.add_named(&fields_container, Some("fields"));
+        view_stack.add_named(xml_pane.widget(), Some("xml"));
+
+        let fields_toggle = gtk::ToggleButton::builder()
+            .label(texts::VIEW_FIELDS)
+            .active(true)
+            .build();
+        let xml_toggle = gtk::ToggleButton::builder()
+            .label(texts::VIEW_XML)
+            .group(&fields_toggle)
+            .sensitive(false)
+            .build();
+        let toggles = gtk::Box::builder()
+            .orientation(gtk::Orientation::Horizontal)
+            .halign(gtk::Align::Center)
+            .margin_top(6)
+            .margin_bottom(6)
+            .css_classes(["linked"])
+            .build();
+        toggles.append(&fields_toggle);
+        toggles.append(&xml_toggle);
+
         let fields_pane = gtk::Box::builder()
             .orientation(gtk::Orientation::Vertical)
             .width_request(MINIMUM_PANE_WIDTH)
             .hexpand(true)
             .build();
+        fields_pane.append(&note_slot);
+        fields_pane.append(&toggles);
+        fields_pane.append(&view_stack);
 
         let paned = gtk::Paned::builder()
             .orientation(gtk::Orientation::Horizontal)
@@ -125,7 +163,12 @@ impl Window {
             start_page,
             pdf_pane,
             pdf_picture,
-            fields_pane,
+            note_slot,
+            fields_container,
+            view_stack,
+            fields_toggle,
+            xml_toggle,
+            xml_pane,
             paned,
             current: Rc::default(),
         };
@@ -153,6 +196,26 @@ impl Window {
             }
         });
         self.window.add_action(&close);
+
+        let find = gio::SimpleAction::new("find", None);
+        let this = self.clone();
+        find.connect_activate(move |_, _| {
+            if this.xml_toggle.is_sensitive() {
+                this.xml_toggle.set_active(true);
+                this.xml_pane.start_search();
+            }
+        });
+        self.window.add_action(&find);
+
+        let this = self.clone();
+        self.xml_toggle.connect_toggled(move |toggle| {
+            if toggle.is_active() {
+                this.xml_pane.ensure_loaded();
+                this.view_stack.set_visible_child_name("xml");
+            } else {
+                this.view_stack.set_visible_child_name("fields");
+            }
+        });
     }
 
     fn choose_file(&self) {
@@ -201,8 +264,14 @@ impl Window {
             Ok(Document::Pdf { invoice }) => {
                 self.show_pdf_pane(Some(bytes));
                 match invoice {
-                    Some(invoice) => self.set_fields(fields_view::build(&invoice.fields), None),
-                    None => self.set_fields(message_page(texts::NO_INVOICE_IN_PDF), None),
+                    Some(invoice) => {
+                        self.set_fields(fields_view::build(&invoice.fields), None);
+                        self.set_xml(Some((&invoice.xml, name)));
+                    }
+                    None => {
+                        self.set_fields(message_page(texts::NO_INVOICE_IN_PDF), None);
+                        self.set_xml(None);
+                    }
                 }
                 self.show_document(name);
             }
@@ -212,6 +281,7 @@ impl Window {
                     fields_view::build(&invoice.fields),
                     Some(texts::XML_ONLY_NOTE),
                 );
+                self.set_xml(Some((&invoice.xml, name)));
                 self.show_document(name);
             }
             Err(error) => self.show_start(Some(&texts::error_message(name, &error))),
@@ -238,14 +308,26 @@ impl Window {
     }
 
     fn set_fields(&self, content: gtk::Widget, note: Option<&str>) {
-        while let Some(child) = self.fields_pane.first_child() {
-            self.fields_pane.remove(&child);
+        for container in [&self.note_slot, &self.fields_container] {
+            while let Some(child) = container.first_child() {
+                container.remove(&child);
+            }
         }
         if let Some(note) = note {
             let banner = adw::Banner::builder().title(note).revealed(true).build();
-            self.fields_pane.append(&banner);
+            self.note_slot.append(&banner);
         }
-        self.fields_pane.append(&content);
+        self.fields_container.append(&content);
+        self.fields_toggle.set_active(true);
+    }
+
+    /// Sets the invoice XML for the XML view; `None` disables the view.
+    fn set_xml(&self, xml: Option<(&[u8], &str)>) {
+        match xml {
+            Some((bytes, file_name)) => self.xml_pane.set_xml(bytes, file_name),
+            None => self.xml_pane.clear(),
+        }
+        self.xml_toggle.set_sensitive(xml.is_some());
     }
 
     fn show_document(&self, name: &str) {
@@ -271,6 +353,7 @@ impl Window {
         self.start_page.set_description(message);
         self.pdf_picture.set_paintable(None::<&gtk::gdk::Paintable>);
         self.set_fields(gtk::Box::new(gtk::Orientation::Vertical, 0).upcast(), None);
+        self.set_xml(None);
         self.stack.set_visible_child_name("start");
     }
 }

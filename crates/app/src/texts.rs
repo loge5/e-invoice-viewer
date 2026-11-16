@@ -13,6 +13,11 @@ pub const COPY_VALUE: &str = "Wert kopieren";
 pub const NO_INVOICE_IN_PDF: &str = "Diese PDF enthält keine elektronische Rechnung";
 pub const PDF_NOT_RENDERABLE: &str = "Die PDF-Seiten können nicht angezeigt werden";
 pub const XML_ONLY_NOTE: &str = "Reine XML-Rechnung – kein PDF enthalten";
+pub const VIEW_FIELDS: &str = "Felder";
+pub const VIEW_XML: &str = "XML";
+pub const COPY_XML: &str = "XML kopieren";
+pub const SAVE_XML: &str = "XML speichern unter…";
+pub const SEARCH_PLACEHOLDER: &str = "Im XML suchen";
 
 /// Window title, with the file name while an invoice is shown.
 pub fn window_title(file_name: Option<&str>) -> String {
@@ -30,6 +35,31 @@ pub fn field_row_text(field: &Field) -> String {
 /// The value "Wert kopieren" puts on the clipboard: the raw value.
 pub fn copy_value(field: &Field) -> &str {
     &field.raw
+}
+
+/// File name proposed when saving the invoice XML of `source_file_name`.
+pub fn suggested_xml_file_name(source_file_name: &str) -> String {
+    let path = std::path::Path::new(source_file_name);
+    if path
+        .extension()
+        .is_some_and(|extension| extension.eq_ignore_ascii_case("xml"))
+    {
+        return source_file_name.to_string();
+    }
+    let stem = path
+        .file_stem()
+        .map_or(source_file_name.into(), |stem| stem.to_string_lossy());
+    format!("{stem}.xml")
+}
+
+/// Search status: `1 von 3`, or `Keine Treffer`. `current` is 1-based and
+/// `None` while no match is selected.
+pub fn search_status_text(current: Option<usize>, total: usize) -> String {
+    match (current, total) {
+        (_, 0) => "Keine Treffer".to_string(),
+        (Some(current), total) => format!("{current} von {total}"),
+        (None, total) => format!("{total} Treffer"),
+    }
 }
 
 /// Message for a file that cannot be read as an invoice.
@@ -56,6 +86,9 @@ fn reason(error: &OpenError) -> String {
             }
             DetectError::NotAnInvoice => "keine elektronische Rechnung".to_string(),
             DetectError::UnsupportedZugferd1 => "ZUGFeRD 1.0 wird nicht unterstützt".to_string(),
+            DetectError::UnsupportedEncoding { encoding } => {
+                format!("die Zeichenkodierung {encoding} wird nicht unterstützt")
+            }
         },
         OpenError::Xml(MapError::UnsupportedSyntax) => {
             "UBL-Rechnungen werden noch nicht unterstützt".to_string()
@@ -104,6 +137,26 @@ mod tests {
             "BT-1 · Rechnungsnummer · RE-2026-0042"
         );
         assert_eq!(copy_value(&iban_field()), "DE02120300000000202051");
+    }
+
+    // Spec 0008, AC6
+    #[test]
+    fn suggested_xml_file_name_replaces_extension() {
+        assert_eq!(
+            suggested_xml_file_name("RE-2026-0042.pdf"),
+            "RE-2026-0042.xml"
+        );
+        assert_eq!(suggested_xml_file_name("rechnung.xml"), "rechnung.xml");
+        assert_eq!(suggested_xml_file_name("ohne-endung"), "ohne-endung.xml");
+    }
+
+    // Spec 0008, AC4
+    #[test]
+    fn search_status_texts() {
+        assert_eq!(search_status_text(Some(1), 1), "1 von 1");
+        assert_eq!(search_status_text(Some(2), 5), "2 von 5");
+        assert_eq!(search_status_text(None, 3), "3 Treffer");
+        assert_eq!(search_status_text(None, 0), "Keine Treffer");
     }
 
     // AC6

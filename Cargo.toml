@@ -17,6 +17,7 @@ anyhow = "1.0"
 gtk = { version = "0.11", package = "gtk4", features = ["v4_12"] }
 adw = { version = "0.9", package = "libadwaita", features = ["v1_5"] }
 poppler = { version = "0.26", package = "poppler-rs", features = ["v0_82"] }
+sourceview = { version = "0.11", package = "sourceview5" }
 
 [workspace.lints.rust]
 unsafe_code = "forbid"

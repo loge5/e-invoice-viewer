@@ -8,3 +8,4 @@ pub mod detect;
 pub mod document;
 pub mod fields;
 pub mod pdf;
+pub mod xml_view;

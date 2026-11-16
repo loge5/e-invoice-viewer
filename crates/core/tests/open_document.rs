@@ -2,7 +2,10 @@
 
 mod common;
 
-use common::{Attachment, fixture, pdf_with, pdf_with_text, pdf_without_page_tree, png_bytes};
+use common::{
+    Attachment, fixture, pdf_with, pdf_with_text, pdf_without_page_tree, png_bytes,
+    sample_a_latin1, sample_cii_with_lines, sample_l_cii, single_line,
+};
 use e_invoice_viewer_core::detect::DetectError;
 use e_invoice_viewer_core::document::{Document, OpenError, open};
 use e_invoice_viewer_core::pdf::ExtractError;
@@ -72,7 +75,7 @@ fn unreadable_inputs_yield_a_reason() {
     );
 }
 
-/// Writes the files for the manual checks of spec 0007 to
+/// Writes the files for the manual checks of specs 0007 and 0008 to
 /// `target/manual-fixtures/`. Run with
 /// `cargo test -p e-invoice-viewer-core --test open_document -- --ignored`.
 #[test]
@@ -84,7 +87,16 @@ fn generate_manual_fixtures() {
     );
     std::fs::create_dir_all(&dir).expect("create directory");
     let xml = fixture("cii/sample-a.xml");
-    let files: [(&str, Vec<u8>); 5] = [
+    let files: [(&str, Vec<u8>); 8] = [
+        (
+            "RE-2026-0500-einzeilig.xml",
+            single_line(&sample_l_cii()).into_bytes(),
+        ),
+        ("RE-2026-0042-latin1.xml", sample_a_latin1()),
+        (
+            "RE-2026-2mb.xml",
+            single_line(&sample_cii_with_lines(3000)).into_bytes(),
+        ),
         ("RE-2026-0042.pdf", sample_a_pdf()),
         ("RE-2026-0042.xml", xml.clone().into_bytes()),
         (

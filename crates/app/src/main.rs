@@ -4,6 +4,7 @@ mod fields_view;
 mod pdf_view;
 mod texts;
 mod window;
+mod xml_pane;
 
 use adw::prelude::*;
 use gtk::{gio, glib};
@@ -26,6 +27,7 @@ fn main() -> glib::ExitCode {
         app.set_accels_for_action("app.quit", &["<Control>q"]);
         app.set_accels_for_action("win.open", &["<Control>o"]);
         app.set_accels_for_action("win.close", &["<Control>w"]);
+        app.set_accels_for_action("win.find", &["<Control>f"]);
     });
 
     // Started without files: an empty start view; nothing is reopened.

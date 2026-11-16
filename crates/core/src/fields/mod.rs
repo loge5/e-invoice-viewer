@@ -8,6 +8,7 @@ use roxmltree::{Document, Node};
 use thiserror::Error;
 
 use crate::detect::{DetectError, Detection, Syntax, detect};
+use crate::xml_view::decode;
 
 /// Invoice content as an ordered list of sections.
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -52,11 +53,11 @@ pub fn map_invoice(xml: &[u8]) -> Result<FieldModel, MapError> {
     if detection.syntax != Syntax::Cii {
         return Err(MapError::UnsupportedSyntax);
     }
-    // `detect` has already checked that the document is well-formed UTF-8
-    // without a DOCTYPE, so parsing it again cannot fail differently.
-    let text = std::str::from_utf8(xml).map_err(|_| MapError::UnsupportedSyntax)?;
-    let text = text.strip_prefix('\u{feff}').unwrap_or(text);
-    let doc = Document::parse(text).map_err(|_| MapError::UnsupportedSyntax)?;
+    // `detect` has already checked that the document decodes and is
+    // well-formed without a DOCTYPE, so parsing it again cannot fail
+    // differently.
+    let text = decode(xml)?;
+    let doc = Document::parse(&text).map_err(|_| MapError::UnsupportedSyntax)?;
     let root = doc.root_element();
 
     let context = Context {

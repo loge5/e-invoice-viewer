@@ -270,6 +270,12 @@ pub fn select(xml: &str, location: &str) -> Vec<String> {
 /// `Artikel 1` .. `Artikel 500` (1 C62 at 1.00 EUR, VAT S 19 %) and matching
 /// totals. Generated instead of stored to keep the repository small.
 pub fn sample_l_cii() -> String {
+    sample_cii_with_lines(500)
+}
+
+/// Sample A with `count` generated lines (see `sample_l_cii`); totals match
+/// for 500 lines, larger counts are only used for size and speed tests.
+pub fn sample_cii_with_lines(count: usize) -> String {
     let a = fixture("cii/sample-a.xml");
     let first_line = a
         .find("    <ram:IncludedSupplyChainTradeLineItem>")
@@ -279,7 +285,7 @@ pub fn sample_l_cii() -> String {
         .expect("agreement");
 
     let mut lines = String::new();
-    for n in 1..=500 {
+    for n in 1..=count {
         lines.push_str(&format!(
             "    <ram:IncludedSupplyChainTradeLineItem>\n\
              \x20     <ram:AssociatedDocumentLineDocument><ram:LineID>{n}</ram:LineID></ram:AssociatedDocumentLineDocument>\n\
@@ -328,4 +334,49 @@ pub fn sample_l_cii() -> String {
     ]
     .iter()
     .fold(xml, |xml, (from, to)| replace_once(&xml, from, to))
+}
+
+/// `xml` on a single line: whitespace between tags removed, whitespace runs
+/// inside tags (e.g. between attributes) collapsed to one space.
+pub fn single_line(xml: &str) -> String {
+    let mut out = String::with_capacity(xml.len());
+    let mut pending = String::new();
+    let mut after_tag = false;
+    let mut in_tag = false;
+    for c in xml.chars() {
+        if in_tag && c.is_whitespace() {
+            if !out.ends_with(' ') {
+                out.push(' ');
+            }
+            continue;
+        }
+        if after_tag && c.is_whitespace() {
+            pending.push(c);
+            continue;
+        }
+        if c != '<' {
+            out.push_str(&pending);
+        }
+        pending.clear();
+        out.push(c);
+        match c {
+            '<' => in_tag = true,
+            '>' => in_tag = false,
+            _ => {}
+        }
+        after_tag = c == '>';
+    }
+    out
+}
+
+/// Sample A encoded as ISO-8859-1 with a matching XML declaration.
+pub fn sample_a_latin1() -> Vec<u8> {
+    let xml = replace_once(
+        &fixture("cii/sample-a.xml"),
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+        "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>",
+    );
+    xml.chars()
+        .map(|c| u8::try_from(u32::from(c)).expect("character representable in Latin-1"))
+        .collect()
 }

@@ -12,6 +12,7 @@ anyhow.workspace = true
 gtk.workspace = true
 adw.workspace = true
 poppler.workspace = true
+sourceview.workspace = true
 
 [lints]
 workspace = true

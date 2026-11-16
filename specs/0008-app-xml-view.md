@@ -1,7 +1,7 @@
 ---
 id: 0008
 title: App - show the raw invoice XML
-status: reviewed
+status: implemented
 created: 2026-11-16
 depends_on: [0007]
 ---
@@ -57,3 +57,26 @@ refer to the reference machine in [requirements](../docs/requirements.md).
 
 - GUI-bound criteria are verified manually; the "original bytes" property of
   copy/save is additionally covered by a test of the export function.
+
+## Progress
+
+- **Done** — core: `xml_view::decode` (declared encoding: UTF-8,
+  ISO-8859-1, US-ASCII; other encodings give the new
+  `DetectError::UnsupportedEncoding`), used by detection and field mapping,
+  and `xml_view::pretty_print` (lexical, keeps tags, attributes, comments
+  and CDATA as written); 6 tests in `crates/core/tests/xml_view.rs`.
+  App: `xml_pane.rs` with GtkSourceView (line numbers, XML highlighting in
+  light/dark Adwaita style, case-insensitive search with match count),
+  "XML kopieren" (original text) and "XML speichern unter…" (original
+  bytes); "Felder | XML" toggle in `window.rs`, Ctrl+F; 2 text tests. New
+  dependency: `sourceview5` 0.11 (MIT, binds LGPL GtkSourceView 5).
+- **Verified** — 2026-11-16: `cargo test --workspace` 67 passed;
+  `cargo fmt --all --check`, `cargo clippy --workspace --all-targets -- -D
+  warnings`, architecture check and `cargo audit` clean. The app starts
+  with the new manual fixtures without crash or warnings. Manual checks
+  M1–M7 (view toggle and scroll position, formatting with line numbers and
+  highlighting in light and dark, ISO-8859-1, search, copy, save as with
+  byte comparison, 2.9 MB file) run by the author on 2026-11-16: all
+  passed. Fixtures: `cargo test -p e-invoice-viewer-core --test
+  open_document -- --ignored` (written to `target/manual-fixtures/`).
+- **Next** — none; set to `implemented` by the author on 2026-11-16.

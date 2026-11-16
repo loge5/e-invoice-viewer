@@ -3,6 +3,8 @@
 use roxmltree::{Document, Node};
 use thiserror::Error;
 
+use crate::xml_view::decode;
+
 const CII_NS: &str = "urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100";
 const RAM_NS: &str =
     "urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100";
@@ -97,14 +99,14 @@ pub enum DetectError {
     NotAnInvoice,
     #[error("unsupported format: ZUGFeRD 1.0")]
     UnsupportedZugferd1,
+    #[error("unsupported character encoding: {encoding}")]
+    UnsupportedEncoding { encoding: String },
 }
 
 /// Detects syntax, document kind and profile of an invoice XML.
 pub fn detect(xml: &[u8]) -> Result<Detection, DetectError> {
-    let text = std::str::from_utf8(xml).map_err(|error| DetectError::NotWellFormed {
-        line: line_of_offset(xml, error.valid_up_to()),
-    })?;
-    let text = text.strip_prefix('\u{feff}').unwrap_or(text);
+    let text = decode(xml)?;
+    let text = text.as_ref();
 
     // Default options reject any DOCTYPE, so no entity is ever resolved.
     let doc = Document::parse(text).map_err(|error| match error {
@@ -201,13 +203,4 @@ fn text_at(node: Node, path: &[(&str, &str)]) -> Option<String> {
         })?;
     }
     Some(current.text().unwrap_or_default().to_string())
-}
-
-/// 1-based line number of a byte offset.
-fn line_of_offset(bytes: &[u8], offset: usize) -> u32 {
-    let newlines = bytes[..offset]
-        .iter()
-        .filter(|&&byte| byte == b'\n')
-        .count();
-    u32::try_from(newlines + 1).unwrap_or(u32::MAX)
 }
