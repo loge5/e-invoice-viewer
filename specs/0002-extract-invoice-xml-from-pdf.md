@@ -1,7 +1,7 @@
 ---
 id: 0002
 title: Extract the invoice XML from a ZUGFeRD / Factur-X PDF
-status: reviewed
+status: implemented
 created: 2026-11-16
 depends_on: []
 ---
@@ -78,3 +78,16 @@ PDF contains.
   sets (e.g. Mustang project test resources), never real invoices.
 - `zugferd-invoice.xml` (in any letter case) is the name used by ZUGFeRD 1.0
   and 2.0; ZUGFeRD 1.0 content is rejected later by 0003.
+
+## Progress
+
+- **Done** — `e_invoice_viewer_core::pdf::extract_invoice_xml` implemented
+  (`crates/core/src/pdf.rs`); 13 tests in
+  `crates/core/tests/extract_invoice_xml.rs`, synthetic PDFs built in
+  `crates/core/tests/common/mod.rs`. New dependency: `lopdf` 0.47 (MIT).
+- **Verified** — 2026-11-16: `cargo test --workspace` 13 passed;
+  `cargo fmt --all --check`, `cargo clippy --workspace --all-targets -- -D
+  warnings`, architecture check and `cargo audit` clean. Manual smoke run
+  against two real Factur-X invoices (extracted `factur-x.xml`, 7142 and
+  55871 bytes) and 42 non-invoice PDFs (all "no embedded invoice", no crash).
+- **Next** — none; set to `implemented` by the author on 2026-11-16.
