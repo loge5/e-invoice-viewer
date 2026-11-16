@@ -1,7 +1,7 @@
 ---
 id: 0007
 title: App - open an invoice and show PDF and fields side by side
-status: reviewed
+status: implemented
 created: 2026-11-16
 depends_on: [0002, 0003, 0004]
 ---
@@ -81,3 +81,26 @@ refer to the reference machine in [requirements](../docs/requirements.md).
 - All criteria are GUI-bound and are verified manually by running the app with
   the documented steps and the sample files; the result is recorded in the
   spec's Progress section.
+
+## Progress
+
+- **Done** — `core::document::open` decides what to show (PDF with fields,
+  PDF without invoice, plain XML, or an error with reason); 4 tests in
+  `crates/core/tests/open_document.rs`. App: `crates/app/src/` with
+  `window.rs` (start view, header bar with "Öffnen…"/"Schließen", PDF and
+  fields in a `GtkPaned`, minimum sizes, actions Ctrl+O/Ctrl+W/Ctrl+Q,
+  one window per command-line file), `pdf_view.rs` (first page via
+  Poppler), `fields_view.rs` (sections and rows, selectable values, "Wert
+  kopieren" in the value's context menu), `texts.rs` (German texts, 3 unit
+  tests). New dependency: `poppler-rs` 0.26 (MIT, links GPL Poppler per ADR
+  0001); `rust-version` raised to 1.92.
+- **Verified** — 2026-11-16: `cargo test --workspace` 59 passed;
+  `cargo fmt --all --check`, `cargo clippy --workspace --all-targets -- -D
+  warnings`, architecture check and `cargo audit` clean. The app starts with
+  each manual fixture without crash or GTK warnings. Manual checks M1–M7
+  (start view, open PDF/XML, close/quit shortcuts, copy, error paths
+  including a real Factur-X invoice, layout stability on resize) run by the
+  author on 2026-11-16: all passed. Fixtures for the manual checks:
+  `cargo test -p e-invoice-viewer-core --test open_document -- --ignored`
+  (written to `target/manual-fixtures/`).
+- **Next** — none; set to `implemented` by the author on 2026-11-16.

@@ -11,6 +11,7 @@ e-invoice-viewer-core.workspace = true
 anyhow.workspace = true
 gtk.workspace = true
 adw.workspace = true
+poppler.workspace = true
 
 [lints]
 workspace = true

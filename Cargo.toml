@@ -6,7 +6,7 @@ members = ["crates/core", "crates/app"]
 version = "0.1.0"
 edition = "2024"
 license = "GPL-3.0-or-later"
-rust-version = "1.88"
+rust-version = "1.92"
 
 [workspace.dependencies]
 e-invoice-viewer-core = { path = "crates/core" }
@@ -16,6 +16,7 @@ roxmltree = "0.21"
 anyhow = "1.0"
 gtk = { version = "0.11", package = "gtk4", features = ["v4_12"] }
 adw = { version = "0.9", package = "libadwaita", features = ["v1_5"] }
+poppler = { version = "0.26", package = "poppler-rs", features = ["v0_82"] }
 
 [workspace.lints.rust]
 unsafe_code = "forbid"

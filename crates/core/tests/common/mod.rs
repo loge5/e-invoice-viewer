@@ -36,13 +36,34 @@ pub const SAMPLE_XML: &[u8] = b"<?xml version=\"1.0\" encoding=\"UTF-8\"?><rsm:C
 
 /// A one-page PDF document with the given embedded files.
 pub fn pdf_document(attachments: &[Attachment]) -> Document {
+    pdf_document_with_text(None, attachments)
+}
+
+/// A one-page A4 PDF document, optionally showing `text` at the top of the
+/// page, with the given embedded files.
+pub fn pdf_document_with_text(text: Option<&str>, attachments: &[Attachment]) -> Document {
     let mut doc = Document::with_version("1.7");
     let pages_id = doc.new_object_id();
-    let page_id = doc.add_object(dictionary! {
+    let mut page = dictionary! {
         "Type" => "Page",
         "Parent" => pages_id,
         "MediaBox" => vec![0.into(), 0.into(), 595.into(), 842.into()],
-    });
+    };
+    if let Some(text) = text {
+        let font_id = doc.add_object(dictionary! {
+            "Type" => "Font",
+            "Subtype" => "Type1",
+            "BaseFont" => "Helvetica",
+        });
+        let content = format!("BT /F1 24 Tf 60 760 Td ({text}) Tj ET");
+        let content_id = doc.add_object(Stream::new(dictionary! {}, content.into_bytes()));
+        page.set("Contents", content_id);
+        page.set(
+            "Resources",
+            dictionary! { "Font" => dictionary! { "F1" => font_id } },
+        );
+    }
+    let page_id = doc.add_object(page);
     doc.objects.insert(
         pages_id,
         Object::Dictionary(dictionary! {
@@ -91,6 +112,26 @@ pub fn pdf_document(attachments: &[Attachment]) -> Document {
 /// Serialised one-page PDF with the given embedded files.
 pub fn pdf_with(attachments: &[Attachment]) -> Vec<u8> {
     save(&mut pdf_document(attachments))
+}
+
+/// Serialised one-page PDF showing `text`, with the given embedded files.
+pub fn pdf_with_text(text: &str, attachments: &[Attachment]) -> Vec<u8> {
+    save(&mut pdf_document_with_text(Some(text), attachments))
+}
+
+/// Serialised PDF whose catalog has no page tree, so it has no renderable
+/// pages, but which still embeds the given files.
+pub fn pdf_without_page_tree(attachments: &[Attachment]) -> Vec<u8> {
+    let mut doc = pdf_document(attachments);
+    let catalog_id = doc
+        .trailer
+        .get(b"Root")
+        .and_then(Object::as_reference)
+        .expect("catalog");
+    doc.get_dictionary_mut(catalog_id)
+        .expect("catalog dictionary")
+        .remove(b"Pages");
+    save(&mut doc)
 }
 
 /// Serialised PDF that requires the user password `geheim` to open.
