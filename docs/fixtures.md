@@ -58,4 +58,7 @@ in that spec and derived from these samples.
 - Lines `1` to `500`: BT-153 `Artikel <n>`, BT-129 `1` `C62`, BT-146 `1.00`,
   BT-131 `1.00`, BT-151 `S`, BT-152 `19`
 - Totals: BT-106 `500.00`, BT-110 `95.00`, BT-112 `595.00`, BT-115 `595.00`
-- Additionally stored as a variant without any line breaks (single-line XML)
+- Additionally needed as a variant without any line breaks (single-line XML)
+- Not stored as a file: the test helpers generate sample L deterministically
+  from sample A (`sample_l_cii` in `crates/core/tests/common/mod.rs`), which
+  keeps about 1 MB of repetitive XML out of the repository

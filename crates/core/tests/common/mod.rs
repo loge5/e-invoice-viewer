@@ -224,3 +224,67 @@ pub fn select(xml: &str, location: &str) -> Vec<String> {
         .map(|node| node.text().unwrap_or_default().to_string())
         .collect()
 }
+
+/// CII sample L (docs/fixtures.md): sample A with 500 generated lines
+/// `Artikel 1` .. `Artikel 500` (1 C62 at 1.00 EUR, VAT S 19 %) and matching
+/// totals. Generated instead of stored to keep the repository small.
+pub fn sample_l_cii() -> String {
+    let a = fixture("cii/sample-a.xml");
+    let first_line = a
+        .find("    <ram:IncludedSupplyChainTradeLineItem>")
+        .expect("first line");
+    let agreement = a
+        .find("    <ram:ApplicableHeaderTradeAgreement>")
+        .expect("agreement");
+
+    let mut lines = String::new();
+    for n in 1..=500 {
+        lines.push_str(&format!(
+            "    <ram:IncludedSupplyChainTradeLineItem>\n\
+             \x20     <ram:AssociatedDocumentLineDocument><ram:LineID>{n}</ram:LineID></ram:AssociatedDocumentLineDocument>\n\
+             \x20     <ram:SpecifiedTradeProduct><ram:Name>Artikel {n}</ram:Name></ram:SpecifiedTradeProduct>\n\
+             \x20     <ram:SpecifiedLineTradeAgreement><ram:NetPriceProductTradePrice><ram:ChargeAmount>1.00</ram:ChargeAmount></ram:NetPriceProductTradePrice></ram:SpecifiedLineTradeAgreement>\n\
+             \x20     <ram:SpecifiedLineTradeDelivery><ram:BilledQuantity unitCode=\"C62\">1</ram:BilledQuantity></ram:SpecifiedLineTradeDelivery>\n\
+             \x20     <ram:SpecifiedLineTradeSettlement><ram:ApplicableTradeTax><ram:TypeCode>VAT</ram:TypeCode><ram:CategoryCode>S</ram:CategoryCode><ram:RateApplicablePercent>19</ram:RateApplicablePercent></ram:ApplicableTradeTax><ram:SpecifiedTradeSettlementLineMonetarySummation><ram:LineTotalAmount>1.00</ram:LineTotalAmount></ram:SpecifiedTradeSettlementLineMonetarySummation></ram:SpecifiedLineTradeSettlement>\n\
+             \x20   </ram:IncludedSupplyChainTradeLineItem>\n"
+        ));
+    }
+    let xml = format!("{}{lines}{}", &a[..first_line], &a[agreement..]);
+
+    [
+        (
+            "<ram:ID>RE-2026-0042</ram:ID>",
+            "<ram:ID>RE-2026-0500</ram:ID>",
+        ),
+        (
+            "<ram:CalculatedAmount>199.50</ram:CalculatedAmount>",
+            "<ram:CalculatedAmount>95.00</ram:CalculatedAmount>",
+        ),
+        (
+            "<ram:BasisAmount>1050.00</ram:BasisAmount>",
+            "<ram:BasisAmount>500.00</ram:BasisAmount>",
+        ),
+        (
+            "<ram:LineTotalAmount>1050.00</ram:LineTotalAmount>",
+            "<ram:LineTotalAmount>500.00</ram:LineTotalAmount>",
+        ),
+        (
+            "<ram:TaxBasisTotalAmount>1050.00</ram:TaxBasisTotalAmount>",
+            "<ram:TaxBasisTotalAmount>500.00</ram:TaxBasisTotalAmount>",
+        ),
+        (
+            "<ram:TaxTotalAmount currencyID=\"EUR\">199.50</ram:TaxTotalAmount>",
+            "<ram:TaxTotalAmount currencyID=\"EUR\">95.00</ram:TaxTotalAmount>",
+        ),
+        (
+            "<ram:GrandTotalAmount>1249.50</ram:GrandTotalAmount>",
+            "<ram:GrandTotalAmount>595.00</ram:GrandTotalAmount>",
+        ),
+        (
+            "<ram:DuePayableAmount>1249.50</ram:DuePayableAmount>",
+            "<ram:DuePayableAmount>595.00</ram:DuePayableAmount>",
+        ),
+    ]
+    .iter()
+    .fold(xml, |xml, (from, to)| replace_once(&xml, from, to))
+}

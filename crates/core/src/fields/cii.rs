@@ -42,6 +42,7 @@ const fn field(
         path,
         format,
         repeatable: false,
+        attribute: None,
     }
 }
 
@@ -57,6 +58,24 @@ const fn repeatable(
         path,
         format,
         repeatable: true,
+        attribute: None,
+    }
+}
+
+/// A field whose value is the attribute `attribute` of the element at `path`.
+const fn from_attribute(
+    id: &'static str,
+    label: &'static str,
+    path: &'static [Step],
+    attribute: &'static str,
+) -> FieldDef {
+    FieldDef {
+        id,
+        label,
+        path,
+        format: Format::Text,
+        repeatable: false,
+        attribute: Some(attribute),
     }
 }
 
@@ -78,6 +97,7 @@ pub const HEADER_SECTIONS: &[SectionDef] = &[
         title: "Rechnung",
         anchor: &[],
         repeatable: false,
+        title_suffix: None,
         fields: &[
             field(
                 "BT-1",
@@ -154,6 +174,7 @@ pub const HEADER_SECTIONS: &[SectionDef] = &[
             ram("SellerTradeParty"),
         ],
         repeatable: false,
+        title_suffix: None,
         fields: &[
             field("BT-27", "Name", &[ram("Name")], Format::Text),
             field("BT-29", "Kennung", &[ram("ID")], Format::Text),
@@ -220,6 +241,7 @@ pub const HEADER_SECTIONS: &[SectionDef] = &[
             ram("BuyerTradeParty"),
         ],
         repeatable: false,
+        title_suffix: None,
         fields: &[
             field("BT-44", "Name", &[ram("Name")], Format::Text),
             field("BT-46", "Kennung", &[ram("ID")], Format::Text),
@@ -248,12 +270,129 @@ pub const HEADER_SECTIONS: &[SectionDef] = &[
     },
 ];
 
+const LINE_DOCUMENT: Step = ram("AssociatedDocumentLineDocument");
+const PRODUCT: Step = ram("SpecifiedTradeProduct");
+const NET_PRICE: [Step; 2] = [
+    ram("SpecifiedLineTradeAgreement"),
+    ram("NetPriceProductTradePrice"),
+];
+const LINE_SETTLEMENT: Step = ram("SpecifiedLineTradeSettlement");
+const BILLED_QUANTITY: [Step; 2] = [ram("SpecifiedLineTradeDelivery"), ram("BilledQuantity")];
+
+/// One section per invoice line (BG-25), between buyer and payment (0005).
+pub const LINE_SECTIONS: &[SectionDef] = &[SectionDef {
+    title: "Position",
+    anchor: &[
+        rsm("SupplyChainTradeTransaction"),
+        ram("IncludedSupplyChainTradeLineItem"),
+    ],
+    repeatable: true,
+    title_suffix: Some(&[LINE_DOCUMENT, ram("LineID")]),
+    fields: &[
+        field(
+            "BT-126",
+            "Positionsnummer",
+            &[LINE_DOCUMENT, ram("LineID")],
+            Format::Text,
+        ),
+        repeatable(
+            "BT-127",
+            "Positionsbemerkung",
+            &[LINE_DOCUMENT, ram("IncludedNote"), ram("Content")],
+            Format::Text,
+        ),
+        field(
+            "BT-153",
+            "Artikelname",
+            &[PRODUCT, ram("Name")],
+            Format::Text,
+        ),
+        field(
+            "BT-154",
+            "Artikelbeschreibung",
+            &[PRODUCT, ram("Description")],
+            Format::Text,
+        ),
+        field(
+            "BT-155",
+            "Artikelnummer",
+            &[PRODUCT, ram("SellerAssignedID")],
+            Format::Text,
+        ),
+        field("BT-129", "Menge", &BILLED_QUANTITY, Format::Quantity),
+        from_attribute("BT-130", "Einheit", &BILLED_QUANTITY, "unitCode"),
+        field(
+            "BT-146",
+            "Nettopreis",
+            &[NET_PRICE[0], NET_PRICE[1], ram("ChargeAmount")],
+            Format::Amount,
+        ),
+        field(
+            "BT-149",
+            "Basismenge",
+            &[NET_PRICE[0], NET_PRICE[1], ram("BasisQuantity")],
+            Format::Quantity,
+        ),
+        field(
+            "BT-131",
+            "Nettobetrag",
+            &[
+                LINE_SETTLEMENT,
+                ram("SpecifiedTradeSettlementLineMonetarySummation"),
+                ram("LineTotalAmount"),
+            ],
+            Format::Amount,
+        ),
+        field(
+            "BT-151",
+            "Steuerkategorie",
+            &[
+                LINE_SETTLEMENT,
+                ram("ApplicableTradeTax"),
+                ram("CategoryCode"),
+            ],
+            Format::VatCategory,
+        ),
+        field(
+            "BT-152",
+            "Steuersatz",
+            &[
+                LINE_SETTLEMENT,
+                ram("ApplicableTradeTax"),
+                ram("RateApplicablePercent"),
+            ],
+            Format::Text,
+        ),
+        field(
+            "BT-128",
+            "Objektkennung",
+            &[
+                LINE_SETTLEMENT,
+                ram("AdditionalReferencedDocument"),
+                ram("IssuerAssignedID"),
+            ],
+            Format::Text,
+        ),
+        field(
+            "BT-133",
+            "Buchungsreferenz des Käufers",
+            &[
+                LINE_SETTLEMENT,
+                ram("ReceivableSpecifiedTradeAccountingAccount"),
+                ram("ID"),
+            ],
+            Format::Text,
+        ),
+    ],
+}];
+
 /// Sections after the line items.
 pub const TRAILER_SECTIONS: &[SectionDef] = &[
     SectionDef {
         title: "Zahlung (BG-16)",
         anchor: &[SETTLEMENT[0], SETTLEMENT[1]],
         repeatable: false,
+        title_suffix: None,
         fields: &[
             field(
                 "BT-81",
@@ -309,6 +448,7 @@ pub const TRAILER_SECTIONS: &[SectionDef] = &[
         title: "Umsatzsteuer (BG-23)",
         anchor: &[SETTLEMENT[0], SETTLEMENT[1], ram("ApplicableTradeTax")],
         repeatable: true,
+        title_suffix: None,
         fields: &[
             field(
                 "BT-116",
@@ -350,6 +490,7 @@ pub const TRAILER_SECTIONS: &[SectionDef] = &[
             ram("SpecifiedTradeSettlementHeaderMonetarySummation"),
         ],
         repeatable: false,
+        title_suffix: None,
         fields: &[
             field(
                 "BT-106",

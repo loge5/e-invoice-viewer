@@ -85,6 +85,27 @@ pub fn decimal(raw: &str, min_decimals: usize) -> Option<String> {
     })
 }
 
+/// Formats a quantity with German separators and without trailing zeros,
+/// followed by the unit name and code (`8 Stunden (HUR)`), or only the code
+/// for units without a known name (`2,5 XPP`).
+pub fn quantity(raw: &str, unit: Option<&str>) -> String {
+    let number = match decimal(raw, 0) {
+        Some(number) if number.contains(',') => number
+            .trim_end_matches('0')
+            .trim_end_matches(',')
+            .to_string(),
+        Some(number) => number,
+        None => return raw.to_string(),
+    };
+    match unit.map(str::trim).filter(|unit| !unit.is_empty()) {
+        Some(unit) => match UNIT_NAMES.iter().find(|(code, _)| *code == unit) {
+            Some((code, name)) => format!("{number} {name} ({code})"),
+            None => format!("{number} {unit}"),
+        },
+        None => number,
+    }
+}
+
 /// Formats a code as `<name> (<code>)` if it is in `names`, otherwise raw.
 pub fn code(raw: &str, names: &[(&str, &str)]) -> String {
     names
@@ -158,4 +179,17 @@ pub const VAT_CATEGORY_CODES: &[(&str, &str)] = &[
     ("O", "Nicht steuerbar"),
     ("L", "Kanarische Inseln (IGIC)"),
     ("M", "Ceuta und Melilla (IPSI)"),
+];
+
+/// Unit codes (BT-130, UN/ECE Recommendation 20) with a German name.
+pub const UNIT_NAMES: &[(&str, &str)] = &[
+    ("C62", "Stück"),
+    ("H87", "Stück"),
+    ("HUR", "Stunden"),
+    ("DAY", "Tage"),
+    ("MON", "Monate"),
+    ("KGM", "Kilogramm"),
+    ("MTR", "Meter"),
+    ("LTR", "Liter"),
+    ("LS", "pauschal"),
 ];
