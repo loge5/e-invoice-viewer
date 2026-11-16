@@ -59,7 +59,11 @@ way to close it, and crashed on Linux.
 - **Robust against bad input.** Malformed PDFs or XML never crash the app.
   They lead to an understandable error message.
 - **Performance.** A typical invoice (1–5 pages, < 1 MB) is displayed within
-  2 s on a current laptop.
+  2 s on the reference machine.
+- **Reference machine** for all time limits in specs: the author's laptop,
+  Intel Core Ultra 7 155H, 30 GB RAM, Arch Linux, GNOME.
+- **Sample invoices** used in acceptance criteria are defined in
+  [fixtures.md](fixtures.md).
 
 ## Dependencies on existing systems / external knowledge
 

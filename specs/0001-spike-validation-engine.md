@@ -1,7 +1,7 @@
 ---
 id: 0001
 title: Spike - validation engine for EN 16931 and XRechnung rules
-status: draft
+status: reviewed
 created: 2026-11-16
 depends_on: []
 ---
@@ -36,15 +36,19 @@ not production code. Throwaway prototype code is allowed and is not merged.
       (b) re-implementing the rules natively;
       (c) delegating to an external validator as an optional fallback.
 - [ ] For the chosen approach, the ADR reports a prototype run of the official
-      EN 16931 CII rules against at least 10 invoices, among them at least 3
-      that violate rules, and compares the result per invoice with the
-      reference result of the official KoSIT validator (same rule IDs fired:
-      yes/no, list of differences).
-- [ ] The ADR states coverage: how many of the official EN 16931 CII asserts
-      (absolute number and percentage) could be evaluated without errors in
-      the prototype, and lists the ones that could not, with the reason.
+      EN 16931 CII rules against at least 10 CII invoices, among them at least
+      3 that violate rules. Per invoice it compares the fired EN 16931 rule IDs
+      (XRechnung `BR-DE-*` IDs excluded) with the reference result of the
+      official KoSIT validator: identical yes/no, and the list of differences.
+- [ ] The ADR states coverage for each of the three rule sets EN 16931 CII,
+      EN 16931 UBL and XRechnung CIUS (CII): the number of asserts in the
+      official artefact, how many can be evaluated with the chosen approach
+      (absolute and percentage), and the ones that cannot, with the reason.
+      For CII this is measured with the prototype; for UBL and XRechnung a
+      static analysis of the artefacts is sufficient.
 - [ ] The ADR states the measured time to validate one typical invoice (1 to
-      5 line items) on the author's laptop, and whether it stays below 1 s.
+      5 line items) on the author's laptop (Intel Core Ultra 7 155H, 30 GB
+      RAM), and whether it stays below 1 s.
 - [ ] The ADR states the licence of every rule artefact and engine involved,
       and confirms compatibility with GPL-3.0-or-later.
 - [ ] The ADR lists the follow-up consequences for specs 0009 and 0010
@@ -53,6 +57,8 @@ not production code. Throwaway prototype code is allowed and is not merged.
 ## Out of scope
 
 - Production-quality implementation of validation (that is 0009 and 0010).
+- Prototype runs for UBL and XRechnung (covered by static analysis only, see
+  the coverage criterion).
 - ZUGFeRD-specific profile rules, PDF/A conformance checks.
 - Any UI work.
 

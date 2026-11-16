@@ -25,7 +25,7 @@ to the field.
       BT-84 (context menu or the field's action button), then the pane
       switches to the XML view, the element holding
       `DE02120300000000202051` is scrolled into view and highlighted.
-- [ ] Given the two-breakdown sample from 0004, when the user chooses "Im XML
+- [ ] Given sample B ([fixtures](../docs/fixtures.md)), when the user chooses "Im XML
       zeigen" on BT-119 of the second "Umsatzsteuer (BG-23)" section, then the
       rate element of the second breakdown is highlighted, not the first.
 - [ ] Given the XML view, when the cursor is placed inside the text of the

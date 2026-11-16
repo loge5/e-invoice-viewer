@@ -49,18 +49,18 @@ are present in the field model, may be empty).
 
 ## Acceptance criteria
 
-- [ ] Given the valid sample CII invoice `RE-2026-0042` (EN 16931 profile),
-      when it is validated, then the result has zero findings with severity
+- [ ] Given CII sample A ([fixtures](../docs/fixtures.md)), when it is
+      validated, then the result has zero findings with severity
       `error`, and the applied rule sets name EN 16931 CII.
-- [ ] Given the same invoice with BT-24 removed, then exactly one finding with
+- [ ] Given sample A with BT-24 removed, then exactly one finding with
       `rule_id` `BR-01`, severity `error`, a message mentioning `BT-24`, and a
       location that selects an existing element of the document (never the
       missing BT-24 element) is returned.
-- [ ] Given the sample with BT-112 changed to `1200.00` while BT-109 is
-      `1000.00` and BT-110 `190.00`, then a finding `BR-CO-15` with severity
+- [ ] Given sample A with BT-112 changed to `1300.00` while BT-109 is
+      `1050.00` and BT-110 `199.50`, then a finding `BR-CO-15` with severity
       `error` is returned whose `business_terms` contain `BT-112`, and whose
       location selects the BT-112 element.
-- [ ] Given the UBL counterpart of the sample with BT-1 removed, then a finding
+- [ ] Given UBL sample A with BT-1 removed, then a finding
       `BR-02` with severity `error` is returned.
 - [ ] Given a CII invoice with profile `minimum`, then no findings are
       returned and the not-applicable reason is set.
@@ -68,7 +68,8 @@ are present in the field model, may be empty).
       fired rule IDs equals the reference result of the official KoSIT
       validator.
 - [ ] Validating a typical invoice (1 to 5 lines) takes less than 1 s;
-      validating the 500-line sample from 0005 takes less than 5 s.
+      validating sample L takes less than 5 s (reference machine, see
+      [requirements](../docs/requirements.md)).
 
 ## Out of scope
 

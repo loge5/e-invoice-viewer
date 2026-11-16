@@ -27,16 +27,16 @@ be decided by ADR 0002 from spike 0001].
 
 ## Acceptance criteria
 
-- [ ] Given a valid XRechnung 3.0 CII sample with buyer reference
-      `04011000-12345-34` and payment instructions, when it is validated, then
+- [ ] Given CII sample B ([fixtures](../docs/fixtures.md), XRechnung 3.0,
+      buyer reference `04011000-12345-34`), when it is validated, then
       no finding with severity `error` is returned and the applied rule sets
       list both EN 16931 and XRechnung.
-- [ ] Given the same sample without BT-10, then a finding `BR-DE-15` with
+- [ ] Given sample B without BT-10, then a finding `BR-DE-15` with
       severity `error` is returned; its message is the official German text
       and mentions `BT-10`.
-- [ ] Given the same sample without payment instructions (BG-16), then a
+- [ ] Given sample B without payment instructions (BG-16), then a
       finding `BR-DE-1` with severity `error` is returned.
-- [ ] Given a CII invoice with profile `en16931` that also lacks BT-10, then no
+- [ ] Given CII sample A (profile `en16931`, no BT-10), then no
       `BR-DE-*` finding is returned.
 - [ ] Given an XRechnung invoice declaring version `2.3`, then the result
       states that the rules of the bundled version were applied (e.g.

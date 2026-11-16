@@ -1,7 +1,7 @@
 ---
 id: 0002
 title: Extract the invoice XML from a ZUGFeRD / Factur-X PDF
-status: draft
+status: reviewed
 created: 2026-11-16
 depends_on: []
 ---
@@ -20,41 +20,61 @@ Given the bytes of a PDF file, the system returns the embedded invoice XML, or
 a specific, understandable error if there is none or the file cannot be read.
 It also reports which embedded file name the XML came from.
 
-The invoice XML is the embedded file with one of these names, checked in this
-order (case-insensitive): `factur-x.xml`, `xrechnung.xml`,
-`zugferd-invoice.xml`, `ZUGFeRD-invoice.xml`.
+The invoice XML is the embedded file with one of these names, compared
+case-insensitively. If several are present, the first one in this order wins:
+
+1. `factur-x.xml`
+2. `xrechnung.xml`
+3. `zugferd-invoice.xml`
+
+Embedded XML files with any other name are not treated as the invoice
+(standard-conformant behaviour). If no invoice is found, the error lists the
+names of the embedded files that are present, so the user can see what the
+PDF contains.
 
 ## Acceptance criteria
 
-- [ ] Given a Factur-X PDF with an embedded `factur-x.xml` whose content starts
-      with `<?xml version="1.0" encoding="UTF-8"?><rsm:CrossIndustryInvoice`,
-      when it is read, then the result is that exact XML (byte-identical) and
-      the source name `factur-x.xml`.
-- [ ] Given a ZUGFeRD 1.0 PDF with an embedded `ZUGFeRD-invoice.xml`, when it
-      is read, then its XML is returned with source name `ZUGFeRD-invoice.xml`.
-- [ ] Given a ZUGFeRD PDF with an embedded `xrechnung.xml`, when it is read,
-      then its XML is returned with source name `xrechnung.xml`.
-- [ ] Given a PDF that embeds both `factur-x.xml` and `lieferschein.pdf`, when
-      it is read, then the XML of `factur-x.xml` is returned (other attachments
-      are ignored by this function).
+- [ ] Given a PDF that embeds exactly one of the following files, when it is
+      read, then the result is that file's content, byte-identical, and the
+      source name as stored in the PDF:
+
+      | embedded file name | returned source name |
+      |---|---|
+      | `factur-x.xml` | `factur-x.xml` |
+      | `Factur-X.xml` | `Factur-X.xml` |
+      | `xrechnung.xml` | `xrechnung.xml` |
+      | `ZUGFeRD-invoice.xml` | `ZUGFeRD-invoice.xml` |
+
+- [ ] Given a PDF that embeds `xrechnung.xml`, `factur-x.xml` and
+      `lieferschein.pdf`, when it is read, then the content of `factur-x.xml`
+      is returned with source name `factur-x.xml`.
+- [ ] Given a PDF whose embedded `factur-x.xml` is stored as a compressed
+      (Flate-encoded) stream, when it is read, then the decompressed XML is
+      returned, byte-identical to the original file before embedding.
 - [ ] Given a valid PDF without any embedded file (e.g. a plain scanned
-      invoice), when it is read, then the error is "no embedded invoice" and
-      no XML is returned.
-- [ ] Given a file that is not a PDF (the bytes of a PNG image) or a PDF
-      truncated to its first 1024 bytes, when it is read, then the error is
-      "not a readable PDF", and the process does not crash or hang (returns
-      within 2 s).
-- [ ] Given a PDF whose embedded `factur-x.xml` is compressed in the file, when
-      it is read, then the decompressed XML is returned.
+      invoice), when it is read, then the error is "no embedded invoice" with
+      an empty list of embedded files.
+- [ ] Given a valid PDF whose only embedded file is `rechnung.xml`, when it is
+      read, then the error is "no embedded invoice" and the list of embedded
+      files is `["rechnung.xml"]`.
+- [ ] Given a PDF with an embedded `factur-x.xml` of 0 bytes, when it is read,
+      then the error is "embedded invoice is empty" with source name
+      `factur-x.xml`.
+- [ ] Given each of these inputs: the bytes of a PNG image, a valid PDF
+      truncated to its first 1024 bytes, a password-protected PDF, then the
+      error is "not a readable PDF", and the call returns within 2 s without
+      crashing.
 
 ## Out of scope
 
 - Detecting syntax or profile of the XML (0003).
 - Listing or saving other attachments (0013).
 - Validating the PDF itself (PDF/A conformance).
-- Encrypted / password-protected PDFs: they return "not a readable PDF".
+- Opening password-protected PDFs (asking for a password).
 
 ## Notes
 
 - Test fixtures must be synthetic or taken from Apache-2.0 licensed sample
   sets (e.g. Mustang project test resources), never real invoices.
+- `zugferd-invoice.xml` (in any letter case) is the name used by ZUGFeRD 1.0
+  and 2.0; ZUGFeRD 1.0 content is rejected later by 0003.

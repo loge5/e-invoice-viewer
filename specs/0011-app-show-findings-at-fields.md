@@ -46,7 +46,7 @@ level finding.
       applied rule sets (e.g. `EN 16931 CII`); given a `minimum` profile
       invoice, it shows the not-applicable reason instead.
 - [ ] While validation runs, the summary shows `Prüfe…`, and the PDF and field
-      panes can be scrolled; for the 500-line sample the window never freezes
+      panes can be scrolled; for sample L the window never freezes
       for more than 100 ms (manual check with a visible scroll during
       validation).
 - [ ] Given validation fails internally (e.g. the rule engine reports an
