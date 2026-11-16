@@ -1,7 +1,7 @@
 ---
 id: 0003
 title: Detect the syntax and profile of an invoice XML
-status: reviewed
+status: implemented
 created: 2026-11-16
 depends_on: []
 ---
@@ -101,3 +101,15 @@ Result of a successful detection:
 - Mapping fields (0004 to 0006), validation (0009, 0010).
 - Support for ZUGFeRD 1.0 content (only recognised to give a clear error).
 - Peppol BIS as a separate profile (shown as `unknown` with its identifier).
+
+## Progress
+
+- **Done** — `e_invoice_viewer_core::detect::detect` implemented
+  (`crates/core/src/detect.rs`); 17 tests in
+  `crates/core/tests/detect_invoice.rs`. New dependency: `roxmltree` 0.21
+  (MIT OR Apache-2.0); its default options reject any DOCTYPE.
+- **Verified** — 2026-11-16: `cargo test --workspace` 30 passed (17 new);
+  `cargo fmt --all --check`, `cargo clippy --workspace --all-targets -- -D
+  warnings`, architecture check and `cargo audit` clean. Manual smoke run on
+  two real Factur-X invoices: both detected as CII / invoice / `en16931`.
+- **Next** — none; set to `implemented` by the author on 2026-11-16.
