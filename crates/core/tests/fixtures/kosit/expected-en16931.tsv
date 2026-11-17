@@ -354,6 +354,7 @@ kosit/ubl-inv/ubl-inv-peppol-en16931-r120.xml
 kosit/ubl-inv/ubl-inv-peppol-en16931-r121.xml	
 kosit/ubl-inv/ubl-inv-peppol-en16931-r130.xml	
 ubl/sample-a.xml	
+ubl/sample-b.xml	
 variants/a-basicwl.xml	
 variants/a-extended.xml	
 variants/a-grand-total-1300.xml	BR-CO-15,BR-CO-16
@@ -361,3 +362,9 @@ variants/a-minimum.xml
 variants/a-ubl-without-bt1.xml	!xsd
 variants/a-unknown-profile.xml	
 variants/a-without-bt24.xml	BR-01,CII-SR-010
+variants/b-cvd.xml	
+variants/b-extension.xml	
+variants/b-version-2-3.xml	
+variants/b-without-bt10.xml	
+variants/b-without-payment-means.xml	
+variants/r040-en16931.xml	CII-SR-461,CII-SR-465,CII-SR-466

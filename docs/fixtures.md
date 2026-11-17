@@ -11,8 +11,11 @@ below) is confirmed once with the official KoSIT validator; if a sample turns
 out to be invalid, the sample is fixed, not the expectation.
 
 Files: `crates/core/tests/fixtures/cii/sample-{a,b}.xml` and
-`crates/core/tests/fixtures/ubl/sample-a.xml` (created with spec 0009, accepted
-by the KoSIT validator without any message).
+`crates/core/tests/fixtures/ubl/sample-{a,b}.xml`. UBL sample A was created
+with spec 0009 and is accepted by the KoSIT validator without any message. UBL
+sample B was created with spec 0010; both B samples are accepted by the KoSIT
+validator (configuration XRechnung 3.0.2) with only the information
+`BR-DE-TMP-32` (no delivery date).
 
 Variants needed by a single spec (e.g. "sample A without BT-24") are described
 in that spec and derived from these samples.
@@ -44,10 +47,14 @@ in that spec and derived from these samples.
 
 ## Sample B — `RE-2026-0043`, profile XRechnung 3.0, two VAT categories
 
+- BT-23 `urn:fdc:peppol.eu:2017:poacc:billing:01:1.0` (required by the
+  PEPPOL rule `PEPPOL-EN16931-R001` that is part of the XRechnung rules; added
+  with spec 0010)
 - BT-24 `urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0`
 - BT-10 `04011000-12345-34`, BT-22 `Vielen Dank für Ihren Auftrag.`
 - Line 1: BT-151 `S`, BT-152 `19`, two notes BT-127 `Lieferung KW 46` and
-  `inkl. Anfahrt`
+  `inkl. Anfahrt` (UBL: only `Lieferung KW 46`, because UBL allows at most one
+  line note, rule `UBL-SR-34`)
 - Line 2: BT-151 `E`, BT-152 `0`
 - Two VAT breakdowns, in this order:
   1. BT-116 `1000.00`, BT-117 `190.00`, BT-118 `S`, BT-119 `19`

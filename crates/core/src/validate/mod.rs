@@ -1,15 +1,20 @@
-//! Validation against the official EN 16931 business rules (spec 0009).
+//! Validation against the official EN 16931 business rules (spec 0009) and,
+//! for XRechnung invoices, the XRechnung CIUS rules (spec 0010).
 //!
-//! The rules are the unchanged CEN Schematron artefacts in `rules/`, evaluated
-//! with an XPath 3.1 engine (ADR 0002).
+//! The rules are the unchanged official Schematron artefacts in `rules/`,
+//! evaluated with an XPath 3.1 engine (ADR 0002).
 
+mod scenarios;
 mod schematron;
 
 use std::cell::OnceCell;
 
-use crate::detect::{DetectError, Profile, Syntax, detect};
+use xee_xpath::Documents;
+
+use crate::detect::{DetectError, Detection, Profile, Syntax, detect};
 use crate::xml_view::decode;
 
+use scenarios::Scenarios;
 use schematron::RuleSet;
 
 /// Version of the bundled CEN rules (`rules/cen-1.3.17/SOURCE.md`).
@@ -18,6 +23,27 @@ const CEN_CII: &str =
     include_str!("../../rules/cen-1.3.17/EN16931-CII-validation-preprocessed.sch");
 const CEN_UBL: &str =
     include_str!("../../rules/cen-1.3.17/EN16931-UBL-validation-preprocessed.sch");
+
+/// Version of the bundled XRechnung rules (`rules/xrechnung-*/SOURCE.md`)
+/// and the identifier version they check.
+const XRECHNUNG_VERSION: &str = "3.0.2";
+const XRECHNUNG_IDENTIFIER_VERSION: &str = "3.0";
+const XRECHNUNG_CII: &str =
+    include_str!("../../rules/xrechnung-2.6.0/cii/XRechnung-CII-validation.sch");
+const XRECHNUNG_UBL: &str =
+    include_str!("../../rules/xrechnung-2.6.0/ubl/XRechnung-UBL-validation.sch");
+/// Included by both XRechnung rule sets as `../common.sch`.
+const XRECHNUNG_COMMON: (&str, &str) = (
+    "../common.sch",
+    include_str!("../../rules/xrechnung-2.6.0/common.sch"),
+);
+/// KoSIT validator configuration for XRechnung (severity changes).
+const KOSIT_SCENARIOS: &str = include_str!("../../rules/kosit-config-2026-08-31/scenarios.xml");
+
+/// Start of every XRechnung CIUS identifier (BT-24), including those of
+/// the XRechnung Extension and CVD; the version follows.
+const XRECHNUNG_ID_PREFIX: &str =
+    "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_";
 
 /// Severity of a finding, as flagged in the official rule artefacts.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -49,6 +75,10 @@ pub struct Validation {
     pub applied_rule_sets: Vec<String>,
     /// Why no rules were applied, if so.
     pub not_applicable_reason: Option<String>,
+    /// Set if the invoice declares an XRechnung version other than the
+    /// bundled one, e.g. `Geprüft nach XRechnung 3.0.2, Rechnung erklärt
+    /// Version 2.3`.
+    pub version_note: Option<String>,
     pub findings: Vec<Finding>,
 }
 
@@ -59,6 +89,9 @@ pub struct Validation {
 pub struct Validator {
     cii: OnceCell<RuleSet>,
     ubl: OnceCell<RuleSet>,
+    xrechnung_cii: OnceCell<RuleSet>,
+    xrechnung_ubl: OnceCell<RuleSet>,
+    scenarios: OnceCell<Scenarios>,
 }
 
 impl Validator {
@@ -77,16 +110,83 @@ impl Validator {
             });
         }
         let text = decode(xml)?;
-        let (rules, syntax) = match detection.syntax {
-            Syntax::Cii => (self.cii.get_or_init(|| RuleSet::compile(CEN_CII)), "CII"),
-            Syntax::Ubl => (self.ubl.get_or_init(|| RuleSet::compile(CEN_UBL)), "UBL"),
+        let mut documents = Documents::new();
+        let Ok(document) = documents.add_string_without_uri(&text) else {
+            // Detection parsed the invoice before; an engine that cannot load
+            // it has nothing to report.
+            return Ok(Validation::default());
         };
-        Ok(Validation {
+
+        let (rules, syntax) = match detection.syntax {
+            Syntax::Cii => (
+                self.cii.get_or_init(|| RuleSet::compile(CEN_CII, &[])),
+                "CII",
+            ),
+            Syntax::Ubl => (
+                self.ubl.get_or_init(|| RuleSet::compile(CEN_UBL, &[])),
+                "UBL",
+            ),
+        };
+        let mut validation = Validation {
             applied_rule_sets: vec![format!("EN 16931 {syntax} {CEN_VERSION}")],
             not_applicable_reason: None,
-            findings: rules.evaluate(&text),
-        })
+            version_note: None,
+            findings: rules.evaluate(&mut documents, document),
+        };
+
+        let Some(declared) = declared_xrechnung_version(&detection) else {
+            return Ok(validation);
+        };
+        let xrechnung = match detection.syntax {
+            Syntax::Cii => &self.xrechnung_cii,
+            Syntax::Ubl => &self.xrechnung_ubl,
+        };
+        let xrechnung = xrechnung.get_or_init(|| {
+            let rules = match detection.syntax {
+                Syntax::Cii => XRECHNUNG_CII,
+                Syntax::Ubl => XRECHNUNG_UBL,
+            };
+            RuleSet::compile(rules, &[XRECHNUNG_COMMON])
+        });
+        validation
+            .findings
+            .extend(xrechnung.evaluate(&mut documents, document));
+        validation
+            .applied_rule_sets
+            .push(format!("XRechnung {XRECHNUNG_VERSION}"));
+        if declared != XRECHNUNG_IDENTIFIER_VERSION {
+            validation.version_note = Some(format!(
+                "Geprüft nach XRechnung {XRECHNUNG_VERSION}, Rechnung erklärt Version {declared}"
+            ));
+        }
+        let scenarios = self
+            .scenarios
+            .get_or_init(|| Scenarios::compile(KOSIT_SCENARIOS));
+        if let Some(levels) = scenarios.levels(&mut documents, document) {
+            for finding in &mut validation.findings {
+                if let Some(severity) = levels.get(&finding.rule_id) {
+                    finding.severity = *severity;
+                }
+            }
+        }
+        Ok(validation)
     }
+}
+
+/// The XRechnung version an invoice declares in BT-24, if the XRechnung
+/// rules apply to it: profile `xrechnung`, or an identifier of the XRechnung
+/// Extension or CVD (which detection reports as `unknown`).
+fn declared_xrechnung_version(detection: &Detection) -> Option<String> {
+    if detection.profile == Profile::XRechnung {
+        return detection.profile_version.clone();
+    }
+    let rest = detection
+        .specification_identifier
+        .trim()
+        .strip_prefix(XRECHNUNG_ID_PREFIX)?;
+    let version = rest.split('#').next().unwrap_or_default();
+    (!version.is_empty() && version.chars().all(|c| c.is_ascii_digit() || c == '.'))
+        .then(|| version.to_string())
 }
 
 fn not_applicable_reason(profile: Profile) -> Option<&'static str> {
@@ -145,9 +245,18 @@ mod tests {
     #[test]
     fn official_rule_sets_compile_completely() {
         for rules in [CEN_CII, CEN_UBL] {
-            let compiled = RuleSet::compile(rules);
+            let compiled = RuleSet::compile(rules, &[]);
             assert_eq!(compiled.uncompiled(), Vec::<&str>::new());
             assert!(compiled.assert_count() > 800);
+        }
+    }
+
+    #[test]
+    fn xrechnung_rule_sets_compile_completely() {
+        for (rules, asserts) in [(XRECHNUNG_CII, 74), (XRECHNUNG_UBL, 77)] {
+            let compiled = RuleSet::compile(rules, &[XRECHNUNG_COMMON]);
+            assert_eq!(compiled.uncompiled(), Vec::<&str>::new());
+            assert_eq!(compiled.assert_count(), asserts);
         }
     }
 }

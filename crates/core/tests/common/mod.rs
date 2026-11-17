@@ -2,6 +2,8 @@
 
 #![allow(dead_code)]
 
+pub mod validation;
+
 use lopdf::encryption::{EncryptionState, EncryptionVersion, Permissions};
 use lopdf::{Document, Object, Stream, dictionary};
 

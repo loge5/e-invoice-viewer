@@ -10,5 +10,5 @@
   clause of EUPL-1.2 (Art. 5 and appendix), see ADR 0002.
 
 To update: replace both files and this note with a newer tag, change the
-version string in `crates/core/src/validate.rs`, regenerate the KoSIT expected
+version string in `crates/core/src/validate/mod.rs`, regenerate the KoSIT expected
 results with `scripts/kosit-reference.sh` and run `cargo test`.

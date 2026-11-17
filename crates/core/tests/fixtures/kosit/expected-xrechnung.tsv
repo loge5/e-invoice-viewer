@@ -1,0 +1,359 @@
+cii/sample-b.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-1-test.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-10-test.xml	EN16931 XRechnung (CII)	
+kosit/cii/cii-br-de-11-test.xml	EN16931 XRechnung (CII)	
+kosit/cii/cii-br-de-14-test.xml	EN16931 XRechnung (CII)	
+kosit/cii/cii-br-de-15-test.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-16-negative-tests-bt-95-bt-151.xml	EN16931 XRechnung (CII)	BR-CO-10:error,BR-DE-16:error,BR-S-02:error,BR-S-08:error,PEPPOL-EN16931-R008:error
+kosit/cii/cii-br-de-16-test-code-O-2.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-16-test-code-O.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-16-tests-bt-95-bt-151.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-17-tests.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-case-sensitive-keyword-2.xml	EN16931 XRechnung (CII)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-case-sensitive-keyword-3.xml	EN16931 XRechnung (CII)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-case-sensitive-keyword.xml	EN16931 XRechnung (CII)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-freespace-test.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-no-newline-after-skonto-2.xml	EN16931 XRechnung (CII)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-no-newline-after-skonto-3.xml	EN16931 XRechnung (CII)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-no-newline-after-skonto-4.xml	EN16931 XRechnung (CII)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-no-newline-after-skonto.xml	EN16931 XRechnung (CII)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-test-incorrect-verzug.xml	EN16931 XRechnung (CII)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-test-skonto-test-no-newline-last-note.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-test-skonto.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-text-after-end-2.xml	EN16931 XRechnung (CII)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-text-after-end.xml	EN16931 XRechnung (CII)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-too-much-digits-after-dot-2.xml	EN16931 XRechnung (CII)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-too-much-digits-after-dot.xml	EN16931 XRechnung (CII)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-wrong-basisbeitrag.xml	EN16931 XRechnung (CII)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-wrong-basistype.xml	EN16931 XRechnung (CII)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-wrong-numeric-seperator-2.xml	EN16931 XRechnung (CII)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-wrong-numeric-seperator.xml	EN16931 XRechnung (CII)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-wrong-whitespace-2.xml	EN16931 XRechnung (CII)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-wrong-whitespace-3.xml	EN16931 XRechnung (CII)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-18-wrong-whitespace.xml	EN16931 XRechnung (CII)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-19-iban-tests.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-2-test.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-22-check-unique-file-name-test-uncefact.xml	EN16931 XRechnung Extension (CII)	
+kosit/cii/cii-br-de-23-test-bg-17-with-bg-18.xml	EN16931 XRechnung (CII)	BR-DE-23-b:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-23-test-bg-17-with-bg-19-bt-89.xml	EN16931 XRechnung (CII)	BR-DE-23-b:error,BR-DE-30:error,BR-DE-31:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-23-test-bg-17-with-bg-19-bt-90.xml	EN16931 XRechnung (CII)	BR-DE-23-b:error,BR-DE-30:error,BR-DE-31:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-23-test-bg-17-with-bg-19-bt-91.xml	EN16931 XRechnung (CII)	BR-DE-23-b:error,BR-DE-30:error,BR-DE-31:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-23-test-bg-17.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-24-test-bg-18-with-bg-17.xml	EN16931 XRechnung (CII)	BR-DE-24-b:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-24-test-bg-18-with-bg-19-bt-89.xml	EN16931 XRechnung (CII)	BR-DE-24-b:error,BR-DE-30:error,BR-DE-31:error,BR-DE-TMP-32:information,PEPPOL-EN16931-R008:error
+kosit/cii/cii-br-de-24-test-bg-18-with-bg-19-bt-90.xml	EN16931 XRechnung (CII)	BR-DE-24-b:error,BR-DE-30:error,BR-DE-31:error,BR-DE-TMP-32:information,PEPPOL-EN16931-R008:error
+kosit/cii/cii-br-de-24-test-bg-18-with-bg-19-bt-91.xml	EN16931 XRechnung (CII)	BR-DE-24-b:error,BR-DE-30:error,BR-DE-31:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-24-test-bg-18.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-25-test-bg-19-remove-bt-89.xml	EN16931 XRechnung (CII)	BR-DE-20:warning,BR-DE-30:error,BR-DE-31:error,BR-DE-TMP-32:information,PEPPOL-EN16931-R008:error,PEPPOL-EN16931-R061:error
+kosit/cii/cii-br-de-25-test-bg-19-remove-bt-90.xml	EN16931 XRechnung (CII)	BR-DE-20:warning,BR-DE-30:error,BR-DE-31:error,BR-DE-TMP-32:information,PEPPOL-EN16931-R008:error
+kosit/cii/cii-br-de-25-test-bg-19-remove-bt-91.xml	EN16931 XRechnung (CII)	BR-DE-30:error,BR-DE-31:error,BR-DE-TMP-32:information,PEPPOL-EN16931-R061:error
+kosit/cii/cii-br-de-25-test-bg-19-with-bg-17.xml	EN16931 XRechnung (CII)	BR-DE-25-b:error
+kosit/cii/cii-br-de-25-test-bg-19-with-bg-18.xml	EN16931 XRechnung (CII)	BR-DE-25-b:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-25-test-bg-19-with-bt-86-1.xml	EN16931 XRechnung (CII)	BR-DE-25-b:error,BR-DE-TMP-32:information,CII-SR-464:warning
+kosit/cii/cii-br-de-25-test-bg-19-with-bt-86-2.xml	EN16931 XRechnung (CII)	BR-DE-25-b:error,BR-DE-TMP-32:information,CII-SR-464:warning
+kosit/cii/cii-br-de-25-test-bg-19-with-bt-86-3.xml	EN16931 XRechnung (CII)	BR-DE-25-b:error,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-25-test-bg-19.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-26-test.xml	EN16931 XRechnung (CII)	
+kosit/cii/cii-br-de-27-test.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-28-test.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-3-test.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-30-31-test-2.xml	EN16931 XRechnung (CII)	BR-DE-19:warning,BR-DE-23-a:error,BR-DE-TMP-32:information,CII-SR-470:error
+kosit/cii/cii-br-de-30-31-test.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-4-test.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-5-test.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-5-test2.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-6-test.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-7-test.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-8-test.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-9-test.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-de-cvd-01-test.xml	EN16931 XRechnung CVD (CII)	BR-CL-13:information,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-cvd-02-test.xml	EN16931 XRechnung CVD (CII)	BR-CL-13:information,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-cvd-03-04-05-06-test.xml	EN16931 XRechnung CVD (CII)	BR-CL-13:information,BR-DE-TMP-32:information
+kosit/cii/cii-br-de-tmp-32-bg-14-test.xml	EN16931 XRechnung (CII)	
+kosit/cii/cii-br-de-tmp-32-bg-26-test.xml	EN16931 XRechnung (CII)	
+kosit/cii/cii-br-de-tmp-32-bt-72-test.xml	EN16931 XRechnung (CII)	
+kosit/cii/cii-br-dex-01-test.xml	EN16931 XRechnung Extension (CII)	BR-CL-24:information,BR-DE-TMP-32:information
+kosit/cii/cii-br-dex-04-schemeid-test-2.xml	EN16931 XRechnung Extension (CII)	BR-CL-10:information,BR-CL-21:information,BR-DE-TMP-32:information
+kosit/cii/cii-br-dex-04-schemeid-test-3.xml	EN16931 XRechnung Extension (CII)	BR-CL-10:information,BR-CL-21:information,BR-DE-TMP-32:information,BR-DEX-04:error,BR-DEX-06:error
+kosit/cii/cii-br-dex-04-schemeid-test-4.xml	EN16931 XRechnung Extension (CII)	BR-CL-10:information,BR-CL-21:information,BR-DE-TMP-32:information,BR-DEX-04:error,BR-DEX-06:error
+kosit/cii/cii-br-dex-04-schemeid-test.xml	EN16931 XRechnung Extension (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-dex-05-schemeid-test-2.xml	EN16931 XRechnung Extension (CII)	BR-CL-11:information,BR-DE-TMP-32:information
+kosit/cii/cii-br-dex-05-schemeid-test-3.xml	EN16931 XRechnung Extension (CII)	BR-CL-11:information,BR-DE-TMP-32:information,BR-DEX-05:error
+kosit/cii/cii-br-dex-05-schemeid-test-4.xml	EN16931 XRechnung Extension (CII)	BR-CL-11:information,BR-DE-TMP-32:information,BR-DEX-05:error
+kosit/cii/cii-br-dex-05-schemeid-test.xml	EN16931 XRechnung Extension (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-dex-06-schemeid-test-2.xml	EN16931 XRechnung Extension (CII)	BR-CL-21:information,BR-DE-TMP-32:information
+kosit/cii/cii-br-dex-06-schemeid-test-3.xml	EN16931 XRechnung Extension (CII)	BR-CL-21:information,BR-DE-TMP-32:information,BR-DEX-06:error
+kosit/cii/cii-br-dex-06-schemeid-test-4.xml	EN16931 XRechnung Extension (CII)	BR-CL-21:information,BR-DE-TMP-32:information,BR-DEX-06:error
+kosit/cii/cii-br-dex-06-schemeid-test.xml	EN16931 XRechnung Extension (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-dex-07-schemeid-test-2.xml	EN16931 XRechnung Extension (CII)	BR-CL-25:information,BR-DE-TMP-32:information
+kosit/cii/cii-br-dex-07-schemeid-test-3.xml	EN16931 XRechnung Extension (CII)	BR-CL-25:information,BR-DE-TMP-32:information,BR-DEX-07:error
+kosit/cii/cii-br-dex-07-schemeid-test-4.xml	EN16931 XRechnung Extension (CII)	BR-CL-25:information,BR-DE-TMP-32:information,BR-DEX-07:error
+kosit/cii/cii-br-dex-07-schemeid-test.xml	EN16931 XRechnung Extension (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-br-dex-08-schemeid-test-2.xml	EN16931 XRechnung Extension (CII)	BR-CL-26:information
+kosit/cii/cii-br-dex-08-schemeid-test-3.xml	EN16931 XRechnung Extension (CII)	BR-CL-26:information,BR-DEX-08:error,PEPPOL-EN16931-R001:error
+kosit/cii/cii-br-dex-08-schemeid-test-4.xml	EN16931 XRechnung Extension (CII)	BR-CL-26:information,BR-DEX-08:error
+kosit/cii/cii-br-dex-08-schemeid-test.xml	EN16931 XRechnung Extension (CII)	
+kosit/cii/cii-br-dex-15-test-on-sub-invoice-lines.xml	EN16931 XRechnung Extension (CII)	BR-DE-TMP-32:information,BR-DEX-15:warning,CII-SR-036:warning
+kosit/cii/cii-br-tmp-2-test.xml	EN16931 XRechnung (CII)	CII-SR-461:error,CII-SR-465:error,CII-SR-466:error,PEPPOL-EN16931-R120:warning
+kosit/cii/cii-br-tmp-3-negative-test.xml	EN16931 XRechnung (CII)	BR-42:error,BR-44:error,BR-CO-23:error,BR-CO-24:error,BR-TMP-3:error,PEPPOL-EN16931-R046:error,PEPPOL-EN16931-R120:warning
+kosit/cii/cii-br-tmp-3-test.xml	EN16931 XRechnung (CII)	CII-SR-465:error,CII-SR-466:error
+kosit/cii/cii-br-tmp-4-test.xml	EN16931 XRechnung (CII)	BR-TMP-4:warning,CII-SR-475:information
+kosit/cii/cii-br-tmp-5-test.xml	EN16931 XRechnung (CII)	BR-TMP-5:warning,CII-SR-476:information
+kosit/cii/cii-br-tmp-7-test.xml	EN16931 XRechnung (CII)	
+kosit/cii/cii-peppol-en16931-r001.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-peppol-en16931-r005.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-peppol-en16931-r008.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-peppol-en16931-r010.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-peppol-en16931-r020.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-peppol-en16931-r040-HUF-slack.xml	EN16931 XRechnung (CII)	CII-SR-461:error,CII-SR-465:error,CII-SR-466:error,PEPPOL-EN16931-R120:warning
+kosit/cii/cii-peppol-en16931-r040.xml	EN16931 XRechnung (CII)	CII-SR-461:error,CII-SR-465:error,CII-SR-466:error,PEPPOL-EN16931-R120:warning
+kosit/cii/cii-peppol-en16931-r041.xml	EN16931 XRechnung (CII)	CII-SR-461:error,CII-SR-465:error,CII-SR-466:error,PEPPOL-EN16931-R120:warning
+kosit/cii/cii-peppol-en16931-r042.xml	EN16931 XRechnung (CII)	CII-SR-461:error,CII-SR-465:error,CII-SR-466:error,PEPPOL-EN16931-R120:warning
+kosit/cii/cii-peppol-en16931-r043.xml	EN16931 XRechnung (CII)	CII-SR-461:error,CII-SR-465:error,CII-SR-466:error,PEPPOL-EN16931-R120:warning
+kosit/cii/cii-peppol-en16931-r044.xml	EN16931 XRechnung (CII)	CII-SR-461:error,CII-SR-465:error,CII-SR-466:error,PEPPOL-EN16931-R120:warning
+kosit/cii/cii-peppol-en16931-r046-1.xml	EN16931 XRechnung (CII)	CII-SR-461:error,CII-SR-465:error,CII-SR-466:error,PEPPOL-EN16931-R120:warning
+kosit/cii/cii-peppol-en16931-r046-2.xml	EN16931 XRechnung (CII)	CII-SR-461:error,CII-SR-465:error,CII-SR-466:error,PEPPOL-EN16931-R120:warning
+kosit/cii/cii-peppol-en16931-r053-1.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-peppol-en16931-r053-2-negative-test.xml	EN16931 XRechnung (CII)	BR-CO-15:error,BR-DE-TMP-32:information,PEPPOL-EN16931-R053:error
+kosit/cii/cii-peppol-en16931-r054-1.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-peppol-en16931-r054-2-negative-test.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information,PEPPOL-EN16931-R054:error
+kosit/cii/cii-peppol-en16931-r055.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-peppol-en16931-r061-1.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-peppol-en16931-r061-2.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+kosit/cii/cii-peppol-en16931-r101.xml	EN16931 XRechnung (CII)	CII-SR-461:error,CII-SR-465:error,CII-SR-466:error
+kosit/cii/cii-peppol-en16931-r110.xml	EN16931 XRechnung (CII)	
+kosit/cii/cii-peppol-en16931-r111.xml	EN16931 XRechnung (CII)	
+kosit/cii/cii-peppol-en16931-r120.xml	EN16931 XRechnung (CII)	CII-SR-465:error,CII-SR-466:error
+kosit/cii/cii-peppol-en16931-r121.xml	EN16931 XRechnung (CII)	CII-SR-461:error,CII-SR-465:error,CII-SR-466:error,PEPPOL-EN16931-R120:warning
+kosit/cii/cii-peppol-en16931-r130-1.xml	EN16931 XRechnung (CII)	
+kosit/cii/cii-peppol-en16931-r130-2.xml	EN16931 XRechnung (CII)	
+kosit/ubl-cn/ubl-cn-br-de-1-test.xml	EN16931 XRechnung (UBL CreditNote)	
+kosit/ubl-cn/ubl-cn-br-de-10-test.xml	EN16931 XRechnung (UBL CreditNote)	
+kosit/ubl-cn/ubl-cn-br-de-11-test.xml	EN16931 XRechnung (UBL CreditNote)	
+kosit/ubl-cn/ubl-cn-br-de-14-test.xml	EN16931 XRechnung (UBL CreditNote)	
+kosit/ubl-cn/ubl-cn-br-de-15-test.xml	EN16931 XRechnung (UBL CreditNote)	
+kosit/ubl-cn/ubl-cn-br-de-16-negative-test-bt-102.xml	EN16931 XRechnung (UBL CreditNote)	BR-CL-20:error,BR-CO-09:error,BR-DE-16:error,BR-S-02:error,BR-S-04:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-16-negative-test-bt-151.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,BR-DE-16:error,BR-S-02:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-16-negative-test-bt-95.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,BR-DE-16:error,BR-S-02:error,BR-S-03:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-16-test-bt-102.xml	EN16931 XRechnung (UBL CreditNote)	BR-CL-20:error
+kosit/ubl-cn/ubl-cn-br-de-16-test-bt-151.xml	EN16931 XRechnung (UBL CreditNote)	
+kosit/ubl-cn/ubl-cn-br-de-16-test-bt-95.xml	EN16931 XRechnung (UBL CreditNote)	
+kosit/ubl-cn/ubl-cn-br-de-16-test-code-O-2.xml	EN16931 XRechnung (UBL CreditNote)	BR-CL-01:error,BR-DE-TMP-32:information,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-16-test-code-O.xml	EN16931 XRechnung (UBL CreditNote)	BR-CL-01:error,BR-CO-09:error,BR-DE-TMP-32:information,BR-O-02:error
+kosit/ubl-cn/ubl-cn-br-de-17-test.xml	EN16931 XRechnung (UBL CreditNote)	
+kosit/ubl-cn/ubl-cn-br-de-18-case-sensitive-keyword-2.xml	EN16931 XRechnung (UBL CreditNote)	BR-DE-18:error
+kosit/ubl-cn/ubl-cn-br-de-18-case-sensitive-keyword-3.xml	EN16931 XRechnung (UBL CreditNote)	BR-DE-18:error
+kosit/ubl-cn/ubl-cn-br-de-18-case-sensitive-keyword.xml	EN16931 XRechnung (UBL CreditNote)	BR-DE-18:error
+kosit/ubl-cn/ubl-cn-br-de-18-freespace-test.xml	EN16931 XRechnung (UBL CreditNote)	
+kosit/ubl-cn/ubl-cn-br-de-18-no-newline-2.xml	EN16931 XRechnung (UBL CreditNote)	BR-DE-18:error
+kosit/ubl-cn/ubl-cn-br-de-18-no-newline-3.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,BR-DE-18:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-18-no-newline.xml	EN16931 XRechnung (UBL CreditNote)	BR-DE-18:error
+kosit/ubl-cn/ubl-cn-br-de-18-skonto-many-tests.xml	EN16931 XRechnung (UBL CreditNote)	
+kosit/ubl-cn/ubl-cn-br-de-18-test-incorrect-verzug.xml	EN16931 XRechnung (UBL CreditNote)	BR-DE-18:error
+kosit/ubl-cn/ubl-cn-br-de-18-test-no-newline-last-note.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-18-test.xml	EN16931 XRechnung (UBL CreditNote)	
+kosit/ubl-cn/ubl-cn-br-de-18-text-after-end-2.xml	EN16931 XRechnung (UBL CreditNote)	BR-DE-18:error
+kosit/ubl-cn/ubl-cn-br-de-18-text-after-end.xml	EN16931 XRechnung (UBL CreditNote)	BR-DE-18:error
+kosit/ubl-cn/ubl-cn-br-de-18-too-much-digits-after-dot-2.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,BR-DE-18:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-18-too-much-digits-after-dot.xml	EN16931 XRechnung (UBL CreditNote)	BR-DE-18:error
+kosit/ubl-cn/ubl-cn-br-de-18-wrong-numeric-seperator-2.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,BR-DE-18:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-18-wrong-numeric-seperator.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,BR-DE-18:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-18-wrong-skonto-basisbetrag-test.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,BR-DE-18:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-18-wrong-whitespace-2.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,BR-DE-18:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-18-wrong-whitespace-3.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,BR-DE-18:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-18-wrong-whitespace.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,BR-DE-18:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-2-test.xml	EN16931 XRechnung (UBL CreditNote)	
+kosit/ubl-cn/ubl-cn-br-de-23-test-bg-17-with-bg-18.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,BR-DE-23-b:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-23-test-bg-17-with-bg-19.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,BR-DE-23-b:error,BR-DE-30:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-23-test-bg-17.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-24-test-bg-18-with-bg-17.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,BR-DE-24-a:error,BR-DE-24-b:error,UBL-CR-434:warning,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-24-test-bg-18-with-bg-19.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,BR-DE-24-b:error,BR-DE-30:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-24-test-bg-18.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-25-test-bg-19-with-bg-17.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,BR-DE-25-b:error,BR-DE-30:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-25-test-bg-19-with-bg-18.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,BR-DE-25-b:error,BR-DE-30:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-25-test-bg-19.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,BR-DE-30:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-26-test.xml	EN16931 XRechnung (UBL CreditNote)	BR-CL-01:error,BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-27-test.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-28-test.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-3-test.xml	EN16931 XRechnung (UBL CreditNote)	
+kosit/ubl-cn/ubl-cn-br-de-30-31-test.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-4-test.xml	EN16931 XRechnung (UBL CreditNote)	
+kosit/ubl-cn/ubl-cn-br-de-5-test.xml	EN16931 XRechnung (UBL CreditNote)	
+kosit/ubl-cn/ubl-cn-br-de-6-test.xml	EN16931 XRechnung (UBL CreditNote)	
+kosit/ubl-cn/ubl-cn-br-de-7-test.xml	EN16931 XRechnung (UBL CreditNote)	
+kosit/ubl-cn/ubl-cn-br-de-8-test.xml	EN16931 XRechnung (UBL CreditNote)	
+kosit/ubl-cn/ubl-cn-br-de-9-test.xml	EN16931 XRechnung (UBL CreditNote)	
+kosit/ubl-cn/ubl-cn-br-de-cvd-01-test.xml	EN16931 XRechnung CVD (UBL CreditNote)	BR-CL-13:information,BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-cvd-02-test.xml	EN16931 XRechnung CVD (UBL CreditNote)	BR-CL-13:information,BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-cvd-03-04-05-06-test.xml	EN16931 XRechnung CVD (UBL CreditNote)	BR-CL-13:information,BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-tmp-32-bg-14-test.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-de-tmp-32-bt-72-test.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-tmp-2-test.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-br-tmp-6-test.xml	EN16931 XRechnung (UBL CreditNote)	
+kosit/ubl-cn/ubl-cn-peppol-en16931-r001.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r005.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r008.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r010.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r020.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r040-allowance.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r040-charge.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r040-r120-HUF-slack.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r040.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r041.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r042.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r043.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r044.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r046-1.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r053-1.xml	EN16931 XRechnung (UBL CreditNote)	BR-DE-TMP-32:information
+kosit/ubl-cn/ubl-cn-peppol-en16931-r053-2.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-15:error,BR-DE-TMP-32:information,BR-S-08:error,PEPPOL-EN16931-R053:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r054-1.xml	EN16931 XRechnung (UBL CreditNote)	BR-DE-TMP-32:information
+kosit/ubl-cn/ubl-cn-peppol-en16931-r054-2.xml	EN16931 XRechnung (UBL CreditNote)	BR-DE-TMP-32:information,PEPPOL-EN16931-R054:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r055-1.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r055-2.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r055-without-bt-6.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r061-1.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r061-2.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r101.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r110.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r111.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r120.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r121.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-cn/ubl-cn-peppol-en16931-r130.xml	EN16931 XRechnung (UBL CreditNote)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-inv/ubl-inv-br-de-1-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-de-10-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-de-11-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-de-14-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-de-15-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-de-16-negative-test-bt-102.xml	EN16931 XRechnung (UBL Invoice)	BR-CO-09:error,BR-DE-16:error,BR-S-02:error,BR-S-04:error,UBL-SR-53:error
+kosit/ubl-inv/ubl-inv-br-de-16-negative-test-bt-151.xml	EN16931 XRechnung (UBL Invoice)	BR-CO-09:error,BR-DE-16:error,BR-DE-TMP-32:information,BR-O-08:error,BR-O-12:error,BR-S-01:error,BR-S-02:error,BR-S-05:error,UBL-CR-528:warning,UBL-CR-678:warning,UBL-CR-679:warning,UBL-SR-53:error
+kosit/ubl-inv/ubl-inv-br-de-16-negative-test-bt-95.xml	EN16931 XRechnung (UBL Invoice)	BR-CO-09:error,BR-DE-16:error,BR-S-02:error,BR-S-03:error,UBL-SR-53:error
+kosit/ubl-inv/ubl-inv-br-de-16-test-bt-102.xml	EN16931 XRechnung (UBL Invoice)	BR-CL-20:error
+kosit/ubl-inv/ubl-inv-br-de-16-test-bt-151.xml	EN16931 XRechnung (UBL Invoice)	BR-CO-09:error,BR-DE-TMP-32:information,UBL-SR-53:error
+kosit/ubl-inv/ubl-inv-br-de-16-test-bt-95.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-de-16-test-code-O-2.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information,UBL-SR-53:error
+kosit/ubl-inv/ubl-inv-br-de-16-test-code-O.xml	EN16931 XRechnung (UBL Invoice)	BR-CO-09:error,BR-DE-TMP-32:information,BR-O-02:error
+kosit/ubl-inv/ubl-inv-br-de-17-test.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-18-case-sensitive-keyword-2.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-18-case-sensitive-keyword-3.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-18-case-sensitive-keyword.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-18-freespace-test.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-18-no-newline-2.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-18-no-newline.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-18-skonto-many-tests.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-18-test-incorrect-verzug.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-18-test-no-newline-last-note.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-1:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-18-test-no-newline.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-18:error,BR-DE-1:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-18-test.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-18-text-after-end-2.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-18-text-after-end.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-18-too-much-digits-after-dot-2.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-18-too-much-digits-after-dot.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-18-wrong-numeric-seperator-2.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-18-wrong-numeric-seperator.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-18-wrong-skonto-basisbetrag-test.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-18-wrong-whitespace-2.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-18-wrong-whitespace-3.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-18-wrong-whitespace.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-18:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-19-iban-tests.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-14:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-2-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-de-20-paymentmeans-code59-test.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-25-b:error,BR-DE-30:error
+kosit/ubl-inv/ubl-inv-br-de-22-check-unique-file-name-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-de-23-test-bg-17-with-bg-18.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-23-b:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-23-test-bg-17-with-bg-19.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-23-b:error,BR-DE-30:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-23-test-bg-17.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-24-test-bg-18-with-bg-17.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-24-a:error,BR-DE-24-b:error,BR-DE-TMP-32:information,UBL-CR-434:warning
+kosit/ubl-inv/ubl-inv-br-de-24-test-bg-18-with-bg-19.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-24-b:error,BR-DE-30:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-24-test-bg-18.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-25-test-bg-19-with-bg-17.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-25-b:error,BR-DE-30:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-25-test-bg-19-with-bg-18.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-25-b:error,BR-DE-30:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-25-test-bg-19.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-30:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-26-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-de-27-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-de-28-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-de-3-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-de-30-31-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-de-4-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-de-5-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-de-6-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-de-7-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-de-8-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-de-9-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-de-cvd-01-test.xml	EN16931 XRechnung CVD (UBL Invoice)	BR-CL-13:information
+kosit/ubl-inv/ubl-inv-br-de-cvd-02-test.xml	EN16931 XRechnung CVD (UBL Invoice)	BR-CL-13:information
+kosit/ubl-inv/ubl-inv-br-de-cvd-03-04-05-06-test.xml	EN16931 XRechnung CVD (UBL Invoice)	BR-CL-13:information,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-de-tmp-32-bg-14-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-de-tmp-32-bg-26-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-de-tmp-32-bt-72-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-dex-01-extension_mime_code_test.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CL-24:information
+kosit/ubl-inv/ubl-inv-br-dex-02-check-0-values.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-DE-TMP-32:information,UBL-CR-646:information
+kosit/ubl-inv/ubl-inv-br-dex-02-check-correct-sums-sub-invoice-line-2.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CO-04:error,BR-CO-10:error,BR-DEX-03:error,BR-S-08:error,UBL-CR-646:information,UBL-SR-48:error
+kosit/ubl-inv/ubl-inv-br-dex-02-check-correct-sums-sub-invoice-line.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-DE-30:error,BR-DEX-03:error,UBL-CR-646:information
+kosit/ubl-inv/ubl-inv-br-dex-02-some-invoicelines-with-sub.xml	EN16931 XRechnung Extension (UBL Invoice)	UBL-CR-646:information
+kosit/ubl-inv/ubl-inv-br-dex-03-invalid-test.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CO-10:error,BR-DEX-03:error,BR-S-08:error,UBL-CR-646:information
+kosit/ubl-inv/ubl-inv-br-dex-03-test.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CO-10:error,BR-S-08:error,UBL-CR-646:information
+kosit/ubl-inv/ubl-inv-br-dex-04-schemeid-test-2.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CL-10:information,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-dex-04-schemeid-test-3.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CL-10:information,BR-DE-TMP-32:information,BR-DEX-04:error
+kosit/ubl-inv/ubl-inv-br-dex-04-schemeid-test-4.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CL-10:information,BR-DE-TMP-32:information,BR-DEX-04:error
+kosit/ubl-inv/ubl-inv-br-dex-04-schemeid-test.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-dex-05-schemeid-test.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CL-11:information,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-dex-06-schemeid-test-2.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CL-21:information,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-dex-06-schemeid-test-3.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CL-21:information,BR-DE-TMP-32:information,BR-DEX-06:error
+kosit/ubl-inv/ubl-inv-br-dex-06-schemeid-test-4.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CL-21:information,BR-DE-TMP-32:information,BR-DEX-06:error
+kosit/ubl-inv/ubl-inv-br-dex-06-schemeid-test.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-br-dex-07-schemeid-test-2.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CL-25:information
+kosit/ubl-inv/ubl-inv-br-dex-07-schemeid-test-3.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CL-25:information,BR-DEX-07:error
+kosit/ubl-inv/ubl-inv-br-dex-07-schemeid-test-4.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CL-25:information,BR-DEX-07:error
+kosit/ubl-inv/ubl-inv-br-dex-07-schemeid-test.xml	EN16931 XRechnung Extension (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-dex-08-schemeid-test-2.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CL-26:information
+kosit/ubl-inv/ubl-inv-br-dex-08-schemeid-test-3.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CL-26:information,BR-DEX-08:error
+kosit/ubl-inv/ubl-inv-br-dex-08-schemeid-test-4.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CL-26:information,BR-DEX-08:error
+kosit/ubl-inv/ubl-inv-br-dex-08-schemeid-test.xml	EN16931 XRechnung Extension (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-dex-09-negative-test.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-DE-TMP-32:information,BR-DEX-09:error,UBL-CR-470:information
+kosit/ubl-inv/ubl-inv-br-dex-09-test-2.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CO-16:information,BR-DE-TMP-32:information,UBL-CR-470:information
+kosit/ubl-inv/ubl-inv-br-dex-09-test-3.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CO-16:information,BR-DE-TMP-32:information,UBL-CR-470:information
+kosit/ubl-inv/ubl-inv-br-dex-09-test-4.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CO-16:information,BR-DE-TMP-32:information,UBL-CR-470:information
+kosit/ubl-inv/ubl-inv-br-dex-09-test.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CO-16:information,BR-DE-TMP-32:information,UBL-CR-470:information
+kosit/ubl-inv/ubl-inv-br-dex-10-11-12-negative-test.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-DE-TMP-32:information,BR-DEX-10:error,BR-DEX-11:error,BR-DEX-12:error,BR-DEX-14:error,PEPPOL-EN16931-R008:error,UBL-CR-470:information
+kosit/ubl-inv/ubl-inv-br-dex-10-test.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-DE-TMP-32:information,BR-DEX-09:error,UBL-CR-470:information
+kosit/ubl-inv/ubl-inv-br-dex-11-test.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-DE-TMP-32:information,BR-DEX-09:error,UBL-CR-470:information
+kosit/ubl-inv/ubl-inv-br-dex-12-test.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-DE-TMP-32:information,BR-DEX-09:error,UBL-CR-470:information
+kosit/ubl-inv/ubl-inv-br-dex-13-test.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CO-16:information,BR-DE-TMP-32:information,UBL-CR-470:information
+kosit/ubl-inv/ubl-inv-br-dex-14-test.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CO-16:information,BR-DE-TMP-32:information,UBL-CR-470:information
+kosit/ubl-inv/ubl-inv-br-tmp-2-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-br-tmp-6-test.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-contact-tests.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-23-b:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-paymentmeans-test.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-14:error,BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-peppol-en16931-r001.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r005.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r008.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r010.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r020.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r040-allowance.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r040-charge.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r040-r120-HUF-slack.xml	EN16931 XRechnung (UBL Invoice)	BR-CO-09:error,UBL-SR-53:error
+kosit/ubl-inv/ubl-inv-peppol-en16931-r040.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r041.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r042.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r043.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r044.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r046-1.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r053-1.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-peppol-en16931-r053-2.xml	EN16931 XRechnung (UBL Invoice)	BR-CO-15:error,BR-DE-TMP-32:information,BR-S-08:error,PEPPOL-EN16931-R053:error
+kosit/ubl-inv/ubl-inv-peppol-en16931-r054-1.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+kosit/ubl-inv/ubl-inv-peppol-en16931-r054-2.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information,PEPPOL-EN16931-R054:error
+kosit/ubl-inv/ubl-inv-peppol-en16931-r055-1.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r055-2.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r055-without-bt6.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r061-1.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r061-2.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r101.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r110.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r111.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r120.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r121.xml	EN16931 XRechnung (UBL Invoice)	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r130.xml	EN16931 XRechnung (UBL Invoice)	
+ubl/sample-b.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+variants/b-cvd.xml	EN16931 XRechnung CVD (CII)	BR-DE-CVD-01:error,BR-DE-CVD-02:error,BR-DE-CVD-03:error,BR-DE-TMP-32:information
+variants/b-extension.xml	EN16931 XRechnung Extension (CII)	BR-DE-TMP-32:information
+variants/b-without-bt10.xml	EN16931 XRechnung (CII)	BR-DE-15:error,BR-DE-TMP-32:information
+variants/b-without-payment-means.xml	EN16931 XRechnung (CII)	BR-DE-1:error,BR-DE-TMP-32:information

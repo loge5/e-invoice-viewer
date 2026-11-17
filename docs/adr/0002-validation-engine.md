@@ -270,3 +270,43 @@ time.
 - 150 ms (CII), 480 ms (UBL) and 50 ms (XRechnung) once per rule set.
 - Compile lazily at the first validation of each syntax, on the background
   thread, and keep it for the lifetime of the app.
+
+## Addendum 2026-11-17 (implementation of 0010)
+
+- **XRechnung artefact:** the bundled rules are the `.sch` files of the
+  release asset `xrechnung-3.0.2-schematron-2.6.0.zip`, not the sources at
+  the tag. KoSIT merges 22 (CII) and 21 (UBL) PEPPOL BIS rules
+  (`PEPPOL-EN16931-R*`) into them at build time, and the official validator
+  checks them. The spike evaluated the tag sources and so did not cover
+  them.
+- **Severity overrides depend on the scenario:** the configuration has
+  separate scenarios for XRechnung, XRechnung Extension and XRechnung CVD, in
+  CII, UBL Invoice and UBL CreditNote, each with its own `customLevel`s (the
+  Extension lowers, for example, `BR-CL-10`, `-11`, `-24`, `-25`, `-26` and
+  `BR-CO-16` to information). The viewer bundles `scenarios.xml` unchanged,
+  evaluates the scenarios' match expressions and applies the `customLevel`s
+  of the first matching one. For an invoice that declares another XRechnung
+  version no scenario matches; the XRechnung scenario of its document type
+  is used.
+- **How KoSIT reports overrides:** the `level` attribute of a message in the
+  KoSIT report keeps the official flag. The changed severity ("Adj. Grad")
+  is computed by the report stylesheet (`rep:custom-level` in
+  `default-report.xsl`) and decides acceptance. The reference script
+  applies the same lookup.
+- **Further engine findings, handled by rewriting expressions** (the rule
+  files stay unchanged):
+  - A predicate that selects more than one node (`cac:TaxTotal[cac:TaxSubtotal]`
+    with two subtotals) raises `XPTY0004` instead of being true. Predicates
+    that are plain location paths are rewritten to `[boolean(…)]`, which is
+    equivalent in XPath.
+  - `normalize-space()` and `string-length()` without argument always raise
+    `XPTY0004`; they are rewritten to `f(string(.))`.
+  - Besides `and`, `or` is not short-circuited either (`not(a and b) or
+    u:slack(…)` fails when `b` is missing). A test that raises an error is
+    evaluated again with its top-level `and`/`or` chains (up to 4 operands)
+    rewritten to `if`s. Rewriting all tests up front made compiling about
+    three times slower, so the rewritten form is compiled only when a test
+    fails.
+- **Compile time** (release, reference machine): about 200 ms for CII plus
+  XRechnung and 550 ms for UBL plus XRechnung, once per syntax and
+  validator.
