@@ -1,0 +1,363 @@
+cii/sample-a.xml	
+cii/sample-b.xml	
+kosit/cii/cii-br-de-1-test.xml	
+kosit/cii/cii-br-de-10-test.xml	
+kosit/cii/cii-br-de-11-test.xml	
+kosit/cii/cii-br-de-14-test.xml	
+kosit/cii/cii-br-de-15-test.xml	
+kosit/cii/cii-br-de-16-negative-tests-bt-95-bt-151.xml	BR-CO-10,BR-S-02,BR-S-08
+kosit/cii/cii-br-de-16-test-code-O-2.xml	
+kosit/cii/cii-br-de-16-test-code-O.xml	
+kosit/cii/cii-br-de-16-tests-bt-95-bt-151.xml	
+kosit/cii/cii-br-de-17-tests.xml	
+kosit/cii/cii-br-de-18-case-sensitive-keyword-2.xml	
+kosit/cii/cii-br-de-18-case-sensitive-keyword-3.xml	
+kosit/cii/cii-br-de-18-case-sensitive-keyword.xml	
+kosit/cii/cii-br-de-18-freespace-test.xml	
+kosit/cii/cii-br-de-18-no-newline-after-skonto-2.xml	
+kosit/cii/cii-br-de-18-no-newline-after-skonto-3.xml	
+kosit/cii/cii-br-de-18-no-newline-after-skonto-4.xml	
+kosit/cii/cii-br-de-18-no-newline-after-skonto.xml	
+kosit/cii/cii-br-de-18-test-incorrect-verzug.xml	
+kosit/cii/cii-br-de-18-test-skonto-test-no-newline-last-note.xml	
+kosit/cii/cii-br-de-18-test-skonto.xml	
+kosit/cii/cii-br-de-18-text-after-end-2.xml	
+kosit/cii/cii-br-de-18-text-after-end.xml	
+kosit/cii/cii-br-de-18-too-much-digits-after-dot-2.xml	
+kosit/cii/cii-br-de-18-too-much-digits-after-dot.xml	
+kosit/cii/cii-br-de-18-wrong-basisbeitrag.xml	
+kosit/cii/cii-br-de-18-wrong-basistype.xml	
+kosit/cii/cii-br-de-18-wrong-numeric-seperator-2.xml	
+kosit/cii/cii-br-de-18-wrong-numeric-seperator.xml	
+kosit/cii/cii-br-de-18-wrong-whitespace-2.xml	
+kosit/cii/cii-br-de-18-wrong-whitespace-3.xml	
+kosit/cii/cii-br-de-18-wrong-whitespace.xml	
+kosit/cii/cii-br-de-19-iban-tests.xml	
+kosit/cii/cii-br-de-2-test.xml	
+kosit/cii/cii-br-de-22-check-unique-file-name-test-uncefact.xml	
+kosit/cii/cii-br-de-23-test-bg-17-with-bg-18.xml	
+kosit/cii/cii-br-de-23-test-bg-17-with-bg-19-bt-89.xml	
+kosit/cii/cii-br-de-23-test-bg-17-with-bg-19-bt-90.xml	
+kosit/cii/cii-br-de-23-test-bg-17-with-bg-19-bt-91.xml	
+kosit/cii/cii-br-de-23-test-bg-17.xml	
+kosit/cii/cii-br-de-24-test-bg-18-with-bg-17.xml	
+kosit/cii/cii-br-de-24-test-bg-18-with-bg-19-bt-89.xml	
+kosit/cii/cii-br-de-24-test-bg-18-with-bg-19-bt-90.xml	
+kosit/cii/cii-br-de-24-test-bg-18-with-bg-19-bt-91.xml	
+kosit/cii/cii-br-de-24-test-bg-18.xml	
+kosit/cii/cii-br-de-25-test-bg-19-remove-bt-89.xml	
+kosit/cii/cii-br-de-25-test-bg-19-remove-bt-90.xml	
+kosit/cii/cii-br-de-25-test-bg-19-remove-bt-91.xml	
+kosit/cii/cii-br-de-25-test-bg-19-with-bg-17.xml	
+kosit/cii/cii-br-de-25-test-bg-19-with-bg-18.xml	
+kosit/cii/cii-br-de-25-test-bg-19-with-bt-86-1.xml	CII-SR-464
+kosit/cii/cii-br-de-25-test-bg-19-with-bt-86-2.xml	CII-SR-464
+kosit/cii/cii-br-de-25-test-bg-19-with-bt-86-3.xml	
+kosit/cii/cii-br-de-25-test-bg-19.xml	
+kosit/cii/cii-br-de-26-test.xml	
+kosit/cii/cii-br-de-27-test.xml	
+kosit/cii/cii-br-de-28-test.xml	
+kosit/cii/cii-br-de-3-test.xml	
+kosit/cii/cii-br-de-30-31-test-2.xml	CII-SR-470
+kosit/cii/cii-br-de-30-31-test.xml	
+kosit/cii/cii-br-de-4-test.xml	
+kosit/cii/cii-br-de-5-test.xml	
+kosit/cii/cii-br-de-5-test2.xml	
+kosit/cii/cii-br-de-6-test.xml	
+kosit/cii/cii-br-de-7-test.xml	
+kosit/cii/cii-br-de-8-test.xml	
+kosit/cii/cii-br-de-9-test.xml	
+kosit/cii/cii-br-de-cvd-01-test.xml	BR-CL-13
+kosit/cii/cii-br-de-cvd-02-test.xml	BR-CL-13
+kosit/cii/cii-br-de-cvd-03-04-05-06-test.xml	BR-CL-13
+kosit/cii/cii-br-de-tmp-32-bg-14-test.xml	
+kosit/cii/cii-br-de-tmp-32-bg-26-test.xml	
+kosit/cii/cii-br-de-tmp-32-bt-72-test.xml	
+kosit/cii/cii-br-dex-01-test.xml	BR-CL-24
+kosit/cii/cii-br-dex-04-schemeid-test-2.xml	BR-CL-10,BR-CL-21
+kosit/cii/cii-br-dex-04-schemeid-test-3.xml	BR-CL-10,BR-CL-21
+kosit/cii/cii-br-dex-04-schemeid-test-4.xml	BR-CL-10,BR-CL-21
+kosit/cii/cii-br-dex-04-schemeid-test.xml	
+kosit/cii/cii-br-dex-05-schemeid-test-2.xml	BR-CL-11
+kosit/cii/cii-br-dex-05-schemeid-test-3.xml	BR-CL-11
+kosit/cii/cii-br-dex-05-schemeid-test-4.xml	BR-CL-11
+kosit/cii/cii-br-dex-05-schemeid-test.xml	
+kosit/cii/cii-br-dex-06-schemeid-test-2.xml	BR-CL-21
+kosit/cii/cii-br-dex-06-schemeid-test-3.xml	BR-CL-21
+kosit/cii/cii-br-dex-06-schemeid-test-4.xml	BR-CL-21
+kosit/cii/cii-br-dex-06-schemeid-test.xml	
+kosit/cii/cii-br-dex-07-schemeid-test-2.xml	BR-CL-25
+kosit/cii/cii-br-dex-07-schemeid-test-3.xml	BR-CL-25
+kosit/cii/cii-br-dex-07-schemeid-test-4.xml	BR-CL-25
+kosit/cii/cii-br-dex-07-schemeid-test.xml	
+kosit/cii/cii-br-dex-08-schemeid-test-2.xml	BR-CL-26
+kosit/cii/cii-br-dex-08-schemeid-test-3.xml	BR-CL-26
+kosit/cii/cii-br-dex-08-schemeid-test-4.xml	BR-CL-26
+kosit/cii/cii-br-dex-08-schemeid-test.xml	
+kosit/cii/cii-br-dex-15-test-on-sub-invoice-lines.xml	CII-SR-036
+kosit/cii/cii-br-tmp-2-test.xml	CII-SR-461,CII-SR-465,CII-SR-466
+kosit/cii/cii-br-tmp-3-negative-test.xml	BR-42,BR-44,BR-CO-23,BR-CO-24
+kosit/cii/cii-br-tmp-3-test.xml	CII-SR-465,CII-SR-466
+kosit/cii/cii-br-tmp-4-test.xml	CII-SR-475
+kosit/cii/cii-br-tmp-5-test.xml	CII-SR-476
+kosit/cii/cii-br-tmp-7-test.xml	
+kosit/cii/cii-peppol-en16931-r001.xml	
+kosit/cii/cii-peppol-en16931-r005.xml	
+kosit/cii/cii-peppol-en16931-r008.xml	
+kosit/cii/cii-peppol-en16931-r010.xml	
+kosit/cii/cii-peppol-en16931-r020.xml	
+kosit/cii/cii-peppol-en16931-r040-HUF-slack.xml	CII-SR-461,CII-SR-465,CII-SR-466
+kosit/cii/cii-peppol-en16931-r040.xml	CII-SR-461,CII-SR-465,CII-SR-466
+kosit/cii/cii-peppol-en16931-r041.xml	CII-SR-461,CII-SR-465,CII-SR-466
+kosit/cii/cii-peppol-en16931-r042.xml	CII-SR-461,CII-SR-465,CII-SR-466
+kosit/cii/cii-peppol-en16931-r043.xml	CII-SR-461,CII-SR-465,CII-SR-466
+kosit/cii/cii-peppol-en16931-r044.xml	CII-SR-461,CII-SR-465,CII-SR-466
+kosit/cii/cii-peppol-en16931-r046-1.xml	CII-SR-461,CII-SR-465,CII-SR-466
+kosit/cii/cii-peppol-en16931-r046-2.xml	CII-SR-461,CII-SR-465,CII-SR-466
+kosit/cii/cii-peppol-en16931-r053-1.xml	
+kosit/cii/cii-peppol-en16931-r053-2-negative-test.xml	BR-CO-15
+kosit/cii/cii-peppol-en16931-r054-1.xml	
+kosit/cii/cii-peppol-en16931-r054-2-negative-test.xml	
+kosit/cii/cii-peppol-en16931-r055.xml	
+kosit/cii/cii-peppol-en16931-r061-1.xml	
+kosit/cii/cii-peppol-en16931-r061-2.xml	
+kosit/cii/cii-peppol-en16931-r101.xml	CII-SR-461,CII-SR-465,CII-SR-466
+kosit/cii/cii-peppol-en16931-r110.xml	
+kosit/cii/cii-peppol-en16931-r111.xml	
+kosit/cii/cii-peppol-en16931-r120.xml	CII-SR-465,CII-SR-466
+kosit/cii/cii-peppol-en16931-r121.xml	CII-SR-461,CII-SR-465,CII-SR-466
+kosit/cii/cii-peppol-en16931-r130-1.xml	
+kosit/cii/cii-peppol-en16931-r130-2.xml	
+kosit/ubl-cn/ubl-cn-br-de-1-test.xml	
+kosit/ubl-cn/ubl-cn-br-de-10-test.xml	
+kosit/ubl-cn/ubl-cn-br-de-11-test.xml	
+kosit/ubl-cn/ubl-cn-br-de-14-test.xml	
+kosit/ubl-cn/ubl-cn-br-de-15-test.xml	
+kosit/ubl-cn/ubl-cn-br-de-16-negative-test-bt-102.xml	BR-CL-20,BR-CO-09,BR-S-02,BR-S-04,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-16-negative-test-bt-151.xml	BR-CO-09,BR-S-02,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-16-negative-test-bt-95.xml	BR-CO-09,BR-S-02,BR-S-03,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-16-test-bt-102.xml	BR-CL-20
+kosit/ubl-cn/ubl-cn-br-de-16-test-bt-151.xml	
+kosit/ubl-cn/ubl-cn-br-de-16-test-bt-95.xml	
+kosit/ubl-cn/ubl-cn-br-de-16-test-code-O-2.xml	BR-CL-01,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-16-test-code-O.xml	BR-CL-01,BR-CO-09,BR-O-02
+kosit/ubl-cn/ubl-cn-br-de-17-test.xml	
+kosit/ubl-cn/ubl-cn-br-de-18-case-sensitive-keyword-2.xml	
+kosit/ubl-cn/ubl-cn-br-de-18-case-sensitive-keyword-3.xml	
+kosit/ubl-cn/ubl-cn-br-de-18-case-sensitive-keyword.xml	
+kosit/ubl-cn/ubl-cn-br-de-18-freespace-test.xml	
+kosit/ubl-cn/ubl-cn-br-de-18-no-newline-2.xml	
+kosit/ubl-cn/ubl-cn-br-de-18-no-newline-3.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-18-no-newline.xml	
+kosit/ubl-cn/ubl-cn-br-de-18-skonto-many-tests.xml	
+kosit/ubl-cn/ubl-cn-br-de-18-test-incorrect-verzug.xml	
+kosit/ubl-cn/ubl-cn-br-de-18-test-no-newline-last-note.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-18-test.xml	
+kosit/ubl-cn/ubl-cn-br-de-18-text-after-end-2.xml	
+kosit/ubl-cn/ubl-cn-br-de-18-text-after-end.xml	
+kosit/ubl-cn/ubl-cn-br-de-18-too-much-digits-after-dot-2.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-18-too-much-digits-after-dot.xml	
+kosit/ubl-cn/ubl-cn-br-de-18-wrong-numeric-seperator-2.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-18-wrong-numeric-seperator.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-18-wrong-skonto-basisbetrag-test.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-18-wrong-whitespace-2.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-18-wrong-whitespace-3.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-18-wrong-whitespace.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-2-test.xml	
+kosit/ubl-cn/ubl-cn-br-de-23-test-bg-17-with-bg-18.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-23-test-bg-17-with-bg-19.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-23-test-bg-17.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-24-test-bg-18-with-bg-17.xml	BR-CO-09,UBL-CR-434,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-24-test-bg-18-with-bg-19.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-24-test-bg-18.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-25-test-bg-19-with-bg-17.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-25-test-bg-19-with-bg-18.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-25-test-bg-19.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-26-test.xml	BR-CL-01,BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-27-test.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-28-test.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-3-test.xml	
+kosit/ubl-cn/ubl-cn-br-de-30-31-test.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-4-test.xml	
+kosit/ubl-cn/ubl-cn-br-de-5-test.xml	
+kosit/ubl-cn/ubl-cn-br-de-6-test.xml	
+kosit/ubl-cn/ubl-cn-br-de-7-test.xml	
+kosit/ubl-cn/ubl-cn-br-de-8-test.xml	
+kosit/ubl-cn/ubl-cn-br-de-9-test.xml	
+kosit/ubl-cn/ubl-cn-br-de-cvd-01-test.xml	BR-CL-13,BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-cvd-02-test.xml	BR-CL-13,BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-cvd-03-04-05-06-test.xml	BR-CL-13,BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-tmp-32-bg-14-test.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-de-tmp-32-bt-72-test.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-tmp-2-test.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-br-tmp-6-test.xml	
+kosit/ubl-cn/ubl-cn-peppol-en16931-r001.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r005.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r008.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r010.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r020.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r040-allowance.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r040-charge.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r040-r120-HUF-slack.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r040.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r041.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r042.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r043.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r044.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r046-1.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r053-1.xml	
+kosit/ubl-cn/ubl-cn-peppol-en16931-r053-2.xml	BR-CO-15,BR-S-08
+kosit/ubl-cn/ubl-cn-peppol-en16931-r054-1.xml	
+kosit/ubl-cn/ubl-cn-peppol-en16931-r054-2.xml	
+kosit/ubl-cn/ubl-cn-peppol-en16931-r055-1.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r055-2.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r055-without-bt-6.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r061-1.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r061-2.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r101.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r110.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r111.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r120.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r121.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-cn/ubl-cn-peppol-en16931-r130.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-inv/ubl-inv-br-de-1-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-10-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-11-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-14-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-15-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-16-negative-test-bt-102.xml	BR-CO-09,BR-S-02,BR-S-04,UBL-SR-53
+kosit/ubl-inv/ubl-inv-br-de-16-negative-test-bt-151.xml	BR-CO-09,BR-O-08,BR-O-12,BR-S-01,BR-S-02,BR-S-05,UBL-CR-528,UBL-CR-678,UBL-CR-679,UBL-SR-53
+kosit/ubl-inv/ubl-inv-br-de-16-negative-test-bt-95.xml	BR-CO-09,BR-S-02,BR-S-03,UBL-SR-53
+kosit/ubl-inv/ubl-inv-br-de-16-test-bt-102.xml	BR-CL-20
+kosit/ubl-inv/ubl-inv-br-de-16-test-bt-151.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-inv/ubl-inv-br-de-16-test-bt-95.xml	
+kosit/ubl-inv/ubl-inv-br-de-16-test-code-O-2.xml	UBL-SR-53
+kosit/ubl-inv/ubl-inv-br-de-16-test-code-O.xml	BR-CO-09,BR-O-02
+kosit/ubl-inv/ubl-inv-br-de-17-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-18-case-sensitive-keyword-2.xml	
+kosit/ubl-inv/ubl-inv-br-de-18-case-sensitive-keyword-3.xml	
+kosit/ubl-inv/ubl-inv-br-de-18-case-sensitive-keyword.xml	
+kosit/ubl-inv/ubl-inv-br-de-18-freespace-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-18-no-newline-2.xml	
+kosit/ubl-inv/ubl-inv-br-de-18-no-newline.xml	
+kosit/ubl-inv/ubl-inv-br-de-18-skonto-many-tests.xml	
+kosit/ubl-inv/ubl-inv-br-de-18-test-incorrect-verzug.xml	
+kosit/ubl-inv/ubl-inv-br-de-18-test-no-newline-last-note.xml	
+kosit/ubl-inv/ubl-inv-br-de-18-test-no-newline.xml	
+kosit/ubl-inv/ubl-inv-br-de-18-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-18-text-after-end-2.xml	
+kosit/ubl-inv/ubl-inv-br-de-18-text-after-end.xml	
+kosit/ubl-inv/ubl-inv-br-de-18-too-much-digits-after-dot-2.xml	
+kosit/ubl-inv/ubl-inv-br-de-18-too-much-digits-after-dot.xml	
+kosit/ubl-inv/ubl-inv-br-de-18-wrong-numeric-seperator-2.xml	
+kosit/ubl-inv/ubl-inv-br-de-18-wrong-numeric-seperator.xml	
+kosit/ubl-inv/ubl-inv-br-de-18-wrong-skonto-basisbetrag-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-18-wrong-whitespace-2.xml	
+kosit/ubl-inv/ubl-inv-br-de-18-wrong-whitespace-3.xml	
+kosit/ubl-inv/ubl-inv-br-de-18-wrong-whitespace.xml	
+kosit/ubl-inv/ubl-inv-br-de-19-iban-tests.xml	
+kosit/ubl-inv/ubl-inv-br-de-2-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-20-paymentmeans-code59-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-22-check-unique-file-name-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-23-test-bg-17-with-bg-18.xml	
+kosit/ubl-inv/ubl-inv-br-de-23-test-bg-17-with-bg-19.xml	
+kosit/ubl-inv/ubl-inv-br-de-23-test-bg-17.xml	
+kosit/ubl-inv/ubl-inv-br-de-24-test-bg-18-with-bg-17.xml	UBL-CR-434
+kosit/ubl-inv/ubl-inv-br-de-24-test-bg-18-with-bg-19.xml	
+kosit/ubl-inv/ubl-inv-br-de-24-test-bg-18.xml	
+kosit/ubl-inv/ubl-inv-br-de-25-test-bg-19-with-bg-17.xml	
+kosit/ubl-inv/ubl-inv-br-de-25-test-bg-19-with-bg-18.xml	
+kosit/ubl-inv/ubl-inv-br-de-25-test-bg-19.xml	
+kosit/ubl-inv/ubl-inv-br-de-26-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-27-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-28-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-3-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-30-31-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-4-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-5-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-6-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-7-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-8-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-9-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-cvd-01-test.xml	BR-CL-13
+kosit/ubl-inv/ubl-inv-br-de-cvd-02-test.xml	BR-CL-13
+kosit/ubl-inv/ubl-inv-br-de-cvd-03-04-05-06-test.xml	BR-CL-13
+kosit/ubl-inv/ubl-inv-br-de-tmp-32-bg-14-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-tmp-32-bg-26-test.xml	
+kosit/ubl-inv/ubl-inv-br-de-tmp-32-bt-72-test.xml	
+kosit/ubl-inv/ubl-inv-br-dex-01-extension_mime_code_test.xml	BR-CL-24
+kosit/ubl-inv/ubl-inv-br-dex-02-check-0-values.xml	UBL-CR-646
+kosit/ubl-inv/ubl-inv-br-dex-02-check-correct-sums-sub-invoice-line-2.xml	BR-CO-04,BR-CO-10,BR-S-08,UBL-CR-646,UBL-SR-48
+kosit/ubl-inv/ubl-inv-br-dex-02-check-correct-sums-sub-invoice-line.xml	UBL-CR-646
+kosit/ubl-inv/ubl-inv-br-dex-02-some-invoicelines-with-sub.xml	UBL-CR-646
+kosit/ubl-inv/ubl-inv-br-dex-03-invalid-test.xml	BR-CO-10,BR-S-08,UBL-CR-646
+kosit/ubl-inv/ubl-inv-br-dex-03-test.xml	BR-CO-10,BR-S-08,UBL-CR-646
+kosit/ubl-inv/ubl-inv-br-dex-04-schemeid-test-2.xml	BR-CL-10
+kosit/ubl-inv/ubl-inv-br-dex-04-schemeid-test-3.xml	BR-CL-10
+kosit/ubl-inv/ubl-inv-br-dex-04-schemeid-test-4.xml	BR-CL-10
+kosit/ubl-inv/ubl-inv-br-dex-04-schemeid-test.xml	
+kosit/ubl-inv/ubl-inv-br-dex-05-schemeid-test.xml	BR-CL-11
+kosit/ubl-inv/ubl-inv-br-dex-06-schemeid-test-2.xml	BR-CL-21
+kosit/ubl-inv/ubl-inv-br-dex-06-schemeid-test-3.xml	BR-CL-21
+kosit/ubl-inv/ubl-inv-br-dex-06-schemeid-test-4.xml	BR-CL-21
+kosit/ubl-inv/ubl-inv-br-dex-06-schemeid-test.xml	
+kosit/ubl-inv/ubl-inv-br-dex-07-schemeid-test-2.xml	BR-CL-25
+kosit/ubl-inv/ubl-inv-br-dex-07-schemeid-test-3.xml	BR-CL-25
+kosit/ubl-inv/ubl-inv-br-dex-07-schemeid-test-4.xml	BR-CL-25
+kosit/ubl-inv/ubl-inv-br-dex-07-schemeid-test.xml	
+kosit/ubl-inv/ubl-inv-br-dex-08-schemeid-test-2.xml	BR-CL-26
+kosit/ubl-inv/ubl-inv-br-dex-08-schemeid-test-3.xml	BR-CL-26
+kosit/ubl-inv/ubl-inv-br-dex-08-schemeid-test-4.xml	BR-CL-26
+kosit/ubl-inv/ubl-inv-br-dex-08-schemeid-test.xml	
+kosit/ubl-inv/ubl-inv-br-dex-09-negative-test.xml	UBL-CR-470
+kosit/ubl-inv/ubl-inv-br-dex-09-test-2.xml	BR-CO-16,UBL-CR-470
+kosit/ubl-inv/ubl-inv-br-dex-09-test-3.xml	BR-CO-16,UBL-CR-470
+kosit/ubl-inv/ubl-inv-br-dex-09-test-4.xml	BR-CO-16,UBL-CR-470
+kosit/ubl-inv/ubl-inv-br-dex-09-test.xml	BR-CO-16,UBL-CR-470
+kosit/ubl-inv/ubl-inv-br-dex-10-11-12-negative-test.xml	UBL-CR-470
+kosit/ubl-inv/ubl-inv-br-dex-10-test.xml	UBL-CR-470
+kosit/ubl-inv/ubl-inv-br-dex-11-test.xml	UBL-CR-470
+kosit/ubl-inv/ubl-inv-br-dex-12-test.xml	UBL-CR-470
+kosit/ubl-inv/ubl-inv-br-dex-13-test.xml	BR-CO-16,UBL-CR-470
+kosit/ubl-inv/ubl-inv-br-dex-14-test.xml	BR-CO-16,UBL-CR-470
+kosit/ubl-inv/ubl-inv-br-tmp-2-test.xml	
+kosit/ubl-inv/ubl-inv-br-tmp-6-test.xml	
+kosit/ubl-inv/ubl-inv-contact-tests.xml	
+kosit/ubl-inv/ubl-inv-paymentmeans-test.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r001.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r005.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r008.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r010.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r020.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r040-allowance.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r040-charge.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r040-r120-HUF-slack.xml	BR-CO-09,UBL-SR-53
+kosit/ubl-inv/ubl-inv-peppol-en16931-r040.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r041.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r042.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r043.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r044.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r046-1.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r053-1.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r053-2.xml	BR-CO-15,BR-S-08
+kosit/ubl-inv/ubl-inv-peppol-en16931-r054-1.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r054-2.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r055-1.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r055-2.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r055-without-bt6.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r061-1.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r061-2.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r101.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r110.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r111.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r120.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r121.xml	
+kosit/ubl-inv/ubl-inv-peppol-en16931-r130.xml	
+ubl/sample-a.xml	
+variants/a-basicwl.xml	
+variants/a-extended.xml	
+variants/a-grand-total-1300.xml	BR-CO-15,BR-CO-16
+variants/a-minimum.xml	
+variants/a-ubl-without-bt1.xml	!xsd
+variants/a-unknown-profile.xml	
+variants/a-without-bt24.xml	BR-01,CII-SR-010

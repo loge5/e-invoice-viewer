@@ -195,8 +195,10 @@ pub fn replace_once(xml: &str, from: &str, to: &str) -> String {
     xml.replacen(from, to, 1)
 }
 
-/// Namespace prefixes used in field locations.
-const LOCATION_PREFIXES: [(&str, &str); 4] = [
+/// Namespace prefixes used in locations (field model and validation
+/// findings). `udt` and `qdt` differ between CII and UBL, so a prefix may
+/// stand for more than one namespace.
+const LOCATION_PREFIXES: [(&str, &str); 11] = [
     (
         "rsm",
         "urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100",
@@ -212,6 +214,34 @@ const LOCATION_PREFIXES: [(&str, &str); 4] = [
     (
         "qdt",
         "urn:un:unece:uncefact:data:standard:QualifiedDataType:100",
+    ),
+    (
+        "ubl",
+        "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2",
+    ),
+    (
+        "cn",
+        "urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2",
+    ),
+    (
+        "cac",
+        "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2",
+    ),
+    (
+        "cbc",
+        "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2",
+    ),
+    (
+        "ext",
+        "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2",
+    ),
+    (
+        "udt",
+        "urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2",
+    ),
+    (
+        "qdt",
+        "urn:oasis:names:specification:ubl:schema:xsd:QualifiedDataTypes-2",
     ),
 ];
 
@@ -237,11 +267,12 @@ pub fn select(xml: &str, location: &str) -> Vec<String> {
             None => (step, None),
         };
         let (prefix, name) = qname.split_once(':').expect("prefixed name");
-        let namespace = LOCATION_PREFIXES
+        let namespaces: Vec<&str> = LOCATION_PREFIXES
             .iter()
-            .find(|(known, _)| *known == prefix)
+            .filter(|(known, _)| *known == prefix)
             .map(|(_, namespace)| *namespace)
-            .unwrap_or_else(|| panic!("unknown prefix {prefix}"));
+            .collect();
+        assert!(!namespaces.is_empty(), "unknown prefix {prefix}");
         current = current
             .into_iter()
             .flat_map(|node| {
@@ -249,7 +280,10 @@ pub fn select(xml: &str, location: &str) -> Vec<String> {
                     .children()
                     .filter(|child| {
                         child.is_element()
-                            && child.tag_name().namespace() == Some(namespace)
+                            && child
+                                .tag_name()
+                                .namespace()
+                                .is_some_and(|namespace| namespaces.contains(&namespace))
                             && child.tag_name().name() == name
                     })
                     .collect();

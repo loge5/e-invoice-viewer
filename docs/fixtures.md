@@ -10,6 +10,10 @@ When the fixture files are created, their validity (as stated per sample
 below) is confirmed once with the official KoSIT validator; if a sample turns
 out to be invalid, the sample is fixed, not the expectation.
 
+Files: `crates/core/tests/fixtures/cii/sample-{a,b}.xml` and
+`crates/core/tests/fixtures/ubl/sample-a.xml` (created with spec 0009, accepted
+by the KoSIT validator without any message).
+
 Variants needed by a single spec (e.g. "sample A without BT-24") are described
 in that spec and derived from these samples.
 
