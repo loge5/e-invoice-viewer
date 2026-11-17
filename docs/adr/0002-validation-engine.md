@@ -242,7 +242,28 @@ time.
 - XRechnung rules apply only when BT-24 names XRechnung 3.0, CIUS, Extension
   or CVD. This is the same scenario choice KoSIT makes; otherwise there are no
   `BR-DE` findings.
-- UBL support for XRechnung depends on 0006.
+- UBL support for XRechnung needs only detection (0003), not the UBL field
+  mapping (0006).
+
+## Addendum 2026-11-17 (review of 0009 and 0010)
+
+- **Severities:** the artefacts use `fatal`, `warning` and `information`
+  (XRechnung has one `information` rule, `BR-DE-TMP-32`). The finding maps
+  `fatal` to `error`.
+- **KoSIT severity overrides:** for XRechnung invoices the official KoSIT
+  configuration changes the severity of 9 EN 16931 rules (`customLevel` in
+  `scenarios.xml`). Examples: `CII-SR-452`–`454`, `-465` and `-466` become
+  errors; `BR-CL-21` and `-23` become warnings; `CII-SR-475` and `-476` become
+  information. The viewer adopts them for XRechnung invoices. They come from
+  `validator-configuration-xrechnung` release `2026-08-31` (Apache-2.0),
+  which is a third bundled artefact; it supplies only the list of overrides,
+  not its XSLT.
+- **Location and field link:** a finding's location is the rule's context
+  node. For many rules that is the root element (e.g. `BR-01`, `BR-CO-15`).
+  The link to fields in 0011 therefore uses the BT/BG ids named in the
+  official message (`business_terms`), not the location alone.
+- **Reference script:** the script that produces the KoSIT expected results
+  is part of the repository. The spike's scratch artefacts were not kept.
 
 **Compile time:**
 
