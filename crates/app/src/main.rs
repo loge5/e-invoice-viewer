@@ -20,6 +20,7 @@ fn main() -> glib::ExitCode {
         .build();
 
     app.connect_startup(|app| {
+        load_css();
         let quit = gio::SimpleAction::new("quit", None);
         let target = app.clone();
         quit.connect_activate(move |_, _| target.quit());
@@ -44,4 +45,20 @@ fn main() -> glib::ExitCode {
     });
 
     app.run()
+}
+
+/// Styles that libadwaita has no class for.
+fn load_css() {
+    let provider = gtk::CssProvider::new();
+    provider.load_from_string(&format!(
+        ".{} {{ background-color: alpha(@accent_bg_color, 0.25); }}",
+        fields_view::HIGHLIGHT_CLASS
+    ));
+    if let Some(display) = gtk::gdk::Display::default() {
+        gtk::style_context_add_provider_for_display(
+            &display,
+            &provider,
+            gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
+        );
+    }
 }

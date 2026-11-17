@@ -20,6 +20,9 @@ pub struct FieldModel {
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Section {
     pub title: String,
+    /// XPath of the element the section stands for (e.g. the invoice line);
+    /// the root element for sections of the whole invoice.
+    pub location: String,
     pub fields: Vec<Field>,
 }
 
@@ -171,6 +174,7 @@ fn map_section(root: Node, def: &SectionDef, context: &Context) -> Vec<Section> 
             let anchor_location = location(anchor, None, context.prefixes);
             Section {
                 title: section_title(anchor, def),
+                location: anchor_location.clone(),
                 fields: def
                     .fields
                     .iter()

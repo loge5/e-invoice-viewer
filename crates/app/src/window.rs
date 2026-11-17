@@ -1,14 +1,29 @@
 //! The main window: start view, or PDF and fields side by side (spec 0007).
 
-use std::cell::RefCell;
+use std::cell::{Cell, RefCell};
 use std::rc::Rc;
 
 use adw::prelude::*;
-use e_invoice_viewer_core::document::{self, Document};
+use e_invoice_viewer_core::detect::DetectError;
+use e_invoice_viewer_core::document::{self, Document, Invoice};
+use e_invoice_viewer_core::validate::{Severity, Validation, Validator};
 use gtk::{gio, glib};
 
+use crate::fields_view::{FieldsView, severity_class};
+use crate::texts::ValidationState;
 use crate::xml_pane::XmlPane;
-use crate::{fields_view, pdf_view, texts};
+use crate::{pdf_view, texts};
+
+thread_local! {
+    /// One validator per worker thread, so that the rules are compiled once
+    /// per thread and kept (ADR 0002).
+    static VALIDATOR: Validator = Validator::new();
+}
+
+/// Validates on the calling (worker) thread.
+fn validate(xml: &[u8]) -> Result<Validation, DetectError> {
+    VALIDATOR.with(|validator| validator.validate(xml))
+}
 
 const DEFAULT_SIZE: (i32, i32) = (1200, 800);
 const MINIMUM_SIZE: (i32, i32) = (900, 600);
@@ -31,6 +46,14 @@ pub struct Window {
     xml_toggle: gtk::ToggleButton,
     xml_pane: XmlPane,
     paned: gtk::Paned,
+    status_button: gtk::Button,
+    status_icon: gtk::Image,
+    status_label: gtk::Label,
+    /// Field pane of the shown invoice, if it has one.
+    fields_view: Rc<RefCell<Option<FieldsView>>>,
+    /// Counts opened documents; a validation result for an older one is
+    /// discarded.
+    generation: Rc<Cell<u64>>,
     /// File name of the shown invoice, `None` in the start view.
     current: Rc<RefCell<Option<String>>>,
 }
@@ -117,12 +140,34 @@ impl Window {
         toggles.append(&fields_toggle);
         toggles.append(&xml_toggle);
 
+        let status_icon = gtk::Image::new();
+        let status_label = gtk::Label::builder()
+            .xalign(0.0)
+            .wrap(true)
+            .css_classes(["heading"])
+            .build();
+        let status_line = gtk::Box::builder()
+            .orientation(gtk::Orientation::Horizontal)
+            .spacing(8)
+            .build();
+        status_line.append(&status_icon);
+        status_line.append(&status_label);
+        let status_button = gtk::Button::builder()
+            .child(&status_line)
+            .css_classes(["flat"])
+            .margin_start(6)
+            .margin_end(6)
+            .margin_top(6)
+            .visible(false)
+            .build();
+
         let fields_pane = gtk::Box::builder()
             .orientation(gtk::Orientation::Vertical)
             .width_request(MINIMUM_PANE_WIDTH)
             .hexpand(true)
             .build();
         fields_pane.append(&note_slot);
+        fields_pane.append(&status_button);
         fields_pane.append(&toggles);
         fields_pane.append(&view_stack);
 
@@ -170,6 +215,11 @@ impl Window {
             xml_toggle,
             xml_pane,
             paned,
+            status_button,
+            status_icon,
+            status_label,
+            fields_view: Rc::default(),
+            generation: Rc::default(),
             current: Rc::default(),
         };
         this.add_actions();
@@ -206,6 +256,14 @@ impl Window {
             }
         });
         self.window.add_action(&find);
+
+        let this = self.clone();
+        self.status_button.connect_clicked(move |_| {
+            this.fields_toggle.set_active(true);
+            if let Some(view) = this.fields_view.borrow().as_ref() {
+                view.scroll_to_summary();
+            }
+        });
 
         let this = self.clone();
         self.xml_toggle.connect_toggled(move |toggle| {
@@ -260,14 +318,13 @@ impl Window {
     }
 
     fn show(&self, name: &str, bytes: &[u8]) {
+        // Whatever is shown next, a running validation is outdated.
+        self.generation.set(self.generation.get() + 1);
         match document::open(bytes) {
             Ok(Document::Pdf { invoice }) => {
                 self.show_pdf_pane(Some(bytes));
                 match invoice {
-                    Some(invoice) => {
-                        self.set_fields(fields_view::build(&invoice.fields), None);
-                        self.set_xml(Some((&invoice.xml, name)));
-                    }
+                    Some(invoice) => self.show_invoice(invoice, name, None),
                     None => {
                         self.set_fields(message_page(texts::NO_INVOICE_IN_PDF), None);
                         self.set_xml(None);
@@ -277,14 +334,89 @@ impl Window {
             }
             Ok(Document::Xml { invoice }) => {
                 self.show_pdf_pane(None);
-                self.set_fields(
-                    fields_view::build(&invoice.fields),
-                    Some(texts::XML_ONLY_NOTE),
-                );
-                self.set_xml(Some((&invoice.xml, name)));
+                self.show_invoice(invoice, name, Some(texts::XML_ONLY_NOTE));
                 self.show_document(name);
             }
             Err(error) => self.show_start(Some(&texts::error_message(name, &error))),
+        }
+    }
+
+    /// Shows the fields and XML of an invoice and starts validating it.
+    fn show_invoice(&self, invoice: Invoice, name: &str, note: Option<&str>) {
+        let Invoice { xml, fields } = invoice;
+        let view = FieldsView::new(fields);
+        self.set_fields(view.widget(), note);
+        *self.fields_view.borrow_mut() = Some(view);
+        self.set_xml(Some((&xml, name)));
+        self.start_validation(xml);
+    }
+
+    /// Validates on a worker thread, so that the window stays responsive,
+    /// and shows the result unless another document was opened meanwhile.
+    fn start_validation(&self, xml: Vec<u8>) {
+        let generation = self.generation.get();
+        self.set_validation_state(&ValidationState::Running);
+        let this = self.clone();
+        glib::spawn_future_local(async move {
+            let result = gio::spawn_blocking(move || validate(&xml)).await;
+            if this.generation.get() != generation {
+                return;
+            }
+            let state = match result {
+                Ok(Ok(validation)) => ValidationState::Done(validation),
+                Ok(Err(error)) => ValidationState::Failed(texts::validation_error_reason(&error)),
+                // The worker panicked.
+                Err(_) => ValidationState::Failed(texts::VALIDATION_FAILED_REASON.to_string()),
+            };
+            this.set_validation_state(&state);
+        });
+    }
+
+    fn set_validation_state(&self, state: &ValidationState) {
+        let text = texts::status_text(state);
+        self.status_label.set_label(&text);
+        let (icon, class) = match state {
+            ValidationState::Running => ("content-loading-symbolic", None),
+            ValidationState::Failed(_) => ("dialog-error-symbolic", Some("error")),
+            ValidationState::Done(validation) => {
+                let worst = [Severity::Error, Severity::Warning, Severity::Information]
+                    .into_iter()
+                    .find(|severity| {
+                        validation
+                            .findings
+                            .iter()
+                            .any(|finding| finding.severity == *severity)
+                    });
+                match worst {
+                    Some(Severity::Error) => (
+                        "dialog-error-symbolic",
+                        Some(severity_class(Severity::Error)),
+                    ),
+                    Some(Severity::Warning) => (
+                        "dialog-warning-symbolic",
+                        Some(severity_class(Severity::Warning)),
+                    ),
+                    Some(Severity::Information) => ("dialog-information-symbolic", None),
+                    None if validation.not_applicable_reason.is_some() => {
+                        ("dialog-information-symbolic", None)
+                    }
+                    None => ("object-select-symbolic", Some("success")),
+                }
+            }
+        };
+        self.status_icon.set_icon_name(Some(icon));
+        for name in ["error", "warning", "success"] {
+            self.status_icon.remove_css_class(name);
+        }
+        if let Some(class) = class {
+            self.status_icon.add_css_class(class);
+        }
+        self.status_button
+            .update_property(&[gtk::accessible::Property::Label(&text)]);
+        self.status_button.set_tooltip_text(Some(&text));
+        self.status_button.set_visible(true);
+        if let Some(view) = self.fields_view.borrow().as_ref() {
+            view.set_state(state);
         }
     }
 
@@ -308,6 +440,8 @@ impl Window {
     }
 
     fn set_fields(&self, content: gtk::Widget, note: Option<&str>) {
+        *self.fields_view.borrow_mut() = None;
+        self.status_button.set_visible(false);
         for container in [&self.note_slot, &self.fields_container] {
             while let Some(child) = container.first_child() {
                 container.remove(&child);
@@ -346,6 +480,7 @@ impl Window {
     /// Shows the start view, optionally with an error message.
     fn show_start(&self, message: Option<&str>) {
         *self.current.borrow_mut() = None;
+        self.generation.set(self.generation.get() + 1);
         self.window.set_title(Some(&texts::window_title(None)));
         self.title.set_title(texts::APP_TITLE);
         self.title.set_subtitle("");

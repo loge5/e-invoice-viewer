@@ -1,9 +1,11 @@
 //! User-facing texts (German), kept free of GTK so they can be unit-tested.
 
+use e_invoice_viewer_core::attribution::Target;
 use e_invoice_viewer_core::detect::DetectError;
 use e_invoice_viewer_core::document::OpenError;
-use e_invoice_viewer_core::fields::{Field, MapError};
+use e_invoice_viewer_core::fields::{Field, FieldModel, MapError};
 use e_invoice_viewer_core::pdf::ExtractError;
+use e_invoice_viewer_core::validate::{Finding, Severity, Validation};
 
 pub const APP_TITLE: &str = "E-Invoice Viewer";
 pub const START_TITLE: &str = "Rechnung öffnen";
@@ -18,6 +20,120 @@ pub const VIEW_XML: &str = "XML";
 pub const COPY_XML: &str = "XML kopieren";
 pub const SAVE_XML: &str = "XML speichern unter…";
 pub const SEARCH_PLACEHOLDER: &str = "Im XML suchen";
+pub const VALIDATION_TITLE: &str = "Prüfergebnis";
+pub const DOCUMENT_TARGET: &str = "Dokument";
+pub const VALIDATION_FAILED_REASON: &str = "interner Fehler bei der Prüfung";
+
+/// State of the validation of the shown invoice (spec 0011).
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum ValidationState {
+    Running,
+    Failed(String),
+    Done(Validation),
+}
+
+/// German name of a severity, singular or plural.
+pub fn severity_name(severity: Severity, count: usize) -> &'static str {
+    match (severity, count == 1) {
+        (Severity::Error, _) => "Fehler",
+        (Severity::Warning, true) => "Warnung",
+        (Severity::Warning, false) => "Warnungen",
+        (Severity::Information, true) => "Hinweis",
+        (Severity::Information, false) => "Hinweise",
+    }
+}
+
+/// Number of findings per severity: errors, warnings, notes.
+fn counts(severities: impl Iterator<Item = Severity>) -> [(Severity, usize); 3] {
+    let mut counts = [
+        (Severity::Error, 0),
+        (Severity::Warning, 0),
+        (Severity::Information, 0),
+    ];
+    for severity in severities {
+        if let Some((_, count)) = counts.iter_mut().find(|(s, _)| *s == severity) {
+            *count += 1;
+        }
+    }
+    counts
+}
+
+/// `2 Fehler, 1 Warnung` for the severities that occur; empty if none.
+fn count_parts(counts: &[(Severity, usize)]) -> Vec<String> {
+    counts
+        .iter()
+        .filter(|(_, count)| *count > 0)
+        .map(|(severity, count)| format!("{count} {}", severity_name(*severity, *count)))
+        .collect()
+}
+
+/// Headline of a validation result, e.g. `1 Fehler, 1 Warnung, 1 Hinweis`,
+/// `Keine Fehler, 1 Hinweis` or `Keine Befunde`.
+pub fn headline(severities: impl Iterator<Item = Severity>) -> String {
+    let counts = counts(severities);
+    let parts = count_parts(&counts);
+    let only_notes = counts[0].1 == 0 && counts[1].1 == 0;
+    match (parts.is_empty(), only_notes) {
+        (true, _) => "Keine Befunde".to_string(),
+        (false, true) => format!("Keine Fehler, {}", parts.join(", ")),
+        (false, false) => parts.join(", "),
+    }
+}
+
+/// Number of findings in a section, e.g. `2 Fehler`; `None` without
+/// findings.
+pub fn section_count_text(severities: impl Iterator<Item = Severity>) -> Option<String> {
+    let parts = count_parts(&counts(severities));
+    (!parts.is_empty()).then(|| parts.join(", "))
+}
+
+/// Text of the status line: `Prüfe…`, the headline, the not-applicable
+/// reason or `Prüfung fehlgeschlagen: <reason>`.
+pub fn status_text(state: &ValidationState) -> String {
+    match state {
+        ValidationState::Running => "Prüfe…".to_string(),
+        ValidationState::Failed(reason) => format!("Prüfung fehlgeschlagen: {reason}"),
+        ValidationState::Done(validation) => match &validation.not_applicable_reason {
+            Some(reason) => reason.clone(),
+            None => headline(validation.findings.iter().map(|finding| finding.severity)),
+        },
+    }
+}
+
+/// `Geprüft nach EN 16931 CII 1.3.17 und XRechnung 3.0.2`; `None` if no
+/// rules were applied.
+pub fn rule_sets_text(validation: &Validation) -> Option<String> {
+    (!validation.applied_rule_sets.is_empty()).then(|| {
+        format!(
+            "Geprüft nach {}",
+            validation.applied_rule_sets.join(" und ")
+        )
+    })
+}
+
+/// Where a finding belongs: `BT-112 Rechnungsbetrag inkl. USt`,
+/// `Position 2` or `Dokument`.
+pub fn target_text(model: &FieldModel, target: &Target) -> String {
+    match *target {
+        Target::Field { section, field } => {
+            let field = &model.sections[section].fields[field];
+            format!("{} {}", field.id, field.label)
+        }
+        Target::Section(section) => model.sections[section].title.clone(),
+        Target::Document => DOCUMENT_TARGET.to_string(),
+    }
+}
+
+/// A finding with its severity as a word, e.g. `Fehler BR-CO-15: …`, for
+/// screen readers and tooltips.
+pub fn finding_text(finding: &Finding) -> String {
+    format!(
+        "{} {}: {}",
+        severity_name(finding.severity, 1),
+        finding.rule_id,
+        finding.message
+    )
+}
 
 /// Window title, with the file name while an invoice is shown.
 pub fn window_title(file_name: Option<&str>) -> String {
@@ -62,6 +178,11 @@ pub fn search_status_text(current: Option<usize>, total: usize) -> String {
     }
 }
 
+/// Reason shown when validation rejects the invoice it was given.
+pub fn validation_error_reason(error: &DetectError) -> String {
+    reason(&OpenError::Xml(MapError::Detect(error.clone())))
+}
+
 /// Message for a file that cannot be read as an invoice.
 pub fn error_message(file_name: &str, error: &OpenError) -> String {
     format!(
@@ -99,6 +220,7 @@ fn reason(error: &OpenError) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use e_invoice_viewer_core::fields::Section;
 
     fn iban_field() -> Field {
         Field {
@@ -157,6 +279,158 @@ mod tests {
         assert_eq!(search_status_text(Some(2), 5), "2 von 5");
         assert_eq!(search_status_text(None, 3), "3 Treffer");
         assert_eq!(search_status_text(None, 0), "Keine Treffer");
+    }
+
+    fn finding(rule_id: &str, severity: Severity) -> Finding {
+        Finding {
+            rule_id: rule_id.into(),
+            severity,
+            message: format!("[{rule_id}]-Meldung"),
+            location: "/rsm:CrossIndustryInvoice".into(),
+            business_terms: Vec::new(),
+        }
+    }
+
+    fn validation(severities: &[Severity]) -> Validation {
+        Validation {
+            applied_rule_sets: vec!["EN 16931 CII 1.3.17".into()],
+            findings: severities
+                .iter()
+                .enumerate()
+                .map(|(index, severity)| finding(&format!("BR-{index}"), *severity))
+                .collect(),
+            ..Validation::default()
+        }
+    }
+
+    // Spec 0011, requirement: headlines
+    #[test]
+    fn headline_texts() {
+        use Severity::{Error, Information, Warning};
+        let cases: [(&[Severity], &str); 6] = [
+            (
+                &[Error, Warning, Information],
+                "1 Fehler, 1 Warnung, 1 Hinweis",
+            ),
+            (&[Error, Error], "2 Fehler"),
+            (
+                &[Information, Warning, Information, Warning, Information],
+                "2 Warnungen, 3 Hinweise",
+            ),
+            (&[Information], "Keine Fehler, 1 Hinweis"),
+            (&[Information, Information], "Keine Fehler, 2 Hinweise"),
+            (&[], "Keine Befunde"),
+        ];
+        for (severities, expected) in cases {
+            assert_eq!(headline(severities.iter().copied()), expected);
+        }
+    }
+
+    // Spec 0011, AC6-AC9, AC11: status line
+    #[test]
+    fn status_texts() {
+        assert_eq!(status_text(&ValidationState::Running), "Prüfe…");
+        assert_eq!(
+            status_text(&ValidationState::Failed("interner Fehler".into())),
+            "Prüfung fehlgeschlagen: interner Fehler"
+        );
+        assert_eq!(
+            status_text(&ValidationState::Done(validation(&[Severity::Error]))),
+            "1 Fehler"
+        );
+        let not_applicable = Validation {
+            not_applicable_reason: Some(
+                "Profil Minimum: keine vollständige Rechnung nach EN 16931".into(),
+            ),
+            ..Validation::default()
+        };
+        assert_eq!(
+            status_text(&ValidationState::Done(not_applicable)),
+            "Profil Minimum: keine vollständige Rechnung nach EN 16931"
+        );
+    }
+
+    // Spec 0011, AC3 and AC6: rule sets and version note
+    #[test]
+    fn rule_set_texts() {
+        let mut validation = validation(&[]);
+        assert_eq!(
+            rule_sets_text(&validation).as_deref(),
+            Some("Geprüft nach EN 16931 CII 1.3.17")
+        );
+        validation.applied_rule_sets.push("XRechnung 3.0.2".into());
+        assert_eq!(
+            rule_sets_text(&validation).as_deref(),
+            Some("Geprüft nach EN 16931 CII 1.3.17 und XRechnung 3.0.2")
+        );
+        assert_eq!(rule_sets_text(&Validation::default()), None);
+    }
+
+    // Spec 0011, AC1: section headers
+    #[test]
+    fn section_count_texts() {
+        use Severity::{Error, Warning};
+        assert_eq!(
+            section_count_text([Error, Error].into_iter()).as_deref(),
+            Some("2 Fehler")
+        );
+        assert_eq!(
+            section_count_text([Warning, Error].into_iter()).as_deref(),
+            Some("1 Fehler, 1 Warnung")
+        );
+        assert_eq!(section_count_text(std::iter::empty()), None);
+    }
+
+    // Spec 0011, AC3: where a finding belongs
+    #[test]
+    fn target_texts() {
+        let model = FieldModel {
+            sections: vec![
+                Section {
+                    title: "Summen (BG-22)".into(),
+                    location: "/rsm:CrossIndustryInvoice/x".into(),
+                    fields: vec![Field {
+                        id: "BT-112".into(),
+                        label: "Rechnungsbetrag inkl. USt".into(),
+                        raw: "1300.00".into(),
+                        display: "1.300,00 EUR".into(),
+                        location: "/rsm:CrossIndustryInvoice/x/y".into(),
+                    }],
+                },
+                Section {
+                    title: "Position 2".into(),
+                    location: "/rsm:CrossIndustryInvoice/z".into(),
+                    fields: Vec::new(),
+                },
+            ],
+        };
+        let field = Target::Field {
+            section: 0,
+            field: 0,
+        };
+        assert_eq!(
+            target_text(&model, &field),
+            "BT-112 Rechnungsbetrag inkl. USt"
+        );
+        assert_eq!(target_text(&model, &Target::Section(1)), "Position 2");
+        assert_eq!(target_text(&model, &Target::Document), "Dokument");
+    }
+
+    // Spec 0011, requirement: severity is announced, not only coloured
+    #[test]
+    fn finding_accessible_text() {
+        assert_eq!(
+            finding_text(&finding("BR-CO-15", Severity::Error)),
+            "Fehler BR-CO-15: [BR-CO-15]-Meldung"
+        );
+        assert_eq!(
+            finding_text(&finding("BR-DE-21", Severity::Warning)),
+            "Warnung BR-DE-21: [BR-DE-21]-Meldung"
+        );
+        assert_eq!(
+            finding_text(&finding("BR-DE-TMP-32", Severity::Information)),
+            "Hinweis BR-DE-TMP-32: [BR-DE-TMP-32]-Meldung"
+        );
     }
 
     // AC6
