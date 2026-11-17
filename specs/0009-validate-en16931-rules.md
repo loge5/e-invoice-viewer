@@ -27,9 +27,12 @@ Rules are applied for the profiles `basic`, `en16931`, `extended`, `xrechnung`
 and `unknown`. For `minimum` and `basic-wl` no EN 16931 findings are produced;
 instead the result states that EN 16931 does not apply to this profile.
 
-The rule set version bundled with the app:
-[NEEDS CLARIFICATION: exact CEN artefact version to bundle and how it is
-updated, to be decided by ADR 0002 from spike 0001].
+The rule set version bundled with the app is CEN `validation-1.3.17`
+(preprocessed CII and UBL Schematron, unchanged), stored with its EUPL-1.2
+licence text and source URL and embedded into the binary
+([ADR 0002](../docs/adr/0002-validation-engine.md)). A rule update swaps
+the bundled files and the version string and re-runs the reference
+regression test; there is no automatic download.
 
 ## Contracts (optional)
 

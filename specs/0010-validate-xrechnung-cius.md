@@ -21,9 +21,10 @@ the same finding structure as in 0009. For all other profiles these rules are
 not applied. If the invoice declares an XRechnung version different from the
 bundled rule version, the result states which version was used.
 
-The bundled XRechnung rule version:
-[NEEDS CLARIFICATION: exact KoSIT xrechnung-schematron version to bundle, to
-be decided by ADR 0002 from spike 0001].
+The bundled XRechnung rule version is KoSIT `xrechnung-schematron`
+`v2.6.0` (XRechnung 3.0.2, Apache-2.0), stored unchanged with its licence
+text and embedded into the binary; updates work as in 0009
+([ADR 0002](../docs/adr/0002-validation-engine.md)).
 
 ## Acceptance criteria
 
