@@ -102,7 +102,7 @@ fn type_code_261_and_ubl_credit_note_root_mean_credit_note() {
 // AC3
 #[test]
 fn detects_profile_from_specification_identifier() {
-    let cases: [(&str, Profile, Option<&str>, bool); 10] = [
+    let cases: [(&str, Profile, Option<&str>, bool); 14] = [
         ("urn:factur-x.eu:1p0:minimum", Profile::Minimum, None, false),
         ("urn:factur-x.eu:1p0:basicwl", Profile::BasicWl, None, false),
         (
@@ -131,6 +131,30 @@ fn detects_profile_from_specification_identifier() {
             Profile::XRechnung,
             Some("3.0"),
             true,
+        ),
+        (
+            "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_3.0",
+            Profile::XRechnung,
+            Some("3.0"),
+            true,
+        ),
+        (
+            "urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3#conformant#urn:xoev-de:kosit:extension:xrechnung_2.3",
+            Profile::XRechnung,
+            Some("2.3"),
+            true,
+        ),
+        (
+            "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#compliant#urn:xeinkauf.de:kosit:xrechnung:cvd_0.9",
+            Profile::XRechnung,
+            Some("3.0"),
+            false,
+        ),
+        (
+            "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#compliant#urn:example:other",
+            Profile::Unknown,
+            None,
+            false,
         ),
         (
             "urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0",

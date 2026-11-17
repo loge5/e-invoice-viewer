@@ -126,6 +126,6 @@ the KoSIT validator configuration for XRechnung 3.0.2, release
   - `cargo fmt --all --check`, `cargo clippy --workspace --all-targets -- -D
     warnings` and the architecture check are clean.
   - `cargo audit` reports the same two "unmaintained" notices as in 0009.
-- **Next** — none; set to `implemented` by the author on 2026-11-17. Open point outside this
-  spec: detection (0003) reports XRechnung 3.0 Extension and CVD invoices as
-  profile `unknown`.
+- **Next** — none; set to `implemented` by the author on 2026-11-17. The
+  open point about detecting the Extension and CVD identifiers was fixed
+  in 0003 the same day. Validation now relies on the detected profile.

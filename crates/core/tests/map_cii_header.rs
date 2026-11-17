@@ -191,6 +191,10 @@ fn bt24_display_uses_profile_name() {
             "urn:cen.eu:en16931:2017#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_3.0",
             "XRechnung 3.0 (Extension)",
         ),
+        (
+            "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_3.0",
+            "XRechnung 3.0 (Extension)",
+        ),
         ("urn:example:custom-profile", "urn:example:custom-profile"),
     ];
 

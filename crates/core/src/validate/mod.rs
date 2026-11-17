@@ -40,11 +40,6 @@ const XRECHNUNG_COMMON: (&str, &str) = (
 /// KoSIT validator configuration for XRechnung (severity changes).
 const KOSIT_SCENARIOS: &str = include_str!("../../rules/kosit-config-2026-08-31/scenarios.xml");
 
-/// Start of every XRechnung CIUS identifier (BT-24), including those of
-/// the XRechnung Extension and CVD; the version follows.
-const XRECHNUNG_ID_PREFIX: &str =
-    "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_";
-
 /// Severity of a finding, as flagged in the official rule artefacts.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Severity {
@@ -174,19 +169,11 @@ impl Validator {
 }
 
 /// The XRechnung version an invoice declares in BT-24, if the XRechnung
-/// rules apply to it: profile `xrechnung`, or an identifier of the XRechnung
-/// Extension or CVD (which detection reports as `unknown`).
+/// rules apply to it (profile `xrechnung`, including the Extension and CVD).
 fn declared_xrechnung_version(detection: &Detection) -> Option<String> {
-    if detection.profile == Profile::XRechnung {
-        return detection.profile_version.clone();
-    }
-    let rest = detection
-        .specification_identifier
-        .trim()
-        .strip_prefix(XRECHNUNG_ID_PREFIX)?;
-    let version = rest.split('#').next().unwrap_or_default();
-    (!version.is_empty() && version.chars().all(|c| c.is_ascii_digit() || c == '.'))
-        .then(|| version.to_string())
+    (detection.profile == Profile::XRechnung)
+        .then(|| detection.profile_version.clone())
+        .flatten()
 }
 
 fn not_applicable_reason(profile: Profile) -> Option<&'static str> {

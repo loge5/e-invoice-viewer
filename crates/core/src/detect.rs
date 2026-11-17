@@ -32,7 +32,9 @@ const FIXED_PROFILES: [(&str, Profile); 5] = [
 ];
 
 /// Prefixes of XRechnung identifiers, followed by the version; the flag marks
-/// the XRechnung Extension.
+/// the XRechnung Extension. The identifiers of the Extension and of XRechnung
+/// CVD as defined since XRechnung 2.x append a suffix to the CIUS identifier,
+/// see [`XRECHNUNG_SUFFIXES`].
 const XRECHNUNG_PREFIXES: [(&str, bool); 3] = [
     (
         "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_",
@@ -46,6 +48,17 @@ const XRECHNUNG_PREFIXES: [(&str, bool); 3] = [
         "urn:cen.eu:en16931:2017#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_",
         true,
     ),
+];
+
+/// Suffixes after the version of an XRechnung CIUS identifier, followed by a
+/// version; the flag marks the XRechnung Extension.
+const XRECHNUNG_SUFFIXES: [(&str, bool); 3] = [
+    (
+        "#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_",
+        true,
+    ),
+    ("#conformant#urn:xoev-de:kosit:extension:xrechnung_", true),
+    ("#compliant#urn:xeinkauf.de:kosit:xrechnung:cvd_", false),
 ];
 
 /// XML syntax of the invoice.
@@ -174,10 +187,28 @@ fn profile_of(identifier: &str) -> (Profile, Option<String>, bool) {
         return (*profile, None, false);
     }
     for (prefix, extension) in XRECHNUNG_PREFIXES {
-        if let Some(version) = identifier.strip_prefix(prefix)
-            && is_version(version)
-        {
+        let Some(rest) = identifier.strip_prefix(prefix) else {
+            continue;
+        };
+        let (version, suffix) = rest.split_at(rest.find('#').unwrap_or(rest.len()));
+        if !is_version(version) {
+            continue;
+        }
+        if suffix.is_empty() {
             return (Profile::XRechnung, Some(version.to_string()), extension);
+        }
+        let suffixed = XRECHNUNG_SUFFIXES
+            .iter()
+            .find_map(|(start, suffix_extension)| {
+                let suffix_version = suffix.strip_prefix(start)?;
+                is_version(suffix_version).then_some(*suffix_extension)
+            });
+        if let (false, Some(suffix_extension)) = (extension, suffixed) {
+            return (
+                Profile::XRechnung,
+                Some(version.to_string()),
+                suffix_extension,
+            );
         }
     }
     (Profile::Unknown, None, false)

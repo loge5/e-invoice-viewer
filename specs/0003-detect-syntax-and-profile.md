@@ -27,7 +27,11 @@ BT-24 is always kept so that unknown profiles can still be shown.
   `CreditNote` root also means credit note.
 - **Profile** follows from BT-24 after removing leading and trailing
   whitespace. The XRechnung Extension identifier counts as profile
-  `xrechnung` with the extension flag set.
+  `xrechnung` with the extension flag set. So does the CIUS identifier
+  followed by the Extension suffix (`#conformant#…extension:xrechnung_<v>`),
+  the official form since XRechnung 2.x. The CIUS identifier followed by the
+  XRechnung CVD suffix (`#compliant#…xrechnung:cvd_<v>`) counts as profile
+  `xrechnung` without the extension flag.
 - Documents containing a DOCTYPE declaration are rejected. Real invoices never
   contain one, and this rules out external entities and entity expansion
   attacks.
@@ -72,6 +76,10 @@ Result of a successful detection:
       | `urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0` | `xrechnung` | `3.0` | `false` |
       | `urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3` | `xrechnung` | `2.3` | `false` |
       | `urn:cen.eu:en16931:2017#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_3.0` | `xrechnung` | `3.0` | `true` |
+      | `urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_3.0` | `xrechnung` | `3.0` | `true` |
+      | `urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3#conformant#urn:xoev-de:kosit:extension:xrechnung_2.3` | `xrechnung` | `2.3` | `true` |
+      | `urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#compliant#urn:xeinkauf.de:kosit:xrechnung:cvd_0.9` | `xrechnung` | `3.0` | `false` |
+      | `urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#compliant#urn:example:other` | `unknown` | | `false` |
       | `urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0` | `unknown` | | `false` |
 
 - [ ] Given a UBL invoice whose BT-24 is
@@ -113,3 +121,10 @@ Result of a successful detection:
   warnings`, architecture check and `cargo audit` clean. Manual smoke run on
   two real Factur-X invoices: both detected as CII / invoice / `en16931`.
 - **Next** — none; set to `implemented` by the author on 2026-11-16.
+- **Correction** — 2026-11-17: the official identifiers of the XRechnung
+  Extension and XRechnung CVD were detected as `unknown`. They append a
+  suffix to the CIUS identifier, and the spec only listed a form without the
+  CIUS part. Found while implementing 0010. Four rows were added to the
+  BT-24 table, and detection and tests were adjusted.
+  - `cargo test --workspace`: 102 passed.
+  - The BT-24 display test covers the official Extension identifier.
