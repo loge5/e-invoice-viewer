@@ -9,6 +9,7 @@ mod pdf_pane;
 mod pdf_view;
 mod recent;
 mod save_as;
+mod status_line;
 mod texts;
 mod window;
 mod window_size;

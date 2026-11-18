@@ -9,17 +9,18 @@ use e_invoice_viewer_core::attachments::{Attachment, Content};
 use e_invoice_viewer_core::detect::DetectError;
 use e_invoice_viewer_core::document::{self, Document, Invoice};
 use e_invoice_viewer_core::fields::FieldModel;
-use e_invoice_viewer_core::validate::{Severity, Validation, Validator};
+use e_invoice_viewer_core::validate::{Validation, Validator};
 use gtk::{gio, glib};
 
-use crate::fields_view::{FieldsView, ShowInXml, severity_class};
+use crate::fields_view::{FieldsView, ShowInXml};
 use crate::pdf_pane::PdfPane;
 use crate::recent::RecentStore;
 use crate::save_as::save_as;
+use crate::status_line::StatusLine;
 use crate::texts::ValidationState;
-use crate::window_size::{self, MINIMUM_SIZE, WindowState};
+use crate::window_size::{self, MINIMUM_SIZE, SizeKeeper};
 use crate::xml_pane::XmlPane;
-use crate::{attachments_view, config_store, local, texts};
+use crate::{attachments_view, local, texts};
 
 thread_local! {
     /// One validator per worker thread, so that the rules are compiled once
@@ -51,19 +52,17 @@ pub struct Window {
     xml_toggle: gtk::ToggleButton,
     xml_pane: XmlPane,
     paned: gtk::Paned,
-    status_button: gtk::Button,
-    status_icon: gtk::Image,
-    status_label: gtk::Label,
+    status: Rc<StatusLine>,
     /// Field pane of the shown invoice, if it has one.
     fields_view: Rc<RefCell<Option<FieldsView>>>,
     /// Counts opened documents; a validation result for an older one is
     /// discarded.
     generation: Rc<Cell<u64>>,
-    /// File name of the shown invoice, `None` in the start view.
-    current: Rc<RefCell<Option<String>>>,
+    /// Whether a document is shown (not the start view).
+    showing: Rc<Cell<bool>>,
     toasts: adw::ToastOverlay,
-    /// The last size while neither maximized nor tiled (0015).
-    normal_size: Rc<Cell<(i32, i32)>>,
+    /// Remembers the window size (0015).
+    size: SizeKeeper,
     /// Recently opened files, shared by all windows.
     recent: Rc<RecentStore>,
 }
@@ -145,26 +144,7 @@ impl Window {
         toggles.append(&fields_toggle);
         toggles.append(&xml_toggle);
 
-        let status_icon = gtk::Image::new();
-        let status_label = gtk::Label::builder()
-            .xalign(0.0)
-            .wrap(true)
-            .css_classes(["heading"])
-            .build();
-        let status_line = gtk::Box::builder()
-            .orientation(gtk::Orientation::Horizontal)
-            .spacing(8)
-            .build();
-        status_line.append(&status_icon);
-        status_line.append(&status_label);
-        let status_button = gtk::Button::builder()
-            .child(&status_line)
-            .css_classes(["flat"])
-            .margin_start(6)
-            .margin_end(6)
-            .margin_top(6)
-            .visible(false)
-            .build();
+        let status = Rc::new(StatusLine::new());
 
         let fields_pane = gtk::Box::builder()
             .orientation(gtk::Orientation::Vertical)
@@ -172,7 +152,7 @@ impl Window {
             .hexpand(true)
             .build();
         fields_pane.append(&note_slot);
-        fields_pane.append(&status_button);
+        fields_pane.append(status.widget());
         fields_pane.append(&toggles);
         fields_pane.append(&view_stack);
 
@@ -197,11 +177,7 @@ impl Window {
         content.add_top_bar(&header);
         content.set_content(Some(&toasts));
 
-        let (stored, warning) = window_size::load(&window_size::store_path());
-        if let Some(warning) = warning {
-            glib::g_warning!(config_store::LOG_DOMAIN, "{warning}");
-        }
-        let size = window_size::initial_state(stored, largest_monitor());
+        let size = SizeKeeper::initial_state();
         let window = adw::ApplicationWindow::builder()
             .application(app)
             .title(texts::APP_TITLE)
@@ -214,7 +190,7 @@ impl Window {
             .build();
 
         let this = Self {
-            window,
+            window: window.clone(),
             title,
             close_button,
             stack,
@@ -228,17 +204,14 @@ impl Window {
             xml_toggle,
             xml_pane,
             paned,
-            status_button,
-            status_icon,
-            status_label,
+            status,
             fields_view: Rc::default(),
             generation: Rc::default(),
-            current: Rc::default(),
+            showing: Rc::default(),
             toasts,
-            normal_size: Rc::new(Cell::new((size.width, size.height))),
+            size: SizeKeeper::attach(&window, size),
             recent: recent.clone(),
         };
-        this.track_size();
         this.add_actions();
         this.add_drop_target();
         this
@@ -248,49 +221,9 @@ impl Window {
         self.window.present();
     }
 
-    /// Follows the normal size and saves it when the window is closed.
-    fn track_size(&self) {
-        let this = self.clone();
-        let update = move || {
-            let tiled = this
-                .window
-                .surface()
-                .and_downcast::<gtk::gdk::Toplevel>()
-                .is_some_and(|toplevel| {
-                    toplevel.state().intersects(
-                        gtk::gdk::ToplevelState::TILED
-                            | gtk::gdk::ToplevelState::TOP_TILED
-                            | gtk::gdk::ToplevelState::BOTTOM_TILED
-                            | gtk::gdk::ToplevelState::LEFT_TILED
-                            | gtk::gdk::ToplevelState::RIGHT_TILED,
-                    )
-                });
-            if !this.window.is_maximized() && !this.window.is_fullscreen() && !tiled {
-                this.normal_size.set(this.window.default_size());
-            }
-        };
-        let width = update.clone();
-        self.window.connect_default_width_notify(move |_| width());
-        self.window.connect_default_height_notify(move |_| update());
-
-        let this = self.clone();
-        self.window.connect_close_request(move |_| {
-            this.save_size();
-            glib::Propagation::Proceed
-        });
-    }
-
-    /// Stores the normal size and the maximized state (0015).
+    /// Stores the window size (0015).
     pub fn save_size(&self) {
-        let (width, height) = self.normal_size.get();
-        let state = WindowState {
-            width,
-            height,
-            maximized: self.window.is_maximized(),
-        };
-        if let Err(error) = window_size::save(&window_size::store_path(), state) {
-            glib::g_warning!(config_store::LOG_DOMAIN, "window size not saved: {error}");
-        }
+        self.size.save();
     }
 
     /// The application window.
@@ -301,7 +234,7 @@ impl Window {
     /// Whether the window shows the start view, so that a file opened from
     /// outside can reuse it.
     pub fn is_empty(&self) -> bool {
-        self.current.borrow().is_none()
+        !self.showing.get()
     }
 
     /// Opens dropped files: the first one, with a note if there were more.
@@ -345,7 +278,7 @@ impl Window {
         let close = gio::SimpleAction::new("close", None);
         let this = self.clone();
         close.connect_activate(move |_, _| {
-            if this.current.borrow().is_some() {
+            if this.showing.get() {
                 this.show_start(None);
             } else {
                 this.window.close();
@@ -375,7 +308,7 @@ impl Window {
         self.window.add_action(&open_recent);
 
         let this = self.clone();
-        self.status_button.connect_clicked(move |_| {
+        self.status.connect_clicked(move || {
             this.fields_toggle.set_active(true);
             if let Some(view) = this.fields_view.borrow().as_ref() {
                 view.scroll_to_summary();
@@ -631,38 +564,7 @@ impl Window {
     }
 
     fn set_validation_state(&self, state: &ValidationState) {
-        let text = texts::status_text(state);
-        self.status_label.set_label(&text);
-        let (icon, class) = match state {
-            ValidationState::Running => ("content-loading-symbolic", None),
-            ValidationState::Failed(_) => ("dialog-error-symbolic", Some("error")),
-            ValidationState::Done(validation) => match validation.worst_severity() {
-                Some(Severity::Error) => (
-                    "dialog-error-symbolic",
-                    Some(severity_class(Severity::Error)),
-                ),
-                Some(Severity::Warning) => (
-                    "dialog-warning-symbolic",
-                    Some(severity_class(Severity::Warning)),
-                ),
-                Some(Severity::Information) => ("dialog-information-symbolic", None),
-                None if validation.not_applicable_reason.is_some() => {
-                    ("dialog-information-symbolic", None)
-                }
-                None => ("object-select-symbolic", Some("success")),
-            },
-        };
-        self.status_icon.set_icon_name(Some(icon));
-        for name in ["error", "warning", "success"] {
-            self.status_icon.remove_css_class(name);
-        }
-        if let Some(class) = class {
-            self.status_icon.add_css_class(class);
-        }
-        self.status_button
-            .update_property(&[gtk::accessible::Property::Label(&text)]);
-        self.status_button.set_tooltip_text(Some(&text));
-        self.status_button.set_visible(true);
+        self.status.show(state);
         if let Some(view) = self.fields_view.borrow().as_ref() {
             view.set_state(state);
         }
@@ -682,7 +584,7 @@ impl Window {
 
     fn set_fields(&self, content: gtk::Widget, note: Option<&str>) {
         *self.fields_view.borrow_mut() = None;
-        self.status_button.set_visible(false);
+        self.status.hide();
         for container in [&self.note_slot, &self.fields_container] {
             while let Some(child) = container.first_child() {
                 container.remove(&child);
@@ -707,7 +609,7 @@ impl Window {
     }
 
     fn show_document(&self, name: &str) {
-        *self.current.borrow_mut() = Some(name.to_string());
+        self.showing.set(true);
         let title = texts::window_title(Some(name));
         self.window.set_title(Some(&title));
         self.title.set_title(name);
@@ -729,7 +631,7 @@ impl Window {
 
     /// Shows the start view, optionally with an error message.
     fn show_start(&self, message: Option<&str>) {
-        *self.current.borrow_mut() = None;
+        self.showing.set(false);
         self.next_generation();
         self.window.set_title(Some(&texts::window_title(None)));
         self.title.set_title(texts::APP_TITLE);
@@ -741,18 +643,6 @@ impl Window {
         self.set_xml(None);
         self.stack.set_visible_child_name("start");
     }
-}
-
-/// Size of the largest connected monitor in logical pixels.
-fn largest_monitor() -> Option<(i32, i32)> {
-    let monitors = gtk::gdk::Display::default()?.monitors();
-    (0..monitors.n_items())
-        .filter_map(|index| monitors.item(index).and_downcast::<gtk::gdk::Monitor>())
-        .map(|monitor| {
-            let geometry = monitor.geometry();
-            (geometry.width(), geometry.height())
-        })
-        .max_by_key(|(width, height)| i64::from(*width) * i64::from(*height))
 }
 
 fn file_name(path: &Path) -> String {

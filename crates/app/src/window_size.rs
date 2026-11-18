@@ -5,11 +5,14 @@
 //! if it is plausible on the current screens, so that a damaged value can
 //! never make the window unusable.
 
+use std::cell::Cell;
 use std::path::{Path, PathBuf};
+use std::rc::Rc;
 
+use adw::prelude::*;
 use gtk::glib;
 
-use crate::config_store;
+use crate::config_store::{self, LOG_DOMAIN};
 
 /// Size of a new window without a plausible stored size.
 pub const DEFAULT_SIZE: (i32, i32) = (1200, 800);
@@ -55,6 +58,89 @@ pub fn initial_state(
             }
         }
     }
+}
+
+/// Follows the normal size of a window and saves it with the maximized
+/// state when the window is closed.
+#[derive(Clone)]
+pub struct SizeKeeper {
+    window: adw::ApplicationWindow,
+    /// The last size while neither maximized, fullscreen nor tiled.
+    normal_size: Rc<Cell<(i32, i32)>>,
+}
+
+impl SizeKeeper {
+    /// The size and state a new window opens with: the stored one if it
+    /// is plausible on the connected monitors.
+    pub fn initial_state() -> WindowState {
+        let (stored, warning) = load(&store_path());
+        if let Some(warning) = warning {
+            glib::g_warning!(LOG_DOMAIN, "{warning}");
+        }
+        initial_state(stored, largest_monitor())
+    }
+
+    /// Starts following `window`, which opened with `state`.
+    pub fn attach(window: &adw::ApplicationWindow, state: WindowState) -> Self {
+        let keeper = Self {
+            window: window.clone(),
+            normal_size: Rc::new(Cell::new((state.width, state.height))),
+        };
+        let this = keeper.clone();
+        let update = move || {
+            let tiled = this
+                .window
+                .surface()
+                .and_downcast::<gtk::gdk::Toplevel>()
+                .is_some_and(|toplevel| {
+                    toplevel.state().intersects(
+                        gtk::gdk::ToplevelState::TILED
+                            | gtk::gdk::ToplevelState::TOP_TILED
+                            | gtk::gdk::ToplevelState::BOTTOM_TILED
+                            | gtk::gdk::ToplevelState::LEFT_TILED
+                            | gtk::gdk::ToplevelState::RIGHT_TILED,
+                    )
+                });
+            if !this.window.is_maximized() && !this.window.is_fullscreen() && !tiled {
+                this.normal_size.set(this.window.default_size());
+            }
+        };
+        let width = update.clone();
+        window.connect_default_width_notify(move |_| width());
+        window.connect_default_height_notify(move |_| update());
+
+        let this = keeper.clone();
+        window.connect_close_request(move |_| {
+            this.save();
+            glib::Propagation::Proceed
+        });
+        keeper
+    }
+
+    /// Stores the normal size and the maximized state.
+    pub fn save(&self) {
+        let (width, height) = self.normal_size.get();
+        let state = WindowState {
+            width,
+            height,
+            maximized: self.window.is_maximized(),
+        };
+        if let Err(error) = save(&store_path(), state) {
+            glib::g_warning!(LOG_DOMAIN, "window size not saved: {error}");
+        }
+    }
+}
+
+/// Size of the largest connected monitor in logical pixels.
+fn largest_monitor() -> Option<(i32, i32)> {
+    let monitors = gtk::gdk::Display::default()?.monitors();
+    (0..monitors.n_items())
+        .filter_map(|index| monitors.item(index).and_downcast::<gtk::gdk::Monitor>())
+        .map(|monitor| {
+            let geometry = monitor.geometry();
+            (geometry.width(), geometry.height())
+        })
+        .max_by_key(|(width, height)| i64::from(*width) * i64::from(*height))
 }
 
 const GROUP: &str = "Window";
