@@ -192,7 +192,7 @@ Test invoices are synthetic or taken from public sample sets
 ## Licence
 
 E-Invoice Viewer is free software under the
-[GNU General Public License v3.0 or later](https://www.gnu.org/licenses/gpl-3.0.html),
+[GNU General Public License v3.0 or later](LICENSE),
 because it uses Poppler ([ADR 0001](docs/adr/0001-gtk4-poppler-gpl.md)).
 
 Bundled third-party material keeps its licence:
