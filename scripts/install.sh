@@ -54,8 +54,10 @@ cat >"$staged" <<EOF
 [Desktop Entry]
 Type=Application
 Name=E-Invoice Viewer
-GenericName=Rechnungsbetrachter
-Comment=Elektronische Rechnungen (ZUGFeRD, Factur-X, XRechnung) ansehen und prüfen
+GenericName=Invoice viewer
+GenericName[de]=Rechnungsbetrachter
+Comment=View and check electronic invoices (ZUGFeRD, Factur-X, XRechnung)
+Comment[de]=Elektronische Rechnungen (ZUGFeRD, Factur-X, XRechnung) ansehen und prüfen
 Exec="$binary" %F
 Icon=x-office-document
 Terminal=false

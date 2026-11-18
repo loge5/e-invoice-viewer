@@ -126,8 +126,8 @@ impl PdfPane {
             button.update_property(&[gtk::accessible::Property::Label(tooltip)]);
             button
         };
-        let zoom_out_button = zoom_button("zoom-out-symbolic", texts::ZOOM_OUT);
-        let zoom_in_button = zoom_button("zoom-in-symbolic", texts::ZOOM_IN);
+        let zoom_out_button = zoom_button("zoom-out-symbolic", texts::t(texts::ZOOM_OUT));
+        let zoom_in_button = zoom_button("zoom-in-symbolic", texts::t(texts::ZOOM_IN));
         let zoom_box = gtk::Box::new(gtk::Orientation::Horizontal, 4);
         zoom_box.append(&zoom_out_button);
         zoom_box.append(&zoom_label);

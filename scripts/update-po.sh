@@ -14,6 +14,7 @@ cd "$repo"
 mapfile -t sources < <(find crates/core/src crates/app/src -name '*.rs' | sort)
 xgettext --language=Rust --from-code=UTF-8 \
     --keyword=tr:2 --keyword=tr_n:2,3 --keyword=n_ --keyword=term:2 \
+    --keyword=t --keyword=tr_fill:1 --keyword=tr_count:1,2 \
     --package-name="E-Invoice Viewer" --no-location \
     -o po/messages.pot "${sources[@]}"
 

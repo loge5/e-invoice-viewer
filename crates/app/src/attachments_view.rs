@@ -13,11 +13,11 @@ pub fn group<'a>(
 ) -> adw::PreferencesGroup {
     let attachments: Vec<&Attachment> = attachments.into_iter().collect();
     let group = adw::PreferencesGroup::builder()
-        .title(texts::ATTACHMENTS_TITLE)
+        .title(texts::t(texts::ATTACHMENTS_TITLE))
         .build();
     if attachments.is_empty() {
         let label = gtk::Label::builder()
-            .label(texts::NO_ATTACHMENTS)
+            .label(texts::t(texts::NO_ATTACHMENTS))
             .xalign(0.0)
             .css_classes(["dim-label"])
             .build();
@@ -40,11 +40,13 @@ pub fn group<'a>(
         if matches!(attachment.content, Content::Embedded(_)) {
             let button = gtk::Button::builder()
                 .icon_name("document-save-symbolic")
-                .tooltip_text(texts::SAVE_ATTACHMENT)
+                .tooltip_text(texts::t(texts::SAVE_ATTACHMENT))
                 .valign(gtk::Align::Center)
                 .css_classes(["flat"])
                 .build();
-            button.update_property(&[gtk::accessible::Property::Label(texts::SAVE_ATTACHMENT)]);
+            button.update_property(&[gtk::accessible::Property::Label(texts::t(
+                texts::SAVE_ATTACHMENT,
+            ))]);
             let (on_save, attachment) = (on_save.clone(), attachment.clone());
             button.connect_clicked(move |_| on_save(&attachment, position));
             row.add_suffix(&button);

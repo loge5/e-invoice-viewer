@@ -109,7 +109,7 @@ impl RecentStore {
         self.menu.remove_all();
         if entries.is_empty() {
             // An item without action is shown insensitive.
-            self.menu.append(Some(texts::RECENT_EMPTY), None);
+            self.menu.append(Some(texts::t(texts::RECENT_EMPTY)), None);
         }
         let home = glib::home_dir();
         for path in entries {

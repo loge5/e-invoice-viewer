@@ -29,9 +29,9 @@ thread_local! {
     static VALIDATOR: Validator = Validator::new();
 }
 
-/// Validates on the calling (worker) thread.
-fn validate(xml: &[u8]) -> Result<Validation, DetectError> {
-    VALIDATOR.with(|validator| validator.validate(xml, Language::German))
+/// Validates on the calling (worker) thread, with notes in `language`.
+fn validate(xml: &[u8], language: Language) -> Result<Validation, DetectError> {
+    VALIDATOR.with(|validator| validator.validate(xml, language))
 }
 
 const MINIMUM_PANE_WIDTH: i32 = 300;
@@ -72,41 +72,43 @@ impl Window {
     pub fn new(app: &adw::Application, recent: &Rc<RecentStore>) -> Self {
         let title = adw::WindowTitle::new(texts::APP_TITLE, "");
         let open_button = gtk::Button::builder()
-            .label(texts::OPEN_BUTTON)
+            .label(texts::t(texts::OPEN_BUTTON))
             .action_name("win.open")
             .build();
         let close_button = gtk::Button::builder()
-            .label(texts::CLOSE_BUTTON)
+            .label(texts::t(texts::CLOSE_BUTTON))
             .action_name("win.close")
             .visible(false)
             .build();
         let recent_button = gtk::MenuButton::builder()
             .icon_name("document-open-recent-symbolic")
-            .tooltip_text(texts::RECENT_TITLE)
+            .tooltip_text(texts::t(texts::RECENT_TITLE))
             .menu_model(recent.menu())
             .build();
-        recent_button.update_property(&[gtk::accessible::Property::Label(texts::RECENT_TITLE)]);
+        recent_button.update_property(&[gtk::accessible::Property::Label(texts::t(
+            texts::RECENT_TITLE,
+        ))]);
         let header = adw::HeaderBar::builder().title_widget(&title).build();
         header.pack_start(&open_button);
         header.pack_start(&recent_button);
         header.pack_end(&close_button);
 
         let start_button = gtk::Button::builder()
-            .label(texts::OPEN_BUTTON)
+            .label(texts::t(texts::OPEN_BUTTON))
             .action_name("win.open")
             .halign(gtk::Align::Center)
             .css_classes(["pill", "suggested-action"])
             .build();
         let start_page = adw::StatusPage::builder()
             .icon_name("x-office-document-symbolic")
-            .title(texts::START_TITLE)
+            .title(texts::t(texts::START_TITLE))
             .child(&start_button)
             .build();
 
         let pdf_view = PdfPane::new();
         let pdf_message = adw::StatusPage::builder()
             .icon_name("image-missing-symbolic")
-            .title(texts::PDF_NOT_RENDERABLE)
+            .title(texts::t(texts::PDF_NOT_RENDERABLE))
             .css_classes(["compact"])
             .build();
         let pdf_pane = gtk::Stack::builder()
@@ -127,11 +129,11 @@ impl Window {
         view_stack.add_named(xml_pane.widget(), Some("xml"));
 
         let fields_toggle = gtk::ToggleButton::builder()
-            .label(texts::VIEW_FIELDS)
+            .label(texts::t(texts::VIEW_FIELDS))
             .active(true)
             .build();
         let xml_toggle = gtk::ToggleButton::builder()
-            .label(texts::VIEW_XML)
+            .label(texts::t(texts::VIEW_XML))
             .group(&fields_toggle)
             .sensitive(false)
             .build();
@@ -262,7 +264,7 @@ impl Window {
                 this.open_file(&first).await;
                 if more {
                     // Added to, not replacing, a message about the first file.
-                    this.add_note(texts::DROP_ONLY_FIRST);
+                    this.add_note(texts::t(texts::DROP_ONLY_FIRST));
                 }
             });
             true
@@ -342,7 +344,7 @@ impl Window {
 
     fn choose_file(&self) {
         let filter = gtk::FileFilter::new();
-        filter.set_name(Some(texts::INVOICE_FILTER));
+        filter.set_name(Some(texts::t(texts::INVOICE_FILTER)));
         for mime_type in ["application/pdf", "application/xml", "text/xml"] {
             filter.add_mime_type(mime_type);
         }
@@ -352,7 +354,7 @@ impl Window {
         filters.append(&filter);
 
         let dialog = gtk::FileDialog::builder()
-            .title(texts::START_TITLE)
+            .title(texts::t(texts::START_TITLE))
             .modal(true)
             .filters(&filters)
             .default_filter(&filter)
@@ -440,7 +442,7 @@ impl Window {
             let parent = this.window.clone().upcast::<gtk::Window>();
             let result = save_as(
                 Some(&parent),
-                texts::SAVE_ATTACHMENT,
+                texts::t(texts::SAVE_ATTACHMENT),
                 &initial_name,
                 content,
             )
@@ -478,7 +480,7 @@ impl Window {
     fn show(&self, name: &str, bytes: &[u8]) -> bool {
         // Whatever is shown next, a running validation is outdated.
         self.next_generation();
-        let document = match document::open(bytes, Language::German) {
+        let document = match document::open(bytes, texts::language()) {
             Ok(document) => document,
             Err(error) => {
                 self.show_start(Some(&texts::error_message(name, &error)));
@@ -500,7 +502,7 @@ impl Window {
                             .margin_end(12)
                             .margin_bottom(24)
                             .build();
-                        content.append(&message_page(texts::NO_INVOICE_IN_PDF));
+                        content.append(&message_page(texts::t(texts::NO_INVOICE_IN_PDF)));
                         content.append(&attachments);
                         let scroller = gtk::ScrolledWindow::builder()
                             .hscrollbar_policy(gtk::PolicyType::Never)
@@ -515,7 +517,12 @@ impl Window {
             }
             Document::Xml { invoice } => {
                 self.show_pdf_pane(None);
-                self.show_invoice(invoice, name, Some(texts::XML_ONLY_NOTE), &attachments);
+                self.show_invoice(
+                    invoice,
+                    name,
+                    Some(texts::t(texts::XML_ONLY_NOTE)),
+                    &attachments,
+                );
                 self.show_document(name);
             }
         }
@@ -550,7 +557,9 @@ impl Window {
         self.set_validation_state(&ValidationState::Running);
         let this = self.clone();
         glib::spawn_future_local(async move {
-            let result = gio::spawn_blocking(move || validate(&xml)).await;
+            // The worker thread has its own language setting: pass it on.
+            let language = texts::language();
+            let result = gio::spawn_blocking(move || validate(&xml, language)).await;
             if this.generation.get() != generation {
                 return;
             }
@@ -558,7 +567,9 @@ impl Window {
                 Ok(Ok(validation)) => ValidationState::Done(validation),
                 Ok(Err(error)) => ValidationState::Failed(texts::validation_error_reason(&error)),
                 // The worker panicked.
-                Err(_) => ValidationState::Failed(texts::VALIDATION_FAILED_REASON.to_string()),
+                Err(_) => {
+                    ValidationState::Failed(texts::t(texts::VALIDATION_FAILED_REASON).to_string())
+                }
             };
             this.set_validation_state(&state);
         });

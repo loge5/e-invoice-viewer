@@ -8,14 +8,232 @@ msgid ""
 msgstr ""
 "Project-Id-Version: E-Invoice Viewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 10:28+0100\n"
+"POT-Creation-Date: 2026-11-18 10:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+msgid "Open an invoice"
+msgstr ""
+
+msgid "Invoices (PDF, XML)"
+msgstr ""
+
+msgid "Open…"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Copy value"
+msgstr ""
+
+msgid "This PDF contains no electronic invoice"
+msgstr ""
+
+msgid "The PDF pages cannot be shown"
+msgstr ""
+
+msgid "Plain XML invoice – no PDF included"
+msgstr ""
+
+msgid "Fields"
+msgstr ""
+
+msgid "XML"
+msgstr ""
+
+msgid "Zoom in (Ctrl++)"
+msgstr ""
+
+msgid "Zoom out (Ctrl+-)"
+msgstr ""
+
+msgid "Copy XML"
+msgstr ""
+
+msgid "Save XML as…"
+msgstr ""
+
+msgid "The XML could not be saved"
+msgstr ""
+
+msgid "Search in the XML"
+msgstr ""
+
+msgid "Validation result"
+msgstr ""
+
+msgid "Document"
+msgstr ""
+
+msgid "internal error during validation"
+msgstr ""
+
+msgid "Recently opened"
+msgstr ""
+
+msgid "Attachments"
+msgstr ""
+
+msgid "Show in XML"
+msgstr ""
+
+msgid "Show in fields"
+msgstr ""
+
+msgid "No field assigned"
+msgstr ""
+
+msgid "No attachments"
+msgstr ""
+
+msgid "Save attachment…"
+msgstr ""
+
+msgid "No entries"
+msgstr ""
+
+msgid "Only one file per window – the first one was opened"
+msgstr ""
+
+msgid "error"
+msgid_plural "errors"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "warning"
+msgid_plural "warnings"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "note"
+msgid_plural "notes"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Error"
+msgid_plural "Errors"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Warning"
+msgid_plural "Warnings"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Note"
+msgid_plural "Notes"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "No findings"
+msgstr ""
+
+#, rust-format
+msgid "No errors, {counts}"
+msgstr ""
+
+msgid "Validating…"
+msgstr ""
+
+#, rust-format
+msgid "Validation failed: {reason}"
+msgstr ""
+
+msgid "{rule sets} and {last rule set}"
+msgstr ""
+
+msgid "Checked against {rule sets}"
+msgstr ""
+
+#, rust-format
+msgid "The address {address} is not a local file"
+msgstr ""
+
+#, rust-format
+msgid "The file {file} was not found"
+msgstr ""
+
+#, rust-format
+msgid "The file {file} cannot be read: {reason}"
+msgstr ""
+
+#, rust-format
+msgid "{count} byte"
+msgid_plural "{count} bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Invoice (BG-24)"
+msgstr ""
+
+msgid "unknown"
+msgstr ""
+
+msgid "Content not readable"
+msgstr ""
+
+#, rust-format
+msgid "Too large (over {size} MB)"
+msgstr ""
+
+#, rust-format
+msgid "The attachment {name} could not be saved: {reason}"
+msgstr ""
+
+#, rust-format
+msgid "Page {page} of {count}"
+msgstr ""
+
+msgid "No matches"
+msgstr ""
+
+#, rust-format
+msgid "{current} of {total}"
+msgstr ""
+
+#, rust-format
+msgid "{count} match"
+msgid_plural "{count} matches"
+msgstr[0] ""
+msgstr[1] ""
+
+#, rust-format
+msgid "The file {file} cannot be read as an invoice: {reason}"
+msgstr ""
+
+msgid "not a readable PDF file"
+msgstr ""
+
+#, rust-format
+msgid "the embedded invoice {name} is empty"
+msgstr ""
+
+#, rust-format
+msgid "XML is not well-formed (line {line})"
+msgstr ""
+
+msgid "XML contains a DOCTYPE declaration – not supported"
+msgstr ""
+
+msgid "not an electronic invoice"
+msgstr ""
+
+msgid "ZUGFeRD 1.0 is not supported"
+msgstr ""
+
+#, rust-format
+msgid "the character encoding {encoding} is not supported"
+msgstr ""
+
+msgid "the invoice format is not supported"
+msgstr ""
 
 msgid "Partial invoice"
 msgstr ""

@@ -19,6 +19,7 @@ use std::cell::RefCell;
 use std::rc::Rc;
 
 use adw::prelude::*;
+use e_invoice_viewer_core::i18n::Language;
 use gtk::{gio, glib};
 
 use recent::RecentStore;
@@ -35,6 +36,8 @@ fn main() -> glib::ExitCode {
     let windows = Windows::default();
     let list = windows.clone();
     app.connect_startup(move |app| {
+        // The language of the user interface follows the system (0018).
+        texts::set_language(Language::from_preferences(&glib::language_names()));
         load_css();
         let quit = gio::SimpleAction::new("quit", None);
         let target = app.clone();

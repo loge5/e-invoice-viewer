@@ -96,7 +96,7 @@ impl XmlPane {
         search.set_highlight(true);
 
         let search_entry = gtk::SearchEntry::builder()
-            .placeholder_text(texts::SEARCH_PLACEHOLDER)
+            .placeholder_text(texts::t(texts::SEARCH_PLACEHOLDER))
             .hexpand(true)
             .build();
         let search_status = gtk::Label::builder()
@@ -113,8 +113,12 @@ impl XmlPane {
             .build();
         search_bar.connect_entry(&search_entry);
 
-        let copy_button = gtk::Button::builder().label(texts::COPY_XML).build();
-        let save_button = gtk::Button::builder().label(texts::SAVE_XML).build();
+        let copy_button = gtk::Button::builder()
+            .label(texts::t(texts::COPY_XML))
+            .build();
+        let save_button = gtk::Button::builder()
+            .label(texts::t(texts::SAVE_XML))
+            .build();
         let actions = gtk::Box::builder()
             .orientation(gtk::Orientation::Horizontal)
             .spacing(6)
@@ -133,13 +137,13 @@ impl XmlPane {
             .build();
         // The assignment line (0014), separate from the validation status.
         let assignment_label = gtk::Label::builder()
-            .label(texts::NO_FIELD)
+            .label(texts::t(texts::NO_FIELD))
             .xalign(0.0)
             .hexpand(true)
             .ellipsize(gtk::pango::EllipsizeMode::End)
             .build();
         let show_in_fields = gtk::Button::builder()
-            .label(texts::SHOW_IN_FIELDS)
+            .label(texts::t(texts::SHOW_IN_FIELDS))
             .sensitive(false)
             .build();
         let assignment_line = gtk::Box::builder()
@@ -189,7 +193,7 @@ impl XmlPane {
             model,
             layout: OnceCell::new(),
         });
-        self.set_assigned(Target::Document, texts::NO_FIELD);
+        self.set_assigned(Target::Document, texts::t(texts::NO_FIELD));
         self.buffer.set_text("");
         self.search_entry.set_text("");
         self.search_bar.set_search_mode(false);
@@ -198,7 +202,7 @@ impl XmlPane {
     pub fn clear(&self) {
         *self.source.borrow_mut() = None;
         self.buffer.set_text("");
-        self.set_assigned(Target::Document, texts::NO_FIELD);
+        self.set_assigned(Target::Document, texts::t(texts::NO_FIELD));
     }
 
     /// Calls `show` with the field or section of the assignment line when
@@ -396,15 +400,17 @@ impl XmlPane {
         glib::spawn_future_local(async move {
             let result = save_as(
                 parent.as_ref(),
-                texts::SAVE_XML,
+                texts::t(texts::SAVE_XML),
                 &suggested,
                 glib::Bytes::from_owned(bytes),
             )
             .await;
             if let (Err(error), Some(parent)) = (result, parent) {
-                let alert =
-                    adw::AlertDialog::new(Some(texts::SAVE_XML_FAILED), Some(error.message()));
-                alert.add_response("close", texts::CLOSE_DIALOG);
+                let alert = adw::AlertDialog::new(
+                    Some(texts::t(texts::SAVE_XML_FAILED)),
+                    Some(error.message()),
+                );
+                alert.add_response("close", texts::t(texts::CLOSE_DIALOG));
                 alert.present(Some(&parent));
             }
         });

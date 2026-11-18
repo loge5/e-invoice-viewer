@@ -1,7 +1,7 @@
 ---
 id: 0018
 title: App - user interface in German and English, following the system language
-status: reviewed
+status: in-progress
 created: 2026-11-18
 depends_on: [0017]
 ---
@@ -57,7 +57,7 @@ published.
       | Findings | English | German |
       |---|---|---|
       | none | `No findings` | `Keine Befunde` |
-      | 2 warnings | `No errors, 2 warnings` | `Keine Fehler, 2 Warnungen` |
+      | 2 warnings | `2 warnings` | `2 Warnungen` |
       | 1 note | `No errors, 1 note` | `Keine Fehler, 1 Hinweis` |
       | 3 errors, 2 notes | `3 errors, 2 notes` | `3 Fehler, 2 Hinweise` |
 - [ ] Error and notes in English, for example: opening a text file named
@@ -70,7 +70,7 @@ published.
       `24.6 kB` (German: `24,6 kB`); a section without attachments reads
       `No attachments`.
 - [ ] The XML view in English: the assignment line reads `No field assigned`
-      outside any field and `BT-131 Invoice line net amount · Line 2`
+      outside any field and `BT-131 Invoice line net amount · Invoice line 2`
       on the net amount of line 2 of sample A (German: `BT-131 Nettobetrag ·
       Position 2`); the buttons read `Copy XML`, `Save XML as…` and
       `Show in fields`.
@@ -100,6 +100,56 @@ published.
   unsupported system languages, and accepted the recommendations of the
   review (PDF sample for the PDF bar, concrete desktop entry, error and count
   texts, the rule set line, `LANG=C`).
+- Correction during implementation (2026-11-18): the row "2 warnings" of the
+  count table read `No errors, 2 warnings`; as defined in 0011, only a
+  result with nothing but notes starts with `No errors` / `Keine Fehler`, so
+  it reads `2 warnings` / `2 Warnungen`. The section in AC7 is called
+  `Invoice line 2` (0017), not `Line 2`.
 - The German texts stay exactly as they are today.
 - All time limits of earlier specs (opening within 2 s, …) still apply in
   both languages.
+
+## Progress
+
+- **Done**:
+  - `texts.rs`: all texts of the user interface are English, marked for
+    translation, with `{name}` placeholders and plural forms (`tr_n`); the
+    German texts are in `po/de.po` (171 entries in all). The language of the
+    user interface is kept in one place (`texts::language`), set at start
+    from the system's preferred languages (`glib::language_names`).
+  - Core: `Language::from_preferences` (first supported language, `C` and
+    `POSIX` as English, otherwise English).
+  - Documents are opened and validated in the language of the user
+    interface; the validation worker gets it passed.
+  - Severity names as headings and labels are capitalised (`Errors`,
+    `Warning`), counts are lower case (`2 warnings`).
+  - `scripts/install.sh`: `GenericName` and `Comment` in English with German
+    `[de]` variants.
+- **Verified** (2026-11-18):
+  - `cargo test --workspace`: 195 passed; new: `language_from_system_preferences`
+    (core) and five tests in `texts.rs` (AC1, AC3–AC8, AC10). The catalogue
+    test now covers the app's texts; it found that `xgettext --omit-header`
+    drops `…` and `–`, which is fixed.
+  - `cargo fmt --all --check`, `cargo clippy --workspace --all-targets -- -D
+    warnings` and the architecture check are clean.
+  - Smoke run of the release build, read through AT-SPI:
+    `LANG=en_US.UTF-8` shows `Open an invoice`, `Open…`, `Recently opened`;
+    the Factur-X PDF of sample A shows `No findings`, `Fields`,
+    `Seller (BG-4)`, `Invoice number`, `Commercial invoice (380)`,
+    `1,249.50 EUR`, `Checked against EN 16931 CII 1.3.17`, `Attachments` and
+    the zoom buttons `Zoom in (Ctrl++)` / `Zoom out (Ctrl+-)`; sample B
+    without BT-10 shows `1 error, 1 warning, 1 note`. `LANG=fr_FR.UTF-8`
+    is English, `LANGUAGE=fr:de` is German, `LANG=de_DE.UTF-8` shows
+    `1 Fehler, 1 Warnung, 1 Hinweis`.
+  - `scripts/install.sh` into temporary directories: the desktop entry has
+    the English and German names and passes `desktop-file-validate`.
+- **Next** — manual checks by the author, then the author decides on
+  `implemented`:
+  - On an English desktop (or `LANG=en_US.UTF-8 e-invoice-viewer`): start
+    view, open the Factur-X PDF of sample A, summary headings, tooltips, the
+    XML view with its assignment line, an attachment's details, the error
+    for a text file, and the note when dropping two files.
+  - On the German desktop: everything reads as before.
+  - After `scripts/install.sh`: the app grid and "Open with" show the
+    German description on a German desktop.
+

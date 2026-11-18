@@ -35,6 +35,27 @@ impl Language {
             .into_iter()
             .find(|language| language.code() == code)
     }
+
+    /// The first supported language among the user's preferred languages,
+    /// most preferred first, as locale names (`de_DE.UTF-8`, `de`, `C`);
+    /// English if none is supported (spec 0018). `C` and `POSIX` stand for
+    /// English.
+    pub fn from_preferences<S: AsRef<str>>(names: &[S]) -> Self {
+        names
+            .iter()
+            .find_map(|name| {
+                let code = name
+                    .as_ref()
+                    .split(['_', '.', '@'])
+                    .next()
+                    .unwrap_or_default();
+                match code {
+                    "C" | "POSIX" => Some(Self::English),
+                    code => Self::from_code(code),
+                }
+            })
+            .unwrap_or(Self::English)
+    }
 }
 
 /// Arguments for `xgettext` that extract the texts marked for translation
@@ -46,6 +67,10 @@ pub const XGETTEXT_ARGS: &[&str] = &[
     "--keyword=tr_n:2,3",
     "--keyword=n_",
     "--keyword=term:2",
+    // Helpers of the app's texts module.
+    "--keyword=t",
+    "--keyword=tr_fill:1",
+    "--keyword=tr_count:1,2",
 ];
 
 const GERMAN: &[u8] = include_bytes!(concat!(env!("OUT_DIR"), "/de.mo"));
@@ -79,4 +104,29 @@ pub fn tr_n(
 /// translated where it is shown.
 pub const fn n_(text: &'static str) -> &'static str {
     text
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    // Spec 0018 AC1, AC2
+    #[test]
+    fn language_from_system_preferences() {
+        let cases: [(&[&str], Language); 7] = [
+            (
+                &["de_DE.UTF-8", "de_DE", "de.UTF-8", "de", "C"],
+                Language::German,
+            ),
+            (&["en_US.UTF-8", "en_US", "en", "C"], Language::English),
+            (&["fr_FR.UTF-8", "fr_FR", "fr", "C"], Language::English),
+            (&["fr", "de", "C"], Language::German),
+            (&["C"], Language::English),
+            (&["POSIX"], Language::English),
+            (&[], Language::English),
+        ];
+        for (names, expected) in cases {
+            assert_eq!(Language::from_preferences(names), expected, "{names:?}");
+        }
+    }
 }

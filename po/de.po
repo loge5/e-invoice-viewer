@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: E-Invoice Viewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 10:28+0100\n"
+"POT-Creation-Date: 2026-11-18 10:45+0100\n"
 "PO-Revision-Date: 2026-11-18 00:00+0100\n"
 "Last-Translator: E-Invoice Viewer contributors\n"
 "Language-Team: German\n"
@@ -15,6 +15,223 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Open an invoice"
+msgstr "Rechnung öffnen"
+
+msgid "Invoices (PDF, XML)"
+msgstr "Rechnungen (PDF, XML)"
+
+msgid "Open…"
+msgstr "Öffnen…"
+
+msgid "Close"
+msgstr "Schließen"
+
+msgid "Copy value"
+msgstr "Wert kopieren"
+
+msgid "This PDF contains no electronic invoice"
+msgstr "Diese PDF enthält keine elektronische Rechnung"
+
+msgid "The PDF pages cannot be shown"
+msgstr "Die PDF-Seiten können nicht angezeigt werden"
+
+msgid "Plain XML invoice – no PDF included"
+msgstr "Reine XML-Rechnung – kein PDF enthalten"
+
+msgid "Fields"
+msgstr "Felder"
+
+msgid "XML"
+msgstr "XML"
+
+msgid "Zoom in (Ctrl++)"
+msgstr "Vergrößern (Strg++)"
+
+msgid "Zoom out (Ctrl+-)"
+msgstr "Verkleinern (Strg+-)"
+
+msgid "Copy XML"
+msgstr "XML kopieren"
+
+msgid "Save XML as…"
+msgstr "XML speichern unter…"
+
+msgid "The XML could not be saved"
+msgstr "XML konnte nicht gespeichert werden"
+
+msgid "Search in the XML"
+msgstr "Im XML suchen"
+
+msgid "Validation result"
+msgstr "Prüfergebnis"
+
+msgid "Document"
+msgstr "Dokument"
+
+msgid "internal error during validation"
+msgstr "interner Fehler bei der Prüfung"
+
+msgid "Recently opened"
+msgstr "Zuletzt geöffnet"
+
+msgid "Attachments"
+msgstr "Anhänge"
+
+msgid "Show in XML"
+msgstr "Im XML zeigen"
+
+msgid "Show in fields"
+msgstr "In Feldern zeigen"
+
+msgid "No field assigned"
+msgstr "Kein Feld zugeordnet"
+
+msgid "No attachments"
+msgstr "Keine Anhänge"
+
+msgid "Save attachment…"
+msgstr "Anhang speichern…"
+
+msgid "No entries"
+msgstr "Keine Einträge"
+
+msgid "Only one file per window – the first one was opened"
+msgstr "Nur eine Datei pro Fenster – die erste wurde geöffnet"
+
+msgid "error"
+msgid_plural "errors"
+msgstr[0] "Fehler"
+msgstr[1] "Fehler"
+
+msgid "warning"
+msgid_plural "warnings"
+msgstr[0] "Warnung"
+msgstr[1] "Warnungen"
+
+msgid "note"
+msgid_plural "notes"
+msgstr[0] "Hinweis"
+msgstr[1] "Hinweise"
+
+msgid "Error"
+msgid_plural "Errors"
+msgstr[0] "Fehler"
+msgstr[1] "Fehler"
+
+msgid "Warning"
+msgid_plural "Warnings"
+msgstr[0] "Warnung"
+msgstr[1] "Warnungen"
+
+msgid "Note"
+msgid_plural "Notes"
+msgstr[0] "Hinweis"
+msgstr[1] "Hinweise"
+
+msgid "No findings"
+msgstr "Keine Befunde"
+
+#, rust-format
+msgid "No errors, {counts}"
+msgstr "Keine Fehler, {counts}"
+
+msgid "Validating…"
+msgstr "Prüfe…"
+
+#, rust-format
+msgid "Validation failed: {reason}"
+msgstr "Prüfung fehlgeschlagen: {reason}"
+
+msgid "{rule sets} and {last rule set}"
+msgstr "{rule sets} und {last rule set}"
+
+msgid "Checked against {rule sets}"
+msgstr "Geprüft nach {rule sets}"
+
+#, rust-format
+msgid "The address {address} is not a local file"
+msgstr "Die Adresse {address} ist keine lokale Datei"
+
+#, rust-format
+msgid "The file {file} was not found"
+msgstr "Die Datei {file} wurde nicht gefunden"
+
+#, rust-format
+msgid "The file {file} cannot be read: {reason}"
+msgstr "Die Datei {file} kann nicht gelesen werden: {reason}"
+
+#, rust-format
+msgid "{count} byte"
+msgid_plural "{count} bytes"
+msgstr[0] "{count} Byte"
+msgstr[1] "{count} Bytes"
+
+msgid "Invoice (BG-24)"
+msgstr "Rechnung (BG-24)"
+
+msgid "unknown"
+msgstr "unbekannt"
+
+msgid "Content not readable"
+msgstr "Inhalt nicht lesbar"
+
+#, rust-format
+msgid "Too large (over {size} MB)"
+msgstr "Zu groß (über {size} MB)"
+
+#, rust-format
+msgid "The attachment {name} could not be saved: {reason}"
+msgstr "Der Anhang {name} konnte nicht gespeichert werden: {reason}"
+
+#, rust-format
+msgid "Page {page} of {count}"
+msgstr "Seite {page} von {count}"
+
+msgid "No matches"
+msgstr "Keine Treffer"
+
+#, rust-format
+msgid "{current} of {total}"
+msgstr "{current} von {total}"
+
+#, rust-format
+msgid "{count} match"
+msgid_plural "{count} matches"
+msgstr[0] "{count} Treffer"
+msgstr[1] "{count} Treffer"
+
+#, rust-format
+msgid "The file {file} cannot be read as an invoice: {reason}"
+msgstr "Die Datei {file} kann nicht als Rechnung gelesen werden: {reason}"
+
+msgid "not a readable PDF file"
+msgstr "keine lesbare PDF-Datei"
+
+#, rust-format
+msgid "the embedded invoice {name} is empty"
+msgstr "die eingebettete Rechnung {name} ist leer"
+
+#, rust-format
+msgid "XML is not well-formed (line {line})"
+msgstr "XML ist nicht wohlgeformt (Zeile {line})"
+
+msgid "XML contains a DOCTYPE declaration – not supported"
+msgstr "XML enthält eine DOCTYPE-Deklaration – nicht unterstützt"
+
+msgid "not an electronic invoice"
+msgstr "keine elektronische Rechnung"
+
+msgid "ZUGFeRD 1.0 is not supported"
+msgstr "ZUGFeRD 1.0 wird nicht unterstützt"
+
+#, rust-format
+msgid "the character encoding {encoding} is not supported"
+msgstr "die Zeichenkodierung {encoding} wird nicht unterstützt"
+
+msgid "the invoice format is not supported"
+msgstr "das Rechnungsformat wird nicht unterstützt"
 
 msgid "Partial invoice"
 msgstr "Teilrechnung"

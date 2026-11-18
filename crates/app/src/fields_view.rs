@@ -95,7 +95,7 @@ impl FieldsView {
             .spacing(12)
             .build();
         let summary = adw::PreferencesGroup::builder()
-            .title(texts::VALIDATION_TITLE)
+            .title(texts::t(texts::VALIDATION_TITLE))
             .build();
         summary.add(&summary_content);
         content.append(&summary);
@@ -226,7 +226,7 @@ impl FieldsView {
                 continue;
             }
             let heading = gtk::Label::builder()
-                .label(texts::severity_name(severity, entries.len()))
+                .label(texts::severity_title(severity, entries.len()))
                 .xalign(0.0)
                 .css_classes(["heading"])
                 .build();
@@ -459,7 +459,7 @@ fn severity_icon(severity: Severity) -> gtk::Image {
         .valign(gtk::Align::Start)
         .css_classes([severity_class(severity)])
         .build();
-    image.update_property(&[gtk::accessible::Property::Label(texts::severity_name(
+    image.update_property(&[gtk::accessible::Property::Label(texts::severity_title(
         severity, 1,
     ))]);
     image
@@ -515,7 +515,7 @@ fn field_row(field: &Field) -> FieldRow {
         .build();
 
     let menu = gio::Menu::new();
-    let copy = gio::MenuItem::new(Some(texts::COPY_VALUE), None);
+    let copy = gio::MenuItem::new(Some(texts::t(texts::COPY_VALUE)), None);
     copy.set_action_and_target_value(
         Some("view.copy-value"),
         Some(&texts::copy_value(field).to_variant()),
@@ -593,7 +593,7 @@ fn view_actions(show_in_xml: &ShowInXml) -> gio::SimpleActionGroup {
 
 /// The menu item "Im XML zeigen" for a place in the XML.
 fn show_in_xml_item(location: &str, attribute: Option<&str>) -> gio::MenuItem {
-    let item = gio::MenuItem::new(Some(texts::SHOW_IN_XML), None);
+    let item = gio::MenuItem::new(Some(texts::t(texts::SHOW_IN_XML)), None);
     item.set_action_and_target_value(
         Some("view.show-in-xml"),
         Some(&(location.to_string(), attribute.map(str::to_string)).to_variant()),

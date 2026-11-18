@@ -341,7 +341,7 @@ fn german_catalogue_is_complete() {
     files.sort();
     let output = Command::new("xgettext")
         .args(e_invoice_viewer_core::i18n::XGETTEXT_ARGS)
-        .args(["--omit-header", "-o", "-"])
+        .args(["-o", "-"])
         .args(&files)
         .output()
         .expect("xgettext (GNU gettext) must be installed");
