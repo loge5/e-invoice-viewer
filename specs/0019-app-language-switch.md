@@ -1,7 +1,7 @@
 ---
 id: 0019
 title: App - switch the language in the app
-status: in-progress
+status: implemented
 created: 2026-11-18
 depends_on: [0018]
 ---
@@ -40,33 +40,33 @@ the app in German on an English desktop.
 
 ## Acceptance criteria
 
-- [ ] Given the system language English and no stored choice, the language
+- [x] Given the system language English and no stored choice, the language
       choice shows *System language* as selected and offers `Deutsch` and
       `English`.
-- [ ] Given CII sample A open in English, when the user chooses `Deutsch`,
+- [x] Given CII sample A open in English, when the user chooses `Deutsch`,
       then the window shows `Keine Befunde`, the section `Verkäufer (BG-4)`
       and the amount `1.249,50 EUR` within 1 s, without a restart; a second open
       window changes as well.
   - The window keeps sample A open, stays in the XML view if it was shown,
     and keeps the PDF zoom (e.g. `150 %`) and the page shown.
-- [ ] Given the choice `Deutsch` on an English system, when the app is
+- [x] Given the choice `Deutsch` on an English system, when the app is
       started again, then it is in German; when the user chooses *System
       language*, the next start is in English again.
-- [ ] Given the stored language `xx` or a damaged settings file, the app
+- [x] Given the stored language `xx` or a damaged settings file, the app
       starts in the system language, logs exactly one warning, shows no
       error dialog, and the recent files list and window size of 0012/0015
       still work.
-- [ ] With the keyboard only: F10 opens the main menu, the arrow keys reach
+- [x] With the keyboard only: F10 opens the main menu, the arrow keys reach
       the language choice, Enter selects `English`, and the window is in
       English.
-- [ ] Given a validation still running for `target/manual-0011/l.xml`, when
+- [x] Given a validation still running for `target/manual-0011/l.xml`, when
       the user switches to English, then once the validation is done the
       status line and summary read exactly as when `l.xml` is opened in
       English from the start.
-- [ ] The setting is stored only in the app's configuration directory and
+- [x] The setting is stored only in the app's configuration directory and
       contains no file names; it is written atomically like the settings of
       0015.
-- [ ] Texts of GTK and the desktop portal (e.g. the file chooser) stay in the
+- [x] Texts of GTK and the desktop portal (e.g. the file chooser) stay in the
       system language; this is expected and not a defect.
 
 ## Out of scope
@@ -118,12 +118,6 @@ the app in German on an English desktop.
     `choice=de`; the next start is German; choosing the system language
     switches back to English, also for the next start; a stored `xx` gives
     English and one warning.
-- **Next** — manual checks by the author, then the author decides on
-  `implemented`:
-  - Open the main menu with the mouse and with F10 / arrow keys / Enter;
-    the current choice is marked.
-  - With the Factur-X PDF of sample A open in the XML view and the PDF at
-    150 %: switching keeps the XML view and the zoom.
-  - Switch while `target/manual-0011/l.xml` is still being validated: the
-    result appears in the new language.
-
+- **Manually verified** by the author (2026-11-18): menu by mouse and
+  keyboard, kept XML view and zoom, switch during a running validation; the
+  author decided on `implemented`.
