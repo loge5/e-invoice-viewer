@@ -21,7 +21,10 @@ The field model (0004–0006) and the validation result (0009, 0010) can be
 produced in **German** or **English**, chosen by the caller for each call:
 
 - **Labels and titles**: every field label and section title exists in both
-  languages. Business term numbers (`BT-1`, `BG-4`) are the same in both.
+  languages. The English field labels are the official business term names
+  of EN 16931 (e.g. BT-31 `Seller VAT identifier`); section titles of a
+  business group use its official name (e.g. `Payment instructions (BG-16)`).
+  Business term numbers (`BT-1`, `BG-4`) are the same in both.
 - **Code lists and units**: the names of invoice types (BT-3), payment means
   (BT-81), VAT categories (BT-118, BT-151) and units (BT-130) exist in both
   languages. The code itself is still shown in parentheses as before.
@@ -49,21 +52,21 @@ produced in **German** or **English**, chosen by the caller for each call:
       | Verkäufer (BG-4) | Seller (BG-4) |
       | Käufer (BG-7) | Buyer (BG-7) |
       | Position 1 | Line 1 |
-      | Zahlung (BG-16) | Payment (BG-16) |
+      | Zahlung (BG-16) | Payment instructions (BG-16) |
       | Umsatzsteuer (BG-23) | VAT breakdown (BG-23) |
-      | Summen (BG-22) | Totals (BG-22) |
+      | Summen (BG-22) | Document totals (BG-22) |
 
 - [ ] Given CII sample A, these fields read:
 
       | Field | German label | English label | German display | English display |
       |---|---|---|---|---|
-      | BT-1 | Rechnungsnummer | [NEEDS CLARIFICATION: official EN 16931 term name "Invoice number", or a shorter own label?] | RE-2026-0042 | RE-2026-0042 |
-      | BT-2 | Rechnungsdatum | … | 17.11.2026 | 2026-11-17 |
-      | BT-3 | Rechnungsart | … | Rechnung (380) | Commercial invoice (380) |
-      | BT-81 | Zahlungsart | … | SEPA-Überweisung (58) | SEPA credit transfer (58) |
-      | BT-129 (line 1) | Menge | … | 8 Stunden (HUR) | 8 hours (HUR) |
-      | BT-106 | Summe der Positionen netto | … | 1.050,00 EUR | 1,050.00 EUR |
-      | BT-112 | Rechnungsbetrag inkl. USt | … | 1.249,50 EUR | 1,249.50 EUR |
+      | BT-1 | Rechnungsnummer | Invoice number | RE-2026-0042 | RE-2026-0042 |
+      | BT-2 | Rechnungsdatum | Invoice issue date | 17.11.2026 | 2026-11-17 |
+      | BT-3 | Rechnungsart | Invoice type code | Rechnung (380) | Commercial invoice (380) |
+      | BT-81 | Zahlungsart | Payment means type code | SEPA-Überweisung (58) | SEPA credit transfer (58) |
+      | BT-129 (line 1) | Menge | Invoiced quantity | 8 Stunden (HUR) | 8 hours (HUR) |
+      | BT-106 | Summe der Positionen netto | Sum of Invoice line net amount | 1.050,00 EUR | 1,050.00 EUR |
+      | BT-112 | Rechnungsbetrag inkl. USt | Invoice total amount with VAT | 1.249,50 EUR | 1,249.50 EUR |
 
 - [ ] Code and unit names in English follow the official code list names
       (UNTDID 1001, 4461, 5305, UN/ECE Recommendation 20), e.g. `381` →
@@ -107,6 +110,8 @@ produced in **German** or **English**, chosen by the caller for each call:
 
 ## Notes
 
+- Review on 2026-11-18: the author decided on the official EN 16931 names for
+  the English labels, accepting that they are longer than the German ones.
 - The German texts stay exactly as they are today; the existing tests for
   German keep passing unchanged.
 - English code list names: UNTDID 1001 (`380` Commercial invoice, `381`

@@ -1,6 +1,6 @@
 # 0003 — Translations: gettext catalogues embedded in the binary, explicit language
 
-- Status: proposed
+- Status: accepted
 - Date: 2026-11-18
 - Specs: [0017](../../specs/0017-core-content-per-language.md),
   [0018](../../specs/0018-app-ui-in-german-and-english.md),
@@ -26,7 +26,7 @@ Constraints from the project: one self-contained binary installed by
 `crates/core` stays free of GUI dependencies, and the language must be
 switchable while the app runs.
 
-## Decision (proposed)
+## Decision
 
 1. **Source strings are English.** All texts in the code are written in
    English and marked for translation; `po/de.po` holds the German
@@ -64,8 +64,8 @@ switchable while the app runs.
 
 ## Consequences
 
-- **New dependency** `gettext` (pure Rust, MIT, no native library) — needs the
-  author's approval (AGENTS.md "ask first").
+- **New dependency** `gettext` (pure Rust, MIT, no native library), approved
+  by the author on 2026-11-18.
 - **New build dependency**: GNU gettext (`msgfmt`, `xgettext`) must be
   installed to build; it is part of every common distribution (`gettext`
   package). The README lists it.

@@ -21,9 +21,10 @@ the app in German on an English desktop.
   cannot read the current language still finds theirs. The current choice is
   marked.
 - **Choosing a language** changes the user interface and the invoice content
-  (0017, 0018) of every open window. [NEEDS CLARIFICATION: immediately,
-  keeping each window's open invoice, scroll position, view (fields or XML)
-  and zoom — or only for windows opened afterwards / after a restart?]
+  (0017, 0018) of every open window **immediately**, without a restart. Each
+  window keeps its open invoice, its view (fields or XML), its PDF page and
+  zoom, and the size of the window and its panes. The fields may scroll back
+  to the top.
 - **The choice is remembered** for the next start, in the app's configuration
   directory, independently of the window size and recent files (0012, 0015):
   if one of these settings cannot be read, the others still work. *System
@@ -40,8 +41,10 @@ the app in German on an English desktop.
       `English`.
 - [ ] Given CII sample A open in English, when the user chooses `Deutsch`,
       then the window shows `Keine Befunde`, the section `Verkäufer (BG-4)`
-      and the amount `1.249,50 EUR` [NEEDS CLARIFICATION: timing, see
-      Requirement]; a second open window changes as well.
+      and the amount `1.249,50 EUR` within 1 s, without a restart; a second open
+      window changes as well.
+  - The window keeps sample A open, stays in the XML view if it was shown,
+    and keeps the PDF zoom (e.g. `150 %`) and the page shown.
 - [ ] Given the choice `Deutsch` on an English system, when the app is
       started again, then it is in German; when the user chooses *System
       language*, the next start is in English again.
@@ -64,5 +67,7 @@ the app in German on an English desktop.
 
 ## Notes
 
+- Review on 2026-11-18: the author decided that the switch takes effect
+  immediately in all windows.
 - Where the choice lives in the window (e.g. a main menu in the header bar)
   is left to the implementation; it must be reachable with the keyboard.

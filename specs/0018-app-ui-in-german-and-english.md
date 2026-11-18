@@ -24,8 +24,7 @@ published.
   The invoice content follows the same language (0017).
 - **The language follows the system** when the app starts: the first of the
   user's preferred languages that the app supports. If none is supported, the
-  app is in **English**. [NEEDS CLARIFICATION: is English the right fallback
-  for unsupported languages, as proposed in the clarify step?]
+  app is in **English**.
 - **Counts use correct singular and plural forms** in both languages.
 - **The desktop entry** (name, generic name, comment shown in the app grid and
   under "Open with") exists in German and English.
@@ -58,9 +57,9 @@ published.
       `24.6 kB` (German: `24,6 kB`); a section without attachments reads
       `No attachments`.
 - [ ] The XML view in English: the assignment line reads `No field assigned`
-      outside any field and `BT-131 Line net amount · Line 2` on the net
-      amount of line 2 of sample A [NEEDS CLARIFICATION: English label of
-      BT-131, see 0017]; the buttons read `Copy XML`, `Save XML as…` and
+      outside any field and `BT-131 Invoice line net amount · Line 2`
+      on the net amount of line 2 of sample A (German: `BT-131 Nettobetrag ·
+      Position 2`); the buttons read `Copy XML`, `Save XML as…` and
       `Show in fields`.
 - [ ] Accessible names and tooltips are translated: in English the zoom
       buttons are named `Zoom in (Ctrl++)` and `Zoom out (Ctrl+-)`, the recent
@@ -83,6 +82,8 @@ published.
 
 ## Notes
 
+- Review on 2026-11-18: the author decided on English as the fallback for
+  unsupported system languages.
 - The German texts stay exactly as they are today.
 - All time limits of earlier specs (opening within 2 s, …) still apply in
   both languages.
