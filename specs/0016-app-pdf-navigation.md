@@ -1,7 +1,7 @@
 ---
 id: 0016
 title: App - navigate and zoom multi-page PDFs
-status: reviewed
+status: in-progress
 created: 2026-11-16
 depends_on: [0007]
 ---
@@ -48,3 +48,48 @@ Time limits refer to the reference machine in
 ## Notes
 
 - GUI-bound; verified manually with a synthetic 3-page and 50-page PDF.
+- 100 % means 96 logical pixels per inch (an A4 page is about 794 logical
+  pixels wide). Fit width shows its effective zoom, e.g. `73 %`; Ctrl++
+  and Ctrl+- go to the neighbouring step from there.
+
+## Progress
+
+- **Done**:
+  - `crates/app/src/pdf_layout.rs` (pure logic): zoom steps, page stack
+    with gaps, the visible page, the scroll anchor kept across zoom changes,
+    and the device-pixel render width.
+  - `crates/app/src/pdf_pane.rs`: all pages one below the other with gaps
+    and a shadow, a bar with `Seite X von N` and the zoom level. Pages are
+    split into strips of 512 logical pixels, rendered after scrolling stops
+    (60 ms) only near the visible area, at device resolution; strips far
+    away are released. Fit width re-fits when the pane width changes.
+    Ctrl++/Ctrl+= (and keypad +), Ctrl+- and Ctrl+0 work while the PDF pane
+    has the focus (a click on the pages gives it the focus).
+  - `pdf_view.rs` renders a strip of a page and wraps it as a paintable of
+    logical size, so that textures with device pixels are shown sharply
+    without subclassing (the workspace forbids unsafe code).
+  - Test PDFs with 3 and 50 pages (`multi_page_pdf` in the test helpers).
+- **Verified** (2026-11-18):
+  - `cargo test --workspace`: 171 passed; new: 4 tests in `pdf_layout.rs`
+    and `pdf_navigation_texts`.
+  - `cargo fmt --all --check`, `cargo clippy --workspace --all-targets -- -D
+    warnings` and the architecture check are clean.
+  - Smoke run with `target/manual-0016/50-seiten.pdf` (written by `cargo
+    test -p e-invoice-viewer-core --test open_document -- --ignored
+    write_manual_samples_0016`): the indicator shows `Seite 1 von 50` about
+    0.4 s after starting the app (including start-up and polling), `Seite 25
+    von 50` and `Seite 50 von 50` after scrolling to the middle and the end
+    through AT-SPI, and the fit-width zoom `73 %`.
+- **Next** — manual checks by the author, then the author decides on
+  `implemented`:
+  - AC1/AC2: `3-seiten.pdf`: three pages with gaps, the end of page 3 can be
+    reached, the indicator changes to `Seite 2 von 3` when page 2 fills most
+    of the pane.
+  - AC3: drag the divider: the pages follow the width.
+  - AC4: click into the PDF, then Ctrl++ up to 400 %, Ctrl+- down to 25 %,
+    Ctrl+0 back to fit width; the level is shown.
+  - AC5: with page 2 visible, zoom to 200 %: page 2 stays in view.
+  - AC6: `50-seiten.pdf`: page 1 appears quickly; scrolling to page 50 shows
+    its content within 1 s after stopping; the small print is sharp at
+    400 %.
+

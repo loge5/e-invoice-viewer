@@ -113,3 +113,23 @@ fn generate_manual_fixtures() {
         std::fs::write(format!("{dir}/{name}"), content).expect("write fixture");
     }
 }
+
+/// Writes the multi-page PDFs of the manual checks of spec 0016 to
+/// `target/manual-0016/`.
+#[test]
+#[ignore = "writes the samples for the manual checks of spec 0016"]
+fn write_manual_samples_0016() {
+    let dir = format!("{}/../../target/manual-0016", env!("CARGO_MANIFEST_DIR"));
+    std::fs::create_dir_all(&dir).expect("create dir");
+    let invoice = common::fixture("cii/sample-a.xml");
+    for count in [3, 50] {
+        let pdf = common::multi_page_pdf(
+            count,
+            &[common::Attachment::plain(
+                "factur-x.xml",
+                invoice.as_bytes(),
+            )],
+        );
+        std::fs::write(format!("{dir}/{count}-seiten.pdf"), pdf).expect("write sample");
+    }
+}

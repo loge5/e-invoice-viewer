@@ -3,6 +3,8 @@
 mod attachments_view;
 mod fields_view;
 mod local;
+mod pdf_layout;
+mod pdf_pane;
 mod pdf_view;
 mod recent;
 mod texts;
@@ -116,8 +118,10 @@ impl Windows {
 fn load_css() {
     let provider = gtk::CssProvider::new();
     provider.load_from_string(&format!(
-        ".{} {{ background-color: alpha(@accent_bg_color, 0.25); }}",
-        fields_view::HIGHLIGHT_CLASS
+        ".{} {{ background-color: alpha(@accent_bg_color, 0.25); }}\n\
+         .{} {{ background-color: white; box-shadow: 0 1px 4px alpha(black, 0.3); }}",
+        fields_view::HIGHLIGHT_CLASS,
+        pdf_pane::PAGE_CLASS,
     ));
     if let Some(display) = gtk::gdk::Display::default() {
         gtk::style_context_add_provider_for_display(

@@ -135,6 +135,54 @@ pub fn pdf_document_with_text(text: Option<&str>, attachments: &[Attachment]) ->
     doc
 }
 
+/// A PDF with `count` A4 pages, each showing `Seite <n> von <count>` in
+/// large type and a paragraph of small print, with the given embedded files
+/// (spec 0016).
+pub fn multi_page_pdf(count: usize, attachments: &[Attachment]) -> Vec<u8> {
+    let mut doc = pdf_document(attachments);
+    let font_id = doc.add_object(dictionary! {
+        "Type" => "Font",
+        "Subtype" => "Type1",
+        "BaseFont" => "Helvetica",
+    });
+    let pages_id = doc
+        .catalog()
+        .expect("catalog")
+        .get(b"Pages")
+        .and_then(Object::as_reference)
+        .expect("pages");
+    let mut kids = Vec::new();
+    for n in 1..=count {
+        let mut content = format!("BT /F1 36 Tf 60 760 Td (Seite {n} von {count}) Tj ET\n");
+        for line in 0..40 {
+            content.push_str(&format!(
+                "BT /F1 6 Tf 60 {} Td (Kleingedrucktes Zeile {line}: Lieferung und Leistung gemaess Angebot, Zahlbar ohne Abzug.) Tj ET\n",
+                700 - line * 12
+            ));
+        }
+        let content_id = doc.add_object(Stream::new(dictionary! {}, content.into_bytes()));
+        let page_id = doc.add_object(dictionary! {
+            "Type" => "Page",
+            "Parent" => pages_id,
+            "MediaBox" => vec![0.into(), 0.into(), 595.into(), 842.into()],
+            "Contents" => content_id,
+            "Resources" => dictionary! { "Font" => dictionary! { "F1" => font_id } },
+        });
+        kids.push(Object::Reference(page_id));
+    }
+    doc.objects.insert(
+        pages_id,
+        Object::Dictionary(dictionary! {
+            "Type" => "Pages",
+            "Kids" => kids,
+            "Count" => i64::try_from(count).expect("count"),
+        }),
+    );
+    let mut bytes = Vec::new();
+    doc.save_to(&mut bytes).expect("save PDF");
+    bytes
+}
+
 /// Serialised one-page PDF with the given embedded files.
 pub fn pdf_with(attachments: &[Attachment]) -> Vec<u8> {
     save(&mut pdf_document(attachments))

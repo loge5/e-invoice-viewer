@@ -13,11 +13,12 @@ use e_invoice_viewer_core::validate::{Severity, Validation, Validator};
 use gtk::{gio, glib};
 
 use crate::fields_view::{FieldsView, ShowInXml, severity_class};
+use crate::pdf_pane::PdfPane;
 use crate::recent::RecentStore;
 use crate::texts::ValidationState;
 use crate::window_size::{self, MINIMUM_SIZE, WindowState};
 use crate::xml_pane::XmlPane;
-use crate::{attachments_view, local, pdf_view, texts};
+use crate::{attachments_view, local, texts};
 
 thread_local! {
     /// One validator per worker thread, so that the rules are compiled once
@@ -41,7 +42,7 @@ pub struct Window {
     stack: gtk::Stack,
     start_page: adw::StatusPage,
     pdf_pane: gtk::Stack,
-    pdf_picture: gtk::Picture,
+    pdf_view: PdfPane,
     note_slot: gtk::Box,
     fields_container: gtk::Box,
     view_stack: gtk::Stack,
@@ -101,19 +102,7 @@ impl Window {
             .child(&start_button)
             .build();
 
-        let pdf_picture = gtk::Picture::builder()
-            .can_shrink(true)
-            .content_fit(gtk::ContentFit::Contain)
-            .valign(gtk::Align::Start)
-            .margin_top(12)
-            .margin_bottom(12)
-            .margin_start(12)
-            .margin_end(12)
-            .build();
-        let pdf_scroller = gtk::ScrolledWindow::builder()
-            .hscrollbar_policy(gtk::PolicyType::Never)
-            .child(&pdf_picture)
-            .build();
+        let pdf_view = PdfPane::new();
         let pdf_message = adw::StatusPage::builder()
             .icon_name("image-missing-symbolic")
             .title(texts::PDF_NOT_RENDERABLE)
@@ -123,7 +112,7 @@ impl Window {
             .width_request(MINIMUM_PANE_WIDTH)
             .hexpand(true)
             .build();
-        pdf_pane.add_named(&pdf_scroller, Some("page"));
+        pdf_pane.add_named(pdf_view.widget(), Some("page"));
         pdf_pane.add_named(&pdf_message, Some("message"));
 
         let note_slot = gtk::Box::new(gtk::Orientation::Vertical, 0);
@@ -230,7 +219,7 @@ impl Window {
             stack,
             start_page,
             pdf_pane,
-            pdf_picture,
+            pdf_view,
             note_slot,
             fields_container,
             view_stack,
@@ -676,16 +665,9 @@ impl Window {
             return;
         };
         self.pdf_pane.set_visible(true);
-        match pdf_view::render_first_page(pdf) {
-            Some(texture) => {
-                self.pdf_picture.set_paintable(Some(&texture));
-                self.pdf_pane.set_visible_child_name("page");
-            }
-            None => {
-                self.pdf_picture.set_paintable(None::<&gtk::gdk::Paintable>);
-                self.pdf_pane.set_visible_child_name("message");
-            }
-        }
+        let shown = self.pdf_view.load(pdf);
+        self.pdf_pane
+            .set_visible_child_name(if shown { "page" } else { "message" });
     }
 
     fn set_fields(&self, content: gtk::Widget, note: Option<&str>) {
@@ -736,7 +718,7 @@ impl Window {
         self.title.set_subtitle("");
         self.close_button.set_visible(false);
         self.start_page.set_description(message);
-        self.pdf_picture.set_paintable(None::<&gtk::gdk::Paintable>);
+        self.pdf_view.clear();
         self.set_fields(gtk::Box::new(gtk::Orientation::Vertical, 0).upcast(), None);
         self.set_xml(None);
         self.stack.set_visible_child_name("start");

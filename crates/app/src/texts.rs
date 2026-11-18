@@ -233,6 +233,16 @@ pub fn assignment_text(model: &FieldModel, target: &Target) -> String {
     }
 }
 
+/// The page indicator of the PDF pane: `Seite 2 von 3` (page is 0-based).
+pub fn page_indicator_text(page: usize, count: usize) -> String {
+    format!("Seite {} von {count}", page + 1)
+}
+
+/// The zoom level of the PDF pane, e.g. `150 %`.
+pub fn zoom_text(percent: f64) -> String {
+    format!("{percent:.0} %")
+}
+
 /// Window title, with the file name while an invoice is shown.
 pub fn window_title(file_name: Option<&str>) -> String {
     match file_name {
@@ -694,5 +704,14 @@ mod tests {
             save_failed_message("stunden.csv", "Keine Berechtigung"),
             "Der Anhang stunden.csv konnte nicht gespeichert werden: Keine Berechtigung"
         );
+    }
+
+    // Spec 0016, AC2, AC4
+    #[test]
+    fn pdf_navigation_texts() {
+        assert_eq!(page_indicator_text(0, 3), "Seite 1 von 3");
+        assert_eq!(page_indicator_text(1, 3), "Seite 2 von 3");
+        assert_eq!(zoom_text(150.0), "150 %");
+        assert_eq!(zoom_text(87.4), "87 %");
     }
 }
