@@ -122,9 +122,8 @@ the app in German on an English desktop.
   `implemented`:
   - Open the main menu with the mouse and with F10 / arrow keys / Enter;
     the current choice is marked.
-  - In the XML view with the PDF at 150 % on page 2 of
-    `target/manual-0016/3-seiten.pdf`… (no invoice: use the Factur-X PDF of
-    sample A at 150 %): switching keeps the XML view, zoom and page.
+  - With the Factur-X PDF of sample A open in the XML view and the PDF at
+    150 %: switching keeps the XML view and the zoom.
   - Switch while `target/manual-0011/l.xml` is still being validated: the
     result appears in the new language.
 
