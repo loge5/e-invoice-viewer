@@ -1,7 +1,7 @@
 ---
 id: 0018
 title: App - user interface in German and English, following the system language
-status: draft
+status: reviewed
 created: 2026-11-18
 depends_on: [0017]
 ---
@@ -39,19 +39,32 @@ published.
       (`LANG=en_US.UTF-8`), it shows `Open an invoice` and `Open…`.
 - [ ] Given `LANG=fr_FR.UTF-8`, the app is in English; given
       `LANGUAGE=fr:de` with `LANG=fr_FR.UTF-8`, the app is in German (the
-      first supported preferred language).
-- [ ] Given CII sample A opened in English, the status line reads
-      `No findings`, the view switch reads `Fields` / `XML`, the field
-      sections and values are the English ones of 0017, and the PDF bar reads
-      `Page 1 of 1`.
+      first supported preferred language); given `LANG=C` or `LANG=POSIX`,
+      the app is in English.
+- [ ] Given the Factur-X PDF of sample A
+      (`target/manual-0013/a-mit-lieferschein.pdf`) opened in English, the
+      status line reads `No findings`, the view switch reads `Fields` / `XML`,
+      the field sections and values are the English ones of 0017, the PDF bar
+      reads `Page 1 of 1` (German: `Seite 1 von 1`), and the summary reads
+      `Checked against EN 16931 CII 1.3.17` (German: `Geprüft nach EN 16931
+      CII 1.3.17`); for CII sample B it reads `Checked against EN 16931 CII
+      1.3.17 and XRechnung 3.0.2`.
 - [ ] Given `target/manual-0011/b-version-2-3-without-bt10.xml` opened in
       English, the status line reads `1 error, 1 warning, 1 note` (German:
-      `1 Fehler, 1 Warnung, 1 Hinweis`), and a summary with two warnings
-      reads `2 warnings` (German: `2 Warnungen`).
+      `1 Fehler, 1 Warnung, 1 Hinweis`).
+- [ ] Counts read, in English and German:
+
+      | Findings | English | German |
+      |---|---|---|
+      | none | `No findings` | `Keine Befunde` |
+      | 2 warnings | `No errors, 2 warnings` | `Keine Fehler, 2 Warnungen` |
+      | 1 note | `No errors, 1 note` | `Keine Fehler, 1 Hinweis` |
+      | 3 errors, 2 notes | `3 errors, 2 notes` | `3 Fehler, 2 Hinweise` |
 - [ ] Error and notes in English, for example: opening a text file named
-      `notiz.txt` shows `The file notiz.txt cannot be read as an invoice: …`
-      (German: `Die Datei notiz.txt kann nicht als Rechnung gelesen werden:
-      …`); dropping two files shows `Only one file per window – the first one
+      `notiz.txt` with the content `Hallo` shows `The file notiz.txt cannot
+      be read as an invoice: XML is not well-formed (line 1)` (German: `Die
+      Datei notiz.txt kann nicht als Rechnung gelesen werden: XML ist nicht
+      wohlgeformt (Zeile 1)`); dropping two files shows `Only one file per window – the first one
       was opened`.
 - [ ] Attachments in English: a 24 600-byte PDF attachment shows
       `24.6 kB` (German: `24,6 kB`); a section without attachments reads
@@ -64,8 +77,9 @@ published.
 - [ ] Accessible names and tooltips are translated: in English the zoom
       buttons are named `Zoom in (Ctrl++)` and `Zoom out (Ctrl+-)`, the recent
       files button `Recently opened`.
-- [ ] The installed desktop entry has `Name=E-Invoice Viewer`, an English
-      generic name and comment, and German ones (`GenericName[de]=
+- [ ] The installed desktop entry has `Name=E-Invoice Viewer`,
+      `GenericName=Invoice viewer`, `Comment=View and check electronic
+      invoices (ZUGFeRD, Factur-X, XRechnung)`, and German ones (`GenericName[de]=
       Rechnungsbetrachter`, `Comment[de]=Elektronische Rechnungen (ZUGFeRD,
       Factur-X, XRechnung) ansehen und prüfen`); `desktop-file-validate`
       reports no error.
@@ -83,7 +97,9 @@ published.
 ## Notes
 
 - Review on 2026-11-18: the author decided on English as the fallback for
-  unsupported system languages.
+  unsupported system languages, and accepted the recommendations of the
+  review (PDF sample for the PDF bar, concrete desktop entry, error and count
+  texts, the rule set line, `LANG=C`).
 - The German texts stay exactly as they are today.
 - All time limits of earlier specs (opening within 2 s, …) still apply in
   both languages.

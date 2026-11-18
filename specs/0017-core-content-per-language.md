@@ -1,7 +1,7 @@
 ---
 id: 0017
 title: Core - invoice content in German and English
-status: draft
+status: reviewed
 created: 2026-11-18
 depends_on: [0004, 0005, 0006, 0009, 0010]
 ---
@@ -51,7 +51,7 @@ produced in **German** or **English**, chosen by the caller for each call:
       | Rechnung | Invoice |
       | Verkäufer (BG-4) | Seller (BG-4) |
       | Käufer (BG-7) | Buyer (BG-7) |
-      | Position 1 | Line 1 |
+      | Position 1 | Invoice line 1 |
       | Zahlung (BG-16) | Payment instructions (BG-16) |
       | Umsatzsteuer (BG-23) | VAT breakdown (BG-23) |
       | Summen (BG-22) | Document totals (BG-22) |
@@ -68,8 +68,8 @@ produced in **German** or **English**, chosen by the caller for each call:
       | BT-106 | Summe der Positionen netto | Sum of Invoice line net amount | 1.050,00 EUR | 1,050.00 EUR |
       | BT-112 | Rechnungsbetrag inkl. USt | Invoice total amount with VAT | 1.249,50 EUR | 1,249.50 EUR |
 
-- [ ] Code and unit names in English follow the official code list names
-      (UNTDID 1001, 4461, 5305, UN/ECE Recommendation 20), e.g. `381` →
+- [ ] Code and unit names in English are exactly those of the table
+      "English code and unit names" below, e.g. `381` →
       `Credit note (381)`, `S` → `Standard rate (S)`, `AE` →
       `VAT reverse charge (AE)`, `C62` → `2 pieces (C62)` (German `2 Stück (C62)`). Codes without a
       known name are shown as before (`2.5 XPP` in English, `2,5 XPP` in
@@ -111,16 +111,53 @@ produced in **German** or **English**, chosen by the caller for each call:
 ## Notes
 
 - Review on 2026-11-18: the author decided on the official EN 16931 names for
-  the English labels, accepting that they are longer than the German ones.
+  the English labels, accepting that they are longer than the German ones;
+  consequently the line section is `Invoice line 1` (BG-25 "Invoice line"),
+  and the code and unit names are given as a table.
 - The German texts stay exactly as they are today; the existing tests for
   German keep passing unchanged.
-- English code list names: UNTDID 1001 (`380` Commercial invoice, `381`
-  Credit note, `384` Corrected invoice, `389` Self-billed invoice, `326`
-  Partial invoice, `875`–`877` construction invoices), UNTDID 4461 (`10` In
-  cash, `30` Credit transfer, `58` SEPA credit transfer, `59` SEPA direct
-  debit, …), UNTDID 5305 (`S` Standard rate, `Z` Zero rated goods, `E` Exempt
-  from tax, `AE` VAT reverse charge, `K` Intra-community supply, `G` Export
-  outside the EU, `O` Outside the scope of VAT, `L` Canary Islands IGIC, `M`
-  Ceuta and Melilla IPSI), Rec. 20 (`C62`/`H87` pieces, `HUR` hours, `DAY`
-  days, `MON` months, `KGM` kilograms, `MTR` metres, `LTR` litres, `LS` lump
-  sum). Shortened where the official name is unwieldy, like the German ones.
+- **English code and unit names** (normative for the acceptance criteria).
+  They are the official names of the code lists in sentence case; names
+  marked * are shortened or adapted, as the German ones are:
+
+  | List | Code | English name |
+  |---|---|---|
+  | Invoice type (UNTDID 1001) | 326 | Partial invoice |
+  | | 380 | Commercial invoice |
+  | | 381 | Credit note |
+  | | 384 | Corrected invoice |
+  | | 389 | Self-billed invoice |
+  | | 875 | Partial construction invoice |
+  | | 876 | Partial final construction invoice |
+  | | 877 | Final construction invoice |
+  | Payment means (UNTDID 4461) | 1 | Instrument not defined |
+  | | 10 | In cash |
+  | | 20 | Cheque |
+  | | 30 | Credit transfer |
+  | | 42 | Payment to bank account |
+  | | 48 | Bank card |
+  | | 49 | Direct debit |
+  | | 54 | Credit card |
+  | | 57 | Standing agreement |
+  | | 58 | SEPA credit transfer |
+  | | 59 | SEPA direct debit |
+  | | 97 | Clearing between partners |
+  | VAT category (UNTDID 5305) | S | Standard rate |
+  | | Z | Zero rated goods |
+  | | E | Exempt from tax |
+  | | AE | VAT reverse charge |
+  | | K | Intra-community supply * |
+  | | G | Export outside the EU * |
+  | | O | Outside the scope of VAT * |
+  | | L | Canary Islands IGIC * |
+  | | M | Ceuta and Melilla IPSI * |
+  | Unit (UN/ECE Rec. 20) | C62, H87 | pieces * |
+  | | HUR | hours * |
+  | | DAY | days * |
+  | | MON | months * |
+  | | KGM | kilograms * |
+  | | MTR | metres * |
+  | | LTR | litres * |
+  | | LS | lump sum |
+
+  Units are in the plural, like the German ones (`Stunden`).

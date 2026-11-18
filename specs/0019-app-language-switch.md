@@ -1,7 +1,7 @@
 ---
 id: 0019
 title: App - switch the language in the app
-status: draft
+status: reviewed
 created: 2026-11-18
 depends_on: [0018]
 ---
@@ -29,6 +29,10 @@ the app in German on an English desktop.
   directory, independently of the window size and recent files (0012, 0015):
   if one of these settings cannot be read, the others still work. *System
   language* means the behaviour of 0018.
+- **Keyboard**: the language choice can be reached and used without a mouse.
+- **During validation**: if the language is changed while an invoice is being
+  validated, the result is shown in the new language. Notes (toasts) that are
+  already shown may stay in the old language.
 - **Robustness**: an unknown or damaged stored language falls back to the
   system language, with one warning in the log and no error dialog.
 - Choosing a language never opens a network connection and never writes
@@ -52,6 +56,13 @@ the app in German on an English desktop.
       starts in the system language, logs exactly one warning, shows no
       error dialog, and the recent files list and window size of 0012/0015
       still work.
+- [ ] With the keyboard only: F10 opens the main menu, the arrow keys reach
+      the language choice, Enter selects `English`, and the window is in
+      English.
+- [ ] Given a validation still running for `target/manual-0011/l.xml`, when
+      the user switches to English, then once the validation is done the
+      status line and summary read exactly as when `l.xml` is opened in
+      English from the start.
 - [ ] The setting is stored only in the app's configuration directory and
       contains no file names; it is written atomically like the settings of
       0015.
@@ -70,4 +81,6 @@ the app in German on an English desktop.
 - Review on 2026-11-18: the author decided that the switch takes effect
   immediately in all windows.
 - Where the choice lives in the window (e.g. a main menu in the header bar)
-  is left to the implementation; it must be reachable with the keyboard.
+  is left to the implementation.
+- The review on 2026-11-18 added keyboard use and the switch during a running
+  validation.
