@@ -13,6 +13,10 @@ pub struct Attachment<'a> {
     pub content: &'a [u8],
     /// Store the stream Flate-encoded instead of uncompressed.
     pub compressed: bool,
+    /// MIME type (`/Subtype` of the embedded file stream).
+    pub mime_type: Option<&'a str>,
+    /// File description (`/Desc` of the file specification).
+    pub description: Option<&'a str>,
 }
 
 impl<'a> Attachment<'a> {
@@ -21,14 +25,29 @@ impl<'a> Attachment<'a> {
             name,
             content,
             compressed: false,
+            mime_type: None,
+            description: None,
         }
     }
 
     pub fn compressed(name: &'a str, content: &'a [u8]) -> Self {
         Self {
-            name,
-            content,
             compressed: true,
+            ..Self::plain(name, content)
+        }
+    }
+
+    pub fn with_mime_type(self, mime_type: &'a str) -> Self {
+        Self {
+            mime_type: Some(mime_type),
+            ..self
+        }
+    }
+
+    pub fn with_description(self, description: &'a str) -> Self {
+        Self {
+            description: Some(description),
+            ..self
         }
     }
 }
@@ -77,10 +96,11 @@ pub fn pdf_document_with_text(text: Option<&str>, attachments: &[Attachment]) ->
 
     let mut name_tree = Vec::new();
     for attachment in attachments {
-        let mut stream = Stream::new(
-            dictionary! { "Type" => "EmbeddedFile" },
-            attachment.content.to_vec(),
-        );
+        let mut stream_dict = dictionary! { "Type" => "EmbeddedFile" };
+        if let Some(mime_type) = attachment.mime_type {
+            stream_dict.set("Subtype", Object::Name(mime_type.as_bytes().to_vec()));
+        }
+        let mut stream = Stream::new(stream_dict, attachment.content.to_vec());
         if attachment.compressed {
             stream.compress().expect("compress test stream");
             assert!(
@@ -89,12 +109,16 @@ pub fn pdf_document_with_text(text: Option<&str>, attachments: &[Attachment]) ->
             );
         }
         let stream_id = doc.add_object(stream);
-        let filespec_id = doc.add_object(dictionary! {
+        let mut filespec = dictionary! {
             "Type" => "Filespec",
             "F" => Object::string_literal(attachment.name),
             "UF" => Object::string_literal(attachment.name),
             "EF" => dictionary! { "F" => stream_id },
-        });
+        };
+        if let Some(description) = attachment.description {
+            filespec.set("Desc", Object::string_literal(description));
+        }
+        let filespec_id = doc.add_object(filespec);
         name_tree.push(Object::string_literal(attachment.name));
         name_tree.push(filespec_id.into());
     }

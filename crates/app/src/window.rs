@@ -5,6 +5,7 @@ use std::path::Path;
 use std::rc::Rc;
 
 use adw::prelude::*;
+use e_invoice_viewer_core::attachments::{self, Attachment, Content};
 use e_invoice_viewer_core::detect::DetectError;
 use e_invoice_viewer_core::document::{self, Document, Invoice};
 use e_invoice_viewer_core::validate::{Severity, Validation, Validator};
@@ -14,7 +15,7 @@ use crate::fields_view::{FieldsView, severity_class};
 use crate::recent::RecentStore;
 use crate::texts::ValidationState;
 use crate::xml_pane::XmlPane;
-use crate::{local, pdf_view, texts};
+use crate::{attachments_view, local, pdf_view, texts};
 
 thread_local! {
     /// One validator per worker thread, so that the rules are compiled once
@@ -408,6 +409,51 @@ impl Window {
         }
     }
 
+    /// The section "Anhänge" of the opened file (0013).
+    fn attachments_group(&self, bytes: &[u8]) -> adw::PreferencesGroup {
+        let list = Rc::new(attachments::list(bytes));
+        let this = self.clone();
+        let saved = list.clone();
+        attachments_view::group(&list, move |index| {
+            this.save_attachment(&saved[index], index + 1)
+        })
+    }
+
+    /// Saves an attachment where the user chooses; nothing is written
+    /// otherwise.
+    fn save_attachment(&self, attachment: &Attachment, position: usize) {
+        let Content::Embedded(content) = &attachment.content else {
+            return;
+        };
+        let content = glib::Bytes::from(content);
+        let name = attachment.display_name(position);
+        let dialog = gtk::FileDialog::builder()
+            .title(texts::SAVE_ATTACHMENT)
+            .modal(true)
+            .initial_name(attachment.proposed_file_name(position))
+            .build();
+        let this = self.clone();
+        glib::spawn_future_local(async move {
+            // Cancelling the dialog is not an error.
+            let Ok(file) = dialog.save_future(Some(&this.window)).await else {
+                return;
+            };
+            // Written to a temporary file and renamed, so that a failure
+            // leaves no partial file behind.
+            if let Err((_, error)) = file
+                .replace_contents_future(
+                    content,
+                    None,
+                    false,
+                    gio::FileCreateFlags::REPLACE_DESTINATION,
+                )
+                .await
+            {
+                this.notify(&texts::save_failed_message(&name, error.message()));
+            }
+        });
+    }
+
     /// Shows a message: in the start view, or as a note while an invoice
     /// stays shown.
     fn notify(&self, message: &str) {
@@ -426,10 +472,26 @@ impl Window {
         match document::open(bytes) {
             Ok(Document::Pdf { invoice }) => {
                 self.show_pdf_pane(Some(bytes));
+                let attachments = self.attachments_group(bytes);
                 match invoice {
-                    Some(invoice) => self.show_invoice(invoice, name, None),
+                    Some(invoice) => self.show_invoice(invoice, name, None, &attachments),
                     None => {
-                        self.set_fields(message_page(texts::NO_INVOICE_IN_PDF), None);
+                        // The PDF still shows what it embeds instead.
+                        let content = gtk::Box::builder()
+                            .orientation(gtk::Orientation::Vertical)
+                            .spacing(18)
+                            .margin_start(12)
+                            .margin_end(12)
+                            .margin_bottom(24)
+                            .build();
+                        content.append(&message_page(texts::NO_INVOICE_IN_PDF));
+                        content.append(&attachments);
+                        let scroller = gtk::ScrolledWindow::builder()
+                            .hscrollbar_policy(gtk::PolicyType::Never)
+                            .vexpand(true)
+                            .child(&content)
+                            .build();
+                        self.set_fields(scroller.upcast(), None);
                         self.set_xml(None);
                     }
                 }
@@ -437,7 +499,8 @@ impl Window {
             }
             Ok(Document::Xml { invoice }) => {
                 self.show_pdf_pane(None);
-                self.show_invoice(invoice, name, Some(texts::XML_ONLY_NOTE));
+                let attachments = self.attachments_group(bytes);
+                self.show_invoice(invoice, name, Some(texts::XML_ONLY_NOTE), &attachments);
                 self.show_document(name);
             }
             Err(error) => {
@@ -449,9 +512,15 @@ impl Window {
     }
 
     /// Shows the fields and XML of an invoice and starts validating it.
-    fn show_invoice(&self, invoice: Invoice, name: &str, note: Option<&str>) {
+    fn show_invoice(
+        &self,
+        invoice: Invoice,
+        name: &str,
+        note: Option<&str>,
+        attachments: &adw::PreferencesGroup,
+    ) {
         let Invoice { xml, fields } = invoice;
-        let view = FieldsView::new(fields);
+        let view = FieldsView::new(fields, attachments);
         self.set_fields(view.widget(), note);
         *self.fields_view.borrow_mut() = Some(view);
         self.set_xml(Some((&xml, name)));

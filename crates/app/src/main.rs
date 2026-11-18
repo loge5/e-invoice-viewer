@@ -1,5 +1,6 @@
 //! GTK4 / libadwaita application of E-Invoice Viewer (presentation only).
 
+mod attachments_view;
 mod fields_view;
 mod local;
 mod pdf_view;

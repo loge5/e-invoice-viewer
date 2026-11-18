@@ -1,5 +1,6 @@
 //! User-facing texts (German), kept free of GTK so they can be unit-tested.
 
+use e_invoice_viewer_core::attachments::{Attachment, Content, Source};
 use e_invoice_viewer_core::attribution::Target;
 use e_invoice_viewer_core::detect::DetectError;
 use e_invoice_viewer_core::document::OpenError;
@@ -24,6 +25,9 @@ pub const VALIDATION_TITLE: &str = "Prüfergebnis";
 pub const DOCUMENT_TARGET: &str = "Dokument";
 pub const VALIDATION_FAILED_REASON: &str = "interner Fehler bei der Prüfung";
 pub const RECENT_TITLE: &str = "Zuletzt geöffnet";
+pub const ATTACHMENTS_TITLE: &str = "Anhänge";
+pub const NO_ATTACHMENTS: &str = "Keine Anhänge";
+pub const SAVE_ATTACHMENT: &str = "Anhang speichern…";
 pub const RECENT_EMPTY: &str = "Keine Einträge";
 pub const DROP_ONLY_FIRST: &str = "Nur eine Datei pro Fenster – die erste wurde geöffnet";
 
@@ -161,6 +165,50 @@ pub fn not_local_message(uri: &str) -> String {
 /// Message for a recent entry whose file no longer exists.
 pub fn not_found_message(file_name: &str) -> String {
     format!("Die Datei {file_name} wurde nicht gefunden")
+}
+
+/// A file size the way the GNOME file manager shows it: decimal units with a
+/// German decimal comma, e.g. `24,6 kB`.
+pub fn size_text(bytes: usize) -> String {
+    const UNITS: [&str; 4] = ["kB", "MB", "GB", "TB"];
+    match bytes {
+        1 => "1 Byte".to_string(),
+        0..1000 => format!("{bytes} Bytes"),
+        _ => {
+            #[allow(clippy::cast_precision_loss)] // one decimal is shown
+            let mut value = bytes as f64 / 1000.0;
+            let mut unit = 0;
+            while value >= 999.95 && unit < UNITS.len() - 1 {
+                value /= 1000.0;
+                unit += 1;
+            }
+            format!("{value:.1} {}", UNITS[unit]).replace('.', ",")
+        }
+    }
+}
+
+/// The details line of an attachment: source, type, size or reason, and the
+/// description, e.g. `PDF · application/pdf · 24,6 kB · Lieferschein 4711`.
+pub fn attachment_details(attachment: &Attachment) -> String {
+    let source = match attachment.source {
+        Source::Pdf => "PDF",
+        Source::Invoice => "Rechnung (BG-24)",
+    };
+    let mime_type = attachment.mime_type.as_deref().unwrap_or("unbekannt");
+    let state = match &attachment.content {
+        Content::Embedded(content) => size_text(content.len()),
+        Content::External(address) => address.clone(),
+        Content::Unreadable => "Inhalt nicht lesbar".to_string(),
+        Content::TooLarge => "Zu groß (über 64 MB)".to_string(),
+    };
+    let mut parts = vec![source.to_string(), mime_type.to_string(), state];
+    parts.extend(attachment.description.clone());
+    parts.join(" · ")
+}
+
+/// Message when saving an attachment fails.
+pub fn save_failed_message(name: &str, reason: &str) -> String {
+    format!("Der Anhang {name} konnte nicht gespeichert werden: {reason}")
 }
 
 /// Window title, with the file name while an invoice is shown.
@@ -526,5 +574,57 @@ mod tests {
             "Die Datei alt.pdf wurde nicht gefunden"
         );
         assert_eq!(RECENT_TITLE, "Zuletzt geöffnet");
+    }
+
+    // Spec 0013 AC1
+    #[test]
+    fn size_texts() {
+        assert_eq!(size_text(1), "1 Byte");
+        assert_eq!(size_text(999), "999 Bytes");
+        assert_eq!(size_text(24_576), "24,6 kB");
+        assert_eq!(size_text(1_300_000), "1,3 MB");
+        assert_eq!(size_text(64 * 1024 * 1024), "67,1 MB");
+    }
+
+    // Spec 0013 AC1, AC6, AC7, AC9, AC10
+    #[test]
+    fn attachment_texts() {
+        let attachment = |mime_type: Option<&str>, content| Attachment {
+            name: Some("lieferschein.pdf".into()),
+            source: Source::Pdf,
+            mime_type: mime_type.map(str::to_string),
+            description: Some("Lieferschein 4711".into()),
+            content,
+        };
+        assert_eq!(
+            attachment_details(&attachment(
+                Some("application/pdf"),
+                Content::Embedded(vec![0; 24_576])
+            )),
+            "PDF · application/pdf · 24,6 kB · Lieferschein 4711"
+        );
+        assert_eq!(
+            attachment_details(&Attachment {
+                source: Source::Invoice,
+                description: None,
+                ..attachment(
+                    None,
+                    Content::External("https://example.com/stunden.csv".into())
+                )
+            }),
+            "Rechnung (BG-24) · unbekannt · https://example.com/stunden.csv"
+        );
+        assert!(
+            attachment_details(&attachment(None, Content::Unreadable))
+                .contains("Inhalt nicht lesbar")
+        );
+        assert!(
+            attachment_details(&attachment(None, Content::TooLarge))
+                .contains("Zu groß (über 64 MB)")
+        );
+        assert_eq!(
+            save_failed_message("stunden.csv", "Keine Berechtigung"),
+            "Der Anhang stunden.csv konnte nicht gespeichert werden: Keine Berechtigung"
+        );
     }
 }

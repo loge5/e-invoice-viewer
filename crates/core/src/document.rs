@@ -54,7 +54,7 @@ fn invoice(xml: Vec<u8>) -> Result<Invoice, OpenError> {
     Ok(Invoice { xml, fields })
 }
 
-fn is_pdf(bytes: &[u8]) -> bool {
+pub(crate) fn is_pdf(bytes: &[u8]) -> bool {
     bytes[..bytes.len().min(PDF_HEADER_WINDOW)]
         .windows(5)
         .any(|window| window == b"%PDF-")

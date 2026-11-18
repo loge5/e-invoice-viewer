@@ -1,7 +1,7 @@
 ---
 id: 0013
 title: List and save attachments of an invoice
-status: reviewed
+status: in-progress
 created: 2026-11-16
 depends_on: [0002, 0007]
 ---
@@ -105,8 +105,6 @@ fetches external addresses (BT-124).
 
 - Opening attachments with another application, previews of attachments.
 - Saving all attachments at once.
-- Attachments of UBL invoices: the app cannot open UBL before 0006. Their
-  BG-24 entries are listed like CII entries once 0006 is implemented.
 - Validating or scanning attachment content.
 
 ## Notes
@@ -118,3 +116,53 @@ fetches external addresses (BT-124).
 - Review on 2026-11-17: the author decided on the section placement before
   the validation summary, listing attachments of PDFs without an invoice,
   the GNOME size format and showing descriptions of PDF attachments.
+- Corrections (2026-11-18, during implementation):
+  - In EN 16931 the description of a supporting document is BT-123; BT-122
+    is its reference. The list shows BT-123, or BT-122 if there is no
+    description, so AC2 holds as written.
+  - 0006 was implemented first, so UBL BG-24 entries are listed too; the
+    out-of-scope item for UBL is dropped.
+  - BG-24 entries with neither embedded content nor an external address are
+    not listed (the requirement lists only those two kinds).
+
+## Progress
+
+- **Done**:
+  - Core `attachments.rs`: `list(bytes)` returns the PDF's embedded files
+    (except the invoice XML chosen by 0002), then the BG-24 entries of the
+    invoice XML (CII `AdditionalReferencedDocument` with type code 916, UBL
+    `AdditionalDocumentReference` except type code 130). Each has name,
+    source, MIME type, description and content (embedded, external address,
+    unreadable, too large). `display_name` and `proposed_file_name` clean
+    the name; base64 is decoded by an own decoder (no new dependency).
+  - `pdf.rs` reads description (`/Desc`) and MIME type (`/Subtype`) and
+    tells unreadable from too large. lopdf decodes damaged Flate streams
+    leniently (truncated or empty, no error); a mismatch with the declared
+    size (`/Params /Size`) or an empty result from a non-empty stream is
+    treated as unreadable. A damaged stream without a declared size whose
+    damage lopdf hides cannot be detected without a stricter decoder.
+  - App: section "Anhänge" (`attachments_view.rs`) before the validation
+    summary, also below the note of a PDF without invoice. Names and
+    descriptions are shown as plain text, never as markup. The save button
+    opens a save dialog with the proposed name; the file is written via
+    temporary file and rename; a failure shows the message as a note.
+- **Verified** (2026-11-18):
+  - `cargo test --workspace`: 152 passed; new: 12 tests in
+    `list_attachments.rs`, a base64 unit test, `size_texts` and
+    `attachment_texts`.
+  - `cargo fmt --all --check` and `cargo clippy --workspace --all-targets --
+    -D warnings` are clean.
+  - Smoke run with the samples in `target/manual-0013/` (written by `cargo
+    test -p e-invoice-viewer-core --test list_attachments -- --ignored
+    write_manual_samples`), read through AT-SPI: the attachment of the PDF,
+    the PDF without invoice with note and list, the three BG-24 entries
+    (size, external address, `Inhalt nicht lesbar`) and `Keine Anhänge`.
+- **Next** — manual checks by the author, then the author decides on
+  `implemented`:
+  - AC1/AC3: the section "Anhänge" in `a-mit-lieferschein.pdf` and `a.xml`.
+  - AC4/AC5: save `../../stunden.csv` from `a-mit-bg24.xml`: the dialog
+    proposes `stunden.csv`; the saved file contains two lines; cancelling
+    writes nothing.
+  - AC10: save into a folder without write permission: the message appears
+    and the invoice stays shown.
+

@@ -4,6 +4,7 @@
 //! (PDF with embedded XML, or plain XML), detecting syntax and profile, mapping
 //! to the field model and validation. See `ai-harness/guidelines/architecture.md`.
 
+pub mod attachments;
 pub mod attribution;
 pub mod detect;
 pub mod document;

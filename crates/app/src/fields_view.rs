@@ -46,8 +46,9 @@ struct FieldRow {
 }
 
 impl FieldsView {
-    /// Builds the scrollable list of all sections of the field model.
-    pub fn new(model: FieldModel) -> Self {
+    /// Builds the scrollable list of all sections of the field model, then
+    /// `attachments` (0013) and the validation summary.
+    pub fn new(model: FieldModel, attachments: &impl IsA<gtk::Widget>) -> Self {
         let content = gtk::Box::builder()
             .orientation(gtk::Orientation::Vertical)
             .spacing(18)
@@ -80,6 +81,8 @@ impl FieldsView {
             section_findings.push(findings);
             rows.push(section_rows);
         }
+
+        content.append(attachments);
 
         let summary_content = gtk::Box::builder()
             .orientation(gtk::Orientation::Vertical)

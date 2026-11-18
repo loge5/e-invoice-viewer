@@ -11,7 +11,7 @@ const INVOICE_FILE_NAMES: [&str; 3] = ["factur-x.xml", "xrechnung.xml", "zugferd
 
 /// Upper bound for a decompressed embedded file, protecting against
 /// decompression bombs.
-const MAX_EMBEDDED_FILE_SIZE: usize = 64 * 1024 * 1024;
+pub(crate) const MAX_EMBEDDED_FILE_SIZE: usize = 64 * 1024 * 1024;
 
 /// Upper bound for the nesting depth of the embedded-files name tree,
 /// protecting against malicious or cyclic trees.
@@ -46,25 +46,18 @@ pub enum ExtractError {
 /// Extracts the embedded invoice XML from the bytes of a PDF.
 pub fn extract_invoice_xml(pdf: &[u8]) -> Result<EmbeddedInvoice, ExtractError> {
     // The PDF parser must never take the application down, whatever the input.
-    let embedded = panic::catch_unwind(AssertUnwindSafe(|| embedded_files(pdf)))
-        .map_err(|_| ExtractError::NotReadablePdf)??;
+    let embedded = embedded_files_of(pdf)?;
 
-    let invoice = INVOICE_FILE_NAMES.iter().find_map(|wanted| {
-        embedded
-            .iter()
-            .find(|file| file.name.eq_ignore_ascii_case(wanted))
-    });
-
-    match invoice {
+    match invoice_file(&embedded).map(|index| &embedded[index]) {
         Some(file) => match &file.content {
-            Some(content) if !content.is_empty() => Ok(EmbeddedInvoice {
+            Ok(content) if !content.is_empty() => Ok(EmbeddedInvoice {
                 source_name: file.name.clone(),
                 xml: content.clone(),
             }),
-            Some(_) => Err(ExtractError::EmptyInvoice {
+            Ok(_) => Err(ExtractError::EmptyInvoice {
                 source_name: file.name.clone(),
             }),
-            None => Err(ExtractError::NotReadablePdf),
+            Err(_) => Err(ExtractError::NotReadablePdf),
         },
         None => Err(ExtractError::NoEmbeddedInvoice {
             embedded_files: embedded.into_iter().map(|file| file.name).collect(),
@@ -72,10 +65,36 @@ pub fn extract_invoice_xml(pdf: &[u8]) -> Result<EmbeddedInvoice, ExtractError> 
     }
 }
 
-/// An embedded file of the PDF. `content` is `None` if it cannot be read.
-struct EmbeddedFile {
-    name: String,
-    content: Option<Vec<u8>>,
+/// Index of the file that is the invoice XML, by name precedence.
+pub(crate) fn invoice_file(files: &[EmbeddedFile]) -> Option<usize> {
+    INVOICE_FILE_NAMES.iter().find_map(|wanted| {
+        files
+            .iter()
+            .position(|file| file.name.eq_ignore_ascii_case(wanted))
+    })
+}
+
+/// An embedded file of the PDF.
+pub(crate) struct EmbeddedFile {
+    pub name: String,
+    /// File description (`/Desc`), if any.
+    pub description: Option<String>,
+    /// MIME type (`/Subtype` of the stream), if any.
+    pub mime_type: Option<String>,
+    pub content: Result<Vec<u8>, ContentError>,
+}
+
+/// Why the content of an embedded file cannot be read.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub(crate) enum ContentError {
+    Unreadable,
+    TooLarge,
+}
+
+/// The embedded files of a PDF, in document order; never panics.
+pub(crate) fn embedded_files_of(pdf: &[u8]) -> Result<Vec<EmbeddedFile>, ExtractError> {
+    panic::catch_unwind(AssertUnwindSafe(|| embedded_files(pdf)))
+        .map_err(|_| ExtractError::NotReadablePdf)?
 }
 
 fn embedded_files(pdf: &[u8]) -> Result<Vec<EmbeddedFile>, ExtractError> {
@@ -136,22 +155,58 @@ fn read_filespec(doc: &Document, key: &str, filespec: &Object) -> EmbeddedFile {
         .map(pdf_text)
         .unwrap_or_else(|| key.to_string());
 
-    let content = filespec
+    let description = filespec
+        .and_then(|spec| spec.get(b"Desc").ok()?.as_str().ok())
+        .map(pdf_text)
+        .filter(|text| !text.trim().is_empty());
+
+    let stream = filespec
         .and_then(|spec| resolve_dict(doc, spec.get(b"EF").ok()))
         .and_then(|ef| ef.get(b"F").or_else(|_| ef.get(b"UF")).ok())
         .and_then(|stream| doc.dereference(stream).ok())
-        .and_then(|(_, stream)| stream.as_stream().ok())
-        .and_then(|stream| {
-            if stream.dict.has(b"Filter") {
-                stream
-                    .decompressed_content_with_limit(MAX_EMBEDDED_FILE_SIZE)
+        .and_then(|(_, stream)| stream.as_stream().ok());
+    let mime_type = stream
+        .and_then(|stream| stream.dict.get(b"Subtype").ok()?.as_name().ok())
+        .map(|name| String::from_utf8_lossy(name).into_owned())
+        .filter(|name| !name.is_empty());
+    let content = match stream {
+        None => Err(ContentError::Unreadable),
+        Some(stream) if stream.dict.has(b"Filter") => stream
+            .decompressed_content_with_limit(MAX_EMBEDDED_FILE_SIZE)
+            .map_err(|error| match error {
+                lopdf::Error::Decompress(lopdf::DecompressError::MemoryLimitExceeded {
+                    ..
+                }) => ContentError::TooLarge,
+                _ => ContentError::Unreadable,
+            })
+            .and_then(|content| {
+                // lopdf decodes leniently: a damaged stream gives a truncated
+                // or empty result instead of an error. The declared size, or
+                // an empty result from a non-empty stream, reveals it.
+                let declared = stream
+                    .dict
+                    .get(b"Params")
                     .ok()
-            } else {
-                Some(stream.content.clone())
-            }
-        });
+                    .and_then(|params| doc.dereference(params).ok())
+                    .and_then(|(_, params)| params.as_dict().ok())
+                    .and_then(|params| params.get(b"Size").ok()?.as_i64().ok());
+                let truncated =
+                    declared.is_some_and(|size| usize::try_from(size) != Ok(content.len()));
+                if truncated || (content.is_empty() && !stream.content.is_empty()) {
+                    Err(ContentError::Unreadable)
+                } else {
+                    Ok(content)
+                }
+            }),
+        Some(stream) => Ok(stream.content.clone()),
+    };
 
-    EmbeddedFile { name, content }
+    EmbeddedFile {
+        name,
+        description,
+        mime_type,
+        content,
+    }
 }
 
 fn resolve_dict<'a>(doc: &'a Document, object: Option<&'a Object>) -> Option<&'a Dictionary> {
