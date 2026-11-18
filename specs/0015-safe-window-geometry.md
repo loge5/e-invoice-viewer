@@ -1,7 +1,7 @@
 ---
 id: 0015
 title: Remember the window size safely
-status: draft
+status: reviewed
 created: 2026-11-16
 depends_on: [0007]
 ---
@@ -16,36 +16,90 @@ able to make the app unusable.
 
 ## Requirement
 
-When a window is closed, the app remembers its size and whether it was
-maximized. On the next start, a remembered size is applied only if it is
-plausible on the current screens; otherwise the default is used. The window
-position is not stored (the desktop places the window).
+The app remembers the **normal size** of a window: its size when it is
+neither maximized nor tiled (e.g. GNOME half-screen tiling). It also
+remembers whether the window was maximized. The window position is not stored
+(the desktop places the window).
+
+- **Saving.** The size is saved when a window is closed, and for every window
+  when the app is quit (Ctrl+Q). With several windows, the window closed last
+  wins.
+- **Applying.** Every new window opens with the remembered size and state:
+  the first one after the start as well as further windows (0012).
+- **Plausibility.** A remembered size is applied only if it is plausible on
+  the current screens:
+  - at least the minimum size of 0007 (900 × 600);
+  - at most the size of the largest connected monitor.
+
+  Otherwise the default size 1200 × 800 is used, reduced to the largest
+  monitor if that is smaller, but never below the minimum size. All sizes are
+  logical pixels, i.e. after display scaling.
+- **Robustness.** Saving never leaves a half-written settings file: if the app
+  is killed while saving, the previous valid value is kept. Unknown entries
+  in the stored settings are ignored. If the stored settings are empty or not
+  readable, the default applies, no error dialog is shown, and one warning is
+  logged.
+- **Storage.** Settings are stored only in the app's configuration directory,
+  never next to an invoice. They contain no file names of opened invoices.
+  The size settings and the recent list of 0012 are independent: if one of
+  them cannot be read, the other still works.
 
 ## Acceptance criteria
 
 - [ ] Given the user resizes the window to 1400 × 900 and closes it, then the
       next start opens the window at 1400 × 900.
+  - Given two windows, 1400 × 900 and 1000 × 700, when 1000 × 700 is closed
+    last, then the next window opens at 1000 × 700.
+  - Given a window at 1400 × 900, when the user presses Ctrl+Q, then the
+    next start opens at 1400 × 900.
 - [ ] Given the window was maximized when closed, then the next start opens it
       maximized, and un-maximizing returns to the last remembered normal size.
-- [ ] Given a stored size of 1 × 38, or a negative size, or a size larger than
-      the largest current monitor (e.g. 9000 × 9000 with a 3840 × 2160
-      monitor), then the next start uses the default size 1200 × 800 (or the
-      monitor size, whichever is smaller) and stores the corrected value on
-      close.
-- [ ] Given the stored settings file is empty or not parseable, then the app
-      starts with the default size, shows no error dialog, and logs one
-      warning.
-- [ ] Given the app crashes or is killed while being resized, then no
-      half-written settings file remains (the previous valid value is kept).
-- [ ] Settings are stored only in the app's configuration directory and
-      contain no file names of opened invoices other than the recent list from
-      0012.
+- [ ] Given a window of 1400 × 900 that the user tiles to the left half of the
+      screen and closes there, then the next start opens it untiled at
+      1400 × 900.
+- [ ] Given a single monitor of 3840 × 2160 at 100 % scaling, the stored size
+      is replaced by the default as follows:
+
+      | stored size | next start opens at |
+      |---|---|
+      | 1 × 38 | 1200 × 800 |
+      | -500 × 700 | 1200 × 800 |
+      | 800 × 500 (below the minimum) | 1200 × 800 |
+      | 9000 × 9000 | 1200 × 800 |
+      | 1400 × 900 | 1400 × 900 |
+
+  - Given the same monitor at 200 % scaling (1920 × 1080 logical), a stored
+    2400 × 1200 is replaced by 1200 × 800.
+  - Given a monitor of 1024 × 768 logical, the default becomes 1024 × 768.
+  - Given a monitor of 800 × 600 logical, the window opens at the minimum
+    size 900 × 600.
+  - After closing, the actually shown size is stored.
+- [ ] Given the stored settings file is empty, truncated or not parseable,
+      then the app starts with the default size, shows no error dialog, and
+      logs one warning. The recent list of 0012 is still shown.
+  - Given stored settings with an additional unknown entry, the remembered
+    size is applied.
+- [ ] Given the app is killed while it saves the settings, then no
+      half-written settings file remains, and the next start uses the
+      previous valid size.
+- [ ] Settings are stored only in the app's configuration directory. They
+      contain no file names of opened invoices.
 
 ## Out of scope
 
-- Remembering the window position, divider position or zoom level.
+- Remembering the window position, divider position, zoom level or the
+  selected view (fields or XML).
+- Fullscreen mode.
+- Restoring a tiled state.
 
 ## Notes
 
-- The plausibility rule and settings parsing are unit-tested; criteria 1 and 2
-  are verified manually.
+- The plausibility rule, the default calculation and the parsing of stored
+  settings are unit-tested. Saving, maximizing and tiling are verified
+  manually.
+- The largest monitor is used because the desktop decides where a window
+  appears; the app cannot know which monitor it will be.
+- Review on 2026-11-18: the author decided that the window closed last wins
+  and its size applies to every new window, that sizes below the minimum are
+  implausible, that the normal (untiled, unmaximized) size is remembered, and
+  that size settings and the recent list are independent.
