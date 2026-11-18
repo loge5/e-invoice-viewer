@@ -1,7 +1,7 @@
 ---
 id: 0020
 title: Packaging - AppImage, own icon and release workflow
-status: reviewed
+status: implemented
 created: 2026-11-18
 depends_on: [0012, 0019]
 ---
@@ -238,5 +238,7 @@ GitHub Actions workflow, and to give the app its own icon (see
   the AppImage on the desktop with file dialogs, language switch, dark style
   and Wayland (AC3); the icon at 16, 32 and 128 px, light and dark (AC7);
   the start time (AC10).
+- The author decided on `implemented` on 2026-11-18, before the first
+  workflow run on GitHub.
 - **Next**: AC9 – the workflow run on GitHub, once the author pushes a tag
   `v0.1.0`; the workflow logic itself is checked by the tests (T6).
