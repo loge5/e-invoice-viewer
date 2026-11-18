@@ -1,7 +1,7 @@
 ---
 id: 0015
 title: Remember the window size safely
-status: in-progress
+status: implemented
 created: 2026-11-16
 depends_on: [0007]
 ---
@@ -46,18 +46,18 @@ remembers whether the window was maximized. The window position is not stored
 
 ## Acceptance criteria
 
-- [ ] Given the user resizes the window to 1400 × 900 and closes it, then the
+- [x] Given the user resizes the window to 1400 × 900 and closes it, then the
       next start opens the window at 1400 × 900.
   - Given two windows, 1400 × 900 and 1000 × 700, when 1000 × 700 is closed
     last, then the next window opens at 1000 × 700.
   - Given a window at 1400 × 900, when the user presses Ctrl+Q, then the
     next start opens at 1400 × 900.
-- [ ] Given the window was maximized when closed, then the next start opens it
+- [x] Given the window was maximized when closed, then the next start opens it
       maximized, and un-maximizing returns to the last remembered normal size.
-- [ ] Given a window of 1400 × 900 that the user tiles to the left half of the
+- [x] Given a window of 1400 × 900 that the user tiles to the left half of the
       screen and closes there, then the next start opens it untiled at
       1400 × 900.
-- [ ] Given a single monitor of 3840 × 2160 at 100 % scaling, the stored size
+- [x] Given a single monitor of 3840 × 2160 at 100 % scaling, the stored size
       is replaced by the default as follows:
 
       | stored size | next start opens at |
@@ -74,15 +74,15 @@ remembers whether the window was maximized. The window position is not stored
   - Given a monitor of 800 × 600 logical, the window opens at the minimum
     size 900 × 600.
   - After closing, the actually shown size is stored.
-- [ ] Given the stored settings file is empty, truncated or not parseable,
+- [x] Given the stored settings file is empty, truncated or not parseable,
       then the app starts with the default size, shows no error dialog, and
       logs one warning. The recent list of 0012 is still shown.
   - Given stored settings with an additional unknown entry, the remembered
     size is applied.
-- [ ] Given the app is killed while it saves the settings, then no
+- [x] Given the app is killed while it saves the settings, then no
       half-written settings file remains, and the next start uses the
       previous valid size.
-- [ ] Settings are stored only in the app's configuration directory. They
+- [x] Settings are stored only in the app's configuration directory. They
       contain no file names of opened invoices.
 
 ## Out of scope
@@ -130,12 +130,5 @@ remembers whether the window was maximized. The window position is not stored
     1400 × 900; a stored 1 × 38 opens at 1200 × 800. Quitting through the
     application action (the same path as Ctrl+Q) stored 1400 × 900 and the
     corrected 1200 × 800.
-- **Next** — manual checks by the author, then the author decides on
-  `implemented`:
-  - AC1: resize to about 1400 × 900, close, reopen; with two windows of
-    different size, the one closed last wins; Ctrl+Q keeps the size.
-  - AC2: maximize, close, reopen: maximized; un-maximizing returns to the
-    normal size.
-  - AC3: tile the window to the left half (Super+←), close, reopen: untiled
-    at the size before tiling.
-
+- **Manually verified** by the author (2026-11-18):
+  - AC1–AC3: the size is remembered, also maximized and after tiling.

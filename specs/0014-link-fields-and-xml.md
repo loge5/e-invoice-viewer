@@ -1,7 +1,7 @@
 ---
 id: 0014
 title: Link fields and XML elements in both directions
-status: in-progress
+status: implemented
 created: 2026-11-16
 depends_on: [0008, 0011]
 ---
@@ -56,21 +56,21 @@ content shown there, also for invoices stored on a single line.
 Sample invoices are defined in [fixtures.md](../docs/fixtures.md); time limits
 refer to the reference machine in [requirements](../docs/requirements.md).
 
-- [ ] Given sample A, when the user chooses "Im XML zeigen" in the context
+- [x] Given sample A, when the user chooses "Im XML zeigen" in the context
       menu of BT-84, then the pane switches to the XML view, and the element
       holding `DE02120300000000202051` is scrolled into view and selected
       from start tag to end tag.
-- [ ] Given sample B, when the user chooses "Im XML zeigen" on BT-119 of the
+- [x] Given sample B, when the user chooses "Im XML zeigen" on BT-119 of the
       second "Umsatzsteuer (BG-23)" section, then the rate element of the
       second breakdown is selected, not the first.
-- [ ] Given sample A, "Im XML zeigen" on BT-131 of "Position 2" selects the
+- [x] Given sample A, "Im XML zeigen" on BT-131 of "Position 2" selects the
       net amount of the second line. "Im XML zeigen" on BT-130 places the
       cursor in the value of the `unitCode` attribute.
-- [ ] Given the XML view of sample A, when the cursor is placed inside the
+- [x] Given the XML view of sample A, when the cursor is placed inside the
       text of the invoice number element, then the assignment line shows
       `BT-1 Rechnungsnummer`; choosing "In Feldern zeigen" switches to the
       field view with BT-1 visible and highlighted for at least 2 s.
-- [ ] Given the XML view of sample A:
+- [x] Given the XML view of sample A:
 
       | cursor in | assignment line |
       |---|---|
@@ -83,18 +83,18 @@ refer to the reference machine in [requirements](../docs/requirements.md).
   - For `Verkäufer (BG-4)`, "In Feldern zeigen" scrolls to the section
     header and highlights it.
   - For `Kein Feld zugeordnet`, "In Feldern zeigen" is disabled.
-- [ ] Given CII sample B declaring XRechnung version 2.3 and without BT-10
+- [x] Given CII sample B declaring XRechnung version 2.3 and without BT-10
       (variants of 0010), when the user chooses "Im XML zeigen" on the
       summary entry `BR-DE-15` (`Dokument`), then the XML view selects the
       element at the finding's location.
   - Clicking the entry `BR-DE-21` still goes to BT-24 in the field view.
-- [ ] Given the single-line variant of sample L, "Im XML zeigen" on BT-131
+- [x] Given the single-line variant of sample L, "Im XML zeigen" on BT-131
       of "Position 500" selects the net amount of the 500th line, and the
       cursor there shows `BT-131 Nettobetrag · Position 500`.
-- [ ] Given sample L in the XML view, the assignment line is updated within
+- [x] Given sample L in the XML view, the assignment line is updated within
       100 ms after the cursor moves (manual check: hold an arrow key; the
       line follows without visible lag).
-- [ ] Given the XML view, the status line of 0011 still shows the validation
+- [x] Given the XML view, the status line of 0011 still shows the validation
       headline, unchanged by the cursor position.
 
 ## Out of scope
@@ -150,14 +150,6 @@ refer to the reference machine in [requirements](../docs/requirements.md).
     `BT-130 Einheit · Position 1` and `Verkäufer (BG-4)` (AC4, AC5).
   - Found and fixed in the smoke run: loading the XML view moved the cursor
     while the source was borrowed, which aborted the app.
-- **Next** — manual checks by the author, then the author decides on
-  `implemented`:
-  - AC1–AC3: "Im XML zeigen" on BT-84 (sample A), on BT-119 of the second
-    VAT breakdown (sample B), on BT-131 of "Position 2" and on BT-130.
-  - AC4/AC5: "In Feldern zeigen" for BT-1 and for `Verkäufer (BG-4)`.
-  - AC6: "Im XML zeigen" on the summary entry `BR-DE-15` of
-    `target/manual-0011/b-version-2-3-without-bt10.xml`, by right click and
-    by Shift+F10; a normal click on `BR-DE-21` still goes to BT-24.
-  - AC8: hold an arrow key in the XML view of `target/manual-0011/l.xml`;
-    the assignment line follows without visible lag.
-
+- **Manually verified** by the author (2026-11-18):
+  - AC1–AC3: "Im XML zeigen" works; AC4/AC5: "In Feldern zeigen" works;
+    AC6 and AC8 as expected.

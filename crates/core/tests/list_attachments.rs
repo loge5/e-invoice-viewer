@@ -2,7 +2,7 @@
 
 mod common;
 
-use common::{Attachment, fixture, pdf_document, pdf_with, replace_once};
+use common::{Attachment, fixture, pdf_document, pdf_with, pdf_with_text, replace_once};
 use e_invoice_viewer_core::attachments::{self, Content, Source};
 use e_invoice_viewer_core::document;
 use lopdf::Object;
@@ -289,16 +289,21 @@ fn write_manual_samples() {
     let dir = format!("{}/../../target/manual-0013", env!("CARGO_MANIFEST_DIR"));
     std::fs::create_dir_all(&dir).expect("create dir");
     let invoice = fixture("cii/sample-a.xml");
-    let content = lieferschein();
-    let with_attachment = pdf_with(&[
-        Attachment::plain("factur-x.xml", invoice.as_bytes()),
-        Attachment::plain("lieferschein.pdf", &content)
-            .with_mime_type("application/pdf")
-            .with_description("Lieferschein 4711"),
-    ]);
-    let without_invoice = pdf_with(&[
-        Attachment::compressed("lieferschein.pdf", &content).with_mime_type("application/pdf")
-    ]);
+    // A real PDF, so that the saved attachment can be opened.
+    let content = pdf_with_text("Lieferschein 4711", &[]);
+    let with_attachment = pdf_with_text(
+        "Rechnung 471102 (Beispiel A)",
+        &[
+            Attachment::plain("factur-x.xml", invoice.as_bytes()),
+            Attachment::plain("lieferschein.pdf", &content)
+                .with_mime_type("application/pdf")
+                .with_description("Lieferschein 4711"),
+        ],
+    );
+    let without_invoice = pdf_with_text(
+        "PDF ohne Rechnung",
+        &[Attachment::compressed("lieferschein.pdf", &content).with_mime_type("application/pdf")],
+    );
     let bg24 = cii_a_with(&format!(
         "{}{}{}",
         stunden_entry(&format!(

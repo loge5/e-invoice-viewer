@@ -1,7 +1,7 @@
 ---
 id: 0013
 title: List and save attachments of an invoice
-status: in-progress
+status: implemented
 created: 2026-11-16
 depends_on: [0002, 0007]
 ---
@@ -55,7 +55,7 @@ fetches external addresses (BT-124).
 
 ## Acceptance criteria
 
-- [ ] Given a Factur-X PDF that embeds `factur-x.xml` and `lieferschein.pdf`
+- [x] Given a Factur-X PDF that embeds `factur-x.xml` and `lieferschein.pdf`
       (24 576 bytes, type `application/pdf`), then the section "Anhänge"
       shows exactly one entry: `lieferschein.pdf`, source `PDF`, type
       `application/pdf`, size `24,6 kB`.
@@ -65,16 +65,16 @@ fetches external addresses (BT-124).
     0007 are shown, and "Anhänge" lists `lieferschein.pdf`.
   - Given a PDF that embeds `factur-x.xml` and `xrechnung.xml`, then
     `xrechnung.xml` is listed and `factur-x.xml` is not.
-- [ ] Given CII sample A with a BG-24 entry with BT-122 `Stundennachweis` and
+- [x] Given CII sample A with a BG-24 entry with BT-122 `Stundennachweis` and
       embedded content with file name `stunden.csv` and MIME type `text/csv`,
       then the list shows `stunden.csv`, source `Rechnung (BG-24)`, type
       `text/csv` and the description `Stundennachweis`.
-- [ ] Given an invoice without attachments, then the section "Anhänge" shows
+- [x] Given an invoice without attachments, then the section "Anhänge" shows
       only `Keine Anhänge`.
-- [ ] Given the user saves `stunden.csv`, then the save dialog proposes the
+- [x] Given the user saves `stunden.csv`, then the save dialog proposes the
       name `stunden.csv`, and the saved file is byte-identical to the decoded
       embedded content. Cancelling the dialog writes no file.
-- [ ] Proposed save names:
+- [x] Proposed save names:
 
       | attachment name | proposed name |
       |---|---|
@@ -85,19 +85,19 @@ fetches external addresses (BT-124).
 
   - The list shows the name without control and text-direction characters
     as well.
-- [ ] Given a BG-24 entry with only an external address
+- [x] Given a BG-24 entry with only an external address
       `https://example.com/stunden.csv` (BT-124) and no embedded content,
       then it is listed with the address as text and without a save action.
       The address is not opened or fetched.
-- [ ] Given a BG-24 entry whose embedded content is not valid Base64, or a
+- [x] Given a BG-24 entry whose embedded content is not valid Base64, or a
       PDF attachment that cannot be decompressed, then the entry is listed
       with the reason `Inhalt nicht lesbar` and without a save action.
       Opening the invoice still succeeds.
-- [ ] Given an attachment whose decoded content exceeds 64 MB, then it is
+- [x] Given an attachment whose decoded content exceeds 64 MB, then it is
       listed with `Zu groß (über 64 MB)` and without a save action.
-- [ ] Given an attachment without MIME type, then its type reads
+- [x] Given an attachment without MIME type, then its type reads
       `unbekannt`.
-- [ ] Given saving fails (e.g. the chosen folder is not writable), then the
+- [x] Given saving fails (e.g. the chosen folder is not writable), then the
       message `Der Anhang <name> konnte nicht gespeichert werden: <reason>`
       is shown, no partial file remains, and the invoice stays shown.
 
@@ -157,12 +157,10 @@ fetches external addresses (BT-124).
     write_manual_samples`), read through AT-SPI: the attachment of the PDF,
     the PDF without invoice with note and list, the three BG-24 entries
     (size, external address, `Inhalt nicht lesbar`) and `Keine Anhänge`.
-- **Next** — manual checks by the author, then the author decides on
-  `implemented`:
-  - AC1/AC3: the section "Anhänge" in `a-mit-lieferschein.pdf` and `a.xml`.
-  - AC4/AC5: save `../../stunden.csv` from `a-mit-bg24.xml`: the dialog
-    proposes `stunden.csv`; the saved file contains two lines; cancelling
-    writes nothing.
-  - AC10: save into a folder without write permission: the message appears
-    and the invoice stays shown.
-
+- **Manually verified** by the author (2026-11-18):
+  - AC1/AC3: `a-mit-lieferschein.pdf` and `a.xml` list the attachments as
+    expected. AC4/AC5: saving `stunden.csv` works. AC10: saving into a
+    write-protected folder shows the message.
+  - The manual samples now show text on the page and embed a real PDF as
+    `lieferschein.pdf`; before, the page was empty, which looked like an
+    error.
