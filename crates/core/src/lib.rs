@@ -11,6 +11,7 @@ pub mod document;
 pub mod fields;
 pub mod link;
 mod location;
+mod ns;
 pub mod pdf;
 pub mod validate;
 pub mod xml_view;

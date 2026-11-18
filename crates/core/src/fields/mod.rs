@@ -3,11 +3,13 @@
 
 mod cii;
 mod display;
+mod terms;
 mod ubl;
 
 use roxmltree::{Document, Node};
 use thiserror::Error;
 
+use crate::attachments::{self, Attachment};
 use crate::detect::{DetectError, Detection, Syntax, detect};
 use crate::location::Locations;
 use crate::xml_view::decode;
@@ -97,6 +99,12 @@ pub enum MapError {
 
 /// Builds the field model of an invoice XML.
 pub fn map_invoice(xml: &[u8]) -> Result<FieldModel, MapError> {
+    read_invoice(xml).map(|(model, _)| model)
+}
+
+/// The field model and the supporting documents (BG-24, spec 0013) of an
+/// invoice XML, from one parse.
+pub(crate) fn read_invoice(xml: &[u8]) -> Result<(FieldModel, Vec<Attachment>), MapError> {
     let detection = detect(xml)?;
     let syntax = match detection.syntax {
         Syntax::Cii => &cii::SYNTAX,
@@ -127,7 +135,30 @@ pub fn map_invoice(xml: &[u8]) -> Result<FieldModel, MapError> {
         .flatten()
         .flat_map(|def| map_section(root, def, &context))
         .collect();
-    Ok(FieldModel { sections })
+    let supporting = supporting_documents(root, &syntax.supporting_documents);
+    Ok((FieldModel { sections }, supporting))
+}
+
+/// The supporting documents with embedded content or an external address.
+fn supporting_documents(root: Node, def: &SupportingDocumentsDef) -> Vec<Attachment> {
+    find_all(root, def.anchor)
+        .into_iter()
+        .filter_map(|node| {
+            let text = |path| {
+                find_all(node, path)
+                    .first()
+                    .and_then(|child| child.text())
+                    .map(str::trim)
+                    .filter(|text| !text.is_empty())
+                    .map(str::to_string)
+            };
+            attachments::supporting_document(
+                find_all(node, def.binary).first().copied(),
+                text(def.address),
+                def.description.iter().find_map(|path| text(path)),
+            )
+        })
+        .collect()
 }
 
 /// The namespace prefixes of locations in `syntax`.
@@ -148,6 +179,19 @@ struct SyntaxDef {
     /// Groups of sections in display order: header (0004), lines (0005),
     /// trailer.
     sections: &'static [&'static [SectionDef]],
+    supporting_documents: SupportingDocumentsDef,
+}
+
+/// Where the additional supporting documents (BG-24) are.
+struct SupportingDocumentsDef {
+    /// From the root to each supporting document.
+    anchor: &'static [Step],
+    /// The attached document (BT-125).
+    binary: &'static [Step],
+    /// The external address (BT-124).
+    address: &'static [Step],
+    /// Candidates for the description; the first with text is used.
+    description: &'static [&'static [Step]],
 }
 
 /// One step of a path: an element with namespace and local name (or one of
@@ -170,6 +214,10 @@ enum Condition {
     ChildText(&'static [Step], &'static str),
     /// The element reached along the path exists and has another text.
     OtherChildText(&'static [Step], &'static str),
+    /// The element reached along the path is missing or has another text.
+    NotChildText(&'static [Step], &'static str),
+    /// An element is reached along the path.
+    HasChild(&'static [Step]),
 }
 
 impl Step {
@@ -222,6 +270,8 @@ impl Condition {
             Self::Attribute(name, value) => node.attribute(name) == Some(value),
             Self::ChildText(path, value) => text_at(path).is_some_and(|text| text == value),
             Self::OtherChildText(path, value) => text_at(path).is_some_and(|text| text != value),
+            Self::NotChildText(path, value) => text_at(path).is_none_or(|text| text != value),
+            Self::HasChild(path) => !find_all(node, path).is_empty(),
         }
     }
 }
@@ -244,10 +294,22 @@ enum Format {
     SpecificationIdentifier,
 }
 
-/// A business term and where to find it, relative to its section anchor.
-struct FieldDef {
+/// A business term: its number and German label.
+#[derive(Debug, Clone, Copy)]
+struct Term {
     id: &'static str,
     label: &'static str,
+}
+
+impl Term {
+    const fn new(id: &'static str, label: &'static str) -> Self {
+        Self { id, label }
+    }
+}
+
+/// A business term and where to find it, relative to its section anchor.
+struct FieldDef {
+    term: Term,
     path: &'static [Step],
     format: Format,
     /// All matches become fields (e.g. BT-22), instead of only the first.
@@ -257,6 +319,43 @@ struct FieldDef {
     /// The path starts at the root element instead of the section anchor
     /// (e.g. UBL BT-110, which is outside the monetary total).
     absolute: bool,
+}
+
+/// A field with the first value found at `path`.
+const fn field(term: Term, path: &'static [Step], format: Format) -> FieldDef {
+    FieldDef {
+        term,
+        path,
+        format,
+        repeatable: false,
+        attribute: None,
+        absolute: false,
+    }
+}
+
+/// A field for every value found at `path` (e.g. BT-22).
+const fn repeatable(term: Term, path: &'static [Step], format: Format) -> FieldDef {
+    FieldDef {
+        repeatable: true,
+        ..field(term, path, format)
+    }
+}
+
+/// A field whose value is the attribute `attribute` of the element at `path`.
+const fn from_attribute(term: Term, path: &'static [Step], attribute: &'static str) -> FieldDef {
+    FieldDef {
+        attribute: Some(attribute),
+        ..field(term, path, Format::Text)
+    }
+}
+
+/// A field whose path starts at the root element instead of the section
+/// anchor (e.g. UBL BT-110, which is outside the monetary total).
+const fn absolute(term: Term, path: &'static [Step], format: Format) -> FieldDef {
+    FieldDef {
+        absolute: true,
+        ..field(term, path, format)
+    }
 }
 
 /// A section and the element(s) it is anchored at.
@@ -327,8 +426,8 @@ fn map_field(anchor: Node, def: &FieldDef, context: &Context) -> Vec<Field> {
             }
             .to_string();
             Field {
-                id: def.id.to_string(),
-                label: def.label.to_string(),
+                id: def.term.id.to_string(),
+                label: def.term.label.to_string(),
                 display: display_value(&raw, node, def.format, context),
                 location: context.locations.of(node).to_string(),
                 attribute: def.attribute.map(str::to_string),

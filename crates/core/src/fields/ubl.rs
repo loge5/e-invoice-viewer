@@ -4,23 +4,20 @@
 //! (`cii.rs`); only the paths differ. Paths follow the UBL syntax binding of
 //! EN 16931.
 
-use super::{Condition, FieldDef, Format, SectionDef, Step, SyntaxDef};
-
-const UBL: &str = "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2";
-const CN: &str = "urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2";
-const CAC: &str = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2";
-const CBC: &str = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2";
+use super::terms::*;
+use super::{
+    Condition, Format, SectionDef, Step, SupportingDocumentsDef, SyntaxDef, absolute, field,
+    from_attribute, repeatable,
+};
+use crate::ns::{CAC, CBC, EXT, UBL_CREDIT_NOTE, UBL_INVOICE};
 
 /// Namespace prefixes used in locations, as in the EN 16931 UBL rules.
 const PREFIXES: &[(&str, &str)] = &[
-    ("ubl", UBL),
-    ("cn", CN),
+    ("ubl", UBL_INVOICE),
+    ("cn", UBL_CREDIT_NOTE),
     ("cac", CAC),
     ("cbc", CBC),
-    (
-        "ext",
-        "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2",
-    ),
+    ("ext", EXT),
 ];
 
 /// The UBL mapping.
@@ -28,6 +25,15 @@ pub const SYNTAX: SyntaxDef = SyntaxDef {
     prefixes: PREFIXES,
     currency_path: CURRENCY_PATH,
     sections: &[HEADER_SECTIONS, LINE_SECTIONS, TRAILER_SECTIONS],
+    supporting_documents: SupportingDocumentsDef {
+        // The same element holds the invoiced object identifier (BT-18,
+        // type code 130), which is not an attachment.
+        anchor: &[cac("AdditionalDocumentReference")
+            .with(Condition::NotChildText(&[cbc("DocumentTypeCode")], "130"))],
+        binary: &[cac("Attachment"), cbc("EmbeddedDocumentBinaryObject")],
+        address: &[cac("Attachment"), cac("ExternalReference"), cbc("URI")],
+        description: &[&[cbc("DocumentDescription")], &[cbc("ID")]],
+    },
 };
 
 const fn cac(name: &'static str) -> Step {
@@ -36,61 +42,6 @@ const fn cac(name: &'static str) -> Step {
 
 const fn cbc(name: &'static str) -> Step {
     Step::new(CBC, name)
-}
-
-const fn field(
-    id: &'static str,
-    label: &'static str,
-    path: &'static [Step],
-    format: Format,
-) -> FieldDef {
-    FieldDef {
-        id,
-        label,
-        path,
-        format,
-        repeatable: false,
-        attribute: None,
-        absolute: false,
-    }
-}
-
-const fn repeatable(
-    id: &'static str,
-    label: &'static str,
-    path: &'static [Step],
-    format: Format,
-) -> FieldDef {
-    FieldDef {
-        repeatable: true,
-        ..field(id, label, path, format)
-    }
-}
-
-/// A field whose path starts at the root element, not at the section anchor.
-const fn absolute(
-    id: &'static str,
-    label: &'static str,
-    path: &'static [Step],
-    format: Format,
-) -> FieldDef {
-    FieldDef {
-        absolute: true,
-        ..field(id, label, path, format)
-    }
-}
-
-/// A field whose value is the attribute `attribute` of the element at `path`.
-const fn from_attribute(
-    id: &'static str,
-    label: &'static str,
-    path: &'static [Step],
-    attribute: &'static str,
-) -> FieldDef {
-    FieldDef {
-        attribute: Some(attribute),
-        ..field(id, label, path, Format::Text)
-    }
 }
 
 /// Path from the root to the invoice currency (BT-5), used for amounts.
@@ -108,164 +59,90 @@ const CONTACT: Step = cac("Contact");
 
 const HEADER_SECTIONS: &[SectionDef] = &[
     SectionDef {
-        title: "Rechnung",
+        title: INVOICE,
         anchor: &[],
         repeatable: false,
         title_suffix: None,
         fields: &[
-            field("BT-1", "Rechnungsnummer", &[cbc("ID")], Format::Text),
+            field(BT_1, &[cbc("ID")], Format::Text),
+            field(BT_2, &[cbc("IssueDate")], Format::IsoDate),
             field(
-                "BT-2",
-                "Rechnungsdatum",
-                &[cbc("IssueDate")],
-                Format::IsoDate,
-            ),
-            field(
-                "BT-3",
-                "Rechnungsart",
+                BT_3,
                 &[cbc("InvoiceTypeCode").or("CreditNoteTypeCode")],
                 Format::InvoiceType,
             ),
-            field("BT-5", "Währung", CURRENCY_PATH, Format::Text),
+            field(BT_5, CURRENCY_PATH, Format::Text),
             // Invoice: cbc:DueDate; credit note: in the payment means.
+            field(BT_9, &[cbc("DueDate")], Format::IsoDate),
             field(
-                "BT-9",
-                "Fälligkeitsdatum",
-                &[cbc("DueDate")],
-                Format::IsoDate,
-            ),
-            field(
-                "BT-9",
-                "Fälligkeitsdatum",
+                BT_9,
                 &[cac("PaymentMeans"), cbc("PaymentDueDate")],
                 Format::IsoDate,
             ),
+            field(BT_10, &[cbc("BuyerReference")], Format::Text),
             field(
-                "BT-10",
-                "Käuferreferenz",
-                &[cbc("BuyerReference")],
-                Format::Text,
-            ),
-            field(
-                "BT-24",
-                "Spezifikationskennung",
+                BT_24,
                 &[cbc("CustomizationID")],
                 Format::SpecificationIdentifier,
             ),
-            repeatable("BT-22", "Bemerkung", &[cbc("Note")], Format::Text),
+            repeatable(BT_22, &[cbc("Note")], Format::Text),
         ],
     },
     SectionDef {
-        title: "Verkäufer (BG-4)",
+        title: SELLER,
         anchor: &[cac("AccountingSupplierParty"), cac("Party")],
         repeatable: false,
         title_suffix: None,
         fields: &[
             field(
-                "BT-27",
-                "Name",
+                BT_27,
                 &[LEGAL_ENTITY, cbc("RegistrationName")],
                 Format::Text,
             ),
             field(
-                "BT-29",
-                "Kennung",
+                BT_29,
                 &[cac("PartyIdentification"), cbc("ID")],
                 Format::Text,
             ),
+            field(BT_31, &[VAT_SCHEME, cbc("CompanyID")], Format::Text),
+            field(BT_32, &[OTHER_TAX_SCHEME, cbc("CompanyID")], Format::Text),
+            field(BT_35, &[ADDRESS, cbc("StreetName")], Format::Text),
+            field(BT_36, &[ADDRESS, cbc("AdditionalStreetName")], Format::Text),
+            field(BT_38, &[ADDRESS, cbc("PostalZone")], Format::Text),
+            field(BT_37, &[ADDRESS, cbc("CityName")], Format::Text),
             field(
-                "BT-31",
-                "Umsatzsteuer-ID",
-                &[VAT_SCHEME, cbc("CompanyID")],
-                Format::Text,
-            ),
-            field(
-                "BT-32",
-                "Steuernummer",
-                &[OTHER_TAX_SCHEME, cbc("CompanyID")],
-                Format::Text,
-            ),
-            field(
-                "BT-35",
-                "Straße",
-                &[ADDRESS, cbc("StreetName")],
-                Format::Text,
-            ),
-            field(
-                "BT-36",
-                "Adresszusatz",
-                &[ADDRESS, cbc("AdditionalStreetName")],
-                Format::Text,
-            ),
-            field("BT-38", "PLZ", &[ADDRESS, cbc("PostalZone")], Format::Text),
-            field("BT-37", "Ort", &[ADDRESS, cbc("CityName")], Format::Text),
-            field(
-                "BT-40",
-                "Land",
+                BT_40,
                 &[ADDRESS, cac("Country"), cbc("IdentificationCode")],
                 Format::Text,
             ),
-            field(
-                "BT-41",
-                "Kontaktperson",
-                &[CONTACT, cbc("Name")],
-                Format::Text,
-            ),
-            field(
-                "BT-42",
-                "Telefon",
-                &[CONTACT, cbc("Telephone")],
-                Format::Text,
-            ),
-            field(
-                "BT-43",
-                "E-Mail",
-                &[CONTACT, cbc("ElectronicMail")],
-                Format::Text,
-            ),
+            field(BT_41, &[CONTACT, cbc("Name")], Format::Text),
+            field(BT_42, &[CONTACT, cbc("Telephone")], Format::Text),
+            field(BT_43, &[CONTACT, cbc("ElectronicMail")], Format::Text),
         ],
     },
     SectionDef {
-        title: "Käufer (BG-7)",
+        title: BUYER,
         anchor: &[cac("AccountingCustomerParty"), cac("Party")],
         repeatable: false,
         title_suffix: None,
         fields: &[
             field(
-                "BT-44",
-                "Name",
+                BT_44,
                 &[LEGAL_ENTITY, cbc("RegistrationName")],
                 Format::Text,
             ),
             field(
-                "BT-46",
-                "Kennung",
+                BT_46,
                 &[cac("PartyIdentification"), cbc("ID")],
                 Format::Text,
             ),
+            field(BT_48, &[VAT_SCHEME, cbc("CompanyID")], Format::Text),
+            field(BT_50, &[ADDRESS, cbc("StreetName")], Format::Text),
+            field(BT_51, &[ADDRESS, cbc("AdditionalStreetName")], Format::Text),
+            field(BT_53, &[ADDRESS, cbc("PostalZone")], Format::Text),
+            field(BT_52, &[ADDRESS, cbc("CityName")], Format::Text),
             field(
-                "BT-48",
-                "Umsatzsteuer-ID",
-                &[VAT_SCHEME, cbc("CompanyID")],
-                Format::Text,
-            ),
-            field(
-                "BT-50",
-                "Straße",
-                &[ADDRESS, cbc("StreetName")],
-                Format::Text,
-            ),
-            field(
-                "BT-51",
-                "Adresszusatz",
-                &[ADDRESS, cbc("AdditionalStreetName")],
-                Format::Text,
-            ),
-            field("BT-53", "PLZ", &[ADDRESS, cbc("PostalZone")], Format::Text),
-            field("BT-52", "Ort", &[ADDRESS, cbc("CityName")], Format::Text),
-            field(
-                "BT-55",
-                "Land",
+                BT_55,
                 &[ADDRESS, cac("Country"), cbc("IdentificationCode")],
                 Format::Text,
             ),
@@ -279,70 +156,41 @@ const LINE_TAX: [Step; 2] = [ITEM, cac("ClassifiedTaxCategory")];
 
 /// One section per invoice (or credit note) line, BG-25.
 const LINE_SECTIONS: &[SectionDef] = &[SectionDef {
-    title: "Position",
+    title: LINE,
     anchor: &[cac("InvoiceLine").or("CreditNoteLine")],
     repeatable: true,
     title_suffix: Some(&[cbc("ID")]),
     fields: &[
-        field("BT-126", "Positionsnummer", &[cbc("ID")], Format::Text),
-        repeatable("BT-127", "Positionsbemerkung", &[cbc("Note")], Format::Text),
-        field("BT-153", "Artikelname", &[ITEM, cbc("Name")], Format::Text),
+        field(BT_126, &[cbc("ID")], Format::Text),
+        repeatable(BT_127, &[cbc("Note")], Format::Text),
+        field(BT_153, &[ITEM, cbc("Name")], Format::Text),
+        field(BT_154, &[ITEM, cbc("Description")], Format::Text),
         field(
-            "BT-154",
-            "Artikelbeschreibung",
-            &[ITEM, cbc("Description")],
-            Format::Text,
-        ),
-        field(
-            "BT-155",
-            "Artikelnummer",
+            BT_155,
             &[ITEM, cac("SellersItemIdentification"), cbc("ID")],
             Format::Text,
         ),
-        field("BT-129", "Menge", &QUANTITY, Format::Quantity),
-        from_attribute("BT-130", "Einheit", &QUANTITY, "unitCode"),
+        field(BT_129, &QUANTITY, Format::Quantity),
+        from_attribute(BT_130, &QUANTITY, "unitCode"),
+        field(BT_146, &[cac("Price"), cbc("PriceAmount")], Format::Amount),
         field(
-            "BT-146",
-            "Nettopreis",
-            &[cac("Price"), cbc("PriceAmount")],
-            Format::Amount,
-        ),
-        field(
-            "BT-149",
-            "Basismenge",
+            BT_149,
             &[cac("Price"), cbc("BaseQuantity")],
             Format::Quantity,
         ),
+        field(BT_131, &[cbc("LineExtensionAmount")], Format::Amount),
         field(
-            "BT-131",
-            "Nettobetrag",
-            &[cbc("LineExtensionAmount")],
-            Format::Amount,
-        ),
-        field(
-            "BT-151",
-            "Steuerkategorie",
+            BT_151,
             &[LINE_TAX[0], LINE_TAX[1], cbc("ID")],
             Format::VatCategory,
         ),
         field(
-            "BT-152",
-            "Steuersatz",
+            BT_152,
             &[LINE_TAX[0], LINE_TAX[1], cbc("Percent")],
             Format::Text,
         ),
-        field(
-            "BT-128",
-            "Objektkennung",
-            &[cac("DocumentReference"), cbc("ID")],
-            Format::Text,
-        ),
-        field(
-            "BT-133",
-            "Buchungsreferenz des Käufers",
-            &[cbc("AccountingCost")],
-            Format::Text,
-        ),
+        field(BT_128, &[cac("DocumentReference"), cbc("ID")], Format::Text),
+        field(BT_133, &[cbc("AccountingCost")], Format::Text),
     ],
 }];
 
@@ -352,39 +200,30 @@ const MONETARY_TOTAL: Step = cac("LegalMonetaryTotal");
 
 const TRAILER_SECTIONS: &[SectionDef] = &[
     SectionDef {
-        title: "Zahlung (BG-16)",
+        title: PAYMENT,
         // The payment terms of UBL are outside the payment means.
         anchor: &[],
         repeatable: false,
         title_suffix: None,
         fields: &[
             field(
-                "BT-81",
-                "Zahlungsart",
+                BT_81,
                 &[PAYMENT_MEANS, cbc("PaymentMeansCode")],
                 Format::PaymentMeans,
             ),
+            field(BT_83, &[PAYMENT_MEANS, cbc("PaymentID")], Format::Text),
             field(
-                "BT-83",
-                "Verwendungszweck",
-                &[PAYMENT_MEANS, cbc("PaymentID")],
-                Format::Text,
-            ),
-            field(
-                "BT-84",
-                "IBAN",
+                BT_84,
                 &[PAYMENT_MEANS, PAYEE_ACCOUNT, cbc("ID")],
                 Format::Iban,
             ),
             field(
-                "BT-85",
-                "Kontoinhaber",
+                BT_85,
                 &[PAYMENT_MEANS, PAYEE_ACCOUNT, cbc("Name")],
                 Format::Text,
             ),
             field(
-                "BT-86",
-                "BIC",
+                BT_86,
                 &[
                     PAYMENT_MEANS,
                     PAYEE_ACCOUNT,
@@ -393,113 +232,55 @@ const TRAILER_SECTIONS: &[SectionDef] = &[
                 ],
                 Format::Text,
             ),
-            field(
-                "BT-20",
-                "Zahlungsbedingungen",
-                &[cac("PaymentTerms"), cbc("Note")],
-                Format::Text,
-            ),
+            field(BT_20, &[cac("PaymentTerms"), cbc("Note")], Format::Text),
         ],
     },
     SectionDef {
-        title: "Umsatzsteuer (BG-23)",
+        title: VAT_BREAKDOWN,
         anchor: &[cac("TaxTotal"), cac("TaxSubtotal")],
         repeatable: true,
         title_suffix: None,
         fields: &[
+            field(BT_116, &[cbc("TaxableAmount")], Format::Amount),
+            field(BT_117, &[cbc("TaxAmount")], Format::Amount),
             field(
-                "BT-116",
-                "Steuerbasisbetrag",
-                &[cbc("TaxableAmount")],
-                Format::Amount,
-            ),
-            field(
-                "BT-117",
-                "Steuerbetrag",
-                &[cbc("TaxAmount")],
-                Format::Amount,
-            ),
-            field(
-                "BT-118",
-                "Steuerkategorie",
+                BT_118,
                 &[cac("TaxCategory"), cbc("ID")],
                 Format::VatCategory,
             ),
+            field(BT_119, &[cac("TaxCategory"), cbc("Percent")], Format::Text),
             field(
-                "BT-119",
-                "Steuersatz",
-                &[cac("TaxCategory"), cbc("Percent")],
-                Format::Text,
-            ),
-            field(
-                "BT-120",
-                "Befreiungsgrund",
+                BT_120,
                 &[cac("TaxCategory"), cbc("TaxExemptionReason")],
                 Format::Text,
             ),
         ],
     },
     SectionDef {
-        title: "Summen (BG-22)",
+        title: TOTALS,
         anchor: &[MONETARY_TOTAL],
         repeatable: false,
         title_suffix: None,
         fields: &[
-            field(
-                "BT-106",
-                "Summe der Positionen netto",
-                &[cbc("LineExtensionAmount")],
-                Format::Amount,
-            ),
-            field(
-                "BT-107",
-                "Summe der Nachlässe",
-                &[cbc("AllowanceTotalAmount")],
-                Format::Amount,
-            ),
-            field(
-                "BT-108",
-                "Summe der Zuschläge",
-                &[cbc("ChargeTotalAmount")],
-                Format::Amount,
-            ),
-            field(
-                "BT-109",
-                "Gesamtbetrag netto",
-                &[cbc("TaxExclusiveAmount")],
-                Format::Amount,
-            ),
-            // The total VAT amount is outside the monetary total.
+            field(BT_106, &[cbc("LineExtensionAmount")], Format::Amount),
+            field(BT_107, &[cbc("AllowanceTotalAmount")], Format::Amount),
+            field(BT_108, &[cbc("ChargeTotalAmount")], Format::Amount),
+            field(BT_109, &[cbc("TaxExclusiveAmount")], Format::Amount),
+            // The total VAT amount is outside the monetary total, in the
+            // VAT total with the breakdown; a VAT total in accounting
+            // currency (BT-111) has none.
             absolute(
-                "BT-110",
-                "Umsatzsteuer gesamt",
-                &[cac("TaxTotal"), cbc("TaxAmount")],
+                BT_110,
+                &[
+                    cac("TaxTotal").with(Condition::HasChild(&[cac("TaxSubtotal")])),
+                    cbc("TaxAmount"),
+                ],
                 Format::Amount,
             ),
-            field(
-                "BT-112",
-                "Rechnungsbetrag inkl. USt",
-                &[cbc("TaxInclusiveAmount")],
-                Format::Amount,
-            ),
-            field(
-                "BT-113",
-                "Vorauszahlung",
-                &[cbc("PrepaidAmount")],
-                Format::Amount,
-            ),
-            field(
-                "BT-114",
-                "Rundungsbetrag",
-                &[cbc("PayableRoundingAmount")],
-                Format::Amount,
-            ),
-            field(
-                "BT-115",
-                "Zahlbetrag",
-                &[cbc("PayableAmount")],
-                Format::Amount,
-            ),
+            field(BT_112, &[cbc("TaxInclusiveAmount")], Format::Amount),
+            field(BT_113, &[cbc("PrepaidAmount")], Format::Amount),
+            field(BT_114, &[cbc("PayableRoundingAmount")], Format::Amount),
+            field(BT_115, &[cbc("PayableAmount")], Format::Amount),
         ],
     },
 ];

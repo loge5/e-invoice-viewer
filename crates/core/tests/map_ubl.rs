@@ -270,3 +270,19 @@ fn ubl_grand_total_findings_go_to_bt112_and_bt115() {
     assert_eq!(target_of("BR-CO-15"), "Summen (BG-22) BT-112");
     assert_eq!(target_of("BR-CO-16"), "Summen (BG-22) BT-115");
 }
+
+// BT-110 is the VAT total with the breakdown, not the VAT total in
+// accounting currency (BT-111), whichever comes first.
+#[test]
+fn vat_total_ignores_accounting_currency_total() {
+    let xml = replace_once(
+        &fixture("ubl/sample-a.xml"),
+        "  <cac:TaxTotal>\n",
+        "  <cac:TaxTotal>\n    <cbc:TaxAmount currencyID=\"USD\">215.00</cbc:TaxAmount>\n  </cac:TaxTotal>\n  <cac:TaxTotal>\n",
+    );
+    let model = model(&xml);
+    let bt110 = field(section(&model, "Summen (BG-22)"), "BT-110");
+
+    assert_eq!(bt110.raw, "199.50");
+    assert_eq!(bt110.location, "/ubl:Invoice/cac:TaxTotal[2]/cbc:TaxAmount");
+}

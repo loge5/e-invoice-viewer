@@ -1,23 +1,10 @@
 //! Attachments of an invoice (spec 0013): files embedded in the PDF and
 //! additional supporting documents of the invoice XML (BG-24).
 
-use roxmltree::{Document, Node};
+use roxmltree::Node;
 
 pub use crate::pdf::ContentError;
 use crate::pdf::{EmbeddedFile, MAX_EMBEDDED_FILE_SIZE};
-use crate::xml_view::decode;
-
-const RSM: &str = "urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100";
-const RAM: &str =
-    "urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100";
-const CAC: &str = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2";
-const CBC: &str = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2";
-
-/// Document type code of an additional supporting document in CII (BG-24).
-const SUPPORTING_DOCUMENT: &str = "916";
-/// Document type code of the invoiced object identifier (BT-18), which UBL
-/// stores in the same element as BG-24.
-const INVOICED_OBJECT: &str = "130";
 
 /// Where an attachment comes from.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -108,51 +95,10 @@ fn is_visible(c: char) -> bool {
         )
 }
 
-/// The BG-24 entries of an invoice XML (CII or UBL) with embedded content or
-/// an external address.
-pub(crate) fn of_invoice(xml: &[u8]) -> Vec<Attachment> {
-    let Ok(text) = decode(xml) else {
-        return Vec::new();
-    };
-    let Ok(doc) = Document::parse(&text) else {
-        return Vec::new();
-    };
-    let root = doc.root_element();
-    if root.tag_name().namespace() == Some(RSM) {
-        children(root, RSM, "SupplyChainTradeTransaction")
-            .flat_map(|node| children(node, RAM, "ApplicableHeaderTradeAgreement"))
-            .flat_map(|node| children(node, RAM, "AdditionalReferencedDocument"))
-            .filter(|node| text_of(*node, RAM, "TypeCode").as_deref() == Some(SUPPORTING_DOCUMENT))
-            .filter_map(|node| {
-                entry(
-                    child(node, RAM, "AttachmentBinaryObject"),
-                    text_of(node, RAM, "URIID"),
-                    text_of(node, RAM, "Name").or_else(|| text_of(node, RAM, "IssuerAssignedID")),
-                )
-            })
-            .collect()
-    } else {
-        children(root, CAC, "AdditionalDocumentReference")
-            .filter(|node| {
-                text_of(*node, CBC, "DocumentTypeCode").as_deref() != Some(INVOICED_OBJECT)
-            })
-            .filter_map(|node| {
-                let attachment = child(node, CAC, "Attachment");
-                entry(
-                    attachment.and_then(|a| child(a, CBC, "EmbeddedDocumentBinaryObject")),
-                    attachment
-                        .and_then(|a| child(a, CAC, "ExternalReference"))
-                        .and_then(|reference| text_of(reference, CBC, "URI")),
-                    text_of(node, CBC, "DocumentDescription").or_else(|| text_of(node, CBC, "ID")),
-                )
-            })
-            .collect()
-    }
-}
-
-/// An attachment from its binary object (BT-125), external address (BT-124)
-/// and description; `None` if it has neither content nor address.
-fn entry(
+/// A supporting document (BG-24) from its binary object (BT-125), external
+/// address (BT-124) and description; `None` if it has neither content nor
+/// address.
+pub(crate) fn supporting_document(
     binary: Option<Node>,
     address: Option<String>,
     description: Option<String>,
@@ -181,34 +127,6 @@ fn entry(
         description,
         content,
     })
-}
-
-fn children<'a, 'input>(
-    node: Node<'a, 'input>,
-    namespace: &'static str,
-    name: &'static str,
-) -> impl Iterator<Item = Node<'a, 'input>> {
-    node.children().filter(move |child| {
-        child.is_element()
-            && child.tag_name().namespace() == Some(namespace)
-            && child.tag_name().name() == name
-    })
-}
-
-fn child<'a, 'input>(
-    node: Node<'a, 'input>,
-    namespace: &'static str,
-    name: &'static str,
-) -> Option<Node<'a, 'input>> {
-    children(node, namespace, name).next()
-}
-
-fn text_of(node: Node, namespace: &'static str, name: &'static str) -> Option<String> {
-    child(node, namespace, name)
-        .and_then(|child| child.text())
-        .map(str::trim)
-        .filter(|text| !text.is_empty())
-        .map(str::to_string)
 }
 
 /// Decodes base64 (standard alphabet, padded; whitespace is ignored).

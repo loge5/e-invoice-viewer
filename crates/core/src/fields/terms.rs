@@ -1,0 +1,76 @@
+//! The business terms shown as fields, the same for CII and UBL: number and
+//! German label.
+
+use super::Term;
+
+pub(super) const BT_1: Term = Term::new("BT-1", "Rechnungsnummer");
+pub(super) const BT_2: Term = Term::new("BT-2", "Rechnungsdatum");
+pub(super) const BT_3: Term = Term::new("BT-3", "Rechnungsart");
+pub(super) const BT_5: Term = Term::new("BT-5", "Währung");
+pub(super) const BT_9: Term = Term::new("BT-9", "Fälligkeitsdatum");
+pub(super) const BT_10: Term = Term::new("BT-10", "Käuferreferenz");
+pub(super) const BT_20: Term = Term::new("BT-20", "Zahlungsbedingungen");
+pub(super) const BT_22: Term = Term::new("BT-22", "Bemerkung");
+pub(super) const BT_24: Term = Term::new("BT-24", "Spezifikationskennung");
+pub(super) const BT_27: Term = Term::new("BT-27", "Name");
+pub(super) const BT_29: Term = Term::new("BT-29", "Kennung");
+pub(super) const BT_31: Term = Term::new("BT-31", "Umsatzsteuer-ID");
+pub(super) const BT_32: Term = Term::new("BT-32", "Steuernummer");
+pub(super) const BT_35: Term = Term::new("BT-35", "Straße");
+pub(super) const BT_36: Term = Term::new("BT-36", "Adresszusatz");
+pub(super) const BT_37: Term = Term::new("BT-37", "Ort");
+pub(super) const BT_38: Term = Term::new("BT-38", "PLZ");
+pub(super) const BT_40: Term = Term::new("BT-40", "Land");
+pub(super) const BT_41: Term = Term::new("BT-41", "Kontaktperson");
+pub(super) const BT_42: Term = Term::new("BT-42", "Telefon");
+pub(super) const BT_43: Term = Term::new("BT-43", "E-Mail");
+pub(super) const BT_44: Term = Term::new("BT-44", "Name");
+pub(super) const BT_46: Term = Term::new("BT-46", "Kennung");
+pub(super) const BT_48: Term = Term::new("BT-48", "Umsatzsteuer-ID");
+pub(super) const BT_50: Term = Term::new("BT-50", "Straße");
+pub(super) const BT_51: Term = Term::new("BT-51", "Adresszusatz");
+pub(super) const BT_52: Term = Term::new("BT-52", "Ort");
+pub(super) const BT_53: Term = Term::new("BT-53", "PLZ");
+pub(super) const BT_55: Term = Term::new("BT-55", "Land");
+pub(super) const BT_81: Term = Term::new("BT-81", "Zahlungsart");
+pub(super) const BT_83: Term = Term::new("BT-83", "Verwendungszweck");
+pub(super) const BT_84: Term = Term::new("BT-84", "IBAN");
+pub(super) const BT_85: Term = Term::new("BT-85", "Kontoinhaber");
+pub(super) const BT_86: Term = Term::new("BT-86", "BIC");
+pub(super) const BT_106: Term = Term::new("BT-106", "Summe der Positionen netto");
+pub(super) const BT_107: Term = Term::new("BT-107", "Summe der Nachlässe");
+pub(super) const BT_108: Term = Term::new("BT-108", "Summe der Zuschläge");
+pub(super) const BT_109: Term = Term::new("BT-109", "Gesamtbetrag netto");
+pub(super) const BT_110: Term = Term::new("BT-110", "Umsatzsteuer gesamt");
+pub(super) const BT_112: Term = Term::new("BT-112", "Rechnungsbetrag inkl. USt");
+pub(super) const BT_113: Term = Term::new("BT-113", "Vorauszahlung");
+pub(super) const BT_114: Term = Term::new("BT-114", "Rundungsbetrag");
+pub(super) const BT_115: Term = Term::new("BT-115", "Zahlbetrag");
+pub(super) const BT_116: Term = Term::new("BT-116", "Steuerbasisbetrag");
+pub(super) const BT_117: Term = Term::new("BT-117", "Steuerbetrag");
+pub(super) const BT_118: Term = Term::new("BT-118", "Steuerkategorie");
+pub(super) const BT_119: Term = Term::new("BT-119", "Steuersatz");
+pub(super) const BT_120: Term = Term::new("BT-120", "Befreiungsgrund");
+pub(super) const BT_126: Term = Term::new("BT-126", "Positionsnummer");
+pub(super) const BT_127: Term = Term::new("BT-127", "Positionsbemerkung");
+pub(super) const BT_128: Term = Term::new("BT-128", "Objektkennung");
+pub(super) const BT_129: Term = Term::new("BT-129", "Menge");
+pub(super) const BT_130: Term = Term::new("BT-130", "Einheit");
+pub(super) const BT_131: Term = Term::new("BT-131", "Nettobetrag");
+pub(super) const BT_133: Term = Term::new("BT-133", "Buchungsreferenz des Käufers");
+pub(super) const BT_146: Term = Term::new("BT-146", "Nettopreis");
+pub(super) const BT_149: Term = Term::new("BT-149", "Basismenge");
+pub(super) const BT_151: Term = Term::new("BT-151", "Steuerkategorie");
+pub(super) const BT_152: Term = Term::new("BT-152", "Steuersatz");
+pub(super) const BT_153: Term = Term::new("BT-153", "Artikelname");
+pub(super) const BT_154: Term = Term::new("BT-154", "Artikelbeschreibung");
+pub(super) const BT_155: Term = Term::new("BT-155", "Artikelnummer");
+
+// Section titles.
+pub(super) const INVOICE: &str = "Rechnung";
+pub(super) const SELLER: &str = "Verkäufer (BG-4)";
+pub(super) const BUYER: &str = "Käufer (BG-7)";
+pub(super) const LINE: &str = "Position";
+pub(super) const PAYMENT: &str = "Zahlung (BG-16)";
+pub(super) const VAT_BREAKDOWN: &str = "Umsatzsteuer (BG-23)";
+pub(super) const TOTALS: &str = "Summen (BG-22)";

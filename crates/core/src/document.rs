@@ -2,8 +2,8 @@
 
 use thiserror::Error;
 
-use crate::attachments::{self, Attachment};
-use crate::fields::{FieldModel, MapError, map_invoice};
+use crate::attachments::Attachment;
+use crate::fields::{FieldModel, MapError, read_invoice};
 use crate::pdf::{ExtractError, read_embedded};
 
 /// PDF readers accept the header anywhere in the first 1024 bytes.
@@ -78,8 +78,7 @@ pub fn open(bytes: &[u8]) -> Result<Document, OpenError> {
 }
 
 fn invoice(xml: Vec<u8>) -> Result<Invoice, OpenError> {
-    let fields = map_invoice(&xml)?;
-    let attachments = attachments::of_invoice(&xml);
+    let (fields, attachments) = read_invoice(&xml)?;
     Ok(Invoice {
         xml,
         fields,

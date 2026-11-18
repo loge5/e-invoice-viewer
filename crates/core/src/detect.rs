@@ -3,14 +3,12 @@
 use roxmltree::{Document, Node};
 use thiserror::Error;
 
+use crate::ns::{
+    CBC as CBC_NS, RAM as RAM_NS, RSM as CII_NS, UBL_CREDIT_NOTE as UBL_CREDIT_NOTE_NS,
+    UBL_INVOICE as UBL_INVOICE_NS,
+};
 use crate::xml_view::decode;
 
-const CII_NS: &str = "urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100";
-const RAM_NS: &str =
-    "urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100";
-const UBL_INVOICE_NS: &str = "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2";
-const UBL_CREDIT_NOTE_NS: &str = "urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2";
-const CBC_NS: &str = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2";
 const ZUGFERD_1_NS: &str = "urn:ferd:CrossIndustryDocument:invoice:1p0";
 
 /// Invoice type codes (BT-3) that denote a credit note.
