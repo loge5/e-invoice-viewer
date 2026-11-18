@@ -75,20 +75,20 @@ GitHub Actions workflow, and to give the app its own icon (see
 
 ## Acceptance criteria
 
-- [ ] Given a checkout with Docker available, when `scripts/appimage.sh` runs,
+- [x] Given a checkout with Docker available, when `scripts/appimage.sh` runs,
       then `target/appimage/E-Invoice_Viewer-0.1.0-x86_64.AppImage` exists, is
       executable, belongs to the user and is at most 80 MB.
   - Given a wrong SHA-256 for a downloaded tool, the script stops with a
     message naming the tool, exit code not 0, and no AppImage.
   - Two runs from the same commit give AppImages whose extracted files are
     identical (names and contents).
-- [ ] Given clean containers of `ubuntu:24.04`, `debian:13`, `fedora:43` and
+- [x] Given clean containers of `ubuntu:24.04`, `debian:13`, `fedora:43` and
       `archlinux`, each with only Mesa (OpenGL/EGL/GLES), fontconfig, one
       font, the shared MIME database, a virtual display and D-Bus installed, when the AppImage is started with
       `--appimage-extract-and-run` and CII sample A (`sample-a.xml`) and the
       Factur-X PDF of sample A are opened, then the app shows them, and
       `ldd` reports no missing library for any library in the AppImage.
-- [ ] Given the AppImage on the author's desktop, when sample A
+- [x] Given the AppImage on the author's desktop, when sample A
       (`target/manual-0013/a-mit-lieferschein.pdf`) is opened through the file
       dialog, then it shows the same as the installed build: `No findings` /
       `Keine Befunde`, the fields, the PDF page, the attachment
@@ -98,24 +98,24 @@ GitHub Actions workflow, and to give the app its own icon (see
   - The language switch works, and the choice is shared with the installed
     build (same settings directory).
   - With the desktop in dark style, the app is dark.
-- [ ] Given the AppImage opening sample A and validating it, then no
+- [x] Given the AppImage opening sample A and validating it, then no
       `AF_INET` or `AF_INET6` socket is opened (`strace -f -e trace=socket`),
       and the files it writes (`strace -f -e trace=openat,creat,rename`) are
       the same as those of the installed build doing the same, apart from the
       AppImage's own mount point.
-- [ ] Given `data/de.loges.EInvoiceViewer.desktop`, then
+- [x] Given `data/de.loges.EInvoiceViewer.desktop`, then
       `desktop-file-validate` reports no error; given
       `data/de.loges.EInvoiceViewer.metainfo.xml`, then
       `appstreamcli validate --no-net` reports no error.
-- [ ] Given `scripts/install.sh`, then the installed desktop entry is the one
+- [x] Given `scripts/install.sh`, then the installed desktop entry is the one
       from `data/` with the binary's path, has `Icon=de.loges.EInvoiceViewer`,
       the icon is installed under
       `~/.local/share/icons/hicolor/scalable/apps/`, and the app grid and the
       window list show the new icon (manual check); `--uninstall` removes the
       icon as well.
-- [ ] The icon is recognisable at 16, 32 and 128 px, in light and dark style
+- [x] The icon is recognisable at 16, 32 and 128 px, in light and dark style
       (manual check by the author).
-- [ ] Given the AppImage, then it contains the list of bundled packages with
+- [x] Given the AppImage, then it contains the list of bundled packages with
       version, licence and source location, and every bundled library belongs
       to a package on the list.
 - [ ] Given the workflow file, then a check of its logic shows: it runs
@@ -125,7 +125,7 @@ GitHub Actions workflow, and to give the app its own icon (see
       `Cargo.toml` fails before building; all actions are pinned by commit
       hash. The run on GitHub is a manual check by the author, who pushes the
       tag.
-- [ ] The app starts from the AppImage within 2 s on the reference machine,
+- [x] The app starts from the AppImage within 2 s on the reference machine,
       like the installed build (0007).
 
 ## Out of scope
@@ -234,8 +234,9 @@ GitHub Actions workflow, and to give the app its own icon (see
     T2); `cargo fmt`, `clippy -D warnings` and the architecture check are
     clean.
 - **Manually verified** by the author (2026-11-18): after
-  `scripts/install.sh`, the app grid and the dash show the new icon (AC6).
-- **Next**: manual checks by the author: AC3 (AppImage on the desktop, file
-  dialogs, language, dark style, Wayland), AC7 (icon sizes, light and
-  dark), AC10 (start time on the reference machine),
-  and AC9 (workflow run on GitHub after pushing a tag).
+  `scripts/install.sh`, the app grid and the dash show the new icon (AC6);
+  the AppImage on the desktop with file dialogs, language switch, dark style
+  and Wayland (AC3); the icon at 16, 32 and 128 px, light and dark (AC7);
+  the start time (AC10).
+- **Next**: AC9 – the workflow run on GitHub, once the author pushes a tag
+  `v0.1.0`; the workflow logic itself is checked by the tests (T6).
