@@ -32,7 +32,6 @@ pub struct FieldsView {
 
 struct Inner {
     model: FieldModel,
-    show_in_xml: ShowInXml,
     scroller: gtk::ScrolledWindow,
     content: gtk::Box,
     groups: Vec<adw::PreferencesGroup>,
@@ -41,6 +40,8 @@ struct Inner {
     rows: Vec<Vec<FieldRow>>,
     summary: adw::PreferencesGroup,
     summary_content: gtk::Box,
+    /// The context menu of the summary entries, one for all of them.
+    entry_menu: gtk::PopoverMenu,
 }
 
 struct FieldRow {
@@ -79,11 +80,7 @@ impl FieldsView {
                 .selection_mode(gtk::SelectionMode::None)
                 .css_classes(["boxed-list"])
                 .build();
-            let section_rows: Vec<FieldRow> = section
-                .fields
-                .iter()
-                .map(|field| field_row(field, &show_in_xml))
-                .collect();
+            let section_rows: Vec<FieldRow> = section.fields.iter().map(field_row).collect();
             for field_row in &section_rows {
                 list.append(&field_row.row);
             }
@@ -117,11 +114,15 @@ impl FieldsView {
             .vexpand(true)
             .child(&clamp)
             .build();
+        scroller.insert_action_group("view", Some(&view_actions(&show_in_xml)));
+        // Parented to the content box, which lives as long as the view.
+        let entry_menu = gtk::PopoverMenu::from_model(None::<&gio::MenuModel>);
+        entry_menu.set_has_arrow(false);
+        entry_menu.set_parent(&content);
 
         Self {
             inner: Rc::new(Inner {
                 model,
-                show_in_xml,
                 scroller,
                 content,
                 groups,
@@ -129,6 +130,7 @@ impl FieldsView {
                 rows,
                 summary,
                 summary_content,
+                entry_menu,
             }),
         }
     }
@@ -236,10 +238,13 @@ impl FieldsView {
                 .css_classes(["boxed-list"])
                 .build();
             let mut targets = Vec::new();
+            let mut locations = Vec::new();
             for (finding, target) in entries {
                 list.append(&self.summary_row(finding, target));
                 targets.push(*target);
+                locations.push(finding.location.clone());
             }
+            self.add_entry_menu(&list, locations);
             let view = self.clone();
             list.connect_row_activated(move |_, row| {
                 if let Some(target) = usize::try_from(row.index())
@@ -293,8 +298,75 @@ impl FieldsView {
             .activatable(jumpable)
             .build();
         set_accessible_text(&row, &format!("{} · {place}", texts::finding_text(finding)));
-        add_show_in_xml_menu(&row, &self.inner.show_in_xml, &finding.location);
         row
+    }
+
+    /// "Im XML zeigen" for the entries of a summary list, opened by a right
+    /// click, the menu key or Shift+F10 (0014).
+    fn add_entry_menu(&self, list: &gtk::ListBox, locations: Vec<String>) {
+        let locations = Rc::new(locations);
+        let click = gtk::GestureClick::builder()
+            .button(gtk::gdk::BUTTON_SECONDARY)
+            .build();
+        let (view, shown_list, at) = (self.clone(), list.clone(), locations.clone());
+        click.connect_pressed(move |_, _, x, y| {
+            // Truncation to whole pixels is intended.
+            #[allow(clippy::cast_possible_truncation)]
+            let Some(row) = shown_list.row_at_y(y as i32) else {
+                return;
+            };
+            let point = graphene::Point::new(x as f32, y as f32);
+            if let Some(point) = shown_list.compute_point(&view.inner.content, &point) {
+                #[allow(clippy::cast_possible_truncation)]
+                let place = gtk::gdk::Rectangle::new(point.x() as i32, point.y() as i32, 1, 1);
+                view.open_entry_menu(&at, &row, place);
+            }
+        });
+        list.add_controller(click);
+
+        let keys = gtk::ShortcutController::new();
+        let (view, shown_list) = (self.clone(), list.clone());
+        keys.add_shortcut(gtk::Shortcut::new(
+            gtk::ShortcutTrigger::parse_string("<Shift>F10|Menu"),
+            Some(gtk::CallbackAction::new(move |_, _| {
+                let row = shown_list.focus_child().and_downcast::<gtk::ListBoxRow>();
+                if let Some(row) = row
+                    && let Some(bounds) = row.compute_bounds(&view.inner.content)
+                {
+                    // Truncation to whole pixels is intended.
+                    #[allow(clippy::cast_possible_truncation)]
+                    let place = gtk::gdk::Rectangle::new(
+                        bounds.x() as i32,
+                        bounds.y() as i32,
+                        bounds.width() as i32,
+                        bounds.height() as i32,
+                    );
+                    view.open_entry_menu(&locations, &row, place);
+                }
+                glib::Propagation::Stop
+            })),
+        ));
+        list.add_controller(keys);
+    }
+
+    fn open_entry_menu(
+        &self,
+        locations: &[String],
+        row: &gtk::ListBoxRow,
+        place: gtk::gdk::Rectangle,
+    ) {
+        let Some(location) = usize::try_from(row.index())
+            .ok()
+            .and_then(|index| locations.get(index))
+        else {
+            return;
+        };
+        let menu = gio::Menu::new();
+        menu.append_item(&show_in_xml_item(location, None));
+        let popover = &self.inner.entry_menu;
+        popover.set_menu_model(Some(&menu));
+        popover.set_pointing_to(Some(&place));
+        popover.popup();
     }
 
     /// Scrolls to the summary.
@@ -419,51 +491,10 @@ fn set_accessible_text(row: &gtk::ListBoxRow, text: &str) {
     row.update_property(&[gtk::accessible::Property::Label(text)]);
 }
 
-/// A context menu with "Im XML zeigen" for a summary entry, opened by a
-/// right click, the menu key or Shift+F10 (0014).
-fn add_show_in_xml_menu(row: &gtk::ListBoxRow, show_in_xml: &ShowInXml, location: &str) {
-    let actions = gio::SimpleActionGroup::new();
-    let show = gio::SimpleAction::new("show-in-xml", None);
-    let (callback, location) = (show_in_xml.clone(), location.to_string());
-    show.connect_activate(move |_, _| callback(&location, None));
-    actions.add_action(&show);
-    row.insert_action_group("entry", Some(&actions));
-
-    let menu = gio::Menu::new();
-    menu.append(Some(texts::SHOW_IN_XML), Some("entry.show-in-xml"));
-    let popover = gtk::PopoverMenu::from_model(Some(&menu));
-    popover.set_parent(row);
-    popover.set_has_arrow(false);
-
-    let click = gtk::GestureClick::builder()
-        .button(gtk::gdk::BUTTON_SECONDARY)
-        .build();
-    let shown = popover.clone();
-    click.connect_pressed(move |_, _, x, y| {
-        // Truncation to whole pixels is intended.
-        #[allow(clippy::cast_possible_truncation)]
-        shown.set_pointing_to(Some(&gtk::gdk::Rectangle::new(x as i32, y as i32, 1, 1)));
-        shown.popup();
-    });
-    row.add_controller(click);
-
-    let keys = gtk::ShortcutController::new();
-    let shown = popover.clone();
-    keys.add_shortcut(gtk::Shortcut::new(
-        gtk::ShortcutTrigger::parse_string("<Shift>F10|Menu"),
-        Some(gtk::CallbackAction::new(move |_, _| {
-            shown.set_pointing_to(None);
-            shown.popup();
-            glib::Propagation::Stop
-        })),
-    ));
-    row.add_controller(keys);
-}
-
 /// One row: business term number, label and the selectable display value,
 /// with "Wert kopieren" and "Im XML zeigen" in the value's context menu,
 /// and its findings below.
-fn field_row(field: &Field, show_in_xml: &ShowInXml) -> FieldRow {
+fn field_row(field: &Field) -> FieldRow {
     let id = gtk::Label::builder()
         .label(&field.id)
         .xalign(0.0)
@@ -487,8 +518,16 @@ fn field_row(field: &Field, show_in_xml: &ShowInXml) -> FieldRow {
         .build();
 
     let menu = gio::Menu::new();
-    menu.append(Some(texts::COPY_VALUE), Some("row.copy-value"));
-    menu.append(Some(texts::SHOW_IN_XML), Some("row.show-in-xml"));
+    let copy = gio::MenuItem::new(Some(texts::COPY_VALUE), None);
+    copy.set_action_and_target_value(
+        Some("view.copy-value"),
+        Some(&texts::copy_value(field).to_variant()),
+    );
+    menu.append_item(&copy);
+    menu.append_item(&show_in_xml_item(
+        &field.location,
+        field.attribute.as_deref(),
+    ));
     value.set_extra_menu(Some(&menu));
 
     let line = gtk::Box::builder()
@@ -517,22 +556,50 @@ fn field_row(field: &Field, show_in_xml: &ShowInXml) -> FieldRow {
         .activatable(false)
         .build();
     set_accessible_text(&row, &text);
-
-    let actions = gio::SimpleActionGroup::new();
-    let copy = gio::SimpleAction::new("copy-value", None);
-    let raw = texts::copy_value(field).to_string();
-    let target = row.clone();
-    copy.connect_activate(move |_, _| target.clipboard().set_text(&raw));
-    actions.add_action(&copy);
-    let show = gio::SimpleAction::new("show-in-xml", None);
-    let callback = show_in_xml.clone();
-    let (location, attribute) = (field.location.clone(), field.attribute.clone());
-    show.connect_activate(move |_, _| callback(&location, attribute.as_deref()));
-    actions.add_action(&show);
-    row.insert_action_group("row", Some(&actions));
     FieldRow {
         row,
         findings,
         text,
     }
+}
+
+/// The actions of the field pane, with the value or place as parameter, so
+/// that rows and menus need no actions of their own.
+fn view_actions(show_in_xml: &ShowInXml) -> gio::SimpleActionGroup {
+    let actions = gio::SimpleActionGroup::new();
+    let copy = gio::SimpleAction::new("copy-value", Some(glib::VariantTy::STRING));
+    copy.connect_activate(|_, value| {
+        let (Some(text), Some(display)) = (
+            value.and_then(glib::Variant::get::<String>),
+            gtk::gdk::Display::default(),
+        ) else {
+            return;
+        };
+        display.clipboard().set_text(&text);
+    });
+    actions.add_action(&copy);
+    let show = gio::SimpleAction::new(
+        "show-in-xml",
+        Some(&<(String, Option<String>)>::static_variant_type()),
+    );
+    let callback = show_in_xml.clone();
+    show.connect_activate(move |_, value| {
+        if let Some((location, attribute)) =
+            value.and_then(glib::Variant::get::<(String, Option<String>)>)
+        {
+            callback(&location, attribute.as_deref());
+        }
+    });
+    actions.add_action(&show);
+    actions
+}
+
+/// The menu item "Im XML zeigen" for a place in the XML.
+fn show_in_xml_item(location: &str, attribute: Option<&str>) -> gio::MenuItem {
+    let item = gio::MenuItem::new(Some(texts::SHOW_IN_XML), None);
+    item.set_action_and_target_value(
+        Some("view.show-in-xml"),
+        Some(&(location.to_string(), attribute.map(str::to_string)).to_variant()),
+    );
+    item
 }
