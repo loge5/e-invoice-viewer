@@ -26,6 +26,9 @@ pub const DOCUMENT_TARGET: &str = "Dokument";
 pub const VALIDATION_FAILED_REASON: &str = "interner Fehler bei der Prüfung";
 pub const RECENT_TITLE: &str = "Zuletzt geöffnet";
 pub const ATTACHMENTS_TITLE: &str = "Anhänge";
+pub const SHOW_IN_XML: &str = "Im XML zeigen";
+pub const SHOW_IN_FIELDS: &str = "In Feldern zeigen";
+pub const NO_FIELD: &str = "Kein Feld zugeordnet";
 pub const NO_ATTACHMENTS: &str = "Keine Anhänge";
 pub const SAVE_ATTACHMENT: &str = "Anhang speichern…";
 pub const RECENT_EMPTY: &str = "Keine Einträge";
@@ -211,6 +214,25 @@ pub fn save_failed_message(name: &str, reason: &str) -> String {
     format!("Der Anhang {name} konnte nicht gespeichert werden: {reason}")
 }
 
+/// The assignment line of the XML view (0014): `BT-1 Rechnungsnummer`,
+/// with the section title in repeated sections (`BT-131 Nettobetrag ·
+/// Position 2`), a section title, or `Kein Feld zugeordnet`.
+pub fn assignment_text(model: &FieldModel, target: &Target) -> String {
+    match *target {
+        Target::Field { section, field } => {
+            let section = &model.sections[section];
+            let field = &section.fields[field];
+            if section.repeated {
+                format!("{} {} · {}", field.id, field.label, section.title)
+            } else {
+                format!("{} {}", field.id, field.label)
+            }
+        }
+        Target::Section(section) => model.sections[section].title.clone(),
+        Target::Document => NO_FIELD.to_string(),
+    }
+}
+
 /// Window title, with the file name while an invoice is shown.
 pub fn window_title(file_name: Option<&str>) -> String {
     match file_name {
@@ -306,6 +328,7 @@ mod tests {
             raw: "DE02120300000000202051".into(),
             display: "DE02 1203 0000 0000 2020 51".into(),
             location: "/rsm:CrossIndustryInvoice".into(),
+            attribute: None,
         }
     }
 
@@ -329,6 +352,7 @@ mod tests {
             raw: "RE-2026-0042".into(),
             display: "RE-2026-0042".into(),
             location: "/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:ID".into(),
+            attribute: None,
         };
 
         assert_eq!(
@@ -466,17 +490,20 @@ mod tests {
                 Section {
                     title: "Summen (BG-22)".into(),
                     location: "/rsm:CrossIndustryInvoice/x".into(),
+                    repeated: false,
                     fields: vec![Field {
                         id: "BT-112".into(),
                         label: "Rechnungsbetrag inkl. USt".into(),
                         raw: "1300.00".into(),
                         display: "1.300,00 EUR".into(),
                         location: "/rsm:CrossIndustryInvoice/x/y".into(),
+                        attribute: None,
                     }],
                 },
                 Section {
                     title: "Position 2".into(),
                     location: "/rsm:CrossIndustryInvoice/z".into(),
+                    repeated: true,
                     fields: Vec::new(),
                 },
             ],
@@ -491,6 +518,47 @@ mod tests {
         );
         assert_eq!(target_text(&model, &Target::Section(1)), "Position 2");
         assert_eq!(target_text(&model, &Target::Document), "Dokument");
+    }
+
+    // Spec 0014, AC4, AC5: the assignment line
+    #[test]
+    fn assignment_texts() {
+        let field = |id: &str, label: &str| Field {
+            id: id.into(),
+            label: label.into(),
+            raw: String::new(),
+            display: String::new(),
+            location: String::new(),
+            attribute: None,
+        };
+        let model = FieldModel {
+            sections: vec![
+                Section {
+                    title: "Rechnung".into(),
+                    location: "/rsm:CrossIndustryInvoice".into(),
+                    repeated: false,
+                    fields: vec![field("BT-1", "Rechnungsnummer")],
+                },
+                Section {
+                    title: "Position 2".into(),
+                    location: "/rsm:CrossIndustryInvoice/x[2]".into(),
+                    repeated: true,
+                    fields: vec![field("BT-131", "Nettobetrag")],
+                },
+            ],
+        };
+        let at = |section, field| Target::Field { section, field };
+
+        assert_eq!(assignment_text(&model, &at(0, 0)), "BT-1 Rechnungsnummer");
+        assert_eq!(
+            assignment_text(&model, &at(1, 0)),
+            "BT-131 Nettobetrag · Position 2"
+        );
+        assert_eq!(assignment_text(&model, &Target::Section(1)), "Position 2");
+        assert_eq!(
+            assignment_text(&model, &Target::Document),
+            "Kein Feld zugeordnet"
+        );
     }
 
     // Spec 0011, requirement: severity is announced, not only coloured

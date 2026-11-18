@@ -1,10 +1,13 @@
 //! The XML view: formatted, highlighted, searchable, with copy and save of
 //! the original bytes (spec 0008).
 
-use std::cell::RefCell;
+use std::cell::{Cell, RefCell};
 use std::rc::Rc;
 
 use adw::prelude::*;
+use e_invoice_viewer_core::attribution::Target;
+use e_invoice_viewer_core::fields::FieldModel;
+use e_invoice_viewer_core::link::{XmlLayout, assignment};
 use e_invoice_viewer_core::xml_view::{decode, pretty_print};
 use gtk::{gio, glib};
 use sourceview::prelude::*;
@@ -19,9 +22,17 @@ struct Source {
     text: String,
     /// Name of the opened file, for the proposed save name.
     file_name: String,
+    /// The field model, for the assignment line (0014).
+    model: FieldModel,
+    /// The formatted text with element positions, once loaded; `None` until
+    /// the view is first shown.
+    layout: Option<Rc<XmlLayout>>,
     /// Whether the formatted text has been loaded into the view yet.
     loaded: bool,
 }
+
+/// Name of the text tag marking the element shown by "Im XML zeigen".
+const LINK_TAG: &str = "link-highlight";
 
 #[derive(Clone)]
 pub struct XmlPane {
@@ -33,6 +44,10 @@ pub struct XmlPane {
     search_status: gtk::Label,
     search: sourceview::SearchContext,
     source: Rc<RefCell<Option<Source>>>,
+    assignment_label: gtk::Label,
+    show_in_fields: gtk::Button,
+    /// What the element at the cursor belongs to.
+    assigned: Rc<Cell<Target>>,
 }
 
 impl XmlPane {
@@ -55,6 +70,13 @@ impl XmlPane {
             .bottom_margin(6)
             .build();
         follow_dark_mode(&buffer);
+        buffer.create_tag(
+            Some(LINK_TAG),
+            &[(
+                "background-rgba",
+                &gtk::gdk::RGBA::new(0.21, 0.52, 0.89, 0.25),
+            )],
+        );
 
         let settings = sourceview::SearchSettings::new();
         settings.set_case_sensitive(false);
@@ -98,10 +120,34 @@ impl XmlPane {
             .child(&view)
             .vexpand(true)
             .build();
+        // The assignment line (0014), separate from the validation status.
+        let assignment_label = gtk::Label::builder()
+            .label(texts::NO_FIELD)
+            .xalign(0.0)
+            .hexpand(true)
+            .ellipsize(gtk::pango::EllipsizeMode::End)
+            .build();
+        let show_in_fields = gtk::Button::builder()
+            .label(texts::SHOW_IN_FIELDS)
+            .sensitive(false)
+            .build();
+        let assignment_line = gtk::Box::builder()
+            .orientation(gtk::Orientation::Horizontal)
+            .spacing(12)
+            .margin_start(6)
+            .margin_end(6)
+            .margin_top(6)
+            .margin_bottom(6)
+            .build();
+        assignment_line.append(&assignment_label);
+        assignment_line.append(&show_in_fields);
+
         let root = gtk::Box::new(gtk::Orientation::Vertical, 0);
         root.append(&actions);
         root.append(&search_bar);
         root.append(&scroller);
+        root.append(&gtk::Separator::new(gtk::Orientation::Horizontal));
+        root.append(&assignment_line);
 
         let this = Self {
             root,
@@ -112,6 +158,9 @@ impl XmlPane {
             search_status,
             search,
             source: Rc::default(),
+            assignment_label,
+            show_in_fields,
+            assigned: Rc::new(Cell::new(Target::Document)),
         };
         this.connect_signals(&copy_button, &save_button);
         this
@@ -122,7 +171,7 @@ impl XmlPane {
     }
 
     /// Sets the invoice XML; it is formatted when the view is first shown.
-    pub fn set_xml(&self, bytes: &[u8], file_name: &str) {
+    pub fn set_xml(&self, bytes: &[u8], file_name: &str, model: FieldModel) {
         let text = decode(bytes)
             .map(|text| text.into_owned())
             .unwrap_or_default();
@@ -130,8 +179,11 @@ impl XmlPane {
             bytes: bytes.to_vec(),
             text,
             file_name: file_name.to_string(),
+            model,
+            layout: None,
             loaded: false,
         });
+        self.set_assigned(Target::Document, texts::NO_FIELD);
         self.buffer.set_text("");
         self.search_entry.set_text("");
         self.search_bar.set_search_mode(false);
@@ -140,16 +192,110 @@ impl XmlPane {
     pub fn clear(&self) {
         *self.source.borrow_mut() = None;
         self.buffer.set_text("");
+        self.set_assigned(Target::Document, texts::NO_FIELD);
+    }
+
+    /// Calls `show` with the field or section of the assignment line when
+    /// "In Feldern zeigen" is clicked.
+    pub fn connect_show_in_fields(&self, show: impl Fn(Target) + 'static) {
+        let assigned = self.assigned.clone();
+        self.show_in_fields
+            .connect_clicked(move |_| show(assigned.get()));
+    }
+
+    /// Shows the element at `location`: scrolls it into view, marks it from
+    /// start to end tag and places the cursor in its text or in the value
+    /// of `attribute`.
+    pub fn reveal(&self, location: &str, attribute: Option<&str>) {
+        self.ensure_loaded();
+        let Some(layout) = self.source.borrow().as_ref().and_then(|s| s.layout.clone()) else {
+            return;
+        };
+        let (Some(range), Some(cursor)) = (
+            layout.element_range(location),
+            layout.cursor_offset(location, attribute),
+        ) else {
+            return;
+        };
+        let iter_at = |offset: usize| {
+            let (line, index) = layout.position(offset);
+            let line = i32::try_from(line).unwrap_or(i32::MAX);
+            let index = i32::try_from(index).unwrap_or(i32::MAX);
+            self.buffer.iter_at_line_index(line, index)
+        };
+        let (start, end) = (iter_at(range.start), iter_at(range.end));
+        let (Some(start), Some(end), Some(cursor)) = (start, end, iter_at(cursor)) else {
+            return;
+        };
+        self.buffer.remove_tag_by_name(
+            LINK_TAG,
+            &self.buffer.start_iter(),
+            &self.buffer.end_iter(),
+        );
+        self.buffer.apply_tag_by_name(LINK_TAG, &start, &end);
+        self.buffer.place_cursor(&cursor);
+        let view = self.view.clone();
+        let mark = self.buffer.create_mark(None, &cursor, true);
+        // After switching to the XML view, wait for the layout.
+        glib::idle_add_local_once(move || {
+            view.scroll_to_mark(&mark, 0.1, true, 0.0, 0.3);
+            view.grab_focus();
+            if let Some(buffer) = mark.buffer() {
+                buffer.delete_mark(&mark);
+            }
+        });
+    }
+
+    /// Updates the assignment line for the cursor position.
+    fn update_assignment(&self) {
+        let Ok(source) = self.source.try_borrow() else {
+            return;
+        };
+        let Some((model, layout)) = source
+            .as_ref()
+            .and_then(|source| Some((&source.model, source.layout.as_ref()?)))
+        else {
+            return;
+        };
+        let cursor = self.buffer.iter_at_mark(&self.buffer.get_insert());
+        let line = usize::try_from(cursor.line()).unwrap_or_default();
+        let index = usize::try_from(cursor.line_index()).unwrap_or_default();
+        let target = assignment(model, layout, layout.offset(line, index));
+        let text = texts::assignment_text(model, &target);
+        drop(source);
+        self.set_assigned(target, &text);
+    }
+
+    fn set_assigned(&self, target: Target, text: &str) {
+        self.assigned.set(target);
+        self.assignment_label.set_text(text);
+        self.show_in_fields
+            .set_sensitive(target != Target::Document);
     }
 
     /// Loads the formatted XML into the view if not done yet.
     pub fn ensure_loaded(&self) {
-        let mut source = self.source.borrow_mut();
-        if let Some(source) = source.as_mut().filter(|source| !source.loaded) {
-            self.buffer.set_text(&pretty_print(&source.text));
-            self.buffer.place_cursor(&self.buffer.start_iter());
+        let text = {
+            let mut source = self.source.borrow_mut();
+            let Some(source) = source.as_mut().filter(|source| !source.loaded) else {
+                return;
+            };
             source.loaded = true;
-        }
+            match XmlLayout::new(&source.bytes) {
+                Ok(layout) => {
+                    let layout = Rc::new(layout);
+                    source.layout = Some(layout.clone());
+                    layout.text().to_string()
+                }
+                // Not linkable, but still shown.
+                Err(_) => pretty_print(&source.text),
+            }
+        };
+        // Setting the text moves the cursor, which reads the source: it must
+        // not be borrowed here.
+        self.buffer.set_text(&text);
+        self.buffer.place_cursor(&self.buffer.start_iter());
+        self.update_assignment();
     }
 
     pub fn start_search(&self) {
@@ -184,6 +330,10 @@ impl XmlPane {
         let this = self.clone();
         self.search
             .connect_occurrences_count_notify(move |_| this.update_search_status());
+
+        let this = self.clone();
+        self.buffer
+            .connect_cursor_position_notify(move |_| this.update_assignment());
     }
 
     /// Selects the next match after the cursor (or from the start).

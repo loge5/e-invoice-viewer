@@ -8,10 +8,11 @@ use adw::prelude::*;
 use e_invoice_viewer_core::attachments::{self, Attachment, Content};
 use e_invoice_viewer_core::detect::DetectError;
 use e_invoice_viewer_core::document::{self, Document, Invoice};
+use e_invoice_viewer_core::fields::FieldModel;
 use e_invoice_viewer_core::validate::{Severity, Validation, Validator};
 use gtk::{gio, glib};
 
-use crate::fields_view::{FieldsView, severity_class};
+use crate::fields_view::{FieldsView, ShowInXml, severity_class};
 use crate::recent::RecentStore;
 use crate::texts::ValidationState;
 use crate::xml_pane::XmlPane;
@@ -336,6 +337,19 @@ impl Window {
             }
         });
 
+        // "In Feldern zeigen" of the XML view (0014).
+        let this = self.clone();
+        self.xml_pane.connect_show_in_fields(move |target| {
+            this.fields_toggle.set_active(true);
+            let view = this.fields_view.clone();
+            // After switching from the XML view, wait for the layout.
+            glib::idle_add_local_once(move || {
+                if let Some(view) = view.borrow().as_ref() {
+                    view.jump_to(&target);
+                }
+            });
+        });
+
         let this = self.clone();
         self.xml_toggle.connect_toggled(move |toggle| {
             if toggle.is_active() {
@@ -520,10 +534,15 @@ impl Window {
         attachments: &adw::PreferencesGroup,
     ) {
         let Invoice { xml, fields } = invoice;
-        let view = FieldsView::new(fields, attachments);
+        self.set_xml(Some((&xml, name, fields.clone())));
+        let this = self.clone();
+        let show_in_xml: ShowInXml = Rc::new(move |location, attribute| {
+            this.xml_toggle.set_active(true);
+            this.xml_pane.reveal(location, attribute);
+        });
+        let view = FieldsView::new(fields, attachments, show_in_xml);
         self.set_fields(view.widget(), note);
         *self.fields_view.borrow_mut() = Some(view);
-        self.set_xml(Some((&xml, name)));
         self.start_validation(xml);
     }
 
@@ -632,12 +651,13 @@ impl Window {
     }
 
     /// Sets the invoice XML for the XML view; `None` disables the view.
-    fn set_xml(&self, xml: Option<(&[u8], &str)>) {
+    fn set_xml(&self, xml: Option<(&[u8], &str, FieldModel)>) {
+        let shown = xml.is_some();
         match xml {
-            Some((bytes, file_name)) => self.xml_pane.set_xml(bytes, file_name),
+            Some((bytes, file_name, model)) => self.xml_pane.set_xml(bytes, file_name, model),
             None => self.xml_pane.clear(),
         }
-        self.xml_toggle.set_sensitive(xml.is_some());
+        self.xml_toggle.set_sensitive(shown);
     }
 
     fn show_document(&self, name: &str) {

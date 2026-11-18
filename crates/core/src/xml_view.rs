@@ -64,8 +64,42 @@ fn not_well_formed(bytes: &[u8], offset: usize) -> DetectError {
 /// spaces per level; elements with only text stay on one line. Tags,
 /// attributes, comments and CDATA sections are kept exactly as written.
 pub fn pretty_print(xml: &str) -> String {
+    pretty_print_mapped(xml).0
+}
+
+/// A piece of the input copied verbatim into the reformatted text.
+#[derive(Debug, Clone, Copy)]
+pub(crate) struct Piece {
+    /// Byte offset in the input.
+    pub input: usize,
+    /// Byte offset in the reformatted text.
+    pub output: usize,
+    pub len: usize,
+}
+
+/// `pretty_print`, plus where each piece of the input ended up, in input
+/// order.
+pub(crate) fn pretty_print_mapped(xml: &str) -> (String, Vec<Piece>) {
     let tokens = tokenize(xml);
+    let mut pieces = Vec::with_capacity(tokens.len());
     let mut out = String::with_capacity(xml.len() * 2);
+    let mut push_line = |out: &mut String, depth: usize, parts: &[&str]| {
+        if !out.is_empty() {
+            out.push('\n');
+        }
+        for _ in 0..depth {
+            out.push_str("  ");
+        }
+        for part in parts {
+            pieces.push(Piece {
+                // Every part is a slice of `xml`.
+                input: part.as_ptr() as usize - xml.as_ptr() as usize,
+                output: out.len(),
+                len: part.len(),
+            });
+            out.push_str(part);
+        }
+    };
     let mut depth = 0usize;
     let mut index = 0;
     while index < tokens.len() {
@@ -96,19 +130,7 @@ pub fn pretty_print(xml: &str) -> String {
             }
         }
     }
-    out
-}
-
-fn push_line(out: &mut String, depth: usize, parts: &[&str]) {
-    if !out.is_empty() {
-        out.push('\n');
-    }
-    for _ in 0..depth {
-        out.push_str("  ");
-    }
-    for part in parts {
-        out.push_str(part);
-    }
+    (out, pieces)
 }
 
 /// A piece of XML text, borrowed from the input.

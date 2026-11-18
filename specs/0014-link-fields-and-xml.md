@@ -1,7 +1,7 @@
 ---
 id: 0014
 title: Link fields and XML elements in both directions
-status: reviewed
+status: in-progress
 created: 2026-11-16
 depends_on: [0008, 0011]
 ---
@@ -100,8 +100,6 @@ refer to the reference machine in [requirements](../docs/requirements.md).
 ## Out of scope
 
 - Editing; linking PDF text positions to fields.
-- UBL invoices: the app cannot open them before 0006. They are linked like
-  CII invoices once 0006 is implemented.
 - Attachments (0013): their BG-24 elements show `Kein Feld zugeordnet`.
 - Highlighting findings inside the XML view.
 
@@ -114,3 +112,52 @@ refer to the reference machine in [requirements](../docs/requirements.md).
   below the XML view, "Im XML zeigen" for every summary entry (requested by
   0011), the context menu as the only trigger, and section assignment for
   elements outside fields.
+- Correction (2026-11-18, during implementation): 0006 was implemented
+  first, so UBL invoices are linked too (same location format); the
+  out-of-scope item for UBL is dropped.
+- "Selects the whole element" is shown as a highlight of the element from
+  start to end tag, because the text cursor must at the same time stand in
+  the element's text or attribute value; a real selection could not do both.
+
+## Progress
+
+- **Done**:
+  - Core `link.rs`: `XmlLayout` reformats the XML like 0008 and records,
+    for every element, its location (same format as field and finding
+    locations), its range from start to end tag, the start of its text and
+    the value ranges of its attributes. `assignment(model, layout, offset)`
+    applies the three rules of the requirement. `xml_view` reports where
+    each piece of the input ends up in the reformatted text.
+  - The field model now says which attribute a field is (`Field.attribute`,
+    BT-130) and whether a section is repeated (`Section.repeated`).
+  - App:
+    - "Im XML zeigen" in the context menu of every field value (next to
+      "Wert kopieren") and of every summary entry (right click, menu key or
+      Shift+F10). It switches to the XML view, highlights the element and
+      places the cursor in its text or attribute value.
+    - The assignment line below the XML view follows the cursor;
+      "In Feldern zeigen" switches to the field view and highlights the
+      field or section header for 2.5 s, as in 0011.
+- **Verified** (2026-11-18):
+  - `cargo test --workspace`: 160 passed; new: 7 tests in
+    `link_fields_xml.rs` and `assignment_texts`.
+  - `cargo fmt --all --check`, `cargo clippy --workspace --all-targets -- -D
+    warnings` and the architecture check are clean.
+  - Smoke run of the release build with sample A: switching to the XML view
+    shows `Kein Feld zugeordnet` with "In Feldern zeigen" disabled, and the
+    status line still shows `Keine Befunde` (AC9). Placing the caret through
+    AT-SPI gives `BT-1 Rechnungsnummer`, `BT-129 Menge · Position 1`,
+    `BT-130 Einheit · Position 1` and `Verkäufer (BG-4)` (AC4, AC5).
+  - Found and fixed in the smoke run: loading the XML view moved the cursor
+    while the source was borrowed, which aborted the app.
+- **Next** — manual checks by the author, then the author decides on
+  `implemented`:
+  - AC1–AC3: "Im XML zeigen" on BT-84 (sample A), on BT-119 of the second
+    VAT breakdown (sample B), on BT-131 of "Position 2" and on BT-130.
+  - AC4/AC5: "In Feldern zeigen" for BT-1 and for `Verkäufer (BG-4)`.
+  - AC6: "Im XML zeigen" on the summary entry `BR-DE-15` of
+    `target/manual-0011/b-version-2-3-without-bt10.xml`, by right click and
+    by Shift+F10; a normal click on `BR-DE-21` still goes to BT-24.
+  - AC8: hold an arrow key in the XML view of `target/manual-0011/l.xml`;
+    the assignment line follows without visible lag.
+

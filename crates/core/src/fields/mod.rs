@@ -24,6 +24,9 @@ pub struct Section {
     /// XPath of the element the section stands for (e.g. the invoice line);
     /// the root element for sections of the whole invoice.
     pub location: String,
+    /// One of several sections of the same kind (invoice lines, VAT
+    /// breakdowns).
+    pub repeated: bool,
     pub fields: Vec<Field>,
 }
 
@@ -40,6 +43,9 @@ pub struct Field {
     pub display: String,
     /// XPath of the source element.
     pub location: String,
+    /// The attribute of that element holding the value (e.g. `unitCode` for
+    /// BT-130), `None` for the element text.
+    pub attribute: Option<String>,
 }
 
 /// Why no field model could be built.
@@ -83,6 +89,14 @@ pub fn map_invoice(xml: &[u8]) -> Result<FieldModel, MapError> {
         .flat_map(|def| map_section(root, def, &context))
         .collect();
     Ok(FieldModel { sections })
+}
+
+/// The namespace prefixes of field locations in `syntax`.
+pub(crate) fn location_prefixes(syntax: Syntax) -> &'static [(&'static str, &'static str)] {
+    match syntax {
+        Syntax::Cii => cii::SYNTAX.prefixes,
+        Syntax::Ubl => ubl::SYNTAX.prefixes,
+    }
 }
 
 /// Where the business terms live in one syntax.
@@ -239,6 +253,7 @@ fn map_section(root: Node, def: &SectionDef, context: &Context) -> Vec<Section> 
             Section {
                 title: section_title(anchor, def),
                 location: anchor_location.clone(),
+                repeated: def.repeatable,
                 fields: def
                     .fields
                     .iter()
@@ -286,6 +301,7 @@ fn map_field(
                 label: def.label.to_string(),
                 display: display_value(&raw, node, def.format, context),
                 location: location(node, Some((anchor, anchor_location)), context.prefixes),
+                attribute: def.attribute.map(str::to_string),
                 raw,
             }
         })
@@ -343,7 +359,7 @@ fn location(node: Node, base: Option<(Node, &str)>, prefixes: &[(&str, &str)]) -
 }
 
 /// One location step, e.g. `ram:ApplicableTradeTax[2]`.
-fn location_step(element: Node, prefixes: &[(&str, &str)]) -> String {
+pub(crate) fn location_step(element: Node, prefixes: &[(&str, &str)]) -> String {
     let tag = element.tag_name();
     let prefix = prefixes
         .iter()

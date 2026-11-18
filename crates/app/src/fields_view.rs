@@ -18,6 +18,9 @@ const HIGHLIGHT: Duration = Duration::from_millis(2500);
 /// CSS class of a highlighted field or section (see `main.rs`).
 pub const HIGHLIGHT_CLASS: &str = "finding-highlight";
 
+/// Called with a location and attribute to show in the XML view (0014).
+pub type ShowInXml = Rc<dyn Fn(&str, Option<&str>)>;
+
 /// Severities in the order of the summary.
 const SEVERITIES: [Severity; 3] = [Severity::Error, Severity::Warning, Severity::Information];
 
@@ -29,6 +32,7 @@ pub struct FieldsView {
 
 struct Inner {
     model: FieldModel,
+    show_in_xml: ShowInXml,
     scroller: gtk::ScrolledWindow,
     content: gtk::Box,
     groups: Vec<adw::PreferencesGroup>,
@@ -48,7 +52,11 @@ struct FieldRow {
 impl FieldsView {
     /// Builds the scrollable list of all sections of the field model, then
     /// `attachments` (0013) and the validation summary.
-    pub fn new(model: FieldModel, attachments: &impl IsA<gtk::Widget>) -> Self {
+    pub fn new(
+        model: FieldModel,
+        attachments: &impl IsA<gtk::Widget>,
+        show_in_xml: ShowInXml,
+    ) -> Self {
         let content = gtk::Box::builder()
             .orientation(gtk::Orientation::Vertical)
             .spacing(18)
@@ -71,7 +79,11 @@ impl FieldsView {
                 .selection_mode(gtk::SelectionMode::None)
                 .css_classes(["boxed-list"])
                 .build();
-            let section_rows: Vec<FieldRow> = section.fields.iter().map(field_row).collect();
+            let section_rows: Vec<FieldRow> = section
+                .fields
+                .iter()
+                .map(|field| field_row(field, &show_in_xml))
+                .collect();
             for field_row in &section_rows {
                 list.append(&field_row.row);
             }
@@ -109,6 +121,7 @@ impl FieldsView {
         Self {
             inner: Rc::new(Inner {
                 model,
+                show_in_xml,
                 scroller,
                 content,
                 groups,
@@ -280,6 +293,7 @@ impl FieldsView {
             .activatable(jumpable)
             .build();
         set_accessible_text(&row, &format!("{} · {place}", texts::finding_text(finding)));
+        add_show_in_xml_menu(&row, &self.inner.show_in_xml, &finding.location);
         row
     }
 
@@ -290,8 +304,8 @@ impl FieldsView {
         glib::idle_add_local_once(move || view.scroll_to(&view.inner.summary.clone().upcast()));
     }
 
-    /// Scrolls to the field or section of a finding and highlights it.
-    fn jump_to(&self, target: &Target) {
+    /// Scrolls to a field or section and highlights it.
+    pub fn jump_to(&self, target: &Target) {
         let widget: gtk::Widget = match *target {
             Target::Field { section, field } => {
                 self.inner.rows[section][field].row.clone().upcast()
@@ -405,9 +419,51 @@ fn set_accessible_text(row: &gtk::ListBoxRow, text: &str) {
     row.update_property(&[gtk::accessible::Property::Label(text)]);
 }
 
+/// A context menu with "Im XML zeigen" for a summary entry, opened by a
+/// right click, the menu key or Shift+F10 (0014).
+fn add_show_in_xml_menu(row: &gtk::ListBoxRow, show_in_xml: &ShowInXml, location: &str) {
+    let actions = gio::SimpleActionGroup::new();
+    let show = gio::SimpleAction::new("show-in-xml", None);
+    let (callback, location) = (show_in_xml.clone(), location.to_string());
+    show.connect_activate(move |_, _| callback(&location, None));
+    actions.add_action(&show);
+    row.insert_action_group("entry", Some(&actions));
+
+    let menu = gio::Menu::new();
+    menu.append(Some(texts::SHOW_IN_XML), Some("entry.show-in-xml"));
+    let popover = gtk::PopoverMenu::from_model(Some(&menu));
+    popover.set_parent(row);
+    popover.set_has_arrow(false);
+
+    let click = gtk::GestureClick::builder()
+        .button(gtk::gdk::BUTTON_SECONDARY)
+        .build();
+    let shown = popover.clone();
+    click.connect_pressed(move |_, _, x, y| {
+        // Truncation to whole pixels is intended.
+        #[allow(clippy::cast_possible_truncation)]
+        shown.set_pointing_to(Some(&gtk::gdk::Rectangle::new(x as i32, y as i32, 1, 1)));
+        shown.popup();
+    });
+    row.add_controller(click);
+
+    let keys = gtk::ShortcutController::new();
+    let shown = popover.clone();
+    keys.add_shortcut(gtk::Shortcut::new(
+        gtk::ShortcutTrigger::parse_string("<Shift>F10|Menu"),
+        Some(gtk::CallbackAction::new(move |_, _| {
+            shown.set_pointing_to(None);
+            shown.popup();
+            glib::Propagation::Stop
+        })),
+    ));
+    row.add_controller(keys);
+}
+
 /// One row: business term number, label and the selectable display value,
-/// with "Wert kopieren" in the value's context menu, and its findings below.
-fn field_row(field: &Field) -> FieldRow {
+/// with "Wert kopieren" and "Im XML zeigen" in the value's context menu,
+/// and its findings below.
+fn field_row(field: &Field, show_in_xml: &ShowInXml) -> FieldRow {
     let id = gtk::Label::builder()
         .label(&field.id)
         .xalign(0.0)
@@ -432,6 +488,7 @@ fn field_row(field: &Field) -> FieldRow {
 
     let menu = gio::Menu::new();
     menu.append(Some(texts::COPY_VALUE), Some("row.copy-value"));
+    menu.append(Some(texts::SHOW_IN_XML), Some("row.show-in-xml"));
     value.set_extra_menu(Some(&menu));
 
     let line = gtk::Box::builder()
@@ -467,6 +524,11 @@ fn field_row(field: &Field) -> FieldRow {
     let target = row.clone();
     copy.connect_activate(move |_, _| target.clipboard().set_text(&raw));
     actions.add_action(&copy);
+    let show = gio::SimpleAction::new("show-in-xml", None);
+    let callback = show_in_xml.clone();
+    let (location, attribute) = (field.location.clone(), field.attribute.clone());
+    show.connect_activate(move |_, _| callback(&location, attribute.as_deref()));
+    actions.add_action(&show);
     row.insert_action_group("row", Some(&actions));
     FieldRow {
         row,
