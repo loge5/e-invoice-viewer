@@ -1,7 +1,7 @@
 ---
 id: 0018
 title: App - user interface in German and English, following the system language
-status: in-progress
+status: implemented
 created: 2026-11-18
 depends_on: [0017]
 ---
@@ -34,14 +34,14 @@ published.
 
 ## Acceptance criteria
 
-- [ ] Given the system language German (`LANG=de_DE.UTF-8`), the start view
+- [x] Given the system language German (`LANG=de_DE.UTF-8`), the start view
       shows `Rechnung öffnen` and the button `Öffnen…`; given English
       (`LANG=en_US.UTF-8`), it shows `Open an invoice` and `Open…`.
-- [ ] Given `LANG=fr_FR.UTF-8`, the app is in English; given
+- [x] Given `LANG=fr_FR.UTF-8`, the app is in English; given
       `LANGUAGE=fr:de` with `LANG=fr_FR.UTF-8`, the app is in German (the
       first supported preferred language); given `LANG=C` or `LANG=POSIX`,
       the app is in English.
-- [ ] Given the Factur-X PDF of sample A
+- [x] Given the Factur-X PDF of sample A
       (`target/manual-0013/a-mit-lieferschein.pdf`) opened in English, the
       status line reads `No findings`, the view switch reads `Fields` / `XML`,
       the field sections and values are the English ones of 0017, the PDF bar
@@ -49,10 +49,10 @@ published.
       `Checked against EN 16931 CII 1.3.17` (German: `Geprüft nach EN 16931
       CII 1.3.17`); for CII sample B it reads `Checked against EN 16931 CII
       1.3.17 and XRechnung 3.0.2`.
-- [ ] Given `target/manual-0011/b-version-2-3-without-bt10.xml` opened in
+- [x] Given `target/manual-0011/b-version-2-3-without-bt10.xml` opened in
       English, the status line reads `1 error, 1 warning, 1 note` (German:
       `1 Fehler, 1 Warnung, 1 Hinweis`).
-- [ ] Counts read, in English and German:
+- [x] Counts read, in English and German:
 
       | Findings | English | German |
       |---|---|---|
@@ -60,30 +60,30 @@ published.
       | 2 warnings | `2 warnings` | `2 Warnungen` |
       | 1 note | `No errors, 1 note` | `Keine Fehler, 1 Hinweis` |
       | 3 errors, 2 notes | `3 errors, 2 notes` | `3 Fehler, 2 Hinweise` |
-- [ ] Error and notes in English, for example: opening a text file named
+- [x] Error and notes in English, for example: opening a text file named
       `notiz.txt` with the content `Hallo` shows `The file notiz.txt cannot
       be read as an invoice: XML is not well-formed (line 1)` (German: `Die
       Datei notiz.txt kann nicht als Rechnung gelesen werden: XML ist nicht
       wohlgeformt (Zeile 1)`); dropping two files shows `Only one file per window – the first one
       was opened`.
-- [ ] Attachments in English: a 24 600-byte PDF attachment shows
+- [x] Attachments in English: a 24 600-byte PDF attachment shows
       `24.6 kB` (German: `24,6 kB`); a section without attachments reads
       `No attachments`.
-- [ ] The XML view in English: the assignment line reads `No field assigned`
+- [x] The XML view in English: the assignment line reads `No field assigned`
       outside any field and `BT-131 Invoice line net amount · Invoice line 2`
       on the net amount of line 2 of sample A (German: `BT-131 Nettobetrag ·
       Position 2`); the buttons read `Copy XML`, `Save XML as…` and
       `Show in fields`.
-- [ ] Accessible names and tooltips are translated: in English the zoom
+- [x] Accessible names and tooltips are translated: in English the zoom
       buttons are named `Zoom in (Ctrl++)` and `Zoom out (Ctrl+-)`, the recent
       files button `Recently opened`.
-- [ ] The installed desktop entry has `Name=E-Invoice Viewer`,
+- [x] The installed desktop entry has `Name=E-Invoice Viewer`,
       `GenericName=Invoice viewer`, `Comment=View and check electronic
       invoices (ZUGFeRD, Factur-X, XRechnung)`, and German ones (`GenericName[de]=
       Rechnungsbetrachter`, `Comment[de]=Elektronische Rechnungen (ZUGFeRD,
       Factur-X, XRechnung) ansehen und prüfen`); `desktop-file-validate`
       reports no error.
-- [ ] An automated check fails if a user interface text has no German
+- [x] An automated check fails if a user interface text has no German
       translation, or if a German translation is outdated or marked fuzzy.
 
 ## Out of scope
@@ -143,13 +143,6 @@ published.
     `1 Fehler, 1 Warnung, 1 Hinweis`.
   - `scripts/install.sh` into temporary directories: the desktop entry has
     the English and German names and passes `desktop-file-validate`.
-- **Next** — manual checks by the author, then the author decides on
-  `implemented`:
-  - On an English desktop (or `LANG=en_US.UTF-8 e-invoice-viewer`): start
-    view, open the Factur-X PDF of sample A, summary headings, tooltips, the
-    XML view with its assignment line, an attachment's details, the error
-    for a text file, and the note when dropping two files.
-  - On the German desktop: everything reads as before.
-  - After `scripts/install.sh`: the app grid and "Open with" show the
-    German description on a German desktop.
-
+- **Manually verified** by the author (2026-11-18): English and German user
+  interface and the desktop entry as expected; the author decided on
+  `implemented`.
