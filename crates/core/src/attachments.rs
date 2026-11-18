@@ -103,7 +103,6 @@ pub fn list(bytes: &[u8]) -> Vec<Attachment> {
             continue;
         }
         let content = match file.content {
-            Ok(content) if content.len() > MAX_EMBEDDED_FILE_SIZE => Content::TooLarge,
             Ok(content) => Content::Embedded(content),
             Err(ContentError::TooLarge) => Content::TooLarge,
             Err(ContentError::Unreadable) => Content::Unreadable,

@@ -162,3 +162,28 @@ fn unreadable_inputs_return_within_two_seconds() {
         );
     }
 }
+
+// AC6: an empty file stays empty when it is stored compressed.
+#[test]
+fn empty_compressed_invoice_is_reported_as_empty() {
+    let pdf = pdf_with(&[Attachment::compressed("factur-x.xml", b"")]);
+
+    assert_eq!(
+        extract_invoice_xml(&pdf).unwrap_err(),
+        ExtractError::EmptyInvoice {
+            source_name: "factur-x.xml".to_string()
+        }
+    );
+}
+
+// The size limit applies to uncompressed invoices, too.
+#[test]
+fn oversized_uncompressed_invoice_is_not_read() {
+    let huge = vec![b' '; 64 * 1024 * 1024 + 1];
+    let pdf = pdf_with(&[Attachment::plain("factur-x.xml", &huge)]);
+
+    assert_eq!(
+        extract_invoice_xml(&pdf).unwrap_err(),
+        ExtractError::NotReadablePdf
+    );
+}

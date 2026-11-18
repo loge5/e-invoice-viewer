@@ -244,6 +244,26 @@ fn oversized_attachment() {
     assert_eq!(attachments::list(&pdf)[0].content, Content::TooLarge);
 }
 
+// AC8: the limit also applies to uncompressed attachments.
+#[test]
+fn oversized_uncompressed_attachment() {
+    let huge = vec![0_u8; 64 * 1024 * 1024 + 1];
+    let pdf = pdf_with(&[Attachment::plain("gross.bin", &huge)]);
+
+    assert_eq!(attachments::list(&pdf)[0].content, Content::TooLarge);
+}
+
+// AC7: an empty compressed file is empty, not unreadable.
+#[test]
+fn empty_compressed_attachment_is_empty() {
+    let pdf = pdf_with(&[Attachment::compressed("leer.txt", b"")]);
+
+    assert_eq!(
+        attachments::list(&pdf)[0].content,
+        Content::Embedded(Vec::new())
+    );
+}
+
 // AC9
 #[test]
 fn missing_mime_type_is_unknown() {

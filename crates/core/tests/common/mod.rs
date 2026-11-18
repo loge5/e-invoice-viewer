@@ -101,7 +101,12 @@ pub fn pdf_document_with_text(text: Option<&str>, attachments: &[Attachment]) ->
             stream_dict.set("Subtype", Object::Name(mime_type.as_bytes().to_vec()));
         }
         let mut stream = Stream::new(stream_dict, attachment.content.to_vec());
-        if attachment.compressed {
+        if attachment.compressed && attachment.content.is_empty() {
+            // lopdf does not compress when the result would be longer: the
+            // zlib stream of no data, written by hand.
+            stream.set_content(vec![0x78, 0x9c, 0x03, 0x00, 0x00, 0x00, 0x00, 0x01]);
+            stream.dict.set("Filter", "FlateDecode");
+        } else if attachment.compressed {
             stream.compress().expect("compress test stream");
             assert!(
                 stream.dict.get(b"Filter").is_ok(),

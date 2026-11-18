@@ -169,37 +169,9 @@ fn read_filespec(doc: &Document, key: &str, filespec: &Object) -> EmbeddedFile {
         .and_then(|stream| stream.dict.get(b"Subtype").ok()?.as_name().ok())
         .map(|name| String::from_utf8_lossy(name).into_owned())
         .filter(|name| !name.is_empty());
-    let content = match stream {
-        None => Err(ContentError::Unreadable),
-        Some(stream) if stream.dict.has(b"Filter") => stream
-            .decompressed_content_with_limit(MAX_EMBEDDED_FILE_SIZE)
-            .map_err(|error| match error {
-                lopdf::Error::Decompress(lopdf::DecompressError::MemoryLimitExceeded {
-                    ..
-                }) => ContentError::TooLarge,
-                _ => ContentError::Unreadable,
-            })
-            .and_then(|content| {
-                // lopdf decodes leniently: a damaged stream gives a truncated
-                // or empty result instead of an error. The declared size, or
-                // an empty result from a non-empty stream, reveals it.
-                let declared = stream
-                    .dict
-                    .get(b"Params")
-                    .ok()
-                    .and_then(|params| doc.dereference(params).ok())
-                    .and_then(|(_, params)| params.as_dict().ok())
-                    .and_then(|params| params.get(b"Size").ok()?.as_i64().ok());
-                let truncated =
-                    declared.is_some_and(|size| usize::try_from(size) != Ok(content.len()));
-                if truncated || (content.is_empty() && !stream.content.is_empty()) {
-                    Err(ContentError::Unreadable)
-                } else {
-                    Ok(content)
-                }
-            }),
-        Some(stream) => Ok(stream.content.clone()),
-    };
+    let content = stream.map_or(Err(ContentError::Unreadable), |stream| {
+        stream_content(doc, stream)
+    });
 
     EmbeddedFile {
         name,
@@ -207,6 +179,54 @@ fn read_filespec(doc: &Document, key: &str, filespec: &Object) -> EmbeddedFile {
         mime_type,
         content,
     }
+}
+
+/// The decoded content of an embedded file stream, within the size limit.
+///
+/// lopdf decodes leniently: a damaged stream gives a truncated or empty
+/// result instead of an error. So a result that differs from the declared
+/// size (`/Params /Size`) is unreadable; without a declared size, an empty
+/// result is accepted only if the raw stream is a complete zlib stream of
+/// empty data.
+fn stream_content(doc: &Document, stream: &lopdf::Stream) -> Result<Vec<u8>, ContentError> {
+    let content = if stream.dict.has(b"Filter") {
+        stream
+            .decompressed_content_with_limit(MAX_EMBEDDED_FILE_SIZE)
+            .map_err(|error| match error {
+                lopdf::Error::Decompress(lopdf::DecompressError::MemoryLimitExceeded {
+                    ..
+                }) => ContentError::TooLarge,
+                _ => ContentError::Unreadable,
+            })?
+    } else {
+        stream.content.clone()
+    };
+    if content.len() > MAX_EMBEDDED_FILE_SIZE {
+        return Err(ContentError::TooLarge);
+    }
+    let declared = stream
+        .dict
+        .get(b"Params")
+        .ok()
+        .and_then(|params| doc.dereference(params).ok())
+        .and_then(|(_, params)| params.as_dict().ok())
+        .and_then(|params| params.get(b"Size").ok()?.as_i64().ok());
+    let intact = match declared {
+        Some(size) => usize::try_from(size) == Ok(content.len()),
+        None => !content.is_empty() || stream.content == content || is_empty_zlib(&stream.content),
+    };
+    if intact {
+        Ok(content)
+    } else {
+        Err(ContentError::Unreadable)
+    }
+}
+
+/// Whether `raw` is a complete zlib stream of empty data: it ends with the
+/// Adler-32 checksum of no bytes (1), which a damaged stream almost never
+/// does by chance.
+fn is_empty_zlib(raw: &[u8]) -> bool {
+    raw.len() >= 8 && raw.ends_with(&[0, 0, 0, 1])
 }
 
 fn resolve_dict<'a>(doc: &'a Document, object: Option<&'a Object>) -> Option<&'a Dictionary> {
