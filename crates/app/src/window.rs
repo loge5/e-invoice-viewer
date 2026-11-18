@@ -326,7 +326,8 @@ impl Window {
             glib::spawn_future_local(async move {
                 this.open_file(&first).await;
                 if more {
-                    this.notify(texts::DROP_ONLY_FIRST);
+                    // Added to, not replacing, a message about the first file.
+                    this.add_note(texts::DROP_ONLY_FIRST);
                 }
             });
             true
@@ -442,27 +443,43 @@ impl Window {
     /// Opens a recent entry; a file that no longer exists is removed from
     /// the list, and the window keeps showing what it showed.
     async fn open_recent(&self, path: &Path) {
-        if path.exists() {
-            self.open_path(path).await;
-        } else {
-            self.notify(&texts::not_found_message(&file_name(path)));
-            self.recent.remove(path);
+        match self.read(path).await {
+            Some(Err(error)) if error.matches(gio::IOErrorEnum::NotFound) => {
+                self.notify(&texts::not_found_message(&file_name(path)));
+                self.recent.remove(path);
+            }
+            Some(result) => self.show_read(path, result),
+            None => {}
         }
     }
 
     async fn open_path(&self, path: &Path) {
+        if let Some(result) = self.read(path).await {
+            self.show_read(path, result);
+        }
+    }
+
+    /// Reads a local file, never through a network backend. `None` if
+    /// another file was opened meanwhile: the newer one wins.
+    async fn read(&self, path: &Path) -> Option<Result<glib::Slice<u8>, glib::Error>> {
+        let generation = self.next_generation();
+        let result = gio::File::for_path(path).load_contents_future().await;
+        (self.generation.get() == generation).then(|| result.map(|(bytes, _)| bytes))
+    }
+
+    /// Shows what was read; an unreadable file closes the shown invoice, as
+    /// an invalid one does (0007).
+    fn show_read(&self, path: &Path, result: Result<glib::Slice<u8>, glib::Error>) {
         let name = file_name(path);
-        // Read through the local path, never through a network backend.
-        match gio::File::for_path(path).load_contents_future().await {
-            Ok((bytes, _)) => {
+        match result {
+            Ok(bytes) => {
                 if self.show(&name, &bytes) {
                     self.recent.add(path);
                 }
             }
-            Err(error) => self.show_start(Some(&format!(
-                "Die Datei {name} kann nicht gelesen werden: {}",
-                error.message()
-            ))),
+            Err(error) => {
+                self.show_start(Some(&texts::read_failed_message(&name, error.message())));
+            }
         }
     }
 
@@ -511,6 +528,18 @@ impl Window {
         });
     }
 
+    /// Adds a note to the message of the start view, or shows it while an
+    /// invoice stays shown.
+    fn add_note(&self, message: &str) {
+        match self.start_page.description().filter(|_| self.is_empty()) {
+            Some(shown) if !shown.is_empty() => {
+                self.start_page
+                    .set_description(Some(&format!("{shown}\n\n{message}")));
+            }
+            _ => self.notify(message),
+        }
+    }
+
     /// Shows a message: in the start view, or as a note while an invoice
     /// stays shown.
     fn notify(&self, message: &str) {
@@ -525,7 +554,7 @@ impl Window {
     /// Shows the document in `bytes`; returns whether it could be opened.
     fn show(&self, name: &str, bytes: &[u8]) -> bool {
         // Whatever is shown next, a running validation is outdated.
-        self.generation.set(self.generation.get() + 1);
+        self.next_generation();
         match document::open(bytes) {
             Ok(Document::Pdf { invoice }) => {
                 self.show_pdf_pane(Some(bytes));
@@ -709,10 +738,18 @@ impl Window {
         self.stack.set_visible_child_name("document");
     }
 
+    /// Starts a new generation: results of older reads and validations are
+    /// discarded.
+    fn next_generation(&self) -> u64 {
+        let generation = self.generation.get() + 1;
+        self.generation.set(generation);
+        generation
+    }
+
     /// Shows the start view, optionally with an error message.
     fn show_start(&self, message: Option<&str>) {
         *self.current.borrow_mut() = None;
-        self.generation.set(self.generation.get() + 1);
+        self.next_generation();
         self.window.set_title(Some(&texts::window_title(None)));
         self.title.set_title(texts::APP_TITLE);
         self.title.set_subtitle("");

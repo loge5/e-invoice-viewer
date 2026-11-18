@@ -172,6 +172,10 @@ pub fn not_found_message(file_name: &str) -> String {
     format!("Die Datei {file_name} wurde nicht gefunden")
 }
 
+pub fn read_failed_message(file_name: &str, reason: &str) -> String {
+    format!("Die Datei {file_name} kann nicht gelesen werden: {reason}")
+}
+
 /// A file size the way the GNOME file manager shows it: decimal units with a
 /// German decimal comma, e.g. `24,6 kB`.
 pub fn size_text(bytes: usize) -> String {
