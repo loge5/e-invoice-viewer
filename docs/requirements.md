@@ -41,7 +41,7 @@ way to close it, and crashed on Linux.
 | 9 | Field ↔ XML | Selecting a field highlights the matching XML element. Comes in a later slice *(default)* |
 | 10 | Windows & reopening | One invoice per window. **No** automatic reopening of the last file on start; a "recent files" list instead *(default)* |
 | 11 | Opening files | File dialog, drag & drop, command line argument, "Open with" from the file manager *(default)* |
-| 12 | Language | German UI, prepared for translation *(default)* |
+| 12 | Language | German and English, following the system language, switchable in the app; translations as gettext `.po` files (decided 2026-11-18, [ADR 0003](adr/0003-translations-gettext-embedded.md), specs 0017–0019) |
 | 13 | Toolkit | **GTK4 + libadwaita**, Linux/GNOME only |
 | 14 | PDF rendering & licence | Poppler; the app is therefore licensed **GPL-3.0-or-later** *(default)* |
 | 15 | Distribution | Local `cargo build`/install first; AUR package later; Flatpak out of scope for now *(default)* |
