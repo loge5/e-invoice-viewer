@@ -61,7 +61,6 @@ impl PageStack {
     }
 
     /// Total height including the gaps.
-    #[cfg(test)]
     pub fn height(&self) -> f64 {
         self.tops
             .last()
