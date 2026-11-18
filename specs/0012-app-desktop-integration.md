@@ -136,6 +136,11 @@ Sample invoices are defined in [fixtures.md](../docs/fixtures.md).
   addresses refused, reuse of an empty start window, list rules as above, no
   entries in the desktop's shared recent list, and that a missing recent file
   keeps the current invoice shown.
+- Corrections after the code review on 2026-11-18: when several files are
+  dropped and the first cannot be opened, the note about the other files is
+  added to the error instead of replacing it; when two files are opened
+  quickly one after the other, the one opened last is shown; a missing
+  recent file is recognised from the read error.
 
 ## Progress
 

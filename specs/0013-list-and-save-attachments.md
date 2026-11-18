@@ -124,6 +124,9 @@ fetches external addresses (BT-124).
     out-of-scope item for UBL is dropped.
   - BG-24 entries with neither embedded content nor an external address are
     not listed (the requirement lists only those two kinds).
+- Corrections after the code review on 2026-11-18: an empty file stored
+  compressed is listed as empty instead of unreadable, and the 64 MB limit
+  also applies to uncompressed files and to the invoice itself.
 
 ## Progress
 

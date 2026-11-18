@@ -55,6 +55,10 @@ Time limits refer to the reference machine in
   and Ctrl+- go to the neighbouring step from there.
 - Change on 2026-11-18 at the author's request: buttons − and + next to the
   zoom level, because the keyboard shortcuts are hard to discover.
+- Change after the code review on 2026-11-18: pages are split into strips
+  of 96 points, created once per document; zooming only resizes them and
+  keeps the old picture, stretched, until it is rendered again. A zoom that
+  does not change the scale does nothing.
 
 ## Progress
 

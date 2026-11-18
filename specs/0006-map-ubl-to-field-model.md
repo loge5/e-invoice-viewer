@@ -56,6 +56,10 @@ exists as CII and as UBL with the same business content.
   (BT-127). UBL sample B carries only the first of the two notes of CII
   sample B, as documented in [fixtures](../docs/fixtures.md). AC1 compares
   UBL sample B with CII sample B without the second line note.
+- Correction after the code review on 2026-11-18: BT-110 is taken from the
+  VAT total that has a breakdown (`cac:TaxSubtotal`), so that a VAT total in
+  accounting currency (BT-111) before it is not shown as BT-110 (test
+  `vat_total_ignores_accounting_currency_total`).
 
 ## Progress
 
