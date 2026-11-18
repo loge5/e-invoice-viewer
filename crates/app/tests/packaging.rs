@@ -137,6 +137,18 @@ fn install_script_installs_entry_and_icon_and_removes_them() {
             .env("BIN_DIR", home.join("bin"))
             .env("XDG_DATA_HOME", home.join("share")))
     };
+    // An icon theme directory that exists already, as on a used desktop.
+    let hicolor = home.join("share/icons/hicolor");
+    fs::create_dir_all(hicolor.join("scalable/apps")).expect("hicolor");
+    let old = std::time::UNIX_EPOCH + std::time::Duration::from_secs(1_000_000);
+    fs::File::open(&hicolor)
+        .and_then(|dir| dir.set_modified(old))
+        .expect("set mtime");
+    let mtime = |path: &Path| {
+        fs::metadata(path)
+            .and_then(|m| m.modified())
+            .expect("mtime")
+    };
     assert_success(&install(&[]), "install");
 
     let binary = home.join("bin/e-invoice-viewer");
@@ -147,6 +159,8 @@ fn install_script_installs_entry_and_icon_and_removes_them() {
         fs::read(&icon).expect("icon"),
         fs::read(repo().join(format!("data/icons/{APP_ID}.svg"))).expect("data icon")
     );
+    // The theme directory itself must change, so that the desktop rescans it.
+    assert!(mtime(&hicolor) > old, "hicolor not touched");
     let installed = fs::read_to_string(&entry_path).expect("desktop entry");
     let expected = desktop_entry().replace(
         "Exec=e-invoice-viewer %F",

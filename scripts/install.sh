@@ -22,7 +22,8 @@ bin_dir=${BIN_DIR:-$HOME/.local/bin}
 applications=${XDG_DATA_HOME:-$HOME/.local/share}/applications
 binary=$bin_dir/e-invoice-viewer
 desktop_entry=$applications/$app_id.desktop
-icon=${XDG_DATA_HOME:-$HOME/.local/share}/icons/hicolor/scalable/apps/$app_id.svg
+hicolor=${XDG_DATA_HOME:-$HOME/.local/share}/icons/hicolor
+icon=$hicolor/scalable/apps/$app_id.svg
 repo=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 
 refresh_desktop_database() {
@@ -31,9 +32,17 @@ refresh_desktop_database() {
     fi
 }
 
+# Icon themes are rescanned when the theme directory itself changes, not when
+# one of its subdirectories does; without this, GNOME Shell keeps showing the
+# placeholder icon until the next login.
+refresh_icon_theme() {
+    touch --no-create "$hicolor"
+}
+
 case ${1:-} in
 --uninstall)
     rm -f -- "$desktop_entry" "$binary" "$icon"
+    refresh_icon_theme
     refresh_desktop_database
     echo "Removed $binary, $desktop_entry and $icon"
     exit 0
@@ -67,5 +76,6 @@ if command -v desktop-file-validate >/dev/null; then
 fi
 install -Dm644 "$repo/data/icons/$app_id.svg" "$icon"
 install -Dm644 "$staged" "$desktop_entry"
+refresh_icon_theme
 refresh_desktop_database
 echo "Installed $binary, $desktop_entry and $icon"
