@@ -178,6 +178,10 @@ GitHub Actions workflow, and to give the app its own icon (see
   - The start hook of linuxdeploy-plugin-gtk sets `GDK_BACKEND=x11` and a
     fixed `GTK_THEME`; the build removes both, so the app runs natively on
     Wayland and libadwaita's dark style follows the system.
+  - After `scripts/install.sh`, GNOME Shell kept the placeholder icon: icon
+    themes are rescanned only when the theme directory itself changes. The
+    install script now touches `~/.local/share/icons/hicolor` after
+    installing and uninstalling; the install test checks it.
 - Open: the homepage and screenshot address in the metainfo need the GitHub
   address of the repository (placeholder `OWNER`).
 
@@ -229,7 +233,9 @@ GitHub Actions workflow, and to give the app its own icon (see
   - `desktop-file-validate` and `appstreamcli validate --no-net` pass (T1,
     T2); `cargo fmt`, `clippy -D warnings` and the architecture check are
     clean.
+- **Manually verified** by the author (2026-11-18): after
+  `scripts/install.sh`, the app grid and the dash show the new icon (AC6).
 - **Next**: manual checks by the author: AC3 (AppImage on the desktop, file
-  dialogs, language, dark style, Wayland), AC6/AC7 (icon after
-  `scripts/install.sh`, sizes), AC10 (start time on the reference machine),
+  dialogs, language, dark style, Wayland), AC7 (icon sizes, light and
+  dark), AC10 (start time on the reference machine),
   and AC9 (workflow run on GitHub after pushing a tag).
