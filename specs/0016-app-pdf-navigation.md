@@ -34,6 +34,8 @@ Time limits refer to the reference machine in
       steps (100 %, 125 %, 150 %, 200 %, 300 %, 400 % and 75 %, 50 %, 25 %),
       Ctrl+0 returns to fit width; the zoom level is shown (e.g. `150 %`), and
       zooming never goes beyond 25 % or 400 %.
+  - The buttons − and + next to the zoom level do the same as Ctrl+- and
+    Ctrl++; at 25 % or 400 % the respective button is disabled.
 - [ ] Given page 2 is visible and the user zooms to 200 %, then page 2 stays
       in view (the visible page does not jump).
 - [ ] Given a 50-page PDF, opening it shows page 1 within 2 s, and scrolling to
@@ -51,6 +53,8 @@ Time limits refer to the reference machine in
 - 100 % means 96 logical pixels per inch (an A4 page is about 794 logical
   pixels wide). Fit width shows its effective zoom, e.g. `73 %`; Ctrl++
   and Ctrl+- go to the neighbouring step from there.
+- Change on 2026-11-18 at the author's request: buttons − and + next to the
+  zoom level, because the keyboard shortcuts are hard to discover.
 
 ## Progress
 
@@ -65,6 +69,8 @@ Time limits refer to the reference machine in
     away are released. Fit width re-fits when the pane width changes.
     Ctrl++/Ctrl+= (and keypad +), Ctrl+- and Ctrl+0 work while the PDF pane
     has the focus (a click on the pages gives it the focus).
+  - Buttons − and + next to the zoom level (tooltip with the shortcut,
+    accessible name), disabled at the smallest and largest step.
   - `pdf_view.rs` renders a strip of a page and wraps it as a paintable of
     logical size, so that textures with device pixels are shown sharply
     without subclassing (the workspace forbids unsafe code).
@@ -80,6 +86,8 @@ Time limits refer to the reference machine in
     0.4 s after starting the app (including start-up and polling), `Seite 25
     von 50` and `Seite 50 von 50` after scrolling to the middle and the end
     through AT-SPI, and the fit-width zoom `73 %`.
+  - Zoom buttons through AT-SPI with `3-seiten.pdf`: + goes from `73 %` to
+    `75 %` and `100 %`; repeated − ends at `25 %`.
 - **Next** — manual checks by the author, then the author decides on
   `implemented`:
   - AC1/AC2: `3-seiten.pdf`: three pages with gaps, the end of page 3 can be
@@ -87,7 +95,8 @@ Time limits refer to the reference machine in
     of the pane.
   - AC3: drag the divider: the pages follow the width.
   - AC4: click into the PDF, then Ctrl++ up to 400 %, Ctrl+- down to 25 %,
-    Ctrl+0 back to fit width; the level is shown.
+    Ctrl+0 back to fit width; the level is shown. The same with the
+    buttons − and +.
   - AC5: with page 2 visible, zoom to 200 %: page 2 stays in view.
   - AC6: `50-seiten.pdf`: page 1 appears quickly; scrolling to page 50 shows
     its content within 1 s after stopping; the small print is sharp at

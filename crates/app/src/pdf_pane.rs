@@ -12,7 +12,7 @@ use std::time::Duration;
 use adw::prelude::*;
 use gtk::glib;
 
-use crate::pdf_layout::{PAGE_GAP, PageStack, Zoom, render_width, zoom_in, zoom_out};
+use crate::pdf_layout::{PAGE_GAP, PageStack, ZOOM_STEPS, Zoom, render_width, zoom_in, zoom_out};
 use crate::pdf_view::PdfDocument;
 use crate::texts;
 
@@ -36,6 +36,8 @@ struct Inner {
     pages_box: gtk::Box,
     page_label: gtk::Label,
     zoom_label: gtk::Label,
+    zoom_out_button: gtk::Button,
+    zoom_in_button: gtk::Button,
     state: RefCell<State>,
     /// Counts render requests; only the latest one runs.
     render_request: Cell<u64>,
@@ -102,8 +104,24 @@ impl PdfPane {
             .margin_top(4)
             .margin_bottom(4)
             .build();
+        let zoom_button = |icon: &str, tooltip: &str| {
+            let button = gtk::Button::builder()
+                .icon_name(icon)
+                .tooltip_text(tooltip)
+                .css_classes(["flat", "circular"])
+                .sensitive(false)
+                .build();
+            button.update_property(&[gtk::accessible::Property::Label(tooltip)]);
+            button
+        };
+        let zoom_out_button = zoom_button("zoom-out-symbolic", texts::ZOOM_OUT);
+        let zoom_in_button = zoom_button("zoom-in-symbolic", texts::ZOOM_IN);
+        let zoom_box = gtk::Box::new(gtk::Orientation::Horizontal, 4);
+        zoom_box.append(&zoom_out_button);
+        zoom_box.append(&zoom_label);
+        zoom_box.append(&zoom_in_button);
         bar.append(&page_label);
-        bar.append(&zoom_label);
+        bar.append(&zoom_box);
         let root = gtk::Box::new(gtk::Orientation::Vertical, 0);
         root.append(&scroller);
         root.append(&gtk::Separator::new(gtk::Orientation::Horizontal));
@@ -116,6 +134,8 @@ impl PdfPane {
                 pages_box,
                 page_label,
                 zoom_label,
+                zoom_out_button,
+                zoom_in_button,
                 state: RefCell::default(),
                 render_request: Cell::new(0),
             }),
@@ -152,6 +172,8 @@ impl PdfPane {
         *self.inner.state.borrow_mut() = State::default();
         self.inner.page_label.set_text("");
         self.inner.zoom_label.set_text("");
+        self.inner.zoom_out_button.set_sensitive(false);
+        self.inner.zoom_in_button.set_sensitive(false);
     }
 
     fn connect_signals(&self) {
@@ -218,6 +240,14 @@ impl PdfPane {
             ));
         }
         self.inner.root.add_controller(keys);
+
+        for (button, zoom) in [
+            (&self.inner.zoom_in_button, 1),
+            (&self.inner.zoom_out_button, -1),
+        ] {
+            let this = self.clone();
+            button.connect_clicked(move |_| this.zoom(zoom));
+        }
     }
 
     /// Zooms in (1), out (-1) or back to fit width (0).
@@ -319,9 +349,15 @@ impl PdfPane {
         self.inner
             .page_label
             .set_text(&texts::page_indicator_text(page, state.sizes.len()));
+        let percent = state.scale / PIXELS_PER_POINT * 100.0;
+        self.inner.zoom_label.set_text(&texts::zoom_text(percent));
+        // At the smallest or largest step the button has no effect.
         self.inner
-            .zoom_label
-            .set_text(&texts::zoom_text(state.scale / PIXELS_PER_POINT * 100.0));
+            .zoom_out_button
+            .set_sensitive(percent > f64::from(ZOOM_STEPS[0]) + 0.5);
+        self.inner
+            .zoom_in_button
+            .set_sensitive(percent < f64::from(ZOOM_STEPS[ZOOM_STEPS.len() - 1]) - 0.5);
     }
 
     /// Renders the tiles near the visible area once scrolling has stopped.
