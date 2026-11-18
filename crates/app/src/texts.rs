@@ -81,6 +81,9 @@ pub const NO_ATTACHMENTS: &str = n_("No attachments");
 pub const SAVE_ATTACHMENT: &str = n_("Save attachment…");
 pub const RECENT_EMPTY: &str = n_("No entries");
 pub const DROP_ONLY_FIRST: &str = n_("Only one file per window – the first one was opened");
+pub const MAIN_MENU: &str = n_("Main menu");
+pub const LANGUAGE_MENU: &str = n_("Language");
+pub const SYSTEM_LANGUAGE: &str = n_("System language");
 
 /// State of the validation of the shown invoice (spec 0011).
 #[derive(Debug, Clone, PartialEq, Eq)]

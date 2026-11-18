@@ -1,7 +1,7 @@
 ---
 id: 0019
 title: App - switch the language in the app
-status: reviewed
+status: in-progress
 created: 2026-11-18
 depends_on: [0018]
 ---
@@ -84,3 +84,47 @@ the app in German on an English desktop.
   is left to the implementation.
 - The review on 2026-11-18 added keyboard use and the switch during a running
   validation.
+- Like notes (toasts), a message already shown in the start view (e.g. that a
+  file could not be opened) stays in the previous language after a switch.
+
+## Progress
+
+- **Done**:
+  - `crates/app/src/language_setting.rs`: the choice (system language,
+    German, English), its labels (each language named in itself), and the
+    store `~/.config/e-invoice-viewer/language` through the shared settings
+    store; a damaged or unknown entry gives the system language and one
+    warning.
+  - Main menu button in the header bar (opens with F10) with the section
+    "Language" and the stateful action `app.language` (`system`, `de`,
+    `en`). Changing it stores the choice, sets the language of the user
+    interface and shows every window again in the new language.
+  - Window, XML view and PDF pane set their texts in one `apply_texts`,
+    used at start and on a switch. The open document is kept and shown
+    again from its bytes in the new language and validated again; the PDF
+    is not reloaded (page and zoom stay) and the XML view stays chosen. The
+    recent files menu is rebuilt.
+- **Verified** (2026-11-18):
+  - `cargo test --workspace`: 200 passed; new: 5 tests in
+    `language_setting.rs` (AC1, AC3–AC5).
+  - `cargo fmt --all --check`, `cargo clippy --workspace --all-targets -- -D
+    warnings` and the architecture check are clean.
+  - Smoke run of the release build on an English system, read through
+    AT-SPI, switching through the application action (as the menu does):
+    with the Factur-X PDF of sample A and `b.xml` in two windows, one second
+    after switching to German both show `Keine Befunde` /
+    `Keine Fehler, 1 Hinweis`, `Verkäufer (BG-4)`, `1.249,50 EUR`,
+    `Seite 1 von 1` and `Vergrößern (Strg++)`; the store reads
+    `choice=de`; the next start is German; choosing the system language
+    switches back to English, also for the next start; a stored `xx` gives
+    English and one warning.
+- **Next** — manual checks by the author, then the author decides on
+  `implemented`:
+  - Open the main menu with the mouse and with F10 / arrow keys / Enter;
+    the current choice is marked.
+  - In the XML view with the PDF at 150 % on page 2 of
+    `target/manual-0016/3-seiten.pdf`… (no invoice: use the Factur-X PDF of
+    sample A at 150 %): switching keeps the XML view, zoom and page.
+  - Switch while `target/manual-0011/l.xml` is still being validated: the
+    result appears in the new language.
+

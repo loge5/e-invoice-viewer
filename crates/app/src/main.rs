@@ -3,6 +3,7 @@
 mod attachments_view;
 mod config_store;
 mod fields_view;
+mod language_setting;
 mod local;
 mod pdf_layout;
 mod pdf_pane;
@@ -19,7 +20,6 @@ use std::cell::RefCell;
 use std::rc::Rc;
 
 use adw::prelude::*;
-use e_invoice_viewer_core::i18n::Language;
 use gtk::{gio, glib};
 
 use recent::RecentStore;
@@ -35,9 +35,17 @@ fn main() -> glib::ExitCode {
 
     let windows = Windows::default();
     let list = windows.clone();
+    // Shared by all windows.
+    let recent = RecentStore::new();
+    let recent_store = recent.clone();
     app.connect_startup(move |app| {
-        // The language of the user interface follows the system (0018).
-        texts::set_language(Language::from_preferences(&glib::language_names()));
+        // The language chosen in the app, or the system's (0018, 0019).
+        let (choice, warning) = language_setting::load(&language_setting::store_path());
+        if let Some(warning) = warning {
+            glib::g_warning!(config_store::LOG_DOMAIN, "{warning}");
+        }
+        texts::set_language(choice.effective(&glib::language_names()));
+        app.add_action(&language_action(choice, &list, &recent_store));
         load_css();
         let quit = gio::SimpleAction::new("quit", None);
         let target = app.clone();
@@ -54,9 +62,6 @@ fn main() -> glib::ExitCode {
         app.set_accels_for_action("win.close", &["<Control>w"]);
         app.set_accels_for_action("win.find", &["<Control>f"]);
     });
-
-    // Shared by all windows; read on first use.
-    let recent = RecentStore::new();
 
     // Started without files: an empty start view; nothing is reopened.
     let (shared, list) = (recent.clone(), windows.clone());
@@ -110,6 +115,14 @@ impl Windows {
         }
     }
 
+    /// Shows every window in the language that has just been chosen.
+    fn retranslate(&self) {
+        let windows = self.0.borrow().clone();
+        for window in windows {
+            window.retranslate();
+        }
+    }
+
     /// An open window that shows the start view.
     fn empty(&self) -> Option<Window> {
         self.0
@@ -118,6 +131,41 @@ impl Windows {
             .find(|window| window.is_empty())
             .cloned()
     }
+}
+
+/// The action `app.language` of the language menu (0019): its state is the
+/// stored choice; changing it stores the new choice and shows every window
+/// in the new language at once.
+fn language_action(
+    choice: language_setting::Choice,
+    windows: &Windows,
+    recent: &Rc<RecentStore>,
+) -> gio::SimpleAction {
+    let action = gio::SimpleAction::new_stateful(
+        "language",
+        Some(glib::VariantTy::STRING),
+        &choice.code().to_variant(),
+    );
+    let (windows, recent) = (windows.clone(), recent.clone());
+    action.connect_change_state(move |action, value| {
+        let Some(choice) = value
+            .and_then(glib::Variant::get::<String>)
+            .and_then(|code| language_setting::Choice::from_code(&code))
+        else {
+            return;
+        };
+        action.set_state(&choice.code().to_variant());
+        if let Err(error) = language_setting::save(&language_setting::store_path(), choice) {
+            glib::g_warning!(
+                config_store::LOG_DOMAIN,
+                "language setting not saved: {error}"
+            );
+        }
+        texts::set_language(choice.effective(&glib::language_names()));
+        recent.retranslate();
+        windows.retranslate();
+    });
+    action
 }
 
 /// Styles that libadwaita has no class for.

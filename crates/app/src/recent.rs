@@ -103,6 +103,11 @@ impl RecentStore {
         }
     }
 
+    /// Shows the menu in the language of the user interface (0019).
+    pub fn retranslate(&self) {
+        self.update_menu();
+    }
+
     fn update_menu(&self) {
         let files = self.files.borrow();
         let entries = files.entries();

@@ -57,6 +57,8 @@ pub struct XmlPane {
     source: Rc<RefCell<Option<Source>>>,
     assignment_label: gtk::Label,
     show_in_fields: gtk::Button,
+    copy_button: gtk::Button,
+    save_button: gtk::Button,
     /// What the element at the cursor belongs to.
     assigned: Rc<Cell<Target>>,
 }
@@ -95,10 +97,7 @@ impl XmlPane {
         let search = sourceview::SearchContext::new(&buffer, Some(&settings));
         search.set_highlight(true);
 
-        let search_entry = gtk::SearchEntry::builder()
-            .placeholder_text(texts::t(texts::SEARCH_PLACEHOLDER))
-            .hexpand(true)
-            .build();
+        let search_entry = gtk::SearchEntry::builder().hexpand(true).build();
         let search_status = gtk::Label::builder()
             .css_classes(["dim-label", "numeric"])
             .width_chars(12)
@@ -113,12 +112,8 @@ impl XmlPane {
             .build();
         search_bar.connect_entry(&search_entry);
 
-        let copy_button = gtk::Button::builder()
-            .label(texts::t(texts::COPY_XML))
-            .build();
-        let save_button = gtk::Button::builder()
-            .label(texts::t(texts::SAVE_XML))
-            .build();
+        let copy_button = gtk::Button::new();
+        let save_button = gtk::Button::new();
         let actions = gtk::Box::builder()
             .orientation(gtk::Orientation::Horizontal)
             .spacing(6)
@@ -137,15 +132,11 @@ impl XmlPane {
             .build();
         // The assignment line (0014), separate from the validation status.
         let assignment_label = gtk::Label::builder()
-            .label(texts::t(texts::NO_FIELD))
             .xalign(0.0)
             .hexpand(true)
             .ellipsize(gtk::pango::EllipsizeMode::End)
             .build();
-        let show_in_fields = gtk::Button::builder()
-            .label(texts::t(texts::SHOW_IN_FIELDS))
-            .sensitive(false)
-            .build();
+        let show_in_fields = gtk::Button::builder().sensitive(false).build();
         let assignment_line = gtk::Box::builder()
             .orientation(gtk::Orientation::Horizontal)
             .spacing(12)
@@ -175,10 +166,28 @@ impl XmlPane {
             source: Rc::default(),
             assignment_label,
             show_in_fields,
+            copy_button,
+            save_button,
             assigned: Rc::new(Cell::new(Target::Document)),
         };
-        this.connect_signals(&copy_button, &save_button);
+        this.connect_signals();
+        this.apply_texts();
         this
+    }
+
+    /// Sets the texts of the buttons, the search field and the assignment
+    /// line in the language of the user interface (0019).
+    pub fn apply_texts(&self) {
+        self.search_entry
+            .set_placeholder_text(Some(texts::t(texts::SEARCH_PLACEHOLDER)));
+        self.copy_button.set_label(texts::t(texts::COPY_XML));
+        self.save_button.set_label(texts::t(texts::SAVE_XML));
+        self.show_in_fields
+            .set_label(texts::t(texts::SHOW_IN_FIELDS));
+        self.update_assignment();
+        if self.assigned.get() == Target::Document {
+            self.assignment_label.set_text(texts::t(texts::NO_FIELD));
+        }
     }
 
     pub fn widget(&self) -> &gtk::Box {
@@ -315,7 +324,8 @@ impl XmlPane {
         self.search_entry.grab_focus();
     }
 
-    fn connect_signals(&self, copy_button: &gtk::Button, save_button: &gtk::Button) {
+    fn connect_signals(&self) {
+        let (copy_button, save_button) = (&self.copy_button, &self.save_button);
         let this = self.clone();
         copy_button.connect_clicked(move |button| {
             if let Some(source) = this.source.borrow().as_ref() {

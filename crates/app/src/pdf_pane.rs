@@ -116,18 +116,15 @@ impl PdfPane {
             .margin_top(4)
             .margin_bottom(4)
             .build();
-        let zoom_button = |icon: &str, tooltip: &str| {
-            let button = gtk::Button::builder()
+        let zoom_button = |icon: &str| {
+            gtk::Button::builder()
                 .icon_name(icon)
-                .tooltip_text(tooltip)
                 .css_classes(["flat", "circular"])
                 .sensitive(false)
-                .build();
-            button.update_property(&[gtk::accessible::Property::Label(tooltip)]);
-            button
+                .build()
         };
-        let zoom_out_button = zoom_button("zoom-out-symbolic", texts::t(texts::ZOOM_OUT));
-        let zoom_in_button = zoom_button("zoom-in-symbolic", texts::t(texts::ZOOM_IN));
+        let zoom_out_button = zoom_button("zoom-out-symbolic");
+        let zoom_in_button = zoom_button("zoom-in-symbolic");
         let zoom_box = gtk::Box::new(gtk::Orientation::Horizontal, 4);
         zoom_box.append(&zoom_out_button);
         zoom_box.append(&zoom_label);
@@ -153,7 +150,21 @@ impl PdfPane {
             }),
         };
         this.connect_signals();
+        this.apply_texts();
         this
+    }
+
+    /// Sets the tooltips, accessible names and the indicator in the language
+    /// of the user interface (0019).
+    pub fn apply_texts(&self) {
+        for (button, text) in [
+            (&self.inner.zoom_in_button, texts::ZOOM_IN),
+            (&self.inner.zoom_out_button, texts::ZOOM_OUT),
+        ] {
+            button.set_tooltip_text(Some(texts::t(text)));
+            button.update_property(&[gtk::accessible::Property::Label(texts::t(text))]);
+        }
+        self.update_indicator();
     }
 
     pub fn widget(&self) -> &gtk::Box {

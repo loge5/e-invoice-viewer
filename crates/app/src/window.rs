@@ -14,6 +14,7 @@ use e_invoice_viewer_core::validate::{Validation, Validator};
 use gtk::{gio, glib};
 
 use crate::fields_view::{FieldsView, ShowInXml};
+use crate::language_setting::Choice;
 use crate::pdf_pane::PdfPane;
 use crate::recent::RecentStore;
 use crate::save_as::save_as;
@@ -35,6 +36,14 @@ fn validate(xml: &[u8], language: Language) -> Result<Validation, DetectError> {
 }
 
 const MINIMUM_PANE_WIDTH: i32 = 300;
+
+/// The document a window shows.
+#[derive(Clone)]
+struct Shown {
+    /// File name.
+    name: String,
+    bytes: Rc<[u8]>,
+}
 
 /// Widgets and state of one window.
 #[derive(Clone)]
@@ -59,8 +68,14 @@ pub struct Window {
     /// Counts opened documents; a validation result for an older one is
     /// discarded.
     generation: Rc<Cell<u64>>,
-    /// Whether a document is shown (not the start view).
-    showing: Rc<Cell<bool>>,
+    /// Name and bytes of the shown document, `None` in the start view; kept
+    /// to show it again in another language (0019).
+    current: Rc<RefCell<Option<Shown>>>,
+    open_button: gtk::Button,
+    recent_button: gtk::MenuButton,
+    menu_button: gtk::MenuButton,
+    start_button: gtk::Button,
+    pdf_message: adw::StatusPage,
     toasts: adw::ToastOverlay,
     /// Remembers the window size (0015).
     size: SizeKeeper,
@@ -71,44 +86,39 @@ pub struct Window {
 impl Window {
     pub fn new(app: &adw::Application, recent: &Rc<RecentStore>) -> Self {
         let title = adw::WindowTitle::new(texts::APP_TITLE, "");
-        let open_button = gtk::Button::builder()
-            .label(texts::t(texts::OPEN_BUTTON))
-            .action_name("win.open")
-            .build();
+        let open_button = gtk::Button::builder().action_name("win.open").build();
         let close_button = gtk::Button::builder()
-            .label(texts::t(texts::CLOSE_BUTTON))
             .action_name("win.close")
             .visible(false)
             .build();
         let recent_button = gtk::MenuButton::builder()
             .icon_name("document-open-recent-symbolic")
-            .tooltip_text(texts::t(texts::RECENT_TITLE))
             .menu_model(recent.menu())
             .build();
-        recent_button.update_property(&[gtk::accessible::Property::Label(texts::t(
-            texts::RECENT_TITLE,
-        ))]);
+        // The main menu opens with F10 (0019).
+        let menu_button = gtk::MenuButton::builder()
+            .icon_name("open-menu-symbolic")
+            .primary(true)
+            .build();
         let header = adw::HeaderBar::builder().title_widget(&title).build();
         header.pack_start(&open_button);
         header.pack_start(&recent_button);
+        header.pack_end(&menu_button);
         header.pack_end(&close_button);
 
         let start_button = gtk::Button::builder()
-            .label(texts::t(texts::OPEN_BUTTON))
             .action_name("win.open")
             .halign(gtk::Align::Center)
             .css_classes(["pill", "suggested-action"])
             .build();
         let start_page = adw::StatusPage::builder()
             .icon_name("x-office-document-symbolic")
-            .title(texts::t(texts::START_TITLE))
             .child(&start_button)
             .build();
 
         let pdf_view = PdfPane::new();
         let pdf_message = adw::StatusPage::builder()
             .icon_name("image-missing-symbolic")
-            .title(texts::t(texts::PDF_NOT_RENDERABLE))
             .css_classes(["compact"])
             .build();
         let pdf_pane = gtk::Stack::builder()
@@ -128,12 +138,8 @@ impl Window {
         view_stack.add_named(&fields_container, Some("fields"));
         view_stack.add_named(xml_pane.widget(), Some("xml"));
 
-        let fields_toggle = gtk::ToggleButton::builder()
-            .label(texts::t(texts::VIEW_FIELDS))
-            .active(true)
-            .build();
+        let fields_toggle = gtk::ToggleButton::builder().active(true).build();
         let xml_toggle = gtk::ToggleButton::builder()
-            .label(texts::t(texts::VIEW_XML))
             .group(&fields_toggle)
             .sensitive(false)
             .build();
@@ -210,11 +216,17 @@ impl Window {
             status,
             fields_view: Rc::default(),
             generation: Rc::default(),
-            showing: Rc::default(),
+            current: Rc::default(),
+            open_button,
+            recent_button,
+            menu_button,
+            start_button,
+            pdf_message,
             toasts,
             size: SizeKeeper::attach(&window, size),
             recent: recent.clone(),
         };
+        this.apply_texts();
         this.add_actions();
         this.add_drop_target();
         this
@@ -222,6 +234,43 @@ impl Window {
 
     pub fn present(&self) {
         self.window.present();
+    }
+
+    /// Sets the texts of the header bar, the start view and the view switch
+    /// in the language of the user interface (0019).
+    fn apply_texts(&self) {
+        self.open_button.set_label(texts::t(texts::OPEN_BUTTON));
+        self.close_button.set_label(texts::t(texts::CLOSE_BUTTON));
+        self.start_button.set_label(texts::t(texts::OPEN_BUTTON));
+        self.start_page.set_title(texts::t(texts::START_TITLE));
+        self.pdf_message
+            .set_title(texts::t(texts::PDF_NOT_RENDERABLE));
+        self.fields_toggle.set_label(texts::t(texts::VIEW_FIELDS));
+        self.xml_toggle.set_label(texts::t(texts::VIEW_XML));
+        for (button, text) in [
+            (&self.recent_button, texts::RECENT_TITLE),
+            (&self.menu_button, texts::MAIN_MENU),
+        ] {
+            button.set_tooltip_text(Some(texts::t(text)));
+            button.update_property(&[gtk::accessible::Property::Label(texts::t(text))]);
+        }
+        self.menu_button.set_menu_model(Some(&main_menu()));
+    }
+
+    /// Shows everything in the language of the user interface, which has
+    /// just changed (0019): the texts, and the open document again, keeping
+    /// its PDF page and zoom and the chosen view.
+    pub fn retranslate(&self) {
+        self.apply_texts();
+        self.xml_pane.apply_texts();
+        self.pdf_view.apply_texts();
+        let current = self.current.borrow().clone();
+        if let Some(Shown { name, bytes }) = current {
+            let xml_shown = self.xml_toggle.is_active();
+            if self.show_content(&name, &bytes, false) && xml_shown {
+                self.xml_toggle.set_active(true);
+            }
+        }
     }
 
     /// Stores the window size (0015).
@@ -237,7 +286,7 @@ impl Window {
     /// Whether the window shows the start view, so that a file opened from
     /// outside can reuse it.
     pub fn is_empty(&self) -> bool {
-        !self.showing.get()
+        self.current.borrow().is_none()
     }
 
     /// Opens dropped files: the first one, with a note if there were more.
@@ -281,7 +330,7 @@ impl Window {
         let close = gio::SimpleAction::new("close", None);
         let this = self.clone();
         close.connect_activate(move |_, _| {
-            if this.showing.get() {
+            if !this.is_empty() {
                 this.show_start(None);
             } else {
                 this.window.close();
@@ -478,6 +527,19 @@ impl Window {
 
     /// Shows the document in `bytes`; returns whether it could be opened.
     fn show(&self, name: &str, bytes: &[u8]) -> bool {
+        let shown = self.show_content(name, bytes, true);
+        if shown {
+            *self.current.borrow_mut() = Some(Shown {
+                name: name.to_string(),
+                bytes: Rc::from(bytes),
+            });
+        }
+        shown
+    }
+
+    /// Opens and shows a document; the PDF pages are loaded only with
+    /// `load_pdf`, so that showing it again keeps the page and zoom.
+    fn show_content(&self, name: &str, bytes: &[u8], load_pdf: bool) -> bool {
         // Whatever is shown next, a running validation is outdated.
         self.next_generation();
         let document = match document::open(bytes, texts::language()) {
@@ -490,7 +552,9 @@ impl Window {
         let attachments = self.attachments_group(&document);
         match document {
             Document::Pdf { invoice, .. } => {
-                self.show_pdf_pane(Some(bytes));
+                if load_pdf {
+                    self.show_pdf_pane(Some(bytes));
+                }
                 match invoice {
                     Some(invoice) => self.show_invoice(invoice, name, None, &attachments),
                     None => {
@@ -621,7 +685,6 @@ impl Window {
     }
 
     fn show_document(&self, name: &str) {
-        self.showing.set(true);
         let title = texts::window_title(Some(name));
         self.window.set_title(Some(&title));
         self.title.set_title(name);
@@ -643,7 +706,7 @@ impl Window {
 
     /// Shows the start view, optionally with an error message.
     fn show_start(&self, message: Option<&str>) {
-        self.showing.set(false);
+        *self.current.borrow_mut() = None;
         self.next_generation();
         self.window.set_title(Some(&texts::window_title(None)));
         self.title.set_title(texts::APP_TITLE);
@@ -672,4 +735,18 @@ fn message_page(title: &str) -> gtk::Widget {
         .css_classes(["compact"])
         .build()
         .upcast()
+}
+
+/// The main menu: the language choice (0019), with each language named in
+/// itself.
+fn main_menu() -> gio::Menu {
+    let languages = gio::Menu::new();
+    for choice in Choice::ALL {
+        let item = gio::MenuItem::new(Some(choice.label()), None);
+        item.set_action_and_target_value(Some("app.language"), Some(&choice.code().to_variant()));
+        languages.append_item(&item);
+    }
+    let menu = gio::Menu::new();
+    menu.append_section(Some(texts::t(texts::LANGUAGE_MENU)), &languages);
+    menu
 }

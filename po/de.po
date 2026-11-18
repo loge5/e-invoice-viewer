@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: E-Invoice Viewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 10:45+0100\n"
+"POT-Creation-Date: 2026-11-18 10:57+0100\n"
 "PO-Revision-Date: 2026-11-18 00:00+0100\n"
 "Last-Translator: E-Invoice Viewer contributors\n"
 "Language-Team: German\n"
@@ -99,6 +99,15 @@ msgstr "Keine Einträge"
 
 msgid "Only one file per window – the first one was opened"
 msgstr "Nur eine Datei pro Fenster – die erste wurde geöffnet"
+
+msgid "Main menu"
+msgstr "Hauptmenü"
+
+msgid "Language"
+msgstr "Sprache"
+
+msgid "System language"
+msgstr "Systemsprache"
 
 msgid "error"
 msgid_plural "errors"
