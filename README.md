@@ -92,7 +92,8 @@ validator for its public test invoices. How and why this works is described in
 Each release has an **AppImage** for x86_64 Linux: one file that runs on
 current distributions (glibc 2.39 or newer — Ubuntu 24.04, Debian 13,
 Fedora 40, Arch, openSUSE Tumbleweed and newer) without installing anything.
-Download `E-Invoice_Viewer-<version>-x86_64.AppImage` from the release page,
+Download `E-Invoice_Viewer-<version>-x86_64.AppImage` from the
+[releases page](https://github.com/loge5/e-invoice-viewer/releases/latest),
 then:
 
 ```bash
@@ -142,6 +143,8 @@ sudo dnf install gcc gettext gtk4-devel libadwaita-devel poppler-glib-devel gtks
 Clone this repository, then install for the current user (no root needed):
 
 ```bash
+git clone https://github.com/loge5/e-invoice-viewer.git
+cd e-invoice-viewer
 scripts/install.sh
 ```
 

@@ -46,13 +46,13 @@
 
   <launchable type="desktop-id">de.loges.EInvoiceViewer.desktop</launchable>
 
-  <url type="homepage">https://github.com/OWNER/e-invoice-viewer</url>
-  <url type="bugtracker">https://github.com/OWNER/e-invoice-viewer/issues</url>
+  <url type="homepage">https://github.com/loge5/e-invoice-viewer</url>
+  <url type="bugtracker">https://github.com/loge5/e-invoice-viewer/issues</url>
 
   <screenshots>
     <screenshot type="default">
       <caption>A Factur-X invoice with its fields and the PDF page</caption>
-      <image>https://raw.githubusercontent.com/OWNER/e-invoice-viewer/main/docs/screenshot.png</image>
+      <image>https://raw.githubusercontent.com/loge5/e-invoice-viewer/main/docs/screenshot.png</image>
     </screenshot>
   </screenshots>
 

@@ -182,8 +182,9 @@ GitHub Actions workflow, and to give the app its own icon (see
     themes are rescanned only when the theme directory itself changes. The
     install script now touches `~/.local/share/icons/hicolor` after
     installing and uninstalling; the install test checks it.
-- Open: the homepage and screenshot address in the metainfo need the GitHub
-  address of the repository (placeholder `OWNER`).
+- The homepage, bug tracker and screenshot address in the metainfo point to
+  `github.com/loge5/e-invoice-viewer` (filled in after the release `v0.1.0`,
+  which still carries the placeholder `OWNER`).
 
 ## Progress
 
