@@ -118,7 +118,7 @@ GitHub Actions workflow, and to give the app its own icon (see
 - [x] Given the AppImage, then it contains the list of bundled packages with
       version, licence and source location, and every bundled library belongs
       to a package on the list.
-- [ ] Given the workflow file, then a check of its logic shows: it runs
+- [x] Given the workflow file, then a check of its logic shows: it runs
       `scripts/appimage.sh`; started by hand, it uploads the AppImage as an
       artefact; for a tag `v0.1.0`, it creates a draft release with the
       AppImage and the package list; a tag `v9.9.9` that does not match
@@ -240,5 +240,6 @@ GitHub Actions workflow, and to give the app its own icon (see
   the start time (AC10).
 - The author decided on `implemented` on 2026-11-18, before the first
   workflow run on GitHub.
-- **Next**: AC9 – the workflow run on GitHub, once the author pushes a tag
-  `v0.1.0`; the workflow logic itself is checked by the tests (T6).
+- **Manually verified** by the author (2026-11-18): the workflow ran on
+  GitHub for the tag `v0.1.0`, built the AppImage and attached it to the
+  release (AC9).
