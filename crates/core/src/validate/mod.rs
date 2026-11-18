@@ -49,6 +49,11 @@ pub enum Severity {
     Information,
 }
 
+impl Severity {
+    /// All severities, the most severe first.
+    pub const ALL: [Self; 3] = [Self::Error, Self::Warning, Self::Information];
+}
+
 /// One violated rule.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Finding {
@@ -75,6 +80,15 @@ pub struct Validation {
     /// Version 2.3`.
     pub version_note: Option<String>,
     pub findings: Vec<Finding>,
+}
+
+impl Validation {
+    /// The severity of the most severe finding, `None` without findings.
+    pub fn worst_severity(&self) -> Option<Severity> {
+        Severity::ALL
+            .into_iter()
+            .find(|severity| self.findings.iter().any(|f| f.severity == *severity))
+    }
 }
 
 /// Validates invoices. The rule sets are compiled on first use and kept.
@@ -210,6 +224,36 @@ fn business_terms(message: &str) -> Vec<String> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn worst_severity_is_the_most_severe_finding() {
+        let finding = |severity| Finding {
+            rule_id: String::new(),
+            severity,
+            message: String::new(),
+            location: String::new(),
+            business_terms: Vec::new(),
+        };
+        let validation = |findings| Validation {
+            applied_rule_sets: Vec::new(),
+            not_applicable_reason: None,
+            version_note: None,
+            findings,
+        };
+        assert_eq!(validation(Vec::new()).worst_severity(), None);
+        assert_eq!(
+            validation(vec![
+                finding(Severity::Information),
+                finding(Severity::Warning)
+            ])
+            .worst_severity(),
+            Some(Severity::Warning)
+        );
+        assert_eq!(
+            validation(vec![finding(Severity::Warning), finding(Severity::Error)]).worst_severity(),
+            Some(Severity::Error)
+        );
+    }
 
     #[test]
     fn business_terms_in_order_without_duplicates() {

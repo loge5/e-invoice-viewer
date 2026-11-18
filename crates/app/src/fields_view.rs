@@ -21,9 +21,6 @@ pub const HIGHLIGHT_CLASS: &str = "finding-highlight";
 /// Called with a location and attribute to show in the XML view (0014).
 pub type ShowInXml = Rc<dyn Fn(&str, Option<&str>)>;
 
-/// Severities in the order of the summary.
-const SEVERITIES: [Severity; 3] = [Severity::Error, Severity::Warning, Severity::Information];
-
 /// The field pane of one invoice. Cheap to clone.
 #[derive(Clone)]
 pub struct FieldsView {
@@ -220,7 +217,7 @@ impl FieldsView {
         }
 
         // The summary, grouped by severity.
-        for severity in SEVERITIES {
+        for severity in Severity::ALL {
             let entries: Vec<&(&Finding, Target)> = attributed
                 .iter()
                 .filter(|(finding, _)| finding.severity == severity)

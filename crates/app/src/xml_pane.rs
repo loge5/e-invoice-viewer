@@ -1,7 +1,7 @@
 //! The XML view: formatted, highlighted, searchable, with copy and save of
 //! the original bytes (spec 0008).
 
-use std::cell::{Cell, RefCell};
+use std::cell::{Cell, OnceCell, RefCell};
 use std::rc::Rc;
 
 use adw::prelude::*;
@@ -9,26 +9,37 @@ use e_invoice_viewer_core::attribution::Target;
 use e_invoice_viewer_core::fields::FieldModel;
 use e_invoice_viewer_core::link::{XmlLayout, assignment};
 use e_invoice_viewer_core::xml_view::{decode, pretty_print};
-use gtk::{gio, glib};
+use gtk::glib;
 use sourceview::prelude::*;
 
+use crate::save_as::save_as;
 use crate::texts;
 
 /// The invoice XML currently shown.
 struct Source {
     /// Original bytes, written unchanged by "XML speichern unter…".
     bytes: Vec<u8>,
-    /// Original text, put on the clipboard by "XML kopieren".
-    text: String,
     /// Name of the opened file, for the proposed save name.
     file_name: String,
     /// The field model, for the assignment line (0014).
     model: FieldModel,
-    /// The formatted text with element positions, once loaded; `None` until
-    /// the view is first shown.
-    layout: Option<Rc<XmlLayout>>,
-    /// Whether the formatted text has been loaded into the view yet.
-    loaded: bool,
+    /// Set when the view is first shown: the formatted text with element
+    /// positions, or `None` if the XML cannot be linked (it is still shown).
+    layout: OnceCell<Option<Rc<XmlLayout>>>,
+}
+
+impl Source {
+    /// The original text, as "XML kopieren" puts it on the clipboard.
+    fn text(&self) -> String {
+        decode(&self.bytes)
+            .map(|text| text.into_owned())
+            .unwrap_or_default()
+    }
+
+    /// The layout once the view has been shown and the XML can be linked.
+    fn layout(&self) -> Option<&Rc<XmlLayout>> {
+        self.layout.get().and_then(Option::as_ref)
+    }
 }
 
 /// Name of the text tag marking the element shown by "Im XML zeigen".
@@ -172,16 +183,11 @@ impl XmlPane {
 
     /// Sets the invoice XML; it is formatted when the view is first shown.
     pub fn set_xml(&self, bytes: &[u8], file_name: &str, model: FieldModel) {
-        let text = decode(bytes)
-            .map(|text| text.into_owned())
-            .unwrap_or_default();
         *self.source.borrow_mut() = Some(Source {
             bytes: bytes.to_vec(),
-            text,
             file_name: file_name.to_string(),
             model,
-            layout: None,
-            loaded: false,
+            layout: OnceCell::new(),
         });
         self.set_assigned(Target::Document, texts::NO_FIELD);
         self.buffer.set_text("");
@@ -208,7 +214,12 @@ impl XmlPane {
     /// of `attribute`.
     pub fn reveal(&self, location: &str, attribute: Option<&str>) {
         self.ensure_loaded();
-        let Some(layout) = self.source.borrow().as_ref().and_then(|s| s.layout.clone()) else {
+        let Some(layout) = self
+            .source
+            .borrow()
+            .as_ref()
+            .and_then(|s| s.layout().cloned())
+        else {
             return;
         };
         let (Some(range), Some(cursor)) = (
@@ -248,12 +259,10 @@ impl XmlPane {
 
     /// Updates the assignment line for the cursor position.
     fn update_assignment(&self) {
-        let Ok(source) = self.source.try_borrow() else {
-            return;
-        };
+        let source = self.source.borrow();
         let Some((model, layout)) = source
             .as_ref()
-            .and_then(|source| Some((&source.model, source.layout.as_ref()?)))
+            .and_then(|source| Some((&source.model, source.layout()?)))
         else {
             return;
         };
@@ -276,23 +285,22 @@ impl XmlPane {
     /// Loads the formatted XML into the view if not done yet.
     pub fn ensure_loaded(&self) {
         let text = {
-            let mut source = self.source.borrow_mut();
-            let Some(source) = source.as_mut().filter(|source| !source.loaded) else {
+            let source = self.source.borrow();
+            let Some(source) = source
+                .as_ref()
+                .filter(|source| source.layout.get().is_none())
+            else {
                 return;
             };
-            source.loaded = true;
-            match XmlLayout::new(&source.bytes) {
-                Ok(layout) => {
-                    let layout = Rc::new(layout);
-                    source.layout = Some(layout.clone());
-                    layout.text().to_string()
-                }
-                // Not linkable, but still shown.
-                Err(_) => pretty_print(&source.text),
-            }
+            let layout = XmlLayout::new(&source.bytes).ok().map(Rc::new);
+            let text = layout.as_ref().map_or_else(
+                || pretty_print(&source.text()),
+                |layout| layout.text().to_string(),
+            );
+            let _ = source.layout.set(layout);
+            text
         };
-        // Setting the text moves the cursor, which reads the source: it must
-        // not be borrowed here.
+        // Setting the text moves the cursor, which reads the source.
         self.buffer.set_text(&text);
         self.buffer.place_cursor(&self.buffer.start_iter());
         self.update_assignment();
@@ -307,7 +315,7 @@ impl XmlPane {
         let this = self.clone();
         copy_button.connect_clicked(move |button| {
             if let Some(source) = this.source.borrow().as_ref() {
-                button.clipboard().set_text(&source.text);
+                button.clipboard().set_text(&source.text());
             }
         });
 
@@ -384,25 +392,19 @@ impl XmlPane {
         }) else {
             return;
         };
-        let dialog = gtk::FileDialog::builder()
-            .title(texts::SAVE_XML)
-            .modal(true)
-            .initial_name(suggested)
-            .build();
         let parent = button.root().and_downcast::<gtk::Window>();
         glib::spawn_future_local(async move {
-            let Ok(file) = dialog.save_future(parent.as_ref()).await else {
-                return;
-            };
-            let result = file
-                .replace_contents_future(bytes, None, false, gio::FileCreateFlags::NONE)
-                .await;
-            if let (Err((_, error)), Some(parent)) = (result, parent) {
-                let alert = adw::AlertDialog::new(
-                    Some("XML konnte nicht gespeichert werden"),
-                    Some(error.message()),
-                );
-                alert.add_response("close", "Schließen");
+            let result = save_as(
+                parent.as_ref(),
+                texts::SAVE_XML,
+                &suggested,
+                glib::Bytes::from_owned(bytes),
+            )
+            .await;
+            if let (Err(error), Some(parent)) = (result, parent) {
+                let alert =
+                    adw::AlertDialog::new(Some(texts::SAVE_XML_FAILED), Some(error.message()));
+                alert.add_response("close", texts::CLOSE_DIALOG);
                 alert.present(Some(&parent));
             }
         });

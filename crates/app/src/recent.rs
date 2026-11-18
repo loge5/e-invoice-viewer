@@ -10,10 +10,8 @@ use std::rc::Rc;
 use gtk::prelude::*;
 use gtk::{gio, glib};
 
+use crate::config_store::{self, LOG_DOMAIN};
 use crate::texts;
-
-/// Log domain of warnings.
-const LOG_DOMAIN: &str = "e-invoice-viewer";
 
 /// At most this many entries are kept.
 pub const MAX_ENTRIES: usize = 10;
@@ -46,10 +44,10 @@ impl RecentFiles {
 }
 
 /// The list shared by all windows of the application, with the menu that
-/// shows it. The store is read on first use and written after each change.
+/// shows it. The store is read once and written after each change.
 pub struct RecentStore {
     path: PathBuf,
-    files: RefCell<Option<RecentFiles>>,
+    files: RefCell<RecentFiles>,
     menu: gio::Menu,
 }
 
@@ -59,17 +57,22 @@ impl RecentStore {
     }
 
     fn with_path(path: PathBuf) -> Rc<Self> {
-        Rc::new(Self {
+        let (files, warning) = load(&path);
+        if let Some(warning) = warning {
+            glib::g_warning!(LOG_DOMAIN, "{warning}");
+        }
+        let store = Rc::new(Self {
             path,
-            files: RefCell::default(),
+            files: RefCell::new(files),
             menu: gio::Menu::new(),
-        })
+        });
+        store.update_menu();
+        store
     }
 
     /// The menu "Zuletzt geöffnet"; its entries activate `win.open-recent`
     /// with the path as target.
     pub fn menu(&self) -> &gio::Menu {
-        self.ensure_loaded();
         &self.menu
     }
 
@@ -81,25 +84,11 @@ impl RecentStore {
         self.change(|files| files.remove(path));
     }
 
-    fn ensure_loaded(&self) {
-        if self.files.borrow().is_some() {
-            return;
-        }
-        let (files, warning) = load(&self.path);
-        if let Some(warning) = warning {
-            glib::g_warning!(LOG_DOMAIN, "{warning}");
-        }
-        self.files.replace(Some(files));
-        self.update_menu();
-    }
-
     fn change(&self, change: impl FnOnce(&mut RecentFiles)) {
-        self.ensure_loaded();
         let changed = {
             let mut files = self.files.borrow_mut();
-            let files = files.as_mut().expect("loaded");
             let before = files.clone();
-            change(files);
+            change(&mut files);
             (*files != before).then(|| files.clone())
         };
         if let Some(files) = changed {
@@ -116,7 +105,7 @@ impl RecentStore {
 
     fn update_menu(&self) {
         let files = self.files.borrow();
-        let entries = files.as_ref().map_or(&[][..], RecentFiles::entries);
+        let entries = files.entries();
         self.menu.remove_all();
         if entries.is_empty() {
             // An item without action is shown insensitive.
@@ -145,35 +134,18 @@ fn key(n: usize) -> String {
 
 /// Where the list is stored.
 pub fn store_path() -> PathBuf {
-    glib::user_config_dir()
-        .join("e-invoice-viewer")
-        .join("recent")
+    config_store::path("recent")
 }
 
 /// Reads the stored list. Returns the list and, if the store exists but
 /// cannot be used, a warning to log.
 pub fn load(path: &Path) -> (RecentFiles, Option<String>) {
-    let text = match std::fs::read(path) {
-        Ok(bytes) => bytes,
-        Err(error) if error.kind() == std::io::ErrorKind::NotFound => {
-            return (RecentFiles::default(), None);
-        }
-        Err(error) => return unusable(path, &error.to_string()),
+    let key_file = match config_store::read(path) {
+        Ok(Some(key_file)) if key_file.has_group(GROUP) => key_file,
+        Ok(Some(_)) => return unusable(path, "no list"),
+        Ok(None) => return (RecentFiles::default(), None),
+        Err(reason) => return unusable(path, &reason),
     };
-    let Ok(text) = String::from_utf8(text) else {
-        return unusable(path, "not UTF-8");
-    };
-    // GLib cannot take text with NUL characters.
-    if text.contains('\0') {
-        return unusable(path, "contains NUL characters");
-    }
-    let key_file = glib::KeyFile::new();
-    if let Err(error) = key_file.load_from_data(&text, glib::KeyFileFlags::NONE) {
-        return unusable(path, error.message());
-    }
-    if !key_file.has_group(GROUP) {
-        return unusable(path, "no list");
-    }
     let mut files = RecentFiles::default();
     for n in (0..MAX_ENTRIES).rev() {
         if let Ok(entry) = key_file.string(GROUP, &key(n)) {
@@ -208,11 +180,7 @@ pub fn save(path: &Path, files: &RecentFiles) -> Result<(), String> {
     {
         key_file.set_string(GROUP, &key(n), path);
     }
-    if let Some(dir) = path.parent() {
-        std::fs::create_dir_all(dir).map_err(|error| error.to_string())?;
-    }
-    glib::file_set_contents(path, key_file.to_data().as_bytes())
-        .map_err(|error| error.message().to_string())
+    config_store::write(path, &key_file)
 }
 
 #[cfg(test)]

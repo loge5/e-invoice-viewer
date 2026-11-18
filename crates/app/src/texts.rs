@@ -6,10 +6,12 @@ use e_invoice_viewer_core::detect::DetectError;
 use e_invoice_viewer_core::document::OpenError;
 use e_invoice_viewer_core::fields::{Field, FieldModel, MapError};
 use e_invoice_viewer_core::pdf::ExtractError;
+use e_invoice_viewer_core::pdf::MAX_EMBEDDED_FILE_SIZE;
 use e_invoice_viewer_core::validate::{Finding, Severity, Validation};
 
 pub const APP_TITLE: &str = "E-Invoice Viewer";
 pub const START_TITLE: &str = "Rechnung öffnen";
+pub const INVOICE_FILTER: &str = "Rechnungen (PDF, XML)";
 pub const OPEN_BUTTON: &str = "Öffnen…";
 pub const CLOSE_BUTTON: &str = "Schließen";
 pub const COPY_VALUE: &str = "Wert kopieren";
@@ -22,6 +24,8 @@ pub const ZOOM_IN: &str = "Vergrößern (Strg++)";
 pub const ZOOM_OUT: &str = "Verkleinern (Strg+-)";
 pub const COPY_XML: &str = "XML kopieren";
 pub const SAVE_XML: &str = "XML speichern unter…";
+pub const SAVE_XML_FAILED: &str = "XML konnte nicht gespeichert werden";
+pub const CLOSE_DIALOG: &str = "Schließen";
 pub const SEARCH_PLACEHOLDER: &str = "Im XML suchen";
 pub const VALIDATION_TITLE: &str = "Prüfergebnis";
 pub const DOCUMENT_TARGET: &str = "Dokument";
@@ -208,7 +212,12 @@ pub fn attachment_details(attachment: &Attachment) -> String {
         Content::Embedded(content) => size_text(content.len()),
         Content::External(address) => address.clone(),
         Content::Failed(ContentError::Unreadable) => "Inhalt nicht lesbar".to_string(),
-        Content::Failed(ContentError::TooLarge) => "Zu groß (über 64 MB)".to_string(),
+        Content::Failed(ContentError::TooLarge) => {
+            format!(
+                "Zu groß (über {} MB)",
+                MAX_EMBEDDED_FILE_SIZE / (1024 * 1024)
+            )
+        }
     };
     let mut parts = vec![source.to_string(), mime_type.to_string(), state];
     parts.extend(attachment.description.clone());
@@ -657,7 +666,6 @@ mod tests {
             not_found_message("alt.pdf"),
             "Die Datei alt.pdf wurde nicht gefunden"
         );
-        assert_eq!(RECENT_TITLE, "Zuletzt geöffnet");
     }
 
     // Spec 0013 AC1

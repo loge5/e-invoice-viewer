@@ -9,6 +9,8 @@ use std::path::{Path, PathBuf};
 
 use gtk::glib;
 
+use crate::config_store;
+
 /// Size of a new window without a plausible stored size.
 pub const DEFAULT_SIZE: (i32, i32) = (1200, 800);
 /// The window cannot be made smaller than this (0007).
@@ -66,30 +68,17 @@ fn unusable(path: &Path, reason: &str) -> (Option<WindowState>, Option<String>) 
 
 /// Where the window state is stored.
 pub fn store_path() -> PathBuf {
-    glib::user_config_dir()
-        .join("e-invoice-viewer")
-        .join("window")
+    config_store::path("window")
 }
 
 /// Reads the stored state. Returns the state and, if the store exists but
 /// cannot be used, a warning to log.
 pub fn load(path: &Path) -> (Option<WindowState>, Option<String>) {
-    let text = match std::fs::read(path) {
-        Ok(bytes) => bytes,
-        Err(error) if error.kind() == std::io::ErrorKind::NotFound => return (None, None),
-        Err(error) => return unusable(path, &error.to_string()),
+    let key_file = match config_store::read(path) {
+        Ok(Some(key_file)) => key_file,
+        Ok(None) => return (None, None),
+        Err(reason) => return unusable(path, &reason),
     };
-    let Ok(text) = String::from_utf8(text) else {
-        return unusable(path, "not UTF-8");
-    };
-    // GLib cannot take text with NUL characters.
-    if text.contains('\0') {
-        return unusable(path, "contains NUL characters");
-    }
-    let key_file = glib::KeyFile::new();
-    if let Err(error) = key_file.load_from_data(&text, glib::KeyFileFlags::NONE) {
-        return unusable(path, error.message());
-    }
     let state = (|| {
         Ok::<_, glib::Error>(WindowState {
             width: key_file.integer(GROUP, "width")?,
@@ -109,13 +98,7 @@ pub fn save(path: &Path, state: WindowState) -> Result<(), String> {
     key_file.set_integer(GROUP, "width", state.width);
     key_file.set_integer(GROUP, "height", state.height);
     key_file.set_boolean(GROUP, "maximized", state.maximized);
-    if let Some(dir) = path.parent() {
-        std::fs::create_dir_all(dir).map_err(|error| error.to_string())?;
-    }
-    // Written to a temporary file and renamed: an interrupted save keeps the
-    // previous value.
-    glib::file_set_contents(path, key_file.to_data().as_bytes())
-        .map_err(|error| error.message().to_string())
+    config_store::write(path, &key_file)
 }
 
 #[cfg(test)]
@@ -241,7 +224,7 @@ mod tests {
     // AC5, AC7
     #[test]
     fn settings_live_in_app_config_dir_apart_from_recent_list() {
-        let dir = glib::user_config_dir().join("e-invoice-viewer");
+        let dir = gtk::glib::user_config_dir().join("e-invoice-viewer");
         assert_eq!(store_path(), dir.join("window"));
         assert_ne!(store_path(), crate::recent::store_path());
     }

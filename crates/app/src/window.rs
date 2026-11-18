@@ -15,10 +15,11 @@ use gtk::{gio, glib};
 use crate::fields_view::{FieldsView, ShowInXml, severity_class};
 use crate::pdf_pane::PdfPane;
 use crate::recent::RecentStore;
+use crate::save_as::save_as;
 use crate::texts::ValidationState;
 use crate::window_size::{self, MINIMUM_SIZE, WindowState};
 use crate::xml_pane::XmlPane;
-use crate::{attachments_view, local, texts};
+use crate::{attachments_view, config_store, local, texts};
 
 thread_local! {
     /// One validator per worker thread, so that the rules are compiled once
@@ -198,7 +199,7 @@ impl Window {
 
         let (stored, warning) = window_size::load(&window_size::store_path());
         if let Some(warning) = warning {
-            glib::g_warning!("e-invoice-viewer", "{warning}");
+            glib::g_warning!(config_store::LOG_DOMAIN, "{warning}");
         }
         let size = window_size::initial_state(stored, largest_monitor());
         let window = adw::ApplicationWindow::builder()
@@ -288,7 +289,7 @@ impl Window {
             maximized: self.window.is_maximized(),
         };
         if let Err(error) = window_size::save(&window_size::store_path(), state) {
-            glib::g_warning!("e-invoice-viewer", "window size not saved: {error}");
+            glib::g_warning!(config_store::LOG_DOMAIN, "window size not saved: {error}");
         }
     }
 
@@ -407,7 +408,7 @@ impl Window {
 
     fn choose_file(&self) {
         let filter = gtk::FileFilter::new();
-        filter.set_name(Some("Rechnungen (PDF, XML)"));
+        filter.set_name(Some(texts::INVOICE_FILTER));
         for mime_type in ["application/pdf", "application/xml", "text/xml"] {
             filter.add_mime_type(mime_type);
         }
@@ -499,28 +500,18 @@ impl Window {
         };
         let content = glib::Bytes::from(content);
         let name = attachment.display_name(position);
-        let dialog = gtk::FileDialog::builder()
-            .title(texts::SAVE_ATTACHMENT)
-            .modal(true)
-            .initial_name(attachment.proposed_file_name(position))
-            .build();
+        let initial_name = attachment.proposed_file_name(position);
         let this = self.clone();
         glib::spawn_future_local(async move {
-            // Cancelling the dialog is not an error.
-            let Ok(file) = dialog.save_future(Some(&this.window)).await else {
-                return;
-            };
-            // Written to a temporary file and renamed, so that a failure
-            // leaves no partial file behind.
-            if let Err((_, error)) = file
-                .replace_contents_future(
-                    content,
-                    None,
-                    false,
-                    gio::FileCreateFlags::REPLACE_DESTINATION,
-                )
-                .await
-            {
+            let parent = this.window.clone().upcast::<gtk::Window>();
+            let result = save_as(
+                Some(&parent),
+                texts::SAVE_ATTACHMENT,
+                &initial_name,
+                content,
+            )
+            .await;
+            if let Err(error) = result {
                 this.notify(&texts::save_failed_message(&name, error.message()));
             }
         });
@@ -645,31 +636,21 @@ impl Window {
         let (icon, class) = match state {
             ValidationState::Running => ("content-loading-symbolic", None),
             ValidationState::Failed(_) => ("dialog-error-symbolic", Some("error")),
-            ValidationState::Done(validation) => {
-                let worst = [Severity::Error, Severity::Warning, Severity::Information]
-                    .into_iter()
-                    .find(|severity| {
-                        validation
-                            .findings
-                            .iter()
-                            .any(|finding| finding.severity == *severity)
-                    });
-                match worst {
-                    Some(Severity::Error) => (
-                        "dialog-error-symbolic",
-                        Some(severity_class(Severity::Error)),
-                    ),
-                    Some(Severity::Warning) => (
-                        "dialog-warning-symbolic",
-                        Some(severity_class(Severity::Warning)),
-                    ),
-                    Some(Severity::Information) => ("dialog-information-symbolic", None),
-                    None if validation.not_applicable_reason.is_some() => {
-                        ("dialog-information-symbolic", None)
-                    }
-                    None => ("object-select-symbolic", Some("success")),
+            ValidationState::Done(validation) => match validation.worst_severity() {
+                Some(Severity::Error) => (
+                    "dialog-error-symbolic",
+                    Some(severity_class(Severity::Error)),
+                ),
+                Some(Severity::Warning) => (
+                    "dialog-warning-symbolic",
+                    Some(severity_class(Severity::Warning)),
+                ),
+                Some(Severity::Information) => ("dialog-information-symbolic", None),
+                None if validation.not_applicable_reason.is_some() => {
+                    ("dialog-information-symbolic", None)
                 }
-            }
+                None => ("object-select-symbolic", Some("success")),
+            },
         };
         self.status_icon.set_icon_name(Some(icon));
         for name in ["error", "warning", "success"] {
