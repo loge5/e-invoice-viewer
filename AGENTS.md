@@ -12,15 +12,16 @@ See [docs/requirements.md](docs/requirements.md).
 
 ## Method: ai-harness
 
-This project follows the vendored [ai-harness](ai-harness/README.md):
+This project follows the author's ai-harness method. It is kept locally in
+`ai-harness/` and is not part of the published repository; if it is present,
+read it:
 
-- Specs live in [`specs/`](specs/), format: [spec-format](ai-harness/docs/spec-format.md).
-- Pipelines: [idea → spec](ai-harness/docs/idea-to-spec.md), then
-  [implement](ai-harness/docs/implement.md), one reviewed spec at a time.
-- Every session: [session lifecycle](ai-harness/docs/session-lifecycle.md).
-- **Guidelines (read before any code):**
-  [architecture](ai-harness/guidelines/architecture.md) ·
-  [coding + tools check](ai-harness/guidelines/coding.md).
+- Specs live in [`specs/`](specs/), format: `ai-harness/docs/spec-format.md`.
+- Pipelines: idea → spec (`ai-harness/docs/idea-to-spec.md`), then implement
+  (`ai-harness/docs/implement.md`), one reviewed spec at a time.
+- Every session: `ai-harness/docs/session-lifecycle.md`.
+- **Guidelines (read before any code):** `ai-harness/guidelines/architecture.md`
+  and `ai-harness/guidelines/coding.md`.
 - Decisions: [`docs/adr/`](docs/adr/).
 
 Only specs with `status: reviewed` may be implemented. The author decides at
@@ -44,5 +45,10 @@ changes to the crate split, changes to the validation engine.
 
 - The spec's acceptance criteria are met, each traced to a test or to a
   documented manual check for GUI-bound criteria.
-- The tools check in [coding.md](ai-harness/guidelines/coding.md) is clean.
+- The tools check is clean:
+  - `cargo fmt --all --check` — no diff;
+  - `cargo clippy --workspace --all-targets -- -D warnings` — no warnings;
+  - `cargo test --workspace` — all green;
+  - `cargo tree -p e-invoice-viewer-core -e normal | grep -E "gtk|glib|poppler|adw"`
+    — no output.
 - The spec is set to `implemented`; docs/ADRs are updated where relevant.

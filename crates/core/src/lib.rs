@@ -2,7 +2,8 @@
 //!
 //! Everything here is GUI-free and unit-testable: reading the invoice source
 //! (PDF with embedded XML, or plain XML), detecting syntax and profile, mapping
-//! to the field model and validation. See `ai-harness/guidelines/architecture.md`.
+//! to the field model and validation. The GTK app (`crates/app`) only presents
+//! it.
 
 pub mod attachments;
 pub mod attribution;

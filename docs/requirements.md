@@ -1,7 +1,6 @@
 # Requirements summary
 
-Result of step 1 (clarify) of the [idea → spec](../ai-harness/docs/idea-to-spec.md)
-pipeline. Decided by the author on 2026-11-16: name **E-Invoice Viewer** (initially XRechnungsLupe), GTK4,
+Result of step 1 (clarify) of the idea → spec pipeline. Decided by the author on 2026-11-16: name **E-Invoice Viewer** (initially XRechnungsLupe), GTK4,
 display only. Everything else marked *(default)* was proposed by the AI and
 accepted without further discussion. It can be revisited at any time.
 

@@ -175,8 +175,7 @@ The project is developed spec by spec: every feature starts as a reviewed
 specification in [`specs/`](specs/) with acceptance criteria, which are traced
 to automated tests or documented manual checks. Requirements are summarised in
 [docs/requirements.md](docs/requirements.md), architecture decisions live in
-[docs/adr/](docs/adr/). The method itself is the vendored
-[ai-harness](ai-harness/README.md).
+[docs/adr/](docs/adr/).
 
 ## Development
 
@@ -184,6 +183,8 @@ to automated tests or documented manual checks. Requirements are summarised in
 cargo test --workspace
 cargo clippy --workspace --all-targets -- -D warnings
 cargo fmt --all --check
+# crates/core must not depend on GUI libraries: prints nothing
+cargo tree -p e-invoice-viewer-core -e normal | grep -E "gtk|glib|poppler|adw"
 ```
 
 Test invoices are synthetic or taken from public sample sets
