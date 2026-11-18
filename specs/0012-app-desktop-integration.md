@@ -1,7 +1,7 @@
 ---
 id: 0012
 title: App - drag and drop, "Open with" and recent files
-status: reviewed
+status: implemented
 created: 2026-11-16
 depends_on: [0007]
 ---
@@ -53,7 +53,7 @@ in the start view and while an invoice is shown.
 
 Sample invoices are defined in [fixtures.md](../docs/fixtures.md).
 
-- [ ] Given the start view or an opened invoice, when the user drops
+- [x] Given the start view or an opened invoice, when the user drops
       `RE-2026-0042.pdf` onto the window, then that file is opened in this
       window, replacing a previously shown invoice.
   - Dropping `RE-2026-0042.pdf` and `RE-2026-0043.pdf` at once opens
@@ -61,7 +61,7 @@ Sample invoices are defined in [fixtures.md](../docs/fixtures.md).
     erste wurde geöffnet`.
   - Dropping a file that is not an invoice (e.g. `foto.png`) or a folder
     shows the error message of 0007 for unreadable invoices.
-- [ ] Given the user runs the repository's install step as a normal user,
+- [x] Given the user runs the repository's install step as a normal user,
       then:
   - the app is listed under "Öffnen mit" for `RE-2026-0042.pdf` and
     `RE-2026-0042.xml` in Nautilus (manual check);
@@ -71,7 +71,7 @@ Sample invoices are defined in [fixtures.md](../docs/fixtures.md).
     installation;
   - after the uninstall step the app is no longer listed, and its desktop
     entry and binary are gone.
-- [ ] Given a window shows sample A, when the user opens `RE-2026-0043.pdf`
+- [x] Given a window shows sample A, when the user opens `RE-2026-0043.pdf`
       via the file manager or runs `e-invoice-viewer RE-2026-0043.pdf`, then
       a second window opens with it, and the first window still shows sample
       A.
@@ -79,32 +79,32 @@ Sample invoices are defined in [fixtures.md](../docs/fixtures.md).
     two windows, one per file.
   - Given the only window shows the start view, opening a file from outside
     opens it in that window; no second window appears.
-- [ ] Given `e-invoice-viewer https://example.com/RE-2026-0042.pdf`, or a
+- [x] Given `e-invoice-viewer https://example.com/RE-2026-0042.pdf`, or a
       dropped link `https://example.com/RE-2026-0042.pdf` from a browser,
       then no network connection is made, and the message `Die Adresse
       https://example.com/RE-2026-0042.pdf ist keine lokale Datei` is shown
       (start view, or a note while an invoice stays shown).
-- [ ] Given the user opened `a.pdf`, then `b.xml`, then `a.pdf` again, then
+- [x] Given the user opened `a.pdf`, then `b.xml`, then `a.pdf` again, then
       "Zuletzt geöffnet" lists `a.pdf`, then `b.xml`, each with its folder.
   - Given 10 entries, opening an eleventh file adds it on top and removes
     the oldest entry.
   - Given `/tmp/x/rechnung.pdf` and `/tmp/y/rechnung.pdf` were opened, then
     both are listed, and their folders tell them apart.
   - Given opening `kaputt.xml` failed, then it is not listed.
-- [ ] Given two windows are open, when a file is opened in one of them, then
+- [x] Given two windows are open, when a file is opened in one of them, then
       the list in the other window shows it on top as well.
-- [ ] Given the user selects a recent entry while a window shows sample B,
+- [x] Given the user selects a recent entry while a window shows sample B,
       then the selected file replaces sample B in that window.
-- [ ] Given a recent entry `alt.pdf` whose file no longer exists, when the
+- [x] Given a recent entry `alt.pdf` whose file no longer exists, when the
       user selects it, then the window keeps showing what it showed, the note
       `Die Datei alt.pdf wurde nicht gefunden` is shown, and the entry is
       removed from the list.
-- [ ] Given the stored list is empty, truncated or not readable, then the app
+- [x] Given the stored list is empty, truncated or not readable, then the app
       starts normally with an empty list. It shows no error dialog and logs
       one warning.
   - If the app is killed while the list is being saved, the previous list
     is kept; no half-written list remains.
-- [ ] Given recent entries exist, when the app is started without arguments,
+- [x] Given recent entries exist, when the app is started without arguments,
       then the start view is shown and no file is opened.
   - The list is stored only in the app's configuration directory. Nothing is
     written next to the invoice files.
@@ -136,3 +136,65 @@ Sample invoices are defined in [fixtures.md](../docs/fixtures.md).
   addresses refused, reuse of an empty start window, list rules as above, no
   entries in the desktop's shared recent list, and that a missing recent file
   keeps the current invoice shown.
+
+## Progress
+
+- **Done**:
+  - `crates/app/src/recent.rs`: the recent list (most recent first, no
+    duplicates by full path, at most 10) and its store
+    `~/.config/e-invoice-viewer/recent` (GLib key file, written atomically
+    with `g_file_set_contents`). One shared `RecentStore` provides the menu
+    model that all windows show.
+  - `crates/app/src/local.rs`: web addresses (`http`, `https`, `ftp`, `dav`,
+    `davs`, `webdav`) are refused before anything else is asked about them;
+    other files are read only through their local path (mounted shares have
+    one through gvfs).
+  - Window:
+    - Drop target for files; with several, the first is opened plus a note.
+      Text drops are accepted too, because browsers offer a dragged link as
+      text only: an address in it is refused like any other.
+    - Menu button "Zuletzt geöffnet" in the header bar.
+    - Notes as toasts while an invoice is shown, otherwise in the start view.
+    - Only successful openings are recorded.
+  - `main.rs`: a list of open windows; files from outside reuse one empty
+    start window, the others get new windows.
+  - `scripts/install.sh [--uninstall]`: builds the release binary, installs
+    it to `~/.local/bin` and the desktop entry
+    `de.loges.EInvoiceViewer.desktop` (`Exec=… %F`, the three MIME types, no
+    default set).
+- **Verified** (2026-11-18):
+  - `cargo test --workspace`: 129 passed. New: 9 recent-list tests, 3
+    local-file tests and 2 text tests. Added after the approved list:
+    `menu_follows_the_list`, and `dropped_links_are_addresses` (red, then
+    green) after the author's manual check of AC4.
+  - `cargo fmt --all --check`, `cargo clippy --workspace --all-targets -- -D
+    warnings` and the architecture check are clean.
+  - The atomic write is not tested by killing the app; GLib replaces the file
+    by rename, so no half-written list can remain.
+  - Install check with isolated `XDG_DATA_HOME`/`XDG_CONFIG_HOME` and
+    `BIN_DIR`:
+    - `desktop-file-validate` is clean.
+    - `xdg-mime query default` is unchanged for all three types (Papers,
+      Builder, Builder).
+    - `gio mime` lists the app for all three types.
+    - After `--uninstall`, binary and entry are gone and the app is no
+      longer listed.
+  - Smoke run of the release build with an isolated configuration directory:
+    - `e-invoice-viewer https://example.com/RE-2026-0042.pdf` shows the
+      not-local message. There is no TCP connection of the app (`ss -tnp`),
+      and no `gvfsd-http` was started.
+    - A second call with `a.xml` reused the empty start window. `b.xml` and
+      `a.xml` again each opened a new window. The store then listed `a.xml`
+      before `b.xml`.
+    - A damaged store (`[Rec`) gives the start view and exactly one warning
+      on stderr.
+    - `~/.local/share/recently-used.xbel` was unchanged after all runs.
+  - Manual checks by the author (2026-11-18): AC1, AC2, AC3 and AC5 to AC8
+    passed.
+  - AC4, first manual check: dragging an https link from the browser showed
+    the "not allowed" cursor. The drop was refused because the browser
+    offers the link as text only. Nothing was loaded, but the message was
+    missing. Fixed by accepting text drops.
+  - AC4, second manual check (2026-11-18): the dragged https link shows the
+    not-local message. Passed.
+- **Next** — none; status `implemented` (2026-11-18).

@@ -23,6 +23,9 @@ pub const SEARCH_PLACEHOLDER: &str = "Im XML suchen";
 pub const VALIDATION_TITLE: &str = "Prüfergebnis";
 pub const DOCUMENT_TARGET: &str = "Dokument";
 pub const VALIDATION_FAILED_REASON: &str = "interner Fehler bei der Prüfung";
+pub const RECENT_TITLE: &str = "Zuletzt geöffnet";
+pub const RECENT_EMPTY: &str = "Keine Einträge";
+pub const DROP_ONLY_FIRST: &str = "Nur eine Datei pro Fenster – die erste wurde geöffnet";
 
 /// State of the validation of the shown invoice (spec 0011).
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -135,6 +138,31 @@ pub fn finding_text(finding: &Finding) -> String {
     )
 }
 
+/// A recent entry: the file name and its folder, with the home directory
+/// abbreviated to `~`.
+pub fn recent_entry_label(path: &std::path::Path, home: &std::path::Path) -> String {
+    let name = path
+        .file_name()
+        .map_or_else(|| path.to_string_lossy(), |name| name.to_string_lossy());
+    let folder = path.parent().unwrap_or(path);
+    let folder = match folder.strip_prefix(home) {
+        Ok(rest) if rest.as_os_str().is_empty() => "~".to_string(),
+        Ok(rest) => format!("~/{}", rest.display()),
+        Err(_) => folder.display().to_string(),
+    };
+    format!("{name} — {folder}")
+}
+
+/// Message for an address that is not a local file.
+pub fn not_local_message(uri: &str) -> String {
+    format!("Die Adresse {uri} ist keine lokale Datei")
+}
+
+/// Message for a recent entry whose file no longer exists.
+pub fn not_found_message(file_name: &str) -> String {
+    format!("Die Datei {file_name} wurde nicht gefunden")
+}
+
 /// Window title, with the file name while an invoice is shown.
 pub fn window_title(file_name: Option<&str>) -> String {
     match file_name {
@@ -221,6 +249,7 @@ fn reason(error: &OpenError) -> String {
 mod tests {
     use super::*;
     use e_invoice_viewer_core::fields::Section;
+    use std::path::Path;
 
     fn iban_field() -> Field {
         Field {
@@ -457,5 +486,45 @@ mod tests {
         for (file_name, error, expected) in cases {
             assert_eq!(error_message(file_name, &error), expected);
         }
+    }
+
+    // AC5
+    #[test]
+    fn recent_entry_label_shows_folder() {
+        let home = Path::new("/home/anna");
+        assert_eq!(
+            recent_entry_label(Path::new("/home/anna/x/rechnung.pdf"), home),
+            "rechnung.pdf — ~/x"
+        );
+        assert_eq!(
+            recent_entry_label(Path::new("/home/anna/a.pdf"), home),
+            "a.pdf — ~"
+        );
+        assert_eq!(
+            recent_entry_label(Path::new("/tmp/y/rechnung.pdf"), home),
+            "rechnung.pdf — /tmp/y"
+        );
+        assert_eq!(
+            recent_entry_label(Path::new("/home/annabel/a.pdf"), home),
+            "a.pdf — /home/annabel"
+        );
+    }
+
+    // AC1, AC4, AC8
+    #[test]
+    fn message_texts() {
+        assert_eq!(
+            DROP_ONLY_FIRST,
+            "Nur eine Datei pro Fenster – die erste wurde geöffnet"
+        );
+        assert_eq!(
+            not_local_message("https://example.com/RE-2026-0042.pdf"),
+            "Die Adresse https://example.com/RE-2026-0042.pdf ist keine lokale Datei"
+        );
+        assert_eq!(
+            not_found_message("alt.pdf"),
+            "Die Datei alt.pdf wurde nicht gefunden"
+        );
+        assert_eq!(RECENT_TITLE, "Zuletzt geöffnet");
     }
 }

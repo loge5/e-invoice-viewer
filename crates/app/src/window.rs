@@ -1,6 +1,7 @@
 //! The main window: start view, or PDF and fields side by side (spec 0007).
 
 use std::cell::{Cell, RefCell};
+use std::path::Path;
 use std::rc::Rc;
 
 use adw::prelude::*;
@@ -10,9 +11,10 @@ use e_invoice_viewer_core::validate::{Severity, Validation, Validator};
 use gtk::{gio, glib};
 
 use crate::fields_view::{FieldsView, severity_class};
+use crate::recent::RecentStore;
 use crate::texts::ValidationState;
 use crate::xml_pane::XmlPane;
-use crate::{pdf_view, texts};
+use crate::{local, pdf_view, texts};
 
 thread_local! {
     /// One validator per worker thread, so that the rules are compiled once
@@ -56,10 +58,13 @@ pub struct Window {
     generation: Rc<Cell<u64>>,
     /// File name of the shown invoice, `None` in the start view.
     current: Rc<RefCell<Option<String>>>,
+    toasts: adw::ToastOverlay,
+    /// Recently opened files, shared by all windows.
+    recent: Rc<RecentStore>,
 }
 
 impl Window {
-    pub fn new(app: &adw::Application) -> Self {
+    pub fn new(app: &adw::Application, recent: &Rc<RecentStore>) -> Self {
         let title = adw::WindowTitle::new(texts::APP_TITLE, "");
         let open_button = gtk::Button::builder()
             .label(texts::OPEN_BUTTON)
@@ -70,8 +75,15 @@ impl Window {
             .action_name("win.close")
             .visible(false)
             .build();
+        let recent_button = gtk::MenuButton::builder()
+            .icon_name("document-open-recent-symbolic")
+            .tooltip_text(texts::RECENT_TITLE)
+            .menu_model(recent.menu())
+            .build();
+        recent_button.update_property(&[gtk::accessible::Property::Label(texts::RECENT_TITLE)]);
         let header = adw::HeaderBar::builder().title_widget(&title).build();
         header.pack_start(&open_button);
+        header.pack_start(&recent_button);
         header.pack_end(&close_button);
 
         let start_button = gtk::Button::builder()
@@ -186,9 +198,11 @@ impl Window {
         stack.add_named(&start_page, Some("start"));
         stack.add_named(&paned, Some("document"));
 
+        let toasts = adw::ToastOverlay::new();
+        toasts.set_child(Some(&stack));
         let content = adw::ToolbarView::new();
         content.add_top_bar(&header);
-        content.set_content(Some(&stack));
+        content.set_content(Some(&toasts));
 
         let window = adw::ApplicationWindow::builder()
             .application(app)
@@ -221,13 +235,58 @@ impl Window {
             fields_view: Rc::default(),
             generation: Rc::default(),
             current: Rc::default(),
+            toasts,
+            recent: recent.clone(),
         };
         this.add_actions();
+        this.add_drop_target();
         this
     }
 
     pub fn present(&self) {
         self.window.present();
+    }
+
+    /// The application window.
+    pub fn widget(&self) -> &adw::ApplicationWindow {
+        &self.window
+    }
+
+    /// Whether the window shows the start view, so that a file opened from
+    /// outside can reuse it.
+    pub fn is_empty(&self) -> bool {
+        self.current.borrow().is_none()
+    }
+
+    /// Opens dropped files: the first one, with a note if there were more.
+    /// A link dragged from a browser arrives as text; it is refused with the
+    /// not-local message like any other address.
+    fn add_drop_target(&self) {
+        let target = gtk::DropTarget::new(glib::Type::INVALID, gtk::gdk::DragAction::COPY);
+        target.set_types(&[gtk::gdk::FileList::static_type(), String::static_type()]);
+        let this = self.clone();
+        target.connect_drop(move |_, value, _, _| {
+            let files = if let Ok(list) = value.get::<gtk::gdk::FileList>() {
+                list.files()
+            } else if let Ok(text) = value.get::<String>() {
+                local::dropped_address(&text).into_iter().collect()
+            } else {
+                Vec::new()
+            };
+            let Some(first) = files.first().cloned() else {
+                return false;
+            };
+            let more = files.len() > 1;
+            let this = this.clone();
+            glib::spawn_future_local(async move {
+                this.open_file(&first).await;
+                if more {
+                    this.notify(texts::DROP_ONLY_FIRST);
+                }
+            });
+            true
+        });
+        self.window.add_controller(target);
     }
 
     fn add_actions(&self) {
@@ -256,6 +315,17 @@ impl Window {
             }
         });
         self.window.add_action(&find);
+
+        let open_recent = gio::SimpleAction::new("open-recent", Some(glib::VariantTy::STRING));
+        let this = self.clone();
+        open_recent.connect_activate(move |_, target| {
+            let Some(path) = target.and_then(glib::Variant::get::<String>) else {
+                return;
+            };
+            let this = this.clone();
+            glib::spawn_future_local(async move { this.open_recent(Path::new(&path)).await });
+        });
+        self.window.add_action(&open_recent);
 
         let this = self.clone();
         self.status_button.connect_clicked(move |_| {
@@ -302,14 +372,35 @@ impl Window {
         });
     }
 
-    /// Opens `file` in this window, replacing what is shown.
+    /// Opens `file` in this window, replacing what is shown. Only local
+    /// files are read; anything else is refused with a message.
     pub async fn open_file(&self, file: &gio::File) {
-        let name = file
-            .basename()
-            .map(|path| path.to_string_lossy().into_owned())
-            .unwrap_or_else(|| file.uri().to_string());
-        match file.load_contents_future().await {
-            Ok((bytes, _)) => self.show(&name, &bytes),
+        match local::local_path(file) {
+            Ok(path) => self.open_path(&path).await,
+            Err(message) => self.notify(&message),
+        }
+    }
+
+    /// Opens a recent entry; a file that no longer exists is removed from
+    /// the list, and the window keeps showing what it showed.
+    async fn open_recent(&self, path: &Path) {
+        if path.exists() {
+            self.open_path(path).await;
+        } else {
+            self.notify(&texts::not_found_message(&file_name(path)));
+            self.recent.remove(path);
+        }
+    }
+
+    async fn open_path(&self, path: &Path) {
+        let name = file_name(path);
+        // Read through the local path, never through a network backend.
+        match gio::File::for_path(path).load_contents_future().await {
+            Ok((bytes, _)) => {
+                if self.show(&name, &bytes) {
+                    self.recent.add(path);
+                }
+            }
             Err(error) => self.show_start(Some(&format!(
                 "Die Datei {name} kann nicht gelesen werden: {}",
                 error.message()
@@ -317,7 +408,19 @@ impl Window {
         }
     }
 
-    fn show(&self, name: &str, bytes: &[u8]) {
+    /// Shows a message: in the start view, or as a note while an invoice
+    /// stays shown.
+    fn notify(&self, message: &str) {
+        if self.is_empty() {
+            self.show_start(Some(message));
+        } else {
+            self.toasts
+                .add_toast(adw::Toast::builder().title(message).timeout(5).build());
+        }
+    }
+
+    /// Shows the document in `bytes`; returns whether it could be opened.
+    fn show(&self, name: &str, bytes: &[u8]) -> bool {
         // Whatever is shown next, a running validation is outdated.
         self.generation.set(self.generation.get() + 1);
         match document::open(bytes) {
@@ -337,8 +440,12 @@ impl Window {
                 self.show_invoice(invoice, name, Some(texts::XML_ONLY_NOTE));
                 self.show_document(name);
             }
-            Err(error) => self.show_start(Some(&texts::error_message(name, &error))),
+            Err(error) => {
+                self.show_start(Some(&texts::error_message(name, &error)));
+                return false;
+            }
         }
+        true
     }
 
     /// Shows the fields and XML of an invoice and starts validating it.
@@ -491,6 +598,13 @@ impl Window {
         self.set_xml(None);
         self.stack.set_visible_child_name("start");
     }
+}
+
+fn file_name(path: &Path) -> String {
+    path.file_name()
+        .unwrap_or(path.as_os_str())
+        .to_string_lossy()
+        .into_owned()
 }
 
 fn message_page(title: &str) -> gtk::Widget {

@@ -1,14 +1,20 @@
 //! GTK4 / libadwaita application of E-Invoice Viewer (presentation only).
 
 mod fields_view;
+mod local;
 mod pdf_view;
+mod recent;
 mod texts;
 mod window;
 mod xml_pane;
 
+use std::cell::RefCell;
+use std::rc::Rc;
+
 use adw::prelude::*;
 use gtk::{gio, glib};
 
+use recent::RecentStore;
 use window::Window;
 
 const APP_ID: &str = "de.loges.EInvoiceViewer";
@@ -31,13 +37,22 @@ fn main() -> glib::ExitCode {
         app.set_accels_for_action("win.find", &["<Control>f"]);
     });
 
-    // Started without files: an empty start view; nothing is reopened.
-    app.connect_activate(|app| Window::new(app).present());
+    // Shared by all windows; read on first use.
+    let recent = RecentStore::new();
+    let windows = Windows::default();
 
-    // Started with files (command line): one window per file.
-    app.connect_open(|app, files, _| {
+    // Started without files: an empty start view; nothing is reopened.
+    let (shared, list) = (recent.clone(), windows.clone());
+    app.connect_activate(move |app| list.create(app, &shared).present());
+
+    // Files from outside (command line, file manager): one window per file.
+    // An empty window showing the start view is reused for the first one.
+    app.connect_open(move |app, files, _| {
+        let mut reusable = windows.empty();
         for file in files {
-            let window = Window::new(app);
+            let window = reusable
+                .take()
+                .unwrap_or_else(|| windows.create(app, &recent));
             window.present();
             let file = file.clone();
             glib::spawn_future_local(async move { window.open_file(&file).await });
@@ -45,6 +60,33 @@ fn main() -> glib::ExitCode {
     });
 
     app.run()
+}
+
+/// The open windows of the application.
+#[derive(Clone, Default)]
+struct Windows(Rc<RefCell<Vec<Window>>>);
+
+impl Windows {
+    fn create(&self, app: &adw::Application, recent: &Rc<RecentStore>) -> Window {
+        let window = Window::new(app, recent);
+        let list = self.0.clone();
+        let closed = window.widget().clone();
+        window.widget().connect_destroy(move |_| {
+            list.borrow_mut()
+                .retain(|window| window.widget() != &closed);
+        });
+        self.0.borrow_mut().push(window.clone());
+        window
+    }
+
+    /// An open window that shows the start view.
+    fn empty(&self) -> Option<Window> {
+        self.0
+            .borrow()
+            .iter()
+            .find(|window| window.is_empty())
+            .cloned()
+    }
 }
 
 /// Styles that libadwaita has no class for.
