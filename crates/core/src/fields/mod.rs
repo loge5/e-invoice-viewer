@@ -9,12 +9,50 @@ use roxmltree::{Document, Node};
 use thiserror::Error;
 
 use crate::detect::{DetectError, Detection, Syntax, detect};
+use crate::location::Locations;
 use crate::xml_view::decode;
 
 /// Invoice content as an ordered list of sections.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct FieldModel {
     pub sections: Vec<Section>,
+}
+
+impl FieldModel {
+    /// All fields with their section and field index.
+    pub fn fields(&self) -> impl Iterator<Item = (usize, usize, &Field)> {
+        self.sections.iter().enumerate().flat_map(|(section, s)| {
+            s.fields
+                .iter()
+                .enumerate()
+                .map(move |(field, f)| (section, field, f))
+        })
+    }
+
+    /// The deepest section whose element contains `location`, except
+    /// sections of the root element.
+    pub fn section_at(&self, location: &str) -> Option<usize> {
+        self.sections
+            .iter()
+            .enumerate()
+            .filter(|(_, section)| {
+                is_below_root(&section.location) && within(location, &section.location)
+            })
+            .max_by_key(|(_, section)| section.location.len())
+            .map(|(index, _)| index)
+    }
+}
+
+/// Whether `location` is `ancestor` or lies below it.
+pub(crate) fn within(location: &str, ancestor: &str) -> bool {
+    location
+        .strip_prefix(ancestor)
+        .is_some_and(|rest| rest.is_empty() || rest.starts_with('/'))
+}
+
+/// Whether a location has more than one step, i.e. is not the root element.
+fn is_below_root(location: &str) -> bool {
+    location.trim_start_matches('/').contains('/')
 }
 
 /// A titled group of fields, e.g. "Verkäufer (BG-4)".
@@ -71,14 +109,15 @@ pub fn map_invoice(xml: &[u8]) -> Result<FieldModel, MapError> {
     let doc = Document::parse(&text).map_err(|_| MapError::UnsupportedSyntax)?;
     let root = doc.root_element();
 
+    let locations = Locations::new(&doc, syntax.prefixes);
     let context = Context {
         detection: &detection,
         root,
+        locations: &locations,
         currency: find_all(root, syntax.currency_path)
             .first()
             .and_then(|node| node.text())
             .map(|text| text.trim().to_string()),
-        prefixes: syntax.prefixes,
     };
 
     let sections = syntax
@@ -91,7 +130,7 @@ pub fn map_invoice(xml: &[u8]) -> Result<FieldModel, MapError> {
     Ok(FieldModel { sections })
 }
 
-/// The namespace prefixes of field locations in `syntax`.
+/// The namespace prefixes of locations in `syntax`.
 pub(crate) fn location_prefixes(syntax: Syntax) -> &'static [(&'static str, &'static str)] {
     match syntax {
         Syntax::Cii => cii::SYNTAX.prefixes,
@@ -236,7 +275,7 @@ struct Context<'a, 'input> {
     detection: &'a Detection,
     root: Node<'a, 'input>,
     currency: Option<String>,
-    prefixes: &'static [(&'static str, &'static str)],
+    locations: &'a Locations,
 }
 
 fn map_section(root: Node, def: &SectionDef, context: &Context) -> Vec<Section> {
@@ -246,20 +285,15 @@ fn map_section(root: Node, def: &SectionDef, context: &Context) -> Vec<Section> 
     }
     anchors
         .into_iter()
-        .map(|anchor| {
-            // Computed once per section: counting same-name siblings for
-            // every field would be quadratic in the number of lines.
-            let anchor_location = location(anchor, None, context.prefixes);
-            Section {
-                title: section_title(anchor, def),
-                location: anchor_location.clone(),
-                repeated: def.repeatable,
-                fields: def
-                    .fields
-                    .iter()
-                    .flat_map(|field| map_field((anchor, &anchor_location), field, context))
-                    .collect(),
-            }
+        .map(|anchor| Section {
+            title: section_title(anchor, def),
+            location: context.locations.of(anchor).to_string(),
+            repeated: def.repeatable,
+            fields: def
+                .fields
+                .iter()
+                .flat_map(|field| map_field(anchor, field, context))
+                .collect(),
         })
         .filter(|section| !section.fields.is_empty())
         .collect()
@@ -278,11 +312,7 @@ fn section_title(anchor: Node, def: &SectionDef) -> String {
     }
 }
 
-fn map_field(
-    (anchor, anchor_location): (Node, &str),
-    def: &FieldDef,
-    context: &Context,
-) -> Vec<Field> {
+fn map_field(anchor: Node, def: &FieldDef, context: &Context) -> Vec<Field> {
     let mut nodes = find_all(if def.absolute { context.root } else { anchor }, def.path);
     if !def.repeatable {
         nodes.truncate(1);
@@ -300,7 +330,7 @@ fn map_field(
                 id: def.id.to_string(),
                 label: def.label.to_string(),
                 display: display_value(&raw, node, def.format, context),
-                location: location(node, Some((anchor, anchor_location)), context.prefixes),
+                location: context.locations.of(node).to_string(),
                 attribute: def.attribute.map(str::to_string),
                 raw,
             }
@@ -336,46 +366,4 @@ fn find_all<'a, 'input>(node: Node<'a, 'input>, path: &[Step]) -> Vec<Node<'a, '
             .collect();
     }
     current
-}
-
-/// Absolute location path of an element, e.g.
-/// `/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:ID`, with a position
-/// predicate where siblings share the same name. If `base` is given and is an
-/// ancestor (or the element itself), its known location is reused.
-fn location(node: Node, base: Option<(Node, &str)>, prefixes: &[(&str, &str)]) -> String {
-    let mut steps = Vec::new();
-    for element in node.ancestors().filter(Node::is_element) {
-        if let Some((base_node, base_location)) = base
-            && element == base_node
-        {
-            steps.push(base_location.to_string());
-            steps.reverse();
-            return steps.join("/");
-        }
-        steps.push(location_step(element, prefixes));
-    }
-    steps.reverse();
-    format!("/{}", steps.join("/"))
-}
-
-/// One location step, e.g. `ram:ApplicableTradeTax[2]`.
-pub(crate) fn location_step(element: Node, prefixes: &[(&str, &str)]) -> String {
-    let tag = element.tag_name();
-    let prefix = prefixes
-        .iter()
-        .find(|(_, namespace)| Some(*namespace) == tag.namespace())
-        .map(|(prefix, _)| *prefix)
-        .unwrap_or("unknown");
-    let same_name = |sibling: &Node| sibling.is_element() && sibling.tag_name() == tag;
-    let siblings = element
-        .parent()
-        .map(|parent| parent.children().filter(same_name).count())
-        .unwrap_or(1);
-    if siblings > 1 {
-        // `prev_siblings` includes the element itself, giving a 1-based index.
-        let position = element.prev_siblings().filter(same_name).count();
-        format!("{prefix}:{}[{position}]", tag.name())
-    } else {
-        format!("{prefix}:{}", tag.name())
-    }
 }

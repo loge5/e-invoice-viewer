@@ -10,6 +10,7 @@ use std::sync::OnceLock;
 
 use common::validation::{is_xrechnung_rule, severity_name, variant, variants};
 use common::{fixture, select};
+use e_invoice_viewer_core::link::XmlLayout;
 use e_invoice_viewer_core::validate::{Validation, Validator};
 
 /// Writes the variants to `target/validation-variants/` for
@@ -222,4 +223,22 @@ fn every_location_selects_an_existing_element() {
         xrechnung_findings > 50,
         "only {xrechnung_findings} XRechnung findings checked"
     );
+}
+
+// Spec 0014 contract: finding locations are written like field and XML
+// locations, so every finding can be shown in the XML view.
+#[test]
+fn every_location_is_found_in_the_xml_view() {
+    for checked in checked().values() {
+        let layout = XmlLayout::new(checked.xml.as_bytes()).expect(&checked.key);
+        for finding in &checked.validation.findings {
+            assert!(
+                layout.element_range(&finding.location).is_some(),
+                "{}: {} at {}",
+                checked.key,
+                finding.rule_id,
+                finding.location
+            );
+        }
+    }
 }

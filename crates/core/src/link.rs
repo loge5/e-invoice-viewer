@@ -12,7 +12,8 @@ use roxmltree::{Document, Node};
 
 use crate::attribution::Target;
 use crate::detect::{DetectError, detect};
-use crate::fields::{FieldModel, location_prefixes, location_step};
+use crate::fields::{FieldModel, location_prefixes};
+use crate::location::Locations;
 use crate::xml_view::{Piece, decode, pretty_print_mapped};
 
 /// The reformatted XML with the position of every element.
@@ -47,16 +48,16 @@ impl XmlLayout {
         let source = decode(xml)?;
         // `detect` has checked that the document is well-formed.
         let doc = Document::parse(&source).map_err(|_| DetectError::NotWellFormed { line: 1 })?;
+        let locations = Locations::new(&doc, prefixes);
         let (text, pieces) = pretty_print_mapped(&source);
         let map = |input: usize| output_offset(&pieces, input);
 
         let mut elements = Vec::new();
         let mut by_location = HashMap::new();
-        // (element, parent index, parent location)
-        let mut stack: Vec<(Node, Option<usize>, String)> =
-            vec![(doc.root_element(), None, String::new())];
-        while let Some((node, parent, parent_location)) = stack.pop() {
-            let location = format!("{parent_location}/{}", location_step(node, prefixes));
+        // (element, parent index)
+        let mut stack: Vec<(Node, Option<usize>)> = vec![(doc.root_element(), None)];
+        while let Some((node, parent)) = stack.pop() {
+            let location = locations.of(node).to_string();
             let range = node.range();
             let (Some(start), Some(last)) = (map(range.start), map(range.end - 1)) else {
                 continue;
@@ -82,7 +83,7 @@ impl XmlLayout {
             let index = elements.len();
             by_location.insert(location.clone(), index);
             elements.push(Element {
-                location: location.clone(),
+                location,
                 parent,
                 range: start..last + 1,
                 text_start,
@@ -91,7 +92,7 @@ impl XmlLayout {
             // Children in reverse, so that they are visited in document order.
             let children: Vec<Node> = node.children().filter(Node::is_element).collect();
             for child in children.into_iter().rev() {
-                stack.push((child, Some(index), location.clone()));
+                stack.push((child, Some(index)));
             }
         }
 
@@ -197,13 +198,10 @@ pub fn assignment(model: &FieldModel, layout: &XmlLayout, offset: usize) -> Targ
         return Target::Document;
     };
     let fields = || {
-        model.sections.iter().enumerate().flat_map(|(section, s)| {
-            s.fields
-                .iter()
-                .enumerate()
-                .filter(|(_, field)| field.location == element.location)
-                .map(move |(field, f)| (section, field, f.attribute.as_deref()))
-        })
+        model
+            .fields()
+            .filter(|(_, _, f)| f.location == element.location)
+            .map(|(section, field, f)| (section, field, f.attribute.as_deref()))
     };
     let by_attribute = attribute.and_then(|wanted| fields().find(|(_, _, a)| *a == Some(wanted)));
     if let Some((section, field, _)) =
@@ -211,19 +209,7 @@ pub fn assignment(model: &FieldModel, layout: &XmlLayout, offset: usize) -> Targ
     {
         return Target::Field { section, field };
     }
-
-    let mut current = Some(element);
-    while let Some(element) = current {
-        let below_root = element.location.matches('/').count() > 1;
-        if below_root
-            && let Some(section) = model
-                .sections
-                .iter()
-                .position(|section| section.location == element.location)
-        {
-            return Target::Section(section);
-        }
-        current = element.parent.map(|parent| &layout.elements[parent]);
-    }
-    Target::Document
+    model
+        .section_at(&element.location)
+        .map_or(Target::Document, Target::Section)
 }
