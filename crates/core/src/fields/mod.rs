@@ -3,6 +3,7 @@
 
 mod cii;
 mod display;
+mod ubl;
 
 use roxmltree::{Document, Node};
 use thiserror::Error;
@@ -53,9 +54,10 @@ pub enum MapError {
 /// Builds the field model of an invoice XML.
 pub fn map_invoice(xml: &[u8]) -> Result<FieldModel, MapError> {
     let detection = detect(xml)?;
-    if detection.syntax != Syntax::Cii {
-        return Err(MapError::UnsupportedSyntax);
-    }
+    let syntax = match detection.syntax {
+        Syntax::Cii => &cii::SYNTAX,
+        Syntax::Ubl => &ubl::SYNTAX,
+    };
     // `detect` has already checked that the document decodes and is
     // well-formed without a DOCTYPE, so parsing it again cannot fail
     // differently.
@@ -65,29 +67,56 @@ pub fn map_invoice(xml: &[u8]) -> Result<FieldModel, MapError> {
 
     let context = Context {
         detection: &detection,
-        currency: find_all(root, cii::CURRENCY_PATH)
+        root,
+        currency: find_all(root, syntax.currency_path)
             .first()
             .and_then(|node| node.text())
             .map(|text| text.trim().to_string()),
-        prefixes: cii::PREFIXES,
+        prefixes: syntax.prefixes,
     };
 
-    let sections = cii::HEADER_SECTIONS
+    let sections = syntax
+        .sections
         .iter()
-        .chain(cii::LINE_SECTIONS)
-        .chain(cii::TRAILER_SECTIONS)
+        .copied()
+        .flatten()
         .flat_map(|def| map_section(root, def, &context))
         .collect();
     Ok(FieldModel { sections })
 }
 
-/// One step of a path: an element with namespace and local name, optionally
-/// restricted to a given attribute value.
+/// Where the business terms live in one syntax.
+struct SyntaxDef {
+    /// Namespace prefixes used in locations; the same as the validation
+    /// rules use, so that finding and field locations can be compared.
+    prefixes: &'static [(&'static str, &'static str)],
+    /// Path from the root to the invoice currency (BT-5), used for amounts.
+    currency_path: &'static [Step],
+    /// Groups of sections in display order: header (0004), lines (0005),
+    /// trailer.
+    sections: &'static [&'static [SectionDef]],
+}
+
+/// One step of a path: an element with namespace and local name (or one of
+/// two names), optionally restricted by a condition.
 #[derive(Debug, Clone, Copy)]
 struct Step {
     namespace: &'static str,
     name: &'static str,
-    attribute: Option<(&'static str, &'static str)>,
+    /// A second accepted name, e.g. `CreditNoteLine` next to `InvoiceLine`.
+    alternative: Option<&'static str>,
+    condition: Option<Condition>,
+}
+
+/// A restriction on the element of a step.
+#[derive(Debug, Clone, Copy)]
+enum Condition {
+    /// The attribute has this value.
+    Attribute(&'static str, &'static str),
+    /// The element reached along the path has this text.
+    ChildText(&'static [Step], &'static str),
+    /// The element reached along the path exists and has another text.
+    OtherChildText(&'static [Step], &'static str),
 }
 
 impl Step {
@@ -95,24 +124,52 @@ impl Step {
         Self {
             namespace,
             name,
-            attribute: None,
+            alternative: None,
+            condition: None,
+        }
+    }
+
+    const fn or(self, alternative: &'static str) -> Self {
+        Self {
+            alternative: Some(alternative),
+            ..self
         }
     }
 
     const fn with_attribute(self, name: &'static str, value: &'static str) -> Self {
+        self.with(Condition::Attribute(name, value))
+    }
+
+    const fn with(self, condition: Condition) -> Self {
         Self {
-            attribute: Some((name, value)),
+            condition: Some(condition),
             ..self
         }
     }
 
     fn matches(&self, node: &Node) -> bool {
+        let name = node.tag_name().name();
         node.is_element()
             && node.tag_name().namespace() == Some(self.namespace)
-            && node.tag_name().name() == self.name
+            && (name == self.name || Some(name) == self.alternative)
             && self
-                .attribute
-                .is_none_or(|(name, value)| node.attribute(name) == Some(value))
+                .condition
+                .is_none_or(|condition| condition.holds(*node))
+    }
+}
+
+impl Condition {
+    fn holds(self, node: Node) -> bool {
+        let text_at = |path| {
+            find_all(node, path)
+                .first()
+                .map(|child| child.text().unwrap_or_default().trim().to_string())
+        };
+        match self {
+            Self::Attribute(name, value) => node.attribute(name) == Some(value),
+            Self::ChildText(path, value) => text_at(path).is_some_and(|text| text == value),
+            Self::OtherChildText(path, value) => text_at(path).is_some_and(|text| text != value),
+        }
     }
 }
 
@@ -120,7 +177,10 @@ impl Step {
 #[derive(Debug, Clone, Copy)]
 enum Format {
     Text,
+    /// A CII date with its `format` attribute (102 = YYYYMMDD).
     Date,
+    /// A UBL date, `YYYY-MM-DD`.
+    IsoDate,
     Amount,
     /// A quantity with its unit code taken from the `unitCode` attribute.
     Quantity,
@@ -141,6 +201,9 @@ struct FieldDef {
     repeatable: bool,
     /// Take the value from this attribute instead of the element text.
     attribute: Option<&'static str>,
+    /// The path starts at the root element instead of the section anchor
+    /// (e.g. UBL BT-110, which is outside the monetary total).
+    absolute: bool,
 }
 
 /// A section and the element(s) it is anchored at.
@@ -155,8 +218,9 @@ struct SectionDef {
 }
 
 /// Document-wide information needed to display values.
-struct Context<'a> {
+struct Context<'a, 'input> {
     detection: &'a Detection,
+    root: Node<'a, 'input>,
     currency: Option<String>,
     prefixes: &'static [(&'static str, &'static str)],
 }
@@ -204,7 +268,7 @@ fn map_field(
     def: &FieldDef,
     context: &Context,
 ) -> Vec<Field> {
-    let mut nodes = find_all(anchor, def.path);
+    let mut nodes = find_all(if def.absolute { context.root } else { anchor }, def.path);
     if !def.repeatable {
         nodes.truncate(1);
     }
@@ -232,6 +296,7 @@ fn display_value(raw: &str, node: Node, format: Format, context: &Context) -> St
     match format {
         Format::Text => raw.to_string(),
         Format::Date => display::date(raw, node.attribute("format")),
+        Format::IsoDate => display::iso_date(raw),
         Format::Amount => display::amount(raw, context.currency.as_deref()),
         Format::Quantity => display::quantity(raw, node.attribute("unitCode")),
         Format::Iban => display::iban(raw),

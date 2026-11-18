@@ -26,6 +26,24 @@ pub fn date(raw: &str, format: Option<&str>) -> String {
     format!("{day}.{month}.{year}")
 }
 
+/// A UBL date `YYYY-MM-DD` as `DD.MM.YYYY`; anything else unchanged.
+pub fn iso_date(raw: &str) -> String {
+    let trimmed = raw.trim();
+    let parts: Vec<&str> = trimmed.split('-').collect();
+    match parts[..] {
+        [year, month, day] if year.len() == 4 && month.len() == 2 && day.len() == 2 => {
+            let compact = format!("{year}{month}{day}");
+            let formatted = date(&compact, Some("102"));
+            if formatted == compact {
+                raw.to_string()
+            } else {
+                formatted
+            }
+        }
+        _ => raw.to_string(),
+    }
+}
+
 fn days_in_month(year: u32, month: u32) -> u32 {
     match month {
         4 | 6 | 9 | 11 => 30,

@@ -240,7 +240,7 @@ fn reason(error: &OpenError) -> String {
             }
         },
         OpenError::Xml(MapError::UnsupportedSyntax) => {
-            "UBL-Rechnungen werden noch nicht unterstützt".to_string()
+            "das Rechnungsformat wird nicht unterstützt".to_string()
         }
     }
 }

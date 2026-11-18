@@ -372,6 +372,35 @@ pub fn sample_cii_with_lines(count: usize) -> String {
     .fold(xml, |xml, (from, to)| replace_once(&xml, from, to))
 }
 
+/// UBL sample L: UBL sample A with the same 500 generated lines as
+/// `sample_l_cii` and matching totals (spec 0006).
+pub fn sample_l_ubl() -> String {
+    let a = fixture("ubl/sample-a.xml");
+    let first_line = a.find("  <cac:InvoiceLine>").expect("first line");
+    let end = a.find("</ubl:Invoice>").expect("end");
+
+    let mut lines = String::new();
+    for n in 1..=500 {
+        lines.push_str(&format!(
+            "  <cac:InvoiceLine>\n\
+             \x20   <cbc:ID>{n}</cbc:ID>\n\
+             \x20   <cbc:InvoicedQuantity unitCode=\"C62\">1</cbc:InvoicedQuantity>\n\
+             \x20   <cbc:LineExtensionAmount currencyID=\"EUR\">1.00</cbc:LineExtensionAmount>\n\
+             \x20   <cac:Item><cbc:Name>Artikel {n}</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>19</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item>\n\
+             \x20   <cac:Price><cbc:PriceAmount currencyID=\"EUR\">1.00</cbc:PriceAmount></cac:Price>\n\
+             \x20 </cac:InvoiceLine>\n"
+        ));
+    }
+    format!("{}{lines}{}", &a[..first_line], &a[end..])
+        .replace(
+            "<cbc:ID>RE-2026-0042</cbc:ID>",
+            "<cbc:ID>RE-2026-0500</cbc:ID>",
+        )
+        .replace(">199.50<", ">95.00<")
+        .replace(">1050.00<", ">500.00<")
+        .replace(">1249.50<", ">595.00<")
+}
+
 /// `xml` on a single line: whitespace between tags removed, whitespace runs
 /// inside tags (e.g. between attributes) collapsed to one space.
 pub fn single_line(xml: &str) -> String {

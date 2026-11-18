@@ -1,6 +1,6 @@
 //! Where the business terms live in a CII invoice (spec 0004).
 
-use super::{FieldDef, Format, SectionDef, Step};
+use super::{FieldDef, Format, SectionDef, Step, SyntaxDef};
 
 const RSM: &str = "urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100";
 const RAM: &str =
@@ -8,7 +8,7 @@ const RAM: &str =
 const UDT: &str = "urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100";
 
 /// Namespace prefixes used in field locations.
-pub const PREFIXES: &[(&str, &str)] = &[
+const PREFIXES: &[(&str, &str)] = &[
     ("rsm", RSM),
     ("ram", RAM),
     ("udt", UDT),
@@ -43,6 +43,7 @@ const fn field(
         format,
         repeatable: false,
         attribute: None,
+        absolute: false,
     }
 }
 
@@ -59,6 +60,7 @@ const fn repeatable(
         format,
         repeatable: true,
         attribute: None,
+        absolute: false,
     }
 }
 
@@ -76,6 +78,7 @@ const fn from_attribute(
         format: Format::Text,
         repeatable: false,
         attribute: Some(attribute),
+        absolute: false,
     }
 }
 
@@ -84,15 +87,22 @@ const SETTLEMENT: [Step; 2] = [
     ram("ApplicableHeaderTradeSettlement"),
 ];
 
+/// The CII mapping.
+pub const SYNTAX: SyntaxDef = SyntaxDef {
+    prefixes: PREFIXES,
+    currency_path: CURRENCY_PATH,
+    sections: &[HEADER_SECTIONS, LINE_SECTIONS, TRAILER_SECTIONS],
+};
+
 /// Path from the root to the invoice currency (BT-5), used for amounts.
-pub const CURRENCY_PATH: &[Step] = &[SETTLEMENT[0], SETTLEMENT[1], ram("InvoiceCurrencyCode")];
+const CURRENCY_PATH: &[Step] = &[SETTLEMENT[0], SETTLEMENT[1], ram("InvoiceCurrencyCode")];
 
 const ADDRESS: Step = ram("PostalTradeAddress");
 const TAX_REGISTRATION: Step = ram("SpecifiedTaxRegistration");
 
 /// Header sections in display order; line items (0005) are inserted before
 /// the payment section.
-pub const HEADER_SECTIONS: &[SectionDef] = &[
+const HEADER_SECTIONS: &[SectionDef] = &[
     SectionDef {
         title: "Rechnung",
         anchor: &[],
@@ -280,7 +290,7 @@ const LINE_SETTLEMENT: Step = ram("SpecifiedLineTradeSettlement");
 const BILLED_QUANTITY: [Step; 2] = [ram("SpecifiedLineTradeDelivery"), ram("BilledQuantity")];
 
 /// One section per invoice line (BG-25), between buyer and payment (0005).
-pub const LINE_SECTIONS: &[SectionDef] = &[SectionDef {
+const LINE_SECTIONS: &[SectionDef] = &[SectionDef {
     title: "Position",
     anchor: &[
         rsm("SupplyChainTradeTransaction"),
@@ -387,7 +397,7 @@ pub const LINE_SECTIONS: &[SectionDef] = &[SectionDef {
 }];
 
 /// Sections after the line items.
-pub const TRAILER_SECTIONS: &[SectionDef] = &[
+const TRAILER_SECTIONS: &[SectionDef] = &[
     SectionDef {
         title: "Zahlung (BG-16)",
         anchor: &[SETTLEMENT[0], SETTLEMENT[1]],
