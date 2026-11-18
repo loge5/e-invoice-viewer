@@ -4,28 +4,9 @@ mod common;
 
 use std::time::{Duration, Instant};
 
+use common::model::{field, model, section};
 use common::{fixture, replace_once, sample_l_cii, select};
-use e_invoice_viewer_core::fields::{Field, FieldModel, Section, map_invoice};
-
-fn model(xml: &str) -> FieldModel {
-    map_invoice(xml.as_bytes()).expect("field model")
-}
-
-fn section<'a>(model: &'a FieldModel, title: &str) -> &'a Section {
-    model
-        .sections
-        .iter()
-        .find(|section| section.title == title)
-        .unwrap_or_else(|| panic!("no section {title:?}"))
-}
-
-fn field<'a>(section: &'a Section, id: &str) -> &'a Field {
-    section
-        .fields
-        .iter()
-        .find(|field| field.id == id)
-        .unwrap_or_else(|| panic!("no field {id} in {:?}", section.title))
-}
+use e_invoice_viewer_core::fields::FieldModel;
 
 fn titles(model: &FieldModel) -> Vec<&str> {
     model

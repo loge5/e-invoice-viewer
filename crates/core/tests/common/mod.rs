@@ -2,6 +2,7 @@
 
 #![allow(dead_code)]
 
+pub mod model;
 pub mod validation;
 
 use lopdf::encryption::{EncryptionState, EncryptionVersion, Permissions};
@@ -468,14 +469,18 @@ pub fn sample_l_ubl() -> String {
              \x20 </cac:InvoiceLine>\n"
         ));
     }
-    format!("{}{lines}{}", &a[..first_line], &a[end..])
+    let xml = format!("{}{lines}{}", &a[..first_line], &a[end..])
         .replace(
             "<cbc:ID>RE-2026-0042</cbc:ID>",
             "<cbc:ID>RE-2026-0500</cbc:ID>",
         )
         .replace(">199.50<", ">95.00<")
         .replace(">1050.00<", ">500.00<")
-        .replace(">1249.50<", ">595.00<")
+        .replace(">1249.50<", ">595.00<");
+    for total in [">95.00<", ">500.00<", ">595.00<"] {
+        assert!(xml.contains(total), "sample L totals: {total} missing");
+    }
+    xml
 }
 
 /// `xml` on a single line: whitespace between tags removed, whitespace runs

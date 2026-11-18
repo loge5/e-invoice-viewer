@@ -2,37 +2,11 @@
 
 mod common;
 
+use common::model::{field, model, section, sections};
 use common::validation::validate;
 use common::{fixture, replace_once, sample_l_cii, sample_l_ubl, select};
 use e_invoice_viewer_core::attribution::{Target, attribute};
-use e_invoice_viewer_core::fields::{Field, FieldModel, Section, map_invoice};
-
-fn model(xml: &str) -> FieldModel {
-    map_invoice(xml.as_bytes()).expect("field model")
-}
-
-fn sections<'a>(model: &'a FieldModel, title: &str) -> Vec<&'a Section> {
-    model
-        .sections
-        .iter()
-        .filter(|section| section.title == title)
-        .collect()
-}
-
-fn section<'a>(model: &'a FieldModel, title: &str) -> &'a Section {
-    sections(model, title)
-        .first()
-        .copied()
-        .unwrap_or_else(|| panic!("no section {title:?}"))
-}
-
-fn field<'a>(section: &'a Section, id: &str) -> &'a Field {
-    section
-        .fields
-        .iter()
-        .find(|field| field.id == id)
-        .unwrap_or_else(|| panic!("no field {id} in {:?}", section.title))
-}
+use e_invoice_viewer_core::fields::FieldModel;
 
 /// (section title, field id, display) of every field, in order.
 fn displays(model: &FieldModel) -> Vec<(String, String, String)> {

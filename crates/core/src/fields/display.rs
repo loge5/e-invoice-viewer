@@ -5,43 +5,35 @@ use crate::detect::{Detection, Profile};
 /// Formats a format-102 date (`YYYYMMDD`) as `DD.MM.YYYY`. Other formats and
 /// invalid dates are returned unchanged.
 pub fn date(raw: &str, format: Option<&str>) -> String {
-    let raw_trimmed = raw.trim();
-    if format != Some("102")
-        || raw_trimmed.len() != 8
-        || !raw_trimmed.bytes().all(|b| b.is_ascii_digit())
-    {
-        return raw.to_string();
+    let trimmed = raw.trim();
+    let parts = (trimmed.len() == 8 && trimmed.is_ascii())
+        .then(|| (&trimmed[0..4], &trimmed[4..6], &trimmed[6..8]));
+    match parts {
+        Some(parts) if format == Some("102") => german_date(parts),
+        _ => None,
     }
-    let (year, month, day) = (&raw_trimmed[0..4], &raw_trimmed[4..6], &raw_trimmed[6..8]);
-    let (Ok(y), Ok(m), Ok(d)) = (
-        year.parse::<u32>(),
-        month.parse::<u32>(),
-        day.parse::<u32>(),
-    ) else {
-        return raw.to_string();
-    };
-    if m == 0 || m > 12 || d == 0 || d > days_in_month(y, m) {
-        return raw.to_string();
-    }
-    format!("{day}.{month}.{year}")
+    .unwrap_or_else(|| raw.to_string())
 }
 
 /// A UBL date `YYYY-MM-DD` as `DD.MM.YYYY`; anything else unchanged.
 pub fn iso_date(raw: &str) -> String {
-    let trimmed = raw.trim();
-    let parts: Vec<&str> = trimmed.split('-').collect();
-    match parts[..] {
-        [year, month, day] if year.len() == 4 && month.len() == 2 && day.len() == 2 => {
-            let compact = format!("{year}{month}{day}");
-            let formatted = date(&compact, Some("102"));
-            if formatted == compact {
-                raw.to_string()
-            } else {
-                formatted
-            }
-        }
-        _ => raw.to_string(),
+    match raw.trim().split('-').collect::<Vec<_>>()[..] {
+        [year, month, day] => german_date((year, month, day)),
+        _ => None,
     }
+    .unwrap_or_else(|| raw.to_string())
+}
+
+/// `DD.MM.YYYY` for a valid date given as four, two and two digits.
+fn german_date((year, month, day): (&str, &str, &str)) -> Option<String> {
+    let digits = |text: &str, len: usize| {
+        (text.len() == len && text.bytes().all(|b| b.is_ascii_digit()))
+            .then(|| text.parse::<u32>().ok())
+            .flatten()
+    };
+    let (y, m, d) = (digits(year, 4)?, digits(month, 2)?, digits(day, 2)?);
+    ((1..=12).contains(&m) && (1..=days_in_month(y, m)).contains(&d))
+        .then(|| format!("{day}.{month}.{year}"))
 }
 
 fn days_in_month(year: u32, month: u32) -> u32 {

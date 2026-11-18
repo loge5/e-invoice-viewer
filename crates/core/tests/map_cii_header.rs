@@ -2,8 +2,9 @@
 
 mod common;
 
+use common::model::{field, model, section};
 use common::{fixture, replace_once, select};
-use e_invoice_viewer_core::fields::{Field, FieldModel, Section, map_invoice};
+use e_invoice_viewer_core::fields::Section;
 
 fn sample_a() -> String {
     fixture("cii/sample-a.xml")
@@ -11,30 +12,6 @@ fn sample_a() -> String {
 
 fn sample_b() -> String {
     fixture("cii/sample-b.xml")
-}
-
-fn model(xml: &str) -> FieldModel {
-    map_invoice(xml.as_bytes()).expect("field model")
-}
-
-fn section<'a>(model: &'a FieldModel, title: &str) -> &'a Section {
-    let mut matches = model
-        .sections
-        .iter()
-        .filter(|section| section.title == title);
-    let section = matches
-        .next()
-        .unwrap_or_else(|| panic!("no section {title:?}"));
-    assert!(matches.next().is_none(), "section {title:?} is not unique");
-    section
-}
-
-fn field<'a>(section: &'a Section, id: &str) -> &'a Field {
-    section
-        .fields
-        .iter()
-        .find(|field| field.id == id)
-        .unwrap_or_else(|| panic!("no field {id} in {:?}", section.title))
 }
 
 fn ids_and_displays(section: &Section) -> Vec<(&str, &str)> {
