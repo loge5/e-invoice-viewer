@@ -1,7 +1,7 @@
 ---
 id: 0015
 title: Remember the window size safely
-status: reviewed
+status: in-progress
 created: 2026-11-16
 depends_on: [0007]
 ---
@@ -103,3 +103,39 @@ remembers whether the window was maximized. The window position is not stored
   and its size applies to every new window, that sizes below the minimum are
   implausible, that the normal (untiled, unmaximized) size is remembered, and
   that size settings and the recent list are independent.
+
+## Progress
+
+- **Done**:
+  - `crates/app/src/window_size.rs`: the plausibility rule and default
+    calculation (`initial_state`), and the store
+    `~/.config/e-invoice-viewer/window` (GLib key file, written atomically,
+    unknown entries ignored, a damaged store gives the default and one
+    warning).
+  - Window: every new window reads the store and opens with the plausible
+    size, maximized if it was. It follows its normal size (not while
+    maximized, fullscreen or tiled) and saves it with the maximized state
+    when it is closed. Ctrl+Q saves every window, the active one last, so
+    that it wins.
+  - Found while testing: GLib key files cannot take text with NUL
+    characters and the binding panics on them. Such a store is now treated
+    as damaged, here and for the recent list of 0012 (with a test case).
+- **Verified** (2026-11-18):
+  - `cargo test --workspace`: 166 passed; new: 6 tests in `window_size.rs`
+    and a NUL case in the recent list test.
+  - `cargo fmt --all --check` and `cargo clippy --workspace --all-targets --
+    -D warnings` are clean.
+  - Smoke run of the release build with an isolated configuration
+    directory, window size read through AT-SPI: a stored 1400 × 900 opens at
+    1400 × 900; a stored 1 × 38 opens at 1200 × 800. Quitting through the
+    application action (the same path as Ctrl+Q) stored 1400 × 900 and the
+    corrected 1200 × 800.
+- **Next** — manual checks by the author, then the author decides on
+  `implemented`:
+  - AC1: resize to about 1400 × 900, close, reopen; with two windows of
+    different size, the one closed last wins; Ctrl+Q keeps the size.
+  - AC2: maximize, close, reopen: maximized; un-maximizing returns to the
+    normal size.
+  - AC3: tile the window to the left half (Super+←), close, reopen: untiled
+    at the size before tiling.
+

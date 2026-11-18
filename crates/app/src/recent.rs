@@ -163,6 +163,10 @@ pub fn load(path: &Path) -> (RecentFiles, Option<String>) {
     let Ok(text) = String::from_utf8(text) else {
         return unusable(path, "not UTF-8");
     };
+    // GLib cannot take text with NUL characters.
+    if text.contains('\0') {
+        return unusable(path, "contains NUL characters");
+    }
     let key_file = glib::KeyFile::new();
     if let Err(error) = key_file.load_from_data(&text, glib::KeyFileFlags::NONE) {
         return unusable(path, error.message());
@@ -297,6 +301,7 @@ mod tests {
             ("empty", &b""[..]),
             ("truncated", b"[Rec"),
             ("garbage", b"\xff\xfe not a key file \x00"),
+            ("nul", b"[Recent]\nversion=1\x00\n"),
         ] {
             let path = dir.join(name);
             std::fs::write(&path, content).expect("write store");

@@ -7,6 +7,7 @@ mod pdf_view;
 mod recent;
 mod texts;
 mod window;
+mod window_size;
 mod xml_pane;
 
 use std::cell::RefCell;
@@ -26,11 +27,19 @@ fn main() -> glib::ExitCode {
         .flags(gio::ApplicationFlags::HANDLES_OPEN)
         .build();
 
-    app.connect_startup(|app| {
+    let windows = Windows::default();
+    let list = windows.clone();
+    app.connect_startup(move |app| {
         load_css();
         let quit = gio::SimpleAction::new("quit", None);
         let target = app.clone();
-        quit.connect_activate(move |_, _| target.quit());
+        let list = list.clone();
+        quit.connect_activate(move |_, _| {
+            // Quitting closes no window, so the sizes are saved here; the
+            // active window is saved last and wins (0015).
+            list.save_sizes(target.active_window().as_ref());
+            target.quit();
+        });
         app.add_action(&quit);
         app.set_accels_for_action("app.quit", &["<Control>q"]);
         app.set_accels_for_action("win.open", &["<Control>o"]);
@@ -40,7 +49,6 @@ fn main() -> glib::ExitCode {
 
     // Shared by all windows; read on first use.
     let recent = RecentStore::new();
-    let windows = Windows::default();
 
     // Started without files: an empty start view; nothing is reopened.
     let (shared, list) = (recent.clone(), windows.clone());
@@ -78,6 +86,20 @@ impl Windows {
         });
         self.0.borrow_mut().push(window.clone());
         window
+    }
+
+    /// Saves the size of every window, `last` at the end.
+    fn save_sizes(&self, last: Option<&gtk::Window>) {
+        let windows = self.0.borrow().clone();
+        let is_last = |window: &Window| {
+            last.is_some_and(|last| window.widget().upcast_ref::<gtk::Window>() == last)
+        };
+        for window in windows.iter().filter(|window| !is_last(window)) {
+            window.save_size();
+        }
+        for window in windows.iter().filter(|window| is_last(window)) {
+            window.save_size();
+        }
     }
 
     /// An open window that shows the start view.

@@ -15,6 +15,7 @@ use gtk::{gio, glib};
 use crate::fields_view::{FieldsView, ShowInXml, severity_class};
 use crate::recent::RecentStore;
 use crate::texts::ValidationState;
+use crate::window_size::{self, MINIMUM_SIZE, WindowState};
 use crate::xml_pane::XmlPane;
 use crate::{attachments_view, local, pdf_view, texts};
 
@@ -29,8 +30,6 @@ fn validate(xml: &[u8]) -> Result<Validation, DetectError> {
     VALIDATOR.with(|validator| validator.validate(xml))
 }
 
-const DEFAULT_SIZE: (i32, i32) = (1200, 800);
-const MINIMUM_SIZE: (i32, i32) = (900, 600);
 const MINIMUM_PANE_WIDTH: i32 = 300;
 
 /// Widgets and state of one window.
@@ -61,6 +60,8 @@ pub struct Window {
     /// File name of the shown invoice, `None` in the start view.
     current: Rc<RefCell<Option<String>>>,
     toasts: adw::ToastOverlay,
+    /// The last size while neither maximized nor tiled (0015).
+    normal_size: Rc<Cell<(i32, i32)>>,
     /// Recently opened files, shared by all windows.
     recent: Rc<RecentStore>,
 }
@@ -193,7 +194,7 @@ impl Window {
             .shrink_end_child(false)
             .resize_start_child(true)
             .resize_end_child(true)
-            .position(DEFAULT_SIZE.0 / 2)
+            .position(window_size::DEFAULT_SIZE.0 / 2)
             .build();
 
         let stack = gtk::Stack::new();
@@ -206,11 +207,17 @@ impl Window {
         content.add_top_bar(&header);
         content.set_content(Some(&toasts));
 
+        let (stored, warning) = window_size::load(&window_size::store_path());
+        if let Some(warning) = warning {
+            glib::g_warning!("e-invoice-viewer", "{warning}");
+        }
+        let size = window_size::initial_state(stored, largest_monitor());
         let window = adw::ApplicationWindow::builder()
             .application(app)
             .title(texts::APP_TITLE)
-            .default_width(DEFAULT_SIZE.0)
-            .default_height(DEFAULT_SIZE.1)
+            .default_width(size.width)
+            .default_height(size.height)
+            .maximized(size.maximized)
             .width_request(MINIMUM_SIZE.0)
             .height_request(MINIMUM_SIZE.1)
             .content(&content)
@@ -238,8 +245,10 @@ impl Window {
             generation: Rc::default(),
             current: Rc::default(),
             toasts,
+            normal_size: Rc::new(Cell::new((size.width, size.height))),
             recent: recent.clone(),
         };
+        this.track_size();
         this.add_actions();
         this.add_drop_target();
         this
@@ -247,6 +256,51 @@ impl Window {
 
     pub fn present(&self) {
         self.window.present();
+    }
+
+    /// Follows the normal size and saves it when the window is closed.
+    fn track_size(&self) {
+        let this = self.clone();
+        let update = move || {
+            let tiled = this
+                .window
+                .surface()
+                .and_downcast::<gtk::gdk::Toplevel>()
+                .is_some_and(|toplevel| {
+                    toplevel.state().intersects(
+                        gtk::gdk::ToplevelState::TILED
+                            | gtk::gdk::ToplevelState::TOP_TILED
+                            | gtk::gdk::ToplevelState::BOTTOM_TILED
+                            | gtk::gdk::ToplevelState::LEFT_TILED
+                            | gtk::gdk::ToplevelState::RIGHT_TILED,
+                    )
+                });
+            if !this.window.is_maximized() && !this.window.is_fullscreen() && !tiled {
+                this.normal_size.set(this.window.default_size());
+            }
+        };
+        let width = update.clone();
+        self.window.connect_default_width_notify(move |_| width());
+        self.window.connect_default_height_notify(move |_| update());
+
+        let this = self.clone();
+        self.window.connect_close_request(move |_| {
+            this.save_size();
+            glib::Propagation::Proceed
+        });
+    }
+
+    /// Stores the normal size and the maximized state (0015).
+    pub fn save_size(&self) {
+        let (width, height) = self.normal_size.get();
+        let state = WindowState {
+            width,
+            height,
+            maximized: self.window.is_maximized(),
+        };
+        if let Err(error) = window_size::save(&window_size::store_path(), state) {
+            glib::g_warning!("e-invoice-viewer", "window size not saved: {error}");
+        }
     }
 
     /// The application window.
@@ -687,6 +741,18 @@ impl Window {
         self.set_xml(None);
         self.stack.set_visible_child_name("start");
     }
+}
+
+/// Size of the largest connected monitor in logical pixels.
+fn largest_monitor() -> Option<(i32, i32)> {
+    let monitors = gtk::gdk::Display::default()?.monitors();
+    (0..monitors.n_items())
+        .filter_map(|index| monitors.item(index).and_downcast::<gtk::gdk::Monitor>())
+        .map(|monitor| {
+            let geometry = monitor.geometry();
+            (geometry.width(), geometry.height())
+        })
+        .max_by_key(|(width, height)| i64::from(*width) * i64::from(*height))
 }
 
 fn file_name(path: &Path) -> String {
