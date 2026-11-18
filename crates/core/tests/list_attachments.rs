@@ -3,11 +3,20 @@
 mod common;
 
 use common::{Attachment, fixture, pdf_document, pdf_with, pdf_with_text, replace_once};
-use e_invoice_viewer_core::attachments::{self, Content, Source};
+use e_invoice_viewer_core::attachments::{self, Content, ContentError, Source};
 use e_invoice_viewer_core::document;
 use lopdf::Object;
 
 const LIEFERSCHEIN_SIZE: usize = 24_576;
+
+/// All attachments of an opened file.
+fn attachments_of(bytes: &[u8]) -> Vec<attachments::Attachment> {
+    document::open(bytes)
+        .expect("file opens")
+        .attachments()
+        .cloned()
+        .collect()
+}
 
 /// CII sample A with the given BG-24 entries (XML of
 /// `ram:AdditionalReferencedDocument` elements).
@@ -49,7 +58,7 @@ fn pdf_attachment_listed_without_invoice_xml() {
             .with_description("Lieferschein 4711"),
     ]);
 
-    let list = attachments::list(&pdf);
+    let list = attachments_of(&pdf);
 
     assert_eq!(list.len(), 1, "{list:#?}");
     let entry = &list[0];
@@ -67,10 +76,10 @@ fn pdf_without_invoice_lists_attachments() {
     let pdf = pdf_with(&[Attachment::compressed("lieferschein.pdf", &content)]);
     assert!(matches!(
         document::open(&pdf),
-        Ok(document::Document::Pdf { invoice: None })
+        Ok(document::Document::Pdf { invoice: None, .. })
     ));
 
-    let list = attachments::list(&pdf);
+    let list = attachments_of(&pdf);
 
     assert_eq!(list.len(), 1);
     assert_eq!(list[0].content, Content::Embedded(content));
@@ -85,7 +94,7 @@ fn second_xml_is_listed() {
         Attachment::plain("xrechnung.xml", xml.as_bytes()),
     ]);
 
-    let names: Vec<_> = attachments::list(&pdf)
+    let names: Vec<_> = attachments_of(&pdf)
         .into_iter()
         .map(|entry| entry.name)
         .collect();
@@ -100,7 +109,7 @@ fn bg24_attachment_listed() {
         "<ram:AttachmentBinaryObject mimeCode=\"text/csv\" filename=\"stunden.csv\">{STUNDEN_CSV_BASE64}</ram:AttachmentBinaryObject>"
     )));
 
-    let list = attachments::list(xml.as_bytes());
+    let list = attachments_of(xml.as_bytes());
 
     assert_eq!(list.len(), 1, "{list:#?}");
     let entry = &list[0];
@@ -113,10 +122,10 @@ fn bg24_attachment_listed() {
 // AC3
 #[test]
 fn no_attachments() {
-    assert!(attachments::list(fixture("cii/sample-a.xml").as_bytes()).is_empty());
+    assert!(attachments_of(fixture("cii/sample-a.xml").as_bytes()).is_empty());
     let xml = fixture("cii/sample-a.xml");
     assert!(
-        attachments::list(&pdf_with(&[Attachment::plain(
+        attachments_of(&pdf_with(&[Attachment::plain(
             "factur-x.xml",
             xml.as_bytes()
         )]))
@@ -137,7 +146,7 @@ fn decoded_content_is_byte_identical() {
         "<ram:AttachmentBinaryObject mimeCode=\"text/csv\" filename=\"stunden.csv\">{wrapped}</ram:AttachmentBinaryObject>"
     )));
 
-    let list = attachments::list(xml.as_bytes());
+    let list = attachments_of(xml.as_bytes());
 
     assert_eq!(list[0].content, Content::Embedded(STUNDEN_CSV.to_vec()));
     assert_eq!(list[0].proposed_file_name(1), "stunden.csv");
@@ -189,7 +198,7 @@ fn external_reference_has_no_content() {
          \x20     </ram:AdditionalReferencedDocument>\n",
     );
 
-    let list = attachments::list(xml.as_bytes());
+    let list = attachments_of(xml.as_bytes());
 
     assert_eq!(list.len(), 1);
     assert_eq!(
@@ -205,8 +214,8 @@ fn invalid_base64_and_broken_stream_are_unreadable() {
         "<ram:AttachmentBinaryObject mimeCode=\"text/csv\" filename=\"stunden.csv\">not*base64!</ram:AttachmentBinaryObject>",
     ));
     assert_eq!(
-        attachments::list(xml.as_bytes())[0].content,
-        Content::Unreadable
+        attachments_of(xml.as_bytes())[0].content,
+        Content::Failed(ContentError::Unreadable)
     );
     assert!(document::open(xml.as_bytes()).is_ok());
 
@@ -228,10 +237,16 @@ fn invalid_base64_and_broken_stream_are_unreadable() {
     let mut pdf = Vec::new();
     doc.save_to(&mut pdf).expect("save PDF");
 
-    assert_eq!(attachments::list(&pdf)[0].content, Content::Unreadable);
+    assert_eq!(
+        attachments_of(&pdf)[0].content,
+        Content::Failed(ContentError::Unreadable)
+    );
     assert!(matches!(
         document::open(&pdf),
-        Ok(document::Document::Pdf { invoice: Some(_) })
+        Ok(document::Document::Pdf {
+            invoice: Some(_),
+            ..
+        })
     ));
 }
 
@@ -241,7 +256,10 @@ fn oversized_attachment() {
     let huge = vec![0_u8; 64 * 1024 * 1024 + 1];
     let pdf = pdf_with(&[Attachment::compressed("gross.bin", &huge)]);
 
-    assert_eq!(attachments::list(&pdf)[0].content, Content::TooLarge);
+    assert_eq!(
+        attachments_of(&pdf)[0].content,
+        Content::Failed(ContentError::TooLarge)
+    );
 }
 
 // AC8: the limit also applies to uncompressed attachments.
@@ -250,7 +268,10 @@ fn oversized_uncompressed_attachment() {
     let huge = vec![0_u8; 64 * 1024 * 1024 + 1];
     let pdf = pdf_with(&[Attachment::plain("gross.bin", &huge)]);
 
-    assert_eq!(attachments::list(&pdf)[0].content, Content::TooLarge);
+    assert_eq!(
+        attachments_of(&pdf)[0].content,
+        Content::Failed(ContentError::TooLarge)
+    );
 }
 
 // AC7: an empty compressed file is empty, not unreadable.
@@ -259,7 +280,7 @@ fn empty_compressed_attachment_is_empty() {
     let pdf = pdf_with(&[Attachment::compressed("leer.txt", b"")]);
 
     assert_eq!(
-        attachments::list(&pdf)[0].content,
+        attachments_of(&pdf)[0].content,
         Content::Embedded(Vec::new())
     );
 }
@@ -272,8 +293,8 @@ fn missing_mime_type_is_unknown() {
         "<ram:AttachmentBinaryObject filename=\"stunden.csv\">{STUNDEN_CSV_BASE64}</ram:AttachmentBinaryObject>"
     )));
 
-    assert_eq!(attachments::list(&pdf)[0].mime_type, None);
-    assert_eq!(attachments::list(xml.as_bytes())[0].mime_type, None);
+    assert_eq!(attachments_of(&pdf)[0].mime_type, None);
+    assert_eq!(attachments_of(xml.as_bytes())[0].mime_type, None);
 }
 
 // Spec 0013 + 0006: BG-24 of UBL invoices is listed like CII
@@ -293,7 +314,7 @@ fn ubl_bg24_attachment_listed() {
         ),
     );
 
-    let list = attachments::list(xml.as_bytes());
+    let list = attachments_of(xml.as_bytes());
 
     assert_eq!(list.len(), 1);
     assert_eq!(list[0].name.as_deref(), Some("stunden.csv"));

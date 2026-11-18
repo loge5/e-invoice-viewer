@@ -5,7 +5,7 @@ use std::path::Path;
 use std::rc::Rc;
 
 use adw::prelude::*;
-use e_invoice_viewer_core::attachments::{self, Attachment, Content};
+use e_invoice_viewer_core::attachments::{Attachment, Content};
 use e_invoice_viewer_core::detect::DetectError;
 use e_invoice_viewer_core::document::{self, Document, Invoice};
 use e_invoice_viewer_core::fields::FieldModel;
@@ -483,13 +483,11 @@ impl Window {
         }
     }
 
-    /// The section "Anhänge" of the opened file (0013).
-    fn attachments_group(&self, bytes: &[u8]) -> adw::PreferencesGroup {
-        let list = Rc::new(attachments::list(bytes));
+    /// The section "Anhänge" of the opened document (0013).
+    fn attachments_group(&self, document: &Document) -> adw::PreferencesGroup {
         let this = self.clone();
-        let saved = list.clone();
-        attachments_view::group(&list, move |index| {
-            this.save_attachment(&saved[index], index + 1)
+        attachments_view::group(document.attachments(), move |attachment, position| {
+            this.save_attachment(attachment, position);
         })
     }
 
@@ -555,10 +553,17 @@ impl Window {
     fn show(&self, name: &str, bytes: &[u8]) -> bool {
         // Whatever is shown next, a running validation is outdated.
         self.next_generation();
-        match document::open(bytes) {
-            Ok(Document::Pdf { invoice }) => {
+        let document = match document::open(bytes) {
+            Ok(document) => document,
+            Err(error) => {
+                self.show_start(Some(&texts::error_message(name, &error)));
+                return false;
+            }
+        };
+        let attachments = self.attachments_group(&document);
+        match document {
+            Document::Pdf { invoice, .. } => {
                 self.show_pdf_pane(Some(bytes));
-                let attachments = self.attachments_group(bytes);
                 match invoice {
                     Some(invoice) => self.show_invoice(invoice, name, None, &attachments),
                     None => {
@@ -583,15 +588,10 @@ impl Window {
                 }
                 self.show_document(name);
             }
-            Ok(Document::Xml { invoice }) => {
+            Document::Xml { invoice } => {
                 self.show_pdf_pane(None);
-                let attachments = self.attachments_group(bytes);
                 self.show_invoice(invoice, name, Some(texts::XML_ONLY_NOTE), &attachments);
                 self.show_document(name);
-            }
-            Err(error) => {
-                self.show_start(Some(&texts::error_message(name, &error)));
-                return false;
             }
         }
         true
@@ -605,7 +605,7 @@ impl Window {
         note: Option<&str>,
         attachments: &adw::PreferencesGroup,
     ) {
-        let Invoice { xml, fields } = invoice;
+        let Invoice { xml, fields, .. } = invoice;
         self.set_xml(Some((&xml, name, fields.clone())));
         let this = self.clone();
         let show_in_xml: ShowInXml = Rc::new(move |location, attribute| {

@@ -23,6 +23,7 @@ fn sample_a_pdf() -> Vec<u8> {
 fn pdf_with_invoice_yields_pdf_and_fields() {
     let Document::Pdf {
         invoice: Some(invoice),
+        ..
     } = open(&sample_a_pdf()).expect("document")
     else {
         panic!("expected a PDF with invoice");
@@ -50,7 +51,10 @@ fn plain_xml_yields_fields_without_pdf() {
 fn pdf_without_invoice_yields_pdf_without_fields() {
     assert_eq!(
         open(&pdf_with(&[])).expect("document"),
-        Document::Pdf { invoice: None }
+        Document::Pdf {
+            invoice: None,
+            files: Vec::new()
+        }
     );
 }
 

@@ -1,6 +1,6 @@
 //! User-facing texts (German), kept free of GTK so they can be unit-tested.
 
-use e_invoice_viewer_core::attachments::{Attachment, Content, Source};
+use e_invoice_viewer_core::attachments::{Attachment, Content, ContentError, Source};
 use e_invoice_viewer_core::attribution::Target;
 use e_invoice_viewer_core::detect::DetectError;
 use e_invoice_viewer_core::document::OpenError;
@@ -207,8 +207,8 @@ pub fn attachment_details(attachment: &Attachment) -> String {
     let state = match &attachment.content {
         Content::Embedded(content) => size_text(content.len()),
         Content::External(address) => address.clone(),
-        Content::Unreadable => "Inhalt nicht lesbar".to_string(),
-        Content::TooLarge => "Zu groß (über 64 MB)".to_string(),
+        Content::Failed(ContentError::Unreadable) => "Inhalt nicht lesbar".to_string(),
+        Content::Failed(ContentError::TooLarge) => "Zu groß (über 64 MB)".to_string(),
     };
     let mut parts = vec![source.to_string(), mime_type.to_string(), state];
     parts.extend(attachment.description.clone());
@@ -699,11 +699,11 @@ mod tests {
             "Rechnung (BG-24) · unbekannt · https://example.com/stunden.csv"
         );
         assert!(
-            attachment_details(&attachment(None, Content::Unreadable))
+            attachment_details(&attachment(None, Content::Failed(ContentError::Unreadable)))
                 .contains("Inhalt nicht lesbar")
         );
         assert!(
-            attachment_details(&attachment(None, Content::TooLarge))
+            attachment_details(&attachment(None, Content::Failed(ContentError::TooLarge)))
                 .contains("Zu groß (über 64 MB)")
         );
         assert_eq!(

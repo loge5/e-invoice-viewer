@@ -3,8 +3,8 @@
 
 use roxmltree::{Document, Node};
 
-use crate::document::is_pdf;
-use crate::pdf::{ContentError, MAX_EMBEDDED_FILE_SIZE, embedded_files_of, invoice_file};
+pub use crate::pdf::ContentError;
+use crate::pdf::{EmbeddedFile, MAX_EMBEDDED_FILE_SIZE};
 use crate::xml_view::decode;
 
 const RSM: &str = "urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100";
@@ -35,10 +35,8 @@ pub enum Content {
     Embedded(Vec<u8>),
     /// Only an external address (BT-124); it is never opened or fetched.
     External(String),
-    /// The content cannot be decoded.
-    Unreadable,
-    /// The decoded content is larger than the limit of 0002.
-    TooLarge,
+    /// The content cannot be read.
+    Failed(ContentError),
 }
 
 /// One attachment.
@@ -53,6 +51,16 @@ pub struct Attachment {
 }
 
 impl Attachment {
+    pub(crate) fn from_pdf(file: EmbeddedFile) -> Self {
+        Self {
+            name: Some(file.name),
+            source: Source::Pdf,
+            mime_type: file.mime_type,
+            description: file.description,
+            content: file.content.map_or_else(Content::Failed, Content::Embedded),
+        }
+    }
+
     /// The name shown in the list, without control and text-direction
     /// characters; `Anhang-<position>` if there is none. `position` is
     /// 1-based.
@@ -85,42 +93,6 @@ impl Attachment {
     }
 }
 
-/// All attachments of an opened file (PDF or XML), PDF files first, each in
-/// document order. The invoice XML itself is not listed.
-pub fn list(bytes: &[u8]) -> Vec<Attachment> {
-    if !is_pdf(bytes) {
-        return invoice_attachments(bytes);
-    }
-    let Ok(files) = embedded_files_of(bytes) else {
-        return Vec::new();
-    };
-    let invoice = invoice_file(&files);
-    let mut list = Vec::new();
-    let mut invoice_xml = None;
-    for (index, file) in files.into_iter().enumerate() {
-        if Some(index) == invoice {
-            invoice_xml = file.content.ok();
-            continue;
-        }
-        let content = match file.content {
-            Ok(content) => Content::Embedded(content),
-            Err(ContentError::TooLarge) => Content::TooLarge,
-            Err(ContentError::Unreadable) => Content::Unreadable,
-        };
-        list.push(Attachment {
-            name: Some(file.name),
-            source: Source::Pdf,
-            mime_type: file.mime_type,
-            description: file.description,
-            content,
-        });
-    }
-    if let Some(xml) = invoice_xml {
-        list.extend(invoice_attachments(&xml));
-    }
-    list
-}
-
 fn fallback_name(position: usize) -> String {
     format!("Anhang-{position}")
 }
@@ -138,7 +110,7 @@ fn is_visible(c: char) -> bool {
 
 /// The BG-24 entries of an invoice XML (CII or UBL) with embedded content or
 /// an external address.
-fn invoice_attachments(xml: &[u8]) -> Vec<Attachment> {
+pub(crate) fn of_invoice(xml: &[u8]) -> Vec<Attachment> {
     let Ok(text) = decode(xml) else {
         return Vec::new();
     };
@@ -196,7 +168,7 @@ fn entry(
         (Some(node), _) => {
             match decode_base64(node.text().unwrap_or_default(), MAX_EMBEDDED_FILE_SIZE) {
                 Ok(content) => Content::Embedded(content),
-                Err(error) => error,
+                Err(error) => Content::Failed(error),
             }
         }
         (None, Some(address)) => Content::External(address),
@@ -241,16 +213,16 @@ fn text_of(node: Node, namespace: &'static str, name: &'static str) -> Option<St
 
 /// Decodes base64 (standard alphabet, padded; whitespace is ignored).
 /// Content larger than `limit` bytes is not decoded.
-fn decode_base64(text: &str, limit: usize) -> Result<Vec<u8>, Content> {
+fn decode_base64(text: &str, limit: usize) -> Result<Vec<u8>, ContentError> {
     let digits: Vec<u8> = text
         .bytes()
         .filter(|byte| !byte.is_ascii_whitespace())
         .collect();
     if !digits.len().is_multiple_of(4) {
-        return Err(Content::Unreadable);
+        return Err(ContentError::Unreadable);
     }
     if digits.len() / 4 * 3 > limit + 2 {
-        return Err(Content::TooLarge);
+        return Err(ContentError::TooLarge);
     }
     let value = |byte: u8| match byte {
         b'A'..=b'Z' => Some(byte - b'A'),
@@ -266,18 +238,18 @@ fn decode_base64(text: &str, limit: usize) -> Result<Vec<u8>, Content> {
     for (index, chunk) in chunks.enumerate() {
         let padding = chunk.iter().rev().take_while(|byte| **byte == b'=').count();
         if padding > 2 || (padding > 0 && index != last) {
-            return Err(Content::Unreadable);
+            return Err(ContentError::Unreadable);
         }
         let mut bits = 0_u32;
         for &byte in &chunk[..4 - padding] {
-            bits = (bits << 6) | u32::from(value(byte).ok_or(Content::Unreadable)?);
+            bits = (bits << 6) | u32::from(value(byte).ok_or(ContentError::Unreadable)?);
         }
         bits <<= 6 * padding;
         let bytes = bits.to_be_bytes();
         out.extend_from_slice(&bytes[1..4 - padding]);
     }
     if out.len() > limit {
-        return Err(Content::TooLarge);
+        return Err(ContentError::TooLarge);
     }
     Ok(out)
 }
@@ -292,11 +264,14 @@ mod tests {
         assert_eq!(decode_base64("SGFs\n bG8h", 100), Ok(b"Hallo!".to_vec()));
         assert_eq!(decode_base64("SA==", 100), Ok(b"H".to_vec()));
         assert_eq!(decode_base64("", 100), Ok(Vec::new()));
-        assert_eq!(decode_base64("SGFsbG8", 100), Err(Content::Unreadable));
-        assert_eq!(decode_base64("SA==SA==", 100), Err(Content::Unreadable));
-        assert_eq!(decode_base64("S*==", 100), Err(Content::Unreadable));
+        assert_eq!(decode_base64("SGFsbG8", 100), Err(ContentError::Unreadable));
+        assert_eq!(
+            decode_base64("SA==SA==", 100),
+            Err(ContentError::Unreadable)
+        );
+        assert_eq!(decode_base64("S*==", 100), Err(ContentError::Unreadable));
         // The limit of 0002, scaled down: 6 decoded bytes, limit 5.
-        assert_eq!(decode_base64("SGFsbG8h", 5), Err(Content::TooLarge));
+        assert_eq!(decode_base64("SGFsbG8h", 5), Err(ContentError::TooLarge));
         assert_eq!(decode_base64("SGFsbG8=", 5), Ok(b"Hallo".to_vec()));
     }
 }

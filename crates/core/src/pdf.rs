@@ -9,9 +9,9 @@ use thiserror::Error;
 /// case-insensitively).
 const INVOICE_FILE_NAMES: [&str; 3] = ["factur-x.xml", "xrechnung.xml", "zugferd-invoice.xml"];
 
-/// Upper bound for a decompressed embedded file, protecting against
-/// decompression bombs.
-pub(crate) const MAX_EMBEDDED_FILE_SIZE: usize = 64 * 1024 * 1024;
+/// Upper bound for a decompressed embedded file or attachment, protecting
+/// against decompression bombs.
+pub const MAX_EMBEDDED_FILE_SIZE: usize = 64 * 1024 * 1024;
 
 /// Upper bound for the nesting depth of the embedded-files name tree,
 /// protecting against malicious or cyclic trees.
@@ -45,32 +45,48 @@ pub enum ExtractError {
 
 /// Extracts the embedded invoice XML from the bytes of a PDF.
 pub fn extract_invoice_xml(pdf: &[u8]) -> Result<EmbeddedInvoice, ExtractError> {
-    // The PDF parser must never take the application down, whatever the input.
-    let embedded = embedded_files_of(pdf)?;
-
-    match invoice_file(&embedded).map(|index| &embedded[index]) {
-        Some(file) => match &file.content {
-            Ok(content) if !content.is_empty() => Ok(EmbeddedInvoice {
-                source_name: file.name.clone(),
-                xml: content.clone(),
-            }),
-            Ok(_) => Err(ExtractError::EmptyInvoice {
-                source_name: file.name.clone(),
-            }),
-            Err(_) => Err(ExtractError::NotReadablePdf),
-        },
-        None => Err(ExtractError::NoEmbeddedInvoice {
-            embedded_files: embedded.into_iter().map(|file| file.name).collect(),
-        }),
-    }
+    read_embedded(pdf)?.invoice
 }
 
-/// Index of the file that is the invoice XML, by name precedence.
-pub(crate) fn invoice_file(files: &[EmbeddedFile]) -> Option<usize> {
-    INVOICE_FILE_NAMES.iter().find_map(|wanted| {
+/// The embedded files of a PDF: the invoice XML, and the others in document
+/// order.
+pub(crate) struct Embedded {
+    pub invoice: Result<EmbeddedInvoice, ExtractError>,
+    pub others: Vec<EmbeddedFile>,
+}
+
+/// Reads the embedded files of a PDF once; never panics. Fails only if the
+/// PDF itself cannot be read.
+pub(crate) fn read_embedded(pdf: &[u8]) -> Result<Embedded, ExtractError> {
+    // The PDF parser must never take the application down, whatever the input.
+    let mut files = panic::catch_unwind(AssertUnwindSafe(|| embedded_files(pdf)))
+        .map_err(|_| ExtractError::NotReadablePdf)??;
+    let position = INVOICE_FILE_NAMES.iter().find_map(|wanted| {
         files
             .iter()
             .position(|file| file.name.eq_ignore_ascii_case(wanted))
+    });
+    let Some(position) = position else {
+        let embedded_files = files.iter().map(|file| file.name.clone()).collect();
+        return Ok(Embedded {
+            invoice: Err(ExtractError::NoEmbeddedInvoice { embedded_files }),
+            others: files,
+        });
+    };
+    let file = files.remove(position);
+    let invoice = match file.content {
+        Ok(xml) if !xml.is_empty() => Ok(EmbeddedInvoice {
+            source_name: file.name,
+            xml,
+        }),
+        Ok(_) => Err(ExtractError::EmptyInvoice {
+            source_name: file.name,
+        }),
+        Err(_) => Err(ExtractError::NotReadablePdf),
+    };
+    Ok(Embedded {
+        invoice,
+        others: files,
     })
 }
 
@@ -84,17 +100,11 @@ pub(crate) struct EmbeddedFile {
     pub content: Result<Vec<u8>, ContentError>,
 }
 
-/// Why the content of an embedded file cannot be read.
+/// Why the content of an attachment cannot be read.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub(crate) enum ContentError {
+pub enum ContentError {
     Unreadable,
     TooLarge,
-}
-
-/// The embedded files of a PDF, in document order; never panics.
-pub(crate) fn embedded_files_of(pdf: &[u8]) -> Result<Vec<EmbeddedFile>, ExtractError> {
-    panic::catch_unwind(AssertUnwindSafe(|| embedded_files(pdf)))
-        .map_err(|_| ExtractError::NotReadablePdf)?
 }
 
 fn embedded_files(pdf: &[u8]) -> Result<Vec<EmbeddedFile>, ExtractError> {

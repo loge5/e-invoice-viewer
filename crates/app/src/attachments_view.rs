@@ -5,12 +5,13 @@ use e_invoice_viewer_core::attachments::{Attachment, Content};
 
 use crate::texts;
 
-/// The section listing `attachments`; `on_save` is called with the index of
-/// the attachment whose save button was clicked.
-pub fn group(
-    attachments: &[Attachment],
-    on_save: impl Fn(usize) + Clone + 'static,
+/// The section listing `attachments`; `on_save` is called with the
+/// attachment whose save button was clicked and its 1-based position.
+pub fn group<'a>(
+    attachments: impl IntoIterator<Item = &'a Attachment>,
+    on_save: impl Fn(&Attachment, usize) + Clone + 'static,
 ) -> adw::PreferencesGroup {
+    let attachments: Vec<&Attachment> = attachments.into_iter().collect();
     let group = adw::PreferencesGroup::builder()
         .title(texts::ATTACHMENTS_TITLE)
         .build();
@@ -27,11 +28,12 @@ pub fn group(
         .selection_mode(gtk::SelectionMode::None)
         .css_classes(["boxed-list"])
         .build();
-    for (index, attachment) in attachments.iter().enumerate() {
+    for (index, attachment) in attachments.into_iter().enumerate() {
+        let position = index + 1;
         // File names and descriptions come from the invoice: never markup.
         let row = adw::ActionRow::builder()
             .use_markup(false)
-            .title(attachment.display_name(index + 1))
+            .title(attachment.display_name(position))
             .subtitle(texts::attachment_details(attachment))
             .subtitle_selectable(true)
             .build();
@@ -43,8 +45,8 @@ pub fn group(
                 .css_classes(["flat"])
                 .build();
             button.update_property(&[gtk::accessible::Property::Label(texts::SAVE_ATTACHMENT)]);
-            let on_save = on_save.clone();
-            button.connect_clicked(move |_| on_save(index));
+            let (on_save, attachment) = (on_save.clone(), attachment.clone());
+            button.connect_clicked(move |_| on_save(&attachment, position));
             row.add_suffix(&button);
         }
         list.append(&row);

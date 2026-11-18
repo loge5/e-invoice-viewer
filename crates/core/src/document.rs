@@ -2,8 +2,9 @@
 
 use thiserror::Error;
 
+use crate::attachments::{self, Attachment};
 use crate::fields::{FieldModel, MapError, map_invoice};
-use crate::pdf::{ExtractError, extract_invoice_xml};
+use crate::pdf::{ExtractError, read_embedded};
 
 /// PDF readers accept the header anywhere in the first 1024 bytes.
 const PDF_HEADER_WINDOW: usize = 1024;
@@ -12,16 +13,36 @@ const PDF_HEADER_WINDOW: usize = 1024;
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum Document {
     /// A PDF; `invoice` is `None` if it embeds no electronic invoice.
-    Pdf { invoice: Option<Invoice> },
+    /// `files` are the further embedded files.
+    Pdf {
+        invoice: Option<Invoice>,
+        files: Vec<Attachment>,
+    },
     /// A plain XML invoice without PDF.
     Xml { invoice: Invoice },
 }
 
-/// An electronic invoice: its original XML and the field model.
+impl Document {
+    /// All attachments (0013): the further files of the PDF, then the
+    /// supporting documents of the invoice (BG-24), each in document order.
+    pub fn attachments(&self) -> impl Iterator<Item = &Attachment> {
+        let (files, invoice) = match self {
+            Self::Pdf { invoice, files } => (files.as_slice(), invoice.as_ref()),
+            Self::Xml { invoice } => (&[][..], Some(invoice)),
+        };
+        files
+            .iter()
+            .chain(invoice.into_iter().flat_map(|invoice| &invoice.attachments))
+    }
+}
+
+/// An electronic invoice: its original XML, the field model and its
+/// supporting documents (BG-24).
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Invoice {
     pub xml: Vec<u8>,
     pub fields: FieldModel,
+    pub attachments: Vec<Attachment>,
 }
 
 /// Why a file cannot be shown as an invoice.
@@ -40,21 +61,33 @@ pub fn open(bytes: &[u8]) -> Result<Document, OpenError> {
             invoice: invoice(bytes.to_vec())?,
         });
     }
-    match extract_invoice_xml(bytes) {
-        Ok(embedded) => Ok(Document::Pdf {
-            invoice: Some(invoice(embedded.xml)?),
-        }),
-        Err(ExtractError::NoEmbeddedInvoice { .. }) => Ok(Document::Pdf { invoice: None }),
-        Err(error) => Err(OpenError::Pdf(error)),
-    }
+    let embedded = read_embedded(bytes).map_err(OpenError::Pdf)?;
+    let invoice = match embedded.invoice {
+        Ok(embedded) => Some(invoice(embedded.xml)?),
+        Err(ExtractError::NoEmbeddedInvoice { .. }) => None,
+        Err(error) => return Err(OpenError::Pdf(error)),
+    };
+    Ok(Document::Pdf {
+        invoice,
+        files: embedded
+            .others
+            .into_iter()
+            .map(Attachment::from_pdf)
+            .collect(),
+    })
 }
 
 fn invoice(xml: Vec<u8>) -> Result<Invoice, OpenError> {
     let fields = map_invoice(&xml)?;
-    Ok(Invoice { xml, fields })
+    let attachments = attachments::of_invoice(&xml);
+    Ok(Invoice {
+        xml,
+        fields,
+        attachments,
+    })
 }
 
-pub(crate) fn is_pdf(bytes: &[u8]) -> bool {
+fn is_pdf(bytes: &[u8]) -> bool {
     bytes[..bytes.len().min(PDF_HEADER_WINDOW)]
         .windows(5)
         .any(|window| window == b"%PDF-")
