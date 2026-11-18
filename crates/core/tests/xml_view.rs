@@ -7,6 +7,7 @@ use std::time::{Duration, Instant};
 use common::{fixture, sample_a_latin1, sample_cii_with_lines, sample_l_cii, select, single_line};
 use e_invoice_viewer_core::detect::{DetectError, detect};
 use e_invoice_viewer_core::document::{Document, open};
+use e_invoice_viewer_core::i18n::Language;
 use e_invoice_viewer_core::xml_view::{decode, pretty_print};
 
 /// The text without whitespace between tags, for comparing content.
@@ -61,7 +62,7 @@ fn opens_iso_8859_1_invoice() {
         "fixture must not be UTF-8"
     );
 
-    let Document::Xml { invoice } = open(&latin1).expect("document") else {
+    let Document::Xml { invoice } = open(&latin1, Language::German).expect("document") else {
         panic!("expected a plain XML invoice");
     };
     let values: Vec<&str> = invoice

@@ -11,6 +11,7 @@ thiserror.workspace = true
 lopdf.workspace = true
 roxmltree.workspace = true
 base64.workspace = true
+gettext.workspace = true
 xee-xpath.workspace = true
 xot.workspace = true
 

@@ -4,6 +4,7 @@ use thiserror::Error;
 
 use crate::attachments::Attachment;
 use crate::fields::{FieldModel, MapError, read_invoice};
+use crate::i18n::Language;
 use crate::pdf::{ExtractError, read_embedded};
 
 /// PDF readers accept the header anywhere in the first 1024 bytes.
@@ -54,16 +55,17 @@ pub enum OpenError {
     Xml(#[from] MapError),
 }
 
-/// Opens the bytes of a PDF or XML file.
-pub fn open(bytes: &[u8]) -> Result<Document, OpenError> {
+/// Opens the bytes of a PDF or XML file; texts of the field model are in
+/// `language`.
+pub fn open(bytes: &[u8], language: Language) -> Result<Document, OpenError> {
     if !is_pdf(bytes) {
         return Ok(Document::Xml {
-            invoice: invoice(bytes.to_vec())?,
+            invoice: invoice(bytes.to_vec(), language)?,
         });
     }
     let embedded = read_embedded(bytes).map_err(OpenError::Pdf)?;
     let invoice = match embedded.invoice {
-        Ok(embedded) => Some(invoice(embedded.xml)?),
+        Ok(embedded) => Some(invoice(embedded.xml, language)?),
         Err(ExtractError::NoEmbeddedInvoice { .. }) => None,
         Err(error) => return Err(OpenError::Pdf(error)),
     };
@@ -77,8 +79,8 @@ pub fn open(bytes: &[u8]) -> Result<Document, OpenError> {
     })
 }
 
-fn invoice(xml: Vec<u8>) -> Result<Invoice, OpenError> {
-    let (fields, attachments) = read_invoice(&xml)?;
+fn invoice(xml: Vec<u8>, language: Language) -> Result<Invoice, OpenError> {
+    let (fields, attachments) = read_invoice(&xml, language)?;
     Ok(Invoice {
         xml,
         fields,

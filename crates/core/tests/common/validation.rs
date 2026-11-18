@@ -1,5 +1,6 @@
 //! Shared helpers and sample variants of the validation specs (0009, 0010).
 
+use e_invoice_viewer_core::i18n::Language;
 use e_invoice_viewer_core::validate::{Finding, Severity, Validation, Validator};
 
 use super::{fixture, replace_once};
@@ -13,7 +14,7 @@ const XRECHNUNG_ID: &str = "urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:ko
 
 pub fn validate(xml: &str) -> Validation {
     Validator::new()
-        .validate(xml.as_bytes())
+        .validate(xml.as_bytes(), Language::German)
         .expect("validation result")
 }
 

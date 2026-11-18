@@ -7,6 +7,7 @@ use std::time::{Duration, Instant};
 use common::validation::{CII_RULES, UBL_RULES, errors, findings_with, validate, variant};
 use common::{fixture, sample_l_cii, select};
 use e_invoice_viewer_core::detect::DetectError;
+use e_invoice_viewer_core::i18n::Language;
 use e_invoice_viewer_core::validate::{Finding, Severity, Validator};
 
 // AC1
@@ -132,12 +133,12 @@ fn non_invoice_input_is_an_error_not_a_panic() {
     let validator = Validator::new();
 
     assert_eq!(
-        validator.validate(b"<x/>").unwrap_err(),
+        validator.validate(b"<x/>", Language::German).unwrap_err(),
         DetectError::NotAnInvoice
     );
     assert_eq!(
         validator
-            .validate(b"<rsm:CrossIndustryInvoice")
+            .validate(b"<rsm:CrossIndustryInvoice", Language::German)
             .unwrap_err(),
         DetectError::NotWellFormed { line: 1 }
     );
@@ -150,7 +151,7 @@ fn validates_sample_a_within_one_second() {
     let xml = fixture("cii/sample-a.xml");
     let start = Instant::now();
     Validator::new()
-        .validate(xml.as_bytes())
+        .validate(xml.as_bytes(), Language::German)
         .expect("validation");
     let elapsed = start.elapsed();
     assert!(elapsed < Duration::from_secs(1), "took {elapsed:?}");
@@ -163,7 +164,7 @@ fn validates_sample_l_within_five_seconds() {
     let xml = sample_l_cii();
     let start = Instant::now();
     Validator::new()
-        .validate(xml.as_bytes())
+        .validate(xml.as_bytes(), Language::German)
         .expect("validation");
     let elapsed = start.elapsed();
     assert!(elapsed < Duration::from_secs(5), "took {elapsed:?}");

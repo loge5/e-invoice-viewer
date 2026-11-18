@@ -7,6 +7,7 @@ use common::validation::{validate, variant};
 use common::{fixture, replace_once, sample_l_cii, select};
 use e_invoice_viewer_core::attribution::{Target, attribute};
 use e_invoice_viewer_core::fields::{FieldModel, map_invoice};
+use e_invoice_viewer_core::i18n::Language;
 use e_invoice_viewer_core::validate::Finding;
 
 /// CII sample A with BT-131 of line 2 removed.
@@ -63,7 +64,7 @@ fn write_manual_samples() {
 /// target described as `field <section> <BT>`, `section <title>` or
 /// `document`.
 fn targets(xml: &str) -> Vec<(String, String)> {
-    let model = map_invoice(xml.as_bytes()).expect("field model");
+    let model = map_invoice(xml.as_bytes(), Language::German).expect("field model");
     validate(xml)
         .findings
         .iter()
@@ -151,7 +152,7 @@ fn equal_location_comes_first() {
 #[test]
 fn every_section_location_selects_its_element() {
     for xml in [fixture("cii/sample-a.xml"), fixture("cii/sample-b.xml")] {
-        let model = map_invoice(xml.as_bytes()).expect("field model");
+        let model = map_invoice(xml.as_bytes(), Language::German).expect("field model");
         for section in &model.sections {
             assert_eq!(
                 select(&xml, &section.location).len(),

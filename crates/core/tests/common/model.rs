@@ -1,9 +1,10 @@
 //! Looking up sections and fields of a field model.
 
 use e_invoice_viewer_core::fields::{Field, FieldModel, Section, map_invoice};
+use e_invoice_viewer_core::i18n::Language;
 
 pub fn model(xml: &str) -> FieldModel {
-    map_invoice(xml.as_bytes()).expect("field model")
+    map_invoice(xml.as_bytes(), Language::German).expect("field model")
 }
 
 /// All sections with this title, in order.

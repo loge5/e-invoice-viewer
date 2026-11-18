@@ -10,6 +10,7 @@ pub mod attribution;
 pub mod detect;
 pub mod document;
 pub mod fields;
+pub mod i18n;
 pub mod link;
 mod location;
 mod ns;

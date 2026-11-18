@@ -11,6 +11,7 @@ use thiserror::Error;
 
 use crate::attachments::{self, Attachment};
 use crate::detect::{DetectError, Detection, Syntax, detect};
+use crate::i18n::{Language, tr};
 use crate::location::Locations;
 use crate::xml_view::decode;
 
@@ -97,14 +98,18 @@ pub enum MapError {
     UnsupportedSyntax,
 }
 
-/// Builds the field model of an invoice XML.
-pub fn map_invoice(xml: &[u8]) -> Result<FieldModel, MapError> {
-    read_invoice(xml).map(|(model, _)| model)
+/// Builds the field model of an invoice XML, with labels, titles and values
+/// in `language` (spec 0017).
+pub fn map_invoice(xml: &[u8], language: Language) -> Result<FieldModel, MapError> {
+    read_invoice(xml, language).map(|(model, _)| model)
 }
 
 /// The field model and the supporting documents (BG-24, spec 0013) of an
 /// invoice XML, from one parse.
-pub(crate) fn read_invoice(xml: &[u8]) -> Result<(FieldModel, Vec<Attachment>), MapError> {
+pub(crate) fn read_invoice(
+    xml: &[u8],
+    language: Language,
+) -> Result<(FieldModel, Vec<Attachment>), MapError> {
     let detection = detect(xml)?;
     let syntax = match detection.syntax {
         Syntax::Cii => &cii::SYNTAX,
@@ -120,6 +125,7 @@ pub(crate) fn read_invoice(xml: &[u8]) -> Result<(FieldModel, Vec<Attachment>), 
     let locations = Locations::new(&doc, syntax.prefixes);
     let context = Context {
         detection: &detection,
+        language,
         root,
         locations: &locations,
         currency: find_all(root, syntax.currency_path)
@@ -301,10 +307,10 @@ struct Term {
     label: &'static str,
 }
 
-impl Term {
-    const fn new(id: &'static str, label: &'static str) -> Self {
-        Self { id, label }
-    }
+/// A business term with its number and English label; the label is marked
+/// for translation.
+const fn term(id: &'static str, label: &'static str) -> Term {
+    Term { id, label }
 }
 
 /// A business term and where to find it, relative to its section anchor.
@@ -372,6 +378,7 @@ struct SectionDef {
 /// Document-wide information needed to display values.
 struct Context<'a, 'input> {
     detection: &'a Detection,
+    language: Language,
     root: Node<'a, 'input>,
     currency: Option<String>,
     locations: &'a Locations,
@@ -385,7 +392,7 @@ fn map_section(root: Node, def: &SectionDef, context: &Context) -> Vec<Section> 
     anchors
         .into_iter()
         .map(|anchor| Section {
-            title: section_title(anchor, def),
+            title: section_title(anchor, def, context.language),
             location: context.locations.of(anchor).to_string(),
             repeated: def.repeatable,
             fields: def
@@ -398,7 +405,8 @@ fn map_section(root: Node, def: &SectionDef, context: &Context) -> Vec<Section> 
         .collect()
 }
 
-fn section_title(anchor: Node, def: &SectionDef) -> String {
+fn section_title(anchor: Node, def: &SectionDef, language: Language) -> String {
+    let title = tr(language, def.title);
     let suffix = def
         .title_suffix
         .and_then(|path| find_all(anchor, path).first().copied())
@@ -406,8 +414,8 @@ fn section_title(anchor: Node, def: &SectionDef) -> String {
         .map(str::trim)
         .filter(|text| !text.is_empty());
     match suffix {
-        Some(suffix) => format!("{} {suffix}", def.title),
-        None => def.title.to_string(),
+        Some(suffix) => format!("{title} {suffix}"),
+        None => title.to_string(),
     }
 }
 
@@ -427,7 +435,7 @@ fn map_field(anchor: Node, def: &FieldDef, context: &Context) -> Vec<Field> {
             .to_string();
             Field {
                 id: def.term.id.to_string(),
-                label: def.term.label.to_string(),
+                label: tr(context.language, def.term.label).to_string(),
                 display: display_value(&raw, node, def.format, context),
                 location: context.locations.of(node).to_string(),
                 attribute: def.attribute.map(str::to_string),
@@ -438,16 +446,17 @@ fn map_field(anchor: Node, def: &FieldDef, context: &Context) -> Vec<Field> {
 }
 
 fn display_value(raw: &str, node: Node, format: Format, context: &Context) -> String {
+    let language = context.language;
     match format {
         Format::Text => raw.to_string(),
-        Format::Date => display::date(raw, node.attribute("format")),
-        Format::IsoDate => display::iso_date(raw),
-        Format::Amount => display::amount(raw, context.currency.as_deref()),
-        Format::Quantity => display::quantity(raw, node.attribute("unitCode")),
+        Format::Date => display::date(raw, node.attribute("format"), language),
+        Format::IsoDate => display::iso_date(raw, language),
+        Format::Amount => display::amount(raw, context.currency.as_deref(), language),
+        Format::Quantity => display::quantity(raw, node.attribute("unitCode"), language),
         Format::Iban => display::iban(raw),
-        Format::InvoiceType => display::code(raw, display::INVOICE_TYPE_CODES),
-        Format::PaymentMeans => display::code(raw, display::PAYMENT_MEANS_CODES),
-        Format::VatCategory => display::code(raw, display::VAT_CATEGORY_CODES),
+        Format::InvoiceType => display::code(raw, display::INVOICE_TYPE_CODES, language),
+        Format::PaymentMeans => display::code(raw, display::PAYMENT_MEANS_CODES, language),
+        Format::VatCategory => display::code(raw, display::VAT_CATEGORY_CODES, language),
         Format::SpecificationIdentifier => {
             display::specification_identifier(raw, context.detection)
         }

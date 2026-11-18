@@ -8,6 +8,7 @@ use common::validation::{validate, variant};
 use common::{fixture, replace_once, sample_l_cii, single_line};
 use e_invoice_viewer_core::attribution::Target;
 use e_invoice_viewer_core::fields::{Field, FieldModel, map_invoice};
+use e_invoice_viewer_core::i18n::Language;
 use e_invoice_viewer_core::link::{XmlLayout, assignment};
 
 struct Linked {
@@ -17,7 +18,7 @@ struct Linked {
 
 fn linked(xml: &str) -> Linked {
     Linked {
-        model: map_invoice(xml.as_bytes()).expect("field model"),
+        model: map_invoice(xml.as_bytes(), Language::German).expect("field model"),
         layout: XmlLayout::new(xml.as_bytes()).expect("layout"),
     }
 }

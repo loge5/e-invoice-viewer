@@ -9,6 +9,7 @@ use e_invoice_viewer_core::attachments::{Attachment, Content};
 use e_invoice_viewer_core::detect::DetectError;
 use e_invoice_viewer_core::document::{self, Document, Invoice};
 use e_invoice_viewer_core::fields::FieldModel;
+use e_invoice_viewer_core::i18n::Language;
 use e_invoice_viewer_core::validate::{Validation, Validator};
 use gtk::{gio, glib};
 
@@ -30,7 +31,7 @@ thread_local! {
 
 /// Validates on the calling (worker) thread.
 fn validate(xml: &[u8]) -> Result<Validation, DetectError> {
-    VALIDATOR.with(|validator| validator.validate(xml))
+    VALIDATOR.with(|validator| validator.validate(xml, Language::German))
 }
 
 const MINIMUM_PANE_WIDTH: i32 = 300;
@@ -477,7 +478,7 @@ impl Window {
     fn show(&self, name: &str, bytes: &[u8]) -> bool {
         // Whatever is shown next, a running validation is outdated.
         self.next_generation();
-        let document = match document::open(bytes) {
+        let document = match document::open(bytes, Language::German) {
             Ok(document) => document,
             Err(error) => {
                 self.show_start(Some(&texts::error_message(name, &error)));

@@ -10,6 +10,7 @@ use std::sync::OnceLock;
 
 use common::validation::{is_xrechnung_rule, severity_name, variant, variants};
 use common::{fixture, select};
+use e_invoice_viewer_core::i18n::Language;
 use e_invoice_viewer_core::link::XmlLayout;
 use e_invoice_viewer_core::validate::{Validation, Validator};
 
@@ -115,7 +116,9 @@ fn checked() -> &'static BTreeMap<String, Checked> {
                             .step_by(threads)
                             .map(|key| {
                                 let xml = reference_xml(key);
-                                let validation = validator.validate(xml.as_bytes()).expect(key);
+                                let validation = validator
+                                    .validate(xml.as_bytes(), Language::German)
+                                    .expect(key);
                                 Checked {
                                     key: key.clone(),
                                     xml,

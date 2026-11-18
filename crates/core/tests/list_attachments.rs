@@ -5,13 +5,14 @@ mod common;
 use common::{Attachment, fixture, pdf_document, pdf_with, pdf_with_text, replace_once};
 use e_invoice_viewer_core::attachments::{self, Content, ContentError, Source};
 use e_invoice_viewer_core::document;
+use e_invoice_viewer_core::i18n::Language;
 use lopdf::Object;
 
 const LIEFERSCHEIN_SIZE: usize = 24_576;
 
 /// All attachments of an opened file.
 fn attachments_of(bytes: &[u8]) -> Vec<attachments::Attachment> {
-    document::open(bytes)
+    document::open(bytes, Language::German)
         .expect("file opens")
         .attachments()
         .cloned()
@@ -75,7 +76,7 @@ fn pdf_without_invoice_lists_attachments() {
     let content = lieferschein();
     let pdf = pdf_with(&[Attachment::compressed("lieferschein.pdf", &content)]);
     assert!(matches!(
-        document::open(&pdf),
+        document::open(&pdf, Language::German),
         Ok(document::Document::Pdf { invoice: None, .. })
     ));
 
@@ -217,7 +218,7 @@ fn invalid_base64_and_broken_stream_are_unreadable() {
         attachments_of(xml.as_bytes())[0].content,
         Content::Failed(ContentError::Unreadable)
     );
-    assert!(document::open(xml.as_bytes()).is_ok());
+    assert!(document::open(xml.as_bytes(), Language::German).is_ok());
 
     let invoice = fixture("cii/sample-a.xml");
     let mut doc = pdf_document(&[
@@ -242,7 +243,7 @@ fn invalid_base64_and_broken_stream_are_unreadable() {
         Content::Failed(ContentError::Unreadable)
     );
     assert!(matches!(
-        document::open(&pdf),
+        document::open(&pdf, Language::German),
         Ok(document::Document::Pdf {
             invoice: Some(_),
             ..

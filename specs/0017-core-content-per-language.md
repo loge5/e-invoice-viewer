@@ -1,7 +1,7 @@
 ---
 id: 0017
 title: Core - invoice content in German and English
-status: reviewed
+status: in-progress
 created: 2026-11-18
 depends_on: [0004, 0005, 0006, 0009, 0010]
 ---
@@ -161,3 +161,33 @@ produced in **German** or **English**, chosen by the caller for each call:
   | | LS | lump sum |
 
   Units are in the plural, like the German ones (`Stunden`).
+
+## Progress
+
+- **Done**:
+  - `crates/core/src/i18n.rs`: `Language` (German, English), `tr`, `tr_n`
+    and the marker `n_`; the German catalogue is compiled from `po/de.po` by
+    `crates/core/build.rs` (`msgfmt --check`) and embedded (ADR 0003).
+  - Source texts are English: the official EN 16931 names in
+    `fields/terms.rs`, section titles, code and unit names (`display.rs`),
+    the validation notes. The former German texts are in `po/de.po`
+    (109 entries), so German output is unchanged.
+  - `map_invoice`, `document::open` and `Validator::validate` take the
+    language. Number and date formats follow it. The app passes German until
+    0018.
+  - `scripts/update-po.sh` extracts the marked texts into
+    `po/messages.pot` and merges them into `po/de.po`.
+- **Verified** (2026-11-18):
+  - `cargo test --workspace`: 189 passed; new: 6 tests in
+    `tests/content_per_language.rs` (AC1, AC2, AC6–AC9) and 3 unit tests in
+    `fields/display.rs` (AC3–AC5). All existing tests pass unchanged apart
+    from the added language argument.
+  - The completeness test fails when an entry is removed from `po/de.po`
+    (checked by removing `Seller city`).
+  - `cargo fmt --all --check`, `cargo clippy --workspace --all-targets -- -D
+    warnings` and the architecture check are clean.
+  - Smoke run of the release build: the app still shows `Rechnungsnummer`,
+    `Rechnung (380)`, `8 Stunden (HUR)` and `1.249,50 EUR`.
+- **Next** — all criteria are covered by automated tests; the author decides
+  on `implemented`.
+

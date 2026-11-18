@@ -8,6 +8,7 @@ use common::{
 };
 use e_invoice_viewer_core::detect::DetectError;
 use e_invoice_viewer_core::document::{Document, OpenError, open};
+use e_invoice_viewer_core::i18n::Language;
 use e_invoice_viewer_core::pdf::ExtractError;
 
 fn sample_a_pdf() -> Vec<u8> {
@@ -24,7 +25,7 @@ fn pdf_with_invoice_yields_pdf_and_fields() {
     let Document::Pdf {
         invoice: Some(invoice),
         ..
-    } = open(&sample_a_pdf()).expect("document")
+    } = open(&sample_a_pdf(), Language::German).expect("document")
     else {
         panic!("expected a PDF with invoice");
     };
@@ -38,7 +39,8 @@ fn pdf_with_invoice_yields_pdf_and_fields() {
 fn plain_xml_yields_fields_without_pdf() {
     let xml = fixture("cii/sample-a.xml");
 
-    let Document::Xml { invoice } = open(xml.as_bytes()).expect("document") else {
+    let Document::Xml { invoice } = open(xml.as_bytes(), Language::German).expect("document")
+    else {
         panic!("expected a plain XML invoice");
     };
 
@@ -50,7 +52,7 @@ fn plain_xml_yields_fields_without_pdf() {
 #[test]
 fn pdf_without_invoice_yields_pdf_without_fields() {
     assert_eq!(
-        open(&pdf_with(&[])).expect("document"),
+        open(&pdf_with(&[]), Language::German).expect("document"),
         Document::Pdf {
             invoice: None,
             files: Vec::new()
@@ -62,19 +64,19 @@ fn pdf_without_invoice_yields_pdf_without_fields() {
 #[test]
 fn unreadable_inputs_yield_a_reason() {
     assert_eq!(
-        open(&png_bytes()).unwrap_err(),
+        open(&png_bytes(), Language::German).unwrap_err(),
         OpenError::Xml(DetectError::NotWellFormed { line: 1 }.into())
     );
     assert_eq!(
-        open(b"<a><b></a>").unwrap_err(),
+        open(b"<a><b></a>", Language::German).unwrap_err(),
         OpenError::Xml(DetectError::NotWellFormed { line: 1 }.into())
     );
     assert_eq!(
-        open(b"<order><id>1</id></order>").unwrap_err(),
+        open(b"<order><id>1</id></order>", Language::German).unwrap_err(),
         OpenError::Xml(DetectError::NotAnInvoice.into())
     );
     assert_eq!(
-        open(b"%PDF-1.7\nnot really a PDF").unwrap_err(),
+        open(b"%PDF-1.7\nnot really a PDF", Language::German).unwrap_err(),
         OpenError::Pdf(ExtractError::NotReadablePdf)
     );
 }

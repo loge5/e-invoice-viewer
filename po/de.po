@@ -1,0 +1,346 @@
+# German translation of E-Invoice Viewer.
+# This file is distributed under the same licence as E-Invoice Viewer
+# (GPL-3.0-or-later).
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: E-Invoice Viewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-18 10:28+0100\n"
+"PO-Revision-Date: 2026-11-18 00:00+0100\n"
+"Last-Translator: E-Invoice Viewer contributors\n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Partial invoice"
+msgstr "Teilrechnung"
+
+msgid "Commercial invoice"
+msgstr "Rechnung"
+
+msgid "Credit note"
+msgstr "Gutschrift"
+
+msgid "Corrected invoice"
+msgstr "Korrekturrechnung"
+
+msgid "Self-billed invoice"
+msgstr "Selbst ausgestellte Rechnung"
+
+msgid "Partial construction invoice"
+msgstr "Abschlagsrechnung (Bau)"
+
+msgid "Partial final construction invoice"
+msgstr "Teilschlussrechnung (Bau)"
+
+msgid "Final construction invoice"
+msgstr "Schlussrechnung (Bau)"
+
+msgid "Instrument not defined"
+msgstr "Nicht definiert"
+
+msgid "In cash"
+msgstr "Barzahlung"
+
+msgid "Cheque"
+msgstr "Scheck"
+
+msgid "Credit transfer"
+msgstr "Überweisung"
+
+msgid "Payment to bank account"
+msgstr "Zahlung auf Bankkonto"
+
+msgid "Bank card"
+msgstr "Bankkarte"
+
+msgid "Direct debit"
+msgstr "Lastschrift"
+
+msgid "Credit card"
+msgstr "Kreditkarte"
+
+msgid "Standing agreement"
+msgstr "Dauerauftrag"
+
+msgid "SEPA credit transfer"
+msgstr "SEPA-Überweisung"
+
+msgid "SEPA direct debit"
+msgstr "SEPA-Lastschrift"
+
+msgid "Clearing between partners"
+msgstr "Verrechnung"
+
+msgid "Standard rate"
+msgstr "Normalsatz"
+
+msgid "Zero rated goods"
+msgstr "Nullsatz"
+
+msgid "Exempt from tax"
+msgstr "Steuerbefreit"
+
+msgid "VAT reverse charge"
+msgstr "Steuerschuldnerschaft des Leistungsempfängers"
+
+msgid "Intra-community supply"
+msgstr "Innergemeinschaftliche Lieferung"
+
+msgid "Export outside the EU"
+msgstr "Ausfuhr außerhalb der EU"
+
+msgid "Outside the scope of VAT"
+msgstr "Nicht steuerbar"
+
+msgid "Canary Islands IGIC"
+msgstr "Kanarische Inseln (IGIC)"
+
+msgid "Ceuta and Melilla IPSI"
+msgstr "Ceuta und Melilla (IPSI)"
+
+msgid "pieces"
+msgstr "Stück"
+
+msgid "hours"
+msgstr "Stunden"
+
+msgid "days"
+msgstr "Tage"
+
+msgid "months"
+msgstr "Monate"
+
+msgid "kilograms"
+msgstr "Kilogramm"
+
+msgid "metres"
+msgstr "Meter"
+
+msgid "litres"
+msgstr "Liter"
+
+msgid "lump sum"
+msgstr "pauschal"
+
+msgid "Invoice number"
+msgstr "Rechnungsnummer"
+
+msgid "Invoice issue date"
+msgstr "Rechnungsdatum"
+
+msgid "Invoice type code"
+msgstr "Rechnungsart"
+
+msgid "Invoice currency code"
+msgstr "Währung"
+
+msgid "Payment due date"
+msgstr "Fälligkeitsdatum"
+
+msgid "Buyer reference"
+msgstr "Käuferreferenz"
+
+msgid "Payment terms"
+msgstr "Zahlungsbedingungen"
+
+msgid "Invoice note"
+msgstr "Bemerkung"
+
+msgid "Specification identifier"
+msgstr "Spezifikationskennung"
+
+msgid "Seller name"
+msgstr "Name"
+
+msgid "Seller identifier"
+msgstr "Kennung"
+
+msgid "Seller VAT identifier"
+msgstr "Umsatzsteuer-ID"
+
+msgid "Seller tax registration identifier"
+msgstr "Steuernummer"
+
+msgid "Seller address line 1"
+msgstr "Straße"
+
+msgid "Seller address line 2"
+msgstr "Adresszusatz"
+
+msgid "Seller city"
+msgstr "Ort"
+
+msgid "Seller post code"
+msgstr "PLZ"
+
+msgid "Seller country code"
+msgstr "Land"
+
+msgid "Seller contact point"
+msgstr "Kontaktperson"
+
+msgid "Seller contact telephone number"
+msgstr "Telefon"
+
+msgid "Seller contact email address"
+msgstr "E-Mail"
+
+msgid "Buyer name"
+msgstr "Name"
+
+msgid "Buyer identifier"
+msgstr "Kennung"
+
+msgid "Buyer VAT identifier"
+msgstr "Umsatzsteuer-ID"
+
+msgid "Buyer address line 1"
+msgstr "Straße"
+
+msgid "Buyer address line 2"
+msgstr "Adresszusatz"
+
+msgid "Buyer city"
+msgstr "Ort"
+
+msgid "Buyer post code"
+msgstr "PLZ"
+
+msgid "Buyer country code"
+msgstr "Land"
+
+msgid "Payment means type code"
+msgstr "Zahlungsart"
+
+msgid "Remittance information"
+msgstr "Verwendungszweck"
+
+msgid "Payment account identifier"
+msgstr "IBAN"
+
+msgid "Payment account name"
+msgstr "Kontoinhaber"
+
+msgid "Payment service provider identifier"
+msgstr "BIC"
+
+msgid "Sum of Invoice line net amount"
+msgstr "Summe der Positionen netto"
+
+msgid "Sum of allowances on document level"
+msgstr "Summe der Nachlässe"
+
+msgid "Sum of charges on document level"
+msgstr "Summe der Zuschläge"
+
+msgid "Invoice total amount without VAT"
+msgstr "Gesamtbetrag netto"
+
+msgid "Invoice total VAT amount"
+msgstr "Umsatzsteuer gesamt"
+
+msgid "Invoice total amount with VAT"
+msgstr "Rechnungsbetrag inkl. USt"
+
+msgid "Paid amount"
+msgstr "Vorauszahlung"
+
+msgid "Rounding amount"
+msgstr "Rundungsbetrag"
+
+msgid "Amount due for payment"
+msgstr "Zahlbetrag"
+
+msgid "VAT category taxable amount"
+msgstr "Steuerbasisbetrag"
+
+msgid "VAT category tax amount"
+msgstr "Steuerbetrag"
+
+msgid "VAT category code"
+msgstr "Steuerkategorie"
+
+msgid "VAT category rate"
+msgstr "Steuersatz"
+
+msgid "VAT exemption reason text"
+msgstr "Befreiungsgrund"
+
+msgid "Invoice line identifier"
+msgstr "Positionsnummer"
+
+msgid "Invoice line note"
+msgstr "Positionsbemerkung"
+
+msgid "Invoice line object identifier"
+msgstr "Objektkennung"
+
+msgid "Invoiced quantity"
+msgstr "Menge"
+
+msgid "Invoiced quantity unit of measure code"
+msgstr "Einheit"
+
+msgid "Invoice line net amount"
+msgstr "Nettobetrag"
+
+msgid "Invoice line Buyer accounting reference"
+msgstr "Buchungsreferenz des Käufers"
+
+msgid "Item net price"
+msgstr "Nettopreis"
+
+msgid "Item price base quantity"
+msgstr "Basismenge"
+
+msgid "Invoiced item VAT category code"
+msgstr "Steuerkategorie"
+
+msgid "Invoiced item VAT rate"
+msgstr "Steuersatz"
+
+msgid "Item name"
+msgstr "Artikelname"
+
+msgid "Item description"
+msgstr "Artikelbeschreibung"
+
+msgid "Item Seller's identifier"
+msgstr "Artikelnummer"
+
+msgid "Invoice"
+msgstr "Rechnung"
+
+msgid "Seller (BG-4)"
+msgstr "Verkäufer (BG-4)"
+
+msgid "Buyer (BG-7)"
+msgstr "Käufer (BG-7)"
+
+msgid "Invoice line"
+msgstr "Position"
+
+msgid "Payment instructions (BG-16)"
+msgstr "Zahlung (BG-16)"
+
+msgid "VAT breakdown (BG-23)"
+msgstr "Umsatzsteuer (BG-23)"
+
+msgid "Document totals (BG-22)"
+msgstr "Summen (BG-22)"
+
+#, rust-format
+msgid ""
+"Checked against XRechnung {bundled}, invoice declares version {declared}"
+msgstr "Geprüft nach XRechnung {bundled}, Rechnung erklärt Version {declared}"
+
+msgid "Profile Minimum: not a complete invoice according to EN 16931"
+msgstr "Profil Minimum: keine vollständige Rechnung nach EN 16931"
+
+msgid "Profile Basic WL: not a complete invoice according to EN 16931"
+msgstr "Profil Basic WL: keine vollständige Rechnung nach EN 16931"

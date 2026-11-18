@@ -12,6 +12,7 @@ use std::cell::OnceCell;
 use xee_xpath::Documents;
 
 use crate::detect::{DetectError, Detection, Profile, Syntax, detect};
+use crate::i18n::{Language, tr};
 use crate::xml_view::decode;
 
 use scenarios::Scenarios;
@@ -109,10 +110,11 @@ impl Validator {
     }
 
     /// Validates an invoice XML. Fails only if the input is not a supported
-    /// invoice (see [`detect`]); rule violations are findings.
-    pub fn validate(&self, xml: &[u8]) -> Result<Validation, DetectError> {
+    /// invoice (see [`detect`]); rule violations are findings. The app's own
+    /// notes are in `language`; rule messages stay as published (spec 0017).
+    pub fn validate(&self, xml: &[u8], language: Language) -> Result<Validation, DetectError> {
         let detection = detect(xml)?;
-        if let Some(reason) = not_applicable_reason(detection.profile) {
+        if let Some(reason) = not_applicable_reason(detection.profile, language) {
             return Ok(Validation {
                 not_applicable_reason: Some(reason.to_string()),
                 ..Validation::default()
@@ -164,9 +166,14 @@ impl Validator {
             .applied_rule_sets
             .push(format!("XRechnung {XRECHNUNG_VERSION}"));
         if declared != XRECHNUNG_IDENTIFIER_VERSION {
-            validation.version_note = Some(format!(
-                "Geprüft nach XRechnung {XRECHNUNG_VERSION}, Rechnung erklärt Version {declared}"
-            ));
+            validation.version_note = Some(
+                tr(
+                    language,
+                    "Checked against XRechnung {bundled}, invoice declares version {declared}",
+                )
+                .replace("{bundled}", XRECHNUNG_VERSION)
+                .replace("{declared}", &declared),
+            );
         }
         let scenarios = self
             .scenarios
@@ -190,10 +197,16 @@ fn declared_xrechnung_version(detection: &Detection) -> Option<String> {
         .flatten()
 }
 
-fn not_applicable_reason(profile: Profile) -> Option<&'static str> {
+fn not_applicable_reason(profile: Profile, language: Language) -> Option<&'static str> {
     match profile {
-        Profile::Minimum => Some("Profil Minimum: keine vollständige Rechnung nach EN 16931"),
-        Profile::BasicWl => Some("Profil Basic WL: keine vollständige Rechnung nach EN 16931"),
+        Profile::Minimum => Some(tr(
+            language,
+            "Profile Minimum: not a complete invoice according to EN 16931",
+        )),
+        Profile::BasicWl => Some(tr(
+            language,
+            "Profile Basic WL: not a complete invoice according to EN 16931",
+        )),
         _ => None,
     }
 }

@@ -94,21 +94,22 @@ E-Invoice Viewer is built from source for now.
 ### 1. Install the build dependencies
 
 You need Rust 1.92 or newer ([rustup](https://rustup.rs)) and the development
-files of GTK 4.12+, libadwaita 1.5+, Poppler (GLib) and GtkSourceView 5.
+files of GTK 4.12+, libadwaita 1.5+, Poppler (GLib) and GtkSourceView 5, and
+GNU gettext for the translations.
 
 ```bash
 # Arch Linux
-sudo pacman -S --needed base-devel gtk4 libadwaita poppler-glib gtksourceview5
+sudo pacman -S --needed base-devel gettext gtk4 libadwaita poppler-glib gtksourceview5
 ```
 
 ```bash
 # Debian / Ubuntu (24.04 or newer)
-sudo apt install build-essential libgtk-4-dev libadwaita-1-dev libpoppler-glib-dev libgtksourceview-5-dev
+sudo apt install build-essential gettext libgtk-4-dev libadwaita-1-dev libpoppler-glib-dev libgtksourceview-5-dev
 ```
 
 ```bash
 # Fedora
-sudo dnf install gcc gtk4-devel libadwaita-devel poppler-glib-devel gtksourceview5-devel
+sudo dnf install gcc gettext gtk4-devel libadwaita-devel poppler-glib-devel gtksourceview5-devel
 ```
 
 ### 2. Build and install
