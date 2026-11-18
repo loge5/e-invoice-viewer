@@ -1,6 +1,8 @@
 //! Attachments of an invoice (spec 0013): files embedded in the PDF and
 //! additional supporting documents of the invoice XML (BG-24).
 
+use base64::Engine;
+use base64::engine::general_purpose::STANDARD;
 use roxmltree::Node;
 
 pub use crate::pdf::ContentError;
@@ -136,40 +138,17 @@ fn decode_base64(text: &str, limit: usize) -> Result<Vec<u8>, ContentError> {
         .bytes()
         .filter(|byte| !byte.is_ascii_whitespace())
         .collect();
-    if !digits.len().is_multiple_of(4) {
-        return Err(ContentError::Unreadable);
-    }
+    // Checked before decoding, so that a huge text is never decoded.
     if digits.len() / 4 * 3 > limit + 2 {
         return Err(ContentError::TooLarge);
     }
-    let value = |byte: u8| match byte {
-        b'A'..=b'Z' => Some(byte - b'A'),
-        b'a'..=b'z' => Some(byte - b'a' + 26),
-        b'0'..=b'9' => Some(byte - b'0' + 52),
-        b'+' => Some(62),
-        b'/' => Some(63),
-        _ => None,
-    };
-    let mut out = Vec::with_capacity(digits.len() / 4 * 3);
-    let chunks = digits.chunks_exact(4);
-    let last = chunks.len().saturating_sub(1);
-    for (index, chunk) in chunks.enumerate() {
-        let padding = chunk.iter().rev().take_while(|byte| **byte == b'=').count();
-        if padding > 2 || (padding > 0 && index != last) {
-            return Err(ContentError::Unreadable);
-        }
-        let mut bits = 0_u32;
-        for &byte in &chunk[..4 - padding] {
-            bits = (bits << 6) | u32::from(value(byte).ok_or(ContentError::Unreadable)?);
-        }
-        bits <<= 6 * padding;
-        let bytes = bits.to_be_bytes();
-        out.extend_from_slice(&bytes[1..4 - padding]);
-    }
-    if out.len() > limit {
+    let content = STANDARD
+        .decode(&digits)
+        .map_err(|_| ContentError::Unreadable)?;
+    if content.len() > limit {
         return Err(ContentError::TooLarge);
     }
-    Ok(out)
+    Ok(content)
 }
 
 #[cfg(test)]

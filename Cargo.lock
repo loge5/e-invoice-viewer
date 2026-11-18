@@ -411,6 +411,7 @@ dependencies = [
 name = "e-invoice-viewer-core"
 version = "0.1.0"
 dependencies = [
+ "base64",
  "lopdf",
  "roxmltree",
  "thiserror",
