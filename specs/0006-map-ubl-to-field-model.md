@@ -1,7 +1,7 @@
 ---
 id: 0006
 title: Map UBL invoices and credit notes to the field model
-status: in-progress
+status: implemented
 created: 2026-11-16
 depends_on: [0004, 0005]
 ---
@@ -80,6 +80,6 @@ exists as CII and as UBL with the same business content.
     -D warnings` are clean.
   - Smoke run: UBL sample A opens in the app with `BT-1 · Rechnungsnummer ·
     RE-2026-0042`, `Keine Befunde` and `Geprüft nach EN 16931 UBL 1.3.17`.
-- **Next** — the author decides on `implemented` (all criteria are covered
-  by automated tests).
-
+- **Manually verified** by the author (2026-11-18):
+  - No manual checks needed; all criteria are covered by automated tests.
+    The author decided on `implemented`.

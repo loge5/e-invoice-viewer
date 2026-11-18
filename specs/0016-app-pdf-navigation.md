@@ -1,7 +1,7 @@
 ---
 id: 0016
 title: App - navigate and zoom multi-page PDFs
-status: in-progress
+status: implemented
 created: 2026-11-16
 depends_on: [0007]
 ---
@@ -22,23 +22,23 @@ the pane width.
 Time limits refer to the reference machine in
 [requirements](../docs/requirements.md).
 
-- [ ] Given a 3-page invoice PDF is opened, then all 3 pages are shown one
+- [x] Given a 3-page invoice PDF is opened, then all 3 pages are shown one
       below the other with a visible gap, and scrolling reaches the end of
       page 3.
-- [ ] Given the 3-page PDF, a page indicator shows `Seite 1 von 3` initially,
+- [x] Given the 3-page PDF, a page indicator shows `Seite 1 von 3` initially,
       and `Seite 2 von 3` once page 2 fills most of the visible area.
-- [ ] Given a newly opened PDF, then its pages are scaled to fit the pane
+- [x] Given a newly opened PDF, then its pages are scaled to fit the pane
       width; when the divider is dragged, the pages are re-scaled to the new
       width while fit-width is active.
-- [ ] Given the PDF pane has focus, Ctrl++ zooms in and Ctrl+- zooms out in
+- [x] Given the PDF pane has focus, Ctrl++ zooms in and Ctrl+- zooms out in
       steps (100 %, 125 %, 150 %, 200 %, 300 %, 400 % and 75 %, 50 %, 25 %),
       Ctrl+0 returns to fit width; the zoom level is shown (e.g. `150 %`), and
       zooming never goes beyond 25 % or 400 %.
   - The buttons − and + next to the zoom level do the same as Ctrl+- and
     Ctrl++; at 25 % or 400 % the respective button is disabled.
-- [ ] Given page 2 is visible and the user zooms to 200 %, then page 2 stays
+- [x] Given page 2 is visible and the user zooms to 200 %, then page 2 stays
       in view (the visible page does not jump).
-- [ ] Given a 50-page PDF, opening it shows page 1 within 2 s, and scrolling to
+- [x] Given a 50-page PDF, opening it shows page 1 within 2 s, and scrolling to
       page 50 shows its content within 1 s after scrolling stops; text at
       400 % is rendered sharply (not an enlarged low-resolution image).
 
@@ -88,17 +88,6 @@ Time limits refer to the reference machine in
     through AT-SPI, and the fit-width zoom `73 %`.
   - Zoom buttons through AT-SPI with `3-seiten.pdf`: + goes from `73 %` to
     `75 %` and `100 %`; repeated − ends at `25 %`.
-- **Next** — manual checks by the author, then the author decides on
-  `implemented`:
-  - AC1/AC2: `3-seiten.pdf`: three pages with gaps, the end of page 3 can be
-    reached, the indicator changes to `Seite 2 von 3` when page 2 fills most
-    of the pane.
-  - AC3: drag the divider: the pages follow the width.
-  - AC4: click into the PDF, then Ctrl++ up to 400 %, Ctrl+- down to 25 %,
-    Ctrl+0 back to fit width; the level is shown. The same with the
-    buttons − and +.
-  - AC5: with page 2 visible, zoom to 200 %: page 2 stays in view.
-  - AC6: `50-seiten.pdf`: page 1 appears quickly; scrolling to page 50 shows
-    its content within 1 s after stopping; the small print is sharp at
-    400 %.
-
+- **Manually verified** by the author (2026-11-18):
+  - AC1–AC6: pages, indicator, fit width, zoom by keys and buttons, the
+    page kept in view and the 50-page PDF as expected.
