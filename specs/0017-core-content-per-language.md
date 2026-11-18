@@ -1,7 +1,7 @@
 ---
 id: 0017
 title: Core - invoice content in German and English
-status: in-progress
+status: implemented
 created: 2026-11-18
 depends_on: [0004, 0005, 0006, 0009, 0010]
 ---
@@ -44,7 +44,7 @@ produced in **German** or **English**, chosen by the caller for each call:
 
 ## Acceptance criteria
 
-- [ ] Given CII sample A, the section titles in display order are:
+- [x] Given CII sample A, the section titles in display order are:
 
       | German | English |
       |---|---|
@@ -56,7 +56,7 @@ produced in **German** or **English**, chosen by the caller for each call:
       | Umsatzsteuer (BG-23) | VAT breakdown (BG-23) |
       | Summen (BG-22) | Document totals (BG-22) |
 
-- [ ] Given CII sample A, these fields read:
+- [x] Given CII sample A, these fields read:
 
       | Field | German label | English label | German display | English display |
       |---|---|---|---|---|
@@ -68,34 +68,34 @@ produced in **German** or **English**, chosen by the caller for each call:
       | BT-106 | Summe der Positionen netto | Sum of Invoice line net amount | 1.050,00 EUR | 1,050.00 EUR |
       | BT-112 | Rechnungsbetrag inkl. USt | Invoice total amount with VAT | 1.249,50 EUR | 1,249.50 EUR |
 
-- [ ] Code and unit names in English are exactly those of the table
+- [x] Code and unit names in English are exactly those of the table
       "English code and unit names" below, e.g. `381` →
       `Credit note (381)`, `S` → `Standard rate (S)`, `AE` →
       `VAT reverse charge (AE)`, `C62` → `2 pieces (C62)` (German `2 Stück (C62)`). Codes without a
       known name are shown as before (`2.5 XPP` in English, `2,5 XPP` in
       German).
-- [ ] Number formats: the amount `1234567.5` with currency `EUR` reads
+- [x] Number formats: the amount `1234567.5` with currency `EUR` reads
       `1.234.567,50 EUR` in German and `1,234,567.50 EUR` in English; the
       quantity `2.50` reads `2,5` and `2.5`; the negative amount `-30.00`
       reads `-30,00 EUR` and `-30.00 EUR`. A value that is not a number is
       shown unchanged in both languages.
-- [ ] Dates: CII `20261117` (format 102) and UBL `2026-11-17` read
+- [x] Dates: CII `20261117` (format 102) and UBL `2026-11-17` read
       `17.11.2026` in German and `2026-11-17` in English; an invalid date
       (`20261332`) is shown unchanged in both.
-- [ ] Validation notes: for a Factur-X invoice with profile Minimum the reason
+- [x] Validation notes: for a Factur-X invoice with profile Minimum the reason
       reads `Profil Minimum: keine vollständige Rechnung nach EN 16931` in
       German and `Profile Minimum: not a complete invoice according to
       EN 16931` in English; for an XRechnung invoice declaring version 2.3
       the note reads `Geprüft nach XRechnung 3.0.2, Rechnung erklärt Version
       2.3` and `Checked against XRechnung 3.0.2, invoice declares version 2.3`.
-- [ ] Given CII sample B without BT-10, the finding `BR-DE-15` has the same
+- [x] Given CII sample B without BT-10, the finding `BR-DE-15` has the same
       message, location, severity and attribution in German and English, and
       a CEN finding (e.g. `BR-CO-15` on a sample with wrong totals) keeps its
       English message in German.
-- [ ] For all sample invoices (CII and UBL, A, B, L), the German and English
+- [x] For all sample invoices (CII and UBL, A, B, L), the German and English
       field models differ only in labels, titles and display values; raw
       values, locations, attributes and IDs are equal.
-- [ ] Every text that can appear in the field model or the validation notes
+- [x] Every text that can appear in the field model or the validation notes
       has a German and an English version; an automated check fails if one is
       missing.
 
@@ -188,6 +188,5 @@ produced in **German** or **English**, chosen by the caller for each call:
     warnings` and the architecture check are clean.
   - Smoke run of the release build: the app still shows `Rechnungsnummer`,
     `Rechnung (380)`, `8 Stunden (HUR)` and `1.249,50 EUR`.
-- **Next** — all criteria are covered by automated tests; the author decides
-  on `implemented`.
-
+- **Decided** by the author (2026-11-18): `implemented`; all criteria are
+  covered by automated tests.
