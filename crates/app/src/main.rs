@@ -47,6 +47,9 @@ fn main() -> glib::ExitCode {
         texts::set_language(choice.effective(&glib::language_names()));
         app.add_action(&language_action(choice, &list, &recent_store));
         load_css();
+        // The app's own icon (data/icons), installed by scripts/install.sh
+        // and shipped in the AppImage (0020).
+        gtk::Window::set_default_icon_name(APP_ID);
         let quit = gio::SimpleAction::new("quit", None);
         let target = app.clone();
         let list = list.clone();

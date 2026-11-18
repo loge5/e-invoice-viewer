@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Name=E-Invoice Viewer
+GenericName=Invoice viewer
+GenericName[de]=Rechnungsbetrachter
+Comment=View and check electronic invoices (ZUGFeRD, Factur-X, XRechnung)
+Comment[de]=Elektronische Rechnungen (ZUGFeRD, Factur-X, XRechnung) ansehen und prüfen
+Exec=e-invoice-viewer %F
+Icon=de.loges.EInvoiceViewer
+Terminal=false
+StartupNotify=true
+Categories=Office;Viewer;
+Keywords=invoice;e-invoice;ZUGFeRD;Factur-X;XRechnung;EN16931;PDF;XML;
+Keywords[de]=Rechnung;E-Rechnung;ZUGFeRD;Factur-X;XRechnung;EN16931;PDF;XML;
+MimeType=application/pdf;application/xml;text/xml;

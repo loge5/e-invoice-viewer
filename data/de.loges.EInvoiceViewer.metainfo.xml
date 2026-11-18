@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2026 Rolf Loges -->
+<component type="desktop-application">
+  <id>de.loges.EInvoiceViewer</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+
+  <name>E-Invoice Viewer</name>
+  <summary>View and check electronic invoices</summary>
+  <summary xml:lang="de">Elektronische Rechnungen ansehen und prüfen</summary>
+
+  <developer id="de.loges">
+    <name>Rolf Loges</name>
+  </developer>
+
+  <description>
+    <p>
+      E-Invoice Viewer shows electronic invoices in a readable form: ZUGFeRD and
+      Factur-X PDFs with their embedded XML, and XRechnung or EN 16931 invoices
+      as CII or UBL XML.
+    </p>
+    <p xml:lang="de">
+      E-Invoice Viewer zeigt elektronische Rechnungen lesbar an: ZUGFeRD- und
+      Factur-X-PDFs mit dem eingebetteten XML sowie XRechnungen und Rechnungen
+      nach EN 16931 als CII- oder UBL-XML.
+    </p>
+    <ul>
+      <li>The invoice fields with their business terms, next to the PDF page</li>
+      <li xml:lang="de">Die Rechnungsfelder mit ihren Geschäftsbegriffen, neben der PDF-Seite</li>
+      <li>Validation against EN 16931 and XRechnung, findings shown at the fields</li>
+      <li xml:lang="de">Prüfung nach EN 16931 und XRechnung, Befunde direkt an den Feldern</li>
+      <li>The XML source, linked with the fields</li>
+      <li xml:lang="de">Der XML-Quelltext, verknüpft mit den Feldern</li>
+      <li>Attachments listed and saved</li>
+      <li xml:lang="de">Anhänge auflisten und speichern</li>
+    </ul>
+    <p>
+      Everything happens locally: the app opens no network connection and never
+      changes the invoice.
+    </p>
+    <p xml:lang="de">
+      Alles geschieht lokal: Die App baut keine Netzwerkverbindung auf und
+      verändert die Rechnung nie.
+    </p>
+  </description>
+
+  <launchable type="desktop-id">de.loges.EInvoiceViewer.desktop</launchable>
+
+  <url type="homepage">https://github.com/OWNER/e-invoice-viewer</url>
+  <url type="bugtracker">https://github.com/OWNER/e-invoice-viewer/issues</url>
+
+  <screenshots>
+    <screenshot type="default">
+      <caption>A Factur-X invoice with its fields and the PDF page</caption>
+      <image>https://raw.githubusercontent.com/OWNER/e-invoice-viewer/main/docs/screenshot.png</image>
+    </screenshot>
+  </screenshots>
+
+  <provides>
+    <binary>e-invoice-viewer</binary>
+    <mediatype>application/pdf</mediatype>
+    <mediatype>application/xml</mediatype>
+    <mediatype>text/xml</mediatype>
+  </provides>
+
+  <supports>
+    <control>keyboard</control>
+    <control>pointing</control>
+  </supports>
+
+  <content_rating type="oars-1.1" />
+
+  <releases>
+    <release version="0.1.0" date="2026-11-18">
+      <description>
+        <p>First release.</p>
+        <p xml:lang="de">Erste Version.</p>
+      </description>
+    </release>
+  </releases>
+</component>

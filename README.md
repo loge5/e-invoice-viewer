@@ -87,9 +87,34 @@ validator for its public test invoices. How and why this works is described in
 > The validation is meant to help you read and check invoices. It is not a
 > certified validation, and this project is not affiliated with KoSIT or CEN.
 
-## Installation
+## Download
 
-E-Invoice Viewer is built from source for now.
+Each release has an **AppImage** for x86_64 Linux: one file that runs on
+current distributions (glibc 2.39 or newer — Ubuntu 24.04, Debian 13,
+Fedora 40, Arch, openSUSE Tumbleweed and newer) without installing anything.
+Download `E-Invoice_Viewer-<version>-x86_64.AppImage` from the release page,
+then:
+
+```bash
+chmod +x E-Invoice_Viewer-*-x86_64.AppImage
+./E-Invoice_Viewer-*-x86_64.AppImage path/to/invoice.pdf
+```
+
+On systems without FUSE, add `--appimage-extract-and-run`. To add the
+AppImage to the app grid and to *Open with*, use a tool such as
+[Gear Lever](https://flathub.org/apps/it.mijorus.gearlever) or AppImageLauncher.
+The AppImage uses the same settings as an installed build.
+
+To build the AppImage yourself (needs Docker):
+
+```bash
+scripts/appimage.sh
+```
+
+It builds in an Ubuntu 24.04 container and writes
+`target/appimage/E-Invoice_Viewer-<version>-x86_64.AppImage`.
+
+## Installation from source
 
 ### 1. Install the build dependencies
 
@@ -121,7 +146,7 @@ scripts/install.sh
 ```
 
 This builds a release binary, copies it to `~/.local/bin/e-invoice-viewer` and
-adds a desktop entry, so that the app shows up in the app grid and under
+adds a desktop entry and the app icon, so that the app shows up in the app grid and under
 *Open with* for PDF and XML files. It never makes itself the default
 application. To remove it again:
 
@@ -205,3 +230,10 @@ Bundled third-party material keeps its licence:
   ([`crates/core/rules`](crates/core/rules))
 - KoSIT test invoices — Apache License 2.0
   ([`crates/core/tests/fixtures/kosit`](crates/core/tests/fixtures/kosit))
+
+The AppImage additionally contains unmodified libraries from Ubuntu 24.04,
+mainly GTK 4, libadwaita, GLib, Pango, Cairo, GtkSourceView (LGPL) and Poppler
+(GPL). The file `bundled-packages.txt`, attached to each release and included
+in the AppImage, lists every bundled package with its version, licence and
+the address of its source; the licence texts are in the AppImage under
+`usr/share/doc`.

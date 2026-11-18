@@ -410,6 +410,7 @@ dependencies = [
  "gtk4",
  "libadwaita",
  "poppler-rs",
+ "roxmltree",
  "sourceview5",
 ]
 

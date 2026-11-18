@@ -9,6 +9,8 @@ A strictly local GTK4 desktop viewer for electronic invoices (ZUGFeRD /
 Factur-X PDFs, XRechnung CII/UBL): PDF and invoice fields side by side,
 validation findings next to the affected field, raw XML view. Display only.
 See [docs/requirements.md](docs/requirements.md).
+Desktop metadata and the icon live in `data/`; the AppImage is built by
+`scripts/appimage.sh` ([ADR 0004](docs/adr/0004-appimage-built-in-container.md)).
 
 ## Method: ai-harness
 

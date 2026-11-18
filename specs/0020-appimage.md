@@ -23,8 +23,9 @@ GitHub Actions workflow, and to give the app its own icon (see
   without installing anything else. `<version>` is the version in
   `Cargo.toml`.
   - Like every AppImage, it uses what every desktop system has: the C
-    library, the graphics drivers (OpenGL/EGL/Vulkan), fontconfig, FreeType
-    and the fonts, the display server and D-Bus. Everything else (GTK,
+    library, the graphics drivers (OpenGL/EGL/GLES/Vulkan), fontconfig,
+    FreeType and the fonts, the shared MIME database, the display server and
+    D-Bus. Everything else (GTK,
     libadwaita, Poppler, GtkSourceView with its XML highlighting, GLib,
     Cairo, Pango, …) is inside the AppImage.
 - **Same app**: the AppImage behaves like the installed build: PDF and XML,
@@ -82,8 +83,8 @@ GitHub Actions workflow, and to give the app its own icon (see
   - Two runs from the same commit give AppImages whose extracted files are
     identical (names and contents).
 - [ ] Given clean containers of `ubuntu:24.04`, `debian:13`, `fedora:43` and
-      `archlinux`, each with only Mesa (OpenGL/EGL), fontconfig, one font, a
-      virtual display and D-Bus installed, when the AppImage is started with
+      `archlinux`, each with only Mesa (OpenGL/EGL/GLES), fontconfig, one
+      font, the shared MIME database, a virtual display and D-Bus installed, when the AppImage is started with
       `--appimage-extract-and-run` and CII sample A (`sample-a.xml`) and the
       Factur-X PDF of sample A are opened, then the app shows them, and
       `ldd` reports no missing library for any library in the AppImage.
@@ -163,5 +164,72 @@ GitHub Actions workflow, and to give the app its own icon (see
   - A list of bundled packages for the licence obligations.
   - File dialogs added to the manual check; `fedora:41` (end of life)
     replaced by `fedora:43`.
+- Corrections during implementation (2026-11-18):
+  - The base set of the system (requirement and AC2) also names GLES and
+    the shared MIME database. Without GLES, GTK aborts at start; without the
+    MIME database, GdkPixbuf cannot tell an SVG file. Both belong to every
+    desktop, and Mesa ships GLES; the clean containers lacked them.
+  - linuxdeploy leaves out libraries it expects on every system; HarfBuzz,
+    FriBidi, com_err and libgpg-error were missing in clean containers and
+    are now bundled explicitly.
+  - The symbolic icons the app uses come with the AppImage (from Ubuntu's
+    Adwaita icon theme, listed with the packages), because a system without
+    the Adwaita theme showed placeholders instead of the zoom buttons.
+  - The start hook of linuxdeploy-plugin-gtk sets `GDK_BACKEND=x11` and a
+    fixed `GTK_THEME`; the build removes both, so the app runs natively on
+    Wayland and libadwaita's dark style follows the system.
 - Open: the homepage and screenshot address in the metainfo need the GitHub
-  address of the repository.
+  address of the repository (placeholder `OWNER`).
+
+## Progress
+
+- **Done**:
+  - `data/`: desktop entry, AppStream metainfo (English and German) and the
+    app icon `de.loges.EInvoiceViewer.svg`; the app sets it as its window
+    icon.
+  - `scripts/install.sh` installs the desktop entry from `data/` (filling in
+    the binary's path) and the icon, and removes both on `--uninstall`;
+    `SOURCE_BINARY` installs a given binary (for the test).
+  - `scripts/appimage.sh` builds the image `scripts/appimage/Dockerfile`
+    (`ubuntu:24.04` by digest, packages from snapshot `20261117T000000Z`,
+    Rust 1.92 via rustup, linuxdeploy `1-alpha-20251107-1` and the GTK plugin
+    at commit `7a3fbc3`, each with SHA-256 through `scripts/appimage/fetch.sh`)
+    and runs `scripts/appimage/build.sh` in it as the calling user.
+  - The build writes `bundled-packages.txt` (package, version, licence,
+    Launchpad source address) and the packages' copyright files into the
+    AppImage, and fails if a bundled library belongs to no package.
+  - `.github/workflows/appimage.yml`: builds on tags `v*` and by hand,
+    checks the tag with `scripts/appimage/check-tag.sh` first, uploads the
+    artefact, and for a tag creates a draft release with `gh`; actions pinned
+    by commit hash, `contents: write` only in the release job.
+  - README: section "Download", install from source, licence notes for the
+    bundled libraries.
+- **Verified** (2026-11-18):
+  - `cargo test --workspace`: all green; new: 8 tests in
+    `crates/app/tests/packaging.rs` (T1–T6: AC1, AC5, AC6, AC9).
+  - P1: `scripts/appimage.sh` gives
+    `target/appimage/E-Invoice_Viewer-0.1.0-x86_64.AppImage`, 41 MB, owned
+    by the user.
+  - P2: two clean builds from the same sources give byte-identical AppImages
+    (same SHA-256), so also identical extracted files.
+  - P3: in clean `ubuntu:24.04`, `debian:13`, `fedora:43` and `archlinux`
+    containers with the base set, `ldd` finds every library of the AppImage,
+    and the app shows `sample-a.xml` and the Factur-X PDF of sample A
+    (screenshots read: fields, PDF page, zoom buttons).
+  - P4 (Arch container, strace, same sample, fresh home): neither the
+    AppImage nor the installed build opens an `AF_INET`/`AF_INET6` socket;
+    the AppImage writes only files the installed build writes as well (its
+    settings, Mesa's shader cache). Seen on the way: if the X display is
+    gone, libxcb probes `localhost:6099` – both builds alike, local only.
+  - P5: the build checks that every bundled library belongs to a listed
+    package (107 lines in the list).
+  - P6: in the container (software rendering), the opened file is recorded
+    0.8 s after the start. Not measured on the author's desktop, because the
+    author's viewer was running.
+  - `desktop-file-validate` and `appstreamcli validate --no-net` pass (T1,
+    T2); `cargo fmt`, `clippy -D warnings` and the architecture check are
+    clean.
+- **Next**: manual checks by the author: AC3 (AppImage on the desktop, file
+  dialogs, language, dark style, Wayland), AC6/AC7 (icon after
+  `scripts/install.sh`, sizes), AC10 (start time on the reference machine),
+  and AC9 (workflow run on GitHub after pushing a tag).

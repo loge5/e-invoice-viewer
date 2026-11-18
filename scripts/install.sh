@@ -7,11 +7,12 @@
 #
 # Usage:
 #   scripts/install.sh               build (release) and install
-#   scripts/install.sh --uninstall   remove binary and desktop entry
+#   scripts/install.sh --uninstall   remove binary, desktop entry and icon
 #
 # Locations follow the XDG base directories:
 #   binary         ${BIN_DIR:-$HOME/.local/bin}/e-invoice-viewer
 #   desktop entry  ${XDG_DATA_HOME:-$HOME/.local/share}/applications/de.loges.EInvoiceViewer.desktop
+#   icon           ${XDG_DATA_HOME:-$HOME/.local/share}/icons/hicolor/scalable/apps/de.loges.EInvoiceViewer.svg
 # The recent files list in ~/.config/e-invoice-viewer is the user's and is kept
 # on uninstall.
 set -euo pipefail
@@ -21,6 +22,7 @@ bin_dir=${BIN_DIR:-$HOME/.local/bin}
 applications=${XDG_DATA_HOME:-$HOME/.local/share}/applications
 binary=$bin_dir/e-invoice-viewer
 desktop_entry=$applications/$app_id.desktop
+icon=${XDG_DATA_HOME:-$HOME/.local/share}/icons/hicolor/scalable/apps/$app_id.svg
 repo=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 
 refresh_desktop_database() {
@@ -31,9 +33,9 @@ refresh_desktop_database() {
 
 case ${1:-} in
 --uninstall)
-    rm -f -- "$desktop_entry" "$binary"
+    rm -f -- "$desktop_entry" "$binary" "$icon"
     refresh_desktop_database
-    echo "Removed $binary and $desktop_entry"
+    echo "Removed $binary, $desktop_entry and $icon"
     exit 0
     ;;
 "") ;;
@@ -43,31 +45,27 @@ case ${1:-} in
     ;;
 esac
 
-cargo build --release --locked -p e-invoice-viewer --manifest-path "$repo/Cargo.toml"
-install -Dm755 "$repo/target/release/e-invoice-viewer" "$binary"
+# SOURCE_BINARY installs a given binary instead of building one (used by the
+# tests).
+if [[ -n ${SOURCE_BINARY:-} ]]; then
+    source_binary=$SOURCE_BINARY
+else
+    cargo build --release --locked -p e-invoice-viewer --manifest-path "$repo/Cargo.toml"
+    source_binary=$repo/target/release/e-invoice-viewer
+fi
+install -Dm755 "$source_binary" "$binary"
 
-# %F: the file manager passes local paths, also for mounted network shares.
+# The desktop entry from data/, with the full path of the binary (%F: the file
+# manager passes local paths, also for mounted network shares).
 staging=$(mktemp -d)
 trap 'rm -rf -- "$staging"' EXIT
 staged=$staging/$app_id.desktop
-cat >"$staged" <<EOF
-[Desktop Entry]
-Type=Application
-Name=E-Invoice Viewer
-GenericName=Invoice viewer
-GenericName[de]=Rechnungsbetrachter
-Comment=View and check electronic invoices (ZUGFeRD, Factur-X, XRechnung)
-Comment[de]=Elektronische Rechnungen (ZUGFeRD, Factur-X, XRechnung) ansehen und prüfen
-Exec="$binary" %F
-Icon=x-office-document
-Terminal=false
-StartupNotify=true
-Categories=Office;Viewer;
-MimeType=application/pdf;application/xml;text/xml;
-EOF
+sed "s|^Exec=e-invoice-viewer |Exec=\"$binary\" |" "$repo/data/$app_id.desktop" >"$staged"
+grep -q "^Exec=\"$binary\" %F$" "$staged"
 if command -v desktop-file-validate >/dev/null; then
     desktop-file-validate "$staged"
 fi
+install -Dm644 "$repo/data/icons/$app_id.svg" "$icon"
 install -Dm644 "$staged" "$desktop_entry"
 refresh_desktop_database
-echo "Installed $binary and $desktop_entry"
+echo "Installed $binary, $desktop_entry and $icon"

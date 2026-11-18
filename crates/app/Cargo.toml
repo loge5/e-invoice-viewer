@@ -14,5 +14,8 @@ adw.workspace = true
 poppler.workspace = true
 sourceview.workspace = true
 
+[dev-dependencies]
+roxmltree.workspace = true
+
 [lints]
 workspace = true

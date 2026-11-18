@@ -1,0 +1,288 @@
+//! Spec 0020 — desktop metadata, icon, install script and AppImage build
+//! scripts. Needs `desktop-file-validate` and `appstreamcli`, like the
+//! catalogue test needs `xgettext`.
+
+use std::fs;
+use std::path::{Path, PathBuf};
+use std::process::{Command, Output};
+
+const APP_ID: &str = "de.loges.EInvoiceViewer";
+
+fn repo() -> PathBuf {
+    Path::new(env!("CARGO_MANIFEST_DIR"))
+        .join("../..")
+        .canonicalize()
+        .expect("repository root")
+}
+
+fn read(path: &str) -> String {
+    fs::read_to_string(repo().join(path)).unwrap_or_else(|e| panic!("{path}: {e}"))
+}
+
+fn run(command: &mut Command) -> Output {
+    command.output().expect("command must be installed")
+}
+
+fn assert_success(output: &Output, what: &str) {
+    assert!(
+        output.status.success(),
+        "{what}:\n{}{}",
+        String::from_utf8_lossy(&output.stdout),
+        String::from_utf8_lossy(&output.stderr)
+    );
+}
+
+fn desktop_entry() -> String {
+    read(&format!("data/{APP_ID}.desktop"))
+}
+
+fn workspace_version() -> String {
+    let manifest = read("Cargo.toml");
+    let section = manifest
+        .split("[workspace.package]")
+        .nth(1)
+        .expect("[workspace.package]");
+    section
+        .lines()
+        .find_map(|line| line.strip_prefix("version = \""))
+        .and_then(|rest| rest.strip_suffix('"'))
+        .expect("version")
+        .to_string()
+}
+
+/// A fresh, empty directory below the test's target directory.
+fn temp_dir(name: &str) -> PathBuf {
+    let dir = Path::new(env!("CARGO_TARGET_TMPDIR")).join(name);
+    let _ = fs::remove_dir_all(&dir);
+    fs::create_dir_all(&dir).expect("temp dir");
+    dir
+}
+
+// AC5
+#[test]
+fn desktop_entry_is_valid_and_complete() {
+    let path = repo().join(format!("data/{APP_ID}.desktop"));
+    assert_success(
+        &run(Command::new("desktop-file-validate").arg(&path)),
+        "desktop-file-validate",
+    );
+    let entry = desktop_entry();
+    for line in [
+        "Name=E-Invoice Viewer",
+        "GenericName=Invoice viewer",
+        "GenericName[de]=Rechnungsbetrachter",
+        "Comment=View and check electronic invoices (ZUGFeRD, Factur-X, XRechnung)",
+        "Comment[de]=Elektronische Rechnungen (ZUGFeRD, Factur-X, XRechnung) ansehen und prüfen",
+        "Exec=e-invoice-viewer %F",
+        "Icon=de.loges.EInvoiceViewer",
+        "MimeType=application/pdf;application/xml;text/xml;",
+    ] {
+        assert!(entry.lines().any(|l| l == line), "missing: {line}");
+    }
+}
+
+// AC5
+#[test]
+fn metainfo_is_valid_and_matches_the_app() {
+    let path = repo().join(format!("data/{APP_ID}.metainfo.xml"));
+    assert_success(
+        &run(Command::new("appstreamcli")
+            .args(["validate", "--no-net", "--no-color"])
+            .arg(&path)),
+        "appstreamcli validate",
+    );
+    let metainfo = read(&format!("data/{APP_ID}.metainfo.xml"));
+    for wanted in [
+        format!("<id>{APP_ID}</id>"),
+        format!("<launchable type=\"desktop-id\">{APP_ID}.desktop</launchable>"),
+        format!("<release version=\"{}\"", workspace_version()),
+        "<project_license>GPL-3.0-or-later</project_license>".to_string(),
+        "<summary xml:lang=\"de\">".to_string(),
+        "<p xml:lang=\"de\">".to_string(),
+        "<binary>e-invoice-viewer</binary>".to_string(),
+    ] {
+        assert!(metainfo.contains(&wanted), "missing: {wanted}");
+    }
+}
+
+// AC6
+#[test]
+fn icon_is_a_square_svg_named_after_the_app() {
+    let icon = read(&format!("data/icons/{APP_ID}.svg"));
+    let document = roxmltree::Document::parse(&icon).expect("well-formed SVG");
+    let svg = document.root_element();
+    assert_eq!(svg.tag_name().name(), "svg");
+    let view_box: Vec<f64> = svg
+        .attribute("viewBox")
+        .expect("viewBox")
+        .split_whitespace()
+        .map(|n| n.parse().expect("number"))
+        .collect();
+    assert_eq!(view_box.len(), 4);
+    assert_eq!(view_box[2], view_box[3], "square");
+}
+
+// AC6
+#[test]
+fn install_script_installs_entry_and_icon_and_removes_them() {
+    let home = temp_dir("install-home");
+    let binary_source = home.join("built-binary");
+    fs::write(&binary_source, "#!/bin/sh\n").expect("binary");
+    let script = repo().join("scripts/install.sh");
+    let install = |args: &[&str]| {
+        run(Command::new("bash")
+            .arg(&script)
+            .args(args)
+            .env("SOURCE_BINARY", &binary_source)
+            .env("BIN_DIR", home.join("bin"))
+            .env("XDG_DATA_HOME", home.join("share")))
+    };
+    assert_success(&install(&[]), "install");
+
+    let binary = home.join("bin/e-invoice-viewer");
+    let entry_path = home.join(format!("share/applications/{APP_ID}.desktop"));
+    let icon = home.join(format!("share/icons/hicolor/scalable/apps/{APP_ID}.svg"));
+    assert!(binary.is_file());
+    assert_eq!(
+        fs::read(&icon).expect("icon"),
+        fs::read(repo().join(format!("data/icons/{APP_ID}.svg"))).expect("data icon")
+    );
+    let installed = fs::read_to_string(&entry_path).expect("desktop entry");
+    let expected = desktop_entry().replace(
+        "Exec=e-invoice-viewer %F",
+        &format!("Exec=\"{}\" %F", binary.display()),
+    );
+    assert_eq!(installed, expected);
+
+    assert_success(&install(&["--uninstall"]), "uninstall");
+    assert!(!binary.exists());
+    assert!(!entry_path.exists());
+    assert!(!icon.exists());
+}
+
+// AC1
+#[test]
+fn download_with_wrong_checksum_stops_and_leaves_nothing() {
+    let dir = temp_dir("fetch");
+    let source = dir.join("tool");
+    fs::write(&source, "pretend tool").expect("source");
+    let dest = dir.join("downloaded");
+    let fetch = |sha256: &str| {
+        run(Command::new("bash")
+            .arg("-c")
+            .arg(r#"set -e; . "$1"; fetch some-tool "file://$2" "$3" "$4""#)
+            .arg("-")
+            .arg(repo().join("scripts/appimage/fetch.sh"))
+            .arg(&source)
+            .arg(sha256)
+            .arg(&dest))
+    };
+
+    let wrong = fetch(&"0".repeat(64));
+    assert!(!wrong.status.success());
+    let message = String::from_utf8_lossy(&wrong.stderr);
+    assert!(message.contains("wrong SHA-256 for some-tool"), "{message}");
+    assert!(!dest.exists());
+    assert!(!dest.with_extension("part").exists());
+
+    let digest = run(Command::new("sha256sum").arg(&source));
+    let actual = String::from_utf8_lossy(&digest.stdout)
+        .split_whitespace()
+        .next()
+        .expect("digest")
+        .to_string();
+    assert_success(&fetch(&actual), "fetch with the right checksum");
+    assert_eq!(fs::read(&dest).expect("downloaded"), b"pretend tool");
+}
+
+// AC1
+#[test]
+fn every_download_has_a_checksum() {
+    let dockerfile = read("scripts/appimage/Dockerfile");
+    assert!(
+        dockerfile.contains("FROM ubuntu:24.04@sha256:"),
+        "image pinned by digest"
+    );
+    let lines: Vec<&str> = dockerfile.lines().map(str::trim).collect();
+    let fetches: Vec<usize> = lines
+        .iter()
+        .enumerate()
+        .filter(|(_, line)| line.contains("fetch ") && !line.contains("fetch.sh"))
+        .map(|(i, _)| i)
+        .collect();
+    assert_eq!(fetches.len(), 3, "rustup, linuxdeploy, plugin");
+    for i in fetches {
+        let url = lines[i + 1];
+        let checksum = lines[i + 2].split_whitespace().next().expect("checksum");
+        assert!(url.starts_with("https://"), "{url}");
+        assert!(
+            checksum.len() == 64 && checksum.chars().all(|c| c.is_ascii_hexdigit()),
+            "checksum after {url}"
+        );
+    }
+    for file in [
+        "scripts/appimage/Dockerfile",
+        "scripts/appimage/build.sh",
+        "scripts/appimage.sh",
+    ] {
+        assert!(
+            !read(file).lines().any(|line| {
+                let line = line.trim();
+                !line.starts_with('#') && (line.contains("curl -") || line.contains("wget "))
+            }),
+            "{file} downloads outside fetch"
+        );
+    }
+}
+
+// AC9
+#[test]
+fn tag_must_match_the_version() {
+    let check = |tag: &str| {
+        run(Command::new("bash")
+            .arg(repo().join("scripts/appimage/check-tag.sh"))
+            .arg(tag))
+        .status
+        .success()
+    };
+    assert!(check(&format!("v{}", workspace_version())));
+    assert!(!check("v9.9.9"));
+    assert!(!check(&workspace_version()));
+    assert!(!check(""));
+}
+
+// AC9
+#[test]
+fn workflow_uses_pinned_github_actions_and_minimal_permissions() {
+    let workflow = read(".github/workflows/appimage.yml");
+    let uses: Vec<&str> = workflow
+        .lines()
+        .filter_map(|line| line.trim().strip_prefix("- uses: "))
+        .collect();
+    assert_eq!(uses.len(), 3);
+    for action in uses {
+        let (name, rest) = action.split_once('@').expect("pinned");
+        let hash = rest.split_whitespace().next().expect("hash");
+        assert!(name.starts_with("actions/"), "{name}");
+        assert!(
+            hash.len() == 40 && hash.chars().all(|c| c.is_ascii_hexdigit()),
+            "{action}"
+        );
+    }
+    assert!(workflow.contains("permissions:\n  contents: read\n"));
+    assert_eq!(workflow.matches("contents: write").count(), 1);
+    let release = workflow
+        .split("\n  release:\n")
+        .nth(1)
+        .expect("release job");
+    assert!(release.contains("contents: write"));
+    assert!(release.contains("--draft"));
+    let build = workflow
+        .split("\n  build:\n")
+        .nth(1)
+        .and_then(|rest| rest.split("\n  release:\n").next())
+        .expect("build job");
+    let check = build.find("check-tag.sh").expect("tag check");
+    let script = build.find("scripts/appimage.sh").expect("build script");
+    assert!(check < script, "the tag is checked before building");
+}

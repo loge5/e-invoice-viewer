@@ -42,7 +42,10 @@ the binary (ADR 0002, ADR 0003), so the binary has no data files of its own.
    shared libraries the binary needs, GTK's modules, the GdkPixbuf loaders and
    GSettings schemas, and add a start hook that points GTK to the bundled
    files. Data that the plugin does not know (GtkSourceView's language and
-   style definitions for the XML view) is copied by our script. Both tools are
+   style definitions for the XML view, the symbolic icons the app uses) is
+   copied by our script, and libraries linuxdeploy leaves out but a minimal
+   desktop may lack (HarfBuzz, FriBidi) are bundled explicitly. The plugin's
+   hook forces X11 and a fixed theme; the build removes both settings. Both tools are
    downloaded at build time only, in a fixed version, and checked against a
    SHA-256 written in the script; a mismatch aborts the build.
 4. **One script**, `scripts/appimage.sh`, runs the whole build on the host
@@ -71,8 +74,8 @@ the binary (ADR 0002, ADR 0003), so the binary has no data files of its own.
   package list with versions, licences and source locations is part of the
   AppImage and of each release; the README names them next to the existing
   third-party notes.
-- AppImages deliberately use the host's graphics drivers, fontconfig,
-  FreeType and fonts; these are not bundled.
+- AppImages deliberately use the host's graphics drivers (including GLES),
+  fontconfig, FreeType, fonts and MIME database; these are not bundled.
 - The bundled GTK uses the bundled Adwaita style; the system's GTK theme is
   not applied. Dark mode still follows the system through libadwaita.
 - Running an AppImage needs FUSE on the host, or the option
