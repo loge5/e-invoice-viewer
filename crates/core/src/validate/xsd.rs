@@ -158,6 +158,8 @@ fn compiled(schema: Schema) -> *mut ffi::_xmlSchema {
 }
 
 fn compile(schema: Schema) -> *mut ffi::_xmlSchema {
+    // Compiling reads the schemas through the callbacks, whoever asks first.
+    init();
     let url = CString::new(format!("{SCHEME}{}", schema.main_file())).expect("no NUL");
     let mut errors: Vec<SchemaError> = Vec::new();
     // SAFETY: the parser context reads the schema through the registered
