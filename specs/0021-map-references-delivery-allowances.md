@@ -1,7 +1,7 @@
 ---
 id: 0021
 title: Map references, delivery and invoicing period, allowances and charges
-status: reviewed
+status: implemented
 created: 2026-11-19
 depends_on: [0004, 0005, 0006, 0011, 0017]
 ---
@@ -283,3 +283,4 @@ sample A are extended by BT-34 and BT-49.
     (2026-11-19, downloads approved by the author).
 - **Manually verified** by the author (2026-11-19): a real invoice with an
   invoicing period shows it in `Lieferung (BG-13)`; all as expected.
+- The author decided on `implemented` on 2026-11-19.
