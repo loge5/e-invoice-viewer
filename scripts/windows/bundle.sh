@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Builds the Windows folder of E-Invoice Viewer (spec 0022, ADR 0005) from the
-# release build and zips it. Runs in the MSYS2 MINGW64 shell of the release
-# workflow, after `cargo build --release`.
+# release build and zips it. Runs in the MSYS2 UCRT64 shell of the release
+# workflow (UCRT64), after `cargo build --release`.
 #
 #   target/windows/E-Invoice Viewer/               the folder (also the installer's input)
 #   target/windows/E-Invoice_Viewer-<v>-windows-x86_64.zip
@@ -10,7 +10,8 @@ set -euo pipefail
 
 repo=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 version=$(sed -n '/^\[workspace.package\]/,/^\[/s/^version = "\(.*\)"$/\1/p' "$repo/Cargo.toml")
-prefix=${MINGW_PREFIX:-/mingw64}
+prefix=${MINGW_PREFIX:-/ucrt64}
+package_prefix=${MINGW_PACKAGE_PREFIX:-mingw-w64-ucrt-x86_64}
 out=$repo/target/windows
 dir=$out/E-Invoice\ Viewer
 app_id=de.loges.EInvoiceViewer
@@ -28,8 +29,8 @@ cp "$prefix/$loaders/loaders/"*.dll "$dir/$loaders/loaders/"
 (cd "$dir" && gdk-pixbuf-query-loaders "$loaders"/loaders/*.dll) \
     | sed "s|$(cygpath -m "$dir")/||g" >"$dir/$loaders/loaders.cache"
 
-# Every DLL the program and the loaders load, from MinGW (not Windows).
-# ntldd prints "name.dll => C:\msys64\mingw64\bin\name.dll (0x…)".
+# Every DLL the program and the loaders load, from MSYS2 (not Windows).
+# ntldd prints "name.dll => C:\msys64\ucrt64\bin\name.dll (0x…)".
 mingw_bin=$(cygpath -m "$prefix/bin")
 {
     ntldd -R "$dir/bin/e-invoice-viewer.exe"
@@ -80,7 +81,7 @@ done < <(find "$dir/bin" "$dir/lib" -name '*.dll' | sort)
 [[ $missing == 0 ]]
 list=$dir/bundled-packages-windows.txt
 {
-    echo "Libraries bundled in E-Invoice Viewer $version for Windows, unmodified MSYS2 (MINGW64) packages."
+    echo "Libraries bundled in E-Invoice Viewer $version for Windows, unmodified MSYS2 (UCRT64) packages."
     echo "Their licence texts are in share/licenses/<package>; sources: https://repo.msys2.org/mingw/sources/"
     echo
     printf '%-44s %-24s %-40s %s\n' Package Version Licence Source
@@ -90,9 +91,9 @@ list=$dir/bundled-packages-windows.txt
         base=$(pacman -Qi "$package" | sed -n 's/^Base *: //p' | head -1)
         printf '%-44s %-24s %-40s %s\n' "$package" "$(field Version)" "$(field Licenses)" \
             "https://packages.msys2.org/base/${base:-$package}"
-        if [[ -d $prefix/share/licenses/${package#mingw-w64-x86_64-} ]]; then
+        if [[ -d $prefix/share/licenses/${package#"$package_prefix"-} ]]; then
             mkdir -p "$dir/share/licenses"
-            cp -r "$prefix/share/licenses/${package#mingw-w64-x86_64-}" "$dir/share/licenses/"
+            cp -r "$prefix/share/licenses/${package#"$package_prefix"-}" "$dir/share/licenses/"
         fi
     done
 } >"$list"

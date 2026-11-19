@@ -34,8 +34,6 @@ jobs:
 
   windows:
     runs-on: windows-2025
-    env:
-      RUSTUP_TOOLCHAIN: 1.92-x86_64-pc-windows-gnu
     defaults:
       run:
         shell: msys2 {0}
@@ -46,30 +44,26 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      # MSYS2, MINGW64 environment, with the libraries and tools (ADR 0005).
+      # MSYS2, UCRT64 environment, with the libraries, tools and Rust
+      # (ADR 0005).
       - uses: msys2/setup-msys2@ec48f7c5447b3140e2b088413ae3a55687bccb6e # v2.33.0
         with:
-          msystem: MINGW64
+          msystem: UCRT64
           update: true
-          install: >-
-            mingw-w64-x86_64-gcc mingw-w64-x86_64-pkgconf
-            mingw-w64-x86_64-gtk4 mingw-w64-x86_64-libadwaita
-            mingw-w64-x86_64-poppler mingw-w64-x86_64-gtksourceview5
-            mingw-w64-x86_64-librsvg mingw-w64-x86_64-adwaita-icon-theme
-            mingw-w64-x86_64-gettext-tools mingw-w64-x86_64-ntldd zip
+          pacboy: >-
+            gcc:p pkgconf:p rust:p
+            gtk4:p libadwaita:p poppler:p gtksourceview5:p
+            librsvg:p adwaita-icon-theme:p gettext-tools:p ntldd:p
+          install: zip
       - name: Check the tag against Cargo.toml
         if: startsWith(github.ref, 'refs/tags/')
         run: scripts/appimage/check-tag.sh "$GITHUB_REF_NAME"
-      - name: Install Rust
-        shell: pwsh
-        run: rustup toolchain install $env:RUSTUP_TOOLCHAIN --profile minimal
       - name: Run the tests
         run: |
-          export PATH="$(cygpath -u "$USERPROFILE")/.cargo/bin:$PATH"
+          rustc --version
           scripts/windows/ci-step.sh Tests cargo test --workspace --locked
       - name: Build and bundle
         run: |
-          export PATH="$(cygpath -u "$USERPROFILE")/.cargo/bin:$PATH"
           scripts/windows/ci-step.sh Build cargo build --release --locked -p e-invoice-viewer
           scripts/windows/ci-step.sh Bundle scripts/windows/bundle.sh
       - name: Build the installer
