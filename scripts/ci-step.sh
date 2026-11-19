@@ -13,7 +13,7 @@ log=$(mktemp)
 status=${PIPESTATUS[0]}
 if [[ $status -ne 0 ]]; then
     # Annotations take %0A as line break; % must be escaped first.
-    grep -v -E "^test .* \.\.\. (ok|ignored)" "$log" | tail -n 150 | tr -d '\r' | sed 's/%/%25/g' | awk -v title="$title" \
+    grep -v -E "^test .* \.\.\. (ok|ignored)|^ *(Compiling|Checking|Downloaded|Downloading|Updating|Locking|Adding|Fresh|Running|Doc-tests) " "$log" | tail -n 80 | tr -d '\r' | sed 's/%/%25/g' | awk -v title="$title" \
         'BEGIN { ORS = "%0A" } { print } END { ORS = "\n"; print "" }' \
         | sed "s/^/::error title=$title::/"
 fi
