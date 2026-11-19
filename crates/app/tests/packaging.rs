@@ -1,6 +1,9 @@
 //! Spec 0020 — desktop metadata, icon, install script and AppImage build
-//! scripts. Needs `desktop-file-validate` and `appstreamcli`, like the
-//! catalogue test needs `xgettext`.
+//! scripts; spec 0022 — Windows icon, installer script and the release
+//! workflow for both platforms. Needs `desktop-file-validate` and
+//! `appstreamcli`, like the catalogue test needs `xgettext`. Linux only:
+//! these are checks of the Linux packaging and of files read by the build.
+#![cfg(target_os = "linux")]
 
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -265,15 +268,31 @@ fn tag_must_match_the_version() {
     assert!(!check(""));
 }
 
-// AC9
+/// The text of one job of the release workflow, up to the next job.
+fn job<'a>(workflow: &'a str, name: &str) -> &'a str {
+    let rest = workflow
+        .split(&format!("\n  {name}:\n"))
+        .nth(1)
+        .unwrap_or_else(|| panic!("job {name}"));
+    let end = rest
+        .match_indices("\n  ")
+        .find(|(index, _)| {
+            let line = &rest[index + 3..];
+            !line.starts_with(' ') && line.split('\n').next().is_some_and(|l| l.ends_with(':'))
+        })
+        .map_or(rest.len(), |(index, _)| index);
+    &rest[..end]
+}
+
+// 0020 AC9, 0022 AC7
 #[test]
-fn workflow_uses_pinned_github_actions_and_minimal_permissions() {
-    let workflow = read(".github/workflows/appimage.yml");
+fn release_workflow_builds_both_platforms() {
+    let workflow = read(".github/workflows/release.yml");
     let uses: Vec<&str> = workflow
         .lines()
         .filter_map(|line| line.trim().strip_prefix("- uses: "))
         .collect();
-    assert_eq!(uses.len(), 3);
+    assert_eq!(uses.len(), 5);
     for action in uses {
         let (name, rest) = action.split_once('@').expect("pinned");
         let hash = rest.split_whitespace().next().expect("hash");
@@ -285,18 +304,100 @@ fn workflow_uses_pinned_github_actions_and_minimal_permissions() {
     }
     assert!(workflow.contains("permissions:\n  contents: read\n"));
     assert_eq!(workflow.matches("contents: write").count(), 1);
-    let release = workflow
-        .split("\n  release:\n")
-        .nth(1)
-        .expect("release job");
+
+    let appimage = job(&workflow, "appimage");
+    let check = appimage.find("check-tag.sh").expect("tag check");
+    assert!(check < appimage.find("scripts/appimage.sh").expect("build"));
+
+    let windows = job(&workflow, "windows");
+    let check = windows.find("check-tag.sh").expect("tag check");
+    let tests = windows.find("cargo test --workspace").expect("tests");
+    let bundle = windows.find("scripts/windows/bundle.sh").expect("bundle");
+    let installer = windows.find("installer.iss").expect("installer");
+    assert!(check < tests, "the tag is checked before building");
+    assert!(
+        tests < bundle && bundle < installer,
+        "tests before packaging"
+    );
+
+    let release = job(&workflow, "release");
+    assert!(release.contains("needs: [appimage, windows]"));
     assert!(release.contains("contents: write"));
     assert!(release.contains("--draft"));
-    let build = workflow
-        .split("\n  build:\n")
-        .nth(1)
-        .and_then(|rest| rest.split("\n  release:\n").next())
-        .expect("build job");
-    let check = build.find("check-tag.sh").expect("tag check");
-    let script = build.find("scripts/appimage.sh").expect("build script");
-    assert!(check < script, "the tag is checked before building");
+    for file in [
+        "dist/*.AppImage",
+        "dist/bundled-packages.txt",
+        "dist/*-windows-x86_64.zip",
+        "dist/*-windows-x86_64-setup.exe",
+        "dist/bundled-packages-windows.txt",
+    ] {
+        assert!(release.contains(file), "{file}");
+    }
+    assert!(!appimage.contains("contents: write") && !windows.contains("contents: write"));
+}
+
+// 0022 AC2
+#[test]
+fn windows_icon_has_the_usual_sizes() {
+    let ico = fs::read(repo().join(format!("data/icons/{APP_ID}.ico"))).expect("ico");
+    assert_eq!(&ico[..4], &[0, 0, 1, 0], "ICO header");
+    let count = usize::from(u16::from_le_bytes([ico[4], ico[5]]));
+    let sizes: Vec<u32> = (0..count)
+        .map(|i| {
+            let width = ico[6 + 16 * i];
+            if width == 0 { 256 } else { u32::from(width) }
+        })
+        .collect();
+    for size in [16, 32, 48, 256] {
+        assert!(sizes.contains(&size), "{size} px missing in {sizes:?}");
+    }
+}
+
+// 0022 AC3
+#[test]
+fn installer_is_per_user_and_never_default() {
+    let script = read("scripts/windows/installer.iss");
+    let lines: Vec<&str> = script.lines().map(str::trim).collect();
+    for wanted in [
+        "PrivilegesRequired=lowest",
+        r"DefaultDirName={localappdata}\Programs\E-Invoice Viewer",
+        "ChangesAssociations=yes",
+    ] {
+        assert!(lines.contains(&wanted), "missing {wanted}");
+    }
+    let app_id = lines
+        .iter()
+        .find_map(|line| line.strip_prefix("AppId={{"))
+        .expect("AppId");
+    assert_eq!(app_id.len(), 37, "a fixed GUID: {app_id}");
+
+    let registry: Vec<&str> = lines
+        .iter()
+        .copied()
+        .filter(|line| line.starts_with("Root:"))
+        .collect();
+    assert!(!registry.is_empty());
+    for entry in &registry {
+        assert!(entry.starts_with("Root: HKCU;"), "per user only: {entry}");
+        assert!(
+            entry.contains("uninsdeletekey") || entry.contains("uninsdeletevalue"),
+            "removed on uninstall: {entry}"
+        );
+        // The extensions' own default value is the default application.
+        for extension in [".pdf", ".xml"] {
+            assert!(
+                !entry.contains(&format!(r#"Subkey: "Software\Classes\{extension}";"#)),
+                "never the default for {extension}: {entry}"
+            );
+        }
+    }
+    for extension in [".pdf", ".xml"] {
+        assert!(
+            registry
+                .iter()
+                .any(|entry| entry
+                    .contains(&format!(r#"Software\Classes\{extension}\OpenWithProgids"#))),
+            "Open with for {extension}"
+        );
+    }
 }

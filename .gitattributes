@@ -1,0 +1,8 @@
+# Keep LF in every checkout, also on Windows: tests compare texts and
+# positions in the fixtures byte by byte (spec 0022).
+* text=auto eol=lf
+*.ico binary
+*.png binary
+*.pdf binary
+# Third-party files keep their bytes exactly as published.
+crates/core/rules/** -text

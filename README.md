@@ -106,6 +106,25 @@ AppImage to the app grid and to *Open with*, use a tool such as
 [Gear Lever](https://flathub.org/apps/it.mijorus.gearlever) or AppImageLauncher.
 The AppImage uses the same settings as an installed build.
 
+### Windows
+
+For 64-bit Windows 10 (1809 or later) and Windows 11, each release has two
+files:
+
+- `E-Invoice_Viewer-<version>-windows-x86_64-setup.exe` installs the app for
+  the current user, without administrator rights: Start menu entry, and
+  *Open with* for PDF and XML files (never as the default app). Uninstall it
+  in Settings → Apps.
+- `E-Invoice_Viewer-<version>-windows-x86_64.zip` is portable: unpack it
+  anywhere and start `bin\e-invoice-viewer.exe`.
+
+The program is not signed, so Windows SmartScreen may warn about an unknown
+publisher on the first start. Choose **More info → Run anyway** if you
+downloaded the file from this repository's releases page. The language
+follows the Windows region format, or the choice in the app's menu.
+
+### Building the AppImage
+
 To build the AppImage yourself (needs Docker):
 
 ```bash
@@ -239,4 +258,6 @@ mainly GTK 4, libadwaita, GLib, Pango, Cairo, GtkSourceView (LGPL) and Poppler
 (GPL). The file `bundled-packages.txt`, attached to each release and included
 in the AppImage, lists every bundled package with its version, licence and
 the address of its source; the licence texts are in the AppImage under
-`usr/share/doc`.
+`usr/share/doc`. The Windows files contain unmodified MSYS2 (MinGW)
+builds of the same libraries, listed in `bundled-packages-windows.txt` with
+their licences and source addresses.

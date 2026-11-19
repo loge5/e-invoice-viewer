@@ -49,6 +49,7 @@ mod tests {
     }
 
     // AC4
+    #[cfg(unix)]
     #[test]
     fn local_files_are_accepted() {
         let file = gio::File::for_path("/tmp/x/RE-2026-0042.pdf");
@@ -61,7 +62,26 @@ mod tests {
         assert!(file.is_native());
     }
 
+    // AC4 on Windows, with network shares (spec 0022)
+    #[cfg(windows)]
+    #[test]
+    fn local_files_are_accepted() {
+        let file = gio::File::for_path(r"C:\x\RE-2026-0042.pdf");
+        assert_eq!(
+            local_path(&file),
+            Ok(PathBuf::from(r"C:\x\RE-2026-0042.pdf"))
+        );
+        let file = gio::File::for_uri("file:///C:/x/RE%202026.pdf");
+        assert_eq!(local_path(&file), Ok(PathBuf::from(r"C:\x\RE 2026.pdf")));
+        let share = gio::File::for_path(r"\\server\share\RE-2026-0042.pdf");
+        assert_eq!(
+            local_path(&share),
+            Ok(PathBuf::from(r"\\server\share\RE-2026-0042.pdf"))
+        );
+    }
+
     // AC4: browsers offer a dragged link as text
+    #[cfg(unix)]
     #[test]
     fn dropped_links_are_addresses() {
         let file = dropped_address("https://example.com/RE-2026-0042.pdf\r\n").expect("address");

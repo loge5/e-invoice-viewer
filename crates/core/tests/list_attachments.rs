@@ -188,6 +188,37 @@ fn proposed_save_names() {
     assert_eq!(entry(None).display_name(3), "Anhang-3");
 }
 
+// Spec 0022, AC5: proposed names are valid file names on Windows too.
+#[test]
+fn proposed_names_are_valid_on_windows() {
+    let entry = |name: &str| attachments::Attachment {
+        name: Some(name.to_string()),
+        source: Source::Pdf,
+        mime_type: None,
+        description: None,
+        content: Content::Embedded(Vec::new()),
+    };
+    for (name, proposed) in [
+        ("Lieferschein: 11-2026?.pdf", "Lieferschein_ 11-2026_.pdf"),
+        ("CON.pdf", "_CON.pdf"),
+        ("nul", "_nul"),
+        ("com7.txt", "_com7.txt"),
+        ("LPT1", "_LPT1"),
+        ("bericht.pdf.", "bericht.pdf"),
+        ("bericht.pdf . ", "bericht.pdf"),
+        ("a<b>c*d\"e.xml", "a_b_c_d_e.xml"),
+        ("a|b.pdf", "a_b.pdf"),
+        ("../x/CON.pdf", "_CON.pdf"),
+        ("lieferschein.pdf", "lieferschein.pdf"),
+        ("console.pdf", "console.pdf"),
+        ("COM10.pdf", "COM10.pdf"),
+    ] {
+        assert_eq!(entry(name).proposed_file_name(1), proposed, "{name:?}");
+    }
+    assert_eq!(entry("...").proposed_file_name(4), "Anhang-4");
+    assert_eq!(entry(". .").proposed_file_name(4), "Anhang-4");
+}
+
 // AC6
 #[test]
 fn external_reference_has_no_content() {

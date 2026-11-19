@@ -69,17 +69,45 @@ impl Attachment {
     }
 
     /// The file name proposed when saving: without any directory part,
-    /// control or text-direction characters; `Anhang-<position>` if nothing
-    /// is left.
+    /// control or text-direction characters, and valid on Windows too
+    /// (spec 0022); `Anhang-<position>` if nothing is left.
     pub fn proposed_file_name(&self, position: usize) -> String {
         let name = self.name.as_deref().unwrap_or_default();
         let last = name.rsplit(['/', '\\']).next().unwrap_or_default();
-        let clean: String = last.chars().filter(|c| is_visible(*c)).collect();
-        match clean.trim() {
-            "" | "." | ".." => fallback_name(position),
-            _ => clean,
+        let clean: String = last
+            .chars()
+            .filter(|c| is_visible(*c))
+            .map(|c| if is_forbidden_on_windows(c) { '_' } else { c })
+            .collect();
+        // Windows drops trailing dots and spaces.
+        let clean = clean.trim_end_matches(['.', ' ']);
+        if clean.trim().is_empty() {
+            fallback_name(position)
+        } else if is_windows_device_name(clean) {
+            format!("_{clean}")
+        } else {
+            clean.to_string()
         }
     }
+}
+
+/// Characters Windows does not allow in file names (besides the path
+/// separators, which never reach here).
+fn is_forbidden_on_windows(c: char) -> bool {
+    matches!(c, '<' | '>' | ':' | '"' | '|' | '?' | '*')
+}
+
+/// Whether `name` is a Windows device name (`CON`, `NUL`, `COM1`, …), also
+/// with an extension; such files cannot be created on Windows.
+fn is_windows_device_name(name: &str) -> bool {
+    let stem = name.split('.').next().unwrap_or_default().trim_end();
+    let upper = stem.to_ascii_uppercase();
+    matches!(upper.as_str(), "CON" | "PRN" | "AUX" | "NUL")
+        || ["COM", "LPT"].iter().any(|prefix| {
+            upper.strip_prefix(prefix).is_some_and(|digit| {
+                matches!(digit, "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9")
+            })
+        })
 }
 
 fn fallback_name(position: usize) -> String {

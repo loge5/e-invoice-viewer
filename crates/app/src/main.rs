@@ -1,4 +1,6 @@
 //! GTK4 / libadwaita application of E-Invoice Viewer (presentation only).
+// A Windows GUI program: no console window (spec 0022).
+#![cfg_attr(windows, windows_subsystem = "windows")]
 
 mod attachments_view;
 mod config_store;

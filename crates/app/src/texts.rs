@@ -224,7 +224,7 @@ pub fn recent_entry_label(path: &std::path::Path, home: &std::path::Path) -> Str
     let folder = path.parent().unwrap_or(path);
     let folder = match folder.strip_prefix(home) {
         Ok(rest) if rest.as_os_str().is_empty() => "~".to_string(),
-        Ok(rest) => format!("~/{}", rest.display()),
+        Ok(rest) => format!("~{}{}", std::path::MAIN_SEPARATOR, rest.display()),
         Err(_) => folder.display().to_string(),
     };
     format!("{name} — {folder}")
@@ -720,6 +720,7 @@ mod tests {
     }
 
     // AC5
+    #[cfg(unix)]
     #[test]
     fn recent_entry_label_shows_folder() {
         let home = Path::new("/home/anna");
@@ -738,6 +739,25 @@ mod tests {
         assert_eq!(
             recent_entry_label(Path::new("/home/annabel/a.pdf"), home),
             "a.pdf — /home/annabel"
+        );
+    }
+
+    // AC5 on Windows (spec 0022)
+    #[cfg(windows)]
+    #[test]
+    fn recent_entry_label_shows_folder() {
+        let home = Path::new(r"C:\Users\anna");
+        assert_eq!(
+            recent_entry_label(Path::new(r"C:\Users\anna\x\rechnung.pdf"), home),
+            r"rechnung.pdf — ~\x"
+        );
+        assert_eq!(
+            recent_entry_label(Path::new(r"C:\Users\anna\a.pdf"), home),
+            "a.pdf — ~"
+        );
+        assert_eq!(
+            recent_entry_label(Path::new(r"\\server\share\rechnung.pdf"), home),
+            r"rechnung.pdf — \\server\share\"
         );
     }
 
