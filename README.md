@@ -1,7 +1,7 @@
 # E-Invoice Viewer
 
 **A fast, strictly local desktop viewer for electronic invoices — ZUGFeRD,
-Factur-X and XRechnung — for Linux and GNOME.**
+Factur-X and XRechnung — for Linux and Windows.**
 
 Open an invoice and see the PDF and the structured invoice data side by side,
 with every field labelled by its EN 16931 business term. Validation findings
@@ -13,7 +13,7 @@ appear right next to the field they concern. Nothing leaves your machine.
   <img alt="Licence: GPL-3.0-or-later" src="https://img.shields.io/badge/licence-GPL--3.0--or--later-blue">
   <img alt="Rust 1.92+" src="https://img.shields.io/badge/rust-1.92%2B-orange">
   <img alt="GTK4 + libadwaita" src="https://img.shields.io/badge/GTK4-libadwaita-4a86cf">
-  <img alt="Platform: Linux" src="https://img.shields.io/badge/platform-Linux-lightgrey">
+  <img alt="Platform: Linux | Windows" src="https://img.shields.io/badge/platform-Linux%20%7C%20Windows-lightgrey">
 </p>
 
 ## Why
@@ -26,8 +26,9 @@ an online service and without uploading your business data anywhere.
 ## Features
 
 - **PDF and fields side by side.** All pages of the PDF, zoomable, next to the
-  invoice data grouped into sections: invoice, seller, buyer, line items,
-  payment, VAT breakdown, totals. Every value carries its business term
+  invoice data grouped into sections: invoice and references, seller, buyer,
+  delivery and invoicing period, line items, payment, allowances and charges,
+  VAT breakdown, totals. Every value carries its business term
   number (`BT-1`, `BG-4`, …) and is formatted for humans (dates, amounts,
   IBANs, code lists).
 - **Validation built in.** Checks against the official EN 16931 business rules
@@ -41,9 +42,13 @@ an online service and without uploading your business data anywhere.
   the invoice (BG-24), and saves them where you choose.
 - **Plain XML invoices, too.** CII and UBL (invoice and credit note) files open
   without a PDF.
-- **Desktop integration.** Drag and drop, *Open with* from the file manager,
-  a recent files list, one invoice per window. The window size is remembered,
-  but never restored in a way that hides the window.
+- **German and English.** The interface and the invoice content (labels,
+  code lists, number and date formats) follow the system language, or the
+  language chosen in the app's main menu.
+- **Desktop integration.** Drag and drop, *Open with* from the file manager
+  or Windows Explorer, a recent files list, one invoice per window. The
+  window size is remembered, but never restored in a way that hides the
+  window.
 
 ## Strictly local, read-only
 
@@ -88,6 +93,12 @@ validator for its public test invoices. How and why this works is described in
 > certified validation, and this project is not affiliated with KoSIT or CEN.
 
 ## Download
+
+Every [release](https://github.com/loge5/e-invoice-viewer/releases/latest)
+has ready-to-run files for Linux and Windows; nothing else needs to be
+installed.
+
+### Linux
 
 Each release has an **AppImage** for x86_64 Linux: one file that runs on
 current distributions (glibc 2.39 or newer — Ubuntu 24.04, Debian 13,
@@ -134,7 +145,11 @@ scripts/appimage.sh
 It builds in an Ubuntu 24.04 container and writes
 `target/appimage/E-Invoice_Viewer-<version>-x86_64.AppImage`.
 
-## Installation from source
+## Installation from source (Linux)
+
+The Windows files are built only by the release workflow
+(`.github/workflows/release.yml`, MSYS2 on GitHub Actions); there is no
+documented local Windows build.
 
 ### 1. Install the build dependencies
 
@@ -184,8 +199,8 @@ cargo run --release -p e-invoice-viewer -- path/to/invoice.pdf
 
 ## Usage
 
-Open an invoice with **Öffnen…**, by dropping it onto the window, from the
-file manager, or on the command line:
+Open an invoice with **Open…**, by dropping it onto the window, with
+*Open with* from the file manager or Explorer, or on the command line:
 
 ```bash
 e-invoice-viewer invoice.pdf
@@ -200,12 +215,17 @@ e-invoice-viewer invoice.pdf
 | <kbd>Ctrl</kbd>+<kbd>+</kbd> / <kbd>Ctrl</kbd>+<kbd>-</kbd> | Zoom the PDF in / out |
 | <kbd>Ctrl</kbd>+<kbd>0</kbd> | Fit the PDF to the pane width |
 
-The user interface is in German, the language of most of its users.
+The app speaks German and English. It follows the system language (on
+Windows: the region format) and falls back to English; the main menu
+(<kbd>F10</kbd>) lets you choose the language, which is remembered. Settings
+and the recent files list are kept in `~/.config/e-invoice-viewer` on Linux
+and in `%LOCALAPPDATA%\e-invoice-viewer` on Windows.
 
 ## Limitations
 
-- Linux with GTK4 only; there are no packages yet (an AUR package is
-  planned).
+- Linux (x86_64) and Windows 10/11 (x64) only; no macOS. There are no
+  distribution packages yet (an AUR package is planned), and the Windows
+  files are not signed.
 - Display only: invoices cannot be created or edited.
 - PDF/A conformance and ZUGFeRD-specific profile rules are not checked.
 
