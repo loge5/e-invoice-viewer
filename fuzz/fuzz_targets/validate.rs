@@ -12,16 +12,18 @@ thread_local! {
     static VALIDATOR: RefCell<Validator> = RefCell::new(Validator::new());
 }
 
-const SAMPLES: [&str; 2] = [
+const SAMPLES: [&str; 3] = [
     include_str!("../../crates/core/tests/fixtures/cii/sample-b.xml"),
     include_str!("../../crates/core/tests/fixtures/ubl/sample-b.xml"),
+    // Schema and rule errors: warms up the paths that build findings.
+    include_str!("../../crates/core/tests/fixtures/fuzz/validate-timeout-5c0933ae.xml"),
 ];
 
 fuzz_target!(
     init: {
-        // Compile the rule sets (CEN and XRechnung, CII and UBL) once before
-        // the first input: compiling takes seconds and is not what the
-        // per-input time limit is about.
+        // Compile the rule sets (CEN and XRechnung, CII and UBL) and warm up
+        // the error paths once before the first input: that takes seconds and
+        // is not what the per-input time limit is about.
         VALIDATOR.with(|validator| {
             for sample in SAMPLES {
                 let _ = validator.borrow().validate(sample.as_bytes(), Language::English);

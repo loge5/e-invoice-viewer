@@ -69,3 +69,28 @@ fn empty_and_garbage_input() {
         survives(name, input);
     }
 }
+
+// AC5: found by the `validate` target (timeout under the fuzzer's
+// instrumentation): sample A (UBL) with broken amounts. The first validation
+// with schema errors took 10 s instrumented (350 ms natively), because the
+// error paths were only warmed up then; it is a valid result, not a hang.
+#[test]
+fn fuzz_validate_timeout_5c0933ae() {
+    let input = include_bytes!("fixtures/fuzz/validate-timeout-5c0933ae.xml");
+    survives("validate-timeout-5c0933ae", input);
+    let validator = Validator::new();
+    let started = Instant::now();
+    let validation = validator
+        .validate(input, Language::English)
+        .expect("validation");
+    assert!(
+        started.elapsed() < Duration::from_secs(5),
+        "{:?}",
+        started.elapsed()
+    );
+    assert!(
+        validation.findings.iter().any(|f| f.rule_id == "XSD"),
+        "{:#?}",
+        validation.findings
+    );
+}

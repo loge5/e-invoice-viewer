@@ -8,5 +8,6 @@
 crates/core/rules/** -text
 # Public samples are kept byte-exact; fuzz inputs are raw data.
 crates/core/tests/fixtures/public/** -text
+crates/core/tests/fixtures/fuzz/** -text
 fuzz/corpus/** -text
 fuzz/artifacts/** -text
