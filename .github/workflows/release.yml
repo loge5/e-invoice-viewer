@@ -61,7 +61,7 @@ jobs:
       - name: Run the tests
         run: |
           rustc --version
-          scripts/windows/ci-step.sh Tests cargo test --workspace --locked
+          scripts/windows/ci-step.sh Tests cargo test --workspace --locked --no-fail-fast
       - name: Build and bundle
         run: |
           scripts/windows/ci-step.sh Build cargo build --release --locked -p e-invoice-viewer

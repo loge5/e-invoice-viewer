@@ -278,6 +278,8 @@ fn read_catalogue(text: &str) -> Catalogue {
         fuzzy: BTreeSet::new(),
         obsolete: 0,
     };
+    // xgettext on Windows writes CRLF line endings.
+    let text = text.replace("\r\n", "\n");
     for entry in text.split("\n\n") {
         if entry.lines().any(|line| line.starts_with("#~")) {
             catalogue.obsolete += 1;
