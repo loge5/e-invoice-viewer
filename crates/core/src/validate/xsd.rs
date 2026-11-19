@@ -184,7 +184,7 @@ fn compile(schema: Schema) -> *mut ffi::_xmlSchema {
 /// The structured error callback, typed as the libxml2 version in use
 /// expects it (the error pointer is `const` since libxml2 2.12; with a newer
 /// libxml2 the transmute changes nothing).
-#[allow(clippy::useless_transmute)]
+#[allow(clippy::useless_transmute, clippy::missing_transmute_annotations)]
 fn error_callback() -> ffi::xmlStructuredErrorFunc {
     let callback: unsafe extern "C" fn(*mut c_void, *const ffi::_xmlError) = on_error;
     // SAFETY: only the constness of the pointer argument may differ between
