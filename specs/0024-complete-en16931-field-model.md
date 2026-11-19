@@ -67,33 +67,33 @@ based on sample C, carrying every term of this spec at least once, including
 two item attributes and one allowance and one charge on line 1; valid against
 EN 16931 (confirmed once with the KoSIT validator).
 
-- [ ] Given CII sample D in German, then:
+- [x] Given CII sample D in German, then:
   - section `Zahlungsempfänger (BG-10)` follows `Käufer (BG-7)` and
     `Steuervertreter (BG-11)` follows it, each with its fields in the order
     of the table;
   - `Käufer (BG-7)` contains BT-56, BT-57 and BT-58 after the address;
   - `Rechnung` contains BT-6, BT-7, BT-8 and BT-23, and BT-21 directly
     before its BT-22.
-- [ ] Given CII sample D, then `Position 1 – Nachlass (BG-27)` and
+- [x] Given CII sample D, then `Position 1 – Nachlass (BG-27)` and
       `Position 1 – Zuschlag (BG-28)` follow `Position 1` directly and come
       before `Position 2`; their amounts carry the currency.
-- [ ] Given CII sample D, then `Position 1` contains BT-148, BT-147, BT-150
+- [x] Given CII sample D, then `Position 1` contains BT-148, BT-147, BT-150
       with a unit name, BT-156 to BT-159, and two fields for the item
       attributes, labelled with the attribute names and showing their
       values.
-- [ ] Given CII sample D, then `Summen (BG-22)` shows BT-111 with the
+- [x] Given CII sample D, then `Summen (BG-22)` shows BT-111 with the
       currency of BT-6, and `Zahlung (BG-16)` shows BT-82, BT-87 and BT-88.
-- [ ] Given UBL sample D, then the field model equals that of CII sample D
+- [x] Given UBL sample D, then the field model equals that of CII sample D
       (sections, fields, order, displays), in German and English.
-- [ ] A finding about a line allowance (e.g. BR-41, amount missing) is
+- [x] A finding about a line allowance (e.g. BR-41, amount missing) is
       attributed to its `Position 1 – Nachlass (BG-27)` section; a finding
       about the payee (e.g. BR-17, name missing) to `Zahlungsempfänger
       (BG-10)`.
-- [ ] The coverage check passes: every business term BT-1 to BT-165 of EN
+- [x] The coverage check passes: every business term BT-1 to BT-165 of EN
       16931 is mapped for CII and for UBL, except BT-122 to BT-125.
-- [ ] Samples A, B, C and L give the same field model as before, and the
+- [x] Samples A, B, C and L give the same field model as before, and the
       time limits of 0007 still hold for sample L.
-- [ ] New labels and titles are in German and English; the catalogue check
+- [x] New labels and titles are in German and English; the catalogue check
       passes.
 
 ## Out of scope
@@ -110,6 +110,15 @@ EN 16931 (confirmed once with the KoSIT validator).
   line; the field model gets sections nested under a line section's place
   (they are still separate sections in the list, placed after their line).
 - Sample D needs BT-6 different from BT-5 and therefore BT-111 (BR-53).
+- Corrections during implementation (2026-11-19):
+  - BT-7 and BT-8 exclude each other (BR-CO-3), so sample D has BT-7 and a
+    test variant has BT-8 ("every term at least once" holds across both).
+  - BT-121 is only allowed for exempt categories, so line 2 of sample D is
+    category `E`; the card (BT-87, BT-88) sits in the same payment means as
+    the direct debit, because CII allows only one payment means type.
+  - The item attribute name (BT-160) is the label of its value field
+    (BT-161), as the requirement says; the coverage check counts BT-160 as
+    shown there.
 
 - Review on 2026-11-19: reviewed by Claude, accepted by the author together
   with the test list.
@@ -128,3 +137,25 @@ EN 16931 (confirmed once with the KoSIT validator).
   exceptions (AC7).
 - T8 existing tests for A, B, C, L unchanged; timing; catalogue (AC8, AC9).
 - T9 `sample_d_has_no_errors` (validation) and the KoSIT check of sample D.
+
+## Progress
+
+- **Done**:
+  - Field model: groups of fields per element (note subject code and text),
+    fields labelled from the invoice (item attributes), sections nested
+    under a line section (`Position 1 – Nachlass (BG-27)`), conditions
+    comparing an attribute with another element (BT-110/BT-111 by currency),
+    formats for values with a scheme or list (`Scheme`), amounts in their
+    own currency, and UBL note subject codes (`#AAI#…`).
+  - CII and UBL mappings for all terms of the spec, in the same order; new
+    sections `Zahlungsempfänger (BG-10)` and `Steuervertreter (BG-11)`;
+    German labels in `po/de.po`.
+  - Sample D (CII, UBL), described in `docs/fixtures.md`.
+- **Verified** (2026-11-19):
+  - `cargo test --workspace`: all green; new: 9 tests in
+    `crates/core/tests/map_all_terms.rs` (AC1–AC7, the BT-8 variant, sample
+    D without errors); the existing tests for A, B, C, L and their timing
+    pass unchanged (AC8); catalogue check (AC9).
+  - CII and UBL sample D give identical field models in German and English.
+  - KoSIT validator 1.6.3 accepts CII and UBL sample D without any message.
+

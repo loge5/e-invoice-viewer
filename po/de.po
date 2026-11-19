@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: E-Invoice Viewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-19 09:44+0100\n"
+"POT-Creation-Date: 2026-11-19 10:16+0100\n"
 "PO-Revision-Date: 2026-11-18 00:00+0100\n"
 "Last-Translator: E-Invoice Viewer contributors\n"
 "Language-Team: German\n"
@@ -365,6 +365,15 @@ msgstr "Rechnungsart"
 msgid "Invoice currency code"
 msgstr "Währung"
 
+msgid "VAT accounting currency code"
+msgstr "Steuerwährung"
+
+msgid "Value added tax point date"
+msgstr "Steuerzeitpunkt"
+
+msgid "Value added tax point date code"
+msgstr "Steuerzeitpunkt (Code)"
+
 msgid "Payment due date"
 msgstr "Fälligkeitsdatum"
 
@@ -401,8 +410,14 @@ msgstr "Buchungsreferenz"
 msgid "Payment terms"
 msgstr "Zahlungsbedingungen"
 
+msgid "Invoice note subject code"
+msgstr "Betreff der Bemerkung (Code)"
+
 msgid "Invoice note"
 msgstr "Bemerkung"
+
+msgid "Business process type"
+msgstr "Geschäftsprozess"
 
 msgid "Specification identifier"
 msgstr "Spezifikationskennung"
@@ -416,14 +431,23 @@ msgstr "Rechnungsdatum"
 msgid "Seller name"
 msgstr "Name"
 
+msgid "Seller trading name"
+msgstr "Handelsname"
+
 msgid "Seller identifier"
 msgstr "Kennung"
+
+msgid "Seller legal registration identifier"
+msgstr "Registernummer"
 
 msgid "Seller VAT identifier"
 msgstr "Umsatzsteuer-ID"
 
 msgid "Seller tax registration identifier"
 msgstr "Steuernummer"
+
+msgid "Seller additional legal information"
+msgstr "Weitere rechtliche Angaben"
 
 msgid "Seller electronic address"
 msgstr "Elektronische Adresse"
@@ -440,6 +464,9 @@ msgstr "Ort"
 msgid "Seller post code"
 msgstr "PLZ"
 
+msgid "Seller country subdivision"
+msgstr "Region"
+
 msgid "Seller country code"
 msgstr "Land"
 
@@ -455,8 +482,14 @@ msgstr "E-Mail"
 msgid "Buyer name"
 msgstr "Name"
 
+msgid "Buyer trading name"
+msgstr "Handelsname"
+
 msgid "Buyer identifier"
 msgstr "Kennung"
+
+msgid "Buyer legal registration identifier"
+msgstr "Registernummer"
 
 msgid "Buyer VAT identifier"
 msgstr "Umsatzsteuer-ID"
@@ -476,7 +509,52 @@ msgstr "Ort"
 msgid "Buyer post code"
 msgstr "PLZ"
 
+msgid "Buyer country subdivision"
+msgstr "Region"
+
 msgid "Buyer country code"
+msgstr "Land"
+
+msgid "Buyer contact point"
+msgstr "Ansprechpartner"
+
+msgid "Buyer contact telephone number"
+msgstr "Telefon"
+
+msgid "Buyer contact email address"
+msgstr "E-Mail"
+
+msgid "Payee name"
+msgstr "Name"
+
+msgid "Payee identifier"
+msgstr "Kennung"
+
+msgid "Payee legal registration identifier"
+msgstr "Registernummer"
+
+msgid "Seller tax representative name"
+msgstr "Name"
+
+msgid "Seller tax representative VAT identifier"
+msgstr "Umsatzsteuer-ID"
+
+msgid "Tax representative address line 1"
+msgstr "Straße"
+
+msgid "Tax representative address line 2"
+msgstr "Adresszusatz"
+
+msgid "Tax representative city"
+msgstr "Ort"
+
+msgid "Tax representative post code"
+msgstr "PLZ"
+
+msgid "Tax representative country subdivision"
+msgstr "Region"
+
+msgid "Tax representative country code"
 msgstr "Land"
 
 msgid "Deliver to party name"
@@ -506,11 +584,17 @@ msgstr "Ort"
 msgid "Deliver to post code"
 msgstr "PLZ"
 
+msgid "Deliver to country subdivision"
+msgstr "Region"
+
 msgid "Deliver to country code"
 msgstr "Land"
 
 msgid "Payment means type code"
 msgstr "Zahlungsart"
+
+msgid "Payment means text"
+msgstr "Zahlungsart (Text)"
 
 msgid "Remittance information"
 msgstr "Verwendungszweck"
@@ -523,6 +607,12 @@ msgstr "Kontoinhaber"
 
 msgid "Payment service provider identifier"
 msgstr "BIC"
+
+msgid "Payment card primary account number"
+msgstr "Kartennummer"
+
+msgid "Payment card holder name"
+msgstr "Karteninhaber"
 
 msgid "Mandate reference identifier"
 msgstr "Mandatsreferenz"
@@ -590,6 +680,9 @@ msgstr "Gesamtbetrag netto"
 msgid "Invoice total VAT amount"
 msgstr "Umsatzsteuer gesamt"
 
+msgid "Invoice total VAT amount in accounting currency"
+msgstr "Umsatzsteuer in Steuerwährung"
+
 msgid "Invoice total amount with VAT"
 msgstr "Rechnungsbetrag inkl. USt"
 
@@ -616,6 +709,9 @@ msgstr "Steuersatz"
 
 msgid "VAT exemption reason text"
 msgstr "Befreiungsgrund"
+
+msgid "VAT exemption reason code"
+msgstr "Befreiungsgrund (Code)"
 
 msgid "Invoice line identifier"
 msgstr "Positionsnummer"
@@ -647,11 +743,50 @@ msgstr "Zeitraum von"
 msgid "Invoice line period end date"
 msgstr "Zeitraum bis"
 
+msgid "Invoice line allowance amount"
+msgstr "Betrag"
+
+msgid "Invoice line allowance base amount"
+msgstr "Grundbetrag"
+
+msgid "Invoice line allowance percentage"
+msgstr "Prozentsatz"
+
+msgid "Invoice line allowance reason"
+msgstr "Grund"
+
+msgid "Invoice line allowance reason code"
+msgstr "Grund (Code)"
+
+msgid "Invoice line charge amount"
+msgstr "Betrag"
+
+msgid "Invoice line charge base amount"
+msgstr "Grundbetrag"
+
+msgid "Invoice line charge percentage"
+msgstr "Prozentsatz"
+
+msgid "Invoice line charge reason"
+msgstr "Grund"
+
+msgid "Invoice line charge reason code"
+msgstr "Grund (Code)"
+
 msgid "Item net price"
 msgstr "Nettopreis"
 
+msgid "Item price discount"
+msgstr "Preisnachlass"
+
+msgid "Item gross price"
+msgstr "Bruttopreis"
+
 msgid "Item price base quantity"
 msgstr "Basismenge"
+
+msgid "Item price base quantity unit of measure code"
+msgstr "Einheit der Preisbasismenge"
 
 msgid "Invoiced item VAT category code"
 msgstr "Steuerkategorie"
@@ -668,6 +803,33 @@ msgstr "Artikelbeschreibung"
 msgid "Item Seller's identifier"
 msgstr "Artikelnummer"
 
+msgid "Item Buyer's identifier"
+msgstr "Artikelnummer des Käufers"
+
+msgid "Item standard identifier"
+msgstr "Standardkennung"
+
+msgid "Item classification identifier"
+msgstr "Klassifizierung"
+
+msgid "Item country of origin"
+msgstr "Herkunftsland"
+
+msgid "Item attribute value"
+msgstr "Artikelattribut"
+
+msgid "Seller address line 3"
+msgstr "Adresszeile 3"
+
+msgid "Buyer address line 3"
+msgstr "Adresszeile 3"
+
+msgid "Tax representative address line 3"
+msgstr "Adresszeile 3"
+
+msgid "Deliver to address line 3"
+msgstr "Adresszeile 3"
+
 msgid "Invoice"
 msgstr "Rechnung"
 
@@ -679,6 +841,12 @@ msgstr "Käufer (BG-7)"
 
 msgid "Preceding invoice reference (BG-3)"
 msgstr "Vorausgegangene Rechnung (BG-3)"
+
+msgid "Payee (BG-10)"
+msgstr "Zahlungsempfänger (BG-10)"
+
+msgid "Seller tax representative party (BG-11)"
+msgstr "Steuervertreter (BG-11)"
 
 msgid "Delivery information (BG-13)"
 msgstr "Lieferung (BG-13)"
@@ -694,6 +862,12 @@ msgstr "Nachlass (BG-20)"
 
 msgid "Document level charges (BG-21)"
 msgstr "Zuschlag (BG-21)"
+
+msgid "Invoice line allowances (BG-27)"
+msgstr "Nachlass (BG-27)"
+
+msgid "Invoice line charges (BG-28)"
+msgstr "Zuschlag (BG-28)"
 
 msgid "VAT breakdown (BG-23)"
 msgstr "Umsatzsteuer (BG-23)"

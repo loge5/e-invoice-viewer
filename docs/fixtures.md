@@ -10,8 +10,8 @@ When the fixture files are created, their validity (as stated per sample
 below) is confirmed once with the official KoSIT validator; if a sample turns
 out to be invalid, the sample is fixed, not the expectation.
 
-Files: `crates/core/tests/fixtures/cii/sample-{a,b,c}.xml` and
-`crates/core/tests/fixtures/ubl/sample-{a,b,c}.xml`. UBL sample A was created
+Files: `crates/core/tests/fixtures/cii/sample-{a,b,c,d}.xml` and
+`crates/core/tests/fixtures/ubl/sample-{a,b,c,d}.xml`. UBL sample A was created
 with spec 0009 and is accepted by the KoSIT validator without any message. UBL
 sample B was created with spec 0010; both B samples are accepted by the KoSIT
 validator (configuration XRechnung 3.0.2) with only the information
@@ -87,6 +87,45 @@ Created with spec 0021 from sample A; all other data as in sample A.
   `1010.00`, BT-110 `191.90`, BT-112 `1201.90`, BT-115 `1201.90`
 - Valid against EN 16931: accepted by the KoSIT validator 1.6.3 (EN 16931
   scenario) without any message, CII and UBL
+
+## Sample D — sample C with every remaining EN 16931 term
+
+Created with spec 0024 from sample C; everything of sample C stays unless
+named here.
+
+- BT-23 `urn:fdc:peppol.eu:2017:poacc:billing:01:1.0`; one note with subject
+  code BT-21 `AAI` and text `Bitte den Lieferschein beachten.` (UBL:
+  `#AAI#Bitte den Lieferschein beachten.`)
+- BT-6 `USD` (VAT accounting currency), BT-7 `2026-11-03`; BT-8 only in a
+  test variant, because BT-7 and BT-8 exclude each other (BR-CO-3)
+- Seller: BT-28 `Muster`, BT-30 `4000001123452` (scheme `0088`), BT-33
+  `Amtsgericht Berlin-Charlottenburg HRB 12345`, BT-36 `Hinterhaus`, BT-162
+  `Gebäude B`, BT-39 `Berlin`
+- Buyer: BT-45 `Beispiel`, BT-47 `4000001987658` (`0088`), BT-163 `Haus 2`,
+  BT-54 `Bayern`, contact BT-56 `Max Beispiel`, BT-57 `+49 89 7654321`,
+  BT-58 `max@beispiel.example`
+- Payee (BG-10): BT-59 `Factoring Nord GmbH`, BT-60 `4000001555559`
+  (`0088`), BT-61 `4000001666663` (`0088`)
+- Tax representative (BG-11): BT-62 `Steuer Vertretung GmbH`, BT-63
+  `DE987654321`, address `Steuerplatz 7`, `3. Etage`, `Zimmer 12`, `10115`,
+  `Berlin`, `Berlin`, `DE`
+- Delivery: BT-165 `Tor 3`, BT-79 `Hamburg`
+- Payment: BT-82 `SEPA-Lastschrift`; card BT-87 `1234`, BT-88 `Max
+  Beispiel` (in the same payment means, CII-SR-467)
+- Line 1: BT-148 `130.00` with discount BT-147 `5.00`, net price `125.00`
+  per `1` `HUR` (BT-149, BT-150), BT-155 `BER-8`, BT-156 `K-100`, BT-157
+  `4000001000005` (`0160`), BT-158 `80101500` (`TST`), BT-159 `DE`, item
+  attributes `Ort` = `vor Ort`, `Stufe` = `Senior`; line allowance `20.00`
+  `Mengenrabatt` and line charge `20.00` `Expresszuschlag` (net amount stays
+  `1000.00`)
+- Line 2: category `E`, rate `0`
+- VAT breakdown: `S` 19 % on `960.00` = `182.40`; `E` on `50.00` = `0.00`
+  with BT-120 `Steuerbefreit nach § 4 Nr. 21 UStG` and BT-121
+  `VATEX-EU-132-1I`
+- Totals: BT-109 `1010.00`, BT-110 `182.40`, BT-111 `197.00` (USD), BT-112
+  and BT-115 `1192.40`
+- Accepted by the KoSIT validator 1.6.3 (EN 16931 scenario) without any
+  message, CII and UBL
 
 ## Sample L — `RE-2026-0500`, 500 lines
 

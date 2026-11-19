@@ -160,6 +160,15 @@ pub fn electronic_address(raw: &str, scheme: Option<&str>) -> String {
     }
 }
 
+/// Splits a UBL note into its subject code and text: `#AAI#Text` gives
+/// (`AAI`, `Text`); a note without a code gives (`None`, the note).
+pub fn note_parts(raw: &str) -> (Option<&str>, &str) {
+    raw.strip_prefix('#')
+        .and_then(|rest| rest.split_once('#'))
+        .filter(|(code, _)| !code.is_empty() && code.chars().all(|c| c.is_ascii_alphanumeric()))
+        .map_or((None, raw), |(code, text)| (Some(code), text))
+}
+
 /// Formats the specification identifier (BT-24) as the detected profile name.
 pub fn specification_identifier(raw: &str, detection: &Detection) -> String {
     let version = detection.profile_version.as_deref().unwrap_or_default();

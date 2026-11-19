@@ -224,8 +224,16 @@ enum Condition {
     NotChildText(&'static [Step], &'static str),
     /// An element is reached along the path.
     HasChild(&'static [Step]),
+    /// No element is reached along the path.
+    NotChild(&'static [Step]),
     /// The attribute is missing or has another value.
     NotAttribute(&'static str, &'static str),
+    /// The attribute equals the text of the element at the path from the
+    /// root element (e.g. a VAT amount in the VAT accounting currency BT-6).
+    AttributeIsTextAt(&'static str, &'static [Step]),
+    /// The attribute is missing, or differs from the text at the path from
+    /// the root element.
+    AttributeIsNotTextAt(&'static str, &'static [Step]),
 }
 
 impl Step {
@@ -280,7 +288,19 @@ impl Condition {
             Self::OtherChildText(path, value) => text_at(path).is_some_and(|text| text != value),
             Self::NotChildText(path, value) => text_at(path).is_none_or(|text| text != value),
             Self::HasChild(path) => !find_all(node, path).is_empty(),
+            Self::NotChild(path) => find_all(node, path).is_empty(),
             Self::NotAttribute(name, value) => node.attribute(name) != Some(value),
+            Self::AttributeIsTextAt(name, path) => {
+                let root = node.document().root_element();
+                let wanted = find_all(root, path)
+                    .first()
+                    .and_then(|element| element.text())
+                    .map(str::trim);
+                wanted.is_some() && node.attribute(name).map(str::trim) == wanted
+            }
+            Self::AttributeIsNotTextAt(name, path) => {
+                !Self::AttributeIsTextAt(name, path).holds(node)
+            }
         }
     }
 }
@@ -301,9 +321,15 @@ enum Format {
     PaymentMeans,
     VatCategory,
     SpecificationIdentifier,
-    /// An electronic address with its scheme from the `schemeID` attribute
-    /// (BT-34, BT-49).
-    ElectronicAddress,
+    /// A value with its scheme from the named attribute, e.g. `schemeID`
+    /// for electronic addresses (BT-34) or `listID` for classifications.
+    Scheme(&'static str),
+    /// An amount in the currency of its own `currencyID` attribute (BT-111).
+    OwnCurrencyAmount,
+    /// The subject code of a UBL note written as `#AAI#text` (BT-21).
+    NoteSubject,
+    /// The text of a UBL note without a leading `#code#` (BT-22).
+    NoteText,
 }
 
 /// A business term: its number and German label.
@@ -331,6 +357,12 @@ struct FieldDef {
     /// The path starts at the root element instead of the section anchor
     /// (e.g. UBL BT-110, which is outside the monetary total).
     absolute: bool,
+    /// The path selects group elements (e.g. each note); these fields are
+    /// mapped for each of them in turn, relative to it.
+    group: Option<&'static [FieldDef]>,
+    /// The label is the text at this path (relative to the anchor or group
+    /// element) instead of the term's label (item attributes, BG-32).
+    label_from: Option<&'static [Step]>,
 }
 
 /// A field with the first value found at `path`.
@@ -342,6 +374,8 @@ const fn field(term: Term, path: &'static [Step], format: Format) -> FieldDef {
         repeatable: false,
         attribute: None,
         absolute: false,
+        group: None,
+        label_from: None,
     }
 }
 
@@ -370,6 +404,25 @@ const fn absolute(term: Term, path: &'static [Step], format: Format) -> FieldDef
     }
 }
 
+/// The fields `fields` for each element at `path`, in document order (e.g.
+/// subject code and text of each note, BT-21 and BT-22).
+const fn group(path: &'static [Step], fields: &'static [FieldDef]) -> FieldDef {
+    FieldDef {
+        repeatable: true,
+        group: Some(fields),
+        ..field(Term { id: "", label: "" }, path, Format::Text)
+    }
+}
+
+/// A field whose label is the text at `name` (relative to the anchor or
+/// group element), e.g. an item attribute (BT-160 name, BT-161 value).
+const fn named(term: Term, path: &'static [Step], name: &'static [Step]) -> FieldDef {
+    FieldDef {
+        label_from: Some(name),
+        ..field(term, path, Format::Text)
+    }
+}
+
 /// A section and the element(s) it is anchored at.
 struct SectionDef {
     title: &'static str,
@@ -382,6 +435,9 @@ struct SectionDef {
     /// Element whose text is appended to the title (e.g. the line ID).
     title_suffix: Option<&'static [Step]>,
     fields: &'static [FieldDef],
+    /// Sections inside each section of this kind, placed directly after it
+    /// and titled with it (e.g. allowances of an invoice line, BG-27).
+    children: &'static [SectionDef],
 }
 
 /// Document-wide information needed to display values.
@@ -403,9 +459,9 @@ fn map_section(root: Node, def: &SectionDef, context: &Context) -> Vec<Section> 
     if !def.repeatable {
         anchors.truncate(1);
     }
-    anchors
-        .into_iter()
-        .map(|anchor| Section {
+    let mut sections = Vec::new();
+    for anchor in anchors {
+        let section = Section {
             title: section_title(anchor, def, context.language),
             location: context.locations.of(anchor).to_string(),
             repeated: def.repeatable,
@@ -414,9 +470,22 @@ fn map_section(root: Node, def: &SectionDef, context: &Context) -> Vec<Section> 
                 .iter()
                 .flat_map(|field| map_field(anchor, field, context))
                 .collect(),
-        })
-        .filter(|section| !section.fields.is_empty())
-        .collect()
+        };
+        let children: Vec<Section> = def
+            .children
+            .iter()
+            .flat_map(|child| map_section(anchor, child, context))
+            .map(|child| Section {
+                title: format!("{} – {}", section.title, child.title),
+                ..child
+            })
+            .collect();
+        if !section.fields.is_empty() {
+            sections.push(section);
+        }
+        sections.extend(children);
+    }
+    sections
 }
 
 fn section_title(anchor: Node, def: &SectionDef, language: Language) -> String {
@@ -438,6 +507,26 @@ fn map_field(anchor: Node, def: &FieldDef, context: &Context) -> Vec<Field> {
     if !def.repeatable {
         nodes.truncate(1);
     }
+    if let Some(fields) = def.group {
+        return nodes
+            .into_iter()
+            .flat_map(|node| {
+                fields
+                    .iter()
+                    .flat_map(move |field| map_field(node, field, context))
+            })
+            .collect();
+    }
+    let label = def
+        .label_from
+        .and_then(|path| find_all(anchor, path).first().copied())
+        .and_then(|name| name.text())
+        .map(str::trim)
+        .filter(|name| !name.is_empty())
+        .map_or_else(
+            || tr(context.language, def.term.label).to_string(),
+            str::to_string,
+        );
     nodes
         .into_iter()
         .filter(|node| def.attribute.is_none_or(|name| node.has_attribute(name)))
@@ -449,13 +538,15 @@ fn map_field(anchor: Node, def: &FieldDef, context: &Context) -> Vec<Field> {
             .to_string();
             Field {
                 id: def.term.id.to_string(),
-                label: tr(context.language, def.term.label).to_string(),
+                label: label.clone(),
                 display: display_value(&raw, node, def.format, context),
                 location: context.locations.of(node).to_string(),
                 attribute: def.attribute.map(str::to_string),
                 raw,
             }
         })
+        // A UBL note without a `#code#` has no subject code (BT-21).
+        .filter(|field| !(matches!(def.format, Format::NoteSubject) && field.display.is_empty()))
         .collect()
 }
 
@@ -474,7 +565,10 @@ fn display_value(raw: &str, node: Node, format: Format, context: &Context) -> St
         Format::SpecificationIdentifier => {
             display::specification_identifier(raw, context.detection)
         }
-        Format::ElectronicAddress => display::electronic_address(raw, node.attribute("schemeID")),
+        Format::Scheme(attribute) => display::electronic_address(raw, node.attribute(attribute)),
+        Format::OwnCurrencyAmount => display::amount(raw, node.attribute("currencyID"), language),
+        Format::NoteSubject => display::note_parts(raw).0.unwrap_or_default().to_string(),
+        Format::NoteText => display::note_parts(raw).1.to_string(),
     }
 }
 

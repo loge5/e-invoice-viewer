@@ -3,7 +3,7 @@
 use super::terms::*;
 use super::{
     Condition, Format, SectionDef, Step, SupportingDocumentsDef, SyntaxDef, absolute, field,
-    from_attribute, repeatable,
+    from_attribute, group, named, repeatable,
 };
 use crate::ns::{QDT, RAM, RSM, UDT};
 
@@ -74,6 +74,7 @@ const HEADER_SECTIONS: &[SectionDef] = &[
         anchor: &[],
         repeatable: false,
         fallback: None,
+        children: &[],
         title_suffix: None,
         fields: &[
             field(BT_1, &[rsm("ExchangedDocument"), ram("ID")], Format::Text),
@@ -92,6 +93,28 @@ const HEADER_SECTIONS: &[SectionDef] = &[
                 Format::InvoiceType,
             ),
             field(BT_5, CURRENCY_PATH, Format::Text),
+            field(BT_6, &TAX_CURRENCY, Format::Text),
+            field(
+                BT_7,
+                &[
+                    SETTLEMENT[0],
+                    SETTLEMENT[1],
+                    ram("ApplicableTradeTax"),
+                    ram("TaxPointDate"),
+                    udt("DateString"),
+                ],
+                Format::Date,
+            ),
+            field(
+                BT_8,
+                &[
+                    SETTLEMENT[0],
+                    SETTLEMENT[1],
+                    ram("ApplicableTradeTax"),
+                    ram("DueDateTypeCode"),
+                ],
+                Format::Text,
+            ),
             field(
                 BT_9,
                 &[
@@ -205,6 +228,15 @@ const HEADER_SECTIONS: &[SectionDef] = &[
                 Format::Text,
             ),
             field(
+                BT_23,
+                &[
+                    rsm("ExchangedDocumentContext"),
+                    ram("BusinessProcessSpecifiedDocumentContextParameter"),
+                    ram("ID"),
+                ],
+                Format::Text,
+            ),
+            field(
                 BT_24,
                 &[
                     rsm("ExchangedDocumentContext"),
@@ -213,14 +245,13 @@ const HEADER_SECTIONS: &[SectionDef] = &[
                 ],
                 Format::SpecificationIdentifier,
             ),
-            repeatable(
-                BT_22,
+            // Each note with its subject code (BT-21) before its text (BT-22).
+            group(
+                &[rsm("ExchangedDocument"), ram("IncludedNote")],
                 &[
-                    rsm("ExchangedDocument"),
-                    ram("IncludedNote"),
-                    ram("Content"),
+                    field(BT_21, &[ram("SubjectCode")], Format::Text),
+                    field(BT_22, &[ram("Content")], Format::Text),
                 ],
-                Format::Text,
             ),
         ],
     },
@@ -232,6 +263,7 @@ const HEADER_SECTIONS: &[SectionDef] = &[
             ram("InvoiceReferencedDocument"),
         ],
         fallback: None,
+        children: &[],
         repeatable: true,
         title_suffix: None,
         fields: &[
@@ -255,10 +287,13 @@ const HEADER_SECTIONS: &[SectionDef] = &[
         ],
         repeatable: false,
         fallback: None,
+        children: &[],
         title_suffix: None,
         fields: &[
             field(BT_27, &[ram("Name")], Format::Text),
+            field(BT_28, &[LEGAL, ram("TradingBusinessName")], Format::Text),
             field(BT_29, &[ram("ID")], Format::Text),
+            field(BT_30, &[LEGAL, ram("ID")], Format::Scheme("schemeID")),
             field(
                 BT_31,
                 &[TAX_REGISTRATION, ram("ID").with_attribute("schemeID", "VA")],
@@ -269,15 +304,18 @@ const HEADER_SECTIONS: &[SectionDef] = &[
                 &[TAX_REGISTRATION, ram("ID").with_attribute("schemeID", "FC")],
                 Format::Text,
             ),
+            field(BT_33, &[ram("Description")], Format::Text),
             field(
                 BT_34,
                 &[ram("URIUniversalCommunication"), ram("URIID")],
-                Format::ElectronicAddress,
+                Format::Scheme("schemeID"),
             ),
             field(BT_35, &[ADDRESS, ram("LineOne")], Format::Text),
             field(BT_36, &[ADDRESS, ram("LineTwo")], Format::Text),
+            field(BT_162, &[ADDRESS, ram("LineThree")], Format::Text),
             field(BT_38, &[ADDRESS, ram("PostcodeCode")], Format::Text),
             field(BT_37, &[ADDRESS, ram("CityName")], Format::Text),
+            field(BT_39, &[ADDRESS, SUBDIVISION], Format::Text),
             field(BT_40, &[ADDRESS, ram("CountryID")], Format::Text),
             field(
                 BT_41,
@@ -313,10 +351,13 @@ const HEADER_SECTIONS: &[SectionDef] = &[
         ],
         repeatable: false,
         fallback: None,
+        children: &[],
         title_suffix: None,
         fields: &[
             field(BT_44, &[ram("Name")], Format::Text),
+            field(BT_45, &[LEGAL, ram("TradingBusinessName")], Format::Text),
             field(BT_46, &[ram("ID")], Format::Text),
+            field(BT_47, &[LEGAL, ram("ID")], Format::Scheme("schemeID")),
             field(
                 BT_48,
                 &[TAX_REGISTRATION, ram("ID").with_attribute("schemeID", "VA")],
@@ -325,19 +366,78 @@ const HEADER_SECTIONS: &[SectionDef] = &[
             field(
                 BT_49,
                 &[ram("URIUniversalCommunication"), ram("URIID")],
-                Format::ElectronicAddress,
+                Format::Scheme("schemeID"),
             ),
             field(BT_50, &[ADDRESS, ram("LineOne")], Format::Text),
             field(BT_51, &[ADDRESS, ram("LineTwo")], Format::Text),
+            field(BT_163, &[ADDRESS, ram("LineThree")], Format::Text),
             field(BT_53, &[ADDRESS, ram("PostcodeCode")], Format::Text),
             field(BT_52, &[ADDRESS, ram("CityName")], Format::Text),
+            field(BT_54, &[ADDRESS, SUBDIVISION], Format::Text),
             field(BT_55, &[ADDRESS, ram("CountryID")], Format::Text),
+            field(BT_56, &[CONTACT, ram("PersonName")], Format::Text),
+            field(
+                BT_57,
+                &[
+                    CONTACT,
+                    ram("TelephoneUniversalCommunication"),
+                    ram("CompleteNumber"),
+                ],
+                Format::Text,
+            ),
+            field(
+                BT_58,
+                &[CONTACT, ram("EmailURIUniversalCommunication"), ram("URIID")],
+                Format::Text,
+            ),
+        ],
+    },
+    SectionDef {
+        title: PAYEE,
+        anchor: &[SETTLEMENT[0], SETTLEMENT[1], ram("PayeeTradeParty")],
+        repeatable: false,
+        fallback: None,
+        children: &[],
+        title_suffix: None,
+        fields: &[
+            field(BT_59, &[ram("Name")], Format::Text),
+            field(BT_60, &[ram("ID")], Format::Text),
+            field(BT_60, &[ram("GlobalID")], Format::Scheme("schemeID")),
+            field(BT_61, &[LEGAL, ram("ID")], Format::Scheme("schemeID")),
+        ],
+    },
+    SectionDef {
+        title: TAX_REPRESENTATIVE,
+        anchor: &[
+            AGREEMENT[0],
+            AGREEMENT[1],
+            ram("SellerTaxRepresentativeTradeParty"),
+        ],
+        repeatable: false,
+        fallback: None,
+        children: &[],
+        title_suffix: None,
+        fields: &[
+            field(BT_62, &[ram("Name")], Format::Text),
+            field(
+                BT_63,
+                &[TAX_REGISTRATION, ram("ID").with_attribute("schemeID", "VA")],
+                Format::Text,
+            ),
+            field(BT_64, &[ADDRESS, ram("LineOne")], Format::Text),
+            field(BT_65, &[ADDRESS, ram("LineTwo")], Format::Text),
+            field(BT_164, &[ADDRESS, ram("LineThree")], Format::Text),
+            field(BT_67, &[ADDRESS, ram("PostcodeCode")], Format::Text),
+            field(BT_66, &[ADDRESS, ram("CityName")], Format::Text),
+            field(BT_68, &[ADDRESS, SUBDIVISION], Format::Text),
+            field(BT_69, &[ADDRESS, ram("CountryID")], Format::Text),
         ],
     },
     SectionDef {
         title: DELIVERY,
         anchor: &HEADER_DELIVERY,
         fallback: None,
+        children: &[],
         repeatable: false,
         title_suffix: None,
         fields: &[
@@ -378,18 +478,25 @@ const HEADER_SECTIONS: &[SectionDef] = &[
             ),
             field(BT_75, &[SHIP_TO, ADDRESS, ram("LineOne")], Format::Text),
             field(BT_76, &[SHIP_TO, ADDRESS, ram("LineTwo")], Format::Text),
+            field(BT_165, &[SHIP_TO, ADDRESS, ram("LineThree")], Format::Text),
             field(
                 BT_78,
                 &[SHIP_TO, ADDRESS, ram("PostcodeCode")],
                 Format::Text,
             ),
             field(BT_77, &[SHIP_TO, ADDRESS, ram("CityName")], Format::Text),
+            field(BT_79, &[SHIP_TO, ADDRESS, SUBDIVISION], Format::Text),
             field(BT_80, &[SHIP_TO, ADDRESS, ram("CountryID")], Format::Text),
         ],
     },
 ];
 
 const SHIP_TO: Step = ram("ShipToTradeParty");
+const LEGAL: Step = ram("SpecifiedLegalOrganization");
+const CONTACT: Step = ram("DefinedTradeContact");
+const SUBDIVISION: Step = ram("CountrySubDivisionName");
+/// Path from the root to the VAT accounting currency (BT-6).
+const TAX_CURRENCY: [Step; 3] = [SETTLEMENT[0], SETTLEMENT[1], ram("TaxCurrencyCode")];
 const PERIOD: Step = ram("BillingSpecifiedPeriod");
 
 const LINE_DOCUMENT: Step = ram("AssociatedDocumentLineDocument");
@@ -399,6 +506,50 @@ const NET_PRICE: [Step; 2] = [
     ram("NetPriceProductTradePrice"),
 ];
 const LINE_SETTLEMENT: Step = ram("SpecifiedLineTradeSettlement");
+const GROSS_PRICE: [Step; 2] = [
+    ram("SpecifiedLineTradeAgreement"),
+    ram("GrossPriceProductTradePrice"),
+];
+
+/// Allowances (BG-27) and charges (BG-28) of an invoice line, after it.
+const LINE_CHILDREN: &[SectionDef] = &[
+    SectionDef {
+        title: LINE_ALLOWANCE,
+        anchor: &[
+            LINE_SETTLEMENT,
+            ALLOWANCE_CHARGE.with(Condition::ChildText(CHARGE_INDICATOR, "false")),
+        ],
+        repeatable: true,
+        fallback: None,
+        children: &[],
+        title_suffix: None,
+        fields: &[
+            field(BT_136, &[ram("ActualAmount")], Format::Amount),
+            field(BT_137, &[ram("BasisAmount")], Format::Amount),
+            field(BT_138, &[ram("CalculationPercent")], Format::Text),
+            field(BT_139, &[ram("Reason")], Format::Text),
+            field(BT_140, &[ram("ReasonCode")], Format::Text),
+        ],
+    },
+    SectionDef {
+        title: LINE_CHARGE,
+        anchor: &[
+            LINE_SETTLEMENT,
+            ALLOWANCE_CHARGE.with(Condition::ChildText(CHARGE_INDICATOR, "true")),
+        ],
+        repeatable: true,
+        fallback: None,
+        children: &[],
+        title_suffix: None,
+        fields: &[
+            field(BT_141, &[ram("ActualAmount")], Format::Amount),
+            field(BT_142, &[ram("BasisAmount")], Format::Amount),
+            field(BT_143, &[ram("CalculationPercent")], Format::Text),
+            field(BT_144, &[ram("Reason")], Format::Text),
+            field(BT_145, &[ram("ReasonCode")], Format::Text),
+        ],
+    },
+];
 const BILLED_QUANTITY: [Step; 2] = [ram("SpecifiedLineTradeDelivery"), ram("BilledQuantity")];
 
 /// One section per invoice line (BG-25), between buyer and payment (0005).
@@ -410,6 +561,7 @@ const LINE_SECTIONS: &[SectionDef] = &[SectionDef {
     ],
     repeatable: true,
     fallback: None,
+    children: LINE_CHILDREN,
     title_suffix: Some(&[LINE_DOCUMENT, ram("LineID")]),
     fields: &[
         field(BT_126, &[LINE_DOCUMENT, ram("LineID")], Format::Text),
@@ -421,8 +573,43 @@ const LINE_SECTIONS: &[SectionDef] = &[SectionDef {
         field(BT_153, &[PRODUCT, ram("Name")], Format::Text),
         field(BT_154, &[PRODUCT, ram("Description")], Format::Text),
         field(BT_155, &[PRODUCT, ram("SellerAssignedID")], Format::Text),
+        field(BT_156, &[PRODUCT, ram("BuyerAssignedID")], Format::Text),
+        field(
+            BT_157,
+            &[PRODUCT, ram("GlobalID")],
+            Format::Scheme("schemeID"),
+        ),
+        repeatable(
+            BT_158,
+            &[
+                PRODUCT,
+                ram("DesignatedProductClassification"),
+                ram("ClassCode"),
+            ],
+            Format::Scheme("listID"),
+        ),
+        field(
+            BT_159,
+            &[PRODUCT, ram("OriginTradeCountry"), ram("ID")],
+            Format::Text,
+        ),
         field(BT_129, &BILLED_QUANTITY, Format::Quantity),
         from_attribute(BT_130, &BILLED_QUANTITY, "unitCode"),
+        field(
+            BT_148,
+            &[GROSS_PRICE[0], GROSS_PRICE[1], ram("ChargeAmount")],
+            Format::Amount,
+        ),
+        field(
+            BT_147,
+            &[
+                GROSS_PRICE[0],
+                GROSS_PRICE[1],
+                ram("AppliedTradeAllowanceCharge"),
+                ram("ActualAmount"),
+            ],
+            Format::Amount,
+        ),
         field(
             BT_146,
             &[NET_PRICE[0], NET_PRICE[1], ram("ChargeAmount")],
@@ -432,6 +619,11 @@ const LINE_SECTIONS: &[SectionDef] = &[SectionDef {
             BT_149,
             &[NET_PRICE[0], NET_PRICE[1], ram("BasisQuantity")],
             Format::Quantity,
+        ),
+        from_attribute(
+            BT_150,
+            &[NET_PRICE[0], NET_PRICE[1], ram("BasisQuantity")],
+            "unitCode",
         ),
         field(
             BT_131,
@@ -497,6 +689,12 @@ const LINE_SECTIONS: &[SectionDef] = &[SectionDef {
             &[LINE_SETTLEMENT, PERIOD, ram("EndDateTime"), DATE],
             Format::Date,
         ),
+        // Item attributes (BG-32): one field per attribute, labelled with its
+        // name (BT-160), showing its value (BT-161).
+        group(
+            &[PRODUCT, ram("ApplicableProductCharacteristic")],
+            &[named(BT_161, &[ram("Value")], &[ram("Description")])],
+        ),
     ],
 }];
 
@@ -507,12 +705,21 @@ const TRAILER_SECTIONS: &[SectionDef] = &[
         anchor: &[SETTLEMENT[0], SETTLEMENT[1]],
         repeatable: false,
         fallback: None,
+        children: &[],
         title_suffix: None,
         fields: &[
             field(
                 BT_81,
                 &[ram("SpecifiedTradeSettlementPaymentMeans"), ram("TypeCode")],
                 Format::PaymentMeans,
+            ),
+            field(
+                BT_82,
+                &[
+                    ram("SpecifiedTradeSettlementPaymentMeans"),
+                    ram("Information"),
+                ],
+                Format::Text,
             ),
             field(BT_83, &[ram("PaymentReference")], Format::Text),
             field(
@@ -539,6 +746,24 @@ const TRAILER_SECTIONS: &[SectionDef] = &[
                     ram("SpecifiedTradeSettlementPaymentMeans"),
                     ram("PayeeSpecifiedCreditorFinancialInstitution"),
                     ram("BICID"),
+                ],
+                Format::Text,
+            ),
+            field(
+                BT_87,
+                &[
+                    ram("SpecifiedTradeSettlementPaymentMeans"),
+                    ram("ApplicableTradeSettlementFinancialCard"),
+                    ram("ID"),
+                ],
+                Format::Text,
+            ),
+            field(
+                BT_88,
+                &[
+                    ram("SpecifiedTradeSettlementPaymentMeans"),
+                    ram("ApplicableTradeSettlementFinancialCard"),
+                    ram("CardholderName"),
                 ],
                 Format::Text,
             ),
@@ -575,6 +800,7 @@ const TRAILER_SECTIONS: &[SectionDef] = &[
             ALLOWANCE_CHARGE.with(Condition::ChildText(CHARGE_INDICATOR, "false")),
         ],
         fallback: None,
+        children: &[],
         repeatable: true,
         title_suffix: None,
         fields: &[
@@ -603,6 +829,7 @@ const TRAILER_SECTIONS: &[SectionDef] = &[
             ALLOWANCE_CHARGE.with(Condition::ChildText(CHARGE_INDICATOR, "true")),
         ],
         fallback: None,
+        children: &[],
         repeatable: true,
         title_suffix: None,
         fields: &[
@@ -628,6 +855,7 @@ const TRAILER_SECTIONS: &[SectionDef] = &[
         anchor: &[SETTLEMENT[0], SETTLEMENT[1], ram("ApplicableTradeTax")],
         repeatable: true,
         fallback: None,
+        children: &[],
         title_suffix: None,
         fields: &[
             field(BT_116, &[ram("BasisAmount")], Format::Amount),
@@ -635,6 +863,7 @@ const TRAILER_SECTIONS: &[SectionDef] = &[
             field(BT_118, &[ram("CategoryCode")], Format::VatCategory),
             field(BT_119, &[ram("RateApplicablePercent")], Format::Text),
             field(BT_120, &[ram("ExemptionReason")], Format::Text),
+            field(BT_121, &[ram("ExemptionReasonCode")], Format::Text),
         ],
     },
     SectionDef {
@@ -646,13 +875,27 @@ const TRAILER_SECTIONS: &[SectionDef] = &[
         ],
         repeatable: false,
         fallback: None,
+        children: &[],
         title_suffix: None,
         fields: &[
             field(BT_106, &[ram("LineTotalAmount")], Format::Amount),
             field(BT_107, &[ram("AllowanceTotalAmount")], Format::Amount),
             field(BT_108, &[ram("ChargeTotalAmount")], Format::Amount),
             field(BT_109, &[ram("TaxBasisTotalAmount")], Format::Amount),
-            field(BT_110, &[ram("TaxTotalAmount")], Format::Amount),
+            // In the invoice currency; the one in the VAT accounting currency
+            // (BT-6) is BT-111.
+            field(
+                BT_110,
+                &[ram("TaxTotalAmount")
+                    .with(Condition::AttributeIsNotTextAt("currencyID", &TAX_CURRENCY))],
+                Format::Amount,
+            ),
+            field(
+                BT_111,
+                &[ram("TaxTotalAmount")
+                    .with(Condition::AttributeIsTextAt("currencyID", &TAX_CURRENCY))],
+                Format::OwnCurrencyAmount,
+            ),
             field(BT_112, &[ram("GrandTotalAmount")], Format::Amount),
             field(BT_113, &[ram("TotalPrepaidAmount")], Format::Amount),
             field(BT_114, &[ram("RoundingAmount")], Format::Amount),
