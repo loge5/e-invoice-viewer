@@ -11,7 +11,16 @@ All notable changes for users of E-Invoice Viewer. The format follows
 - The invoice XML is checked against its XML schema (CII D16B, UBL 2.1) like
   the official KoSIT validator does: unknown or misplaced elements and wrong
   data types are reported as findings (rule `XSD`).
+- Every business term of EN 16931 is shown, including the payee, the seller's
+  tax representative, the buyer's contact, card payment, item attributes,
+  allowances and charges of each line, and the VAT total in the VAT
+  accounting currency.
 - Every push and pull request is tested on Linux and Windows.
+
+### Changed
+
+- XML nested more than 256 levels deep is refused with a message instead of
+  using up memory.
 
 ## [0.2.1] - 2026-11-19
 

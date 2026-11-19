@@ -35,10 +35,10 @@ should be usable without a mouse and with a screen reader (author,
 
 ## Acceptance criteria
 
-- [ ] An automated test walks the widget tree of a window showing sample C
+- [x] An automated test walks the widget tree of a window showing sample C
       and fails for an interactive widget without an accessible name or
       without being reachable by the keyboard (focusable).
-- [ ] A test checks the contrast of the app's own colours (CSS of
+- [x] A test checks the contrast of the app's own colours (CSS of
       `load_css`) in light and dark style against 4.5:1.
 - [ ] Manual check by the author with Orca: open sample C with the keyboard
       only, read the status line, move through the fields of `Lieferung
@@ -78,3 +78,30 @@ should be usable without a mouse and with a screen reader (author,
   the libadwaita backgrounds, light and dark, 4.5:1 (AC2).
 - P1 keyboard pass through AT-SPI in a container (Claude), findings fixed.
 - Manual: Orca, NVDA, 200 % text scaling (author) (AC3–AC5).
+
+## Progress
+
+- **Done**:
+  - `window::tests::every_control_is_named_and_focusable`: a window with
+    sample C, every visible interactive widget (buttons, menu buttons,
+    toggles, entries, activatable rows) must have a name (label, a label
+    inside, or the tooltip the app sets together with the accessible name)
+    and be focusable. GTK's own inner parts (window controls, the search
+    bar's close button, the toggle inside a menu button) are left out: GTK
+    names them for assistive technology itself, which the GTK API cannot
+    read; the screen reader checks cover them. Runs when `EIV_GUI_TESTS` is
+    set: in the CI Linux job under `xvfb-run`, locally on a private
+    Broadway display (`gtk4-broadwayd`), never on the user's desktop.
+  - `contrast_tests::highlighted_field_text_has_enough_contrast`: the only
+    own text background (the highlighted field) against the libadwaita
+    1.5 colours, light and dark.
+- **Verified** (2026-11-19): both tests pass; the tree test found nothing
+  apart from the GTK-internal parts named above.
+- **Not done by Claude**: the keyboard pass through AT-SPI (P1). Driving the
+  window through AT-SPI needs an accessibility bus and a display; on this
+  machine that would be the author's desktop session. The keyboard-only
+  path is part of the author's manual checks (AC3, AC4) instead.
+- **Next**: manual checks by the author: Orca (AC3), NVDA in the Windows VM
+  (AC4), 200 % text scaling (AC5); problems found are fixed afterwards
+  (AC6).
+
