@@ -10,6 +10,7 @@ appear right next to the field they concern. Nothing leaves your machine.
 ![E-Invoice Viewer showing a ZUGFeRD invoice: the PDF on the left, the invoice fields grouped by section on the right](docs/screenshot.png)
 
 <p align="center">
+  <a href="https://github.com/loge5/e-invoice-viewer/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/loge5/e-invoice-viewer/actions/workflows/ci.yml/badge.svg"></a>
   <img alt="Licence: GPL-3.0-or-later" src="https://img.shields.io/badge/licence-GPL--3.0--or--later-blue">
   <img alt="Rust 1.92+" src="https://img.shields.io/badge/rust-1.92%2B-orange">
   <img alt="GTK4 + libadwaita" src="https://img.shields.io/badge/GTK4-libadwaita-4a86cf">

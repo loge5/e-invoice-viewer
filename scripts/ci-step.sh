@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# Runs a build step in the release workflow and, if it fails, reports the
+# Runs a build step in a workflow (CI or release) and, if it fails, reports the
 # last lines of its output as a workflow annotation, which can be read
-# without signing in to GitHub (spec 0022).
+# without signing in to GitHub (specs 0022, 0026).
 #
-#   scripts/windows/ci-step.sh <title> <command> [args…]
+#   scripts/ci-step.sh <title> <command> [args…]
 set -uo pipefail
 
 title=$1

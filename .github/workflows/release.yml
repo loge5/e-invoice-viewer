@@ -61,11 +61,11 @@ jobs:
       - name: Run the tests
         run: |
           rustc --version
-          scripts/windows/ci-step.sh Tests cargo test --workspace --locked --no-fail-fast
+          scripts/ci-step.sh Tests cargo test --workspace --locked --no-fail-fast
       - name: Build and bundle
         run: |
-          scripts/windows/ci-step.sh Build cargo build --release --locked -p e-invoice-viewer
-          scripts/windows/ci-step.sh Bundle scripts/windows/bundle.sh
+          scripts/ci-step.sh Build cargo build --release --locked -p e-invoice-viewer
+          scripts/ci-step.sh Bundle scripts/windows/bundle.sh
       - name: Build the installer
         shell: pwsh
         run: |

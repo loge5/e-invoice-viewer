@@ -405,3 +405,53 @@ fn installer_is_per_user_and_never_default() {
         );
     }
 }
+
+// 0026 AC4
+#[test]
+fn ci_workflow_checks_every_push() {
+    let workflow = read(".github/workflows/ci.yml");
+    assert!(workflow.contains("on:\n  push:\n  pull_request:\n"));
+    assert!(workflow.contains("permissions:\n  contents: read\n"));
+    assert!(!workflow.contains("contents: write"));
+    for action in workflow
+        .lines()
+        .filter_map(|line| line.trim().strip_prefix("- uses: "))
+    {
+        let (name, rest) = action.split_once('@').expect("pinned");
+        let hash = rest.split_whitespace().next().expect("hash");
+        assert!(
+            name.starts_with("actions/") || name == "msys2/setup-msys2",
+            "{name}"
+        );
+        assert!(
+            hash.len() == 40 && hash.chars().all(|c| c.is_ascii_hexdigit()),
+            "{action}"
+        );
+    }
+    let linux = job(&workflow, "linux");
+    for step in [
+        "cargo fmt --all --check",
+        "cargo clippy --workspace --all-targets --locked -- -D warnings",
+        "cargo test --workspace --locked",
+        "cargo tree -p e-invoice-viewer-core -e normal",
+        "desktop-file-utils appstream",
+        "actions/cache@",
+    ] {
+        assert!(linux.contains(step), "linux job: {step}");
+    }
+    let windows = job(&workflow, "windows");
+    for step in [
+        "msystem: UCRT64",
+        "cargo test --workspace --locked",
+        "actions/cache@",
+    ] {
+        assert!(windows.contains(step), "windows job: {step}");
+    }
+    assert!(workflow.matches("scripts/ci-step.sh").count() >= 4);
+}
+
+// 0026 AC5
+#[test]
+fn readme_shows_ci_badge() {
+    assert!(read("README.md").contains("actions/workflows/ci.yml/badge.svg"));
+}
