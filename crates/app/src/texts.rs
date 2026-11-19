@@ -166,10 +166,18 @@ pub fn status_text(state: &ValidationState) -> String {
         ValidationState::Failed(reason) => {
             tr_fill("Validation failed: {reason}", &[("reason", reason)])
         }
-        ValidationState::Done(validation) => match &validation.not_applicable_reason {
-            Some(reason) => reason.clone(),
-            None => headline(validation.findings.iter().map(|finding| finding.severity)),
-        },
+        ValidationState::Done(validation) => {
+            let headline = || headline(validation.findings.iter().map(|finding| finding.severity));
+            match &validation.not_applicable_reason {
+                // Schema errors of a Minimum invoice are counted, and the
+                // reason stays visible (spec 0023).
+                Some(reason) if !validation.findings.is_empty() => {
+                    format!("{} – {reason}", headline())
+                }
+                Some(reason) => reason.clone(),
+                None => headline(),
+            }
+        }
     }
 }
 
@@ -891,6 +899,48 @@ mod tests {
                 "Checked against EN 16931 CII 1.3.17 and XRechnung 3.0.2"
             )
         );
+    }
+
+    // Spec 0023 AC1, AC9: the schema in the rule set line, from a real
+    // validation; Minimum schema errors are counted in the status line.
+    #[test]
+    fn schema_in_rule_set_line_and_status() {
+        use e_invoice_viewer_core::validate::Validator;
+        let fixtures = Path::new(env!("CARGO_MANIFEST_DIR")).join("../core/tests/fixtures");
+        let sample_a = std::fs::read(fixtures.join("cii/sample-a.xml")).expect("sample A");
+        assert_eq!(
+            both(|| {
+                let validation = Validator::new()
+                    .validate(&sample_a, language())
+                    .expect("validation");
+                rule_sets_text(&validation).expect("rule sets")
+            }),
+            pair(
+                "Geprüft nach XML-Schema CII D16B und EN 16931 CII 1.3.17",
+                "Checked against XML schema CII D16B and EN 16931 CII 1.3.17"
+            )
+        );
+
+        let minimum_with_error = Validation {
+            applied_rule_sets: vec!["XML schema CII D16B".into()],
+            not_applicable_reason: Some(
+                "Profile Minimum: not a complete invoice according to EN 16931".into(),
+            ),
+            findings: vec![Finding {
+                rule_id: "XSD".into(),
+                severity: Severity::Error,
+                message: String::new(),
+                location: "/rsm:CrossIndustryInvoice".into(),
+                business_terms: Vec::new(),
+            }],
+            ..Validation::default()
+        };
+        set_language(Language::English);
+        assert_eq!(
+            status_text(&ValidationState::Done(minimum_with_error)),
+            "1 error – Profile Minimum: not a complete invoice according to EN 16931"
+        );
+        set_language(Language::German);
     }
 
     // Spec 0018 AC4

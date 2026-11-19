@@ -1,11 +1,13 @@
-//! Validation against the official EN 16931 business rules (spec 0009) and,
-//! for XRechnung invoices, the XRechnung CIUS rules (spec 0010).
+//! Validation against the XML schema (spec 0023), the official EN 16931
+//! business rules (spec 0009) and, for XRechnung invoices, the XRechnung
+//! CIUS rules (spec 0010).
 //!
 //! The rules are the unchanged official Schematron artefacts in `rules/`,
 //! evaluated with an XPath 3.1 engine (ADR 0002).
 
 mod scenarios;
 mod schematron;
+mod xsd;
 
 use std::cell::OnceCell;
 
@@ -114,13 +116,17 @@ impl Validator {
     /// notes are in `language`; rule messages stay as published (spec 0017).
     pub fn validate(&self, xml: &[u8], language: Language) -> Result<Validation, DetectError> {
         let detection = detect(xml)?;
+        let text = decode(xml)?;
+        let (schema, schema_findings) = schema_check(&text, detection.syntax);
+        let schema_rule_set = tr(language, "XML schema {name}").replace("{name}", schema.name());
         if let Some(reason) = not_applicable_reason(detection.profile, language) {
             return Ok(Validation {
+                applied_rule_sets: vec![schema_rule_set],
                 not_applicable_reason: Some(reason.to_string()),
-                ..Validation::default()
+                version_note: None,
+                findings: schema_findings,
             });
         }
-        let text = decode(xml)?;
         let mut documents = Documents::new();
         let Ok(document) = documents.add_string_without_uri(&text) else {
             // Detection parsed the invoice before; an engine that cannot load
@@ -138,11 +144,13 @@ impl Validator {
                 "UBL",
             ),
         };
+        let mut findings = schema_findings;
+        findings.extend(rules.evaluate(&mut documents, document));
         let mut validation = Validation {
-            applied_rule_sets: vec![format!("EN 16931 {syntax} {CEN_VERSION}")],
+            applied_rule_sets: vec![schema_rule_set, format!("EN 16931 {syntax} {CEN_VERSION}")],
             not_applicable_reason: None,
             version_note: None,
-            findings: rules.evaluate(&mut documents, document),
+            findings,
         };
 
         let Some(declared) = declared_xrechnung_version(&detection) else {
@@ -187,6 +195,63 @@ impl Validator {
         }
         Ok(validation)
     }
+}
+
+/// Checks the invoice against its XML schema (spec 0023): the schema used and
+/// its errors as findings, located at the element concerned.
+fn schema_check(text: &str, syntax: Syntax) -> (xsd::Schema, Vec<Finding>) {
+    let Ok(doc) = roxmltree::Document::parse(text) else {
+        // Detection parsed the invoice before.
+        return (xsd::Schema::Cii, Vec::new());
+    };
+    let root = doc.root_element();
+    let schema = match syntax {
+        Syntax::Cii => xsd::Schema::Cii,
+        Syntax::Ubl if root.tag_name().name() == "CreditNote" => xsd::Schema::UblCreditNote,
+        Syntax::Ubl => xsd::Schema::UblInvoice,
+    };
+    let prefixes = crate::fields::location_prefixes(syntax);
+    let locations = crate::location::Locations::new(&doc, prefixes);
+    let root_location = locations.of(root).to_string();
+    let findings = xsd::check(text, schema)
+        .into_iter()
+        .map(|error| {
+            let element = error.element.and_then(|positions| {
+                let (first, rest) = positions.split_first()?;
+                (*first == 0).then_some(())?;
+                rest.iter().try_fold(root, |node, position| {
+                    node.children()
+                        .filter(roxmltree::Node::is_element)
+                        .nth(*position)
+                })
+            });
+            Finding {
+                rule_id: SCHEMA_RULE_ID.to_string(),
+                severity: Severity::Error,
+                message: schema_message(&error.message, prefixes),
+                location: element.map_or_else(
+                    || root_location.clone(),
+                    |element| locations.of(element).to_string(),
+                ),
+                business_terms: Vec::new(),
+            }
+        })
+        .collect();
+    (schema, findings)
+}
+
+/// The rule ID of schema findings.
+pub const SCHEMA_RULE_ID: &str = "XSD";
+
+/// libxml2's message with namespace URIs replaced by the usual prefixes,
+/// e.g. `{urn:…:ReusableAggregateBusinessInformationEntity:100}Foo` →
+/// `ram:Foo`, and whitespace normalised.
+fn schema_message(message: &str, prefixes: &[(&str, &str)]) -> String {
+    let mut text = message.split_whitespace().collect::<Vec<_>>().join(" ");
+    for (prefix, namespace) in prefixes {
+        text = text.replace(&format!("{{{namespace}}}"), &format!("{prefix}:"));
+    }
+    text
 }
 
 /// The XRechnung version an invoice declares in BT-24, if the XRechnung

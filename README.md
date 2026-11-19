@@ -32,8 +32,8 @@ an online service and without uploading your business data anywhere.
   VAT breakdown, totals. Every value carries its business term
   number (`BT-1`, `BG-4`, …) and is formatted for humans (dates, amounts,
   IBANs, code lists).
-- **Validation built in.** Checks against the official EN 16931 business rules
-  and the XRechnung CIUS (`BR-DE-*`). Findings are shown at the affected field
+- **Validation built in.** Checks against the XML schema (CII D16B, UBL 2.1),
+  the official EN 16931 business rules and the XRechnung CIUS (`BR-DE-*`). Findings are shown at the affected field
   or section, with a summary of all errors, warnings and notes.
 - **Raw XML view.** The invoice XML, readably formatted, with search. Fields
   and XML are linked both ways: *Show in XML* jumps from a field or finding to
@@ -73,15 +73,19 @@ Invoices contain personal and business data. E-Invoice Viewer therefore:
 
 Profiles EN 16931 (Comfort), XRechnung, Basic and Extended are shown in full.
 Minimum and Basic WL are shown with a note that they are not complete
-invoices; the EN 16931 rules are not applied to them.
+invoices; they are checked against the XML schema, but the EN 16931 rules are
+not applied to them.
 
 ## Validation
 
-The app evaluates the **official, unmodified Schematron rules** with a
-pure-Rust XPath 3.1 engine ([xee](https://github.com/Paligo/xee)):
+The app first checks the invoice against its **XML schema** with libxml2
+([ADR 0006](docs/adr/0006-xml-schema-validation-libxml2.md)), then evaluates
+the **official, unmodified Schematron rules** with a pure-Rust XPath 3.1
+engine ([xee](https://github.com/Paligo/xee)):
 
 | Rule set | Version |
 |---|---|
+| XML schemas | UN/CEFACT CII D16B, OASIS UBL 2.1 |
 | CEN EN 16931 validation artefacts (CII and UBL) | 1.3.17 |
 | KoSIT XRechnung Schematron | 2.6.0 (XRechnung 3.0.2) |
 
@@ -155,22 +159,23 @@ documented local Windows build.
 ### 1. Install the build dependencies
 
 You need Rust 1.92 or newer ([rustup](https://rustup.rs)) and the development
-files of GTK 4.12+, libadwaita 1.5+, Poppler (GLib) and GtkSourceView 5, and
-GNU gettext for the translations.
+files of GTK 4.12+, libadwaita 1.5+, Poppler (GLib), GtkSourceView 5 and
+libxml2, GNU gettext for the translations, and libclang (Clang) to generate
+the libxml2 bindings.
 
 ```bash
 # Arch Linux
-sudo pacman -S --needed base-devel gettext gtk4 libadwaita poppler-glib gtksourceview5
+sudo pacman -S --needed base-devel clang gettext gtk4 libadwaita poppler-glib gtksourceview5 libxml2
 ```
 
 ```bash
 # Debian / Ubuntu (24.04 or newer)
-sudo apt install build-essential gettext libgtk-4-dev libadwaita-1-dev libpoppler-glib-dev libgtksourceview-5-dev
+sudo apt install build-essential gettext libclang-dev libgtk-4-dev libadwaita-1-dev libpoppler-glib-dev libgtksourceview-5-dev libxml2-dev
 ```
 
 ```bash
 # Fedora
-sudo dnf install gcc gettext gtk4-devel libadwaita-devel poppler-glib-devel gtksourceview5-devel
+sudo dnf install clang-devel gcc gettext gtk4-devel libadwaita-devel poppler-glib-devel gtksourceview5-devel libxml2-devel
 ```
 
 ### 2. Build and install
@@ -275,6 +280,9 @@ Bundled third-party material keeps its licence:
   ([`crates/core/rules/cen-1.3.17`](crates/core/rules/cen-1.3.17))
 - KoSIT XRechnung Schematron and validator configuration — Apache License 2.0
   ([`crates/core/rules`](crates/core/rules))
+- XML schemas UN/CEFACT CII D16B and OASIS UBL 2.1 — redistributed unchanged
+  under their copyright notices
+  ([`crates/core/rules/xsd-2026-08-31`](crates/core/rules/xsd-2026-08-31))
 - KoSIT test invoices — Apache License 2.0
   ([`crates/core/tests/fixtures/kosit`](crates/core/tests/fixtures/kosit))
 

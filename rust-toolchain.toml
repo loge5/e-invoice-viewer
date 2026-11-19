@@ -1,3 +1,6 @@
+# A fixed toolchain, so that new lints of a newer Clippy do not break the CI
+# unannounced (spec 0026); raise it deliberately. `rust-version` in
+# Cargo.toml stays the oldest supported compiler.
 [toolchain]
-channel = "stable"
+channel = "1.95.0"
 components = ["rustfmt", "clippy"]

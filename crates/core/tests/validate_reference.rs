@@ -245,3 +245,39 @@ fn every_location_is_found_in_the_xml_view() {
         }
     }
 }
+
+// Spec 0023 AC5: the app reports a schema error exactly where KoSIT does.
+#[test]
+fn schema_verdict_equals_kosit() {
+    use e_invoice_viewer_core::validate::SCHEMA_RULE_ID;
+    let has_schema_error = |validation: &Validation| {
+        validation
+            .findings
+            .iter()
+            .any(|finding| finding.rule_id == SCHEMA_RULE_ID)
+    };
+    let mut deviations: Vec<String> = checked()
+        .values()
+        .filter(|checked| has_schema_error(&checked.validation))
+        .map(|checked| format!("{}: schema error, KoSIT none", checked.key))
+        .collect();
+    let invalid: Vec<String> = fixture("kosit/expected-en16931.tsv")
+        .lines()
+        .filter_map(|line| line.strip_suffix("\t!xsd").map(str::to_string))
+        .collect();
+    assert!(
+        !invalid.is_empty(),
+        "the reference has schema-invalid invoices"
+    );
+    let validator = Validator::new();
+    for key in &invalid {
+        let xml = reference_xml(key);
+        let validation = validator
+            .validate(xml.as_bytes(), Language::German)
+            .expect("validation");
+        if !has_schema_error(&validation) {
+            deviations.push(format!("{key}: no schema error, KoSIT has one"));
+        }
+    }
+    assert!(deviations.is_empty(), "{deviations:#?}");
+}

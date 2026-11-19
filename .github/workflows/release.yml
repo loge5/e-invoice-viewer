@@ -51,7 +51,7 @@ jobs:
           msystem: UCRT64
           update: true
           pacboy: >-
-            gcc:p pkgconf:p rust:p
+            gcc:p pkgconf:p rust:p clang:p libxml2:p
             gtk4:p libadwaita:p poppler:p gtksourceview5:p
             librsvg:p adwaita-icon-theme:p gettext-tools:p ntldd:p
           install: zip

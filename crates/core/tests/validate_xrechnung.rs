@@ -4,8 +4,8 @@ mod common;
 
 use common::fixture;
 use common::validation::{
-    CII_RULES, UBL_RULES, XRECHNUNG_RULES, errors, findings_with, is_xrechnung_rule, validate,
-    variant,
+    CII_RULES, CII_SCHEMA, UBL_RULES, UBL_SCHEMA, XRECHNUNG_RULES, errors, findings_with,
+    is_xrechnung_rule, validate, variant,
 };
 use e_invoice_viewer_core::validate::{Finding, Severity};
 
@@ -15,7 +15,10 @@ fn sample_b_cii_has_no_errors() {
     let validation = validate(&fixture("cii/sample-b.xml"));
 
     assert_eq!(errors(&validation), Vec::<&Finding>::new());
-    assert_eq!(validation.applied_rule_sets, [CII_RULES, XRECHNUNG_RULES]);
+    assert_eq!(
+        validation.applied_rule_sets,
+        [CII_SCHEMA, CII_RULES, XRECHNUNG_RULES]
+    );
     assert_eq!(validation.version_note, None);
 }
 
@@ -56,7 +59,7 @@ fn sample_a_gets_no_xrechnung_rules() {
         .filter(|id| is_xrechnung_rule(id))
         .collect();
     assert_eq!(xrechnung, Vec::<&str>::new());
-    assert_eq!(validation.applied_rule_sets, [CII_RULES]);
+    assert_eq!(validation.applied_rule_sets, [CII_SCHEMA, CII_RULES]);
 }
 
 // AC5
@@ -65,7 +68,10 @@ fn sample_b_ubl_has_no_errors() {
     let validation = validate(&fixture("ubl/sample-b.xml"));
 
     assert_eq!(errors(&validation), Vec::<&Finding>::new());
-    assert_eq!(validation.applied_rule_sets, [UBL_RULES, XRECHNUNG_RULES]);
+    assert_eq!(
+        validation.applied_rule_sets,
+        [UBL_SCHEMA, UBL_RULES, XRECHNUNG_RULES]
+    );
 }
 
 // AC6
@@ -73,7 +79,10 @@ fn sample_b_ubl_has_no_errors() {
 fn declared_version_2_3_uses_bundled_rules() {
     let validation = validate(&variant("b-version-2-3.xml"));
 
-    assert_eq!(validation.applied_rule_sets, [CII_RULES, XRECHNUNG_RULES]);
+    assert_eq!(
+        validation.applied_rule_sets,
+        [CII_SCHEMA, CII_RULES, XRECHNUNG_RULES]
+    );
     assert_eq!(
         validation.version_note.as_deref(),
         Some("Geprüft nach XRechnung 3.0.2, Rechnung erklärt Version 2.3")
@@ -101,7 +110,10 @@ fn cii_sr_465_severity_follows_scenario() {
 #[test]
 fn extension_and_cvd_get_xrechnung_rules() {
     let extension = validate(&variant("b-extension.xml"));
-    assert_eq!(extension.applied_rule_sets, [CII_RULES, XRECHNUNG_RULES]);
+    assert_eq!(
+        extension.applied_rule_sets,
+        [CII_SCHEMA, CII_RULES, XRECHNUNG_RULES]
+    );
     assert_eq!(extension.version_note, None);
     assert_eq!(
         findings_with(&extension, "BR-DE-21"),
@@ -109,7 +121,10 @@ fn extension_and_cvd_get_xrechnung_rules() {
     );
 
     let cvd = validate(&variant("b-cvd.xml"));
-    assert_eq!(cvd.applied_rule_sets, [CII_RULES, XRECHNUNG_RULES]);
+    assert_eq!(
+        cvd.applied_rule_sets,
+        [CII_SCHEMA, CII_RULES, XRECHNUNG_RULES]
+    );
     assert_eq!(cvd.version_note, None);
     assert_eq!(
         findings_with(&cvd, "BR-DE-CVD-01").len(),

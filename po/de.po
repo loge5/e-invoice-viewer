@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: E-Invoice Viewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-19 06:18+0100\n"
+"POT-Creation-Date: 2026-11-19 09:44+0100\n"
 "PO-Revision-Date: 2026-11-18 00:00+0100\n"
 "Last-Translator: E-Invoice Viewer contributors\n"
 "Language-Team: German\n"
@@ -700,6 +700,10 @@ msgstr "Umsatzsteuer (BG-23)"
 
 msgid "Document totals (BG-22)"
 msgstr "Summen (BG-22)"
+
+#, rust-format
+msgid "XML schema {name}"
+msgstr "XML-Schema {name}"
 
 #, rust-format
 msgid ""

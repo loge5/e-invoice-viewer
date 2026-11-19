@@ -47,34 +47,34 @@ must report these errors (author, 2026-11-19; see
 
 Samples are defined in [fixtures.md](../docs/fixtures.md).
 
-- [ ] Given samples A, B and C (CII and UBL), then the validation has no
+- [x] Given samples A, B and C (CII and UBL), then the validation has no
       finding `XSD`, and the summary reads `Checked against XML schema CII
       D16B and EN 16931 CII 1.3.17` for CII sample A (UBL: `XML schema UBL
       2.1`).
-- [ ] Given CII sample A with an element `<ram:Foo>1</ram:Foo>` before
+- [x] Given CII sample A with an element `<ram:Foo>1</ram:Foo>` before
       `ram:TypeCode` in `rsm:ExchangedDocument`, then there is exactly one
       finding `XSD`, severity error, whose message contains `ram:Foo` and
       `ram:TypeCode`, and whose location is that of `ram:Foo`; the status
       line reads `1 error` and "Show in XML" selects the `ram:Foo` element.
-- [ ] Given CII sample A with BT-106 (`ram:LineTotalAmount` in the totals)
+- [x] Given CII sample A with BT-106 (`ram:LineTotalAmount` in the totals)
       `abc`, then there is a finding `XSD` at that element, attributed to the
       field BT-106 in `Summen (BG-22)`; the business rule findings about the
       totals appear as well.
-- [ ] Given UBL sample A without `cbc:ID` (BT-1) — the variant
+- [x] Given UBL sample A without `cbc:ID` (BT-1) — the variant
       `a-ubl-without-bt1.xml` — then there is a finding `XSD` naming
       `cbc:IssueDate` as unexpected (or `cbc:ID` as missing).
-- [ ] For every invoice of the KoSIT reference (370 invoices,
+- [x] For every invoice of the KoSIT reference (370 invoices,
       `expected-en16931.tsv`), the app reports a finding `XSD` exactly when
       KoSIT marks the invoice `!xsd`.
-- [ ] Given the Factur-X sample with profile Minimum (`a-minimum.xml`), the
+- [x] Given the Factur-X sample with profile Minimum (`a-minimum.xml`), the
       schema is checked, and the summary names the schema and the note of
       0009.
-- [ ] The finding messages contain no namespace URI in braces
+- [x] The finding messages contain no namespace URI in braces
       (`{urn:…}`), only prefixed names.
-- [ ] Opening sample L takes no longer than the limit of 0007, and its
+- [x] Opening sample L takes no longer than the limit of 0007, and its
       validation no longer than the limit of 0009 (checked with the
       existing timing tests).
-- [ ] German and English texts for the summary exist; the catalogue check
+- [x] German and English texts for the summary exist; the catalogue check
       (0017) passes.
 - [ ] The AppImage and the Windows build contain the check and the embedded
       schemas: opening `cii-bad.xml` (sample A with `ram:Foo`) in both shows
@@ -122,3 +122,37 @@ Samples are defined in [fixtures.md](../docs/fixtures.md).
   is off.
 - P1 smoke check of the AppImage in a container with `cii-bad.xml`; the
   Windows check is manual in the VM (AC10).
+
+## Progress
+
+- **Done**:
+  - `crates/core/src/validate/xsd.rs`: libxml2 through the bindings of the
+    crate `libxml`; the 19 schema files (`crates/core/rules/xsd-2026-08-31/`,
+    with `SOURCE.md`) embedded and served through input callbacks for the
+    scheme `eiv-schema:/`; compiled schemas cached per thread; errors with
+    the failing element, mapped to the location notation of 0011/0014.
+    The only `unsafe` code of `crates/core` (workspace lint `unsafe_code`
+    now `deny` instead of `forbid`, allowed in this module).
+  - `Validator::validate` runs the schema check first, for every profile;
+    findings with rule `XSD`; the rule set line starts with `XML schema CII
+    D16B` / `XML schema UBL 2.1` (German `XML-Schema …`).
+  - App: for Minimum/Basic WL with schema errors the status line shows the
+    counts and the reason (`1 error – Profile Minimum: …`).
+  - Build environments: libclang and libxml2 in the AppImage container, both
+    Windows jobs, the CI Linux job and the README.
+  - README (validation section, features, licences), `CHANGELOG.md`.
+- **Verified** (2026-11-19):
+  - `cargo test --workspace`: 236 passed; new: `validate_schema.rs`
+    (AC1–AC4, AC6, AC7), `schema_verdict_equals_kosit` in
+    `validate_reference.rs` (AC5: the app's schema verdict equals KoSIT's for
+    all 370 reference invoices), unit tests of the module (every schema
+    compiles; only embedded addresses are read; error positions), and
+    `schema_in_rule_set_line_and_status` in the app (AC1, AC9). The existing
+    timing tests for sample L pass (AC8).
+  - fmt, clippy, architecture check clean.
+  - AppImage built in the Ubuntu 24.04 container (libxml2 2.9.14): opening
+    `cii-bad.xml` in a clean Arch container shows `1 error` (screenshot).
+- **Next**: AC10 on Windows — the CI Windows job builds and tests with
+  libxml2; the manual check in the VM is collected with the other manual
+  checks.
+

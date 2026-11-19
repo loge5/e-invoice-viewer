@@ -22,7 +22,7 @@ jobs:
           sudo apt-get update -q
           sudo apt-get install -y -q --no-install-recommends \
             gettext libgtk-4-dev libadwaita-1-dev libpoppler-glib-dev \
-            libgtksourceview-5-dev desktop-file-utils appstream
+            libgtksourceview-5-dev libxml2-dev libclang-dev desktop-file-utils appstream
       - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: |
@@ -62,7 +62,7 @@ jobs:
           msystem: UCRT64
           update: true
           pacboy: >-
-            gcc:p pkgconf:p rust:p
+            gcc:p pkgconf:p rust:p clang:p libxml2:p
             gtk4:p libadwaita:p poppler:p gtksourceview5:p
             librsvg:p adwaita-icon-theme:p gettext-tools:p ntldd:p
       - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0

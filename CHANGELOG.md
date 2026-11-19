@@ -8,6 +8,9 @@ All notable changes for users of E-Invoice Viewer. The format follows
 
 ### Added
 
+- The invoice XML is checked against its XML schema (CII D16B, UBL 2.1) like
+  the official KoSIT validator does: unknown or misplaced elements and wrong
+  data types are reported as findings (rule `XSD`).
 - Every push and pull request is tested on Linux and Windows.
 
 ## [0.2.1] - 2026-11-19

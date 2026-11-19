@@ -13,6 +13,7 @@ e-invoice-viewer-core = { path = "crates/core" }
 thiserror = "2.0"
 lopdf = { version = "0.47", default-features = false }
 roxmltree = "0.21"
+libxml = "0.3.24"
 base64 = "0.22"
 gettext = "0.4"
 anyhow = "1.0"
@@ -29,4 +30,5 @@ xot = "=0.31.2"
 opt-level = 2
 
 [workspace.lints.rust]
-unsafe_code = "forbid"
+# `deny`, not `forbid`: the libxml2 module of crates/core allows it (ADR 0006).
+unsafe_code = "deny"

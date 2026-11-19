@@ -5,6 +5,9 @@ use e_invoice_viewer_core::validate::{Finding, Severity, Validation, Validator};
 
 use super::{fixture, replace_once};
 
+/// The schema check comes first (spec 0023); `validate` reports in German.
+pub const CII_SCHEMA: &str = "XML-Schema CII D16B";
+pub const UBL_SCHEMA: &str = "XML-Schema UBL 2.1";
 pub const CII_RULES: &str = "EN 16931 CII 1.3.17";
 pub const UBL_RULES: &str = "EN 16931 UBL 1.3.17";
 pub const XRECHNUNG_RULES: &str = "XRechnung 3.0.2";

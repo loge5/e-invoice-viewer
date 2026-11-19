@@ -4,7 +4,9 @@ mod common;
 
 use std::time::{Duration, Instant};
 
-use common::validation::{CII_RULES, UBL_RULES, errors, findings_with, validate, variant};
+use common::validation::{
+    CII_RULES, CII_SCHEMA, UBL_RULES, UBL_SCHEMA, errors, findings_with, validate, variant,
+};
 use common::{fixture, sample_l_cii, select};
 use e_invoice_viewer_core::detect::DetectError;
 use e_invoice_viewer_core::i18n::Language;
@@ -16,7 +18,7 @@ fn sample_a_cii_has_no_errors() {
     let validation = validate(&fixture("cii/sample-a.xml"));
 
     assert_eq!(errors(&validation), Vec::<&Finding>::new());
-    assert_eq!(validation.applied_rule_sets, [CII_RULES]);
+    assert_eq!(validation.applied_rule_sets, [CII_SCHEMA, CII_RULES]);
     assert_eq!(validation.not_applicable_reason, None);
 }
 
@@ -66,7 +68,7 @@ fn sample_a_ubl_has_no_errors() {
     let validation = validate(&fixture("ubl/sample-a.xml"));
 
     assert_eq!(errors(&validation), Vec::<&Finding>::new());
-    assert_eq!(validation.applied_rule_sets, [UBL_RULES]);
+    assert_eq!(validation.applied_rule_sets, [UBL_SCHEMA, UBL_RULES]);
 }
 
 // AC5
@@ -85,7 +87,7 @@ fn minimum_profile_is_not_applicable() {
     let validation = validate(&variant("a-minimum.xml"));
 
     assert_eq!(validation.findings, []);
-    assert_eq!(validation.applied_rule_sets, Vec::<String>::new());
+    assert_eq!(validation.applied_rule_sets, [CII_SCHEMA]);
     assert!(validation.not_applicable_reason.is_some());
 }
 
@@ -95,7 +97,7 @@ fn basic_wl_profile_is_not_applicable() {
     let validation = validate(&variant("a-basicwl.xml"));
 
     assert_eq!(validation.findings, []);
-    assert_eq!(validation.applied_rule_sets, Vec::<String>::new());
+    assert_eq!(validation.applied_rule_sets, [CII_SCHEMA]);
     assert!(validation.not_applicable_reason.is_some());
 }
 
@@ -105,7 +107,11 @@ fn rules_apply_for_extended_and_unknown_profiles() {
     for name in ["a-extended.xml", "a-unknown-profile.xml"] {
         let validation = validate(&variant(name));
 
-        assert_eq!(validation.applied_rule_sets, [CII_RULES], "{name}");
+        assert_eq!(
+            validation.applied_rule_sets,
+            [CII_SCHEMA, CII_RULES],
+            "{name}"
+        );
         assert_eq!(validation.not_applicable_reason, None, "{name}");
     }
 }

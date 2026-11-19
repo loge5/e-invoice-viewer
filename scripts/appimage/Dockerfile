@@ -16,6 +16,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends --allow-downgrades \
         ca-certificates curl file gettext build-essential pkg-config \
         libgtk-4-dev libadwaita-1-dev libpoppler-glib-dev libgtksourceview-5-dev \
+        libxml2-dev libclang-dev \
         librsvg2-common adwaita-icon-theme desktop-file-utils \
     && rm -rf /var/lib/apt/lists/*
 
