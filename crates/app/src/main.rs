@@ -190,3 +190,60 @@ fn load_css() {
         );
     }
 }
+
+#[cfg(test)]
+mod contrast_tests {
+    //! Spec 0028 AC2: the app's own colours (`load_css`) keep text readable,
+    //! with the libadwaita 1.5 default colours, light and dark.
+
+    type Rgb = [f64; 3];
+
+    fn hex(value: u32) -> Rgb {
+        [(value >> 16) & 0xff, (value >> 8) & 0xff, value & 0xff].map(|c| f64::from(c) / 255.0)
+    }
+
+    /// `top` with opacity `alpha` over `bottom`.
+    fn over(top: Rgb, alpha: f64, bottom: Rgb) -> Rgb {
+        [0, 1, 2].map(|i| top[i] * alpha + bottom[i] * (1.0 - alpha))
+    }
+
+    /// WCAG 2.1 relative luminance.
+    fn luminance(colour: Rgb) -> f64 {
+        let linear = colour.map(|c| {
+            if c <= 0.039_28 {
+                c / 12.92
+            } else {
+                ((c + 0.055) / 1.055).powf(2.4)
+            }
+        });
+        0.2126 * linear[0] + 0.7152 * linear[1] + 0.0722 * linear[2]
+    }
+
+    fn contrast(a: Rgb, b: Rgb) -> f64 {
+        let (light, dark) = {
+            let (x, y) = (luminance(a), luminance(b));
+            if x > y { (x, y) } else { (y, x) }
+        };
+        (light + 0.05) / (dark + 0.05)
+    }
+
+    #[test]
+    fn highlighted_field_text_has_enough_contrast() {
+        // libadwaita 1.5: accent_bg_color #3584e4 in both styles; view
+        // background white / #1e1e1e; view text rgba(0, 0, 6, 0.8) / white.
+        let accent = hex(0x3584e4);
+        for (style, background, text) in [
+            (
+                "light",
+                hex(0xffffff),
+                over(hex(0x000006), 0.8, hex(0xffffff)),
+            ),
+            ("dark", hex(0x1e1e1e), hex(0xffffff)),
+        ] {
+            // `.HIGHLIGHT_CLASS { background-color: alpha(@accent_bg_color, 0.25) }`
+            let highlight = over(accent, 0.25, background);
+            let ratio = contrast(text, highlight);
+            assert!(ratio >= 4.5, "{style}: {ratio:.2}:1");
+        }
+    }
+}

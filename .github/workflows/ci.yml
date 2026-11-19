@@ -22,7 +22,7 @@ jobs:
           sudo apt-get update -q
           sudo apt-get install -y -q --no-install-recommends \
             gettext libgtk-4-dev libadwaita-1-dev libpoppler-glib-dev \
-            libgtksourceview-5-dev libxml2-dev libclang-dev desktop-file-utils appstream
+            libgtksourceview-5-dev libxml2-dev libclang-dev desktop-file-utils appstream xvfb
       - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: |
@@ -37,6 +37,10 @@ jobs:
         run: scripts/ci-step.sh Clippy cargo clippy --workspace --all-targets --locked -- -D warnings
       - name: Tests
         run: scripts/ci-step.sh Tests cargo test --workspace --locked --no-fail-fast
+      - name: Accessibility tree test (spec 0028)
+        run: |
+          xvfb-run -a env EIV_GUI_TESTS=1 \
+            scripts/ci-step.sh "Accessibility" cargo test -p e-invoice-viewer --locked every_control
       - name: Architecture check
         run: |
           # crates/core must not depend on GUI libraries.

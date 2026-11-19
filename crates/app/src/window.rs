@@ -750,3 +750,123 @@ fn main_menu() -> gio::Menu {
     menu.append_section(Some(texts::t(texts::LANGUAGE_MENU)), &languages);
     menu
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Interactive widgets: something a user activates or types into.
+    fn is_interactive(widget: &gtk::Widget) -> bool {
+        widget.is::<gtk::Button>()
+            || widget.is::<gtk::MenuButton>()
+            || widget.is::<gtk::ToggleButton>()
+            || widget.is::<gtk::CheckButton>()
+            || widget.is::<gtk::Switch>()
+            || widget.is::<gtk::Entry>()
+            || widget.is::<gtk::SearchEntry>()
+            || widget.is::<gtk::DropDown>()
+            || widget
+                .downcast_ref::<gtk::ListBoxRow>()
+                .is_some_and(gtk::ListBoxRow::is_activatable)
+    }
+
+    /// The text a user sees or hears for a widget: its own label, a label
+    /// inside it, or its tooltip (which the app always sets together with
+    /// the accessible name, e.g. `pdf_pane::apply_texts`).
+    fn name_of(widget: &gtk::Widget) -> Option<String> {
+        if let Some(button) = widget.downcast_ref::<gtk::Button>()
+            && let Some(label) = button.label()
+        {
+            return Some(label.to_string());
+        }
+        if let Some(button) = widget.downcast_ref::<gtk::MenuButton>()
+            && let Some(label) = button.label()
+        {
+            return Some(label.to_string());
+        }
+        if let Some(tooltip) = widget.tooltip_text() {
+            return Some(tooltip.to_string());
+        }
+        let mut child = widget.first_child();
+        while let Some(widget) = child {
+            if let Some(label) = widget.downcast_ref::<gtk::Label>() {
+                return Some(label.text().to_string());
+            }
+            if let Some(name) = name_of(&widget).filter(|_| !is_interactive(&widget)) {
+                return Some(name);
+            }
+            child = widget.next_sibling();
+        }
+        None
+    }
+
+    /// Inner parts of GTK's own composite widgets, which GTK names for
+    /// assistive technology itself (not readable through the GTK API, so
+    /// they are checked through AT-SPI instead): the window controls, the
+    /// close button of a search bar, the toggle inside a menu button.
+    fn is_gtk_internal(widget: &gtk::Widget) -> bool {
+        let parent_is = |name: &str| {
+            std::iter::successors(widget.parent(), gtk::Widget::parent)
+                .take(4)
+                .any(|ancestor| ancestor.type_().name() == name)
+        };
+        parent_is("GtkWindowControls")
+            || (widget.is::<gtk::Button>() && parent_is("GtkSearchBar"))
+            || (widget.is::<gtk::ToggleButton>()
+                && widget.parent().is_some_and(|p| p.is::<gtk::MenuButton>()))
+    }
+
+    fn problems(widget: &gtk::Widget, path: &str, found: &mut Vec<String>) {
+        let path = format!("{path}/{}", widget.type_().name());
+        if widget.is_visible() && is_interactive(widget) && !is_gtk_internal(widget) {
+            if name_of(widget).is_none_or(|name| name.trim().is_empty()) {
+                found.push(format!("{path}: no name"));
+            }
+            if !widget.is_focusable() && !widget.can_focus() {
+                found.push(format!("{path}: not reachable by keyboard"));
+            }
+        }
+        let mut child = widget.first_child();
+        while let Some(next) = child {
+            problems(&next, &path, found);
+            child = next.next_sibling();
+        }
+    }
+
+    // Spec 0028 AC1: needs a display; runs when EIV_GUI_TESTS is set (the CI
+    // Linux job under a virtual display, or locally with a separate one).
+    #[test]
+    fn every_control_is_named_and_focusable() {
+        if std::env::var_os("EIV_GUI_TESTS").is_none() {
+            eprintln!("skipped: set EIV_GUI_TESTS and provide a display");
+            return;
+        }
+        let fixtures = Path::new(env!("CARGO_MANIFEST_DIR")).join("../core/tests/fixtures");
+        let invoice = std::fs::read(fixtures.join("cii/sample-c.xml")).expect("sample C");
+        let found = Rc::new(RefCell::new(None::<Vec<String>>));
+        // A separate, non-unique id: never talks to a running viewer.
+        let app = adw::Application::builder()
+            .application_id("de.loges.EInvoiceViewer.GuiTest")
+            .flags(gio::ApplicationFlags::NON_UNIQUE)
+            .build();
+        let result = found.clone();
+        app.connect_activate(move |app| {
+            let dir = std::env::temp_dir().join(format!("eiv-gui-test-{}", std::process::id()));
+            let recent = RecentStore::with_path(dir.join("recent"));
+            let window = Window::new(app, &recent);
+            window.present();
+            window.show_content("sample-c.xml", &invoice, true);
+            let app = app.clone();
+            let result = result.clone();
+            glib::timeout_add_local_once(std::time::Duration::from_secs(2), move || {
+                let mut found = Vec::new();
+                problems(window.widget().upcast_ref(), "", &mut found);
+                *result.borrow_mut() = Some(found);
+                app.quit();
+            });
+        });
+        app.run_with_args::<&str>(&[]);
+        let found = found.borrow().clone().expect("the window was checked");
+        assert!(found.is_empty(), "{found:#?}");
+    }
+}

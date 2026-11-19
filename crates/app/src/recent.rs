@@ -56,7 +56,7 @@ impl RecentStore {
         Self::with_path(store_path())
     }
 
-    fn with_path(path: PathBuf) -> Rc<Self> {
+    pub(crate) fn with_path(path: PathBuf) -> Rc<Self> {
         let (files, warning) = load(&path);
         if let Some(warning) = warning {
             glib::g_warning!(LOG_DOMAIN, "{warning}");
