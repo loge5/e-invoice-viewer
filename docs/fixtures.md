@@ -85,7 +85,8 @@ Created with spec 0021 from sample A; all other data as in sample A.
   `19`
 - Totals: BT-106 `1050.00`, BT-107 `50.00`, BT-108 `10.00`, BT-109
   `1010.00`, BT-110 `191.90`, BT-112 `1201.90`, BT-115 `1201.90`
-- Valid against EN 16931 (no errors, checked with the bundled rules)
+- Valid against EN 16931: accepted by the KoSIT validator 1.6.3 (EN 16931
+  scenario) without any message, CII and UBL
 
 ## Sample L — `RE-2026-0500`, 500 lines
 

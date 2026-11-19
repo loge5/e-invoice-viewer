@@ -276,7 +276,9 @@ sample A are extended by BT-34 and BT-49.
   - Smoke run of the release build in a container with a virtual display:
     sample C opens with `No findings` and shows the references and the
     preceding invoice.
-- **Not done**: sample C has not been checked with the KoSIT validator (it
-  is not installed locally; installing it needs downloads). The bundled
-  rules report no error for CII and UBL.
+  - KoSIT validator 1.6.3 (checksums as released) with the EN 16931
+    scenario of `scripts/kosit/scenarios-en16931.xml`, the XRechnung
+    configuration 2026-08-31 and the CEN XSLT of `validation-1.3.17`: CII and
+    UBL sample C pass the schema and the schematron without any message
+    (2026-11-19, downloads approved by the author).
 
