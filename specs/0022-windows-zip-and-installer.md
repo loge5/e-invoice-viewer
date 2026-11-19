@@ -69,12 +69,12 @@ a Windows VM (see [ADR 0005](../docs/adr/0005-windows-build-msys2-github-actions
 
 ## Acceptance criteria
 
-- [ ] Given the workflow started by hand, then it produces
+- [x] Given the workflow started by hand, then it produces
       `E-Invoice_Viewer-0.1.0-windows-x86_64.zip` and
       `E-Invoice_Viewer-0.1.0-windows-x86_64-setup.exe` as artefacts, together
       with the AppImage, and the log shows `cargo test --workspace` passing on
       Windows.
-- [ ] Given the ZIP unpacked in the VM into a folder with a space in its name
+- [x] Given the ZIP unpacked in the VM into a folder with a space in its name
       (e.g. `C:\Users\<user>\Desktop\EIV test`), when
       `bin\e-invoice-viewer.exe` is started by double-click, then the start
       view appears without a console window, and the window and taskbar show
@@ -93,7 +93,7 @@ a Windows VM (see [ADR 0005](../docs/adr/0005-windows-build-msys2-github-actions
     records which (see requirement).
   - The file `%LOCALAPPDATA%\e-invoice-viewer\recent` exists after opening a
     file; nothing is written into the unpacked folder.
-- [ ] Given the installer run as a normal user in the VM, then no
+- [x] Given the installer run as a normal user in the VM, then no
       administrator prompt appears, the app is in the Start menu, and
       "Open with" for a `.pdf` and an `.xml` file lists `E-Invoice Viewer`;
       the default app for `.pdf` is the same as before (manual check).
@@ -103,11 +103,11 @@ a Windows VM (see [ADR 0005](../docs/adr/0005-windows-build-msys2-github-actions
   - After uninstalling, the program folder, the Start menu entry and the
     "Open with" entry are gone, and `%LOCALAPPDATA%\e-invoice-viewer` is
     still there.
-- [ ] Given `sample-c.xml` on a mapped network drive or a UNC path in the VM
+- [x] Given `sample-c.xml` on a mapped network drive or a UNC path in the VM
       (e.g. a shared folder of the VM host), then it opens like a local file;
       given `e-invoice-viewer.exe https://example.com/a.pdf`, the message of
       0012 for non-local addresses is shown (manual check).
-- [ ] Proposed file names for saving (automated, on Linux and Windows):
+- [x] Proposed file names for saving (automated, on Linux and Windows):
 
       | attachment name | proposed name |
       |---|---|
@@ -122,7 +122,7 @@ a Windows VM (see [ADR 0005](../docs/adr/0005-windows-build-msys2-github-actions
       0013 (only the last path part is used), so `../x/CON.pdf` proposes
       `_CON.pdf`. Names that are proposed unchanged today stay unchanged when
       they contain none of these characters.
-- [ ] Given the ZIP, then `bin\` contains `e-invoice-viewer.exe`, and the
+- [x] Given the ZIP, then `bin\` contains `e-invoice-viewer.exe`, and the
       package list names every DLL in it with its MSYS2 package; a DLL that
       belongs to no package fails the build.
 - [ ] Given the workflow file, then a check of its logic shows: the tag is
@@ -132,9 +132,9 @@ a Windows VM (see [ADR 0005](../docs/adr/0005-windows-build-msys2-github-actions
       the installer and both package lists; all actions are pinned by commit
       hash; only the release job may write. The run on GitHub is a manual
       check by the author.
-- [ ] On Linux nothing changes: the AppImage build, `scripts/install.sh` and
+- [x] On Linux nothing changes: the AppImage build, `scripts/install.sh` and
       all tests behave as before.
-- [ ] The app starts from the ZIP and from the installation within 3 s in
+- [x] The app starts from the ZIP and from the installation within 3 s in
       the VM (manual check; the limit of 0007 is relaxed for a VM).
 
 ## Out of scope
@@ -206,6 +206,9 @@ a Windows VM (see [ADR 0005](../docs/adr/0005-windows-build-msys2-github-actions
     artefact `windows` (ZIP, installer, package list, 68 MB) next to the
     AppImage (AC1, P2, P3). Four earlier runs failed and led to the fixes
     above (MSYS2 setup, UCRT64, absolute test paths, CRLF).
-- **Next**: manual checks by the author in the Windows VM (AC2, AC3, AC4,
-  AC9) and the workflow run for a tag (AC7).
+- **Manually verified** by the author in a Windows VM (2026-11-19): ZIP and
+  installer as described in AC2, AC3, AC4 and AC9, all as expected (whether
+  the app follows Windows' dark mode was not reported separately).
+- **Next**: AC7 – the workflow run for a tag on GitHub; the workflow logic is
+  checked by T4, the Windows job ran successfully on the trial branch.
 
