@@ -1,7 +1,7 @@
 ---
 id: 0022
 title: Packaging - Windows as portable ZIP and installer
-status: reviewed
+status: implemented
 created: 2026-11-19
 depends_on: [0012, 0013, 0019, 0020]
 ---
@@ -209,6 +209,8 @@ a Windows VM (see [ADR 0005](../docs/adr/0005-windows-build-msys2-github-actions
 - **Manually verified** by the author in a Windows VM (2026-11-19): ZIP and
   installer as described in AC2, AC3, AC4 and AC9, all as expected (whether
   the app follows Windows' dark mode was not reported separately).
+- The author decided on `implemented` on 2026-11-19, before the first
+  release run with a tag.
 - **Next**: AC7 – the workflow run for a tag on GitHub; the workflow logic is
   checked by T4, the Windows job ran successfully on the trial branch.
 
