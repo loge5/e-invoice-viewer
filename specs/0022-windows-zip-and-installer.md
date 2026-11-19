@@ -172,3 +172,40 @@ a Windows VM (see [ADR 0005](../docs/adr/0005-windows-build-msys2-github-actions
     the directory part), and a name that becomes empty falls back to
     `Anhang-<n>`.
   - A release is all or nothing across both platforms.
+
+## Progress
+
+- **Done**:
+  - Core: proposed file names are valid on Windows (`attachments.rs`).
+  - App: Windows GUI subsystem; `crates/app/build.rs` embeds the icon and
+    version information with `windres` on Windows; the `.ico` comes from
+    `scripts/make-ico.sh`. The recent files label uses the system's path
+    separator after `~`.
+  - `scripts/windows/bundle.sh`: the folder (exe, DLLs found with `ntldd`,
+    GdkPixbuf loaders and cache, GSettings schemas, GtkSourceView data, the
+    symbolic icons used, the app icon, licences, package list) and the ZIP;
+    fails for a DLL without MSYS2 package.
+  - `scripts/windows/installer.iss`: Inno Setup, per user, Start menu,
+    "Open with" via `OpenWithProgids`, everything removed on uninstall.
+  - `.github/workflows/release.yml` replaces `appimage.yml`: jobs
+    `appimage`, `windows` (MSYS2 UCRT64, tests, build, bundle, installer)
+    and `release` (one draft release with all files).
+  - `.gitattributes`: LF in every checkout (the Windows runner converted
+    fixtures to CRLF otherwise); third-party rule files byte-exact.
+  - Tests with Unix paths run only on Unix or got Windows variants; the
+    catalogue test accepts CRLF from xgettext on Windows.
+  - README: Windows section with the SmartScreen note.
+- **Verified** (2026-11-19):
+  - Linux: `cargo test --workspace` 222 passed; new: T1
+    (`proposed_names_are_valid_on_windows`), T2 (`windows_icon_has_the_usual_sizes`),
+    T3 (`installer_is_per_user_and_never_default`), T4
+    (`release_workflow_builds_both_platforms`); fmt, clippy and the
+    architecture check clean; the AppImage builds locally as before (AC8).
+  - GitHub Actions, run 44472078826 on the trial branch `windows`: the
+    Windows job runs `cargo test --workspace` successfully and produces the
+    artefact `windows` (ZIP, installer, package list, 68 MB) next to the
+    AppImage (AC1, P2, P3). Four earlier runs failed and led to the fixes
+    above (MSYS2 setup, UCRT64, absolute test paths, CRLF).
+- **Next**: manual checks by the author in the Windows VM (AC2, AC3, AC4,
+  AC9) and the workflow run for a tag (AC7).
+

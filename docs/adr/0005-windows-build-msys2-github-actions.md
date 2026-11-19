@@ -88,3 +88,16 @@ in `glib::user_config_dir()` (on Windows `%LOCALAPPDATA%`), file dialogs are
 - **Tests**: `cargo test --workspace` runs on Windows in the workflow; tests
   of Linux packaging (desktop entry, AppStream, `install.sh`, AppImage build
   scripts) run only on Linux.
+
+## Notes
+
+- Correction during implementation (2026-11-19): MSYS2 has deprecated the
+  MINGW64 environment, and installing its packages failed on the runner. As
+  foreseen in decision 1, the build uses **UCRT64** with MSYS2's own Rust
+  package (`rust`), set up by `msys2/setup-msys2`; rustup is not used on
+  Windows. The MSYS2 that comes with the runner is not used, because
+  updating it in place failed.
+- GitHub does not show workflow logs without signing in; a failing build step
+  therefore reports its last output lines as a workflow annotation
+  (`scripts/windows/ci-step.sh`).
+
