@@ -1,7 +1,7 @@
 ---
 id: 0025
 title: Robustness - public sample invoices and fuzzing
-status: draft
+status: reviewed
 created: 2026-11-19
 depends_on: [0009, 0010, 0013, 0023, 0024]
 ---
@@ -79,7 +79,10 @@ are fuzzed.
   KoSIT validator 1.6.3 as for 0009/0010; the validator is downloaded for that
   (approved on 2026-11-19).
 
-## Test list (proposed)
+- Review on 2026-11-19: reviewed by Claude, accepted by the author together
+  with the test list.
+
+## Test list (approved 2026-11-19)
 
 - T1 `public_samples_open_and_match_kosit` (core, `public_samples.rs`): every
   sample opens, no empty section, key fields present, finding locations

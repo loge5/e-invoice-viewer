@@ -1,7 +1,7 @@
 ---
 id: 0026
 title: CI - tests on every push and pull request
-status: draft
+status: reviewed
 created: 2026-11-19
 depends_on: [0020, 0022]
 ---
@@ -57,7 +57,10 @@ For 1.0, every change is checked when it is pushed (author, 2026-11-19).
 
 - The trial branch `windows` of 0022 is no longer needed once this runs.
 
-## Test list (proposed)
+- Review on 2026-11-19: reviewed by Claude, accepted by the author together
+  with the test list.
+
+## Test list (approved 2026-11-19)
 
 - T1 `ci_workflow_checks_every_push` (app, `packaging.rs`): static check of
   `ci.yml`: triggers, jobs and steps, pinned actions, read-only permissions,

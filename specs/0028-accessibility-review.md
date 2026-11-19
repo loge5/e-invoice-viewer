@@ -1,7 +1,7 @@
 ---
 id: 0028
 title: Accessibility - keyboard and screen reader review
-status: draft
+status: reviewed
 created: 2026-11-19
 depends_on: [0007, 0011, 0014, 0016, 0019]
 ---
@@ -66,7 +66,10 @@ should be usable without a mouse and with a screen reader (author,
   pass by Claude (through AT-SPI in a container), then the manual screen
   reader checks by the author.
 
-## Test list (proposed)
+- Review on 2026-11-19: reviewed by Claude, accepted by the author together
+  with the test list.
+
+## Test list (approved 2026-11-19)
 
 - T1 `every_control_is_named_and_focusable` (app, needs a display; runs under
   `xvfb-run` in the CI Linux job): window with sample C, walk the widget

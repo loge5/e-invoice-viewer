@@ -1,6 +1,6 @@
 # 0006 — XML schema validation with libxml2, schemas embedded
 
-- Status: proposed
+- Status: accepted
 - Date: 2026-11-19
 - Specs: [0023](../../specs/0023-xml-schema-validation.md)
 

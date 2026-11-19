@@ -1,7 +1,7 @@
 ---
 id: 0024
 title: Map every remaining EN 16931 business term
-status: draft
+status: reviewed
 created: 2026-11-19
 depends_on: [0021]
 ---
@@ -111,7 +111,10 @@ EN 16931 (confirmed once with the KoSIT validator).
   (they are still separate sections in the list, placed after their line).
 - Sample D needs BT-6 different from BT-5 and therefore BT-111 (BR-53).
 
-## Test list (proposed)
+- Review on 2026-11-19: reviewed by Claude, accepted by the author together
+  with the test list.
+
+## Test list (approved 2026-11-19)
 
 - T1–T4 (core, `map_all_terms.rs`): sample D CII in German: new sections and
   their order, buyer contact, document fields, line allowances and charges

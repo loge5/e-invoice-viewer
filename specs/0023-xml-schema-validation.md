@@ -1,7 +1,7 @@
 ---
 id: 0023
 title: Validate - XML schema check (CII D16B, UBL 2.1)
-status: draft
+status: reviewed
 created: 2026-11-19
 depends_on: [0009, 0010, 0011, 0014]
 ---
@@ -98,7 +98,10 @@ Samples are defined in [fixtures.md](../docs/fixtures.md).
   locations (0011, 0014), computed from the element libxml2 reports, so that
   attribution and "Show in XML" work without changes.
 
-## Test list (proposed)
+- Review on 2026-11-19: reviewed by Claude, accepted by the author together
+  with the test list.
+
+## Test list (approved 2026-11-19)
 
 - T1 `samples_are_schema_valid` (core, `validate_schema.rs`): A, B, C in CII
   and UBL have no `XSD` finding; summary strings for CII and UBL (AC1).

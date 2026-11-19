@@ -1,7 +1,7 @@
 ---
 id: 0029
 title: Project docs - changelog, release guide, rule updates, requirements
-status: draft
+status: reviewed
 created: 2026-11-19
 depends_on: [0020, 0022]
 ---
@@ -58,7 +58,7 @@ project documentation is complete and current (author, 2026-11-19).
 - A user manual beyond the README.
 - Translating the documentation.
 
-## Test list (proposed)
+## Test list (approved 2026-11-19)
 
 - T1 `tag_check_requires_changelog_entry` (app, `packaging.rs`): a temporary
   copy of the checked files with and without a section for the version
