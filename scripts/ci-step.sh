@@ -13,9 +13,17 @@ log=$(mktemp)
 status=${PIPESTATUS[0]}
 if [[ $status -ne 0 ]]; then
     # Annotations take %0A as line break; % must be escaped first.
-    grep -v -E "^test .* \.\.\. (ok|ignored)|^ *(Compiling|Checking|Downloaded|Downloading|Updating|Locking|Adding|Fresh|Running|Doc-tests) " "$log" | tail -n 80 | tr -d '\r' | sed 's/%/%25/g' | awk -v title="$title" \
+    # What explains a failure comes first: the failure blocks of the test
+    # harness, tests running too long, panics and error lines; then the end
+    # of the output.
+    tr -d '\r' <"$log" | awk '
+        /^failures:$/ { block = 1 }
+        block || /has been running for over|panicked at|^error/ { print }
+        /^test result:/ { block = 0 }' | tail -n 60 >"$log.key"
+    grep -v -E "^test .* \.\.\. (ok|ignored)|^ *(Compiling|Checking|Downloaded|Downloading|Updating|Locking|Adding|Fresh|Running|Doc-tests) " "$log" | tr -d '\r' | tail -n 20 >"$log.end"
+    cat "$log.key" - "$log.end" <<<"----- end of output -----" | sed 's/%/%25/g' | awk -v title="$title" \
         'BEGIN { ORS = "%0A" } { print } END { ORS = "\n"; print "" }' \
         | sed "s/^/::error title=$title::/"
 fi
-rm -f -- "$log"
+rm -f -- "$log" "$log.key" "$log.end"
 exit "$status"

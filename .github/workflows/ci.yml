@@ -36,7 +36,7 @@ jobs:
       - name: Clippy
         run: scripts/ci-step.sh Clippy cargo clippy --workspace --all-targets --locked -- -D warnings
       - name: Tests
-        run: scripts/ci-step.sh Tests cargo test --workspace --locked --no-fail-fast
+        run: scripts/ci-step.sh Tests timeout 30m cargo test --workspace --locked --no-fail-fast
       - name: Accessibility tree test (spec 0028)
         run: |
           xvfb-run -a env EIV_GUI_TESTS=1 \
@@ -75,4 +75,4 @@ jobs:
           key: windows-cargo-${{ hashFiles('Cargo.lock') }}
           restore-keys: windows-cargo-
       - name: Tests
-        run: scripts/ci-step.sh Tests cargo test --workspace --locked --no-fail-fast
+        run: scripts/ci-step.sh Tests timeout 30m cargo test --workspace --locked --no-fail-fast

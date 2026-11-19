@@ -27,7 +27,9 @@ fn public_samples() -> Vec<String> {
                     path.strip_prefix(&root)
                         .expect("below fixtures")
                         .to_string_lossy()
-                        .into_owned(),
+                        // The keys of the reference files use `/`, also on
+                        // Windows.
+                        .replace('\\', "/"),
                 );
             }
         }
