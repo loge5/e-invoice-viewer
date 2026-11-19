@@ -403,7 +403,7 @@ dependencies = [
 
 [[package]]
 name = "e-invoice-viewer"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "anyhow",
  "e-invoice-viewer-core",
@@ -416,7 +416,7 @@ dependencies = [
 
 [[package]]
 name = "e-invoice-viewer-core"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "base64",
  "gettext",
