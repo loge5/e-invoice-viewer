@@ -125,7 +125,7 @@ a Windows VM (see [ADR 0005](../docs/adr/0005-windows-build-msys2-github-actions
 - [x] Given the ZIP, then `bin\` contains `e-invoice-viewer.exe`, and the
       package list names every DLL in it with its MSYS2 package; a DLL that
       belongs to no package fails the build.
-- [ ] Given the workflow file, then a check of its logic shows: the tag is
+- [x] Given the workflow file, then a check of its logic shows: the tag is
       checked against `Cargo.toml` before building; the Windows job runs the
       tests before packaging; the release job needs the AppImage and the
       Windows job and creates one draft release with the AppImage, the ZIP,
@@ -211,6 +211,9 @@ a Windows VM (see [ADR 0005](../docs/adr/0005-windows-build-msys2-github-actions
   the app follows Windows' dark mode was not reported separately).
 - The author decided on `implemented` on 2026-11-19, before the first
   release run with a tag.
-- **Next**: AC7 – the workflow run for a tag on GitHub; the workflow logic is
-  checked by T4, the Windows job ran successfully on the trial branch.
+- **Manually verified** by the author (2026-11-19): the release workflow ran
+  for the tag `v0.2.1` and built the AppImage and both Windows files into the
+  draft release (AC7). The first attempt, `v0.2.0`, failed because the
+  release commit had not updated `Cargo.lock`; the tag check now also
+  requires the lock file and the AppStream release entry of the version.
 
