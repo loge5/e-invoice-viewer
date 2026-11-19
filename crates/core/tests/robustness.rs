@@ -94,3 +94,14 @@ fn fuzz_validate_timeout_5c0933ae() {
         validation.findings
     );
 }
+
+// AC5: found by the `validate` target: sample D (UBL) with broken amounts.
+// It took 4 s under the address sanitizer, 0.2 s natively; since then
+// `validate` is fuzzed without the sanitizer (fuzz/README.md).
+#[test]
+fn fuzz_validate_timeout_a782dc5b() {
+    survives(
+        "validate-timeout-a782dc5b",
+        include_bytes!("fixtures/fuzz/validate-timeout-a782dc5b.xml"),
+    );
+}
