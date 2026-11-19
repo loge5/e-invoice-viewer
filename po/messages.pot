@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: E-Invoice Viewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 10:59+0100\n"
+"POT-Creation-Date: 2026-11-19 06:18+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -373,6 +373,33 @@ msgstr ""
 msgid "Buyer reference"
 msgstr ""
 
+msgid "Project reference"
+msgstr ""
+
+msgid "Contract reference"
+msgstr ""
+
+msgid "Purchase order reference"
+msgstr ""
+
+msgid "Sales order reference"
+msgstr ""
+
+msgid "Receiving advice reference"
+msgstr ""
+
+msgid "Despatch advice reference"
+msgstr ""
+
+msgid "Tender or lot reference"
+msgstr ""
+
+msgid "Invoiced object identifier"
+msgstr ""
+
+msgid "Buyer accounting reference"
+msgstr ""
+
 msgid "Payment terms"
 msgstr ""
 
@@ -380,6 +407,12 @@ msgid "Invoice note"
 msgstr ""
 
 msgid "Specification identifier"
+msgstr ""
+
+msgid "Preceding Invoice reference"
+msgstr ""
+
+msgid "Preceding Invoice issue date"
 msgstr ""
 
 msgid "Seller name"
@@ -392,6 +425,9 @@ msgid "Seller VAT identifier"
 msgstr ""
 
 msgid "Seller tax registration identifier"
+msgstr ""
+
+msgid "Seller electronic address"
 msgstr ""
 
 msgid "Seller address line 1"
@@ -427,6 +463,9 @@ msgstr ""
 msgid "Buyer VAT identifier"
 msgstr ""
 
+msgid "Buyer electronic address"
+msgstr ""
+
 msgid "Buyer address line 1"
 msgstr ""
 
@@ -442,6 +481,36 @@ msgstr ""
 msgid "Buyer country code"
 msgstr ""
 
+msgid "Deliver to party name"
+msgstr ""
+
+msgid "Deliver to location identifier"
+msgstr ""
+
+msgid "Actual delivery date"
+msgstr ""
+
+msgid "Invoicing period start date"
+msgstr ""
+
+msgid "Invoicing period end date"
+msgstr ""
+
+msgid "Deliver to address line 1"
+msgstr ""
+
+msgid "Deliver to address line 2"
+msgstr ""
+
+msgid "Deliver to city"
+msgstr ""
+
+msgid "Deliver to post code"
+msgstr ""
+
+msgid "Deliver to country code"
+msgstr ""
+
 msgid "Payment means type code"
 msgstr ""
 
@@ -455,6 +524,57 @@ msgid "Payment account name"
 msgstr ""
 
 msgid "Payment service provider identifier"
+msgstr ""
+
+msgid "Mandate reference identifier"
+msgstr ""
+
+msgid "Bank assigned creditor identifier"
+msgstr ""
+
+msgid "Debited account identifier"
+msgstr ""
+
+msgid "Document level allowance amount"
+msgstr ""
+
+msgid "Document level allowance base amount"
+msgstr ""
+
+msgid "Document level allowance percentage"
+msgstr ""
+
+msgid "Document level allowance VAT category code"
+msgstr ""
+
+msgid "Document level allowance VAT rate"
+msgstr ""
+
+msgid "Document level allowance reason"
+msgstr ""
+
+msgid "Document level allowance reason code"
+msgstr ""
+
+msgid "Document level charge amount"
+msgstr ""
+
+msgid "Document level charge base amount"
+msgstr ""
+
+msgid "Document level charge percentage"
+msgstr ""
+
+msgid "Document level charge VAT category code"
+msgstr ""
+
+msgid "Document level charge VAT rate"
+msgstr ""
+
+msgid "Document level charge reason"
+msgstr ""
+
+msgid "Document level charge reason code"
 msgstr ""
 
 msgid "Sum of Invoice line net amount"
@@ -517,7 +637,16 @@ msgstr ""
 msgid "Invoice line net amount"
 msgstr ""
 
+msgid "Referenced purchase order line reference"
+msgstr ""
+
 msgid "Invoice line Buyer accounting reference"
+msgstr ""
+
+msgid "Invoice line period start date"
+msgstr ""
+
+msgid "Invoice line period end date"
 msgstr ""
 
 msgid "Item net price"
@@ -550,10 +679,22 @@ msgstr ""
 msgid "Buyer (BG-7)"
 msgstr ""
 
+msgid "Preceding invoice reference (BG-3)"
+msgstr ""
+
+msgid "Delivery information (BG-13)"
+msgstr ""
+
 msgid "Invoice line"
 msgstr ""
 
 msgid "Payment instructions (BG-16)"
+msgstr ""
+
+msgid "Document level allowances (BG-20)"
+msgstr ""
+
+msgid "Document level charges (BG-21)"
 msgstr ""
 
 msgid "VAT breakdown (BG-23)"

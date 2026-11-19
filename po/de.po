@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: E-Invoice Viewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 10:57+0100\n"
+"POT-Creation-Date: 2026-11-19 06:18+0100\n"
 "PO-Revision-Date: 2026-11-18 00:00+0100\n"
 "Last-Translator: E-Invoice Viewer contributors\n"
 "Language-Team: German\n"
@@ -371,6 +371,33 @@ msgstr "Fälligkeitsdatum"
 msgid "Buyer reference"
 msgstr "Käuferreferenz"
 
+msgid "Project reference"
+msgstr "Projektreferenz"
+
+msgid "Contract reference"
+msgstr "Vertragsnummer"
+
+msgid "Purchase order reference"
+msgstr "Bestellnummer"
+
+msgid "Sales order reference"
+msgstr "Auftragsnummer"
+
+msgid "Receiving advice reference"
+msgstr "Wareneingangsmeldung"
+
+msgid "Despatch advice reference"
+msgstr "Versandanzeige"
+
+msgid "Tender or lot reference"
+msgstr "Vergabe- oder Losnummer"
+
+msgid "Invoiced object identifier"
+msgstr "Objektkennung"
+
+msgid "Buyer accounting reference"
+msgstr "Buchungsreferenz"
+
 msgid "Payment terms"
 msgstr "Zahlungsbedingungen"
 
@@ -379,6 +406,12 @@ msgstr "Bemerkung"
 
 msgid "Specification identifier"
 msgstr "Spezifikationskennung"
+
+msgid "Preceding Invoice reference"
+msgstr "Rechnungsnummer"
+
+msgid "Preceding Invoice issue date"
+msgstr "Rechnungsdatum"
 
 msgid "Seller name"
 msgstr "Name"
@@ -391,6 +424,9 @@ msgstr "Umsatzsteuer-ID"
 
 msgid "Seller tax registration identifier"
 msgstr "Steuernummer"
+
+msgid "Seller electronic address"
+msgstr "Elektronische Adresse"
 
 msgid "Seller address line 1"
 msgstr "Straße"
@@ -425,6 +461,9 @@ msgstr "Kennung"
 msgid "Buyer VAT identifier"
 msgstr "Umsatzsteuer-ID"
 
+msgid "Buyer electronic address"
+msgstr "Elektronische Adresse"
+
 msgid "Buyer address line 1"
 msgstr "Straße"
 
@@ -438,6 +477,36 @@ msgid "Buyer post code"
 msgstr "PLZ"
 
 msgid "Buyer country code"
+msgstr "Land"
+
+msgid "Deliver to party name"
+msgstr "Empfänger"
+
+msgid "Deliver to location identifier"
+msgstr "Kennung des Lieferorts"
+
+msgid "Actual delivery date"
+msgstr "Lieferdatum"
+
+msgid "Invoicing period start date"
+msgstr "Rechnungszeitraum von"
+
+msgid "Invoicing period end date"
+msgstr "Rechnungszeitraum bis"
+
+msgid "Deliver to address line 1"
+msgstr "Straße"
+
+msgid "Deliver to address line 2"
+msgstr "Adresszusatz"
+
+msgid "Deliver to city"
+msgstr "Ort"
+
+msgid "Deliver to post code"
+msgstr "PLZ"
+
+msgid "Deliver to country code"
 msgstr "Land"
 
 msgid "Payment means type code"
@@ -454,6 +523,57 @@ msgstr "Kontoinhaber"
 
 msgid "Payment service provider identifier"
 msgstr "BIC"
+
+msgid "Mandate reference identifier"
+msgstr "Mandatsreferenz"
+
+msgid "Bank assigned creditor identifier"
+msgstr "Gläubiger-ID"
+
+msgid "Debited account identifier"
+msgstr "Belastetes Konto"
+
+msgid "Document level allowance amount"
+msgstr "Betrag"
+
+msgid "Document level allowance base amount"
+msgstr "Grundbetrag"
+
+msgid "Document level allowance percentage"
+msgstr "Prozentsatz"
+
+msgid "Document level allowance VAT category code"
+msgstr "Steuerkategorie"
+
+msgid "Document level allowance VAT rate"
+msgstr "Steuersatz"
+
+msgid "Document level allowance reason"
+msgstr "Grund"
+
+msgid "Document level allowance reason code"
+msgstr "Grund (Code)"
+
+msgid "Document level charge amount"
+msgstr "Betrag"
+
+msgid "Document level charge base amount"
+msgstr "Grundbetrag"
+
+msgid "Document level charge percentage"
+msgstr "Prozentsatz"
+
+msgid "Document level charge VAT category code"
+msgstr "Steuerkategorie"
+
+msgid "Document level charge VAT rate"
+msgstr "Steuersatz"
+
+msgid "Document level charge reason"
+msgstr "Grund"
+
+msgid "Document level charge reason code"
+msgstr "Grund (Code)"
 
 msgid "Sum of Invoice line net amount"
 msgstr "Summe der Positionen netto"
@@ -515,8 +635,17 @@ msgstr "Einheit"
 msgid "Invoice line net amount"
 msgstr "Nettobetrag"
 
+msgid "Referenced purchase order line reference"
+msgstr "Bestellposition"
+
 msgid "Invoice line Buyer accounting reference"
 msgstr "Buchungsreferenz des Käufers"
+
+msgid "Invoice line period start date"
+msgstr "Zeitraum von"
+
+msgid "Invoice line period end date"
+msgstr "Zeitraum bis"
 
 msgid "Item net price"
 msgstr "Nettopreis"
@@ -548,11 +677,23 @@ msgstr "Verkäufer (BG-4)"
 msgid "Buyer (BG-7)"
 msgstr "Käufer (BG-7)"
 
+msgid "Preceding invoice reference (BG-3)"
+msgstr "Vorausgegangene Rechnung (BG-3)"
+
+msgid "Delivery information (BG-13)"
+msgstr "Lieferung (BG-13)"
+
 msgid "Invoice line"
 msgstr "Position"
 
 msgid "Payment instructions (BG-16)"
 msgstr "Zahlung (BG-16)"
+
+msgid "Document level allowances (BG-20)"
+msgstr "Nachlass (BG-20)"
+
+msgid "Document level charges (BG-21)"
+msgstr "Zuschlag (BG-21)"
 
 msgid "VAT breakdown (BG-23)"
 msgstr "Umsatzsteuer (BG-23)"

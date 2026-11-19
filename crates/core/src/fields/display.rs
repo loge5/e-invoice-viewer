@@ -151,6 +151,15 @@ pub fn iban(raw: &str) -> String {
         .join(" ")
 }
 
+/// Formats an electronic address with its scheme (BT-34, BT-49), e.g.
+/// `04011000-12345-34 (0204)`; without a scheme, the address alone.
+pub fn electronic_address(raw: &str, scheme: Option<&str>) -> String {
+    match scheme.map(str::trim).filter(|scheme| !scheme.is_empty()) {
+        Some(scheme) => format!("{} ({scheme})", raw.trim()),
+        None => raw.trim().to_string(),
+    }
+}
+
 /// Formats the specification identifier (BT-24) as the detected profile name.
 pub fn specification_identifier(raw: &str, detection: &Detection) -> String {
     let version = detection.profile_version.as_deref().unwrap_or_default();

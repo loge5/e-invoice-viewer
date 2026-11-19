@@ -10,8 +10,8 @@ When the fixture files are created, their validity (as stated per sample
 below) is confirmed once with the official KoSIT validator; if a sample turns
 out to be invalid, the sample is fixed, not the expectation.
 
-Files: `crates/core/tests/fixtures/cii/sample-{a,b}.xml` and
-`crates/core/tests/fixtures/ubl/sample-{a,b}.xml`. UBL sample A was created
+Files: `crates/core/tests/fixtures/cii/sample-{a,b,c}.xml` and
+`crates/core/tests/fixtures/ubl/sample-{a,b,c}.xml`. UBL sample A was created
 with spec 0009 and is accepted by the KoSIT validator without any message. UBL
 sample B was created with spec 0010; both B samples are accepted by the KoSIT
 validator (configuration XRechnung 3.0.2) with only the information
@@ -62,6 +62,30 @@ in that spec and derived from these samples.
      `Steuerbefreit nach § 4 Nr. 21 UStG`
 - Totals: BT-109 `1050.00`, BT-110 `190.00`, BT-112 `1240.00`, BT-115 `1240.00`
 - Valid against EN 16931 and XRechnung 3.0 (no errors)
+
+## Sample C — `RE-2026-0042` with references, delivery and allowances
+
+Created with spec 0021 from sample A; all other data as in sample A.
+
+- References: BT-11 `PRJ-7` (CII also needs the project name, `Projekt`),
+  BT-12 `V-2026-03`, BT-13 `PO-4711`, BT-18 `OBJ-1` (type code 130)
+- Preceding invoice (BG-3): BT-25 `RE-2026-0017`, BT-26 `2026-10-15`
+- Buyer electronic address BT-49 `04011000-12345-34` (scheme `0204`) instead
+  of the e-mail address
+- Delivery (BG-13): BT-70 `Lager Nord`, BT-72 `2026-11-03`, BT-75
+  `Industriestraße 5`, BT-78 `20457`, BT-77 `Hamburg`, BT-80 `DE`
+- Invoicing period (BG-14): BT-73 `2026-11-01`, BT-74 `2026-11-30`
+- Payment: BT-81 `59` (SEPA direct debit), BT-89 `MANDAT-0815`, BT-90
+  `DE98ZZZ09999999999` (UBL: seller party identification with scheme
+  `SEPA`), BT-91 `DE02120300000000202051`; no BT-84
+- Allowance (BG-20): BT-92 `50.00`, BT-95 `S`, BT-96 `19`, BT-97 `Rabatt`
+- Charge (BG-21): BT-99 `10.00`, BT-102 `S`, BT-103 `19`, BT-104 `Fracht`
+- Line 1: BT-132 `1`, period BT-134 `2026-11-01` to BT-135 `2026-11-15`
+- One VAT breakdown: BT-116 `1010.00`, BT-117 `191.90`, BT-118 `S`, BT-119
+  `19`
+- Totals: BT-106 `1050.00`, BT-107 `50.00`, BT-108 `10.00`, BT-109
+  `1010.00`, BT-110 `191.90`, BT-112 `1201.90`, BT-115 `1201.90`
+- Valid against EN 16931 (no errors, checked with the bundled rules)
 
 ## Sample L — `RE-2026-0500`, 500 lines
 

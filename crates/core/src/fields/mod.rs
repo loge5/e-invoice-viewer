@@ -224,6 +224,8 @@ enum Condition {
     NotChildText(&'static [Step], &'static str),
     /// An element is reached along the path.
     HasChild(&'static [Step]),
+    /// The attribute is missing or has another value.
+    NotAttribute(&'static str, &'static str),
 }
 
 impl Step {
@@ -278,6 +280,7 @@ impl Condition {
             Self::OtherChildText(path, value) => text_at(path).is_some_and(|text| text != value),
             Self::NotChildText(path, value) => text_at(path).is_none_or(|text| text != value),
             Self::HasChild(path) => !find_all(node, path).is_empty(),
+            Self::NotAttribute(name, value) => node.attribute(name) != Some(value),
         }
     }
 }
@@ -298,6 +301,9 @@ enum Format {
     PaymentMeans,
     VatCategory,
     SpecificationIdentifier,
+    /// An electronic address with its scheme from the `schemeID` attribute
+    /// (BT-34, BT-49).
+    ElectronicAddress,
 }
 
 /// A business term: its number and German label.
@@ -368,6 +374,9 @@ const fn absolute(term: Term, path: &'static [Step], format: Format) -> FieldDef
 struct SectionDef {
     title: &'static str,
     anchor: &'static [Step],
+    /// Anchor used when no element matches `anchor` (e.g. the UBL invoicing
+    /// period for the delivery section, spec 0021).
+    fallback: Option<&'static [Step]>,
     /// One section per matching anchor element (e.g. BG-23).
     repeatable: bool,
     /// Element whose text is appended to the title (e.g. the line ID).
@@ -386,6 +395,11 @@ struct Context<'a, 'input> {
 
 fn map_section(root: Node, def: &SectionDef, context: &Context) -> Vec<Section> {
     let mut anchors = find_all(root, def.anchor);
+    if anchors.is_empty()
+        && let Some(fallback) = def.fallback
+    {
+        anchors = find_all(root, fallback);
+    }
     if !def.repeatable {
         anchors.truncate(1);
     }
@@ -460,6 +474,7 @@ fn display_value(raw: &str, node: Node, format: Format, context: &Context) -> St
         Format::SpecificationIdentifier => {
             display::specification_identifier(raw, context.detection)
         }
+        Format::ElectronicAddress => display::electronic_address(raw, node.attribute("schemeID")),
     }
 }
 

@@ -84,6 +84,8 @@ fn sample_a_seller_section_flat_in_order() {
         [
             ("BT-27", "Muster GmbH"),
             ("BT-31", "DE123456789"),
+            // Spec 0021: the seller's electronic address.
+            ("BT-34", "rechnung@muster.example (EM)"),
             ("BT-35", "Hauptstraße 1"),
             ("BT-38", "12345"),
             ("BT-37", "Berlin"),

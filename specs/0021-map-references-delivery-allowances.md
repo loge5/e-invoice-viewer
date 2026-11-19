@@ -148,11 +148,10 @@ category `S`, rate `19`), one charge (`10.00 EUR`, reason `Fracht`, category
 BT-115 `1201.90`, one VAT breakdown with base `1010.00`. It has no error
 under EN 16931, confirmed once with the KoSIT validator.
 
-CII sample A gets the same electronic addresses as UBL sample A
-(`rechnung@muster.example` and `einkauf@beispiel.example`, scheme `EM`), so
-that CII and UBL sample A stay the same invoice (0006); the expectations of
-earlier specs that list the seller's or buyer's fields of sample A are
-extended by BT-34 and BT-49.
+CII and UBL sample A both carry the electronic addresses
+(`rechnung@muster.example` and `einkauf@beispiel.example`, scheme `EM`); the
+expectations of earlier specs that list the seller's or buyer's fields of
+sample A are extended by BT-34 and BT-49.
 
 - [ ] Given CII sample C in German, then the section `Lieferung (BG-13)`
       comes after `Käufer (BG-7)` and before `Position 1`, and contains in
@@ -234,9 +233,10 @@ extended by BT-34 and BT-49.
   CII always has `ram:ApplicableHeaderTradeDelivery`, possibly empty.
 - Review on 2026-11-19 (by Claude, accepted by the author), changes to the
   first draft:
-  - Samples B (CII, UBL) and UBL sample A already contain the electronic
-    addresses BT-34 and BT-49, so their models change; CII sample A gets
-    them as well, so that CII and UBL sample A stay alike.
+  - Samples A and B (CII and UBL) already contain the electronic addresses
+    BT-34 and BT-49, so their models change. (The review first assumed CII
+    sample A lacked them; it has them, so no fixture change was needed –
+    corrected during implementation.)
   - In UBL the creditor identifier is a seller party identification with
     scheme `SEPA` and must not appear as BT-29 as well.
   - Sample C states its totals and has no payee account, so that the totals
@@ -247,3 +247,36 @@ extended by BT-34 and BT-49.
 - The section `Lieferung (BG-13)` holds the invoicing period because EN 16931
   defines BG-14 as part of BG-13; users looking for the "Leistungszeitraum"
   find it there, next to the delivery date.
+
+## Progress
+
+- **Done**:
+  - `fields/terms.rs`: 43 new business terms with their official English
+    names and four section titles; `po/de.po` has the German labels.
+  - `fields/cii.rs`, `fields/ubl.rs`: the new fields and the sections
+    `Vorausgegangene Rechnung (BG-3)`, `Lieferung (BG-13)`,
+    `Nachlass (BG-20)` and `Zuschlag (BG-21)` for CII and UBL (invoices and
+    credit notes).
+  - `fields/mod.rs`: a section may have a fallback anchor (UBL: the
+    invoicing period when there is no `cac:Delivery`); the condition
+    `NotAttribute` keeps the UBL creditor identifier out of BT-29 and BT-46;
+    the display format for electronic addresses with their scheme.
+  - Sample C (`cii/sample-c.xml`, `ubl/sample-c.xml`), described in
+    `docs/fixtures.md`.
+- **Verified** (2026-11-19):
+  - `cargo test --workspace`: 219 passed; new: 10 tests in
+    `crates/core/tests/map_more_terms.rs` (AC1–AC9; the location and XML
+    view check of AC9 is there instead of `link_fields_xml.rs`, to share the
+    sample C variants) and `sample_c_has_no_errors` in `validate_en16931.rs`.
+    The expectation of the seller fields of sample A gained BT-34
+    (`map_cii_header.rs`); the UBL/CII comparison for A, B and L, the sample
+    L time limits and the catalogue check are green unchanged (AC10, AC11).
+  - `cargo fmt --all --check`, `cargo clippy --workspace --all-targets -- -D
+    warnings` and the architecture check are clean.
+  - Smoke run of the release build in a container with a virtual display:
+    sample C opens with `No findings` and shows the references and the
+    preceding invoice.
+- **Not done**: sample C has not been checked with the KoSIT validator (it
+  is not installed locally; installing it needs downloads). The bundled
+  rules report no error for CII and UBL.
+

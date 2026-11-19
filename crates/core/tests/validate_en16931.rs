@@ -20,6 +20,16 @@ fn sample_a_cii_has_no_errors() {
     assert_eq!(validation.not_applicable_reason, None);
 }
 
+// Spec 0021: sample C (references, delivery, direct debit, allowances and
+// charges) is a correct invoice.
+#[test]
+fn sample_c_has_no_errors() {
+    for path in ["cii/sample-c.xml", "ubl/sample-c.xml"] {
+        let validation = validate(&fixture(path));
+        assert_eq!(errors(&validation), Vec::<&Finding>::new(), "{path}");
+    }
+}
+
 // AC2
 #[test]
 fn missing_bt24_reports_br01_at_root() {

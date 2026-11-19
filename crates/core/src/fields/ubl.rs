@@ -54,6 +54,20 @@ const VAT_SCHEME: Step = cac("PartyTaxScheme").with(Condition::ChildText(TAX_SCH
 const OTHER_TAX_SCHEME: Step =
     cac("PartyTaxScheme").with(Condition::OtherChildText(TAX_SCHEME_ID, "VAT"));
 const ADDRESS: Step = cac("PostalAddress");
+/// A party identification that is not the SEPA creditor identifier (BT-90).
+const PARTY_ID: [Step; 2] = [
+    cac("PartyIdentification"),
+    cbc("ID").with(Condition::NotAttribute("schemeID", "SEPA")),
+];
+/// The SEPA creditor identifier (BT-90) among the party identifications.
+const SEPA_ID: [Step; 2] = [
+    cac("PartyIdentification"),
+    cbc("ID").with_attribute("schemeID", "SEPA"),
+];
+const ALLOWANCE_CHARGE: Step = cac("AllowanceCharge");
+const CHARGE_INDICATOR: &[Step] = &[cbc("ChargeIndicator")];
+const PERIOD: Step = cac("InvoicePeriod");
+const DELIVERY_ADDRESS: [Step; 2] = [cac("DeliveryLocation"), cac("Address")];
 const LEGAL_ENTITY: Step = cac("PartyLegalEntity");
 const CONTACT: Step = cac("Contact");
 
@@ -62,6 +76,7 @@ const HEADER_SECTIONS: &[SectionDef] = &[
         title: INVOICE,
         anchor: &[],
         repeatable: false,
+        fallback: None,
         title_suffix: None,
         fields: &[
             field(BT_1, &[cbc("ID")], Format::Text),
@@ -80,6 +95,43 @@ const HEADER_SECTIONS: &[SectionDef] = &[
                 Format::IsoDate,
             ),
             field(BT_10, &[cbc("BuyerReference")], Format::Text),
+            field(BT_11, &[cac("ProjectReference"), cbc("ID")], Format::Text),
+            field(
+                BT_12,
+                &[cac("ContractDocumentReference"), cbc("ID")],
+                Format::Text,
+            ),
+            field(BT_13, &[cac("OrderReference"), cbc("ID")], Format::Text),
+            field(
+                BT_14,
+                &[cac("OrderReference"), cbc("SalesOrderID")],
+                Format::Text,
+            ),
+            field(
+                BT_15,
+                &[cac("ReceiptDocumentReference"), cbc("ID")],
+                Format::Text,
+            ),
+            field(
+                BT_16,
+                &[cac("DespatchDocumentReference"), cbc("ID")],
+                Format::Text,
+            ),
+            field(
+                BT_17,
+                &[cac("OriginatorDocumentReference"), cbc("ID")],
+                Format::Text,
+            ),
+            field(
+                BT_18,
+                &[
+                    cac("AdditionalDocumentReference")
+                        .with(Condition::ChildText(&[cbc("DocumentTypeCode")], "130")),
+                    cbc("ID"),
+                ],
+                Format::Text,
+            ),
+            field(BT_19, &[cbc("AccountingCost")], Format::Text),
             field(
                 BT_24,
                 &[cbc("CustomizationID")],
@@ -89,9 +141,21 @@ const HEADER_SECTIONS: &[SectionDef] = &[
         ],
     },
     SectionDef {
+        title: PRECEDING_INVOICE,
+        anchor: &[cac("BillingReference"), cac("InvoiceDocumentReference")],
+        fallback: None,
+        repeatable: true,
+        title_suffix: None,
+        fields: &[
+            field(BT_25, &[cbc("ID")], Format::Text),
+            field(BT_26, &[cbc("IssueDate")], Format::IsoDate),
+        ],
+    },
+    SectionDef {
         title: SELLER,
         anchor: &[cac("AccountingSupplierParty"), cac("Party")],
         repeatable: false,
+        fallback: None,
         title_suffix: None,
         fields: &[
             field(
@@ -99,13 +163,10 @@ const HEADER_SECTIONS: &[SectionDef] = &[
                 &[LEGAL_ENTITY, cbc("RegistrationName")],
                 Format::Text,
             ),
-            field(
-                BT_29,
-                &[cac("PartyIdentification"), cbc("ID")],
-                Format::Text,
-            ),
+            field(BT_29, &PARTY_ID, Format::Text),
             field(BT_31, &[VAT_SCHEME, cbc("CompanyID")], Format::Text),
             field(BT_32, &[OTHER_TAX_SCHEME, cbc("CompanyID")], Format::Text),
+            field(BT_34, &[cbc("EndpointID")], Format::ElectronicAddress),
             field(BT_35, &[ADDRESS, cbc("StreetName")], Format::Text),
             field(BT_36, &[ADDRESS, cbc("AdditionalStreetName")], Format::Text),
             field(BT_38, &[ADDRESS, cbc("PostalZone")], Format::Text),
@@ -124,6 +185,7 @@ const HEADER_SECTIONS: &[SectionDef] = &[
         title: BUYER,
         anchor: &[cac("AccountingCustomerParty"), cac("Party")],
         repeatable: false,
+        fallback: None,
         title_suffix: None,
         fields: &[
             field(
@@ -131,12 +193,9 @@ const HEADER_SECTIONS: &[SectionDef] = &[
                 &[LEGAL_ENTITY, cbc("RegistrationName")],
                 Format::Text,
             ),
-            field(
-                BT_46,
-                &[cac("PartyIdentification"), cbc("ID")],
-                Format::Text,
-            ),
+            field(BT_46, &PARTY_ID, Format::Text),
             field(BT_48, &[VAT_SCHEME, cbc("CompanyID")], Format::Text),
+            field(BT_49, &[cbc("EndpointID")], Format::ElectronicAddress),
             field(BT_50, &[ADDRESS, cbc("StreetName")], Format::Text),
             field(BT_51, &[ADDRESS, cbc("AdditionalStreetName")], Format::Text),
             field(BT_53, &[ADDRESS, cbc("PostalZone")], Format::Text),
@@ -144,6 +203,60 @@ const HEADER_SECTIONS: &[SectionDef] = &[
             field(
                 BT_55,
                 &[ADDRESS, cac("Country"), cbc("IdentificationCode")],
+                Format::Text,
+            ),
+        ],
+    },
+    SectionDef {
+        title: DELIVERY,
+        // cac:Delivery is optional; an invoicing period alone still makes
+        // the section (spec 0021).
+        anchor: &[cac("Delivery")],
+        fallback: Some(&[PERIOD]),
+        repeatable: false,
+        title_suffix: None,
+        fields: &[
+            field(
+                BT_70,
+                &[cac("DeliveryParty"), cac("PartyName"), cbc("Name")],
+                Format::Text,
+            ),
+            field(BT_71, &[cac("DeliveryLocation"), cbc("ID")], Format::Text),
+            field(BT_72, &[cbc("ActualDeliveryDate")], Format::IsoDate),
+            absolute(BT_73, &[PERIOD, cbc("StartDate")], Format::IsoDate),
+            absolute(BT_74, &[PERIOD, cbc("EndDate")], Format::IsoDate),
+            field(
+                BT_75,
+                &[DELIVERY_ADDRESS[0], DELIVERY_ADDRESS[1], cbc("StreetName")],
+                Format::Text,
+            ),
+            field(
+                BT_76,
+                &[
+                    DELIVERY_ADDRESS[0],
+                    DELIVERY_ADDRESS[1],
+                    cbc("AdditionalStreetName"),
+                ],
+                Format::Text,
+            ),
+            field(
+                BT_78,
+                &[DELIVERY_ADDRESS[0], DELIVERY_ADDRESS[1], cbc("PostalZone")],
+                Format::Text,
+            ),
+            field(
+                BT_77,
+                &[DELIVERY_ADDRESS[0], DELIVERY_ADDRESS[1], cbc("CityName")],
+                Format::Text,
+            ),
+            field(
+                BT_80,
+                &[
+                    DELIVERY_ADDRESS[0],
+                    DELIVERY_ADDRESS[1],
+                    cac("Country"),
+                    cbc("IdentificationCode"),
+                ],
                 Format::Text,
             ),
         ],
@@ -159,6 +272,7 @@ const LINE_SECTIONS: &[SectionDef] = &[SectionDef {
     title: LINE,
     anchor: &[cac("InvoiceLine").or("CreditNoteLine")],
     repeatable: true,
+    fallback: None,
     title_suffix: Some(&[cbc("ID")]),
     fields: &[
         field(BT_126, &[cbc("ID")], Format::Text),
@@ -190,7 +304,14 @@ const LINE_SECTIONS: &[SectionDef] = &[SectionDef {
             Format::Text,
         ),
         field(BT_128, &[cac("DocumentReference"), cbc("ID")], Format::Text),
+        field(
+            BT_132,
+            &[cac("OrderLineReference"), cbc("LineID")],
+            Format::Text,
+        ),
         field(BT_133, &[cbc("AccountingCost")], Format::Text),
+        field(BT_134, &[PERIOD, cbc("StartDate")], Format::IsoDate),
+        field(BT_135, &[PERIOD, cbc("EndDate")], Format::IsoDate),
     ],
 }];
 
@@ -204,6 +325,7 @@ const TRAILER_SECTIONS: &[SectionDef] = &[
         // The payment terms of UBL are outside the payment means.
         anchor: &[],
         repeatable: false,
+        fallback: None,
         title_suffix: None,
         fields: &[
             field(
@@ -232,13 +354,82 @@ const TRAILER_SECTIONS: &[SectionDef] = &[
                 ],
                 Format::Text,
             ),
+            field(
+                BT_89,
+                &[PAYMENT_MEANS, cac("PaymentMandate"), cbc("ID")],
+                Format::Text,
+            ),
+            // The creditor identifier is a party identification of the
+            // seller, or of the payee if there is one.
+            field(
+                BT_90,
+                &[
+                    cac("AccountingSupplierParty"),
+                    cac("Party"),
+                    SEPA_ID[0],
+                    SEPA_ID[1],
+                ],
+                Format::Text,
+            ),
+            field(
+                BT_90,
+                &[cac("PayeeParty"), SEPA_ID[0], SEPA_ID[1]],
+                Format::Text,
+            ),
+            field(
+                BT_91,
+                &[
+                    PAYMENT_MEANS,
+                    cac("PaymentMandate"),
+                    cac("PayerFinancialAccount"),
+                    cbc("ID"),
+                ],
+                Format::Iban,
+            ),
             field(BT_20, &[cac("PaymentTerms"), cbc("Note")], Format::Text),
+        ],
+    },
+    SectionDef {
+        title: ALLOWANCE,
+        anchor: &[ALLOWANCE_CHARGE.with(Condition::ChildText(CHARGE_INDICATOR, "false"))],
+        fallback: None,
+        repeatable: true,
+        title_suffix: None,
+        fields: &[
+            field(BT_92, &[cbc("Amount")], Format::Amount),
+            field(BT_93, &[cbc("BaseAmount")], Format::Amount),
+            field(BT_94, &[cbc("MultiplierFactorNumeric")], Format::Text),
+            field(BT_95, &[cac("TaxCategory"), cbc("ID")], Format::VatCategory),
+            field(BT_96, &[cac("TaxCategory"), cbc("Percent")], Format::Text),
+            field(BT_97, &[cbc("AllowanceChargeReason")], Format::Text),
+            field(BT_98, &[cbc("AllowanceChargeReasonCode")], Format::Text),
+        ],
+    },
+    SectionDef {
+        title: CHARGE,
+        anchor: &[ALLOWANCE_CHARGE.with(Condition::ChildText(CHARGE_INDICATOR, "true"))],
+        fallback: None,
+        repeatable: true,
+        title_suffix: None,
+        fields: &[
+            field(BT_99, &[cbc("Amount")], Format::Amount),
+            field(BT_100, &[cbc("BaseAmount")], Format::Amount),
+            field(BT_101, &[cbc("MultiplierFactorNumeric")], Format::Text),
+            field(
+                BT_102,
+                &[cac("TaxCategory"), cbc("ID")],
+                Format::VatCategory,
+            ),
+            field(BT_103, &[cac("TaxCategory"), cbc("Percent")], Format::Text),
+            field(BT_104, &[cbc("AllowanceChargeReason")], Format::Text),
+            field(BT_105, &[cbc("AllowanceChargeReasonCode")], Format::Text),
         ],
     },
     SectionDef {
         title: VAT_BREAKDOWN,
         anchor: &[cac("TaxTotal"), cac("TaxSubtotal")],
         repeatable: true,
+        fallback: None,
         title_suffix: None,
         fields: &[
             field(BT_116, &[cbc("TaxableAmount")], Format::Amount),
@@ -260,6 +451,7 @@ const TRAILER_SECTIONS: &[SectionDef] = &[
         title: TOTALS,
         anchor: &[MONETARY_TOTAL],
         repeatable: false,
+        fallback: None,
         title_suffix: None,
         fields: &[
             field(BT_106, &[cbc("LineExtensionAmount")], Format::Amount),
