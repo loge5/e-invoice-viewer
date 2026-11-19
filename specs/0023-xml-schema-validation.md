@@ -152,6 +152,17 @@ Samples are defined in [fixtures.md](../docs/fixtures.md).
   - fmt, clippy, architecture check clean.
   - AppImage built in the Ubuntu 24.04 container (libxml2 2.9.14): opening
     `cii-bad.xml` in a clean Arch container shows `1 error` (screenshot).
+- **Fixed after CI** (2026-11-19):
+  - With libxml2 2.9 (Ubuntu 24.04, bundled in the AppImage) threads
+    compiling schemas at the same time hung in libxml2's catalog lock; the
+    app validates in glib's thread pool, so opening several files at once
+    could hang. The schema check now switches XML catalogs off (nothing is
+    resolved through the system's catalog files) and compiles one schema at
+    a time. Found by gdb in the Ubuntu container; new test
+    `concurrent_validation.rs`.
+  - `every_schema_compiles` failed when it ran before every other test
+    (Windows CI): compiling now registers the input callbacks itself.
+  - CI run on `ci-trial` (`a9ad984`): Linux and Windows green.
 - **Next**: AC10 on Windows — the CI Windows job builds and tests with
   libxml2; the manual check in the VM is collected with the other manual
   checks.
