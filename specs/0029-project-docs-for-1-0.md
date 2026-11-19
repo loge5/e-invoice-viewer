@@ -41,17 +41,17 @@ project documentation is complete and current (author, 2026-11-19).
 
 ## Acceptance criteria
 
-- [ ] `CHANGELOG.md` exists with 0.1.0, 0.2.1 and Unreleased; its 0.2.1
+- [x] `CHANGELOG.md` exists with 0.1.0, 0.2.1 and Unreleased; its 0.2.1
       section names Windows support and the new fields of 0021.
-- [ ] `scripts/appimage/check-tag.sh v0.2.1` passes; with a version that has
+- [x] `scripts/appimage/check-tag.sh v0.2.1` passes; with a version that has
       no changelog section it fails with a message naming `CHANGELOG.md`
       (automated test).
-- [ ] `docs/releasing.md` and `docs/rule-updates.md` exist, and every command
+- [x] `docs/releasing.md` and `docs/rule-updates.md` exist, and every command
       in them is a command of the repository (checked by reading; the rule
       update procedure is the one used for 0009, 0010 and 0023).
-- [ ] `docs/requirements.md` contains no statement that contradicts an
+- [x] `docs/requirements.md` contains no statement that contradicts an
       implemented spec (checked by reading against specs 0001–0026).
-- [ ] The README links to `CHANGELOG.md` and `docs/releasing.md`.
+- [x] The README links to `CHANGELOG.md` and `docs/releasing.md`.
 
 ## Out of scope
 
@@ -65,3 +65,18 @@ project documentation is complete and current (author, 2026-11-19).
   (AC2).
 - T2 `readme_links_changelog_and_release_guide` (AC5).
 - Reading checks for AC1, AC3 and AC4, recorded in the spec.
+
+## Progress
+
+- **Done**: `CHANGELOG.md` (Unreleased, 0.2.1, 0.1.0), `docs/releasing.md`,
+  `docs/rule-updates.md` (the XML schema part is completed with 0023),
+  `docs/requirements.md` updated (decisions 2, 4, 5, 9, 11, 13, 15, the
+  sources, the resolved risk), README links; `check-tag.sh` requires a
+  changelog section.
+- **Verified** (2026-11-19): T1 `tag_check_requires_changelog_entry`, T2
+  `readme_links_changelog_and_release_guide`; `check-tag.sh v0.2.1` passes.
+  Reading checks: the commands in both guides are the repository's
+  (`cargo update --workspace --offline`, `scripts/appimage/check-tag.sh`,
+  `scripts/kosit-reference.sh`, the `write_variants` test); `requirements.md`
+  read against specs 0001–0026, no contradiction left.
+

@@ -8,8 +8,9 @@ if [[ ${1:-} != "v$version" ]]; then
     echo "error: tag '${1:-}' does not match the version in Cargo.toml (expected v$version)" >&2
     exit 1
 fi
-# The release also needs the lock file and the AppStream release entry of
-# that version; the builds use --locked.
+# The release also needs the lock file, the AppStream release entry and the
+# changelog section of that version (docs/releasing.md); the builds use
+# --locked.
 for crate in e-invoice-viewer e-invoice-viewer-core; do
     if ! grep -A1 -x "name = \"$crate\"" "$repo/Cargo.lock" | grep -q -x "version = \"$version\""; then
         echo "error: Cargo.lock has another version of $crate than $version; run cargo update --workspace" >&2
@@ -18,5 +19,9 @@ for crate in e-invoice-viewer e-invoice-viewer-core; do
 done
 if ! grep -q "<release version=\"$version\"" "$repo/data/de.loges.EInvoiceViewer.metainfo.xml"; then
     echo "error: data/de.loges.EInvoiceViewer.metainfo.xml has no release entry for $version" >&2
+    exit 1
+fi
+if ! grep -q "^## \[$version\]" "$repo/CHANGELOG.md"; then
+    echo "error: CHANGELOG.md has no section ## [$version]" >&2
     exit 1
 fi

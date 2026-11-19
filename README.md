@@ -248,6 +248,10 @@ to automated tests or documented manual checks. Requirements are summarised in
 
 ## Development
 
+Changes are listed in [CHANGELOG.md](CHANGELOG.md); how a release is made is
+described in [docs/releasing.md](docs/releasing.md), and how the bundled rules
+are updated in [docs/rule-updates.md](docs/rule-updates.md).
+
 ```bash
 cargo test --workspace
 cargo clippy --workspace --all-targets -- -D warnings

@@ -31,20 +31,20 @@ way to close it, and crashed on Linux.
 | # | Topic | Decision |
 |---|---|---|
 | 1 | Input formats | ZUGFeRD/Factur-X PDF; plain XML in CII and UBL *(default)* |
-| 2 | Profiles | Full field view for EN 16931 (Comfort), XRechnung, Basic and Extended. Minimum and Basic WL are shown with a notice that they are not complete invoices *(default)* |
+| 2 | Profiles | Full field view for EN 16931 (Comfort), XRechnung, Basic and Extended. Minimum and Basic WL are shown with a notice that they are not complete invoices *(default)*. For 1.0, every EN 16931 business term is shown (spec 0024), and content beyond EN 16931 (Extended) is planned (spec 0027) |
 | 3 | Editing | **Display only.** Creating or editing invoices is out of scope |
-| 4 | Attachments | Embedded attachments of the invoice (e.g. delivery note) are listed and can be saved. Comes in a later slice *(default)* |
-| 5 | Rule set | EN 16931 business rules (CEN) plus XRechnung CIUS (BR-DE-*) *(default)*. ZUGFeRD-specific profile rules are a later extension |
+| 4 | Attachments | Embedded attachments of the invoice (e.g. delivery note) are listed and can be saved (spec 0013) |
+| 5 | Rule set | XML schema (CII D16B, UBL 2.1; spec 0023, ADR 0006), EN 16931 business rules (CEN) and XRechnung CIUS (BR-DE-*). ZUGFeRD-specific profile rules are planned for 1.0 (spec 0027), subject to the licence of the FeRD artefacts |
 | 6 | Validation runtime | A self-contained binary: no Java, no network. Technical feasibility is clarified in a spike first *(default)* |
 | 7 | PDF/A conformance | Out of scope. Only checked: an invoice XML is embedded and can be extracted *(default)* |
 | 8 | Field view | Own structured view grouped by sections (seller, buyer, payment, line items, totals, …), every field labelled with its BT/BG number *(default)* |
-| 9 | Field ↔ XML | Selecting a field highlights the matching XML element. Comes in a later slice *(default)* |
+| 9 | Field ↔ XML | Fields and XML elements are linked in both directions (spec 0014) |
 | 10 | Windows & reopening | One invoice per window. **No** automatic reopening of the last file on start; a "recent files" list instead *(default)* |
-| 11 | Opening files | File dialog, drag & drop, command line argument, "Open with" from the file manager *(default)* |
+| 11 | Opening files | File dialog, drag & drop, command line argument, "Open with" from the file manager or Windows Explorer |
 | 12 | Language | German and English, following the system language, switchable in the app; translations as gettext `.po` files (decided 2026-11-18, [ADR 0003](adr/0003-translations-gettext-embedded.md), specs 0017–0019) |
-| 13 | Toolkit | **GTK4 + libadwaita**, Linux/GNOME only |
+| 13 | Toolkit & platforms | **GTK4 + libadwaita**. Linux (decided 2026-11-16) and, since 2026-11-19, Windows 10/11 x64 ([ADR 0005](adr/0005-windows-build-msys2-github-actions.md), spec 0022). No macOS |
 | 14 | PDF rendering & licence | Poppler; the app is therefore licensed **GPL-3.0-or-later** *(default)* |
-| 15 | Distribution | Local `cargo build`/install first; AUR package later; Flatpak out of scope for now *(default)* |
+| 15 | Distribution | AppImage for Linux ([ADR 0004](adr/0004-appimage-built-in-container.md)), portable ZIP and installer for Windows (ADR 0005), and `scripts/install.sh` from source. Decided 2026-11-19: no Linux distribution packages (AUR, Flathub) and no Windows code signing before 1.0 |
 
 ## Assumptions & implicit constraints
 
@@ -66,16 +66,21 @@ way to close it, and crashed on Linux.
 
 ## Dependencies on existing systems / external knowledge
 
-- **KoSIT / CEN validation artefacts:** EN 16931 Schematron rules (CII + UBL)
-  and the XRechnung Schematron (BR-DE-*). Published under the Apache 2.0
-  licence; the rule texts (codes, messages) are the reference for findings.
+- **KoSIT / CEN validation artefacts:** EN 16931 Schematron rules (CII + UBL,
+  EUPL 1.2) and the XRechnung Schematron (BR-DE-*, Apache 2.0); the rule
+  texts (codes, messages) are the reference for findings. The XML schemas
+  CII D16B (UN/CEFACT) and UBL 2.1 (OASIS) from the KoSIT configuration.
+  How they are updated: [rule-updates.md](rule-updates.md).
 - **EN 16931 semantic model:** BT/BG numbers, field names and cardinalities,
   and their mapping to CII and UBL XPaths.
 - **Factur-X / ZUGFeRD specification:** file names of the embedded XML
   (`factur-x.xml`, `zugferd-invoice.xml`, `xrechnung.xml`) and the profile
   identifiers (guideline IDs in BT-24).
 
-## Biggest technical risk
+## Biggest technical risk (resolved)
+
+Resolved by the spike of spec 0001: option 1, see
+[ADR 0002](adr/0002-validation-engine.md). The original assessment:
 
 The official rules are written as Schematron with XSLT 2.0 / XPath 2.0, and
 Rust has no mature processor for that (in Java this is done with Saxon).

@@ -455,3 +455,49 @@ fn ci_workflow_checks_every_push() {
 fn readme_shows_ci_badge() {
     assert!(read("README.md").contains("actions/workflows/ci.yml/badge.svg"));
 }
+
+// 0029 AC2: the tag check needs a changelog section for the version.
+#[test]
+fn tag_check_requires_changelog_entry() {
+    let dir = temp_dir("tag-check");
+    fs::create_dir_all(dir.join("scripts/appimage")).expect("dirs");
+    fs::create_dir_all(dir.join("data")).expect("dirs");
+    for file in [
+        "scripts/appimage/check-tag.sh",
+        "Cargo.toml",
+        "Cargo.lock",
+        &format!("data/{APP_ID}.metainfo.xml"),
+    ] {
+        fs::copy(repo().join(file), dir.join(file)).expect(file);
+    }
+    let version = workspace_version();
+    let check = || {
+        run(Command::new("bash")
+            .arg(dir.join("scripts/appimage/check-tag.sh"))
+            .arg(format!("v{version}")))
+    };
+    fs::write(
+        dir.join("CHANGELOG.md"),
+        format!("# Changelog\n\n## [{version}] - 2026-11-19\n"),
+    )
+    .expect("changelog");
+    assert_success(&check(), "with a section");
+    fs::write(dir.join("CHANGELOG.md"), "# Changelog\n\n## [Unreleased]\n").expect("changelog");
+    let output = check();
+    assert!(!output.status.success());
+    assert!(String::from_utf8_lossy(&output.stderr).contains("CHANGELOG.md"));
+    assert_success(
+        &run(Command::new("bash")
+            .arg(repo().join("scripts/appimage/check-tag.sh"))
+            .arg(format!("v{version}"))),
+        "the repository's own changelog",
+    );
+}
+
+// 0029 AC5
+#[test]
+fn readme_links_changelog_and_release_guide() {
+    let readme = read("README.md");
+    assert!(readme.contains("(CHANGELOG.md)"));
+    assert!(readme.contains("(docs/releasing.md)"));
+}
