@@ -9,7 +9,7 @@
 use std::cell::RefCell;
 use std::collections::HashMap;
 use std::ffi::{CStr, CString, c_char, c_int, c_void};
-use std::sync::Once;
+use std::sync::{Mutex, Once};
 
 use libxml::bindings as ffi;
 
@@ -132,6 +132,12 @@ fn init() {
     // the callbacks are plain functions that live for the whole process.
     INIT.call_once(|| unsafe {
         ffi::xmlInitParser();
+        // No XML catalogs: every schema is embedded, nothing is to be
+        // resolved through the system's catalog files. Older libxml2
+        // versions also set up the catalogs lazily and not thread-safe: with
+        // libxml2 2.9 (Ubuntu 24.04) threads compiling schemas at the same
+        // time hung in the catalog lock.
+        ffi::xmlCatalogSetDefaults(ffi::xmlCatalogAllow_XML_CATA_ALLOW_NONE);
         ffi::xmlRegisterInputCallbacks(
             Some(input_matches),
             Some(input_open),
@@ -160,6 +166,12 @@ fn compiled(schema: Schema) -> *mut ffi::_xmlSchema {
 fn compile(schema: Schema) -> *mut ffi::_xmlSchema {
     // Compiling reads the schemas through the callbacks, whoever asks first.
     init();
+    // One compile at a time, as a safeguard: older libxml2 versions share
+    // state while parsing schemas. Each thread compiles each schema once.
+    static COMPILING: Mutex<()> = Mutex::new(());
+    let _compiling = COMPILING
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let url = CString::new(format!("{SCHEME}{}", schema.main_file())).expect("no NUL");
     let mut errors: Vec<SchemaError> = Vec::new();
     // SAFETY: the parser context reads the schema through the registered
