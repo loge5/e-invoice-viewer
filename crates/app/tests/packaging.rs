@@ -292,11 +292,15 @@ fn release_workflow_builds_both_platforms() {
         .lines()
         .filter_map(|line| line.trim().strip_prefix("- uses: "))
         .collect();
-    assert_eq!(uses.len(), 5);
+    assert_eq!(uses.len(), 6);
     for action in uses {
         let (name, rest) = action.split_once('@').expect("pinned");
         let hash = rest.split_whitespace().next().expect("hash");
-        assert!(name.starts_with("actions/"), "{name}");
+        // GitHub's own actions, and MSYS2's setup for Windows (ADR 0005).
+        assert!(
+            name.starts_with("actions/") || name == "msys2/setup-msys2",
+            "{name}"
+        );
         assert!(
             hash.len() == 40 && hash.chars().all(|c| c.is_ascii_hexdigit()),
             "{action}"
