@@ -47,23 +47,23 @@ are fuzzed.
 
 ## Acceptance criteria
 
-- [ ] The samples of the two collections are in
+- [x] The samples of the two collections are in
       `crates/core/tests/fixtures/public/` with `LICENSE` and `README.md`
       (source, tag or commit, what was left out and why).
-- [ ] A test opens every sample and checks the points of the requirement;
+- [x] A test opens every sample and checks the points of the requirement;
       it lists every deviation from the KoSIT result by file and rule, and
       passes only without deviations or with deviations recorded in a
       reviewed exception list with a reason each.
-- [ ] Given an XML file with 100 000 nested elements, opening it shows an
+- [x] Given an XML file with 100 000 nested elements, opening it shows an
       error message (not well-formed or too deep) within 5 s, without a
       crash.
-- [ ] `cargo fuzz` targets exist for opening, validation and the XML layout;
+- [x] `cargo fuzz` targets exist for opening, validation and the XML layout;
       each ran for at least one hour on the reference machine without a
       crash or an input taking longer than 5 s; the corpus of interesting
       inputs is kept in the repository (minimised).
-- [ ] Every crash or hang found while fuzzing has a regression test with the
+- [x] Every crash or hang found while fuzzing has a regression test with the
       minimised input and is fixed.
-- [ ] The README of the fuzz directory explains how to run the targets.
+- [x] The README of the fuzz directory explains how to run the targets.
 
 ## Out of scope
 
@@ -93,3 +93,47 @@ are fuzzed.
 - T3 one regression test per fuzzing find (AC5).
 - P1 fuzz targets `open`, `validate`, `xml_layout`, one hour each on the
   reference machine, results in the spec (AC4).
+
+## Progress
+
+- **Done**:
+  - Public samples in `crates/core/tests/fixtures/public/`: XRechnung test
+    suite v2026-08-31 (standard 66, extension 6) and the CEN examples of
+    `validation-1.3.17` (CII 15, UBL 19), with licences and a README
+    (source, what was left out or renamed and why). KoSIT references
+    regenerated with `scripts/kosit-reference.sh` (480 EN 16931, 431
+    XRechnung entries).
+  - `detect` refuses XML nested deeper than 256 levels (the libxml2
+    default) with its own message, before any parser recurses.
+  - Fuzz crate `fuzz/` (own workspace, nightly only) with the targets
+    `open`, `validate` and `xml_layout`; README with commands and memory
+    limits; minimised corpus committed.
+  - The schema check no longer uses XML catalogs and compiles one schema at
+    a time: with libxml2 2.9 (Ubuntu 24.04, also in the AppImage) parallel
+    compiles hung in the catalog lock (found by CI, not by the fuzzer; test
+    `concurrent_validation.rs`).
+- **Verified** (2026-11-19):
+  - AC1/AC2: `public_samples.rs` (every sample opens, no empty section, key
+    fields, finding locations select an element) and `validate_reference.rs`
+    (schema verdict, EN 16931 and XRechnung rules equal KoSIT for all
+    samples); no exception list was needed.
+  - AC3: `robustness.rs` — 100 000 nested elements, as XML and inside an
+    invoice, refused within 5 s with "nested more than 256 levels".
+  - AC4: one hour per target on the reference machine, one after another,
+    memory-limited:
+    - `open`: 5 279 583 runs, no finding, at most 587 MB;
+    - `xml_layout`: 23 713 500 runs, no finding, at most 499 MB;
+    - `validate`: two timeouts under the address sanitizer (below); then,
+      without the sanitizer, 293 640 runs, no finding, at most 102 MB.
+    - Corpus minimised with `cargo fuzz cmin`: open 4 006, xml_layout 2 644,
+      validate 1 194 files (5.5 MB packed in git).
+  - AC5: both `validate` timeouts are regression tests in `robustness.rs`
+    (`fuzz_validate_timeout_5c0933ae`, `fuzz_validate_timeout_a782dc5b`).
+    Neither was a hang: natively they take 0.35 s (first validation with
+    schema errors, warm-up) and 0.2 s; the address sanitizer makes a
+    validation about 20 times slower. Fixes: the fuzz target warms up the
+    error paths in `init`, and `validate` is fuzzed without the sanitizer
+    (reasons in `fuzz/README.md`; the sanitizer only instruments Rust code,
+    which is memory-safe outside `validate/xsd.rs`).
+  - AC6: `fuzz/README.md`.
+
