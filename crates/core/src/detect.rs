@@ -112,6 +112,32 @@ pub enum DetectError {
     UnsupportedZugferd1,
     #[error("unsupported character encoding: {encoding}")]
     UnsupportedEncoding { encoding: String },
+    #[error("XML is nested more than {limit} levels deep")]
+    TooDeep { limit: usize },
+}
+
+/// The deepest element nesting accepted (spec 0025). Invoices are about 20
+/// levels deep; libxml2 has the same default limit. Deeper documents would
+/// make the per-element locations grow quadratically.
+pub const MAX_DEPTH: usize = 256;
+
+/// Whether the document nests elements more than [`MAX_DEPTH`] levels deep,
+/// counted in one pass.
+fn too_deep(doc: &Document) -> bool {
+    // Depth of every node, by node id; parents come before their children
+    // in document order.
+    let mut depths = vec![0usize; doc.descendants().count()];
+    for node in doc.descendants() {
+        let parent_depth = node
+            .parent()
+            .map_or(0, |parent| depths[parent.id().get_usize()]);
+        let depth = parent_depth + usize::from(node.is_element());
+        if depth > MAX_DEPTH {
+            return true;
+        }
+        depths[node.id().get_usize()] = depth;
+    }
+    false
 }
 
 /// Detects syntax, document kind and profile of an invoice XML.
@@ -126,6 +152,9 @@ pub fn detect(xml: &[u8]) -> Result<Detection, DetectError> {
             line: other.pos().row,
         },
     })?;
+    if too_deep(&doc) {
+        return Err(DetectError::TooDeep { limit: MAX_DEPTH });
+    }
     let root = doc.root_element();
     let tag = root.tag_name();
 

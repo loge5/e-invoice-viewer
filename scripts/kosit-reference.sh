@@ -12,7 +12,8 @@
 # - cen checkout:    https://github.com/ConnectingEurope/eInvoicing-EN16931
 #                    at the tag in crates/core/rules/cen-*/SOURCE.md
 #
-# Inputs: the KoSIT test instances and samples under crates/core/tests/fixtures
+# Inputs: the KoSIT test instances, the samples and the public sample
+# collections (spec 0025) under crates/core/tests/fixtures
 # and the variants written by
 #   cargo test -p e-invoice-viewer-core --test validate_reference -- --ignored write_variants
 # Output, in crates/core/tests/fixtures/kosit/:
@@ -64,6 +65,11 @@ run_all() { # <mode>
         run_group "$1" "$fixtures/kosit/$group" "kosit/$group/"
     done
     run_group "$1" "$variants" "variants/"
+    # Public sample collections (spec 0025).
+    run_group "$1" "$fixtures/public/xrechnung-testsuite/standard" "public/xrechnung-testsuite/standard/"
+    run_group "$1" "$fixtures/public/xrechnung-testsuite/extension" "public/xrechnung-testsuite/extension/"
+    run_group "$1" "$fixtures/public/cen/cii" "public/cen/cii/"
+    run_group "$1" "$fixtures/public/cen/ubl" "public/cen/ubl/"
 }
 
 run_all en16931 | LC_ALL=C sort > "$out"

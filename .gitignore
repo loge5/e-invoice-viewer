@@ -2,3 +2,7 @@
 # The author's development method, vendored for local use only; it is not
 # part of the published repository.
 /ai-harness/
+/fuzz/target
+/fuzz/artifacts
+/fuzz/coverage
+/fuzz/Cargo.lock

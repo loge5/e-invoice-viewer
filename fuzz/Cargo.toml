@@ -1,0 +1,38 @@
+# Fuzz targets of E-Invoice Viewer (spec 0025). Not part of the workspace
+# build: run them with `cargo +nightly fuzz run <target>` (see README.md).
+[package]
+name = "e-invoice-viewer-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2024"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+e-invoice-viewer-core = { path = "../crates/core" }
+
+[[bin]]
+name = "open"
+path = "fuzz_targets/open.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "validate"
+path = "fuzz_targets/validate.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "xml_layout"
+path = "fuzz_targets/xml_layout.rs"
+test = false
+doc = false
+bench = false
+
+# Keep this crate out of the parent workspace.
+[workspace]

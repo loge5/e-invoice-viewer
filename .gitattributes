@@ -6,3 +6,7 @@
 *.pdf binary
 # Third-party files keep their bytes exactly as published.
 crates/core/rules/** -text
+# Public samples are kept byte-exact; fuzz inputs are raw data.
+crates/core/tests/fixtures/public/** -text
+fuzz/corpus/** -text
+fuzz/artifacts/** -text

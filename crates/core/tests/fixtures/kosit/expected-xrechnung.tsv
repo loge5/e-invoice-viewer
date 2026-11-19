@@ -352,6 +352,78 @@ kosit/ubl-inv/ubl-inv-peppol-en16931-r111.xml	EN16931 XRechnung (UBL Invoice)
 kosit/ubl-inv/ubl-inv-peppol-en16931-r120.xml	EN16931 XRechnung (UBL Invoice)	
 kosit/ubl-inv/ubl-inv-peppol-en16931-r121.xml	EN16931 XRechnung (UBL Invoice)	
 kosit/ubl-inv/ubl-inv-peppol-en16931-r130.xml	EN16931 XRechnung (UBL Invoice)	
+public/xrechnung-testsuite/extension/04.01a-INVOICE_ubl.xml	EN16931 XRechnung Extension (UBL Invoice)	UBL-CR-646:information
+public/xrechnung-testsuite/extension/04.02a-INVOICE_ubl.xml	EN16931 XRechnung Extension (UBL Invoice)	UBL-CR-646:information
+public/xrechnung-testsuite/extension/04.03a-INVOICE_ubl.xml	EN16931 XRechnung Extension (UBL Invoice)	UBL-CR-646:information
+public/xrechnung-testsuite/extension/04.04a-INVOICE_ubl.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-DE-TMP-32:information,UBL-CR-646:information
+public/xrechnung-testsuite/extension/04.05a-INVOICE_uncefact.xml	EN16931 XRechnung Extension (CII)	BR-CL-10:information,BR-CL-21:information
+public/xrechnung-testsuite/extension/05.01a-INVOICE_ubl.xml	EN16931 XRechnung Extension (UBL Invoice)	BR-CO-16:information,BR-DE-TMP-32:information,UBL-CR-470:information
+public/xrechnung-testsuite/standard/01.01a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.01a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.02a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	
+public/xrechnung-testsuite/standard/01.02a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	
+public/xrechnung-testsuite/standard/01.03a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.03a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.04a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.04a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.05a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	
+public/xrechnung-testsuite/standard/01.05a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	
+public/xrechnung-testsuite/standard/01.06a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	
+public/xrechnung-testsuite/standard/01.06a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	
+public/xrechnung-testsuite/standard/01.07a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	
+public/xrechnung-testsuite/standard/01.07a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	
+public/xrechnung-testsuite/standard/01.08a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.08a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.09a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.09a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.10a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.10a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.11a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.11a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.12a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.12a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.13a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.13a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.14a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	
+public/xrechnung-testsuite/standard/01.14a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	
+public/xrechnung-testsuite/standard/01.15a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.15a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.17a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.17a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/01.18a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	
+public/xrechnung-testsuite/standard/01.18a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	
+public/xrechnung-testsuite/standard/01.19a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	
+public/xrechnung-testsuite/standard/01.19a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	
+public/xrechnung-testsuite/standard/01.20a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	
+public/xrechnung-testsuite/standard/01.20a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	
+public/xrechnung-testsuite/standard/01.21a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	
+public/xrechnung-testsuite/standard/01.21a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	
+public/xrechnung-testsuite/standard/02.01a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	
+public/xrechnung-testsuite/standard/02.01a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	
+public/xrechnung-testsuite/standard/02.02a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	
+public/xrechnung-testsuite/standard/02.02a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	
+public/xrechnung-testsuite/standard/02.03a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	
+public/xrechnung-testsuite/standard/02.03a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	
+public/xrechnung-testsuite/standard/02.04a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	
+public/xrechnung-testsuite/standard/02.04a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	
+public/xrechnung-testsuite/standard/02.05a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/02.05a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/02.06a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/02.06a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/03.01a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	
+public/xrechnung-testsuite/standard/03.01a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	
+public/xrechnung-testsuite/standard/03.02a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/03.02a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/03.03a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/03.03a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	BR-DE-TMP-32:information
+public/xrechnung-testsuite/standard/03.04a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	
+public/xrechnung-testsuite/standard/03.04a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	
+public/xrechnung-testsuite/standard/03.05a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	
+public/xrechnung-testsuite/standard/03.05a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	
+public/xrechnung-testsuite/standard/03.06a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	
+public/xrechnung-testsuite/standard/03.06a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	
+public/xrechnung-testsuite/standard/03.07a-INVOICE_ubl.xml	EN16931 XRechnung (UBL Invoice)	
+public/xrechnung-testsuite/standard/03.07a-INVOICE_uncefact.xml	EN16931 XRechnung (CII)	
 ubl/sample-b.xml	EN16931 XRechnung (UBL Invoice)	BR-DE-TMP-32:information
 variants/b-cvd.xml	EN16931 XRechnung CVD (CII)	BR-DE-CVD-01:error,BR-DE-CVD-02:error,BR-DE-CVD-03:error,BR-DE-TMP-32:information
 variants/b-extension.xml	EN16931 XRechnung Extension (CII)	BR-DE-TMP-32:information

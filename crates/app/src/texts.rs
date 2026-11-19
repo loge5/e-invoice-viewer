@@ -431,6 +431,10 @@ fn reason(error: &OpenError) -> String {
                 "the character encoding {encoding} is not supported",
                 &[("encoding", encoding)],
             ),
+            DetectError::TooDeep { limit } => tr_fill(
+                "XML is nested more than {limit} levels deep",
+                &[("limit", &limit.to_string())],
+            ),
         },
         OpenError::Xml(MapError::UnsupportedSyntax) => {
             t("the invoice format is not supported").to_string()
