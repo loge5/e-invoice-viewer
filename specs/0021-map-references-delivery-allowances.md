@@ -153,16 +153,16 @@ CII and UBL sample A both carry the electronic addresses
 expectations of earlier specs that list the seller's or buyer's fields of
 sample A are extended by BT-34 and BT-49.
 
-- [ ] Given CII sample C in German, then the section `Lieferung (BG-13)`
+- [x] Given CII sample C in German, then the section `Lieferung (BG-13)`
       comes after `Käufer (BG-7)` and before `Position 1`, and contains in
       this order: BT-70 `Lager Nord`, BT-72 `03.11.2026`, BT-73 `01.11.2026`,
       BT-74 `30.11.2026`, BT-75 `Industriestraße 5`, BT-78 `20457`, BT-77
       `Hamburg`, BT-80 `DE`. In English, the section is `Delivery information
       (BG-13)`, BT-73 reads `Invoicing period start date` with `2026-11-01`.
-- [ ] Given CII sample A extended by only an invoicing period (no other
+- [x] Given CII sample A extended by only an invoicing period (no other
       delivery information), then the section `Lieferung (BG-13)` contains
       exactly BT-73 and BT-74.
-- [ ] Given CII sample C in German, then:
+- [x] Given CII sample C in German, then:
   - section `Rechnung` contains BT-11 `PRJ-7`, BT-12 `V-2026-03` and BT-13
     `PO-4711` after BT-10 and before BT-24;
   - section `Vorausgegangene Rechnung (BG-3)` follows `Rechnung` and
@@ -172,13 +172,13 @@ sample A are extended by BT-34 and BT-49.
     `04011000-12345-34 (0204)` directly before BT-50;
   - BT-18 `OBJ-1` is in section `Rechnung`, and the attachments section
     does not list it.
-- [ ] Given CII sample C in German, then section `Zahlung (BG-16)` contains
+- [x] Given CII sample C in German, then section `Zahlung (BG-16)` contains
       BT-81 display `SEPA-Lastschrift (59)`, BT-89 `MANDAT-0815`, BT-90
       `DE98ZZZ09999999999` and BT-91 `DE02 1203 0000 0000 2020 51`, and
       no BT-84.
   - Given UBL sample C, section `Verkäufer (BG-4)` contains no BT-29 with
     `DE98ZZZ09999999999`.
-- [ ] Given CII sample C in German, then after `Zahlung (BG-16)` and before
+- [x] Given CII sample C in German, then after `Zahlung (BG-16)` and before
       `Umsatzsteuer (BG-23)` come section `Nachlass (BG-20)` with BT-92
       `50,00 EUR`, BT-95 `Normalsatz (S)`, BT-96 `19`, BT-97 `Rabatt`, and
       section `Zuschlag (BG-21)` with BT-99 `10,00 EUR`, BT-102
@@ -188,26 +188,26 @@ sample A are extended by BT-34 and BT-49.
       `1.201,90 EUR`.
   - Given sample C with a second allowance, there are two `Nachlass (BG-20)`
     sections in document order.
-- [ ] Given CII sample C, then section `Position 1` contains BT-132 `1` after
+- [x] Given CII sample C, then section `Position 1` contains BT-132 `1` after
       BT-128, and BT-134 `01.11.2026` and BT-135 `15.11.2026` as its last
       fields.
-- [ ] Given UBL sample C, then the field model has the same sections, the
+- [x] Given UBL sample C, then the field model has the same sections, the
       same fields in the same order with the same displays as CII sample C
       (field locations differ).
-- [ ] Given sample C (CII and UBL) with BT-74 `2026-10-31` before BT-73
+- [x] Given sample C (CII and UBL) with BT-74 `2026-10-31` before BT-73
       `2026-11-01`, then the finding BR-29 is attributed to the field BT-73
       or BT-74 in `Lieferung (BG-13)`, not to the document.
   - Given sample C with an allowance without BT-97 and BT-98, then the
     finding BR-33 is attributed to its `Nachlass (BG-20)` section.
-- [ ] Every new field's location selects exactly the element its raw value
+- [x] Every new field's location selects exactly the element its raw value
       was read from (checked for BT-73, BT-91, BT-92 of the second allowance
       and BT-135 in CII and UBL), and the XML view (0014) shows each new
       field's name for its element.
-- [ ] Apart from BT-34 and BT-49 (present in sample A of both syntaxes and in
+- [x] Apart from BT-34 and BT-49 (present in sample A of both syntaxes and in
       sample B), samples A, B and L give the same field model as before; CII
       and UBL still give the same fields for A, B and L (0006); opening
       sample L still meets the time limits of 0007.
-- [ ] The German catalogue check (0017) passes with all new labels and
+- [x] The German catalogue check (0017) passes with all new labels and
       section titles.
 
 ## Out of scope
@@ -281,4 +281,5 @@ sample A are extended by BT-34 and BT-49.
     configuration 2026-08-31 and the CEN XSLT of `validation-1.3.17`: CII and
     UBL sample C pass the schema and the schematron without any message
     (2026-11-19, downloads approved by the author).
-
+- **Manually verified** by the author (2026-11-19): a real invoice with an
+  invoicing period shows it in `Lieferung (BG-13)`; all as expected.
