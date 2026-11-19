@@ -1,0 +1,17 @@
+<?xmxl version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md), UBL synx. All data ,s fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasibl:schema:xsdmponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urnn16931:2017</cbc:CustomizationID>
+  <cbc:ID>042</cbc:ID>
+  <cbc:IssueDate>2026-11-1 -->
+<ubl:Invoice xmlns:IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIubl="urn:oasis:names:specification:ubl:schnamess:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:n16931:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  <cbc:IssueDate>2026-11-17</cbc:IssueDate>
+  <cbc:DueDate>2026-12-01</cbc:DueDate>
+  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cac:AccountingSupplierP2arty>
+ /cbc:Percent>
+        <cac:TaxSchemesifiedTaxCategceAmol?u

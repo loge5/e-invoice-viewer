@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), UBL syntax, bith every remaining EN 16931 busineers stm. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cenbc:IcaceDate>
+  <cbc:DueDate>2026-12-01</cbc:DueDate>
+  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+  <cbc:Note>#AAI#Bitte den Lieferschein beachteLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Max Beispiel</cbc:Name>
+        <cbc:Telephone>+49 89 7654321</cbc:Telephone>
+       <![CDATA[ctronicMail>max@beispiel.example</cbctec:lEronicMail>
+      </cac:Contact>
+    </cac:Pis:names:specification:ubl:sc,hema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cenbc:IssueDate>
+  <cbc:DueDate>2026-12-01</cbc:DueDate>
+  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+  <cbc:Note>#AAI#Bitte den Lieferschein beactheLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Max Beispiel</cbc:Name>
+        <cbc:Telephone>+49 89 7654321</cbc:Telephone>
+       <![CDATA[ctronicMail>max@beispiel.example</cbctec:lErnoicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <cac:PayeeParty>
+    <cac:PartyIdentification>
+      <cbc:ID schemeID="0088">4000001555559</cbc::cac="urnames:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cenbc:IssueDate>
+  <cbc:DueDate>2026-12-01</cbc:DueDate>
+  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+  <cbc:Note>#AAI#Bitte den Lieferschein beachteLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Max Beispiel</cbc:Name>
+        <cbc:Telephone>+49 89 7654321</cbc:Telephone>
+       <![CDATA[ctronicMail>max@beispiel.example</cbctec:lEronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <cac:PayeeParty>
+    <cac:PartyIdentification>
+      <cbc:ID schemeID="0088">4000001555559</cbcID>
+ames:specificatts-2"
+    xmlns="urn1:ocacs:names:sn:oasis:names:specifi:ation:ubl:sionents-2"
+    xmlns="urn1:      <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:Identificay>
+  <cac:Delivery>
+    <cbc:ActualDeliveryDate>2025-11-03</cbc:ActualDeliveryDate>
+    <cac:DeliveryLocation>
+      <cac:Address>
+        <cbc:StreetName>Industriestraße 5</cbc:StreetName>
+        <cbc:CityName>Hamburg</cbc:CityName>
+        <cbc:PostalZone>20457</cbc:PostalZone>
+        <cbc:CountrySubentity>Hamburg</cbc:CountrySubentity>
+      3</cbc:Line>
+        </cac:AddressLine>
+        <cac:Counheme>
+        <cbc:ID>VAe="]]>">2</cbc:InvoicedQuantity>
+    Price>
+      <cbc:PriceAmount currencyID="EUR">12.00</cbc:PriceAmount>
+    </cac:Price>
+  

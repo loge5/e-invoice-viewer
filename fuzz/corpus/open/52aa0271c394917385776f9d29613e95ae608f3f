@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice C (see docs/fixtures.md), based on sample ious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+    xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+    xmlns:qdt="urn:un:un:&nece:uncefact:data:standard:;UnqualifiedDataType:100">
+  <rsm:Exchaarameter>
+ <ram:EmailURIUniversalCommunication>
+            <ram:URIID>rechnung@muster.example<.example</e:100"
+    xmlns:ram="
+</rsm:CrossIndustryInvoice>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece99pe:100">
+  <rsm:ExchangedDocumentContext>
+    <ram:GuidelineSpecifiedDocumentContextParam_________________D>
+    </ram:.GuidelineDelivery/>
+    <ram:ApplicableHeaderTradeSettlement>
+      <ram:IonviceCurrenm:CrossIndustryInvoice>

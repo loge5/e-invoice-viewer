@@ -1,0 +1,14 @@
+<?x  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="EM">rechnung@muster.example</cbc:EndpointrationNamebH</cbc:RegistrationName>
+        <cb452</cbc:CompanyID>
+        <cbc:C;ompanyLegalForml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sampldata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CtryInvoice:100"
+    xmlns:ram="urn:un:unece:uncefAggregateBusinessInformationEntity:100"
+    xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+    xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:050">
+  <rsm:ExchangedDocume  xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:050">
+  <rsm:ExchangedDocumentContext>
+   <ram:GuidelineSpecimentContextParameter>
+      <ramBID>urn:cen

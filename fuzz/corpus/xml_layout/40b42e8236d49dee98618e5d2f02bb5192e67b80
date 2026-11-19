@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), UBL syntax, based on sample C, with every remaining EN 16931 business term. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.ionID>
+  <cbc:PrsueDate>
+  <cbc:DueDate>2026-12-01</cbc:DueDate>
+  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+  <cbc:Note>#AAI#Bitte den Lieferschein beachten.</cbc:Note>
+  <cbc:TaxPointDate>2026-11-03<Code>
+  <cbc:TaxCurrencyCode>USD</cbc:TaxCurrencyCode>
+  <cac:InvoicePeriod>
+    <cbc:StartDate>2026-11-01<e>
+    <cac:InvoiceDocumentReference>
+      <cbc:ID>RE-2026-0017</cbc:ID>
+      <cbc:IssueDate>2026-10-15</cbc:IssueDate>
+    </cac:InvoiceDocumentReference>
+<![CDATA[illingReference>
+  <caIdentification>
+      <cac:PartyName>
+        <cbc:Name>Muster</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+ me>H!uaptstraße 1</cbc:StreeityNam         <cbc:Line>Ge1äude B</cbc:Line>
+        </cac:AddCode>
+        </cac:Country>
+      </cac:PostalAddress>
+ <?xml" encoding?>cheme>
+     12345</cbc:CompanyLegalForm>
+      </cac:PartyLegalEntity>
+   </cacc:CityName>München</cbc:City:AddressLine>
+      c<?xml" encoding?>   <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Bei"  ɻ (se0﻿"  D (see dD (see ="0.0﻿"0  version=="0.0﻿"  ɻ (s" <?x /.0﻿"  version="0.0﻿"  ɻ (se0﻿"  D (see dD (see doc/[xture,pversion="0.0﻿"  ɻ (se0﻿"  D (see dD (se:unece: version="0.0﻿"  ɻ (se0﻿"  D (see dD (see<?xml" encoding?>=="0.0﻿"  ɻ (s" <?x /version="0.0﻿"  version="0.0﻿"  ɻ (se0﻿"  D (see dD (edsec o/[xture,pversion="0.0﻿"  ɻ (se0﻿"  D (ese dD (se:unece: version="0.0﻿"  ɻ (se0﻿"  D (see dD (see ="0.0﻿"  version=="0.0﻿"  ɻ (se0﻿"  D (see dD (se:unece: version="0.0﻿"  ɻ (se0﻿"  D (see dD (see doc/[xtur%,pversion="0.0﻿"  ɻ (se0﻿"  D (see dD (sedocversion="0.0﻿"  version="0.0﻿"  ɻ (se0﻿"  DionCode>DE</cbc:IdentificatrgeIndicator>
+    <cbc:AllowanceCharggeReason>
+    <cbc:Amount currencyID="EUR">50.00</cbc:Amount>
+    <cac:TaxCategory>
+      <cbc:ID>S</cbc:ID>
+      <cbc:Percent>19</cbceLine>
+</ubl:Invoice>

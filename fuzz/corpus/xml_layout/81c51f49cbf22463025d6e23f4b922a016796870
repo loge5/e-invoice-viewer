@@ -1,0 +1,186 @@
+<A>3A>[<![CDATA[A>3A>[<![CDc:ContractDocumentReference>
+    <cbc:ID>V-2026-03</cbc:ID>
+  </cac:Cc:AdditionalDocumentReference>
+    <cbc:ID>OBJ-0</cbc:ID>
+    <cbc:DocumentypeCode>130</cbc:DocumentTypeCode>
+  </cac:AdditionalDocumentReference>
+  <cac:ProjectReference>
+    <cbc:ID>PRJ-7</cbc:ID>
+  </cac:ProjectReference>eetName>Steuerplatz 7</cbc:StreetName>
+      <cbc:AdditionalStreetName>3. Etage</cbc:Adc:TaxAmount>
+      <cac:TaxCategory>
+          <cbc:ID>S</cbc:ID>
+        <cbc:Percent>09</cbc:Percent>
+    cac:AdditionalItemProperty>
+ %  </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="EUR">12<?xm-0r8<?xml version="1.0" encoding="UTF-8"?>
+<!-- Syihnetct sample invoiclns:ubl="urn:us. -->
+<ubl:Invoice xmlns:ubl="urn-2"
+    xmlns:cac="ents-2"
+    xmlns:cbc="urn:cen.el:schexmlma:xsdƲommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.-el:schema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.eurnz:oasis:names:specificatio-12Bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonUBasicC@omponents-2">
+  <cbc:Customiza~tionID>urn:cen.el="urn-4"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:monUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el:schexmlma:xsdƲommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.-el:schn:cen.el="urn-4"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:omponecificatio-12bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:monUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el:schexmlma:xsdƲommonUBasicComponents-3">
+  <cbc0CustomizationID>urn:cen.-el:schema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.eurnz:oasis:names:specificatio-12Bl:schema:xsd:CommonAggregateComp~Aents-2"
+ 5.00</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCodeATA[x6
+x![CDATA[<ix>]]>
+-3A>[<![CDATA[x6
+x![CDATA[<![CDATA[A>3A>[<![CDATA[x6
+x!"2.res.<cac:ProjectReference>
+    <cbc:ID>PRJ-7</cbc:ID>
+  </cac:oPjrectReferenc   xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonUBasicC@omponents-2">
+  <cbc:CustomizationID>urn:cen.el="urn-4"
+    xmlns:cac="urnz:oasis:names:specificatio-24bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specificatema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:monUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el:schexmlma:xsdƲommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.-el:schema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.eurnz:oasis:names:specificatio2Bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specification:ube>eetName>Steuerplatz 7</cbc:StreetName>
+      <cbc:AdditionalStreetName>3. Etage</cbc:Adc:TaxAmount>
+      <cac:l:schema:xsd:CommonUBasicC@omponents-2">
+  <cbc:CustomizationTaxCategory>
+          <cbc:ID>S</cbc:ID>
+        <cbc:PercentID>urn:cen.el="urn-4"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:l:schn:cen.el="urn-3"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:monUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el:schexmlma:xsdƲommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.-el:schema:xsd:CommonUBasicComponents-2">
+  <cbc0Custq1dzationID>urn:cen.eurnz:oasis:names:specificatio-12Bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonUBasicC@omponents-2">
+  <cbc:CustomizationID>urn:cen.el="urn-4"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specificatema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:monUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el:schexmlma:xsdƲommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.-el:schema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.eurnz:oasis:names:specificatio-1bl:schema:monUBasicComponents-4">
+  <cbc:CustomizationID>urn:cen.el:schexmlma:xsdƲommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.-el:schn:cen.el="urn-4"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:omponents-2">
+  <cbc0CustomizationID>urn:cen.-el:schn:cen.el="urn-4"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:monUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el:schexmlma:xsdƲommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.-el:schema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.eurnz:oasis:names:specificatio-12Bl:schema:xsd:CommonAggregateCompoAents-2"
+ 5.00</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCodeATA[x6
+x![CDATA[<ix>]]>
+-3A>[<![CDATA[x6
+x![CDATA[<![CDATA[A>3A>[<![CDATA[x6
+x!"2.res.<cac:ProjectReference>
+    <cbc:ID>PRJ-7</cbc:ID>
+  </cac:ProjectReferenc   xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonUBasicC@omponents-2">
+  <cbc:CustomizationID>urn:cen.el="urn-4"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specificatema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:monUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.e-8"l:schexmlma:xsdƲommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.-el:schema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.eurnz:oasis:names:specificatio2Bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specification:ube>eetName>Steuerplatz 7</cbc:StreetName>
+      <cbc:AdditionalStreetName>3. Etage</cbc:Adc:TaxAmount>
+      <cac:l:schema:xsd:CommonUBasicC@omponents-2">
+  <cbc:CustomizationTaxCategory>
+          <cbc:ID>S</cbc:ID>
+        <cbc:PercentID>urn:cen.el="urn-4"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specificatema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>ur>09</cbc:Percent>
+    cac:AdditionalItemProperty>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmrcent>
+    cac:AdditionalItemProperty>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="EUR">12<?xm-0r8<?xml version="1.0" encoding="UTF-8"?>
+<!-- Syihnetct sample invoiclns:ubl="urn:us. -->
+<ubl:Invoice xmlns:ubl="urn-2"
+    xmlns:cac="ents-2"
+    xmlns:cbc="urn:cen.el:schexmlma:xsdƲommonUBasicComponents-2">
+  <cbc0Customizati2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:monUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el:schexmlma:xsdƲommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.-el:schn:cen.el="urn-4"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:omponecificatio-12bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:monUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el:schexmlma:xsdƲommonUBasicComponents-3">
+  <cbc0CustomizationID>urn:cen.-el:schema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.eurnz:oasis:names:specificatio-12Bl:schema:xsd:CommonAggregateComp~Aents-2"
+ 5.00</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCodeATA[x6
+x![CDATA[<ix>]]>
+-3A>[<![CDATA[x6
+x![CDATA[<![CDATA[A>3A>[<![CDATA[x6
+x!"2.res.<cac:ProjectReference>
+    <cbc:ID>PRJ-7</cbc:ID>
+  </cac:ProjectRefecification:ubl:schema:xsd:CommonUBasicC@omponents-2">
+  <cbc:CustomizationID>urn:cen.el="urn-4"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specificatema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:monUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el:schexmlma:xsdƲommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.-el:schema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.eurnz:oasis:names:specificatio2Bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specification:ube>eetName>Steuerplatz 7</cbc:StreetName>
+      <cbc:AdditionalStreetName>3. Etage</cbc:Adc:TaxAmount>
+      <cac:l:schema:xsd:CommonUBasicC@omponents-2">
+  <cbc:CustomizationTaxCategory>
+          <cbc:ID>S</cbc:ID>
+        <cbc:PercentID>urn:cen.el="urn-4"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:l:schn:cen.el="urn-4"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:monUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el:schexmlma:xsdƲommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.-el:schema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.eurnz:oasis:names:specificatio-12Bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonUBasicC@omponents-2">
+  <cbc:CustomizationID>urn:cen.el=ateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:monUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el:schexmlma:xsdƲommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.-el:schema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.eurnz:oasis:names:specificatio-1bl:schema:monUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el:schexmlma:xsdƲommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.-el:schn:cen.el="urn-4"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:omponents-2">
+  <cbc0CustomizationID>urn:cen.-el:schn:cen.el="urn-4"<?xml versionc="urnz:oasis:names:specificatio-12bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:monUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el:schexmlma:xsdƲommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.-el:schema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.eunt>
+      <cbc:BaseQuantity unitCodeATA[x6
+x![CDATA[<ix>]]>
+-3A>[<![CDATA[x6
+x![CDATA[<![CDATA[A>3A>[<![CDATA[x6
+x!"2.res.<cac:ProjectReference>
+    <cbc:ID>PRJ-7</cbc:ID>
+  </cac:ProjectReferenc   xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonUBasicC@omponents-2">
+  <cbc:CustomizationID>urn:cen.el="urn-4"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specificatema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:monUBasicComponentount cumdϛߐ]]>
+-in:cen.eiX</c>ionID>
+  <cbc:ProfileID>urdve>
+  <eresy>
+c   

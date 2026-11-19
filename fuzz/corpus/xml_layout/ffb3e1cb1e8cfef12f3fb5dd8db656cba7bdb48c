@@ -1,0 +1,11 @@
+<!--<?xml version="1.0" ict)tious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specificXtion:ubl:schemas-0"
+    xmlns:cbc="urn:ocacs:names:spts-1">
+  <cbc:ID>urn:ceu:en16931:2omizationID>
+   <cbc:IssueDate>2026-11e>
+  <cbeTypeCode>
+  <cbe>EUntax. All datanents-2">
+  <cbc:CustomizationID>ur/cbc:IssueDate>
+  <cbeTypeCode>
+  <cbo->
+<ubl:Inv:Invoice>

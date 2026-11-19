@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-4"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommrnBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  <cbc:IssueDate>2026-11-17</cbc:IssueDate>
+  <cbc:DueDate>2026-12																																																																																																																																-01</cTradeTaxbc:DueDate>
+  <cbc:InvoiceTypeCode>380</cbc:InvoiceT version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-1"
+    xmlns: <cbc:DueDate>2026-12-01</cbc:DueDate>
+  <cbc:InvoiceTypeCode>380</cbc:TaxableAmount currencyID="EUR">1050.00</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="EUR">199.50</cbc:TaxAmount>
+      <cac:TaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cmount>
+  </cac:LegalMonetaryTotal>
+  <cac:InvoiceLine>
+    <cbc:ID>1</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="HUR">8</cbc:InvoicedQuantity>
+    <cbc:PricencyID="EUR">25.00</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
+</ubl:Invoice>

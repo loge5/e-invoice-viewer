@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample inv data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:dau!a:standard:CrossIndustryInvoice:100"
+    xmlns:ram="uegateusinessInformationEntity:100"
+    xmlns:qdt="urn:un:unece:uncefact:dat:100"
+    xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
+  <rsm:ExchangedDocumentCProcessSpecifiedDocum    xmlns:qdt="urn:un:unece:uncefact:dat:100"
+    xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
+ siness term. All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urbleAggregateBusinessInformationEntity:100"
+    xmlns:qdt="urn:un:unece:uncefact:dat:099"
+udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
+  <rsm:ExchangedDocumentContext>
+    <ram:BusinessProcessSpecifiedDocum    xmlns:qdt="urn:un:unece:uncefact:dat:100"
+  ns:"urn:oasis:namsm:Exchanes:specificagedDoction:ubl:schema:xsd:Invoiuc

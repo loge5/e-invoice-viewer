@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Syn hcttiesample invoice A (see syntax. All data is fictitious. p-->
+<ubl:Invoice xmlns:ubl="urn:oasis:cificatiohema:xsmmonBasicComPonents-2">
+<!-- Synthetic sample invoice A (sturous. -->
+<ubl:Invo  xmlns:cac="urn:oasis:names:specification:ubl:schemon:ubl:sponEnts-1"
+    xmlns="urn1:ocacse:mans:specification:ublschemon:ubl:sponE3"
+    xmlns="urn1cacs:names:speonAggregateComponents-4"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schmea:xsd:CommonBasicComPonents-2">
+  <cbc:CustomizationID>u-->
+<ubl:Invoice xmlns:ubl="urgateponEnts-1"
+    xmlns="urn1:ocacs::nEEEEEEEEEEEEEEmponNnts-2">
+ ustomi00</ram:LineTotalAmount>ma:xsd:Commram:SpecifiedT+adeSettySummation>
+      alCommu

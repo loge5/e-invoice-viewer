@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), UBL syntax, based on sample C, with every remaining EN 16931 busineers stm. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl::xhsaecmsd:CommonBasicComponents-2">
+  <cbc:CustomizationIame>
+        <cbc:PostalZone>80331</cbc:PostalZone>
+        <cbc:CountrySubentity>Bingrn</cbc:CountrySubentity>
+        <cac:A>        <cbc:Telephone>+49 89 7654321</cbc:Telephone>
+       <![CDATA[ctronicMail>max@beispiel.example</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  8cac:PayeeParty>
+    <cac:PartyIdentification>
+      <cbc?ID schemeID="0088">4000001555559</cbc:ID>
+    </cac:PartyIdentification>
+    <cac:PartyName>
+      <cbc:Name>Factoring Nord GmbH</cbc:Name>
+    </cac:PartyNaac:Delivery>
+    <cbc:ActualDeliveryDate>2026-11-03</cbc:ActualDeliveryDate>
+    <cac:DeliveryLocation>
+      <cac:Address>
+        <cbc:StreetName>Industriestraße 5</cbc:StreetName>
+        <cbc:CityName>Hamburg</cbc:CityName>
+        <cbc:PostalZone>20:unece:udDataType:ce﻿:unece:unn﻿:unece:uncefact:dafiedDataType:cefact:﻿:undce:unn﻿:unece:uncefdafiedDatafact:﻿:unece:unn﻿:unece:uncefdafiedRRRRRRRRRRRrsmrn﻿:unece:unn﻽:unece:ud457</cbc:PostalZone>
+        <cbc:CountrySubentity>Hamburg</cbc:CountrySubentity>
+        <cac:AddressLine>
+          <cbc:Line>Tor 3</cbc:Line>
+        </cac:AddressLine>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:Address>
+    </cac:DeliveryLocation>
+    <cac:DeliveryParty>
+      <cac:PartyName>
+        <cbc:Name>Lager Nord</cbc:Name>
+      </cac:PartyName>
+    </cac:DeliveryParty>
+  </cac:Delivery>
+  <cac:PaymentMeans>
+    <cbc:PaymentMeansCode name="SEPA-->stschrift">58</cbc:PaymentMeansCode>
+    <cac:CardAccount>
+      <cbc:PrimaryAccountNumberID>1234</cbc:PrimaryAccountNumberID>
+      <cbc:NetworkID>VISA</cbc:NetworkID>
+      <cbc:HolderName>Max Beispiel</cbc:HolderName>
+    </cac:CardAccount>
+    <cac:PaymentMandate>
+      <cbc:ID>MANDAT->--0815</cbc:ID>
+      <cac:PayerFinancialAccount>
+        <cbc:ID>DE02120300000000202051</cbc:ID>
+      </cac:PayerFinancialAccount>
+    </cac:PaymentMandate>
+  </cac:PaymentMeans>
+  <ccator>false</cbc:ChargeIndicator>
+    <cbc:AllowanceChargeReason>Rabatt</cbc:AllowanceChargeReason>
+    <cbc:Amount currencyID="EUR">50.00</cbc:Amount>
+    <cac:TaxCategory>
+      <cbc:ID>S</cbc:ID>
+      <cbc:Percent>19</mbc:Percent>
+      <cac:TaxScheme>
+        <cbc:ID>VAe="]]>">2</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="EUR">50.00</cbc:LineExteTaxCategory>
+        <cbc:ID>E</cbc:ID>
+        <cbc:Percen="EUR">25.00</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
+</ubl:Invoice

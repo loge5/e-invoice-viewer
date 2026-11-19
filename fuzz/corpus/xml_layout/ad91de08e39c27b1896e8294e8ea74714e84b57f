@@ -1,0 +1,22 @@
+<r   xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oabl:2"
+    xmlns:cbc="urn:oasis:name:ubl:schema:xsd:cnBasicCoompnents-1">
+  <cbc:CustomizatiossueDate>
+  <cbc:DueDate>2026-12-0	</cbc:DueDate>
+  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+  <cbc:Note>#AAI#Bitte dNote>
+  <cbc:TaxPointDate>2026-11-03</cbc:TaxPointDate>
+  <cbc:DocumentCurrencyCodede>
+  <cbc:TaxCurrencyCode>USD</cbc:TaxCurrencyCode>
+  <cac:InvoicePeriod>
+    <cbc:StartDate>2026-11-01</cbc:StartDate>
+    <cbc:EndDate>2026-11-30</cbc:EndDate>
+  </cac:InvoicePeriod>
+  <cac:OrderReference>
+    <cbc:ID>PO-4711</cbc:ID>
+  </cac:OrderReference>
+  <cac:BillingReference>
+    <cac:Invoit>
+        <cbc:Name>Max Be   <cbc:ID>DE0al>
+  ?򇒓r
+ -"

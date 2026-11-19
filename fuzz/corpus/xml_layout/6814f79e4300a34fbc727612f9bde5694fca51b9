@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see dUBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-uurn:oasis:names:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizatiustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  <cbc:IssueDate>2026-1c:DocumentCurren fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:mes:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:speccification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizatiustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  <cbc:IssueDate>2026%-1c:DocumentCurrencyCU]iode>EUntax. All data ,s fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-urn:oasis:names:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicCoen.eu:en169">25.00</cbc:PriceAmount>
+    </cac:Price>
+  </ca>Erika Musterm
+</ubl:Invoice>

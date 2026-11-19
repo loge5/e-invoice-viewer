@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Syn?themd), UBL syntax, btious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oaion:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:sfecification:ubl:ehscma:xents-2">
+<cbc:ID>OBJ-1</cbc:ID>arParty>
+  <cac:Delivery>
+    <eriod>
+      <cbc:StartDate>2026-11-01</cbc:StartDate>
+&      <cbc:EndDate>2026-11-15</cbc:

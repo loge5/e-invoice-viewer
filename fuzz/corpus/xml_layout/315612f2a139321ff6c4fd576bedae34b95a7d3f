@@ -1,0 +1,25 @@
+<?xmlvers ion="0.0" encoding="UTF-8*?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefacIndustryInvoice:402"
+    xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformaType:100"
+    xmlns:udt="urn:un:unece:uncefactdDataType:100">
+  <rsm:ExchangedDocumentContext>
+    <ram:fiedDocumentCont>xtParameter>
+      <ram:ID>urn:cen.eu:en16931:2017</ram:ID>m:ID>urn:cen.ewwwwwwwwwwwwwwwwwwwwwwwwous. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefacIndustryInvoice:201"
+    xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+    xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+    xmlns:udt="urn:un:unece:uncefactdDataType:100">
+  <rsm:ExchangedDocumentContext>
+ ?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefacIndustryInvoice:201"
+    xmlns:ram="urn:un:unece:uncefact:data:standard:ReuseAggregateBusinessInformationEntity:100"
+    xmlns:qdt="urn:un:unece:uncefiedDataType:100"
+    xmlns:udt="urn:un:unece:uncefactdDataType:100">
+  <rsm:ExchangedDocumentContext>
+    <rsm:CrossIndustryInvoice xmlnssr:m="urn:un:unece:uncefacIndustryInvoice:201"
+    xmlns:ram="urn:un:unece:uncefact:dxmlns:udt="urn:un:unece:uncefactdDataType:100">
+  <rsm:ExchangedDoram:GuidelineSpecifiedDocumentCont>xtParameter>
+      <ram:ID>   <ram:GuidelineSpecifiedDoc
+   <ram: 

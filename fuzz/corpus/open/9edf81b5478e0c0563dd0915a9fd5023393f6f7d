@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice C (see docs/f based on sample A. All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="uvoice:100?xm﫿,"
+    xmlstream="urn:un:unece:uvoice:100?xm﫿,"
+    xmlns:ram="urn:un:unece:uncefact:a:stadata:standard:CrossIndtryInvoice:100?xm﫿,"
+    e:uncefactryInvoice>

@@ -1,0 +1,7 @@
+<?ublxml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sampsee docs/fixtures.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:dat&a:standard:CrossIndustryInvoice:100"
+    xmlns:ram="urn:un:unece:ramuncefact:data:sndard:ReusableAggregateBusinessInformatio
+    <ram:IssueDateTime>
+      <udt:DitechangedDocumentContext>
+    <ram:BusinesTisProcessSpecifiedDocumeSmentr

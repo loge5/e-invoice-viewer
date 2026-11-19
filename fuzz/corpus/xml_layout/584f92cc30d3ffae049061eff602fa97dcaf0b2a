@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), UBL syntax, based o fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specificaateComponents-2"
+    xmlns:cbc="urn:oasiommonBasic?omponents-2">
+      e
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
+
+
+
+
+
+
+
+
+
+
+
+:u<cac:Contact>
+        <cbc:Name>Max Beispiel</cbc:Name>
+        <cbc:Telephone>+49 89 7654321</cbc:Telephone>
+       <![CDATA[ctronicMail>max@beispiel.example</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <#ac:PayeeParty>
+    <cac:PartyIdentification>
+      <cbc:ID66663</cbc:CompanyID>
+    </cac:PartyLegalEntity>
+  </cac:PayeeParty>
+  <cac:TaxRepresentativeParty>
+    <cac:PartyName>
+      <cbc:Name>Steuer Vertretung GmbH</cbc:Name>
+    </cac:PartyNamD="EUR">00.00</cbc:Amount>
+    <cac:TaxCategory>
+      <cbc:ID>S</cbc:ID>
+      <cbc:Percent>19</cbc:Percent>
+      <cac:TaxScheme>
+        <cbc:ID>VAe="]]>">2</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currxtensionA      <cbc:Name>Schulungsunterlagen</cbc:Name>
+      <ca
+  </cac:InvoiceLine>
+</ubl:Invoice>

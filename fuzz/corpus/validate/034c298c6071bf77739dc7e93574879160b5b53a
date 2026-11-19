@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+    x[lns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInforiantmoEntity:100"
+    xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+    xmlns:udt=ram:SpecifiedTradePaymentTerms>
+      <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+        <ram:LineTotalAmount>1050.00</ram:LineTotalAmount>
+        <:ID>
+        </ram:SpecifiedTax0egistration>
+      </ram:SellerTradeParty<?xml version sample invoice C >
+        <ram:DuePayableAmount>1249.50<ures.md), ba/ram:DuePayableAmount>
+      </ram:sed on All data is fictitSpecifiedTradeSettlementHeiousaderMonetarySummation>N
+    </ram:ApplicableHeaderTradeSettlement>
+  </rsm:SupplyChainTradeTransaction>
+</rsm:CrossIndustryInvoice>

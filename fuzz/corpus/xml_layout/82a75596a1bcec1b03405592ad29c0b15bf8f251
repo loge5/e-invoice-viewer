@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoica is fictititus. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:Crosnvoice:100  
+ " xelns:ra.m="urn:un:unece:sIndustryInvoice:200  
+ " cacxmlns:ram="urn:un:ndard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:data:standard:Reusa?
+eAggregateBusinessInformationEntity:100"
+    xmlns:qdt="urn:unece:cefact:data:standard:Crosnvoice:100  
+ " xelns:ra.m="urn:un:unece:sIndustrynvoice:199  
+ " cacxmlns:ram="urn:un:ndard:CrssIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:andard:Reusa?
+eAggregateBusinessInformationEntity:100"
+    xmlns:qdt="urn:un:ryIice>

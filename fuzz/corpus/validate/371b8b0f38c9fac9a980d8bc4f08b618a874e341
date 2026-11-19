@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtu based on sample C, with every remaining EN 16931 business term. All data is fictitious. ->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubsd:CommonAg--
+gregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasic0omponents-2">
+  <cbc:CustomizationID>urn:ce<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic samplen.eu:e in

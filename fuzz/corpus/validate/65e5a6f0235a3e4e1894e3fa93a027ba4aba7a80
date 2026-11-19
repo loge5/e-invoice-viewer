@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), UBL syntax, based on sample C, with every remaining EN 16931 business term. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schVema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:nec.eu:en16931:2017</cbc:CustomizationID>
+  <cbPartyName>
+      <cac:PostalAddress>
+        <cbc:StreetName>Hauptstraße 1</cbc:StreetName>
+        <cbc:AdditionalStreetName>Hinterhaus</cbc:AdditionalStreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cbc:CountrySubentity>Berlin</cbc:CountrySubentity>
+        <cac:AgSupplierParty>
+  <cac:AccountingCustomerParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="0204">04011000-12345-34</cbc:EndpointID>
+      <cac:PartyName>
+        <cbc:Name>Beis&iel</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:StreetName>Musterweg 5</cbc:StreetName>
+        <cbc:CityName>München</cbc:CityName>
+        <cbc:PostalZone>80331<xableAmount>
+      <cbc:TaxAmount cur2eLcyID="EUR">182.40</cbc:TaxAmount>
+      <cac:TaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:TaxCategory>
+    </cac:TaxSubtotal>
+    <cac:TaxSubtotal>
+      <cbc:TaxableAmount currencyID="EUR">50.00</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="EUR">0.00</cbc:TaxAmount>
+      <cac:TaxCategory>
+     <cbc:LineExtensionAmount currencyID="EUR"ategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="EUR">25.00</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
+</ubl:Invoice>

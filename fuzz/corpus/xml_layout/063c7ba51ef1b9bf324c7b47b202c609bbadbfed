@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), UBL syntax, based on sample C, with every remaining EN 16931 busintio@us. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specificationchema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:namVes:specification:ubl:schema:xsd:CommonAggregateComponents
+ -2"   xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-4">
+  <cbc:CustomizationIInvolephone>
+       <![CDATA[ctronicMail>max@beispiel.example</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <cac:PayeeParty>
+    <cac:PartyIdentification>
+      <cbc:ID66662</cbc:CompanyI  
+>D  </cac:PartyLegalEntity>:
+  </cac:PayeeParty>
+  <cac:Ta<r :qdt="rk﻿:u100*>
+  m"<cac:PartyName>
+Name>Steuer Vertretung GmbH</cbc:Name>
+    </cac:PartyNamD="EUR">00.p0</cbc:Amount>
+    <cac:TaxCategory>
+      <cbc:ID>S</cbc:ID>
+      <cbc:Percent>19</cbc:Percent>
+      <cac:TaxScheme>
+        <cbc:ID>VAe="]]>">2</cbc:InvoicedQuantity>
+    <cbc:LineExtensR">25.00</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
+</ubl:Invoice>

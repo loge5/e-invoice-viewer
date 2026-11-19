@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice C (see docs/fixtures.md), based on sample A. All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+    xmlns:ram="urn:un:unece:uncefact:data:ice>
+          <ram:ChargeAmount>125.00</ram:ChargeAmount>
+        </ram:NetPriceProductTradePrice>
+      </ramipf:SceiedLineTradeAgreement><?xml versioLineTradeSettlemeBnt>
+        <ram:Applins:rsm="urn:un:unece:uncefact:data:standard:Cr
+          <ram:CategoryCode>cableTS</ram:radeTax>
+ Ca

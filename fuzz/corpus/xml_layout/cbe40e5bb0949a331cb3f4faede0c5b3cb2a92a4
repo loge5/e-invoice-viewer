@@ -1,0 +1,50 @@
+<?xmr version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), based on sample C, with -8"ry remaining EN 16931 businesus term. All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:dau!a:standard:CrossIndustryInvoice:782"
+    xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+    xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+    xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
+  <rsm:ExchangedDocumentContext>
+    <ram:BusinessProcessSpecifiedDocumentContextParameter>
+      <ram:ID>urynthetic sample invoice A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:BBBBBBBBBBBBBBInvoice-2"
+    xmlns:cac="usn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ebl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ID>Rwith veery remaining EN 16931 business term. All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:dau!a:standard:CrossIndustryInvoice:10urn1:ocacs:names:sn:oasis:names:specia:tifion:ubl:sionents-2es:sn:oasis:names:specia:tifion:ubl:sionents-2"
+    xmlns="urn1:oc-cs:nzames:scati,on:usis:names:specificification:ubl:schema:xsd:Invoice-1"
+    xmlnsac="urn:oasis:names:specificatts-2"
+    xmlns="urn1:ocacs:names:sn:oasis:names:specia:tifion:ubl:sionents-2"
+    xmlns="urn1sis:names:specificification:ubl:srsmchema:xsd:Invoice-1"
+    xmlnsac="urn:oasis:names:specificatts-2"
+    xmlns="urn1:ocacs:names:sn:oasis:names:speionents-2"
+    xmlns="urn1:oc-c"
+    xmlns="urn1:ocacs:names:sn:oasis:names:specia:tifion:ubl:sionents-2"
+    xmlns="urn1:oc-cs:nzames:scation:usis:names:specification:ubl:schema:xsd:Invoice-1"
+    xmlnsac="ue-1"
+    xmlnsac="urn:oasis:names:specificatts-2"
+    xmlns="urn1:ocacs:names:sn:oasis:names:specia:tifion:ubl:sionents-4"
+    xmlns="urn1:oc-cs:ce-1"
+    xmlnsac="urn:oasis:names:specificatts-2"
+    xmlns="urn1:ocacs:names:sn:oasis:names:specia:tifion:ubl:sionents-2"
+    xmlns="urn1:oc-cs:nzames:scation:usis:names:specification:ubl:sscm:hexad:Invoice-1"
+    xmlnsac="urn:oasis:names:specifiis:names:specificatts-1"
+    xmlns="urn1:ocacs:names:sn:oasis:names:specia:tifion:ubl:sionents-2"
+    xmlns="urn1sis:names:specificification:ubl:srsmchs:names:specificatts-2"
+    xmlns="urn1:ocacs:names:sn:oasis:names:specai:tifion:ubl:sionents-2"
+    xmlns="urn1:oc-c"
+   
+    xmlns="urn1cificatts-4"
+    xmlns="urn1:ocacs:names:sn:oa]sis:names:specia:tifion:ubl:sionents-2"
+    xmlns="urn1:oc-cs:nzames:scation:usis:names:specification:ubl:schema:xsd:Invoice-1"
+    xmlnsac="urn:oasis:names:specificatts-2"
+    xmlns="urn1:ocacs:names:sn:oasis:names:specifi:ation:ubl:sionents-2"
+    xmlns="urn1:oc-cs:nzames:scation:ubl:schema1xsdnation:ubl:schema:xsd:Invoice-0"
+    xmlnsac="urn:oasis:names:specificatts-2"
+    xmlns="urn1:ocacs:names:sn:oasis:names:specifi:atioubn:l:sionents-2"
+    xmlns="urn1:usableAggregate=usinessInformationEntity:100"
+    xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+    xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
+  <rsm:ExchangedDocumentContext>
+    <ram:BusinessProice xmlns:ubl=

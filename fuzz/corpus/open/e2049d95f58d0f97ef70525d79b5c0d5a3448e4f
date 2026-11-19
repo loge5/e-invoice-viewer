@@ -1,0 +1,6 @@
+<?ml version="1.0" encoding="UTF-8i?>
+<!-- Synthetic sampli based on sample C, with e6931 business term. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urommonAggregateComponents-3"
+    xmlns:cbc="urnqoasia:xsd~CommonBasicComponents-2">
+ Line>
+</ubl:Invoice>

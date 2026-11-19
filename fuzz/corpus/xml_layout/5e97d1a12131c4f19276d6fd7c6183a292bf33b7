@@ -1,0 +1,109 @@
+<?xm<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see a is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-6"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+ yCode>
+  <cac:InvoicePeriod>
+    <cbc:StartDate>2026-11-01</cbc:StartDate>
+    <cbc:EndDate>2026-11-30</cbc:EndDate>
+  </cac:InvoicePeriod>
+  <cac:OrderReference>
+    <cbc:ID>PO-4711</cbc:ID>
+  </cac:OrderReference>
+  <cac:BillingReferezce>
+    <cac:InvoiceDocumentReference>
+      <cbc:ID>RE-2026-0017</cbc:ID>
+      <cbc:IssueDate>2026-10-15</cbc:IssueDate>
+    </cac:InvoiceDocumentReference>
+<![CDATA[illingReference>
+  ﻿<cac:ContractDocumentReference>
+    <cbc:ID>V-2026-03</ctreetName>
+        <cbc:AdditionalStreetName>Hinterhaus</cbc:ADditionalStreetName>
+  <ubl:Invoc:Cx6
+4chx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+>[<!chx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee 0x:ubl="urn-2"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schema:xsdon:ub1111111==================================================================================================111111111l:schema:xsd:CommonUBaBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.echx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee [<![CDATA[x5
+>[<!chx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee chxCDAT
+echx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+>[<!chx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee 0xTAA[
+>[<![CDATA[x6
+AxCTD
+ee chx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee [<!l="urn-2"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schemal="urn-2NNNNNNNNNNNNNNNNNNNNNNNNNNNNNN"
+    xmlns:cac="urnz:oasis:names:speggregateCompoAents-2"
+    xm"1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoiclns:ubl="urn:us. -->
+<ubl:Invchx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee chx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+>[<!chx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee urnz:oasis:names:specificatio-12bl:schema:xsd:CommonAggreg
+<ubl:Invoice xmlns:ubl="urn-2"
+    xm!-- Synthetic sample invoiclns:ubl="urn:us. -->
+<ubl:Invoice xmlns:ubl="urn-2"
+    xmlns:catio-12bl:schema:xsd:chx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee [<![CDATA[x6
+>[<!chx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee chxCdAT
+echx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+>[<!chx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee 0xTAA[
+>[<![CDATA[x6
+AxCTD
+ee chx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee ent>
+      <cac:TaxScheme>
+        <cbc:ID>VAe="]]>">2</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="EUR">50.00</cbcacc:LineExtensionAmouac:AddressLine>
+      <ca>urn:s-2tte voiceden Lieferschein beachten.</cbc:Note>
+  <cbc:TaxPointDate>2026-11-<?xmlng<A>]i>]]]03</cbc:T]A>>]]i<?l?>
+<A>]i>]]axPointDate]

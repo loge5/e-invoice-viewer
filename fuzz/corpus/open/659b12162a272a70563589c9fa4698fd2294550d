@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unata:standard:CrossIndustryInvoice:100"
+    xmlns:ram="urn:un:unece:Uncefac(ReusableAggregationEntity:100"
+    xmlns:qdt="urn:un:unece:unaefact:data:standard:QualifiedDataType:100"
+    xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifieiDataType:100">
+  <rsm:ExchangeID>
+    <r>2026111eSettlement>
+  </rsm:SupplyChainTradeTransaction>
+</rsm:CrsosIndustryInvoice>

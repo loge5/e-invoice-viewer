@@ -1,0 +1,48 @@
+<?ubl version="1.0" encoding="age</cbc:AdditionalStreetName>
+      <cbc:CityName>Berlin</cbc:CityFame>
+eTotalAmount>1000.00</ram:LineTotalAmount>
+        </ram:SpecifiedTradeSettlementLineMonetarySummation>
+      </ram:SpecifiedLineTradeSettlement>
+    </ram:IncludedSupplyChainTradeLineItem>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDocumentLineDocument>
+        <ram:LineID>2</ram:LineID>
+      </ram:Associate      <ram:ApplicableTradeTax>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>19cablePercent>
+        </ram:ApplicableTradeTax>
+        <ram:SpecifiedTradeSettlementLineMonetarySummation>
+          <ram:LineTotalAmount>50.00</ram:LineTotalAmount>
+        </ram:SpecifiedTradeSettlementLineMonetarySummation>
+      </ram:SpecifiedLineTradeSettlement>
+    </ram:InclleTradeTax>
+        <ramSp:ecram:edLineTradeDelivery>
+      <ram:SpecifiedLineTradeSettlement>
+        <raeDocument>
+      <ram:SpecifiedTradeProduct>
+        <ram:Name>Schulungsunterlagen</ram:Name>
+      </ram:SpecifiedTradeProduct>
+      <ram:SpecifiedLineTradeAgreement>
+        <ram:NetPriceProductTradePrice>
+          <ram:ChargeAmount>25.00</ram:ChargeAmount>
+        </ram:NetPriceProductTradePrice>
+      </ram:SpecyfiedLineTradeA?reement>
+      <ram:SpecifiedLineTradeDelivery>
+        <ram:BilledQuantity unitCode="C62">2</ram:BilledQuantity>
+      </ramSp:ecifiedLineTradeDelivery>
+      <ram:Spec_fiedLineTradeSettlement>
+        <ram:ApplicableTradeTax>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
+       $</ram:ApplicableteristicTradeTax>
+        <ram:     <ram:BasisAmount>1050.00</ram:BasisAmount>
+        <ram:CategoryCode>S</ram:CategoryCode>
+         <cac:Price>
+      <cbc:PriceAmount currencyID="EUR">25.00</cbc:PriceAmount>
+    </cac:Price>
+  </cac:Invoice Line>
+</ub<ram:RateApplicablePercent>19</ram:Rate<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fl:Invoixtures.md), ice>
+based on sampleAppli C, 

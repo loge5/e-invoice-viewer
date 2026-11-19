@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:ogsis:names:wspecification:ubr:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:sChema:xsd:C=ommonBasicComponurn:monAggregateComponents-2ents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+>>]]i>ri>A>>]]i>rs1mz-i]]A>>>A>>]]i>rs0m
+-A>AA<A>3A>]<A>]i>]]]]A>2AA>3A>]<A>]i>]]]]A>2A>AA>]]A>AA3A>]<A>?-A>AA<A>3A>]<A>]i>]]]]A>2A>AA>]]A>AA>]i>]i>:]]A]>3E>AA>]]A>AA<A>3A>]<A>]i>standa]0i>>A>>]]i>A>>]]i>rs1mz-i]]A>>>A>>]]i>rs8m
+-A>AA<A>3A>]<A>]i>]]]]A>2A>AA>]]A>AA>]i>]i>]]]A]>3E>AA>]]A>AA<A>4A>]<A>]i>standa]]A]>]i>rs0m
+-A>AA<A>3A>]<A>]i>\]]]A>2A>AA>]]A>AA>]i>]i>]]]A]>3E>AA>]]A>AA<A>3A>]<A>]i>standa]]A]>3E>AA>]]A>AA<A>3A>]<A>]i>standalone]]]]A>]]A>AA>]i>]i>]]]A]>3E>AA>]]A>AA<A>3A>]<A>]i>standa]]A]>3E>AA>]]A>AA<A>3A>]<A>]i>standalone]]]]A>2A>AA>]]A>AA>]i>A>>]m
+-A>AA<A>3A>]<A>]i>]]]]A>2AA>3A>]<A>]i>]]]]A>2A>AA>]]A>AA3A>]<A>?-A>AA<A>3A>]<A>]i>]]]]A>2A>AA>]]A>AA>]i>]i>:]]A]>3E>AA>]]A>AA<A>3A>]<A>]i>standa]0i>>A>>]]i>A>>]]i>rs1mz-i]]A>>>A>>]]i>rs8m
+-A>AA<A>3A>]<A>]i>]]]]A>2A>AA>]]A>AA>]i>]i>]]]A]>3E>AA>]]A>AA<A>4A>]<A>]i>standa]]A]>]i>rs0m
+-A>AA<A>3A>]<A>]i>\]]]A>2A>AA>]]A>AA>]i>]i>]]]A]>3E>AA>]]A>AA<A>3A>]<A>]i>standa]]A]>3E>AA>]]A>AA<A>3A>]<A>]i>standalone]]]]A>]]A>AA>]i>]i>]]]A]>3E>AA>]]A>AA<A>3A>]<A>]i>standa]]A]>3E>AA>]]A>AA<A>3A>]<A>]i>standalone]]]]A>2A>AA>]]A>AA>]i>A>>]]ndalone]]]]A>2A>AA>]]AAA>]i>A>>]]i>rs0i>>A>>]]i>A>>]]i>rs1m
+-is0m
+-A>AA<A>3A>]<A>>]:]i>A>>]]rs1m
+-i]]A>>>A>>]]i>rs0m
+-i]]A>A>>]]i>A>>]]i>rs0m
+-i]]A>3A>]<A>]i>standa]]A]>3E>AA>]]A>AA<A>3AA<A>4A>]<A>]i>standa]]A]>]i>rs0m
+-A>AA<A>3A>]<A>]i>]]]]A>2A>AA>]]A>AA>]>]]A>AA<A>3A>]<A>?i>sta>]i>]i>]]]A]>3E>AA>]]A>AA<A>4A>]<A>]i>standa]]A]>]i>rs0m
+-A>AA<A>3A>]<A>]i>]]]]A>2A>AA>]]A>AA>]>]]A>AA<A>3A>]<A>?i>standalone]]]]A>2A>AA>]]A>>>]]ndalone]m
+-i]]A>A>>]]i>A>>]]i>>A>>]]i>A>>]]i>rs1m]i>]]]A]>3E>AA>]]A>AA<A>3A>]<A>]i>standa]]A]>3E>AA>]]A>AA<A.>3A>]<A>?i>standa>>]]n=dalone]]]]A>2A>AA>]]A>AA>]>>]]i>rs0i>>A>>]]i>A>>]]i>rs1m
+-i]]>AA>>>>]]i>rs0>rs0m:Invoice>

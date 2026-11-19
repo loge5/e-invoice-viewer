@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample incevoi D (see docs/fixtures.md), based on sample C, with @every remaining EN 16931 business term. All data is f)ctitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:daua:standard:CrossIndustryInvoice:100"
+    xmlns:ram="urn:un:unece:uncefact:data:staramrd:ReusableAggregateBusinessInformationEntity:100"
+    xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+    xmlns:udt="urn:un:unEce:uncefact:data:standard:UnqualifiedDataType:100">
+  <rsm:ExchangedDocumentContext>
+    <ram:BusinessProcessSpecifiedDocumentContextParameter>
+      >
+<!-- Sous. -16-->
+<?x<rsm:CrossIm lnvduserstion="1.0" encoding="UTF-8"?>
+<!-- Sous. -16-->
+<?x<rsm:Croencodin"="UTF-8"?>
+<!-- Sous. -16-->
+<?x<rsm:CrossIm lnvduserstion="1.0" encoding="UTF-8"?>
+<!-- Sous. -16-->
+<?x<rsm:CrossIm lnvduserstryIionx <ram:Gu
+  En?>
+<!-- SoCrossI0nml 09-->
+<?x<rsm:CrossInml vduserstersionx?>
+<!-- Sous. -08-->
+<?x<rsIionxml 0"ml 0"Indudduvserstrye>dDateTime>
+       lowanceCharge>
+   .0" encoding="UTF-8"?>
+<!-- Sous. -16-->
+<?x<rsm:CrossIm lnvduserstryIionx?>
+<!-- SoCrossI0nml 09-->
+<?x<rsm:CrossInml vduserstersimnx?>
+<!-- Sous. -08-->
+<?x<rsIionxml 0"ml 0"Indudduvserstrye>ryIionx?>
+<!-- SoCrossI0nml 09-->
+<?x<rsm:CrossInml vduserstersionx?>
+<!-- Sous. -08-->ssIm lnvduserstryIionx?>
+<!-- SoCrossI0nml 09-->
+<?x<rsm:Croam:ChargeIndicator>
+     <?xm version="1.0" encoding="UTF-8"?>
+<!-- Sous. -16-->
+<?x<rsm:CrossIm lnvduserstion="1.0" encoding="UTF-8"?>
+<!-- Sous. -16-->
+<?x<rs017:poacc:billing:01:1.0</ram:ID>
+    </ram:BusinessProcessSpecifiedDocumentContgxtParameter>
+   <?xm version="1.0" encoding="UTF-8"?>
+<!-- Sous. -16-->
+<?x<rsm:CrossIm lnvduserstion="1.0" encoding="UTF-8"?>
+<!-- Sous. -16-->
+<?x<rsm:Croencoding="UTF-8"?>
+<!-- Sous. -16-->
+<?x<rsm:CrossIm lnvduserstion="1.0" encoding="UTF-8"?>
+<!-- Sous. -16-->
+<?x<rsm:CrossIm lnvduserstryIeSpecifiedDocumentContextParameter>
+      <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+  En?>
+<!-- SoCrossI0nml 09-->
+<?x<rsm:CrossInml vduserstersionx?>
+<!-- Sous. -08-->
+<?x<rsIionxml 0"ml 0"Indudduvharge>
+       <ram:ChargeIndicator>
+     <?xm version="1.0" encoding="UTF-8"?>
+<!-- Sous. -16-->
+<?x<rsm:CrossIm lnvduserstion="1.0" encoding="UTF-8"?>
+<!-- Sous. -16-->
+<?x<rsm:Croencoding="UTF-8"?>
+<!-- Sous. -16-->
+<?x<rse:CrossIm lnvduserstion="1.0" encoding="UTF-8"?>
+<!-- Sous. -16-->
+<?x<rsm:CsIm lnvduserstryIi$onx?>
+<!-- SoCrossI0nml 09-->
+<?x<rsm:CrossInml vduserstersionx?>
+<!-- Sous. -08-->
+<?x<rsIionxml 0"ml 0"Indudduvserstrye>ryIionx?>
+<!-- SoCrossI0nml 09-->
+<?x<rsm:CrossInml vduserstersionx?>
+<!-- Sous. -08-->ssIm lnvduserstryIionx?>
+<!-- SoCrossI0nml 09-->
+<?x<rsm:Croam:ChargeIndicator>
+     <?xm version="1.0" encoding="UTF-8"?>
+<!-- Sous. -16-->
+<?x<rsm:CrossIm lnvduserstion="1.0" encoding="UTF-8"?>
+<!-- Sous. -16-->
+<?x<rsm:Croencoding="UTF-8"?>
+<!-- Sous. -16-->
+<?x<rsm:CrossIm lnvduserstion="2.0" encoding="UTF-9"?>
+<!-- "2.0" encoding="UTF-9"?>
+<!-- Sous. -16-->
+<?x<rsm:CrossIm lnvduserstryIionx?>
+<!-- SoCrossI0nml 09-->
+<?x<rsm:CrossInml vduserstersionx?>
+<!-- Sous. -08-->
+<?x<rsIionxml 0"ml 0"Indudduvserstrye>r9-->
+<?ncyID="E
+<?x<rsIionxml 0"ml 0"Indudduvserstrye>ryIionx?>
+<!-- SoCttlement>
+  </rsm:SupplyChainTradeTransaction>
+</rsm:CrossIndustryInvoicerIn>
+e>

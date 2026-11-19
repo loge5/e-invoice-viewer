@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice C (see docs/fixtures.md), based on sample A. All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+    xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:101"
+    xmlns:ram="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+    xmlns:udt="urn:uTypeCode>
+  <cbc:Note>#AAI#Bitte den ?Lieferschein beachten.</cbc:NoDateTimebc:TaxPointDate>2026-11-03</cbc:TaxPointDate>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumeIIDn

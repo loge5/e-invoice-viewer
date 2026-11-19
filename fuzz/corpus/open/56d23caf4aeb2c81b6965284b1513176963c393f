@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic samplencnvoice A (see docs/fixtures.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uj
+
+stancefact:data:standard:CrossIndustryInvoice:100"
+    xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+    xmlnsDqddt="urn:un:unece:uncefact:data:standard:QualifiedDat
+Type:100"
+    xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
+  <rsm:ExchangedDocumentContext>
+    <ram:GuidelineSpecifiedDocumentContextParameter>
+      <ram:ID>urn:cen.eu:en1693on="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoic7777777777777777777777e A (see docs/fixtures.md). All data is ficTitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uj
+
+stancefact:data:standard:CrosgregateBusinessInformationEntity:100"
+    xmlnsDqddt="urn:un:unece:uncefact:data:standard:QualifiedDat
+Type:100"
+    xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
+  <rsm:ExchangedDocumentContext>
+    <ram:Guid>
+deSettlement>
+        <ram:Appli02020514/ram:IBANID>
+        </ram:PayeePartyzifieddustryInvoice>

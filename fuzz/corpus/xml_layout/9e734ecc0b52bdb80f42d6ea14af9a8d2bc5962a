@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), UBL syntax, based on sample C, with every remaining EN 16931 busineers stm. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:6 <cbc:Name>Max Beispiel</cbc:Name>
+        <cbc:Telephone>+49 89 7654321</cbc:Telephone>
+       <![CDATA[ctronic1666663</cbc:CompanyID>
+    </cac:PartyLegalEntity>
+  </cac:PayeeParty>
+  <cac:TaxRepresentativeParty>
+    <cac:PartyName>
+      <cbc:Name>Steuer Vertretung GmbH</cbc:Name>
+    </cac:PartyName>
+    <cac:PostalAddress>
+      <cbc:StreetName>Steuerplatz 7</cbc:StreetName>
+    >
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:Address>
+    </cac:DeliveryLo>
+    <cac:DeliveryParty>
+      <cac:PartyName>
+        <cbc:Name>Lager Nord</cbc:Name>
+      </cac:PartyName>
+    </cac:DeliveryParty>
+  <nnnntNumberID>
+      <cbc:NetworkID>VISA</cbc:NetworkID>
+      <cbc:HolderName>Max Beispiel</cbc:HolderName>
+    </cac:CardAccount>
+    <cac:PaymentMandate>
+      <cbc:ID>MANDAT-->-0815</cbc:ID>
+      <cac:PayerFinancialAccount>
+        <cbc:ID>DE02120300000000202051</cbc:ID>
+      </cac:PayerFinancialAccount>
+    </cac:PaymentMandate>
+  </cac:PaymentMeans>
+  <cac:AllowanceCharge>
+    <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+    <cbc:AllowanceChargeReason>Rabatt</cbc:AllowanceChargeReason>
+    <cbc:Amount currencyID="EUR">50.00</cbc:Amount>
+    <cac:TaxCategory>
+      <cbc:ID>S</cbc:ID>
+      <cbc:Percent>19</cbc:Percent>
+      <cac:TaxScheme>
+        <cbc:ID>VAe="]]>">2</cbc:InvoicedQuantity>
+    <cbconAmount currencyID="EUR">50.00</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Schulungsunterlagen</cbc:Name>
+      <cac:ClassifiedTaxCategorice>

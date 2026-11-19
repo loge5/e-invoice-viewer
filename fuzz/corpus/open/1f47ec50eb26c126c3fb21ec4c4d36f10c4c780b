@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic samplublnvoice D (see docs/fixtures.md), UBL synta1-03</cbc:ActualDeliveryDate>
+    <cac:DeliveryLocati`on>
+      <cac:Address>
+        <cbc:StreetName>IndustriestraonReasonCode>﻿VATEX-EU-132-1I</cbc:TaxExemptionReasonCode>
+        <cbc:TaxExal>
+    <cbc:TaxAmount currencyID="USD">198.00</cbc:Tax    <cbc:TaxExemptionReason>Steuerbefreit nach § 4 Nr. 21﻿tG</cbc:TaxExemptionReason>
+        <cac:TaxScheme>
+         ' <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:rLineReference>
+      <cbc:LineID>1</cbc:LineID>
+    </cac:OrderLyneReference>
+    <cac:AllowanceChse</cbc:ChargeIndicator>
+      <cbc:AllowanceChargeReAson>Mengenrabatt</cbcNr. 21﻿tG</cbc:TaxExemptionReason>
+        <cac

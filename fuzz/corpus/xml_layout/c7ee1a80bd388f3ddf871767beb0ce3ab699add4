@@ -1,0 +1,5 @@
+<?xml version="1.0" encodingS="UTF-8"?>
+<!-- Synthetic sample invoice A (sek ntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    rsmxmlnszcac="urmonAggregateComps:names:&#53;:02>&#53;ubication:ubl:schea=xsd:C0" encComubl="urn:des:spps:names:&#53;ceso" >//cac:Invoie>Lc
+ien</ubl:Invoice>

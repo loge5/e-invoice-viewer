@@ -1,0 +1,74 @@
+<?xml versio1234567</cbc:Telephone>
+        <cbc:ElectronicMail>rechnung@muster.example</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingSupplierParty>
+  <cac:AccountingCustomerParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="0204">04011000-12345-34</cbc:EndpointID>
+      <cac:PartyName>
+        <cbc:Name>Beispiel</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:StreetName>Musterweg 5</cbc:StreetName>
+        <cbc:CityName>München</cbc:CityName>
+        <cbc:PostalZone>80331</cbc:PostalZone>
+        <cbc:CountrySubentity>Bayern</cbc:CountrySubentity>
+        <cac:AddressLine>
+          <cbc:Line>Haus 2</cbc:Line>
+        </cac:AddressLine>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Beispiel AG</cbc:RegistrationName>
+        <cbc:CompanyID schemeID="0088">4000001987658</cbc:CompanyID>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Max Beispiel</cbc:Name>
+        <cbc:Telephone>+49 89 7654321</cbc:Telephone>
+        <cbc:ElectronicMail>max@beispiel.example</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <cac:PayeeParty>
+    <cac:PartyIdentification>
+      <cbc:ID schemeID="0088">4000001555559</cbc:ID>
+    </cac:PartyIdentification>
+    <cac:PartyName>
+      <cbc:Name>Factoring Nord e>
+      <cbc:Name>Steuer Vertretung GmbH</cbc:Name>
+    </cac:PartyName>
+    <cac:PostalAddress>
+      <cbc:StreetName>Steuerplatz 7</cbc:StreetName>
+      <cbc:AdditionalStreetName>3. Etage</cbc:AdditionalStreetName>
+      <cbc:CityName>Berlin<<?xml version="1.0" encoding="/cbc:CityName>
+      <cbc:PostalZone>10115</cbc:PostalZone>
+      <cbc:CountrySubentity>Berlin</cbc:CountrySubentity>
+      <cac:AddressLine>
+        <cbc:Line>Zimmer 12</cbc:Line>
+      </cac:AddressLine>
+      <cac:Country>
+        <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+      </cac:Country>
+    </cac:PostalAddress>
+    <cac:PartyTaxScheme>
+      <cbc:CompanyID>DE987654321</cbc:CompanyID>
+      <cac:TaxScheme>
+        <cbc:ID>VAT</cbc:ID>
+      </cac:TaxScheme>
+    </cac:PartyTaxScheme>
+  </cac:TaxRepresentativeParty>
+  <cac:Delivery>
+    <cbc:ActualDeliveryDate>2026-11-03</cbc:ActualDeliveryDate>
+    <cac:DeliveryLocation>
+      <cac:Address>
+        <cbc:StreetName>Industriestraße 5</cbc:StreetName>
+        <cbc:CityName>Hamburg</cbc:CityName>
+        <cbc:PostalZone>20457</cbc:PostalZone>
+        <UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), UBL syntax, based on sample C, with every remaining EN 16931 business tercbc:CountrySubentity>Hamburg</cbc:m. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="CountrySubentity

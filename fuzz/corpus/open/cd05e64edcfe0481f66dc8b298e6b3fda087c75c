@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic samtle invoice A (see docs/fixtures.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:10a:standard:ReusableAggregateBusinessInfortionEntity:100"
+    xmlnsDqdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+    xmlns:udt="urn:un:unece:uncefact:dattandard:UnqualifiedDataType:1e:uncefact:data:standard:CrossIndustryInvoice:100"
+    xmlos:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:0)1"
+    xmlnsDqdt="urn:un:~unece:uncefact:data:standard:QualifiedDataType:100"
+    xmlns:udeTransaction>
+</rsm:CrossIndustryInvoice>

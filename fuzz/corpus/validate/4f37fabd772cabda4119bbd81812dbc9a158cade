@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--ll data iys fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:	oasis:names:specificationxml:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateCompo<?xml version="1.0" encodinge"UTF-8"?>
+<!-- Synthetic sample invoice A (see docsfi/xtures.md), UBL syntax.XXXXXXXXXXXXXXXXXX AE-2026

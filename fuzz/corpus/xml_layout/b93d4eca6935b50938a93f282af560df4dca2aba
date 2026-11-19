@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic ning EN 16931 busmness term. All data is fititious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:daua:standard:CrossInudstryInvoice:101"
+    xmlns:ram="urn:un:unece:uncefaata:standard:ReusableationEntity:100"
+    xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifieramtaType:100"
+    xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:101">
+  <rsm:ExchangedDocumentCoice xmlns:rsm="urn:un:unece:uncefact:data:standarentLineDocument>
+      <r`m:SpecifiedTncedDocument>>
+    

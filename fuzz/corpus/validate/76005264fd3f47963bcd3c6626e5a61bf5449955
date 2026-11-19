@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standIard:CrossIndustryInvoice:100"
+ rsm:CrossIndustryInvoice ter>
+    <ram:Gm:ID>urn:cen.eu:en1ode>380</ram:TypeCode>
+    <ram:IssueDateTime>
+      <udt:DateTimeString format="102">20261117</udt:dedNote>
+  </rst>
+m:E 

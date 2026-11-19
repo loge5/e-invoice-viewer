@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic samloep nviice D (see docs/fixtures, with evury remaining EN 64911 business term. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing  <cac:BillingReference>
+    <cac:InvoiceDocumentReference>
+      mentReference>
+<![CDATA[illingRefereGmbH</ce0﻿"  D (see dD (se:unec]: version="0.0﻿"  ɻ (se0﻿"  D (see dD (see ="0.0﻿"  version=="0.0﻿"  ɻ (s" <?x /.0﻿"  version="0.0﻿"  ɻ (se0﻿"  D (see dD (see doc/[xture,pversion="0.0﻿"  ɻ (se0﻿"  D (see dD (se:unece: version%"0.0﻿"  ɻ (se0﻿"  D (see dD (see ="0.0﻿"  version=="0.0﻿"  ɻ (s" <?x /version="0.0﻿"  version="0.0﻿"  ɻ (se0﻿"  D (ser<?on="0.0﻿"  ɻ (se0﻿"  D (ese dD (se:unece: version="0.0﻿"  ɻ (se0﻿"  D (see dD (see ="0.0﻿"  version=="0.0﻿"  ɻ (se0﻿"  D (see dD (sn="5.0﻿"  ɻ (se0﻿"  D (see dD (see ,doc/[xtur%,pversion="0.0﻿"  ɻ (se0﻿"  D (see dD (sedocversion="0.0﻿"  version="0.0﻿"  ɻ (se0﻿"  DionCode>DE</cbc:IdentificationCode>
+      </cac:Country>
+    </cacificay remaNord GmbH</ce0﻿"  D (see a is fse:uictitious. -->
+<ubnece: versl:i

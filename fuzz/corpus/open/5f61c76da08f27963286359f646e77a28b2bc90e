@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic samplinvoice A (l data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:namexsd:Invoice-1"
+    xmlns:cac="urn:oasis:names:speer
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="E0</cbc:TaxAmoun
+t>    <cac:TaxSubtotal>
+  am

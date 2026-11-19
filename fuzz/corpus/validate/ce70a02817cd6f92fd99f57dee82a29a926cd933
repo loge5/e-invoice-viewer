@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/f3xtures.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:datml version="1.0" encoding="oice:100"anyID>
+     nqualifiedDa   <cac:TaxScheme>
+  t 

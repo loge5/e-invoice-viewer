@@ -1,0 +1,13 @@
+<?odU									PDF-1			<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic ice D (see docs/fixtures.md), based on sample C, with every remaining EN 16931 business term. All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:u"
+    xmlns:ram="urn:un:unec							- Sy% e:uncefact:data:standard:ReusableAggregateBeIisusnsnformationEntity:100"
+    xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+    xmlns:udt="urn:un:unece:				- Sy% e:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+    xmlns:qdt="urn:uqualifiedDataType:10=">
+  <rsm:ExchangedDocumentContext>
+    <ram:BusinessProcessSpecifiedDocumentContextParameter>
+      <ram:ID>urn:fdc:peppol.eu:2017:poacc:billing:t>
+    </ram:ApplicableHeaderTradeSettlement>
+  </rsm:SupplyChainTr[deTransaction>
+</rsm:CrossIndustryInvoice>

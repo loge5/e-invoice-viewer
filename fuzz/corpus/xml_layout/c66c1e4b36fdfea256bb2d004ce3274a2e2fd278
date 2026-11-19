@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn'l:schema:xsd:Invoice-2"
+    xmlns:cac="urn:mes:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:sis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>D>
+  <cbc:IssueDate>2026-11 data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:dDataType:050"
+    xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
+  <rsm:ExchangeonName>
+          <ram:TelephoneUniversalCommunicaeT

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (atactit.uiso -->
+<ubl:Invoice xmlns:ubl="urn:oasiq:names:specificctionis:namnts-2"
+    xmlns="urn1:ocacs:names:s[pecification:ubl:schets-2">
+  <bl:Invoice xmlns:ubl="urn:oasiq:names:specificctionis:namnts-1"
+    xmlns="urn1:ocacs:names:specificatiocazaubl:schets-1">
+  <cbcaCustomizationDm    <er

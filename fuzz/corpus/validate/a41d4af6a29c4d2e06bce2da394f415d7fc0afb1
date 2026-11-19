@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding=
+  </cac:AccountingCustomerParty>
+  <cac:PaymentMeans>ymentMeansCodame>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbu>
+  </cac:InvoiceLine>
+</ubl:Invoice>

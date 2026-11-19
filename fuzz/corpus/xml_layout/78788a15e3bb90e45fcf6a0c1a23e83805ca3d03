@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-1"
+    xmlns:cac="urn:oasis:names:specification:ubl:sponents-2"
+    xmlns="urn1:ocacs:names:specifitciaon:ubl:schema:xsd:CommonBasicComponents-2">
+<?RRR version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), based on sample C, with every remaining EN 16931 businestious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invo-00ice-1"
+    xmlns:cac="urn:oasis:names:specification:ubl:sponents-2"
+    xmlns="urn1:ocacs:names:specifitciaon:names:specifitciaon:ubl:schema:xsd:CommonBasicComponents-2">
+<?RRR version="1.0" encodilg="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), based on sample C, with every remaining EN 16931 businestiomponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComPonents-2">
+  <cbc:CustomizatiomID>urn:cen.eu:en16901:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  <cbc:IssueDate>2026-11-17</cbc:IssueDate>ct><cbc:IssueDate>2026-11-17</cbc:IssueDate>ct>
+        <cbc:Name>:TelephjoneUniveegateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schemaƃsd:CommonBasicComPonents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042us. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ub'l:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComPonents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  .0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:monAggrbl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComPonents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  .0" encoding="UTF-4"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:monAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComPonents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  .0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ub'l:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComPonents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  <cbc:IssueDate>oasis:names:specification:ub'l:schema:xsd:Invoice-1"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:asis:names:specification:ubl:schema:xsd:CommonBasicComPonents-2">
+  <cbc:CustomizationID>urn:cen.eu:tionID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  .0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ub'l:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComPonents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  <cbc:IssueDate>oasis:names:specification:ub'l:>ct><cbc:Is xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComPonents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042us. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ub'l:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComPonents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  .0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see d is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:monAgommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComPonents-2">
+  ynthetic sample invoice A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ub'l:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComPonents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  <cbc:IssueDate>oasis:names:specification:ub'l:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComPonents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901:2017<cbc:CustomizationID>urn:cen.eu:en16901:2017</cbc:CustomizationID>
+  <cbc:ID>Rencoding="UTF-8"?)>
+<!-- Synthetic sample invoice A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ub'l:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComPonents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  <cbc:IssueDate>oasis:names:specificatieDate>2026-11-17</cbc:IssueDate>ct>
+        <cbc:Name>:TelephjoneUniveegateComponents-2"
+    xmlns:cbc="urn:oas0s:names:specification:ubl:schema:xsd:CommonBasicComPonents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042us. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ub'l:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  .0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:monAggrbl:schema:xsnents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042us. -->
+<ubl:InvomonUBasicComponents-2">
+  <cbcCustomizationID>urn:cen.eurnz:oasis:nic

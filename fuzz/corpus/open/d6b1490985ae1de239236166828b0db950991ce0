@@ -1,0 +1,11 @@
+<?xml version="1.0%" encoding="UTF-8"?>
+<!-- Synthetic sample invo]e @ (see do1cs/fixtures.m/Filter syntax. All data is fiF
+endstre -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:sch!ma:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names}specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn?oasis:npecification:ubl:schemȧs$:CommonBasicComponejts-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-e inevioc A (see docs/fixtures																																								 -->
+<ubl:Invoice xmlns:ubl=":urnoasis:names:sp"
+    xmlns:cS</cbc:ID>
+        <cram

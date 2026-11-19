@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specificatonBasicComponents-3">
+  <cbc:CustomizationID>urn:cen.eu:en16930:2017<ode>
+  <cbc:TaxCurrencyCode>USD</cbc:TaxCurrencyCode>
+  <cac:InvoicePeriod>
+    <cbc:StartDate>3ding="UTF-8"?>
+<!-- Sy fictitious. -->
+<ubl:Invokce xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-1"
+    xmlnsac="urn:oasis:names:specificatts-2"
+    xmlns="urn1:ocacs:names:sn:oasis:names:specia:tifion:ubl:sionents-2"
+    xmlns="urn1:oc-c"
+    xmlns="urn1:ocacs:names:sn:oasis:*ames:specia:tifion:ubl:sionents-2"
+    xmlns="urn1:oc-cs:nzames:scation:usis:names:specification:ubl:schema:xsd:Invoice-1"
+    xmlnsac="ue-1"
+    xmlnsac="urn:oasis:names:specific4atts-2"
+    xmlns="urn1:ocacs:names:sn:oasis:names:specia:tifion:ubl:sionents-2"
+    xmlns="urn1:oc-cs:ce-1"
+    xmlnsac="urn:oasis:names:specificatts-2"
+    xmlns="urn1:ocacs:names:sn:oasis:naents-2"
+    xmlns="urn1:oc-cs:nzames:scation:usis:names:specification:ubl:schema:xsd:Invoice-1"
+    xmlnsac="ue-1"
+    xmlnsac="urn:oasis:names:specificatts-2"
+    xmlns="urn1:ocacs:names:sn:oasis:names:specia:tifion:ubl:sionents-2"
+    xmlns="urn1:oc-cs:ce-1"
+    xmlnsac="urn:oasis:names:specificatts-2"
+    xmlns="urn1:ocacs:names:sn:oasis:names:specia:tifion:ubl:sionents-2"
+    xmlns="urn1:oc-cs:nzames:scation:usis:names:specification:ubl:schema:xsd:Invoice-1"
+    xmlnsac="urn:oasis:names:specifiis:names:specifficatts-2"
+    xmlns="urn1:ocacs:names:sn:oa2"
+    xmlns="urn1:ocacs:names:sn:oasis:names:specia:tifion:ubl:sionents-2"
+    xmlns="urn1sis:names:specificificationrn:oasis:names:specificatts-2"
+    xmlns="urn1:ocacs:names:sn:oasis:names:specia:tifion:ubl:sionents-2"
+    xmlns="urn1:oc-c"
+    xmlns="urn1:ocacs:names:sn:oasis:names:specia:tifion:ubl:sionents-2"
+    xmlns="urn1:oc-cs:nzames:scation:usis:names:specification:ubl:schema:xsd:Invoice-1"
+    xmlnsac="ue-1"
+    xmlnsac="urn:oasis:names:specificatts-2"
+    xmlns="urn1:ocacs:names:sn:oasis:names:specia:tifion:ubl:sionents-2"
+    xmlns="urn1:oc-cs:ce-1"
+    xmlnsac="urn:oasis:namel:srsmchema:xsd:Invoice-1"
+    xmlnsac="urn:oasis:names:specificatts-2"
+    xmlns="urn1:ocacs:names:sn:oasis:names:specia:tifion:ubl:sionents-2"
+    xmlns="urn1:oc-c"
+    xmlns="urn1:ocacs:names:sn:oasis:names:specia:tifion:ubl:sionent<?xmls- version="

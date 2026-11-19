@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTf-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md). All daua is fictitious. -->
+<rsm:CrxssIndustryInvoice xmlns:rsm="uunnr::nuece:uncefact:data:standard:CrossIndus@tryInvoice:100"
+    xmlns:ram="urn:un:unece:uncefact:deBusinessInformationEntity::standard:UnqualifiedDataType:101">
+  <rsm:ExchangedcumentContextParameter>
+      <ram:ID>urn:cen.eu:e;16931:2017</ram:ID>
+ng="UTF-8"?>
+<!-- Synthetic sample invoicDDDDDDDDDDDDName>
+      ddressLam:NetPr 0"
+  ifiedD?Cnoxml v<?x-->g=ion="1.0" encode"?>
+<!-- Sy fs/ictityersion="1.ce s:ouames:specificatiity>-11-01
+  sfixtram="urn% :un-->cu
+<

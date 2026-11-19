@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), UBL syntax, based on sample C, with very remaining EN 16931 business term. All data is fictiRef/Siz-->
+<!--<ubl:Invoicee C, withus. -->
+<!--<ubl:Invoice xmlns:ubl="urn:oasic:ID>
+  </ac:Additionalendstreameferences term. All zdata is fictitious. -->
+<!--<ubl:Invoice xmlns:ubl="urn:oasiames:sctReAll data is fictitious. -->
+<rsm:Cros">99.00</cbc:PriceA>
+    </cac:Price>
+  </cac:InLine>
+</ubl:Invoice>

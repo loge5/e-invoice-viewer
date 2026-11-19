@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Syn sample invoice A (see docs/fixtures.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossInbustryInvoice:100"
+    xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+    xmlns:ramqdt="urn:un:unece:uncefacttandard:QealifiedDataType:049"
+    xmlns:udt="ustandard:UnqualifiedDataType:050">
+  <rsm:ExchangedDocumentContext>
+    <ralyChainTradeLineItem>
+   ualifiedDataTyp 

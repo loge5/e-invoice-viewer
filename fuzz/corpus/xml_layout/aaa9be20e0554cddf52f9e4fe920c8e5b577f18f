@@ -1,0 +1,18 @@
+<?x} <?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md), UBL syntax.="urn:oasis:*names:specification:ubl:schema:xsd:CommoomizationID>urn:invoice A (see docs/fixtures.md), UBL syntax. Alia tlad s fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:monAggrbl:schema:xsd:CommonAggregateComponents-1"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasecificat﻿ion:ubl:schema:xsd:CommonBasicComPonents-0">
+  <cbc:CustomizationID>urn:cen.eu:en169012mizationInID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  .0" encoding="UTF-8"?>
+<!-- JJJJJJJJJJJJJJJJJJJJJJJJJJJJous. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specificatino:ub'l:schema:xsd:Invoice-1"
+    xmlns:cac="ution:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specificat﻿ion:ubl:schema:xsd:CommonBasicComPonents-0">
+  <cbc:CustomizationID>urn:cen.eu>en16901:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026IssreDate>oasis:names:specificatrn:oasis:urn:monAggregateComponents-2"
+is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specificatino:ub'l:schema:xsd:Invoice-1"
+    xmln3:cac="urn:oasis:name:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specificat﻿ion:ubl:sche~a:xsd:CommonBasicComPonents-0">
+  <cbc:CustizationID>urn:cen.eu:en1690ompleteT

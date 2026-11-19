@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic samptax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:spe
+fication:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateCompents-/XRef  xmlspe
+fication:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urnCommonAggregateComponents-/XRef  xmlspe
+fication:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specificatico

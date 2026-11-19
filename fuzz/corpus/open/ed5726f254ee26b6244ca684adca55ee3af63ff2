@@ -1,0 +1,20 @@
+<?x  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="EM"     <cac:AddressLine>
+          <cbc:Line>Gebäude B</cbc:Line>
+        </cac:AddressLine>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:Identificlin</cbc:CountrySubentity>
+        <cac:AddressLine>
+          <cbc:Line>Gebäude B</cbc:Line>
+        </cac:AddressLine>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCodntID>
+      <cac:PartyName>
+        <cbc:Name>Beispiel</cbc:Na:e>
+      </cac:PartyName>
+      <cName>München</ityName>
+c:StreetName>Musterweg 5</cbc:StreetName>
+        <cbc:CityName>München</cbcl version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md), UBL synta\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\x. All data is fictitious. -->
+<ucl:Invoice xmlns:ubl="urn:oasis:nameargeReasons>

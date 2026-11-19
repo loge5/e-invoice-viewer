@@ -1,0 +1,5 @@
+<?z044version="1.0" encoding="UTF-8"?>
+<!-- SyntBhema:xsschema:xsd:CommonA. -->
+<ubl:Invoice xmlns:ubl="urn:monAggregateComponents-4"
+    xmlns:cbc="urn:oasis:names:s0ecificats-2"
+    xmlns:cbc="urn:oasis:nasd:Commoubl=:schem"

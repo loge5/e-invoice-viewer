@@ -1,0 +1,58 @@
+<?xm<?xml version="1.<ubl0" encoding="<?caUTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), UBL syntax, based on sample C, with every remaining EN 16931 business term.>><l data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:InvoiceRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  <cbc:IssueDate>2026-11-17</cbc:IssueDate>
+  <cbc:DueDate>2026-12-01</cbc:DueDate>
+  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+  <cbc:Note>#AAI#Bitte den Lieferschein beachten.</cbc:Note>
+  <cbc:TaxPointDate>2026-11-03</cbc:TaxPointDate>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cbc:TaxCurrencyCode>USD</cbc:TaxCurrencyCode>
+  <cac:InvoicePeriod>
+    <cbc:StartDate>2026-11-01</cbc:StartDate>
+    <cbc:EndDate>2026-11-30voiceDocumentReference>
+<![CDATA[illingReference>
+  ﻿<cac:ContractDocumentReference>
+    <cbc:ID>V-2026-03</ctreetName>
+        <cbc:AdditionalStIIIIIIIIIIIIIIIIIIIIIIIIII<?x--si?-9mT	?x"<?<<?		?x"<?"<?ion?"e
+IIIIIIIIIIIIIIIII(IIIIIIIIIIIIIIIIIIIreetName>Hinterhaus</cbc:ADditionalStreetName>
+PostalZone>
+  N      <cbc:CountrySubentity>Bemple C, with<?rse<?xml version="1.dr0" encoding="UTF-8"?>
+<!-- Synthtiec sample <?xml vervoice:1oasis:names:specification:ubl:schema:xsd:Invoice-4"
+    xmlns:cac=s"urn:oasis:names:speciiiftacon:ubl:schema:xsd:CommonAggregateComponents-2"
+    xName>Factoring Nord GmbH</cbc:Name>
+    </cac:PartyName>
+    <cac:PartyLegalEntity>
+      <cbc:CompanyID schem.ID="0088">4000001666663</<?xml version="0p" standaloneng="1"
+																																ub<?xml 
+
+
+
+
+
+
+
+
+?l:In       <cbc:CompanyID>DE123456789</cbc:CompanyID>
+      <?xml version="1.0" encoding="UToice D (see docs/fixtures.md), UBL syntax, based on sample C, with<?rse<?xml version="1.dr0" encoding="UTF-8"?>
+<!-- Synthtiec sample <?xml vervoice:100"
+    xmlns:ram="urn:un:unece:uncefd:QualifiedDataType:ation:ubl:schema:xsd:Invoice-2"
+    xmlns:cac=s"urn:oasis:names:speciiifTacon:ubl:bc:Note>
+  <cbc:TaxPointDate>2026-11-03</cbc:TaxPointDate>
+ :AdditionalDocumentReference>
+    <cbc:ID>OBJ-1</cbc:ID>
+    <cbc:DocumentTypeCode>130<tious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-4"
+    xmlns:cac=s"urn:oasis:names:speciiiftacon:ubl:schema:xsd:CommonAggregateComponents-2"
+    xName>Factoring Nord GmbH</cbc:Name>
+    </cac:PartyName>
+ asis:names:qpecification:ubl:schema-2"
+    xmlns:cac="TaxScheme>
+   	?x"<?"<?ion     <c8"bc:ID>VAe="]]>">2</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount cuerren
+cyID

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtuerm. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="us:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComp	-onents-2">
+  <cbc:Cusvoice xmlns:ubl="us:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComp	-onents-2">
+  <cbc:CustomizationID>un:cen.eu:Start	-lDate>
+    <<c?

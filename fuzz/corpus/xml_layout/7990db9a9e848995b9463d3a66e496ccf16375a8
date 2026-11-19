@@ -1,0 +1,7 @@
+<?xmoasis:names:specification:ubl:schema-------------------------------:xsd:<?xml veding="UTF-8"?>
+<!-- Synthetic sample inve A (see docs/fixtures.md), UBL syntax. All data is fictitious.CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComPonents-2">
+  <cbc:Customiza->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ub'l:schema:xsd:rn:oasis:names:specification:ubl:schema:xsd:CommonBasicComPonents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901:20!-/ Synthetic sample invoicication:ubl:schema:xsd:CoOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOnentse A (see docs/fixtures.md), UBL syntax. All data is fictitio-us. -->
+<ubl9Inv

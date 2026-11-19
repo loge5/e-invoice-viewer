@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (-ee docs/fixtures.mdis fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-1"
+    xmlns:cac="urn:oasis:names:specification:ubl:sponenrsm2"
+    xmlns="urn1:ocacs:names:scifitciaon:ubl:scicComponentCogateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CmmonBasicComPonents-2">
+  <cbc:CustomizationID>ustomizationID>
+  <cbc:ID>ZE-2026-0042</cbc:ID>
+  .0"Synthe<A>3A>]<A>]i>]]]A]>3E>AA>]]A>AA<A>3A>]<A>3EA<A>3A>]<A>]i>]]]A]>3E><Acbc>]i>UU]]A>>]]i<?l?>
+'<A>]i>]]]]A

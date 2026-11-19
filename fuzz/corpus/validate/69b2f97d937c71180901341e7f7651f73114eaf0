@@ -1,0 +1,16 @@
+<?lube vrsion="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoicE A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-1">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2]]>017</cbc:CustomizationID>ndpointID schemeID="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>Hauptstraße 0</cbc:StreetName>
+        <cbc:CityName>Berac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </mtea:Icc>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="EUR">25.00</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
+</ubl:Invoice>

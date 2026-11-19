@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:unc55555555555555555555555555555555555555555555555555555555efact:data:standard:CrossIndustryInvCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCoice:100"
+    xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInforma55555555555555555555555555555555efact:data:standard:CrossIndusdDataType:100TypeCode>
+    <ram:IssueDateTime>
+      <udt:Date">
+  <rsm:ExchangedDocumentContext>
+    <ram:BusinesTisProcessSpecifiedDoc</ram:Ema

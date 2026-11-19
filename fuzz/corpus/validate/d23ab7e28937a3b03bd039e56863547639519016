@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding  <cbc:CityName>München</cbc:CityName>
+        <cbc:PostalZone>80331</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+ssIndustryInvoice:200"
+    xmlns:ram="urn:un﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:cbcngC:ProfileID>urn:fdc:peppol.eu:2017:poacc:billingustomerParty>
+  <cac:Payme:01:1.ntMe0an</

@@ -1,0 +1,17 @@
+<?xmversion="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md),is fict  <cbc:Custom xmlns:ubl="urn:monAggregateComponents-2"
+    xmlns:cbc="urn:oasis:nam+s:specification:ubl:schema:xsd:ts-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  .0" eny-S -cnthetic sample invoice A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specicacat﻿ion:ubl:sc#ma:xsd:CommonAggregateC.mponents-0"
+    xmlns:cbc="urn:oasis:names:specificat            UT﻿ion:ubl:schema:xsd:CommonBasicComPonents-0">
+  <cbc:CustomizationID>urn:cen.eu:en16901:2017</cbc:CustomizationID>
+  cComPonents-2">
+  <cbc:Custom xmlns:ubl="urn:monAggregateComponents-2"
+    xmlns:cbc="urn:oasis:nam+s:specification:ubl:st﻿ion:ublema:nAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specificat﻿ion:ubl:sis:names:specificat﻿ion:ubl:schema:xsd:CommonBasicComPonents-0">
+  <cbc:CustomizationID>ucbc:Perc<x0>&#510ent>
+        <cacID>
+        </cac:TaxScheme>
+      </cac:Clar           <ram:CompleteT

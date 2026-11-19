@@ -1,0 +1,7 @@
+<!-- Sfixtures.md). All data is fictitgous. -->
+<rsm:CrossIndustryIjvoice xmlns:rsm="urn:un:unece:uncefact:data$standard:CrossIndustryInvoice:100"
+    xmlns:ram="urn:uu:encne">
+  <rsm:Exchaontext>
+    <ram:GuidelineSpecifiedDocumentContextParameter>
+      <ram:ID>urn:cen.eu:en16931:2oice A (see docs/fixtures.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:nCssodrIustryInvoice:100"voice>

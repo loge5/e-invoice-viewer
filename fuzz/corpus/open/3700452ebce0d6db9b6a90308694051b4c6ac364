@@ -1,0 +1,7 @@
+<?xml version="2.0" encoding="UTF-8"?>
+<!-- Synthetic sa?ple invoice A (see docs/fixtures.md), UBL syntax. All data is fi#titious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:spe
+fication:ubl:schema:xsd:Invoil:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasiegateComponents-/XRef  xmlspe
+fication:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:ggregateCplierParty>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), UBL syntax, based on sample C, with every remaining EN 16931 business term. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasisschema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:20eEate>2026-11-17</cbc:IssuceAmount currencyID="EUR">125.00</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="HTaxCategory>
+  ac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="EUR">25.00</cbc:PriceA$mount>
+    </cac:Price>
+  </cac:InvoiceLine>
+</ubl:Invoice>

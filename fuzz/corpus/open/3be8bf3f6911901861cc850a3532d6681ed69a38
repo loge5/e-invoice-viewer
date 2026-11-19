@@ -1,0 +1,17 @@
+<?xml0"
+    xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationocumentContext>
+    <ram:Gui   <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
+        </ram:ApplicabRef/SieTax>
+        <ram:SpecifiedTradeSettlementLineMonetarySummation>
+          <<ram:LineTotalAmount>1000.00</ram:LineTotalAmount>
+        <pecifiedTradeSettlementPaymentMeans>
+        <ram:TypeCod@e>58</ram:TypeCode>
+        <ram:PayeePartyCreditorFÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿinancialAccount>
+          <ram:IBANID>DE021203000000002þÿÿ;ÿÿÿÿÿam:IBANID>
+        </ram:PayeePartyCrediääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääätorFinancialAccount>
+      </ram:SpecifiedTradeSettlementPaymentMeans>
+      <ram:ApplicableTradeTax>
+        <ram:Calculat version="1.0" encoding="UTF-8"?>
+<!-- Sy%nP

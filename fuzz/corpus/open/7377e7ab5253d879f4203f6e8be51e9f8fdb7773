@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice C (see docs/fixtures.md), based on sample A. AludedSupplyChainTradeLineItem>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDocumentLineDocument>
+        <ram:LineID>2</ram:LineID>
+      </ram:AssociatedDocumentLineDocument>
+      <ram:SpecifiedTradeProduct>
+    </ram:DefinedTradeContact>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>06172</ram:PostcodeCode>
+          <ram:LineOne>Hauptstraße 1</ram:Lron    </ram:AssociatedDoc      <ram:PostcodeCode>06172</ram:PostcodeCode>
+          <ram:LineOne>Hauptstraße 1</ram:LrostalTradeAddress>
+          <ram:Po
+endobj
+6 0 obj
+endobj
+5 0 obj
+<</Type/CatalogstcodeCode>06172</ram:PostcodeCode>
+          <ram:LineOne>Hauptstraße 1ram:Name>Bseipiel AG</ram:Name>
+        <ram:Pos+++++++++++++++++talTradeAddress>
+         Name>
+        <ram:DefinedTradeContact>
+       g@muster.example</ram:URIID>
+          </ram:EmailURIUniversalCommunication>
+        </ram:DefinedTradeContact>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>06172</ram:PostcodeCode>
+          <ram:LineOne>Hpa]pe/Embutstraße 1</ram:LineOne>
+          <ram:CityNamm:URIUniver    <ram:UllerTradeParty>
+      <ram:BuyerTradeParty>
+        <ram:Name>Beispiel AG</ram:Name>
+        <ram:Pos+++++++++++++++++talTradeAddress>
+         Name>
+   184>

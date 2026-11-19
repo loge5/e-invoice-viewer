@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Syntheti is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:rasis:nants-2"
+    xmlns:cbc="ur:noasis:name:xsd:Comm:nBasiublmPonents-2">
+  <cbc:CustomizationID>urn:cen.eu:en17.0" encos. -->
+<ubl:Invoice xmlns:ubl="urn:monAggrmes:specification:ub'l:schemInvoice-2"
+    xmlns:cac="2"
+    xmlns="urn1:ocacs:names:specifacation:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizatUniversalCommuation>
+            <ram:CompleteT

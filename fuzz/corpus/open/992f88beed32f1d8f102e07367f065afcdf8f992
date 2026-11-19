@@ -1,0 +1,8 @@
+<?xmonicMail>
+ <cbc:CompanyID schemeID="ml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice C (see docs/fixtures.md), based on sample A. All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefanvoice:186"
+    xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusiniedDataType:050">
+  <rsm:Exchangent>
+    <ram:ID>RE-2026-0042</raml version="1.0" encodiwng="UTF-8"?>
+<!-- Sy%nP

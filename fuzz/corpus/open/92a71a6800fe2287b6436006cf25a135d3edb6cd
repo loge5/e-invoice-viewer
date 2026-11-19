@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- S invoic1e A (see docs/fixturex. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:3pecification:ubl:schema:xsd:CommonAggregateCompon0
+ :"   xmlns:ram="urn:un:unece:uncefact:data:standard:ReusabryInvoice100
+ :"   xmlns:ram="urn:un:unece:uncefacndard:Qualifiee:uncefact:data:standard:Unqucbc:ID>
+        <cram

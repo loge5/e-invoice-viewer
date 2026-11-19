@@ -1,0 +1,13 @@
+<?x#m?<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixt stm. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specificatmon:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-1"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>     <cbc:Telephone>+49 89 7654321</cbc:Telephone>
+       <![CDATA[ctronicMail>max@beispiel.example</cbc:ED>
+   <cac:DeliveryLocation>
+      <cac:Address>
+        <cbc:StreetName>Industriestraße 5</</cbc>
+          <cbc:Idenustriestraße 5</</cbc:Sch="]]>">2</cbc:Inv
+      <cbc:Nameuc:

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample <?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), based on sampbc:TaxableAmount currencyID="EUR">1050.00</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="EUR"?199.50</cbc:TaxAmount>
+      <cac:TaxCategory>
+        <cbc:ID>yeeFinancialAccount>
+  </cac:PaymentMeans>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="EUR">355.50</cbc:TaxAmount>
+    <cac:TaxSubtotal>﻿    <cbc:TaxableAmount currencyID="EUR">1050.00</cbc:TaxableAmount>
+      <cbc:TaxAmount nrcurceyID="EUR">199.50</cbc:TaxAmount>
+      <cac:TaxrCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>18</cbc:Percent>
+        <cac:TaxScheme>
+          <cbsi   </cac:PartyLegalEntity>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <cac:PaymentMeans>
+    <cbc:PatmentMeansCode>58ncod="0" enc</cbc:PaymentMeansCode>
+    <cac:PayeeFinancialAccount>
+      <cbc:ID>DE02120300000000202051</cbc:ID>
+    </cac:Pa0000000202051</cbc:ID>
+    </cac:PayeeFinancialAccount>
+  </cac:PaymentMeans>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="EUR">19.950/<cbc:TaxAmount>
+   i <cac:TaxSubtotEEEEEEEEEEEEEEEEEMEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEal>﻿cbc:TaxAmount>
+    <cac:TaxSubtotal>﻿    <cbc:TaxableAmount currencyID="EUR">3050.00</cbc:TaxabEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEal>﻿    <cbc:Taxable:PartyLegalEntity>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <cac:PaymentMeans>
+    <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
+    <cac:PayeeFinancialAccount>
+      <cbc:ID>DE02120300000000202051</cbc:ID>
+    </cac:PayeeFinancialAccount>
+  </cac:PaymentMeans>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="EUR">199.50</cbc:TaxAmount>
+    <cac:TaxSubtotal>﻿    <cbc:TaxableAmount currencyID="EUR">3050.00</cbc:TaxtrationName>
+      </cac:PartyLe+galEntity> 
+      <cac:Contact>
+        <cbc:Name>Erika Mustermann</cbc:Name>
+        <cbc:Telephone>+49 30 1234567</cbc:Telephone>
+         </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Beispiel AG</cbc:RegistrationName>
+      </cac:PartyLegalEntity>
+    </cac:Party>
+  </cac:AccountingCusdomerParty>
+  <cac:PaymentMeans>
+    <cbc:PaymentMeansCode>58cbc>58</cbc:PaymentMeansCode>
+<lx001>&#000000000000000    <cac:PayeeFinancialAccount>
+      <cbc:ID>DE0212030000000020"051</cbc:ID>
+    </cac:PayeeFinancialAccount>
+  </cac:PaymentMeans>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="EUR">199.50</cbc:TaxAmount>
+    <cac:TaxSubtotal>﻿    <cbc:T<?xml version=  '       '    al>
+  </cac>
+    </cac:Party>
+  </cac:AccountingCusdomerParty>
+  <cac:PaymentMeans>
+    <cbc:PaymentMeansCode>58cbc:ID>DE02120300000000202051</cbc:ID>
+    </cac:PayeeFinancialAccount>
+  </cac:PaymeEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEal>﻿    <cbc:Taxable:PartyLegalEnt000000202051</cbc:ID>
+    </cac:PayeeFinancialAccount>
+  </cac:PaymentMeans>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="EUR">199.50</cbc:TaxAmount>
+   i <cac:TaxSubtotEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEAmount>
+   i <cac:TaxSubtotal>)﻿    <cbc:Taxable:PartyLegalEntity>
+    </c.50</cbc:TaxAmount>
+    <cac:TaxSubtotal>﻿    <cbc:TaxableAmount currencyID="EUR">3050.00</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="EUR">199.50</cbc:TaxAmount>
+      <cac:TaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:TaxCategory>
+    </cac:TaxSubtotal>
+  </cac:TaxTotal>
+  <cac:LegalMonetaryTotal>
+    <cbc:LineExtensi   </cac:PartyLegalEntity>
+    </cac:Party>
+  </cac:AccountingCustomer>)﻿    <cbc:Taxable:PartyLegalEntity>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <cac:PaymentMea
+>ns    <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
+    <cac:PayeeFinancialAccountxTotal>
+    <cbc:TaxAmount currencyID="EUR">199.50</cbc:TaxAmount>
+    <cac:TaxSubtotal>﻿    <cbc:000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000TaxableAmount currencyID="EUR">1050.00</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="EUR">199.50</cbc:TaxAmo   <cbc:T<?xml version=  '       '    al>
+  </cac>
+    </cac:Party>
+  </cac:AccountingCusdomerParty>
+  <cac:PaymentMeans>
+    <cbc:PaymentMeansCode>58cbc:ID>DE02120300000000202051</cbc:ID>
+    </cac:PayeeFinancialAccount>
+  </cac:PaymentMeans>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="EUR">199.50</cbc:TaxAmount>
+   i <cac:TaxSubtotEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEal>﻿    <cbc:Taxable:PartyLegalEnt000000202051</cbc:ID>
+    </cac:PayeeFinancialAccount>
+  </cac:PaymentMeans>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="EUR">199.50</cbc:TaxAmount>
+   i <cac:TaxSubtotEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEAmount>
+   i <cac:TaxSubtotal>)﻿    <cbc:Taxable:PartyLegalEntity>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <cac:PaymentMea
+>ns    <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
+    <cac:PayeeFymentMeansCode>
+    <cac:PayeeFinancialAccount>
+      <cbc:ID>DE01060150000000101025</cbc:ID>
+    <cbc:TaxAmount currecialAccount>
+  </cac:PaymentMeans>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="EUR">199.50</cbc:TaxAmount>
+    <cac:TaxSubtotal>﻿    <cbc:TaxableAmount currencyID="EUR">1050.00<ntificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Beispiel AG</cbc:RegistrationName>
+      </cac:PartyLegalEntity>
+    </cac:Party>
+  </cA465811318ﱿ>#xt00ca:ccountingCusdomerParty>
+  <cac:PaymentMeans>
+    <cbc:PaymentMeansCode>58cbczID>DE02120300000000202051</cbc:ID>
+    </cac:PayeeFinancialAccount>
+  </cac:PaymentMeans>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="EUR">199.50</cbc:TaxAmount>
+   i <cac:TaxSubtotal>﻿    <cbc:Taxable:Part0</cbc:TaxAmount>
+      <cac:TaxCategory>
+        <axScheme>
+    
+  </cac:TaxCategory>
+    </cac:TaxSubtotal>
+  </cac:TaxTotal>
+  <ca

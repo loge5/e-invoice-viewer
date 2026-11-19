@@ -1,0 +1,7 @@
+<?xml version="1/0" encoding="UTF-8"?>
+<!-- SAll data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasEA>isnam:Invoice-2"
+    xmlns:cac="urnocacts-3"
+    xmlns:cbc="ur$nma:xsd:CommonBasicConnepomts-2">
+  <cbc:CuetNe>
+        <cbc:CityName>Mü&chen<ubl:Invoice xnoxmce>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see dus. -->
+<ubl:Invoice xmlns:ubl="urn:omonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:sicComponents-1">
+  <cbc:CustomizationID>:cen.eu:en16932:2017un:unece:unce<![CDATA[fact:ddc:]]]]]]1 business term. All da>
+   ]]]]]]] <cac:P]]]]a

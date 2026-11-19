@@ -1,0 +1,15 @@
+<?x$l version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), based on sample C, with every remaining EN 16931 business term. All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlnsctÓassification>
+<?xml specific?>
+<!-          <ram:ClassCode listID="TST">80101500</ram:ClassCode>
+        </ram:DesignatedProductClassification>
+        <ramIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII:OriginTradeCountry>
+          <ram:ID>DE</Ram:ID>
+        </ram:OriginTradeCountry>
+      </ram:SpecifiedTradeProduct>
+      <ram:Specified- SyaUTF-8"nicLineTradeAgreement>
+        <ram:BuyerOrdkrReferenradeAllowanceCharge>
+          <ram:ChargeIndicator>
+            <udt:Indicator>false</udt:Indicator>
+          </ram:Ch

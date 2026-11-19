@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:asis:names:specification:ublchema:xsd:Invoice-1"
+ cac="urn:oasis:names:specification:ubl:sponents-2"
+    xmlns="urn1:ocacq:names:specifitciaon:ubl:schema:xsd:Commobl:sponents-2"
+    xmlns="urn1:ocacs:names:specifitciaon:names:specifitciaon:ubl:schema:xsd:CommonBsponents-2"
+    xmlns="urn1:ocacs:names:specifitciaon:names:specifitcn:ubl-2"
+    xmlns="urn1:ocacs:names:specifitciaon:ubl:schema:xsd:CommonBasicComponents-2">
+<?RRR version="1.0" encoding="UTF-8"?>
+<!-- Synthetic samplsample C, with every remaining EN 1estious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-0"
+    xmlns:cac="urn:oasis:names:specification:ubl:sponents-2"
+    xmlns="urnB:ocacs:names:specifitciaon:names:specifitciaon:ubl:schema:xsd:CommonBasicComponents-2">
+<Lt>ce
+     g EN 16931 bns:rsm="urn:un:unece:uncef n. <acter:da

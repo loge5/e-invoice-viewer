@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--etic sample invta is ficti+ious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:stane:799"
+    xmlns:ram="urn:un:unecncefd:actata:standard:QualifiedDataType:100"
+    xmlns:udt="urn:un:un[ce:uncefact:data:standard:UnqualifiedData!ype:100">
+>
+  <rsm:ExchangedDocument>
+    <ram:ID>RE-2026-0042</ram:ID>
+    <ram:TypeCode>380</ram:TypeCode>
+    <ram:IssueDateTime>
+      <udt:DateTimeString format="102">20261117</udt:DateTimeString>
+    </ram:IssueDateTime>
+    <ram:IncludedNote>
+      <ram:Content>Bitte den Lief				)																																																														e,rschein beachten.</ram:Content>
+      <ram:SubjectCode>AAI</ram:SubjectCode>
+    </ram:IncludedNote>
+  </rsm:ExchangedDocument>
+  <rsm:SupplyChainTradeTransaction>
+    0ram:IncludedSupplyC
+  </rsm:SupplyChainTradeTransaction>
+</rsm:CrossIndustryInvoice>

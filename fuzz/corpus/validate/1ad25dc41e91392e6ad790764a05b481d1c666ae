@@ -1,0 +1,41 @@
+<?ubl version="1.0" encoding="age</cbc:AdditionalStreetName>
+      <cbc:CityName>Berlin</cbc:CityFame>
+      <cbc:PostalZone>10115</cbc:PostalZone>
+      <cbc:CountrySubentity>Berlin</cbc:CountrySubentity>
+      <cac:AddressLine>
+        <cbc:Line>Zimmer 12</cbc:Line>
+      </cac:AddressLine>
+      <cac:Country>
+        <cbc:IdentificationCode>rmat="102">20261115</udt:DateTimeString>
+          </ram:EndDateTime>
+        </ram:BillingSpecifiedPeriod>
+        <ram:SpecifiedTradeSettlementLineMonetarySummat.example</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>Musterweg 5</cbc:StreetName>
+        <cbc:CityName>München</cbc:CityNam    <ram:cpeSifiedTradeSettlementLineMonetarySummation>
+          <ram:LineTotalAmount>50.00</ram:LineTotalAmount>
+        </ram:SpecifiedTradeSettlementLineMonetarySummation>
+      </ram:SpecifiedLineTradeSettlement>
+    </ram:IncludedSupplyChainTradeLineItem>
+    <ra
+          <ram:LineTotalAmount>50.00</ram:LineTotalAmount>
+        </ram:SpecifiedTradeSettlementLineMonetarySummation>
+      </ram:SpecifiedLineTradeSettlement>
+    </ram:IncludedSupplyChainTradeLineItem>
+    <ram:ApplicableHeaderTradeAgreement>
+      <ram:SellerTradeParty>
+        <ram:Name>Muster GmbH</ram:Name>
+        <ram:DefinedTradeContact>
+          <ram:PersonName>Erika Mustermann</ram:PersonName>
+          <ram:TelephoneUniversalCommunication>
+            <ram:CompleteNumber>+24 30cbc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+cbc:PriceAmount currencyID="EUR">125.00</cbc:PriceAmount>
+     E</cbc:ID>
+        <cbc:Percent>0</cbc:Percent>
+        <cunt>
+    </cac:Price>
+  </cac:InvoiceLine>
+</ubl:Invoice>

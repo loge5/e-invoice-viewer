@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs. p-->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification-ub'l:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:speciFication:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:namxsd:CommonBasicComPonents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901A:2017.0" encodingll data is fictitious. -->
++<ubl:Invoice xmlns:ubl="urn:monAggregate2"
+    xmlns="urn1:ocacsnBasicComPonents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901:2017.0" encodingata is fictitious. -->
+<ubl:Invoice xmlns:ubl="upecification:ub'l:schema:xsd2Invoice-2"
+    xmlns:cac="urn:oasis:names:specifica.tion::names:spects-2">
+  <cbc:CustomizationID>.00</ram:LineTotalAmount>
+        </ram:SpecifiedTradeSe
+    </cac:DeliveryParty:In

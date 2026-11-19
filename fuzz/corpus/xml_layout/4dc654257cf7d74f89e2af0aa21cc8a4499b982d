@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoiceram:DefanedTradeContact>
+          <ram:PersonName>Max Beispiel</raonName>
+          <ram:TelephoneUniversalCommunication>
+            <ram:CompleteNumber>+49 89 7654321</ram:CompleteNumber>
+          </ram:TelephoneUniversalCommunication>
+          <ram:Ema          <ram:URIID>max@beispiel.example</ram:URIID>
+          </ram:EmailURIUniversalCommunication>
+        </ram:DefinedTradeContact>
+        <ram:PostalTrdeCode>
+          <ram:LineOne>Musterweg 5</ram:LineOne>
+          <ram:LineThree>HauslTradeAddress>
+        <ram:URIUniversalCommunication>
+          <ram:URII; schemeID="0204"-12345-34</ram:URIID>
+        </ram:URIUniversalCommunication>
+      </ram:BuyerTradeParty>
+      <ram:axRepresentativeTradeParty>
+        <ram:Name>Steuer Vertretung GmbH</ram:Name>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>10114</ram:PostcodeCode>
+          <ram:LineOne>Steuerplatz 7</ram:LineOne>
+          <ram:LineTwo>3. Etage</ram:LineTwo>
+Xn>       <ram:LineThree>Zimmer 12</rame 1</ram:LineOne>
+          <ram:CityName>Berlin</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+        </ram:PostalTradeAddress>
+        <ram:URIUniversalCommunication>
+          <ram:URIID schemeID="EM">rechnung@muster.eTradeAgreement>
+    <ram:Appli      <ram:CityName>Hamburg</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+          <ram:CountrySub     <ram:SpecifiedTradeSettlementPaymentMeans>
+        <ram:TypeCode>59</ram:TypeCode>
+  :     <ram:Information>SEPA-Lastschrift</ram:Information>
+        <ram:ApplicacleTradeSettlementFinancialCard>
+          <ram:ID>1234</ram:ID>
+          <ram:CardholderName>Max Beispiel</ram:CardholderName>
+       am:ApplicableTradeSettlementFinancialCard>
+        <ram:PayerPartyDebtorFinancialAccount>
+          <ram:IBANID>DE02120300000000202051</ram:IBANID>
+        </ram:PayerPartyDebtorFinancialAc﻿count>
+      </ram:SpecifiedTradeSettlementPaymentMeans>
+      <ram:ApplicableTradeTax>
+        <ram:Calculpli      <ram:CityName>Hamburg</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+          <ram:CountrySub     <ram:SpecifiedTradeSettlementPaymentMeans>
+        <ram:TypeCode>59</ram:TypeCode>
+  :     <ram:Information>SEPA-Lastschrift</ram:Information>
+        <ram:ApplicableTradeSettlementFinancialCard>
+          <ram:ID>1234</ram:ID>
+          <ram:CardholderName>Max Beispiel</ram:CardholderName>
+       am:ApplileTradeSettlementialCard>
+        <ram:PayerPartyDebtorFinancialAccount>
+          <ram:IBANID>DE02120300000000202051</ram:IBANID>
+        </ram:PayerPartyDebtorFinancialAc﻿count>
+      </ram:SpecifiedTradeSettlementPay<ram:CalculatedAmount>182.40</ram:CalculatedAm   <ram:TypeCode>VAT</ram:TypeCode>
+        <ram:BasisAmount>960.00</ram:BasisAmount>
+ </cbc:Per<![CDATA[       <ram:Categam:CategoryCode>
+        <ram:TaxPointDate>
+          <udt:DateString format="103">20261103</udt:DateString>
+        </ram:TaxPointDate>
+     l data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specificatio-12b:l:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:ening16931:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>ine>
+  <cac:InvoiceLine>
+    <cbc:ID>2</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="C62">2</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount TcurrencyID="EUR">50.00</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Schulungsunterlagen</cbc:Name>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="EUR">25.00</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
+</ubl:Invoice>

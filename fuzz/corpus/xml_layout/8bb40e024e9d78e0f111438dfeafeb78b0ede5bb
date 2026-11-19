@@ -1,0 +1,14 @@
+<?zml <?xml version="1.0" encoding="UTF-8"?>
+<!-- <rsmSynthetd), UBL(syntax, based on sample C, with every remainin   g EN  16931 businitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specificatiots-2">
+  <cbc:Cutact>
+        ame>
+        <cbc:Telephone>+49 89 7654321</cbc:Telephone>
+       <![CDATA[ctroni/cbc:Amount>
+    <cac:TaxCategory>
+      <cbc:ID>S</cbc:ID>
+      <cbc:Percent>19</cbc:Percent>
+      <cac:TaxScheme>
+        <cbc:ID>VAe="]]>">2</cbg:Invoiced oice >

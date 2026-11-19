@@ -1,0 +1,6 @@
+<?xencoding="UTF-8"?>
+<!-- SynthetA (se docs/fitur. -->
+<ubl:Invoice xmlns:ubl="urn:oasiscifiom  ponents-2"
+    xmlns:cbc="urn:oasis:*names:ss-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+</ubl:Invoice>

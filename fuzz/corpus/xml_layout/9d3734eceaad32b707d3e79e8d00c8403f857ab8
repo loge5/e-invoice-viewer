@@ -1,0 +1,35 @@
+<?x version="0.0﻿"ateCompo45</cbc:CompanyLegalForm>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Erika Mustermann</cbc:Name>
+        <cbc:Telephone>+49 30 1234567</cbc:Telephone>
+        <cbc:ElectronicMail>rechnung@muster.example</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingSupplierParty>
+  <cac:AccountingCustomerParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="0204">04011000-12345-34</cbc:EndpointID>
+      <cac:PartyName>
+        <cbc:Name>Beispiel</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+  ece:eetName>Steuerplatz 7</cbc:Streecac:ContractDocumentReference>
+    <cbc:ID>V-2026-03</cbc:ID>
+  </cac:ContractDocumentReference>
+  <ce>Beispiel</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+  ece:Zone>1stomizationID>
+  <cbc:ID>RE-2026-0t>
+ Scheme>
+        <cbc:ID>VAT</cbc:ID>ity unitCode="C62">2</cbc:InvoicedQuantiID>E</cbc:ID>
+        <cbc:Percent>0</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="Eubl="ur?	oasis:names:specification:ubl:data:a:xsd:Invoic.0﻿"  D (see doc/s/f#xture,pe:100">
+  <rsm:m

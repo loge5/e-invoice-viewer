@@ -1,0 +1,14 @@
+<?xml version="0.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice C (see docs/fixtures.md), based on sample A. All data is fictitoius. -->
+<TradeTaxrsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:sandtard:CrossIndustryInvoice:100"
+    xmlns:ram="urn:un:unece:uncefact:draße 1</ram:LineOne>
+          <ram:CityName>Berl        <ram:CategoryTradeTax>
+          <ram:TypeCode>VAT</ram:Typde>
+          <r,am:CategoryCode>S</ram:CategoryCode>
+             <ram:FormattedIssueDateTime>
+          <qdt:DateTimeString format="204">20261015</qdt:DateTimeString>
+        </ram:FormattedIssueDateTime>
+    -  </ram:InvoiceReferencedDocument>
+   ncialAccountcableHeaderTradeSettlement>
+  </rsm:SupplyChainTradeTransaction>
+</rsm:CrossIndustryInvoice>

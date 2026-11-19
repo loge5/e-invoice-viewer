@@ -1,0 +1,30 @@
+<?x<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoica is fictititus. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:Crosnvoice:200  
+ " xelns:ra.m="urn:un:unece:sIndustryInvoice:637  
+ " cacxmlns:ram="urn:un:ndard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:dndard:CpossIndustuncefact:data:standa:standard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:data:standard:Reusa?
+eAggregateBusinessIity:100"
+    :qdt="urn:unece:cefact:100  
+ " xelns:ra.m="urn:un:unece:sIndustryInvoice:200  
+ " cacxmlns:ram="urn:un:ndard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:dndard:CrossIndustuncefact:dae:100  
+ " xelns:ra.m="urn:un:unece:uncefact:data:standard:Reusa?
+eAggregateBusinessIity:100"
+    :qdt="urn:unece:cefact:100  
+ " xelns:ra.m="urn>un:unece:sIndu 
+ " cacxmlns:ram="urn:un:ndard:C:standard:CrossIndustryInvoice:100  
+ " xelnIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIs:ra.m="urn:un:unece:uncefdata:standard:Reusa?
+eAggregateBusinessIity:100"
+    :qdt="urn:unece:cefact:100  
+ " xelns:ra.m="urn:un:unece:sIndustryInvoice:200  
+ " cacxmlns:ram="urn:un:ndard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:dndard:CrossIndustuncefact:data:standa:standard:CrossIndustryInvoice:101  
+ " xelns:ra.m="urn:un:unece:uncefoice:10@"
+    xmlns:ram="urn:un:unece:uncefact:datormationEntity:100"
+    xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:10xsd:Commn:ubl:schema:xsd:Invoice-urn:oasis:names:specification:ubl:schema:xsd:Invoice-schema:xsd:CommonBasicComponents-2">tanda:standard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:data:standard:Reusa?
+eAggregateBusinessIity:100"
+    :qdt="urnd:QualifiedDataType:10xsd:Commn:ubl:schema:xsdis:names:specification:ubl:schema:ssInformationEntity:100"
+    xmlGns:yInvoice>

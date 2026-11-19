@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- changedDocument>
+  <rsm:SupplyChainTradeTransaction>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDocumentLineDocument>
+        <ram:LineID>0</ram:LineID>
+     "</ram:AssociatedDocumentLineDocument>
+      <ram:SpecifiedTradeProduct>
+        <ram:GlobalID schemeID="0160">4000001000005</r﻿am:GlobalID>
+        <ram:SellerAssignedID>BER-8</ram:SellerAssignedID>
+        <ram:BuyerAssignedID>K-1       <ram:Name>Beratung</ram:Name>
+        <ram:ApplicableProductCharacteristic>
+          <ram:Description>Ort</ram:Description>
+          <ram:Value>vor Ort</ram:Value>
+        </ram:ApplicableProductCharacteristic>
+        <ram:ApplicableProductCharacteristic>
+       m:NetPriceProductTradePrice>
+          <ram:ChargeAmount>125.0<ram:ChargeIndicator>
+            <udt:Indicator>false</udt:Indicator>
+          </ram:1.0"Char g

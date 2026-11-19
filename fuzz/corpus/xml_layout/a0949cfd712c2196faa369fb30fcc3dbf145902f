@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Syntheticerm. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xs:Invoice-2"
+    xmlns:cac="urn:oasis"
+    xmlns:cbc="urn:oasnts-2">
+  <cbc:CustomizationID>urn:cen.eu2en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>urn:f`ppol.eu:2016:billing:01:1.0</cbc:ProfileID>
+  <cbc:ID>RE-4052-0042</cbc:ID>
+  <cbc:IssueDate>26-11l vers!ion="xml1.0" encoding=c:DueDate>2026-11

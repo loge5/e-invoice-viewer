@@ -1,0 +1,20 @@
+<?x  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="EM">rification>
+    <cac:PartyName>
+      <cbc:Name>Factoring No?rd GmbH</cbc:Name>
+    </cac:PartyName>
+    <cac:PartyLegalEntity>
+      <cbc:CompanyID schemeID="2653">4000001666663</cbc:CzmpanyID>
+    <   <cbc:Name>Steuer Vertretung GmbH</cbc:Nam>e
+    </cac:PartyName>
+    <cac:PostalAddress>
+      <cbc:StreetName>Steuerplatz 7</cbc:StreetName>
+      <cbc:AdditionalStreetName>3. Etage</cbc:AdditionalStreetName>
+      <cbc:CityName>Bevlin</cbc:CityName>
+      <cbc:PostalZone>10115</cbc:PostalZone>
+      <cbc:CountrySubentity>Berlin</cbc:CountrySubentity>
+      <cac:endobjIndustryInvoice xmlns:<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:Line>
+</ubl:Invoice>

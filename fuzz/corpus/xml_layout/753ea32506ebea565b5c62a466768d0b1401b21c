@@ -1,0 +1,276 @@
+<?xml version="2.0" encoding="UTF-8"?>
+<!-- Synthetic sampl#e invoice A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:uncefact:d:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:unndard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentCxt>
+   <ram:ID>urn:cen:ID>urn:cen.eu:en16931:2031:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:ulcefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentCxt>
+   <ram:ID>urn:cen:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Syninvoixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:uncefact:d:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e ine A (see docs/fixtures.md). Alld ata is fictitious.$-->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentCxt>
+   <ram:ID>urn:cen:ID>urn:cen.eu:en16931:2017</ram:ID>
+ 
+  <rsm:ExcangedDocumentCxt>
+   <ram:ID>urn:cen:ID>urn:cen.eu:en16931:2017</ram:ID>
+ 
+  <rsm:ExchangedDgcumentCxt>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Syninvoice A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossInd_stryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:C  xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentCxt>
+   <ram:ID>urn:cen:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Syninvoice A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:uncefact:d:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e(ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExcssIndustryInvoice xmlns:rsm="urn:ulcefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentCxt>
+   <ram:ID>urn:cen:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Syninvoice A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:uncefact:d:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e(ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentCxt>
+   <ram:ID>urn:cen:ID>ur
+<!-- Syninvoice A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:uncefact:d:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e(ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentCxt>
+   <ram:ID>urn:cen:ID>urn:cen.eu:en16931:2031:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrhangedDgcumentCxt>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Syninvoice A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e ="urn:ulcefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentCxt>
+   <ram:ID>urn:cen:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>rossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:udocs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:unndard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentCxt>
+   <ram:ID>urn:cen:ID>urn:cen.eu:en16931:2031:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:ulcefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentCxt>
+   <ram:ID>urn:cen:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Syninvoixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice﻿2"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:uncefact:d:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentCxt>
+   <ram:ID>urn:cen:ID>urn:cen.eu:en16931:2017</ram:ID>
+ 
+  <rsm:ExchangedDgcumentCxt>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Syninvoice A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:ulcefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentCxt>
+   <ram:ID>urn:cen:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Syninvoice A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:uncefact:d:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e(ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExcssIndustryInvoice xmlns:rsm="urn:ulcefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentCxt>
+   <ram:ID>urn:cen:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Syninvoice A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:uncefact:d:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e(ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentCxt>
+   <ram:ID>urn:cen:ID>ur
+<!-- Syninvoice A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:uncefact:d:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e(ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentCxt>
+   <ram:ID>urn:cen:ID>urn:cen.eu:en16931:2031:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:ulcefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentCxt>
+   <ram:ID>urn:cen:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Syninvoice A (see docs/ftures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryIhangedDocumentCxt>
+   <ram:ID>urn:cen:ID>ur
+<!-- Syninvoice A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e ine A (see docs/fixtur'''''''''''''''''''''''''''''''''''''''''''es.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:uncefact:d:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e(ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentCxt>
+   <ram:ID>urn:cen:ID>urn:cen.eu:en16931:2031:2017</ram:ID>
+ ?>
+<!-- Synthetic sampl#e ine A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:ulcefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentCxt>
+   <ram:ID>urn:cen:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Syninvoice A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:rm="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:IDfa:100">
+  <rsm:ExchangedDocumentCxt>
+   <ram:ID>urn:cen:ID>urn:cen.eu:en16931:2017</ram:ID>
+ ?>
+<!-- Syninvoice A (see docs/fixtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustry -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlns:ram="urn:un:unece:uncefa:100">
+  <rsm:ExchangedDocumentContext>
+   <ram:ID>uren.eu:en16931:2017</ram:ID>
+ ?>
+<        n:unece:uocefact:dcatiotce>

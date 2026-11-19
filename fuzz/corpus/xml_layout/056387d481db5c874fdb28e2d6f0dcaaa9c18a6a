@@ -1,0 +1,6 @@
+<?xmlon="1.0" encoding="UTF-8"?>
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+    xmlns:ram="urn:un:uta!ype:100">
+>Docu<rsm:SupplyChainTradeTransaction>ment>
+  </rsm:SupplyChainTradeTransaction>
+</rsm:CrossIndustryInvoice>

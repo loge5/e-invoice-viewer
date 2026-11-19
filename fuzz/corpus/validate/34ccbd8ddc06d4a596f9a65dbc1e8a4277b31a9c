@@ -1,0 +1,10 @@
+<?xm555555555555555555555555555555555555555
+    </cac:Price>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>2</cbc:ID>
+    <cbc:InvoicedQuantity u62">2</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="EUR">54.00</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Schulungsunterlagen</cbc:Name>
+      <cac:Classif16931ersion="1.0:"2

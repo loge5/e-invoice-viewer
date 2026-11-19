@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md). All data is fictitio1s. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="uncefact:data:standaType:100"
+    xmlnsplicableTr    <udt:DateTimeString format="102">20261117</udt:DateTimeString>
+    eString>
+    <  TradeTransaction>
+</rsm:CrossIndustryInvoice>

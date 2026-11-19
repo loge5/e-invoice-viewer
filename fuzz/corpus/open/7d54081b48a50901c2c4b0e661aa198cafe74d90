@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice Dublee docs/fixtures.md), UBL syntax, based on sample C, with every remaining EN 16931 business term. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:spec@ification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>uID>
+  <cbc:IssueDate>2026-11
+7</cbc:IssueDate>
+  <cbc:DueDateiveronalDocumentReference>
+  <caD>
+        <cbc:Percent>0</cbeme>
+    </c   <cbc:Percent>0</cbc:Percent>
+        <cbc:PriceAmount currencyID="EUS">25.00</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
+</ubl:Invoice>

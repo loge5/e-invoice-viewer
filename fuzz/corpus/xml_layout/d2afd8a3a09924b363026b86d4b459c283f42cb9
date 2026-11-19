@@ -1,0 +1,7 @@
+<?x" encoding="UTF-7"?>
+<!-- Syfixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urmes:specificaegateCom  ponents-2"
+    xmlns:cbc="urn:oasis:*names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+</ubl:Invoice>

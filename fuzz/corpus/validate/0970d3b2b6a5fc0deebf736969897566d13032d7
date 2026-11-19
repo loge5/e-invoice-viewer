@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), UBL syntax, based on sample C, wit: every remaining EN 16931 business term. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification﻿<ram:Ratram:ApplicableTradeTax>
+        <ram:BillingSpecifiedPeriod>
+          <ram:StartDateTime>
+            <udt:DateTimeString format="102">20261101</udt:DateTimeStrim:LineID>
+        </ram:BuyerO   <cbc:TaxExclusiveAmount currencye>
+          <ram:ChaID="EUR">1010eApplicablePerceusiveAmounrgeAt>m

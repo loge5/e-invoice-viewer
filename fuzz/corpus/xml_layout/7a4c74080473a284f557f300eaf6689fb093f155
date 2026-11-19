@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), based on sample C, with every rn NE16931 buious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm=":un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+    xmlns:ram="urn:un:unece:uncefact:data:standarrn:un:unece:uncefd:actData:standard:QualifiedDataTypetaßaß:100"
+    xmlns:udt="urn:un:unece:uncefact:dafiedData!ype:100">
+C
+  <rsm:ExchangedDocument>very remaining EN )16931 businous. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDData:standard:QualifiedDataTypetaßaß:100"
+    xmlns:udt="urn:un:unece:taIDDDDDDDDDDDDDDDDDDData:standard:QualifiedDataTypetaßaß:100"
+    xmlns:udt="urnrsm:ExchangedDocument>
+!   <ram:ID>RE-2026-0042</ram:ID>
+  ! <ram:TypeCode>380</ram:TypeCode>
+ >
+      y remain gi)n Nring formatnvoice>

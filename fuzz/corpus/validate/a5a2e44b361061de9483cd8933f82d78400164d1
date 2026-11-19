@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), UBL :en16931:2017</cbc:CustomizationID>
+syntax, based on sample C, with e  <cbc:PostalZone>12345</cbc:PostalZone>very remaining EN 16931 business term. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasisan:mes:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:Cation:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specificat:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::ion:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+  <cbc:ID>RE-2cbc:ID>PO-4      <cbc:Name>Max Beispiel</cbc:Name>
+        <cbc:Telephone>+49 89 765ommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specificat:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::ion:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+  <cbc:ID>RE-2cbc:ID>PO-4      <cbc:Name>Max Beispiel</cbc:Name>
+        <cbc:Telephone>+49 89 76<cbc:PostalZone>12345</cbc:PostalZone>very remaining EN 16931 business term. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasisan:mes:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:Cation:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specificat:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::ion:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+  <cbc:ID>RE-2cbc:ID>PO-4      <cbc:Name>Max Beispiel</cbc:Name>
+        <cbc:Telephone>+49 89 76<cbc:PostalZone>12345</cbc:PostalZone>very remaining EN 16931 business term. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasisan:mes:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:Cation:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specificat:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::ion:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+  <cbc:ID>RE-2cbc:ID>PO-4      <cbc:Name>Max Beispiel</cbc:Name>
+        <cbc:Telephone>+49 89 765ommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specificat:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::ion:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+  <cbc:ID>RE-2cbc:ID>PO-4      <cbc:Name>Max BeiateComponents-2"
+    xmlns:cbc="urn:oasis:names:specificat:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::ion:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+  <cbc:ID>RE-2cbc:ID>PO-4      <cbc:Name>Max Beispiel</cbc:Name>
+        <cbc:Telephone>+49 89 765ommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specificat:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::ion:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+  <cbc:ID>RE-2cbc:ID>PO-4      <cbc:Name>Max Beispiel</cbc:Name>
+   54321</cbc:Telephone>
+        <cbc:ElectronicMail>max@bomizatioeispiel.nIe

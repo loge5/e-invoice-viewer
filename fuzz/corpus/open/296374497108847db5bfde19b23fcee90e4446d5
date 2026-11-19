@@ -1,0 +1,63 @@
+<?xml version="1.0"  (see docs/fixtures.md), based on sample A. All data “Œ ficti    Code>
+          <ram:CategoryCode>S</rame>Beispiel AG</ram:Name>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>80331</ram:PostcodeCode>
+          <ram:LineOne>Musterweg 5</ram:LineOne>
+          <ram:CityName>MÃ¼nchen</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+        </ram:PostalTradeAddress>
+        <ram:URIUniversalCommunication>
+          <ram:URIID schemeID="EM">einkauf@beispiel.example</ram:URIID>
+        </ram:URIUn ‰šsalCommunication>
+      </þÿÿÿÿÿÿÿram:BuyerTradeParty>
+    </ram:ApplicableHeaderTradeAgreement>
+    <ram:ApplicableHeaderTradeDelivery/>
+    <ram:ApplicableHeaderTradeSettlement>
+      <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
+      <ram:SpecifiedTradeSettlementPaymentMeans>
+        <ram:TypeCode>16</ram:TypeCode>
+        <ram:PayeePartyCreditorFinancialAccount>
+          <ram:IBANID>DE02120300000000202051</ram:IBANID>
+        </ram:PayeePartyCreditorFinancialAccount>
+      </ram:SpecifiedTradeSettlementPaymentMeans>
+      <ram:ApplicableTradeTax>
+        <ram:CalculatedAmount>199.50</ram:CalculatedAmount>
+      yCode>S</ram:Category·%PDF-1.7
+%»­ÀÞ
+1m 382
+%%EOF
+endsƒšžm 
+endobj
+8 0 obj
+<</Typ4711)>>
+eÿÿÿÿndobj
+5 0 obj
+y/ep<T</Catalog/Pages 0 0 R>>
+eram:ApplicableTradeTax>
+        <ram:SpecifiedTradeSettlemont?Subtype/TentLineMonetarySummation>
+      !   <ram:LineTotalAmount>1240.00</ram:LineTotalAmount>
+    Code>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePerc
+      </ram:AssociatedDocumentLineDocumentj
+<</Type%PDF-1.7
+%»­ÀÞ
+1 0 obj
+<</Type/Pages/Kids[4 0 R]/Count 1>>
+endobj
+2 0 obj
+<</Type/Font/Subtype/Type1/BaseFont/Helvetica>>
+endobj
+3 0 obj
+<</Length 59te>ar>sm
+BT /F1 24 Tf 60 760 Td (Rechnung 471102 (Beispiel A)) Tj ET
+endstream 
+endobj
+4 0 obj
+<</Type/Page/Parent 1 0 R/MediaBox[0 0 595 842]/Contents 3 0 R/Resources<</Font<</F1 2 0 R>>>>>>&endobj
+5 0 obj
+<</Type/EmbeddedFile/Length 6537>>stream
+<?xml version="0.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns†<%PDF-n:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+    xmlns:ram="urn:un:unecLin

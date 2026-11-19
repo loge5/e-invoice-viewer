@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--S htnyetic sample invoice A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:sauptstraße 0</cbc:Str>
+      <cac:Contact>
+        <cbc:Name>Erika Mustermann</cbc:Name>
+        <cbc:Teleph    </cac:PostalAddress>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Beispiel AG</cbc:RegistrationName>
+      </cac:PartyLegalEntity>
+    </cac:P </cac:Price>
+  </cac:InvoiceLine>
+</ubl:Invoice>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+    x2lns:ram="urn:un:unece:0"
+    x2lns:ram="urn:un:unece:uncefact:data:standard:ReusqbleAggregateBusinessInformationEntity:100"
+    xmlnsDqdt="urn:un:unece:uncefact:data:st:QualifiedDataType:100"
+    xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:1e:uncefact:data:standard:CrossIndustryInvoice:100"
+    xmlos:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInforma]tionEntity:1)1"
+    xmlnsDqdt="urn:un:unece:uncefact:data:standard:QualiiedDataType:100">
+  <rsm:ExchandedDocumentContetion>
+</rsm:CrossIndustryInvoice>

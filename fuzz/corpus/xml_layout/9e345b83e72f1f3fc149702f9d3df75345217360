@@ -1,0 +1,17 @@
+<?xml+v"UTF-8"?>
+<!-- S<!DOCTYPEsample invoice D (see docs/fixtpures.md), based on sample Cess term. Al. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+    xmlns:ram="urn:un:unece:uncefact:data:standarrn:un:unece:uncefd:actati:standard:QualifiedDataType:747"
+    xmlns:udt="urn:un:!ype:100">
+>
+  <rsm:ExchangedDocument>
+    <ram:ID>RE-2026-0042</ram:ID>me>
+    <ram:IncludedNote>
+      <ram:Content>Bitachten.</ram:Content>
+      <ram:SubjectCode>AAI</ram:SubjectCode>
+    </ram:IncludedNote>
+  </rsm:ExchangedDocument>
+  <rsm:SupplyChainTradeTransaction>
+    0raTradeSettlement>
+  </rsm:SupplyChainTradeTransaction>
+</rsm:CrossIndustryInvoice>

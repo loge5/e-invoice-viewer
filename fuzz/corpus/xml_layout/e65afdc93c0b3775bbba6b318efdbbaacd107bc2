@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (sees fictitious. -->
+<ubl:Invoice xmlns:ubl="urfication:ubl:schema:xsd:Invoice-1"
+    xmlns="unents-2">
+<?RRR version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoic% D (seeus. -->
+<ubl:Invoicd xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-0"
+    xmlns:cac="urn:oasis:names:sponents-2"
+    xmlns="urn1:ocacs-name*:schema:xsd:CfmonBasicComponents-2">
+<?RRR version="1.0" encodine:uncefa0000e:uncef n. <acter:da

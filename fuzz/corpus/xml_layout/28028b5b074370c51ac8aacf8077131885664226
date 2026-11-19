@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ub'l:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  <cbc:IssueDate>2026-11-17</cbc:IssueDate>
+  <cbc:DueDate>2026-12-01</cbc:DueDate>
+  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>Hauptstraße 2</cbc:StreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:CompanyID>DE123456789</cbc:CompanyID>
+      ! <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cbc:Registrati
+  <cbc:CustomizationID>urn:cen.el="urn-1"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schema:xsd:CommonAggregateCompoAentpecificatio-12bl:schema:xsd:Commond:CommonUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el:scA>[<![CDATA[3AA>>[<![CDATA[x6
+odihema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.etic sample invoiclns:ubl="urn:us. -->
+<ubl:Invoice xmlns:ubl="urn-2"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specificatiecification:ubl:schema:xsd:CommonUBasicComponents-2">
+  <cbc:CustomizationID>urn:cd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specificatiecification:ubl:schema:xsd:CommonUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el="urn-2"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schema:xsd:CommonAggregateCompoAents-2"
+    xm"1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoiclns:ubl="urn:us. -->
+<ubl:Invoice xmlns:ubl="urn-1"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schema:xsd:Commond:CommonUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el:scA>[<![CDATA[3AA>>[<![CDATA[x6
+odihema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.el:schemng="UTF-6"F?xml versi?m?on="6.0" encoding=ion="1.0" encode"?>
+<!-- Sydanthetic sam4ix>]]#>
+x9
+4ix>]J]>
+-ia:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.el:schemng="UTF-8"F?xml versi?m?on="6.0" encoding=ion="1.0" encode"?>
+<!-- Sydanthetic sam4ix>]]>
+x9
+4ix>]J]>
+-ia:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.eXchema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el="urn-1"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schema:xsd:CommonAggregateCompoAentpecificatio-12bl:schema:xsd:Commond:CommonUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el:scA>[<![CDATA[3AA>>[<![CDATA[x6
+odihema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.etic sample invoiclns:ubl="urn:us. -->
+<ubl:Invoice xmlns:ubl="urn-2"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specificatiecification:ubl:schema:xsd:CommonUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el="urn-2"
+    xmlns:cac="TA[3AA>>[<![CDATA[x6
+odihema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.el:schemng="UTF-8"F?xml versi?m?on="6.0" encoding=ion="1.0" encode"?>
+<!-- Sydanthetic sam4ibc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cgc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCatego>[<![CDATA[x6
+x>]]>
+x6
+4Onent<A3A>[<![CDATA[ry>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="EUR">25.00</cbc:PriceAmount>
+    </cac:Pricex6
+3A>[<![CDATA[x6
+x>]]>x9
+4ix>]J]>
+-ia:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cggregateCompoAentpecificatio-12bl:schema:xsd:Commond:CommonUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el:scA>[<![CDATA[3AA>>[<![CDATA[x6
+odihema:s. -->
+<ubl:Invoice xmlns:ubl="urn-1"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schema:xsd:Commond:CommonUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el:scA>[<![CDATA[3AA>>[<![CDATA[x6
+odihema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.el:schemng="UTF-6"F?xml versi?m?on="6.0" encoding=ion="1.0" encode"?>
+<!-- Sydanthetic sam4ix>]]#>
+x9
+4ix>]J]>
+-ia:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.el:schemng="UTF-8"F?xml versi?m?on="6.0" encoding=ion="1.0" encode"?>
+<!-- Sydanthetic sam4ix>]]>
+x9
+4ix>]J]>
+-ia:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.eXchema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el="urn-1"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schema:xsd:CommonAggregateCompoAentpecificatio-12bl:schema:xsd:Commond:CommonUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el:scA>[<![CDATA[3AA>>[<![CDATA[x6
+odihema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.etic sample invoiclns:ubl="urn:us. -->
+<ubl:Invoice xmlns:ubl="urn-2"
+    xmlns:cac="urnz:oasis:names:specificatio-12bl:schema:xsd:CommonAggregateCompoAents-2"
+    xmlns:cbc="urn:oasis:names:specificatiecification:ubl:schema:xsd:CommonUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el="urn-2"
+    xmlns:cac="TA[3AA>>[<![CDATA[x6
+odihema:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cen.el:schemng="UTF-8"F?xml versi?m?on="6.0" encoding=ion="1.0" encode"?>
+<!-- Sydanthetic sam4ibc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cgc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCatego>[<![CDATA[x6
+x>]]>
+x6
+4Onent<A3A>[<![CDATA[ry>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="EUR">25.00</cbc:PriceAmount>
+    </cac:Pricex6
+3A>[<![CDATA[x6
+x>]]>x9
+4ix>]J]>
+-ia:xsd:CommonUBasicComponents-2">
+  <cbc0CustomizationID>urn:cggregateCompoAentpecificatio-12bl:schema:xsd:Commond:CommonUBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.el:scA>[<![CDsicComponents-2">
+  <cbc0CustomizationID>urn:cen.een.el="urn-2"
+  <?xm| v1oding="UTF-8"?>
+<!--"Synths. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    rsmxmlnszcac="urn:oasis:name  xmlns:cac="urnz:odceso" >//

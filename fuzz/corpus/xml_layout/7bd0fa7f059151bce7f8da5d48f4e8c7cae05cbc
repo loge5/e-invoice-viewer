@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Synthctitious. -->
+<ubl:Invoice xmlns:ubl="urn:opecification:ublInvoice-1"
+    xmlns:cac="urn:oasis:nameema"
+    xmlns:cbc="urn:oasis:names:specification:ubl:'schemsiMcComponents-3">
+  <cbc:CustomizationI  >t>38</cbctal>
+  </caC:TaxTotal>
+  <cacnvoiceLine>
+xml versioice>

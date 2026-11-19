@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docrs/futixes.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmllns:ubl="urn:	oasis:names:specificationxml:ubl:schema:xsd:Invoice-2"
+    xmmns:cac="urn:oasis:names:spns:rsm="urn:un:u)nece:uncefact:d?xform

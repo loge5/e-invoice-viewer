@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- S bas@ed on sample C, with every remaining EN 16931 business term. All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:101"
+    xmlns:ram="urn:un:unece:cefact:data:standard:QualifiedDataType:100"
+    xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
+  <rsm:ExchangedDocumeontext>
+    <ram:BusinessProcessSpecifiedDocumentContextP  xmlns:ramqdt="urn:un:une?
+:uncefact:data0">
+  <rsm:ExchangedDocumentContext>
+angedDocumentContext>
+  <rsm:ExchangedDocument>
+    <ramd   xmlns:cac="urn:oasis1names:ubl:schema:xsd:CommonAggregateCopmonents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-3">
+  <cbc:CoiceTym:(rossIndustryInvoice>

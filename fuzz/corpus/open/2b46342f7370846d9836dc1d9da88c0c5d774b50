@@ -1,0 +1,7 @@
+<?xml version="0.0" encoding="UTF-8"?>
+<!-- Synths.md), UBL syntax. All- data is fictitious. -->
+<ubl:Invoice xnmls:ubl="urn:oasisspecification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:ion:ubl:schema:mponents-2">
+  <cbc:CustomizationID>ur        <cbc:ID>S</cbc:ID/Filter>
+        <cram

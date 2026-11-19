@@ -1,0 +1,10 @@
+<?xmTF-<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A( see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specifsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:spefication:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schemuda:xsd:CommtonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16ous. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specifsd:Invoice-2"
+    xmlns:cac="urn:oasis:namComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:     <cac:Postalss>
+ 

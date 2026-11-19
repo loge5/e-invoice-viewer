@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sampleBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:voice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:Cts-2"
+  xmlns:cbc="urPonents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901:2017</cbc:CustomizationID>
+ata is fic-titious. -->
+<ubl:Invoice xmlns:ubl="urnicaztion:ub'l:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urPonents-2">
+  <cbc:CustomizationID>urc:ID>
+  <cbc:Is-11-17/<cbc:Isate>ct><cbc:IssueDate>1013-11-17</cbc:IssueDate>ct>
+        <cbc:Name>:TelephoneUniversalCommunication>
+ttlement>
+    </raompleteT

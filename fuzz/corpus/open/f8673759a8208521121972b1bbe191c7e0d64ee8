@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic s?mple inv D (see docs/fisample C, with every remaining EN 16931 business term. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="omponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationIde>
+  <cbc:Note>#AAI#Bitte den Lieferscpdfachten.</cbc:Note>>
+  </cac:ContractDocume_____ion>
+      <ce>
+      _

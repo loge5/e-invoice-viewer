@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic msample invoice A -->
+<ubl:Invoice xmlns:ubl="urn:sicComponents-2">
+<?RRRvi reson="1.0" encoding="UTF-8"?>
+ious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoi4e-1"
+    xmlns:cac="urn:oasis:names:specification:ubl:sponents-1"
+    xmlns="urn1:ocacs:na:specifitciaon:ubl:schema:xsd:CommonBasicCompe.conents-1">
+<?RRR verqion="1.0-8"?>ed on samplN 16931 businestious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-1"
+    xmlns:cac="u:ubl:schema:xsd:CommonBasicComponents-2">
+<?RRR version="1.0" encoding="UTF-8"?>
+<!-- Sctitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:u!a:standard:CrossIndusdard:Re:un:.ned:UnqualifiedDataType:099">
+f n. <acter:da

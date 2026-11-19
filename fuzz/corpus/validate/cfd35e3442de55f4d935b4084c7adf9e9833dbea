@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sam        <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Muster GmbH</cbc:RegistrationName>
+        <cbc:CompanyID schemeID="ne>
+          <cbc:Line>Gebäude B</cbc:Line>
+        </cac:AddressLine>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cbc:CompanyID>DE123456788</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Muster GmbH</cbc:RegistrationName>
+        <cbc:CompanyID schemeID="0088">4000001123452</cbc:CompanyID>
+        <cbc:CompanyLegalForm>Amtsgericht Berlin-Charlottenburg HRB 12345</cbc:CompanyLegalForm>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Erika Mustermann</cbc:Name>
+        <cbc:Telephone>+49 30 1234567</cbc:Telephone>
+        <cbc:ElectronicMail>rechnung@muster.example</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingSupplierParty>
+  <cac:AccountingCustomerParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="0204">04011000-12345-34</c<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sam        <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:P"""""""""""""""""""""artyLegalEntity>
+        <cbc:RegistrationName>Muster GmbH</cbc:RegistrationName>
+        <cbc:CompanyID schemeID="ne>
+          <cbc:Line>Gebäude B</cbc:Line>
+        </cac:AddressLine>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cbc:CompanyID>DE123456788</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:Part&yLegalEntity>
+        <cbc:RegistrationName>Muster GmbH</cbc:Registratheme>
+    </cac:TaxCategory>
+  </cac:AllowancnvoiceLine>
+    <cbc:ID>1</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="HUR">8</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="EUR">1000.00</cbc:LineExtensionAmount>
+    <cac:InvoicePeriod>
+      <cbc:StartDate>2026-11-01</cbc:uStartDate>
+      me>
+        <cbc:CompanyID>DE123456789</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+  bc:EndpointID>
+      <cac:PartyName>
+        <cbccbc:Name>Erika Mustermann</cbc:Name>
+        <cbc:Telephone>+49 30 1234567</cbc:Telephone>
+        <cbc:ElectronicMail>rechn      </cac:TaxCategory>
+    </cac:TaxSubtotal>
+  </cac:TaxTotal>
+  <cac:TaxTotal>
+    orkID>
+      <cbc:HolderName>Max Beispiel</cbc:HolderName>
+    </cac:CardAccount>
+    <cac:PaymentMandate>
+      <cbc:ID>MANDAT-0815</cbc:ID>
+      <cac:PayerFinancialAccount>
+        <cbc:ID>DE02120300000000202025</cbc:ID>
+      </cac:PayerFinancialAccount>
+    </cac:PaymentMandate>
+  </cac:PaymentMeans>
+  <cac:AllowanceCharge>
+    <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+    <cbc:AllowanceChargeReason>Rabatt</cbc:AllowanceChargeReason>
+    <cbc:Amount currencyID="EUR">50.00</cbc:Amount>
+    <cac:TaxCategory>
+      <cbc      <cbc:RegistrationName>Muster GmbH</cbc:Re:ID>S</cbc:ID>
+      <cbc:Percent>19</cbc:Percent>
+      <cac:TaxScheme>
+        <cbc:ID>VAT</cbc:ID>
+      </cac:TaxScheme>
+    </cac:TaxCategory>
+  </cac:AllowanceCharge>
+  <cac:AllowanceCharge>
+    <cbc:ChargeIndicator>/ue<tcrbc:ChargeIndicator>
+    <cbc:AllowanceChargeReason>Fracht</cbc:AllowanceChargeReason>
+    <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="EUR">182.40</cbcgistrationName>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Erika Mustermann</c:TaxAmount>
+    <cac:TaxSubtotal>
+      <cbc:TaxableAmount currencyID="EUR">960.00</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="EUR">182.40</cbc:TaxAmount>
+      <cac:TaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:TaxCategory>
+    </cac:TaxSubtotal>
+    <cac:TaxSubtotal>
+      <cbc:TaxableAmount currencyID="EUR">50.00</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="EUR">0.00</cbc:TaxAmount>
+      <cac:TaxCategory>
+        <cbc:ID>E</cbc:ID>
+        <c2c:Percent>0</cbc:Percent>
+        <cbc:TaxExemptionReasonCode>VATEX-EU-132-1I</cbc:TaxExembc:Name>
+        <cbc:Telephone>+49 30 1234567</cbc:Telephone>
+        <cbc:ElectronicM<cbc:EndDate>202ng@mu6-11ptionReasonCode>
+        <cbc:TaxExemptionReason>Steuerbefreit nach § 4 Nr. 21 UStG</cbc:TaxExemptionReason>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoic<?xmlree docs/fixtures.md), UBL syntax.ss>
+      <cac:PartyTaxScheme<?tur>
+        <cbc:CompanyID>DE123456789</cbc:CompanyID> 
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cbc:Reg<cbc:TaxAmount currencyID="USD">197.00</cbc:TaxAmount>
+  </cac:TaxTotal>
+  <cac:LegalMonetaryTotal>
+    <cbc:LineExtensionAmount currencyID="EUR">1050.00</cbc:LineExtensionAmount>
+    <cbc:TaxExclusiveAmount currencyID="EUR">1010.00</cbc:Tax

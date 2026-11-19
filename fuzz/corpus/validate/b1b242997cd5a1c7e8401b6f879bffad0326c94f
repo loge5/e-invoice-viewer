@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- changedDocument>
+  <rsm:SupplyChainTradeTransaction>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDocumentLineDocument>
+        <ram:LineID>1</ram:LineID>
+      </ram:AssociatedDocumentLineDocument>
+      <ram:SpecifiedTradeProduct>
+        <ram:GlobalID schemeID="0160">4000001000005</ram:GlobalID>
+        <ram:SellerAssignedID>BER-8</ram:SellerAssignedID>
+        <ram:BuyerAssignedID>K-100</ram:ductCharram:NetPriceProductTradePrice>
+      </ram:SpecifiedLineTradeAgreement>
+       </ram:BillingSpecifiedPeriod>
+        <ram:SpecifiedTradeAllowanceCharge>
+          <ram:ChargeIndicator>
+            <udt:Indicator>false</udt:Indicator>
+          </ram:ChargeIndicator>
+          <ram:ActualAmount>20.00</ram:ActualAmount>
+          <ram:Reason>Mengenrabatt</ram:Reason>
+        </ram:SpecifiedTradeAllowanceCharge>
+        <ram:SpecifiedTradeAllowanceCharge>
+          <ram:ChargeIndicator>
+            <udt:Indicator>true</udt:Indicator>
+          </ram:ChargeIndicator>
+          <ram:ActualAmount>20.00</ram:ActualAmount>
+          <ram:Reason>Expresszuschlag</ram:Reason>
+  EndDateTime>
+            <udt:DateTimeString format="103">20261115</udt:DateTimeString>
+          </ram:EndDateTime>
+        </ram:BillingSpecifiedPeriod>
+        <ram:SpecifiedTradeAllowanceCharge>
+         <?xml version=" <ram:ChargeIndicator>
+            <udt:Indicator>false</udt:Indicator>
+          </ram:1.0"Char g

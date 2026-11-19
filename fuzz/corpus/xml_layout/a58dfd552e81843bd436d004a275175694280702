@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic saus. -->
+<ubl:Invoice xmlns:ubl="urma:xsis:names:specification:ubl:schema:xsd:CommonAggregateComponents-3"
+    xmlns:cbc="urn:ocacs:names:specification:ubl:sehcma:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en08465:20ueDate>
+  <cbeTypeCodnvoeDate>
+  <cbeTypeCode>
+  <cbode>EUntax. All data is fictitioupeCode>
+  <cbode>EUntax. All data is fictus. :c:ID>ssueDate>
+  <cbeTypeCode>
+  <cbode>EUntax. All data is fictitio
+  <cbeTypeCode>
+  <cbode>EUntax. Alne>
+</ubl:Invoice>

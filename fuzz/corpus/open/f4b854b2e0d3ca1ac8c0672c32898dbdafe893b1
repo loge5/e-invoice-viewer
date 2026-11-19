@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice ata is fictitious. -->
+<rsm:CrossIndustyInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossI@ndustryInvoice:100?xm﫿,"
+    xmlns:ram="urn:un:unece:uncefact:data:stadata:standard:CrossIndtryInvoice:200?xm﫿,"
+    xmlstream="urn:un:unece:uncefactryun:unece:uncefact:data:standard:CrossI@ndustryInvoice:100?xm﫿,"
+    xmlns:ram="urn:un:unece:uncefact:data:stadata:standard:CrossIndtryInvoice:200?xm﫿,"
+    xmlstream="urn:Invoice>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synevery remaini businel data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="qchema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oas-is:names:specificatiOn:ubl:oschema:xsd:CommonBasicComponents-1">
+  <cbc:CustomizationID>urn:cen:ProfileID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+BillingReference>
+    <cac:InvoiceDocumentReference>
+    cbc:ID>
+      <cbc:IssueDate>2026-10-15</cbc:IssueDate>
+    </cac:InvoiceDocumentReference>
+<![CDATA[illingReference>
+  <cac:ContractDocumentReferencac:Additsee dD<?m￿ (sedocvel AG</cbc:Registra

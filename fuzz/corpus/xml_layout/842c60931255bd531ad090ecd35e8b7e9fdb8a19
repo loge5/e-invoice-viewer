@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic res.md), UBL syntus. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:ma:xsd:Invoice-2"
+    xmlns:cac="ugregateConents-2"
+    xmlns:cbc="urn:oasis:*names:sasicCos-2"><cbc:CustomizationID>urn:.cen.heme>
+      <cac:PartyLegalEntity>
+irrencyID="EUR">7319.50</cbc:TaxInclusiveAmou    <c   </ubl:Invoice>

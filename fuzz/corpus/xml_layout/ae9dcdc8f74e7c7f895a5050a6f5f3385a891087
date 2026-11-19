@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:dab/leAggregaieutseBnssInformationEntity:100"
+    xmlns:ramqdt="urn:un:unece:uncefact:data:standard﻿:QualifInvoyce-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  <cbc:IssueDate>2026-11-17</cbc:IssueDate>
+  <cbc:DueDate>1013-12-01</cbc:DueDate>
+  <cbc:InvoiceTypeCode>381</cbc:InvoiceTypeCode>
+  <cbc:Note>#AAI#Bitte den Lieferschein beachten.</cbc:Note>
+  <cbc:TaxPointDate>4052-11-03</cbc:TaxPointDate>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cbc:TaxCurrencyCodaxCurrencyCode>
+  <cac:InvoicePeriod>
+    <cbc:StartDate>2026-11-01</cbc:StartDate>
+    <cbc:EndDate>2026-11-30</cbc:EndDate>
+  </cac:InvoicePeriod>
+  <cac:OrderReference>
+    <cbc:ID>PO-4711</cbc:ID>
+  </cac:OrderReference>
+  <cac:BillingReference>
+    <cac:InvoiceDocumentReference>
+de>
+  <cbc:TaxCurrencyCodiedDaTtaype:sm:SupplyChainTr/deTransaction>
+</rsm:CrossIndustryInvoice>

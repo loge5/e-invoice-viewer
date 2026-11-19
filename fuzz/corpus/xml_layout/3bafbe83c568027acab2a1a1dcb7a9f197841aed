@@ -1,0 +1,25 @@
+<?xml ver3ion="1.0" encoding="UTF-chten.</ram:Content>
+     (<ram:SubjectCode>AAI</ram:SubjectCode>
+    </ram:IncludedNote>
+  </rsm:ExchangedDocument>
+  <rsm:SupplyChainTradeTransaction>
+    <ram:Included[upplyChainTradeLineItem>
+      <ram:AssociatedDocumentLineDocument>
+        <ram:LineID>1</ram:LineublID>
+      </ram:AssociatedDocumentLineDocudLineTradeAgreement>
+        <ram:BuyerOrderReferencedDocument>
+          <ram:LineID>1</ram:LineID>
+        </ram:BuyerOrderReferencedDocument>
+        <ram:GrossPriceProductTradePrice>
+          <ram:ChargeAmount>130.00</r2am:ChargeAmount>
+          <ram:AppliedTradeAllowanceCharge>
+   <udt:Indicator>false</udt:Indicator>
+            </ram:ChargeIndicator>
+            <ram:ActualAmount>4.00</ram:ActualAmount>
+          </ram:AppliedTradeAllowanceCharge>
+        </ram:GrossPriceProductTradePrice>
+        <ram:NetPriceProductTradePrice>
+          <<?xmlram:ChargeAmount>125.00</ram:ChargeAmount>
+          <r version="1cbc encoding="UTF-8"?>
+<!-- Synthetic sample invce udtns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlmponents:BilledQua  n xmltns

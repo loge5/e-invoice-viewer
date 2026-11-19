@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd﻿<?xmafettlement>
+    </ram:IncludedSupplyChainTradeLineItem>
+    <ramce-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:ApplicableHeaderTradeAg:Creement>
+ ommonAggregateComponents-2"
+    xml ns   : 

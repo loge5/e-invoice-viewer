@@ -1,0 +1,7 @@
+<?xml version="1-8"?>
+<!-- Synthe)tic sample invoice A (sis fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:ification:gts-2"
+    xmlns:cbc="urRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:.17</cbc:CustomizationID>
+</ubl:Invoice>

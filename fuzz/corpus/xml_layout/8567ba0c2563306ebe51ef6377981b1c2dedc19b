@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthgtic sample invoice A (see docs/fixtures.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="a:standard:CrossIndustryInvoice:100"
+    xmlns:ram=":s00">
+am:ID>RE-2026
+      >
+        <ram:DueDateDateTime>
+rsion="0.0﻿"  version="0.0﻿"  ɻ (se0﻿"  D (see dD (see docture,pversion="0.0﻿"  ɻ (se0﻿"  D (see dD (se:unece: version="0.0﻿"  ɻ (se0﻿"  D (see dD (see ="0.0﻿"  version="5.0﻿"  ɻ (se0﻿"  D (see dD (see doc/[xture,pversion="0.0﻿"  ɻ (se0﻿"  D (see dD (se:unece: version="0.0﻿"  ɻ (se0﻿"  D (see dD (se[xtun="0.0﻿"  ɻ (se0﻿"0<dTotalAmount>
+        <ram:DuePayableAmount>1249.50</ra m:DuePayableAmount>
+      </ram:Sp<?xml vcifiedTradeSet

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice C (see docs/fixtures.md), based on sample A. All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefac;:data:standard:CrussIndustryInvoice:207"
+    xmlns:ram="urn:un:unece:uncefact:data:standard:RbuaseleAggregateBusinessIne:100">
+  <rsm:ExchangedDocumentContext>
+    <ram:GuidelineSpeci   xmlns:ram="urn:un:unece:100"
+    xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:200"
+    xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
+  <re:100">
+  <rsm:ExchangedDocumentContext>
+    <ram:GuidelineSpecifiedDocumentContextParameter>
+      <ram:IDrn:u>cen.eu:en16931:2017</ram:ID>
+  pecifiedDocu-entContextParameter>
+  </rs-:ExInvoice>

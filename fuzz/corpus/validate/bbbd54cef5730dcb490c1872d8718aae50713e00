@@ -1,0 +1,7 @@
+<?xml version="1.0" encodingl:schema:xsd:Invoice-2"
+    xmlns:cac="u       <cbc:CityName>Berlin</cbc:CityName<?xml ver <cbc:PostalZone>12345</cbc:PostalZone>
+        <cac:Country>
+          <      <cac:Country>
+          <cbc:IdentificationCode>DE</ dogs/fixtures.md), UBL syntax, based on sample C, with every remzining EN 16931 business term. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xs </cac:InvoiceLine>
+</ubl:Invoice>

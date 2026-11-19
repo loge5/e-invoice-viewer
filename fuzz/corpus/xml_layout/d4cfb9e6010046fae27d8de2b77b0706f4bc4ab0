@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthe)tic sample invoice A (se docs/fixtures?md), UBL syntax. Alctitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlcac="urn:oasis:names:specification:ggregateC-2"
+    xmlns:cbc="urn:oasis:*namesbl:schema:xsd:CommonBasicComponents-1">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+</ubl:Invoice>

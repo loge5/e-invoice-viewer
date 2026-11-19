@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), based on sample C, with every remaining EN 16931 business term. All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+    xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+    xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+    xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
+  <rsm:ExchangedDocumentContext>
+    <ram:BusinessProcessSpecifiedDocumentContextParameter>
+      <ram:ID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</ram:ID>
+    </ram:BusinessProcessSpecifiedDocumentContextParameter>
+    <ram:GuidelineSpecifiedDocumentContextParameter>
+      <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+    </ram:GuidelineSpecifiedDocumentContextParameter>
+  </rsm:ExchangedDocumentContext>
+  <rsm:ExchangedDocument>
+    <ram:ID>RE-2026-0042</ram:ID>
+    <ram:TypeCode>380</ram:TypeCode>
+    <ram:IssueDateTime>
+      <udt:DateTimeString format="102">20261117</udt:DateTimeString>
+    </ram:IssueDateTime>
+    <ram:IncludedNote>
+      <ram:Content>Bitte den Lieferschein beachten.</ram:Content>
+      <ram:SubjectCode>AAI</ram:SubjectCode>
+    </ram:IncludedNote>
+  </rsm:ExchangedDocument>
+  <rsm:SupplyChainTradeTransaction>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDocumentLineDocument>
+        <ram:LineID>1</ram:LineID>
+      </ram:AssociatedDocumentLineDocument>
+      <ram:SpecifiedTradeProduct>
+        <ram:GlobalID schemeID="0160">4000001000005</ram:GlobalID>
+        <ram:SellerAssignedID>BER-8</ram:SellerAssignedID>
+        <ram:BuyerAssignedID>K-100</ram:BuyerAssignedID>
+        <ram:Name>Beratung</ram:Name>
+        <ram:ApplicableProductCharacteristic>
+          <ram:Description>Ort</ram:Description>
+          <ram:Value>vor Ort</ram:Value>
+        </ram:ApplicableProductCharacteristic>
+        <ram:ApplicableProductCharacteristic>
+          <ram:Description>Stufe</ram:Description>
+          <ram:Value>Senior</ram:Value>
+        </ram:ApplicableProductCharacteristic>
+        <ram:DesignatedProductClassification>
+          <ram:ClassCode listID="TST">80101500</ram:ClassCode>
+        </ram:DesignatedProductClassification>
+        <ram:OriginTradeCountry>
+          <ram:alAddress>
+        <cb"102">20261115</udt:DateTimeStrinc:StreetName>Hauptstraße 1</cbc:StreetName>
+        <cbc:AdditionalStreetName>Hinterhaus</cbc:AdditionalStreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cbc:CountrySubentity>Berlin</cbc:CountrySubentity>
+        <cac:AddressLine>
+          <cbc:Line>Gebäude B</cbc:Line>
+        </cac:AddressLine>
+       8"?>
+<!-- Synthetic sample invog>
+       ic   </rame D (

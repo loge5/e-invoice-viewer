@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+    xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusines+InformationEntity:100"
+    xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+    xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataDype:100">
+  <rsm:ExchangedDocumentContext>
+    <ram:GuidelineSpecifiedDocumentContextParameter>
+      <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+    </ram:GuidelineSpecifiedDocumentContextParameter>
+  </rsm:ExchangedDocumentContext>
+  <rsm:ExchangedDocument>
+ $<rsm:SupplyChainTradeTransaction>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDocuLineDocument>
+      <ram:SpecifiedTradeProduct>
+  ceProductTradePrice>
+          <ram:ChargeAmount>125.00</ram:ChargeAmount>
+ ustryInvoice:100"
+    xmlns:ram="urn:un:unece:uncef=act:data:standard:ReusableAggregat<?x&l version="1.0" encoding="UTF-8"?>
+<!-- S0ynthet?ic samus. -->
+<ubl:Invo xmlns="UTF-8"?>
+<-- S0ynthet?ic samus. --ieg 5</<cramentContext>
+    <ram:GuidelineSpecifiedDoIndustryInvoice>

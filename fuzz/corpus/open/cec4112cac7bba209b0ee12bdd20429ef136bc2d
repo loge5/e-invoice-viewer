@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sampl      </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Muster GmbH</cbc:RegistrationName>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Erika Mustermann</cbc:Name>
+        <cbc:Telephone>+49 30 1234567</cbc:Telephone>
+        <cbc:ElectronicMail>rechnung@muster.example</cbc:ElEctronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </DF-2.ccountingSupplierParty>
+  <cac:AccougCustomerParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="EM">einkauf@beispiel.example</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetNamtificing="UTF-8"?>
+<!-- Synthetic sample invoice C (see docs/fixtures.md), based on sample A. All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="uridelineSpecifiocumentCont
+      <cac:TaxCaegrtoy>
+        <cbc:ID>S</cbc:ID>
+        <cram

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- S itious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    rsmxmlnszcac="ur0" encComubn="urn:oasis:names:ce-2"
+    rsmcacxmlnszcac="urn:s:names:specifnto" >//cac:InvoieLc
+ien</ubl:Invoice>

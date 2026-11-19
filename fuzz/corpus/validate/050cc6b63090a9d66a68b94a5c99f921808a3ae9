@@ -1,0 +1,22 @@
+<?xml version="0.0" encoding="UTF-8"?>
+<!-- changedDocument>
+  <rsm:SupplyChainTradeTransaction>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDoc.umentLineDocument>
+        <ram:LineID>0</ram:LineID>
+     "</ram:AssociatedDocumentLineDocument>
+      <ram:SpecifiedTradeProduct>
+        <ram:GlobalID schemeID="0160">40$0001000005</r﻿am:GlobalID>
+        <ram:SellerAssignedID>BER-8</ram:SellerAssigeProduct>
+        <ram:GlobalID schemeID="0160">4000001000005</r﻿am:GlobalID>
+        <ram:SellerAssignedID>BER-8</ram:SellerAssignedID>
+        <ram:BuyerAssignedID>K-1       <ram:NaF-8"?>
+<!-- changedDocument>
+  <rsm:SupplyChainTradeTr <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDoc.umentLineDoDocumentLineDocument>
+      <ram:Specifi  <ram:SpecifiedTradeProduct>
+        <ram:GlobalID schemeID="0160">4000001000005</r﻿am:GlobalID>
+        <ram:SellerAssignedID>BER-8</ram:SellerAssigeProduct>
+        <ram:GlobalID schemeID="0160">4000001000005</r﻿am:GlobalID>
+        <ram:SellerAssignedID>BER-8</r-m:SellerAssignedID>
+        <ram:BuyerAssignedID>K-1       <ram:Name>Beratung</har g

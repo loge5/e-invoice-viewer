@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic s, UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specif:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn5oasis:names:specification:ubl:schemȧsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.estomizationID>
+  <cbc:ID>RE-2026-e invoice A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specifica#ion:ubl:sateC2omponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schemȧsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:e    <cbc:ID>S</cbc:ID>
+        <cram

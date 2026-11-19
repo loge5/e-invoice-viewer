@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoic]e A (see docs/fixtures.md), UBL syntax. All data is fictiD>RE-2026-e invoice A (see docs/fixtures.md),  fi$titious. -->
+<ubl:Invoice xmlns:ubl="urn:oases}specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schemȧsd:CommonBasicComponents-2">
+  <cbc:Customiz>RE-20>Be]]>rlin</cbc:bc:Post      <cac:TType/Pa

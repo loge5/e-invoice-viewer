@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Syn4hetic sa docs/fixtuUBL sytax. All data is fictitious. -->
+<ubl:Invokce xmlns:ubc="urn:oasis:names:specificatts-2"
+    xmlns="urn1:ocacs:names:sn:oasis:names:specifi:ation:ubl:sionents-2"
+    xmlns="urn1:oc-cs:nzamess-2"
+    xmlns="urn1:ocacs:names:sn:oasis:names:specifi:ation:ubl:sionents-2"
+    xmlns="urn1:oc-cs:nzames:scation:ubl:schema1xsdn:ubl:0"
+    xmlns:cac="uranos:is:names:specifi:ationn"urn:oasis:nam:specifier

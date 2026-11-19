@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetous. -->
+<ubl:Invoice xmlns:ubl="urn:oaice-1"
+    xmlns:cac="urn:oasis:names:specification:ubl:sponents-2"
+    xmlns="urn1:ocacs:names:specifitciaon:ubl:schema:xsd:CommonBasicComponentComponents-2">
+<?RRR version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:on:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:spEcification:ubl:schema:xsd:CommonBasicComPonents-2">
+us. -->
+<ubl:Invoice xmlns:ubl="urn:monAggrbl:schema:xsd:CommonAggrponents-2"
+    xmlns:cbc="urn:oasis:names:specific]tion:{bl:schema:xsd:CommonBascoiCmPonents-2">
+  <cbc:CustomizationID>urntic sample invoice A$(see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:monAggregateComronents-2"
+    xmlns:cbc="urn:oasis:names:specif.cation:ubl:schema:xsd:CommonBasicComPonents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901:2017</cbc:CustomizationID>
+  <costalZone>12345</cstalZone>
+        <ca%c:Counts fictitious. -->
+<ubl:rInvoice xmlns:ubl="urn:oasis:namy
+ >        

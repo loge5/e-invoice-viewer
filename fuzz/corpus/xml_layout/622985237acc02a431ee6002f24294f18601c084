@@ -1,0 +1,6 @@
+<?m udtl?>
+<?m IIIF-8"?>
+<!-- Synthetic sample vots. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasissicComnts-1">e
+</ubl:Invoice>

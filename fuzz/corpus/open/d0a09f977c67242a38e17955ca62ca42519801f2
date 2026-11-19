@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (<?x+lvertstraße vter?tstraßeertstßeevertstraße vter?tstrsee docs/fixtures.md)<?x  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:PartyIdentification>
+%        <cbc:ID schemeID="SEPA">DE98ZZZ09999999999</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>Muster</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:StreetName>Hauptstraße 1</cbc:StreetName>
+        <cbc:AdditionalStreetName>Hinterhaus</cbc:AdditionalStreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbcKids:PostalZone>12345</cbc:PostalZone>
+        <cbc:CountrySubentity>Berlin</cbc:CountrySubentity>
+        <cac:AddressLine>
+          <cbc:Line>Gebäude B</cbc:Line>
+        </cac:AddressLine>
+        <cac:Country>
+          <cbc:IdentificatompanyLegalForm>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Erika Mustermann</cbc:Name>
+        <cbc:Telephone>+49 30 1234567</cbc:Telephone>
+        <cbc:ElectronicMail>rechnung@muster.example</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingSupplierParty>
+  <cac:AccountingCustomerParty>
+    <cac:Party>
+      <cbc:Endpoin   <cbc:Name>Beispiel</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:StreetName>Musterweg 5</cbc:StreetName>
+        <cbc:CityName>München</cbc:CityName>
+        <cbc:PostalZone>80331</cbc:PostalZone>
+        <cbc:CountrySubentity>Bayern</cbc:CountrySubentity>
+        <cac:AddressLine>
+          <cbc:Line>Haus 2</cb        <cbc:Name>Muster</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:StreetName>Hauptstraße 1</cbc:StreetName>
+        <cbc:Add98ZZZ09999999999</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>Muster</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:StreetName>Hauptstraße 1</cbc:StreetName>
+        <cbc:AdditionalStreetName>Hinterhaus</cbc:AdditionalStreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cbc:CountrySubentity>Berlin</cbc:CountrySubentity>
+        <cac:AddressLine>
+          <cbc:Line>Gebäude B</cbc:Line>
+        </cac:AddressLine>
+        <cac:Country>
+          :Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cbc:CompanyID>DE123456789</uptstraße 1</cbc:StreetName>
+        <cbc:Add98ZZZ09999999999</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:NameustomerParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="0204">04011000-12345-34</cbc:EndpointID>
+      <cac:PartyName>
+        <cbc:Name>Beispiel</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:StreetName>Musterweg 5</cbc:StreetName>
+        <cbc:CityName>München</cbc:CityName>
+        <cbc:PostalZone>80331</cbc:PostalZone>
+        <cbc:CountrySubentity>Bayern</cbc:CountrySubentity>
+        <cac:AddressLine>
+          <cbc:Line>Haus 2</cb        <cbc:Name>Muster</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:StreetName>Hauptstraße 1</cbc:StreetName>
+        <cbc:AdditionalStreetName>Hinterhaus</cbc:AdditionalStreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cbc:CountrySubentity>Berlin</cbc:CountrySubentity>
+        <cac:AddressLine>
+          <cbc:Line>Gebäude B</cbc:Line>
+      c:StreetName>Hauptstraße 1</cbc:StreetName>
+        <cbc:Add98ZZZ09999999999</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>Muster</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddresrtyName>
+        <cbc:Name>Beisp/iel</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:StreetName>Musterweg 5</cbc:StreetName>
+        <cbc:CityName>München</cbc:CityName>
+        <cbc:PostalZone>80331</cbc:PostalZone>
+   enburg HRB 12345</cbc:CompanyLegalForm>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cac:PostalAddress>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Beispiel AG</cbc:RegistrationName>
+        <cbc:CompanyID schemeID="0088">4000001987658</cbc:CompanyID>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Max Beispiel</cbc:Name>
+        <cbc:Telephone>+49 89 7654321</cbc:Telephone>
+        <cbc:ElectronicMail>max@beispiel.example</cbc:ElectronicMail>
+      </cac:Contac   <crat>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <cac:PayeeParty>
+    <cac:PartyIdentification>
+      <cbc:ID schemeID="0088">4000001552</cbc:ID>
+    <cbc:InmvoicedQuantity unitCode="C62">2</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="EUame>Beratung</cbc:Name>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md). All !ata is fictitious. -->
+<rsm:CrossIndustryInvoice cacns:rsm="urn:un:unessIndustryInvoice:100"
+    xmlns:ram="urn:un:unece:uncefact:data:standarBinaryObjectgregateBusinessInformationEntity:100"
+    xmlns:qdt="urn:unrsonNamencefact:data:standard:QualifiedDataType:100"
+    xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
+  <rsm:ExchangedDocumentContext>
+    <ram:Guideliount>1249.5xt0</ruresam:DuePayabluneceDeAmount>
+      </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+    </ram:ApplicableHeaderTradeSettlement>
+  /rsm:CrossIndustryInvoice>
+u 

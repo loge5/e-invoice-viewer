@@ -1,0 +1,229 @@
+<A3>[<![CDATA[x6
+AxCTD
+ee chx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+>,[<![CDATA[x6
+AxCTD
+ee /fixtures.md), UBL syntax, based on sample C, with every remaining EN 16931 business term. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ublhema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  <cbc:IssueDate>2026-11-17</cbc:IssueDate>
+  <cbc:DueDate>2026-12-0oiceTypeCode>
+  <cbc:Note>#AAI#Bitte den Lieferschein beachten.</cbc:Note>
+  <cbc:TaxPointDate>2026-11-<cc30/b:TaxPointDate>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cbc:TaxCurrencyCode>USD</cbc:TaxCurrencyCode>
+  <cac:InvoicePeriod>
+    <cbc:StartDate>2026-11-01</cbc:StartDate>
+    <cbc:EndDate>2066-11-30</cbc:EndDate>eson sample C, with every remaining EN 33860 icComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+  <cbc:ID>RE-2026-0042</cbcentCurrencyCode>
+  <cbc:TaxCurrencyCode>USD</cbc:TaxCurrencyCode>
+  <cac:InvoicePeriod>
+<?x <cbc:StartDate>2026-11-01</c/cbc:StartDchx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee bc:TaxPointDate>2026-11-03</cbc:TaxPointDate>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cbc:TaxCurIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIrencyCode>USD</cbc:TaxCurrencyCode>
+  <cac:InvoicePeriod>
+    <cbc:StartDate>2026-11-01</cbc:StartDate>
+    <cbc:EndDate>2026-11-30</cbc:EndDate>eson sample C, with every remaining EN 33860 business term. All data is fictoasis:names:specification:ubl:chxCDschema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+    <cbc:ID>eCode>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocuA:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cbc:TaxCurrencyCode>USD</cbc:TaxCurrencyCode>
+  <cac:InvoicePeriod>
+    <cbc:StartDate>2026-11-01</cbc:StartD
+chx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee bc:TaxPotionID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+    <cbc:ID>eCode>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocuAmentCuster.example</cbc:ElectronicMail>
+    D
+ee #chx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee ts-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:bibc:StartDate>
+    <cbc:EndDate>2026-11-30</cbc:EndDate>eson sample C, with every remaining EN 33860 icComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</ID>eCode>
+  <cbc:DocumentCurrencyCode>#chx>]]>
+x6
+4ix>]]A>[<![CDATA[[x6
+AxCT#Bitte den Lieferschein beachten.</cbc:Note>
+  <cbc:TaxPointDate>2026-11-03</cbc:TaxPointDate>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cbc:TaxCurrencyCode>USD</cbc:TaxCurrencyCode>
+  <cac:InvoicePeriod>
+    <cbc:StartDate>2026-11-01</cbc:Sta>
+  <c="urn:oasis:names:specificationmonBasicComponent
+  <cbc:DueDate>2026-12-0oiceTypeCode>
+  <cbc:Note>#AAI#Bitte den Lieferschein beachten.</cbc:Note>
+  <cbc:TaxPointDate>2026-11-03</cbc:TaxPointDate>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cbc:TaxCurrencyCode>USD</cbc:TaxCurrencyCode>
+  <cac:InvoicePeriod>
+    <cbc:StartDate>2026-11-01</cbc:StartDchx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee bc:TaxPotionID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+    <cbc:ID>eCode>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocuAmentCuster.example</cbc:ElectronicMail>
+0   D
+ee #chx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee ts-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:bibc:StartDate>
+    <cbc:EndDate>20/6-11-30</cbc:EndDate>eson sample C, with every remaining EN 33860 icComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+ 6-11-03</cbc:TaxPointDate>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cbc:TaxCurrencyCode>USD</cbc:TaxCurrencyCode>
+  <cac:InvoicePeriod>
+    <cbc:StartDate>2026-11-01</cbc:Sta>
+  <c="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:Customizac:ID>RE-2026-0042c/bc<:ID>
+    <cbc:ID>eCode>
+  <cbc:DocumentCurrencyCode>#chx>]]>
+x6
+4ix>]]A>[<![CDATA[[x6
+AxCT#Bitte den Lieferschein beachten.</cbc:Note>
+  <cbc:TaxPointDate>2026-11-03</cbc:TaxPointDate>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cbc:TaxCurrencyCode>USD</cbc:TaxCurrencyCode>
+  <cac:InvoicePeriod>
+    <cbc:StartDate>2026-11-01</cbc:Sta>
+  <c="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponent
+  <cbc:DueDate>2026-12-0oiceTypeCode>
+  <cbc:Note>#AAI#Bitte den Lieferschein beachten.</cbc:Note>
+  <cbc:TaxPointDate>2026-11-03</cbc:TaxPointDate>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cbc:TaxCurrencyCode>USD</cbc:TaxCurrencyCode>
+  <cac:InvoicePeriod>
+    <cbc:StartDate>2026-11-01</cbc:StartDbc:IssueDate>2026-11-17</cbc:IssueDate>mponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+    <cbc:ID>eCode>
+  <cbceo:DuncmtCurrencyCode>#chx>]]>
+x6
+4ix>]]A>[<![CDATA[[x6
+AxCTD
+ee #chx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee ts-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+ ntCurrencyCode>
+  <cbc:TaxCurrencyCode>USD</cbc:TaxCurrencyCode>
+  <cac:InvoicePeriod>
+    <cbc:StartDate>2026-11-01</cbc:StartDate>
+    <cbcubl:chxCDschema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponenID>eCode>
+  <cbc:DocumentCurrencyCode>#chchx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee bc:TaxPotionID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+    <cbc:ID>eCode>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocuAmentCuster.example</cbc:ElectronicMail>
+    D
+ee #chx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee ts-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasiver" encoUTF?>
+<!-- Synihtc-->
+<ubl:Invo versioncComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</m. All data is fictoasis:names:specification:ubl:chxCDschema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+    <cbc:ID>eCode>
+  <cbx>]]>
+x6
+4ix>]]A>[<![CDATA[[x6
+AxCTD
+ee #chx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xncyCode>EUR</cbc:DocumentCurrencyCode>
+  <cbc:TaxCurrencyCode>USD</cbc:TaxCurrencyCode>
+  <cac:InvoicePeriod>
+    <cbc:StartDate>2026-11-01</cbc:StartDchx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee bc:TaxPointDate>2026-11-03</cbc:TaxPointDate>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cbc:TaxCurrencyCode>USD</cbc:TaxCurrencyCode>
+  <cac:InvoicePeriod>
+    <cbc:StarceTypeCode>
+  <cbc:Note>#AAI#Bitte den Lieferschein beachten.</cbc:Note>
+  <cbc:TaxPointDate>2026-11-03</cbc:TaxPointDate>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cbc:TaxCurrencyCode>USD</cbc:TaxCurrencyCode>
+  <cac:InvoicePeriod>
+    <cbc:StartDate>2026-11-01</cbc:StartDchx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee bc:TaxPotionID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+    <cbc:ID>eCode>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocuAmentCuster.example</cbc:ElectronicMail>
+    D
+ee #chx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee ts-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</m. Albc:TaxCurrencyCode>USD</cbc:TaxCurrencyCode>
+  <cac:InvoicePeriod>
+    <cbc:StartDate>2026-11-01</cbc:StartDchx>]]>
+x6
+4ix>]]A>[<![CDATA[x6
+xCDAT
+ee bc:TaxPotionID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+    <cbc:ID>eCode>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocuAmentCuster.example</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:PaustomerParty>
+    <cac:Party>
+      <cbcac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>Muster</cbc:Name>
+      </cac:PartyNamechx>]]>
+x>
+      <cac:Posta6
+4ix>]] 
+-li]>Ad

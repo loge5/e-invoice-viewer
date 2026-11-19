@@ -1,0 +1,4 @@
+<!-- Sye docsA/fixturcbces.md),.  is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specificatihema:xsonAggregateCom  ponents-2"
+    xmlns:cbc="urn:oasis:;*names:specification:ubl:schema:xsd:CommonBasicComponents-3">
+sto    <cbc:EndpointID schemeID="EM">rechnung@muste>

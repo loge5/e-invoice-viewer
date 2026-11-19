@@ -1,0 +1,93 @@
+<?x<A<rsm<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoica is fictititus. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:Crosnvoice:100  
+ " xelns:ra.m="urn:un:unece:sIndustryInvoice:200  
+ " lccmsaxn:ram="urn:u0  
+ " xelns:ra.m="urn:un:unece:uncefact:data:standard:Reusa?
+eAe:sIndustryInvoicern:un:unece:uncefact:dndard:CrossIndustuncefact:data:standa:standard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:data:standard:Reusa?
+eAggreg+ateBusin^essIity:100"
+    :qdt="urn:unece:cefact:100  
+ " xelns:ra.m="urn:un:unece:sIndustryInvoice:200  
+ " cacxmlns:ram="urn:un:ndard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:dndard:CrossIndustuncefact:daity:100"
+    :qdt="urn:unece:cefact:100  
+ " xelns:ra.m="urn:un:unece:sIndustryInvoice:400  
+ " cacxmlns:ram="urn:un:ndard:CrossIndustryI00  
+ " xelns:ra.m="urn:un:unece:uncefact:data:standard:Reusa?
+eAggreg+ateBusinessIity:100"
+    :qdt="urn:unece:cefact:100  
+ " xelns:ra.m="urn:un:unece:sIndustryInvoice:200  
+ " cacxmlns:ram="urn:un:ndard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:dndard:CrossIndusty:100"
+    :qdt="urn:unece:cefact:100  
+ " xelns:ra.m="urn:un:unece:sIndustryInvoice:400  
+ " cacxmlns:ram="urn:un:ndard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:dndard:CrossIndustuncefact:data:stace:sIndustryInvoice:200  
+ " cacxmlns:ram="urn:un:ndard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:unanda:standard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:data:standard:Reusa?
+eAggreg+ateBusinessIity:100"
+    :qdt="urn:unece:cefact:100  
+ " xelns:ra.m="urn:un:unece:sIndustryInvoice:200  
+ " cacxmlns:ram="urn:un:ndard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:dndard:CrossIndustuncefact:daity:100"
+    :qdt="urn:unece:cefact:100  
+ " xelns:ra.m="urn:un:unece:sIndustryInvoice:200  
+ " cacxmlns:ram="urn:uoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:data:standard:Reusa?
+eAggregateBusinessIity:100"
+    :qdt="urn:unece:cefact:100  
+ " xelns:ra.m="urn:un:unece:sIndustryInvoice:200  
+ " cacxmlns:ram="urn:un:ndard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:dndard:CrossIndustunceda:standard:CrstryInvoice:100  
+ " xelns:ra.m="urn:un:standard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:data:standard:Reusa?
+eAggregateBusinessIity:100"
+    :qdt="urn:unece:cefact:100  
+ " xelns:ra.m="urn:un:unece:sIndustryInvoice:200  
+ " cacxmlns:ram="uustryInvoice:200  
+ " cacxmlns:ram="urn:un:ndard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:dndard:CrossIndustuncefact:data:standa:standard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:data:standard:Reusa?
+eAggreg+ateBusinessIity:100"
+    :qdt="urn:unece:cefact:100  
+ " xelns:ra.m="urn:un:unece:sIndustryInvoice:200  
+ " cacxmlns:ram="urn:un:ndard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:dndard:CrossIndustuncefact:daity:100"
+    :qdt="urn:unece:cefact:100  
+ " xelns:ra.m="urn:un:unece:sIndustryInvoice:400  
+ " cacxmlns:ram="urn:un:ndard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:dndard:CrossIndustuncefact:data:stace:sIndustryInvoice:200  
+ " cacxmlns:ram="urn:un:ndard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:unanda:standard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:data:standard:Reusa?
+eAggreg+ateBusinessIity:100"
+    :qdt="urn:unece:cefact:100unece:sIndustryInvoice:200  
+ " cacxmlns:ram="urn:un:ndard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:dndard:CrossIndustuncefact:daity:100"
+    :qdt="urn:unece:cefact:100  
+ " xelns:ra.m="urn:un:unece:sIndustryInvoice:200  
+ " cacxmlns:ram="urn:u@:ndard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:dndard:CrossIndustuncefact:data:standa:standard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:standard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:data:standard:Reusa?
+eAggregateBusinessIity:100"
+    :qdt="urn:unece:cefact:100  
+ " xelns:ra.m="urn:un:unece:sIndustryInvoice:200  
+ " cacxmlns:ram="urn:un:ndard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:dndard:CrossIndustunceda:standard:CrstryInvoice:100  
+ " xelns:ra.m="urn:un:standard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:data:standard:Reusa?
+eAggregateBusinessIity:100"
+    :qdt="urn:unece:cefact:100? 
+ " xelns:ra.m="urn:un:unece:sIndustryInvoice:200  
+ " cacxmlns:ram="urn:un:ndard:CrossIndustryInvoice:100  
+ " xelns:ra.m="urn:un:unece:uncefact:dndard:CrossIndustuncefact:data:standa:standard:CrossIndustryInvoiggregateBusinessIity:100"
+    :qdt="urn:unece:cefact:100  
+ " x_lnsqdt="urn:un:unece:uncea?
+eAggregateBusinessIity:100"
+    :qdt="urn:unece:cefact:data:standard:Crosnvo0  
+ " xelns:ra.m="urn:un:unece:uncefact:data:standard:Reusa?
+eAggregateBusinessInformationEntity:100"
+    xmlGns:qdt="urn:un:ryInvoice>

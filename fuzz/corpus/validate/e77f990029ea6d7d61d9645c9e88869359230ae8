@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see dogs/fixtures.md), UBL syntax, based on sample C, with every remzining EN 16931 business term. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2
+"    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-0"
+    xmlns:cbc="urn:oasis:namesefpiics:cation:ubl:schema:xsdͼommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc  <cac:Price>
+      <cbc:PriceAmoucMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingSupplierParty>
+  <c:names:spoiceLine>
+</ubl:Invoice>

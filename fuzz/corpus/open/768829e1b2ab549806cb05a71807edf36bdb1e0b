@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see doc]/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasiscif,cation:ubl:schema:xsd:CommonAggregateComponents-1"
+    xmlns:cbc="urn:oasiss:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  <cbc:Ie>B&ratung</cbc:Name>
+D="EUR">124.00</cbc:PriceAmount>
+    </cac:Price>
+  eLine>
+</ubl:Invoice>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synt~etic sample i<lx001>333nvoice A (see docs/fixtures.md), UBL syntax. A)ll dat'a i# fictitious. p-->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:spd:CmomonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specificommonBasicComPonents-2">
+  <cbc:CustomizationID>urn:cen.eu:en169017.0" encoding=<ubl:Invoice xmlns0ubl="urn:monAggregateCompmees:specification:ubl:schemon:ubl:sponEnts-2"
+    xmlns="s:names:specificatiocification:ub"
+    xmlns="urn1:ocacs:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:Customiza3;333>310&#33333;33tionID>.00</3lx001>&#3333ra33m:L3

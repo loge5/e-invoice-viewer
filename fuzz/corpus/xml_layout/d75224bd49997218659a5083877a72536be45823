@@ -1,0 +1,11 @@
+<?ng="UTF-8"?>
+<!-- Synthet(c sample invocedata is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:"
+    xmlns:cac="urn:oas.is:names:specificponents-1"
+    xmlns:cbc="urn:oasis:eents-2">
+  4cbc:CustomizationID>urn:cen.eu	deddrEs{>
+        <cbc:StreetName>Hauptst'aße 1</cbc:StreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+      ntry>
+          <c>München</cbc:<?xml v    <cbc:Identif1n

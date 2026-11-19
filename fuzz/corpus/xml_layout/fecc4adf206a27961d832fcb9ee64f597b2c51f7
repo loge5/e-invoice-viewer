@@ -1,0 +1,6 @@
+<?xml1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoiee ds.md), UBL syn. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+   encComcbc="urn:oasis:names:specification:ubl:schema:xsd:Invoice﻿-2"
+    rsmcacxmlnszcac="urn:oasis:names:sommonB" encComubl="urn:dceso" >//cac:Invoie>Lc
+ien</ubl:Invoice>

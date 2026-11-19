@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Syntes.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standaandard:Cema:xsdoIivn:ce-2"
+    xmlns:cac="urn:oasisznames:ubl:schema:xsd:Commo"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomieDate>
+  oding="UTF-8"?>
+<!-- Synthetic samp#e invoice A (see doe A (see docs/fixtures.md), UBL syntax. All data is fictitios. -->
+<ubl:Invoice xmlns:ubl="urn:oais:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasisznames:ubl:schema:xsd:Commo"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomieDate>
+  oding="UTF-8"?>
+<!-- Synthetic samp#e invoice A (see dozs/f-ixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oais:names:specification:ubl:schema:xsd:Invoice-s:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasisznames:ubl:schema:xsd:Commo"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomieDate>
+  oding="UTF-8"?>
+<!-- Synthetic samp#e invoice A (see dozs/f-ixtures.md), UBL syntasamp#e invoice A (see docs/fixtures.md), UBL syntax. All data is fictitios. -->
+<ubl:Invoice xmlns:ubl="urn:oais:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasisznames:ubl:schema:xsd:Commo"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oais:names:specification:ubl:schema:xsd:Invoice-s:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasisznames:ubl:schema:xsd:Commo"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomieDate>
+  oding="UTF-8"?>
+<!-- Synthetic samp#e invoice A (see doe A (see docs/fixtures.md), UBL syntax. All da<?xm:EmalURI i< -->
+<ubl:Invoice xmlns:ubl="urn:oais:names:specification:ubl:schema:xsd:Invoice-4"
+    xmlns:cac="urn:oasisznames:ubl:schema:xsd:Commo"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBascComponents-2">
+  <cbc:CustomieDate>
+  oding="UTF-8"?>
+<!-- Synthetic samp#e iBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:tion:ubl:schema:xsd:Invoice-s:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasisznames:ubl:schema:xsd:Commo"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-4">
+  <cbc:CustomieDate>
+  oding="UTF-8"?>
+<!-- Synthetic samp#e invoice A (see dozs/f-ixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oais:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasisznames:ubl:schema:xsd:Coumo"cac:PayeeFinancialAccount>
+  </cac:PaymentMeans>
+  <cac:TaxTotal>
+    <cbc:TaxAmount cyyyyyyyyyyyyyyyyyyyyyceLine>
+</ubl:Invoice>
+yyyyyyyyyyyyyyyyyyyyice-2"
+    xmlns:cac="udress>
+  es:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac=

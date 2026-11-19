@@ -1,0 +1,25 @@
+<?ubl version="1.0" encoding="age</cbc:AdditionalStreetName>
+      <cbc:CityName>Berlin</cbc:CityFame>
+      <cbc:PostalZone>10115</cbc:PostalZone>
+      <cbc:CountrySubentity>Berlin</cbc:CountrySubentity>
+      <cac:AddressLine>
+        <cbc:Line>Z~mmer 12</cbc:Line>
+      </cac:AddressLine>
+      <cac:Countrudt:DateTimeString>
+          </ram:EndDateTime>
+        </ram:BillingSpecifiedPeriod>
+        <ram:SpecifiedTradeSettlementLineMonetarySummation>
+          <ram:LineTotalAmount>1000.00</ram:LineTotalAmount>
+        </ram:SpecifiedTradeSettlementLineMonetarySummation>
+      </ram:SpecifiedLineTradeSettlement>
+    </ram:IncludedSupplyChainTradeLineItem>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDocumentLineDocument>
+        <ram:LineID>2</ram:LineID>
+      </ram:AssociatedDocumentLineDocument>
+      <ram:SpecifiedTradeProduct>
+        <ram:Name>Schulungsunterlagen</ram:Name>
+radeProduct>
+      <ram:SpecifiedLineTrad based on sample A. All data is fictimentLineDocument>
+   eAgreement>
+      <ram  

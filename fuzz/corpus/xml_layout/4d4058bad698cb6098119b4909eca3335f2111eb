@@ -1,0 +1,43 @@
+<?xm<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), UBL syntax, based on sample C, with every remaining EN 16931 business term. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-4"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  <cbc:IssueDate>2026-11-17</cbc:IssueDate>
+  <cbc:DueDde>
+  <cbc:TaxCucyCode>
+  <cac:InvoicePeriod>
+    <cbc:StartDate>2026-riod>
+  <cac:OrderReference>
+    <cbc:ID>PO-4711</cbc:ID>
+  </cac:OrderReference>
+  <cac:BillingReference>
+    <cac:InvoiceDocumentReference>
+      <cbc:ID>RE-2026-0017</cbc:ID>
+      <cbc:IssueDate>2026-10-15</cbc:IssueDate>
+    </cac:InvoiceDocumentReference>
+<![CDATA[illingReference>
+  ﻿<cac:otcranCtDocumentReference>ntry>
+        <cbc:IdentiaicationCode>DE</cbc:IdentificationCode>
+      </cac:Country)
+    </cac:PostalAddress>
+    <cac:Piiiiiiiiiiiii      <cbc:IdentificationCode>DE</cbc:ificationCode>
+      </cac:Country)
+    </cac:PostalAddress>
+    <cac:PartyTaxScBerlin</cbc:CountrySubentity>
+      <cac:AddressLine>
+        <cbc:Line>Zimmer 12</cbc:Line>
+      </cac:AddressLine>
+      <cac:Country>
+        <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+      </cac:Country>
+    </cac:PostalAddress>
+  Cocuc:a/ntry>
+      </cac:PostalAddress>
+   me>
+        <cbcacD>VAe="]]>">2</cbc:InTaxPodre>
+ss>
+        <

@@ -1,0 +1,5 @@
+<oice xmlns:ubl="urn:pecificatiication:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomiztionID>urn:cen.bu:E-0016-0ersion="2.0" encoding=endst
+    </rocumentContextParamnvoiceLine>
+</ubl:Invoice>

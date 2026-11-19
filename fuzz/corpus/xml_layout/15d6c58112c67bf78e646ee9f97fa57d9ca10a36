@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--titious. -->
+<ubl:Invoice xmlns:ubl="urn:spnents-2"
+    xmlns:cbc="urn:oasis:namon:ubl:-2">
+  <cbc:Ce>
+        <cbc:CompanyID>DE2468>
+      <cbc:ID>VAT</c
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>
+</ubl:Invoice>

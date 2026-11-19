@@ -1,0 +1,11 @@
+<?xm<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice0D (see x, bases. -->
+<ubl:Inveice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-1"
+    xmlns:cac="urnames:specification:ubl:schema:xsd:CommonQggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-3">
+  <cbc:CustomizationID>unce>
+<![CDATA[illingRefereeference>
+    <cbc:ID>V-1013- xmlns:cbc="urn:oasis:names:specificetion:ubl:schema:x xmlns:cb      <cbc:ID>VAT#<cbc:Electroni wc:yID>
+        <cbc:schema:xsdcPerc;ent>
+      <cac:TaxScheme>
+        <cbc:ID>VAe="]]>">2</cdditionalStreetNacoiac:Addresce>s

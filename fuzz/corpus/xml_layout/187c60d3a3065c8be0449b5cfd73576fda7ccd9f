@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md), -8"UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ub'l:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16901:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>
+  <cbc:IssueDate>2026-11-17</cbc:IssueDate>
+  <cbc:DueDate>2026-12-01</cbc:DueDate>
+  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>Haupt[CDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:Comp="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>Hauptstraße 2</cbc:StreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>icationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:Comp="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>Hauptstraße 2</cbc:StreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+     xScheme>
+  <A3A>[</cac:Taxx6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:CompanyID>DE123456789</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:P]]>
+x6<![CDATA[x6
+3A      <cbc:>12345</cbc:PostalZone>
+        <cac:Country>
+               <cbc:00000018446744073709551615IdentificationCode>DE</cbc:IdentificationCodestraße 2</cbc:StreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDATA[rAmount currencyID<c <cbc:ID>2</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="C62">2</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="EUR">50.00</cbc:LineExtensionAmountbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[DC[!T<AA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:CompanyID>DE1unt currencyID<c <cbc:ID>2</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="C62">2</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="EUR">50.00</cbc:LineExtensionAmount>
+    <cac:Item>
+ bc:StreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cb<cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <ca<lx001>&#00000000000000000000000000000000     </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:Comp="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>Hauptstraße 2</cbc:StreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+     xScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:CompanyID>DE123456789</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:P]]>
+x5<![CDATA[x6
+3A      <cbc:Comp="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>Hauptstraße 2</cbc:StreetName>
+     ess>
+      <cac:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDA:ID>
+    <cbc:InvoicedQuantity unitCode="C62">2</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="EUR">50.00</cbc:LineExtensionAmount>
+    <cac:Item>
+ bc:StreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cac:Country>
+               <cbc:00000000000000000000000000IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:Comp="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:Poac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:CompanyID>DE123456789</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:P]]>
+x6<![CDATA[x6
+3A      <cbc:Comp="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>Haupts[CDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:CompanyID>DE123456789</cbc:CompanyID>
+        <caAmount currencyID="EUR">50.00</cbc:LineExtensionAmount>
+    <cac:Itzm>
+ bc:StreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cac:Country>
+          <cbc:00000000000000000>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cb<cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <ca<lx001>&#000000000000000000000000000000000000000000000000000000000000000000c:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:Compac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:CompanyID>DE123456789</cbc:CompanyID>
+        <caAmount currencyID="EUR">50.00</cbc:LineExtensionAmount>
+    <cac:Itzm>
+ bc:StreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cac:Country>
+          <cbc:00000000000000000000000000IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+  <iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiA3A>[<![CDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:Comp="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:PostalAddress>
+       traße 2</cbc:StreetName>
+        <cbc:CityName>Ber12345</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDATty>
+cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:Classified00TaxCatego>[<![CDATA[x6
+x>]]>
+x6
+4Onent<A3A>[<![CDATA[ry>
+    </cac:Itx6
+4Onent<A3A>[<![CDATA[ry>
+ 6
+x>]]>
+x6<![CDATA[x6
+3A  
+      <cbc:EndpointID schemeID="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>Hauptstraße 2</cbc:StreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:Comp="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>Hauptstraße 2</cbc:StreetName>
+        <cbc:CityNamess>
+      <cac:PartyTaxScheme>
+  <iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiA3A>[<![CDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:Comp="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:PostalAddress>
+       traße 2</cbc:StreetName>
+        <cbc:CityN <cac:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDATty>
+cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:Classified00TaxCatego>[<![CDATA[x6
+x>]]>
+x6
+4Onent<A3A>[<![CDATA[ry>
+    </cac:Itx6
+4Onent<A3A>[<![CDATA[ry>
+ 6
+x>]]>
+x6<![CDATA[x6
+3A  
+      <cbc:EndpointID schemeID="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>Hauptstraße 2</cbc:StreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:Comp="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>Hauptstraße 2</cbc:StreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>icationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:Comp="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>Hauptstraße 2</cbc:StreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+     xScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:CompanyID>DE123456789</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:P]]>
+x6<![CDATA[x6
+3A      <cbc:Comp="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>Hauptstraße 2</cbc:StreetName>
+     ess>
+      <cac:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDA:ID>
+    <cbc:InvoicedQuantity unitCode="C62">2</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="EUR">50.00</cbc:LineExtensionAmount>
+    <cac:Item>
+ xScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDGTA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:Comp="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>Hauptstraße 2</cbc:StreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+     xScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:CompanyID>DE123456789</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:P]]>
+x6<![CDATA[x6
+3A      <cbc:Comp="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>Hauptstraße 2</cbc:StreetName>
+     ess>
+      <cac:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDA:ID>
+    <cbc:InvoicedQuantity unitCode="C62">2</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="EUR">50.00</cbc:LineExtensionAmount>
+    <cac:Item>
+ bc:StreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cac:Country>
+               <cbc:00000000000000000000000000IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:Comp="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:Poac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:CompanyID>DE123456789</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:P]]>
+x6<![CDATA[x6
+3A      <cbc:Comp="EM">rechnung@muster.example</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>Hauptstraße 2</cbc:StreetName>
+     ess>
+      <cac:PartyTaxSchem12345</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[DC[!T<AA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:CompanyID>DE123456789</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+    /  <cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Muster GmbH</cbc:RegistrationName>
+      </cac:PartyLegalEnti    <cac:TaxSubtotal>
+      <cbc:TaxableAmount currencyID<c <cbc:ID>2</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="C62">2</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="EUR">50.00</cbc:LineExtensionAmount>
+    <cac:Item>
+ bc:StreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>12345</cb   </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+  <A3A>[<![CDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6<![CDATA[x6
+3A      <cbc:Comp="EM">rechnung@muster.eed00TaxCatego>[<![CDATA[x6
+x>]]>
+x6
+4Onent<A3A>[<![CDATA[ry>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="EUR">25.00</cbc:PriceAmount>
+    </cac:Pricex6
+3A>[<![CDATA[x6
+x>]]>
+x6
+4Onents-<?s  -<?                      xmlnsc:c:bn0ta"
+ ceon="2et<A>
+  </cac:InvoiceLine>
+<3A>/ubl:Inv[<![CoicDATA[x6
+3A>[<![CDATA[x6
+x>]]>
+x6
+4Onene>ts-<?s-<?       0          
+     xmlns:cbc:na"
+ c
+e>

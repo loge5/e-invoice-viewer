@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/f3xtures.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm=version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/f3xtures.md). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:datml version=ServiceSupplyTradeCountry
+    xrtyTaxSch.eme>
+        <cbc:Company"urn:un:unece:uncefact:datml version=ServiceSupplyTradeCountry
+    xrtyTaxSch.eme>
+        <cbc:CompanyID>axScheme>
+  t 

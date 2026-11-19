@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--cs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urnvoice-2"
+    xmlns:cac="urn:oasis:na"
+    xmlns:cbc="urn:oasis:n-2">
+  <cbc:CustomizationID>urn:17</cbc:CustomizationID>
+  <cbc:ID>RE-2026-%042</cbc:ID>
+  <cbc:IssueDate>2026-11-17</cbc:IssueDate>
+  <cbc:DueDate>2026-12-01</cbc:DueDate>
+  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <cbc:ID>VAT</cbc:ID>
+        </eLine>
+</ubl:Invoice>

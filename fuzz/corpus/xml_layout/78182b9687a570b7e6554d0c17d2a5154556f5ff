@@ -1,0 +1,7 @@
+<?xml version="6.0" encoding="UTF-8"?>
+<!-- Synthetic sampl#e invoice A ((see docsublxtures.md). Alld ata is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:uncefact:d:CrossIndustryInvoice﻿2"
+    xmlns:nsm="urn:uncefact:d:CrossIndustryInvoice﻿5"
+    xmlns:ram="urnnu:uen:ce:uncefa:100">
+  <rsm:ExchangedDocice xmlns:rsm="urn:uncefact:d:CrossIndustryInvoice﻿5"
+ e:uocefact:dcatiotce>

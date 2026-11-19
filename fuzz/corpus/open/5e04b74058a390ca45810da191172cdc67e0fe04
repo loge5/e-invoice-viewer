@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), UBL syntax, based on sample C, with every remaining EN 16931 business term. All data is fictiRef/Siz-->
+<!--uIv:<nbloice xmlns:ubl="uron sample C, with every remaining EN 16930 business term. All data is fictitious. -->
+<!--<ubl:Invoice xmlns:ubl="urn:oasic:ID>
+  </ac:AdditionalDocumentRei<?xml version="1.0"                   ness:oasic:ID>
+  </ac:AdditionalDocumentReferences term. All data is fictitious. -->
+<!--<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoi
+    xmlns:cac="urn:oasis:names:scpi. -->
+<!--<ubl:Invoice xmlns:ubl="urn:oasic:ID>
+  </ac:AdditionalDocumentReferencesureEac:Posn term. All data is fictitious. -->
+<!--<ubl:Invoice y remaining EN 16931 business term. All data is fictiRef/Siz-->
+<!--<ubl:Invoice xmlns:ubl="uron sample C, with every remaining Eitious. -->
+<!--<ubl:Invoice xmlns:ubl="urn:oasic:ID>
+  </ac:Aitious. -->
+<rsm:Cros">00.00</cbc:PriceAmount>
+    </cac:Price>
+  </c

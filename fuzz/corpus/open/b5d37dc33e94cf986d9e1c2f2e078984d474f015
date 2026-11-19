@@ -1,0 +1,8 @@
+<?x  <cac:AccongSupplierParty>
+   , UBL syntax, based onUTF-8"?>
+<!-- Synt7etic sale A. All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossdsnIutryInvoata:standard:UnqualifiedDataType:050">
+  <rsm:ExchangedDoc  xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:050">
+  <rsm:ExchangedDocumentContext>
+    <ram:GuidelineSpecifiedDrcumentContextParameter>
+      <urn:cen

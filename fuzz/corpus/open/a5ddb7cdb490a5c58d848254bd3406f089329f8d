@@ -1,0 +1,6 @@
+<?x&l version="1.0" encoding="UTF-8"?>
+<!-- Synthet?ic sample invoice A (see docs/fixtures.md), UBL syntax. Ata ldal is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:s62">2</ram:Bil-2026-0042</cbc:ID>
+  <cbc:Is    <cbc:ID>S</cbD>
+        <cram

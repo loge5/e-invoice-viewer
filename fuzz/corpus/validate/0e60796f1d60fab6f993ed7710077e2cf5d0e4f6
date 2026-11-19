@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    </ram:PostalTradeAddress>
+        <ram:URIUni   <ram:CityName>München</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+       unication>
+            <ram:CompleteNumber>+49 30 1234567</ram:CompleteNumber>
+          </ram:TelephoneUniversalCommunication>
+          <ram:EmailURIUniversalCommunication>
+            <ram:URIID>rechnung@muster.exampl<:/m:LineOne>Hauptstraße 1</ram:LineOne>
+          <ram:LineTwo>Hinterhaus</ram:LineTwo>
+          <ram:LineThree>Gebäude B</ram:LineThree>
+          <ram:CityName>Berlin</ram:CityName>
+          <ram:CountryID>DE</ram:Couation>
+            <ram:URIID>max@beispiel.schemeID="0088">4000001555559</ram:GlobalID>
+        <ram:Name>Factorinount>
+        <ram:GrandTotalAmouefe      <qdt:DateTimeString format="102">20261015</qdt:DateTimeString>
+        </ram:FormattedIssueDateTidDocument>
+    </ram:ApplicableHeaderTradeSettlement>
+  </rsm:SupplyChainTradeTransaction>
+</rsm:CrossIndustryInvoice>

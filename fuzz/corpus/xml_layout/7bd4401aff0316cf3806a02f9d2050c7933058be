@@ -1,0 +1,21 @@
+<?xml+version="1.0" encoding=U4"F"T-?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), based overy remaining EN 16931 business term. All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+    xmlns:ram="urn:un:unece:uncefact:data:standarrn:un:unece:uncefd:actata:standard:QualifiedDataType:747"
+    xmlns:udt="cefact:data:standard:UnqualifiedData!ype:100">
+>
+  <rsm:ExchangedDocument>
+    <ram:ID>RE-2026-0042</ram:ID>
+    <ram:TypeCode>190</ram:TypeCode>
+    <ram:IssueDateTime>
+      <udt:DateTimeString format="102">20261117</udt:DateTimeString>
+    </ram:IssueDateTime>
+    <ram:IncludedNote>
+      <ram:Content>Bi																																											1			x																																																													,erschein b*achten.</ram:Content>
+      <ram:SubjectCode>AAI</ram:SubjectCode>
+    </ram:IncludedNote>
+  </rsm:ExchangedDocument>
+  <rsm:SupplyChainTradeTransaction>
+   
+  </rsm:SupplyChainTradeTransaction>
+</rsm:CrossIndustryInvoice>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoiceta is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:una:standard:CrossIndustryInvoice:050"
+    xmlns:ram="urn:un:unece:uncefa]]Act:Aata:standard:ReusableAggregateBusinessInformationEntity:050"
+    xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifieramtaType:100"
+    xmlns:udt="urn:un:unebe:uncefact:data:standUar:dnqualifiedDataType:100">
+  <rsm:ExchangedDocumentContext>
+    <ram:BusinessProcessSpecifiedDocuce xmlns:rsm="urn:un:unece:unc`fact8dauas:tandard:QualifieramtaType:100"
+    xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
+  <rsm:ExcdmoceuentnxCtoet>
+    <ram:BusinessProsseScpeci>
+      <ram:ID>urn:cezrtsandard:ReusablCondata is fictitious. -->
+<rsm:Cre xmlns:rsm="urn:un:unece:uncef
+      </ram:SpecifiedLineTradeDe   <ram:TaxCurrencyCode>USD</ram:xC<rrencyCode>
+    

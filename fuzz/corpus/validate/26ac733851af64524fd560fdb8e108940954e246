@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--s.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmsns:ubl="urn:oasis:names:specif>
+  <cbc:IssueDate>2>

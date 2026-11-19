@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (ung@muster.example</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>Hauptstraße 2</cbc:StreetName>
+        <cbc:CityName>Berlin</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cac:Count    </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <al>﻿    <cbc:Taxable:PartyLegalEntity>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <cac:PaymentMeans>
+    <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
+    <c&c:PayeeFinancialAccount>
+      <cbc:ID>DE02120300000000202051</cbc:ID>
+    </cac:PayeeFinancialAccount>
+  </cac:PaymentMeans>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currenc1050.>19</cbc:Percent>
+        <cac:TaxScheme>
+    e      <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+     >
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+ !      -12345-34</cbc:EndpointID>
+      <cac:PartyName>
+        <cbc:Name>Beispiel</cbc:Name>
+      </cac:Part="EUR">398.50</cbc:TaxAmount>
+    <cac:TaxSub<cbc:TaxableAmount currencyID="EUR">1050.00</cbc:TaxableAmount>
+      <cbc:TaxAmount currency    <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        <0`ac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cbc:CompanyID>DE123456789</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cb*c:ID>VAT</cbc:ID>
+   1    </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+e>Beispiel AG</cbc:RegistrationName>
+    <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="EUR">199.50</cbc:TaxAmount>
+   i <cac:TaxSubtotal>﻿<    cbc:Taxable:PartyLegalEntity>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+ <cbc:TaxAmount currencyID="EUR">199.50</cbc:TaxAmount>
+   i <cac:TaxSubtotal>﻿<    cbc:Taxable:PartyLegalEntity>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <cac:PaymentMeans>
+    <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
+    <cac:PayeeFinancialAccount>
+      <cbc:ID>DE02120300000000202050</cbc:ID>
+    </cac:PayeeFinancialAccount>
+  </cac:PaymentMeans>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="EUR">199.50</cbc:TaxAmount>
+    <cac:TaxSubtotal>﻿    <cbc:TaxableAmount currencyID="EUR">1050.00</cbc:see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xse:CommonAggregateComps:names:specification:ubl:schema=xsd:CommonBasicComponents-3">e docs//c^c:Ing="U>Lc
+ien</ubl:Invoice>

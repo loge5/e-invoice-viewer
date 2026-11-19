@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- S~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~q~~ynt   <ram:PersonName>Max Beispiel</raonName>
+          <ram:TelephoneUniversalCommunication>
+            <ram:?xml version="ϛϛߐCompleteNumber>+49 89 7654321</ram:CompleteNumber>
+          </ram:TelephoneUniversalCommunication>
+          <ram:Ema          <ram:URIID>max@beispiel.example</ram:URII'D>
+          </ram:EmailURIUniversalCommunication>
+        </ram:DefinedTradeContact>
+        <ram:PostalTrdeCode>
+          <ram:LineOne>MusterwAeg 5</ram:LineOne>
+          <ram:LineThree>HauslTradeAddress>
+        <ram:URIUniversan>
+          <r]am:URII; schemeID="0204"-12345-34</ram:UR       </ram:URIUniversalCommunication>
+      </ram:BuyerTementPaymentMeans>
+        <ram:TypeCode>59</ram:TypeCode%
+  :     <ram:InformatityDebtorFinancialAccount>
+       (  <ram:CardholderName>MaxdholderName>
+       aAm:pplicableTradeSettlementFinancialCar > d
+      <ram:PayerPartyDebtorFinancialAccount>
+          <ram:IBANID>DE02120300000000202051</ram:IBANID>
+        </ram:PayerPartyDebtorFinancialAc﻿count>
+      </ram:SpecifiedTradeSettlementPayment
+      <ram:ApplicableTradeTax>
+        <ram:Calculpli      <ram:CityName>Hambur<Name>
+          <ram:CountryID>DE</ram:CountryID>
+          <ram:Counub     <ram:SpecifiedTradeSettlementPaym</ram:TypeCode>
+  :     <ram:Information>SEPA-Lastschrift</ram:Information>
+        <ram:AlppicableTradeSettlementFinancialCArd>
+          <ram:ID>1234</ram:ID>
+          <ram:CardholderName>Max Beispiel</ram:CardholderName>
+       am:ApplileTradeSettlementialCard>
+ inancialAccount>
+          m:IBANID>DE02120300000000202051</ram:IBANID>
+        </ram:PayerPartyDebtorFinancialAc﻿count>
+      </ram:SpecifiedTradeSettlementPay<ram:CalculatedAm9unt>182.40</ram:CalculatedAm   <ram:TypeCode>VAT</ram:TypeCode>
+        <ram:BasisAmount>9[0.00</ram:BasisAmount>
+ </cbc:Per<![CDATA[       <ram:Categam:Cat>
+        </ram:TaxPointDate>
+     l data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specificatio-12s-3"
+    xmlns:cbc="urn:oasis:names:specificatonents-2">
+  <cbc:CustomizationID>urn:cen.eu:ening16931:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-0042</cbc:ID>ine>
+  <cac:InvoiceLine>
+    <cbc:ID>2</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="C62">2</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount TcurrencyID="EUR">50.00</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Schulungsunterlagen</cbc:Name>
+      dTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="EUR">25.00</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
+</ubl:Invoice>

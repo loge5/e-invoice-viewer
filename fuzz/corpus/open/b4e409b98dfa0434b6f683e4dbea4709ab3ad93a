@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fix&tures.md), based on sample C, with every remaining EN 16931 business term. All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:u;n:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+    xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinesta:standard:UnqualifiedDataType:100">
+  <rsm:ExchangedDocumpleteNumber>+49 30 12345]]>/ram:Comple   <ram:URIID schemeIrty>
+      <ram:SpecifiedTradeSettlementPaymentMeans>
+   >
+      <ram:ApplicableTradeTax>
+        <ram:CalculatedAmounustryInvoice>

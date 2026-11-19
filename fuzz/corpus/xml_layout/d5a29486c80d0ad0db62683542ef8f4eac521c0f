@@ -1,0 +1,5 @@
+<?xml version="2.0" encoding="UTF-8"?>
+<!-- Synthetic sampl#e invoice A fs. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:uncefact:lata:standard:CrossIndustryInvoice﻿5"
+    xmlns:ramm="urn:uncefact:data:standard:CrossIndustryInvoice﻿5"
+    xmlotce>

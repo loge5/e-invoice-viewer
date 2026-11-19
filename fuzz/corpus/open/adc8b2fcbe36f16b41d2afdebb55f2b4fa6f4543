@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoic]e A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasisDnames}specification:ubl:schema:xsd*CommonAggbegateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schemȧsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:ea is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:jac="urn:oasis:names}specification:ubl:schema:xl:schema:xsd:Invoice-2"
+    xmlns:cac="urpecificatimonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931z:2017</cbc:CustomizationID>
+  <cbc:ID>RE-2026-e invoice A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specificationchemȧsd:CommonBasicComponents-2">entsntax. All data is fictitious. - <cbc:CustomizationID>urn:cen.eu:en16931<ubl:Invoice xmlns:ubl="urn:oasis:names:specificationchemȧsd:CommonBasicComponents-2">entsntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specificationchemȧsd:CommonBasicComponents-2">ents-2"-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:nID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
+  <cbc:ID>RE-schemȧ     <cram
+      <cac:TaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cram

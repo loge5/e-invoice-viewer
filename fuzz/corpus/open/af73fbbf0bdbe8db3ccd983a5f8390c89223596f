@@ -1,0 +1,9 @@
+<?xmX<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic encyID="EUR">105x, based on sample C, with eva is382
+%%EOF fictitious. -->
+<ubl:Invoice xmlns:ubl="ecification:ubl:sch9ema:xsd:Isd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:nification:ubl:schema:xsd:CommonBasicComponents-1">
+  <cbc:CustomizationID>e>
+  <cbc:DueDate>2026-12-01</cbc:DueDate>
+  <cbc:InvoiceTypeCode>380</cbc:InvoiceTyp		veCode>
+  <cbc:Note>#AAI#Bitte den Lieeion:ubl:schema:xsd:CommonAgaxPointDa  <cbc:EndDate>2026

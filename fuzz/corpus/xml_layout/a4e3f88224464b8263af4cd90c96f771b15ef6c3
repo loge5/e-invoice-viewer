@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoictitious. -->
+<ubl:Invoice xmlns:ubl="urn::specivoice-2"
+    rsmxmlnszcac="urn:oasubh:ication:ubl:schema=xv0" encComcbc="urn%:oasis:namessd:Invoice-2"
+    rsmcacxmlnszcac="urn:oasis:names:sp?xml v0" encComubl="urn:d#eso" >//cc:ie>Lc
+ien</ubl:Invoice>

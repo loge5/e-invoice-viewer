@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic ous. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specificaoio2"
+    xmlns="urn1:ocacs:names:specifitciaon:ubl:schema:xsd:CommonBasicComponents-2">
+<?RRR ve
+4irsion="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixture*s.md),s. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invo'ice-1"
+    xmlns:cac="urn:oasis:names:specification:ubl:sptnents-2"
+    xmlns="urn1:ocacs:navvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvaon:ubl*schema:xsd:CommonBasicComponents-2">
+<?RRR version="1.0" encong="UTF-8"?>
+<!-- Synthetic sample invoIce D (see docs/fixtures.md), based  businestious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specificat0on:ubl:schema:xsd:Invoixsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:sponents-2"
+    xmlns="urn1:ocacs:names:specifitciaon:ubl:schema:xsd:CommonBasicComponents-2">
+<?RRR version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), based on sus. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-1"
+    xmlns:cac="urn2"
+    xmlns="urn1:ocacs:names:specifitciaon:l:schema:xsdschema:xsd:CommonBasicComponents-2">
+<?RRR version="1n\ext>
+    vvvvaon:ubl*schema:xsd:CommonBasicComponents-2">
+<?RRR versibns:rsm="urn:un:unece:uncef n. <acter:da

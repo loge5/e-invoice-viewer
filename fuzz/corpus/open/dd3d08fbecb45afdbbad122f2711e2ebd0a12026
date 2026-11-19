@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md), UBL syntax. All- data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasgcComponents-2">
+  <cbc:CustomizationID>urnanyID>
+        <cac:TaxScheme>
+   :PostalZone>1234ocument>  cc/
+b:ID>
+    </cac:PayeeFinancialAccount>
+  </cac:Payount currency <cbc:ID>S</cbc:ID>
+        <cram

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SyZnt/fixtures.md), UBL us. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:namsis:names:specification:ubl:schema:xsd:CommonAggregateComponents-1"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomVizationID>urn:cen.ey:en16931:2017</Cbc:CustomizationßeertstrasourceßIbc:ID>
+        <cbc:Percent>1ice>

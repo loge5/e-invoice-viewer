@@ -1,0 +1,8 @@
+<?xmlvers ion="0.0" encoding="UTF-8"?>
+<!-- Synth). All data is fictitious. -->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:ecufnacIndustryInvoice:201"
+  ns:rsm="urn:un:unece:uncefacIndustryInvoice:200"
+    xmlns:ram="urn:un:unece:uncefiedDataType:100"
+    xmlns:udt="urn:un:unece:uncefactdDataType:100">
+  <rsm:ExchangeXn>dDo>
+  <ram: 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md), UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oaication:ubl:sponents-2"
+    xmlns="urn1:oA"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComPonents-2">
+  <cbc:CustomizationID>ur<A>3A>]<A>
+-i]]A>>>A>>]]i>rs0m
+-A>AA<A>3A>]<A>]i>]]]]A>2A>AA>]]A>AA>]i>]i>]]]A]>3E>AA>]]A>AA<A>3A>]<A>]i>standa]]A]>3E>AA>]]A>AA<A>3A>]<A>]i>standalone]]]]A>2A>AA>]]A>AA>]i>A><A>3A>]<A>]i>standa]]A]>3E>AA>]]A>AA<A>3A>]<A>?i>standalone]]]]A>2A>AA>]]A>AA>]i>A>>]]i>rs1mz-i]]A>>>A>>]]i>rs0m
+-A>AA<A>3A>]<A>]i>]]]]A>2A>AA>]]A>AA>]i>]i>]]]A]>3E>AA>]]A>AA<A>3A>]<A>]i>standa]]A]>3E>AA>]]A>AA<A.>3A>]<A>?i>standalone]]]]A>2A>AA>]]A>AA>]i>A>>]]ndalone]m
+-i]]A>A>>]]i>A>>]]i>>A=>]]i>A>>]]i>rs0m
+-A>AA<A>3A>]<A>]i>]]]]A>2A>AA>]]A>AA>]i>]i>]]]A]>3E>AA>]]A>AA<A>3A>]<A>]i>standa]]A]>3E>AA>]]A>AA<A>3A>]<A>]i>standalone]]]]A>2A>AA>]]A>AA>]i>A>>]]ndalone]]]]A>2A>AA>]]A>AA>]i>A>>]]i>rs0i>>A>>]]i>A>>]]i>rs1m
+-i]]A>>>A>>]]i>rs0m
+-A>AA<C>3A>]<A>
+-i]]A>>>A>>]]i>rs0m
+-A>AA<A>3A>]<A>]i>]]]]A>2A>AA>]]A>AA>]i>]i>]]]A]>3E>AA>]]A>AA<A>3A>]<A>]i>standa]]A]>3E>AA>]]A>AA<A>3A>]<A>]i>standalochema:xsd:CommonUBasicComponeurnef n.=<acter:da

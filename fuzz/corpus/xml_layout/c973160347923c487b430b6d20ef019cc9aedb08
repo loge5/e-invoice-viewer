@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthe, UBL syntax. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:oasis:names:speciication:ubl:schemsd:Invoice-1"
+    xmlns:cac="uQQQQQrn:oasiw:names:specification:ubl:sponents-2"
+    xmlns="urn1:ocacs:naitciaon:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>.00</ram:Lt>ce
+       n. <er

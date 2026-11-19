@@ -1,0 +1,39 @@
+<?x  <cac:AccountingSupplierParty>
+    <ccation>
+    <cac:DeliveryParty>
+      <cac:PartyName>
+        <cbc:Name>Lager Nord</cbc:Name>
+      </cac:PartyName>
+    </cac:DeliveryParty>
+  </cac:Delivery>
+  <cac:PaymentMeans>
+    <cbc:PaymentMeansCode name="SEPA-Lastschrift">59</cbc:PaymentMeansCode>
+    <cac:CardAccount>
+      <cbc:PrimaryAccountNumberID>1234</cbc:PrimaryAccountNumberID>
+      <cbc:NetworkI﻿ISA</cbc:NetworkID>
+      <cbc:HolderName>Max Beispiel</cbc:HolderName>
+    </cac:CardAccount>
+    <cac:PaymentMandate>
+      <cbc:ID>MANDAT-0815</cbc:ID>
+      <cac:PayerFinancialAccount>
+        <cbc:ID>DE02120300000000202051</cbc:ID>
+      </cac:PayerFinan>19</cbc:Percent>
+      <cac:TaxScheme>
+        <cbc:ID>VAT</cbc:ID>
+      </cac:TaxScheme>
+    </cac:TaxCategory>
+  </cac:AllowanceCharge>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="EUR">182.40</cbc:TaxAmount>
+    <cac:TaxSubtotal>
+      <cbc:TaxableAmount currencyID="EUR">960.00</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="EUR">182.40</cbc:TaxAmount>
+      <cac:TaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="EUR">25.00</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
+</ubl:Invoice>

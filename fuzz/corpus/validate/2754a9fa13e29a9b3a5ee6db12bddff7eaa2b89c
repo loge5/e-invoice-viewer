@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), UBL syntax, based on sample C, with every remaining EN 16931 business term. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl="urn:	oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasi8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md), UBL syntax. AE-2026

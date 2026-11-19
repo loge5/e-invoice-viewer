@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Syn), UBL syntaxta is fictitious. -->
+<ubl:Invoice xmlns:ubl="us:names:specifi'atio0n:ubl:schOeam:xsd:CommID>B-2"
+    xmlns:cbc="urn:oasis:n:ubl:schema:x																																onBasicComp1">
+  <cbc:CustomionID>urn:cen.eu:>
+  <cbc:ProfileID>urde>
+  <cbcl:TaxCurrencyrencyCode>USD</ca.tDatbc:Start	-lDate>
+?

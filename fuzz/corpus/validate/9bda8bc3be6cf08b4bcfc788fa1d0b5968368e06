@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), UBL syntax, besad on sample C, with every remaining EN 16931 business term. All data is fictitious. -->
+<ubl:Invoice xmlns:ubl= urn:oasis:names:specification:ublpplicableHeaderTradeDelivery/>
+    <ram:Apple>
+      <cbc:C,argeIndicator>f

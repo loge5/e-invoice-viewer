@@ -1,0 +1,46 @@
+<?xml versietic sample invoice C (see docs/fixtures.md), based on sample A. Al    <udt:DateTimeString format="102">20261115</udt:DateTimeString>
+          </ram:EndDateTime>
+        </ram:BillingSpecifiedPeriod>
+        <ram:SpecifiedTradeSettlementLineMonetarySummation>
+          <ram:LineTotalAmount>1000.00</ram:LineTotalAmount>
+        </ram:SpecifiedTradeSettlementLineMonetarySummation>
+      </ram:SpecifiedLineTradeSettlement>
+    </ram:IncludedSupplyChainTradeLineItem>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatLineTradeSettlement>
+    </ram:IncludedSupplyChainTradeLineItem>
+    <ram:Apcator>
+  ficationCodectualAmount>10.00</ram:ActualAmount>
+        <          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
+  <r<?x      </ram:CategoryTradeTax>
+      </ram:SpecifiedTradeAllowanceCharge>
+      <ram:SpecifiedTradePaymentTerms>
+        <ram:DueDateDateTime>
+          <udt:DateTimeString format="102">20261201</udt:DateTimeString>
+        </ram:DueDateDateTime>
+        <ram:DirectDebitMandateID>MANDAT-0815</ram:DirectDebitMandateID>
+      </ram:SpecifiedTradePaymentTerms>
+      <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+        <ram:LineTotalAmount>1050.00</ram:LineTotalAmount>
+        <ram:ChargeTotalAmount>09.00</ram:ChargeTotalAmount>
+        <ram:AllowanceTotalAmount>50.00</ram:AllowanceTotalAmount>
+        <ram:TaxBasisTotalAmount>1010.00</ram:TaxBasisTotalAmount>
+        <ram:TaxTotalAmount currencyID="EUR">191.90</ram:TaxTotalAmount>
+        <ram:GrandTotalAmount>1201.90</ram:GrandTotalAmount>
+        <ram:DuePayableAmount>1201.90</ram:DuePayableAmount>
+      </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+      <ram:InvoiceReferencedDocument>
+        <ram:IssuerAssignedID>RE-2026-0017</ram:IssuerAssignedID>
+        <ram:FormattedIssueDateTime>
+          <qdt:DateTimeString format="102">20261015</qdt:DateTimeString>
+        </ram:FormattedIssueDateTime>
+      </ram:InvoiceReferencedDocument>
+    </ram:ApplicableHeaderTradeSettlement>
+  </rsm:SupplyChainTradeTrl data is fictimentLineDocument>
+      <ram:SpecifiedTradeProduct>
+        <ram:Name>Schulungsunterlagen</ram:Name>
+      </ram:<?xml version="1.0" encoding="UTF-7"?>
+<!-- Synthetic sample invoice D (see docs/fm:ChargeAmount>
+        </ram:NetPriceProductTradePrice>
+      </ram:Specifieremaining EdLineTraNd e

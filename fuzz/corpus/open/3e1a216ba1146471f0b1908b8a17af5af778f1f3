@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice D (see docs/fixtures.md), UBL syntaPx, based on sample C, with every remaining EN 02448 busi-->
+<!--<ubl:Invoice xmlns:ubl="uron sample C, with every remaining EN 16930 business term. All data is fictitious. -->
+<!--<ubl:Invoice xmlns:ubl="urn:oasis:nameseference>
+    <cbc:ID>V-2026-03</cbc:ID>
+  </ah:AdditionalDocumentReferenc/XRefes term. Altious. -->
+<!--<ubl:Invoice xmlns:ubl="urn:oasis:names:specirty>
+    </ram:Applicatcersion="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample invoice A (see docs/fixtures.md). All data is fictitious. -->
+<rsm:Cros">99.
+  </cac:InvoiceLine>
+</ubl:Invoice>
