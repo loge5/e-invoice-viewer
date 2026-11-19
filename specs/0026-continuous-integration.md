@@ -33,17 +33,17 @@ For 1.0, every change is checked when it is pushed (author, 2026-11-19).
 
 ## Acceptance criteria
 
-- [ ] Given a push to a branch, then the workflow runs both jobs; a test that
+- [x] Given a push to a branch, then the workflow runs both jobs; a test that
       fails on either system fails the run, and its annotation shows the
       failing test.
-- [ ] Given a commit whose `Cargo.lock` does not match `Cargo.toml`, then
+- [x] Given a commit whose `Cargo.lock` does not match `Cargo.toml`, then
       the Linux job fails at `--locked` (checked once on a trial branch).
-- [ ] A second run without changes uses the cache (shown in the log) and the
+- [x] A second run without changes uses the cache (shown in the log) and the
       Linux job takes under 10 minutes.
-- [ ] A static check of the workflow (like T4 of 0022) shows: both triggers,
+- [x] A static check of the workflow (like T4 of 0022) shows: both triggers,
       both jobs with the steps named above, pinned actions, read-only
       permissions.
-- [ ] The README shows the CI badge.
+- [x] The README shows the CI badge.
 
 ## Out of scope
 
@@ -69,3 +69,34 @@ For 1.0, every change is checked when it is pushed (author, 2026-11-19).
 - P1 a push to a trial branch runs both jobs green; a deliberately broken
   test and a stale `Cargo.lock` on a trial branch fail the run with a
   readable annotation; a second run uses the cache (AC1–AC3).
+
+## Progress
+
+- **Done**:
+  - `.github/workflows/ci.yml`: push to any branch and pull requests;
+    Linux job (fmt, clippy, tests, accessibility tree test under xvfb,
+    architecture check) and Windows job (tests in MSYS2 UCRT64); cargo cache
+    with `actions/cache`; pinned actions; `contents: read`.
+  - `scripts/ci-step.sh`: a failing step reports as an annotation first the
+    failure blocks of the test harness, tests running longer than 60 s,
+    panics and error lines, then the end of the output; tests stop after 30
+    minutes instead of hanging until GitHub's 6-hour limit.
+  - The Linux job skips the catalogue check (`german_catalogue_is_complete`):
+    xgettext of Ubuntu 24.04 (gettext 0.21) cannot read Rust; the Windows
+    job runs it with a current gettext.
+  - README badge.
+- **Verified** (2026-11-19, own branches on GitHub):
+  - AC1: failing tests failed the run on Windows (`public_samples`, path
+    separators; `every_schema_compiles`, test order) and on Linux (hang in
+    `attribution.rs`, stopped by the time limit); each annotation named the
+    failing or hanging tests. After the fixes, run `a9ad984` green on both.
+  - AC2: branch `ci-lock-trial` with a version in `Cargo.toml` not in
+    `Cargo.lock`: the Linux job failed at clippy with "cannot update the
+    lock file … because --locked was passed" (Windows likewise); branch
+    deleted afterwards.
+  - AC3: run `07b6aae` after a change to documentation and the fuzz corpus
+    only: cache restored (26 s), Linux job 3 min 42 s (14 min with a cold
+    cache), Windows 6 min 21 s.
+  - AC4: `ci_workflow_checks_every_push` in `crates/app/tests/packaging.rs`.
+  - AC5: `readme_shows_ci_badge`.
+
