@@ -216,46 +216,55 @@ mod tests {
         dir
     }
 
+    /// An absolute path on this system: `/r/a.pdf`, on Windows `C:/r/a.pdf`.
+    fn p(path: &str) -> String {
+        if cfg!(windows) {
+            format!("C:{path}")
+        } else {
+            path.to_string()
+        }
+    }
+
     // AC5
     #[test]
     fn reopening_moves_entry_to_top_without_duplicates() {
-        let files = list(&["/r/a.pdf", "/r/b.xml", "/r/a.pdf"]);
+        let files = list(&[&p("/r/a.pdf"), &p("/r/b.xml"), &p("/r/a.pdf")]);
 
-        assert_eq!(entries(&files), ["/r/a.pdf", "/r/b.xml"]);
+        assert_eq!(entries(&files), [p("/r/a.pdf"), p("/r/b.xml")]);
     }
 
     // AC5
     #[test]
     fn eleventh_entry_drops_oldest() {
-        let paths: Vec<String> = (1..=11).map(|n| format!("/r/{n}.pdf")).collect();
+        let paths: Vec<String> = (1..=11).map(|n| p(&format!("/r/{n}.pdf"))).collect();
         let paths: Vec<&str> = paths.iter().map(String::as_str).collect();
 
         let files = list(&paths);
 
         assert_eq!(files.entries().len(), MAX_ENTRIES);
-        assert_eq!(entries(&files)[0], "/r/11.pdf");
-        assert_eq!(entries(&files)[9], "/r/2.pdf");
+        assert_eq!(entries(&files)[0], p("/r/11.pdf"));
+        assert_eq!(entries(&files)[9], p("/r/2.pdf"));
     }
 
     // AC5
     #[test]
     fn same_name_in_different_folders_both_listed() {
-        let files = list(&["/tmp/x/rechnung.pdf", "/tmp/y/rechnung.pdf"]);
+        let files = list(&[&p("/tmp/x/rechnung.pdf"), &p("/tmp/y/rechnung.pdf")]);
 
         assert_eq!(
             entries(&files),
-            ["/tmp/y/rechnung.pdf", "/tmp/x/rechnung.pdf"]
+            [p("/tmp/y/rechnung.pdf"), p("/tmp/x/rechnung.pdf")]
         );
     }
 
     // AC8
     #[test]
     fn remove_drops_entry() {
-        let mut files = list(&["/r/alt.pdf", "/r/b.xml"]);
+        let mut files = list(&[&p("/r/alt.pdf"), &p("/r/b.xml")]);
 
-        files.remove(Path::new("/r/alt.pdf"));
+        files.remove(Path::new(&p("/r/alt.pdf")));
 
-        assert_eq!(entries(&files), ["/r/b.xml"]);
+        assert_eq!(entries(&files), [p("/r/b.xml")]);
     }
 
     // AC9: first start
@@ -334,32 +343,29 @@ mod tests {
             [("Keine Einträge".to_string(), None)]
         );
 
-        store.add(Path::new("/tmp/x/a_1.pdf"));
-        store.add(Path::new("/tmp/x/b.xml"));
-        store.add(Path::new("/tmp/x/a_1.pdf"));
+        store.add(Path::new(&p("/tmp/x/a_1.pdf")));
+        store.add(Path::new(&p("/tmp/x/b.xml")));
+        store.add(Path::new(&p("/tmp/x/a_1.pdf")));
 
         assert_eq!(
             menu_items(store.menu()),
             [
                 (
-                    "a__1.pdf — /tmp/x".to_string(),
-                    Some("/tmp/x/a_1.pdf".to_string())
+                    format!("a__1.pdf — {}", p("/tmp/x")),
+                    Some(p("/tmp/x/a_1.pdf"))
                 ),
-                (
-                    "b.xml — /tmp/x".to_string(),
-                    Some("/tmp/x/b.xml".to_string())
-                ),
+                (format!("b.xml — {}", p("/tmp/x")), Some(p("/tmp/x/b.xml"))),
             ]
         );
         assert_eq!(
             load(&dir.join("recent")).0.entries(),
             [
-                PathBuf::from("/tmp/x/a_1.pdf"),
-                PathBuf::from("/tmp/x/b.xml")
+                PathBuf::from(p("/tmp/x/a_1.pdf")),
+                PathBuf::from(p("/tmp/x/b.xml"))
             ]
         );
 
-        store.remove(Path::new("/tmp/x/a_1.pdf"));
+        store.remove(Path::new(&p("/tmp/x/a_1.pdf")));
 
         assert_eq!(menu_items(store.menu()).len(), 1);
     }
