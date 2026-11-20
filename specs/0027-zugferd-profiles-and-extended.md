@@ -1,7 +1,7 @@
 ---
 id: 0027
 title: ZUGFeRD/Factur-X - profile schemas and profile rules
-status: reviewed
+status: in-progress
 created: 2026-11-19
 depends_on: [0003, 0009, 0023, 0024]
 ---
@@ -68,10 +68,17 @@ is not needed and not bundled.
   - findings carry the rule ID from the file; an assertion or report
     without `id` gets the rule ID `FX` and keeps its message;
   - flag `warning` → warning, no flag → error;
-  - where the CEN rules are applied too (Basic, EN 16931, Extended), profile
-    rules whose ID is also a rule ID of the bundled CEN rules are not
-    evaluated: the CEN rules are the reference for them, and a rule is never
-    reported twice.
+  - where the CEN rules are applied too (Basic, EN 16931), profile rules
+    whose ID is also a rule ID of the bundled CEN rules are not evaluated:
+    the CEN rules are the reference for them, and a rule is never reported
+    twice.
+- **Extended** (changed during implementation, 2026-11-20): is checked
+  against its profile schema and rules only, not against the CEN rules.
+  Extended allows what EN 16931 forbids (sub-invoice lines,
+  `FormattedIssueDateTime`, line totals that include sub-lines), and its
+  Schematron contains the EN 16931 rules adapted to it, as in FeRD's own
+  validation; with the CEN rules, 21 of 25 FeRD Extended samples got
+  errors (`CII-DT-027`, `BR-CO-10`, `BR-S-08`, …).
 - **Minimum and Basic WL**: are checked against their profile schema and
   rules; the CEN rules stay not applicable to them, and the note that they
   are not complete invoices (0009) stays, without claiming that no rules
@@ -90,35 +97,35 @@ is not needed and not bundled.
 
 ## Acceptance criteria
 
-- [ ] Given each FeRD sample invoice of the profiles Minimum to Extended (XML
+- [x] Given each FeRD sample invoice of the profiles Minimum to Extended (XML
       and, where present, PDF), when it is validated, then its profile
       schema and rules are applied and the profile check reports no error
       (local test against the package, see Notes).
-- [ ] Given the FeRD XRechnung samples, then no profile rules are applied
+- [x] Given the FeRD XRechnung samples, then no profile rules are applied
       and the XRechnung rules are applied as before (local test).
-- [ ] Given a committed synthetic EN 16931-profile PDF invoice with an
+- [x] Given a committed synthetic EN 16931-profile PDF invoice with an
       element that only the Extended profile allows, then the profile schema
       check reports it with rule ID `XSD`.
-- [ ] Given a committed synthetic Minimum invoice in a PDF, then the profile
+- [x] Given a committed synthetic Minimum invoice in a PDF, then the profile
       schema and rules are applied, the summary names them together with
       the note of 0009, and a violated Minimum rule is shown as a finding
       with its rule ID.
-- [ ] Given a committed synthetic Basic invoice with two preceding invoices
+- [x] Given a committed synthetic Basic invoice with two preceding invoices
       (BG-3) in a PDF, then no schema finding is reported (D22B), while the
       same XML as a plain XML file with the CEN identifier still gets the
       D16B finding of 0023.
-- [ ] Given a violated assertion without `id` (e.g. an attribute marked as
+- [x] Given a violated assertion without `id` (e.g. an attribute marked as
       not used), then the finding has rule ID `FX` and the message from the
       Schematron.
-- [ ] Given an EN 16931-profile PDF invoice that violates a rule present in
+- [x] Given an EN 16931-profile PDF invoice that violates a rule present in
       both the CEN and the profile rules (e.g. `BR-CO-15`), then exactly one
       finding with that rule ID is reported.
-- [ ] A plain CII XML invoice with the CEN identifier, UBL invoices and the
+- [x] A plain CII XML invoice with the CEN identifier, UBL invoices and the
       XRechnung and KoSIT tests give the same results as before.
 - [ ] Validating the largest Extended sample takes no longer than 2 s in a
       release build on the author's machine, including compiling the rules
       on first use.
-- [ ] The bundled files are unchanged copies (checksums in `SOURCE.md`);
+- [x] The bundled files are unchanged copies (checksums in `SOURCE.md`);
       licence notes are in the README and next to the files.
 
 ## Out of scope
@@ -130,6 +137,46 @@ is not needed and not bundled.
   requirements); checking that the XMP profile matches BT-24.
 - A version note for other ZUGFeRD versions: the identifiers carry no
   version.
+
+## Progress
+
+- **Done**:
+  - `rules/facturx-1.09.2/`: XSD sets, Schematron and code list files of
+    the five profiles, unchanged, with `SOURCE.md` (SHA-256 per file) and
+    the Apache 2.0 licence; README (validation, bundled material,
+    limitations), CHANGELOG and `docs/requirements.md` updated.
+  - Schematron engine: `report`, `document()` of bundled files (rewritten to
+    `doc()` of a document loaded under an internal address, never read from
+    disk), rule IDs to leave out; the expression rewrites moved to
+    `schematron/rewrite.rs` (the module was over 1000 lines). All five
+    profile rule sets compile completely (66, 337, 472, 627, 1464).
+  - `validate/profile.rs`: which profile applies, its files and names;
+    `xsd.rs` knows the profile schemas. `Validator::validate_embedded` for
+    the invoice of a PDF; the app calls it for PDFs.
+  - New dependency `iri-string` (already used by xee, same version; the
+    author agreed on 2026-11-20).
+  - No new texts: rule set names are proper names, `XML schema {name}`
+    exists.
+  - Older tests adapted: the variants `a-minimum`, `a-basicwl` (sample A
+    with line items and a Minimum or Basic WL identifier) now get the
+    profile schema errors they have; the KoSIT comparisons leave out
+    invoices checked against a Factur-X profile, which KoSIT does not do;
+    `a-extended` gets the Extended rules.
+- **Verified** (2026-11-20):
+  - `ferd_samples.rs` with `FERD_PACKAGE`: all 57 profile samples as XML
+    and the 57 PDFs (114 invoices) with profile schema and rules applied,
+    no error (AC1); the 4 XRechnung samples without profile rules (AC2).
+    Supporting PDFs in `attachments/` are skipped.
+  - `facturx_profiles.rs` (AC3–AC8), `facturx_bundle.rs` (AC10, SHA-256
+    in the test, no dependency), unit tests for the engine and the rule
+    sets; KoSIT, CEN, XRechnung and schema tests pass (AC8).
+  - AC9 measured: largest Extended sample (X05_03, PDF) opened and
+    validated with the rules compiled first in 1.1 s (release build,
+    `largest_extended_sample_within_two_seconds`); the check in the app is
+    the author's (P1).
+  - fmt, clippy clean; fuzz target `validate` also calls
+    `validate_embedded` and warms up the five profiles.
+- **Open**: AC9 in the app (author).
 
 ## Notes
 

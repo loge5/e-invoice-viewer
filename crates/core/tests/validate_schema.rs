@@ -138,11 +138,21 @@ fn missing_mandatory_element_in_ubl() {
 // AC5: `schema_verdict_equals_kosit` in `validate_reference.rs`, which
 // validates the reference invoices once for all comparisons.
 
-// AC6
+// AC6; since spec 0027 against the schema of the Factur-X profile, which
+// has no invoice lines
 #[test]
 fn minimum_profile_is_schema_checked() {
     let validation = english(&variant("a-minimum.xml"));
-    assert_eq!(validation.applied_rule_sets, ["XML schema CII D16B"]);
+    assert_eq!(
+        validation.applied_rule_sets[0],
+        "XML schema Factur-X 1.09.2 Minimum"
+    );
     assert!(validation.not_applicable_reason.is_some());
-    assert_eq!(schema_findings(&validation), Vec::<&Finding>::new());
+    let findings = schema_findings(&validation);
+    assert!(
+        findings.iter().any(|finding| finding
+            .message
+            .contains("ram:IncludedSupplyChainTradeLineItem")),
+        "{findings:#?}"
+    );
 }

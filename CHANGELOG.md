@@ -6,6 +6,18 @@ All notable changes for users of E-Invoice Viewer. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- ZUGFeRD/Factur-X invoices are checked against the XML schema and the rules
+  of their profile (Factur-X 1.09.2 / ZUGFeRD 2.5.2, from FeRD), including
+  Minimum and Basic WL. The profile schemas are based on CII D22B, so an
+  invoice with several preceding invoices is no longer reported as wrong.
+
+### Changed
+
+- Extended invoices are checked against the Extended rules instead of the
+  EN 16931 rules, which forbid what Extended allows (e.g. sub-invoice lines).
+
 ## [0.3.0] - 2026-11-20
 
 ### Added

@@ -33,7 +33,8 @@ an online service and without uploading your business data anywhere.
   number (`BT-1`, `BG-4`, …) and is formatted for humans (dates, amounts,
   IBANs, code lists).
 - **Validation built in.** Checks against the XML schema (CII D16B, UBL 2.1),
-  the official EN 16931 business rules and the XRechnung CIUS (`BR-DE-*`). Findings are shown at the affected field
+  the official EN 16931 business rules, the XRechnung CIUS (`BR-DE-*`) and,
+  for ZUGFeRD/Factur-X, the schema and rules of the invoice's profile. Findings are shown at the affected field
   or section, with a summary of all errors, warnings and notes.
 - **Raw XML view.** The invoice XML, readably formatted, with search. Fields
   and XML are linked both ways: *Show in XML* jumps from a field or finding to
@@ -73,8 +74,8 @@ Invoices contain personal and business data. E-Invoice Viewer therefore:
 
 Profiles EN 16931 (Comfort), XRechnung, Basic and Extended are shown in full.
 Minimum and Basic WL are shown with a note that they are not complete
-invoices; they are checked against the XML schema, but the EN 16931 rules are
-not applied to them.
+invoices; they are checked against the schema and rules of their profile,
+but the EN 16931 rules are not applied to them.
 
 ## Validation
 
@@ -88,6 +89,15 @@ engine ([xee](https://github.com/Paligo/xee)):
 | XML schemas | UN/CEFACT CII D16B, OASIS UBL 2.1 |
 | CEN EN 16931 validation artefacts (CII and UBL) | 1.3.17 |
 | KoSIT XRechnung Schematron | 2.6.0 (XRechnung 3.0.2) |
+| Factur-X profile schemas and Schematron (FeRD) | 1.09.2 (ZUGFeRD 2.5.2) |
+
+A ZUGFeRD/Factur-X invoice — a CII invoice in a PDF, or one whose profile
+identifier names a Factur-X profile — is checked against the XML schema of
+its profile (based on CII D22B) instead of CII D16B, and against the
+profile's Schematron. Profiles Basic and EN 16931 get the EN 16931 rules
+too; rules that are in both are reported once, from the EN 16931 rules.
+Extended is checked against its own rules only, which contain the EN 16931
+rules adapted to it, as FeRD does.
 
 The results are tested against the reference output of the official KoSIT
 validator for its public test invoices. How and why this works is described in
@@ -245,7 +255,7 @@ on Linux and in `%LOCALAPPDATA%\e-invoice-viewer` on Windows.
   distribution packages yet (an AUR package is planned), and the Windows
   files are not signed.
 - Display only: invoices cannot be created or edited.
-- PDF/A conformance and ZUGFeRD-specific profile rules are not checked.
+- PDF/A conformance and the XMP metadata of ZUGFeRD PDFs are not checked.
 
 ## How it is built
 
@@ -295,6 +305,10 @@ Bundled third-party material keeps its licence:
 - XML schemas UN/CEFACT CII D16B and OASIS UBL 2.1 — redistributed unchanged
   under their copyright notices
   ([`crates/core/rules/xsd-2026-08-31`](crates/core/rules/xsd-2026-08-31))
+- Factur-X 1.09.2 / ZUGFeRD 2.5.2 profile schemas, Schematron and code
+  lists of FeRD (AWV e.V.) and FNFE-MPE — Apache License 2.0
+  ([`crates/core/rules/facturx-1.09.2`](crates/core/rules/facturx-1.09.2));
+  ZUGFeRD is a trademark of AWV e.V.
 - KoSIT test invoices — Apache License 2.0
   ([`crates/core/tests/fixtures/kosit`](crates/core/tests/fixtures/kosit))
 

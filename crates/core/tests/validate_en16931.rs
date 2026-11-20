@@ -81,14 +81,20 @@ fn ubl_missing_bt1_reports_br02() {
     assert_eq!(br02[0].severity, Severity::Error);
 }
 
-// AC6
+// AC6; since spec 0027 checked against the Factur-X profile instead
 #[test]
 fn minimum_profile_is_not_applicable() {
     let validation = validate(&variant("a-minimum.xml"));
 
-    assert_eq!(validation.findings, []);
-    assert_eq!(validation.applied_rule_sets, [CII_SCHEMA]);
+    assert_eq!(
+        validation.applied_rule_sets,
+        [
+            "XML-Schema Factur-X 1.09.2 Minimum",
+            "Factur-X 1.09.2 (ZUGFeRD 2.5.2) Minimum"
+        ]
+    );
     assert!(validation.not_applicable_reason.is_some());
+    assert!(findings_with(&validation, "BR-CO-15").is_empty());
 }
 
 // Requirement: no EN 16931 findings for BASIC WL either
@@ -96,24 +102,33 @@ fn minimum_profile_is_not_applicable() {
 fn basic_wl_profile_is_not_applicable() {
     let validation = validate(&variant("a-basicwl.xml"));
 
-    assert_eq!(validation.findings, []);
-    assert_eq!(validation.applied_rule_sets, [CII_SCHEMA]);
+    assert_eq!(
+        validation.applied_rule_sets,
+        [
+            "XML-Schema Factur-X 1.09.2 Basic WL",
+            "Factur-X 1.09.2 (ZUGFeRD 2.5.2) Basic WL"
+        ]
+    );
     assert!(validation.not_applicable_reason.is_some());
 }
 
-// Requirement: rules apply for extended and unknown profiles
+// Requirement: rules apply for unknown profiles; Extended gets its own
+// profile rules instead (spec 0027)
 #[test]
 fn rules_apply_for_extended_and_unknown_profiles() {
-    for name in ["a-extended.xml", "a-unknown-profile.xml"] {
-        let validation = validate(&variant(name));
+    let validation = validate(&variant("a-unknown-profile.xml"));
+    assert_eq!(validation.applied_rule_sets, [CII_SCHEMA, CII_RULES]);
+    assert_eq!(validation.not_applicable_reason, None);
 
-        assert_eq!(
-            validation.applied_rule_sets,
-            [CII_SCHEMA, CII_RULES],
-            "{name}"
-        );
-        assert_eq!(validation.not_applicable_reason, None, "{name}");
-    }
+    let validation = validate(&variant("a-extended.xml"));
+    assert_eq!(
+        validation.applied_rule_sets,
+        [
+            "XML-Schema Factur-X 1.09.2 Extended",
+            "Factur-X 1.09.2 (ZUGFeRD 2.5.2) Extended"
+        ]
+    );
+    assert_eq!(validation.not_applicable_reason, None);
 }
 
 // AC7

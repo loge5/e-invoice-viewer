@@ -23,6 +23,8 @@ poppler = { version = "0.26", package = "poppler-rs", features = ["v0_82"] }
 sourceview = { version = "0.11", package = "sourceview5" }
 xee-xpath = "=0.1.5"
 xot = "=0.31.2"
+# The address type of xee's documents (spec 0027); already used by xee.
+iri-string = "=0.7.14"
 
 # Dependencies are optimised in dev builds too: the XPath engine is too slow
 # unoptimised for the validation regression test (spec 0009).

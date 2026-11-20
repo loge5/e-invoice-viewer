@@ -457,6 +457,7 @@ version = "0.3.0"
 dependencies = [
  "base64",
  "gettext",
+ "iri-string",
  "libxml",
  "lopdf",
  "roxmltree",

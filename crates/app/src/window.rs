@@ -30,9 +30,16 @@ thread_local! {
     static VALIDATOR: Validator = Validator::new();
 }
 
-/// Validates on the calling (worker) thread, with notes in `language`.
-fn validate(xml: &[u8], language: Language) -> Result<Validation, DetectError> {
-    VALIDATOR.with(|validator| validator.validate(xml, language))
+/// Validates on the calling (worker) thread, with notes in `language`;
+/// `embedded` for the invoice of a PDF (spec 0027).
+fn validate(xml: &[u8], embedded: bool, language: Language) -> Result<Validation, DetectError> {
+    VALIDATOR.with(|validator| {
+        if embedded {
+            validator.validate_embedded(xml, language)
+        } else {
+            validator.validate(xml, language)
+        }
+    })
 }
 
 const MINIMUM_PANE_WIDTH: i32 = 300;
@@ -556,7 +563,7 @@ impl Window {
                     self.show_pdf_pane(Some(bytes));
                 }
                 match invoice {
-                    Some(invoice) => self.show_invoice(invoice, name, None, &attachments),
+                    Some(invoice) => self.show_invoice(invoice, true, name, None, &attachments),
                     None => {
                         // The PDF still shows what it embeds instead.
                         let content = gtk::Box::builder()
@@ -583,6 +590,7 @@ impl Window {
                 self.show_pdf_pane(None);
                 self.show_invoice(
                     invoice,
+                    false,
                     name,
                     Some(texts::t(texts::XML_ONLY_NOTE)),
                     &attachments,
@@ -593,10 +601,12 @@ impl Window {
         true
     }
 
-    /// Shows the fields and XML of an invoice and starts validating it.
+    /// Shows the fields and XML of an invoice and starts validating it;
+    /// `embedded` if it comes from a PDF.
     fn show_invoice(
         &self,
         invoice: Invoice,
+        embedded: bool,
         name: &str,
         note: Option<&str>,
         attachments: &adw::PreferencesGroup,
@@ -611,19 +621,19 @@ impl Window {
         let view = FieldsView::new(fields, attachments, show_in_xml);
         self.set_fields(view.widget(), note);
         *self.fields_view.borrow_mut() = Some(view);
-        self.start_validation(xml);
+        self.start_validation(xml, embedded);
     }
 
     /// Validates on a worker thread, so that the window stays responsive,
     /// and shows the result unless another document was opened meanwhile.
-    fn start_validation(&self, xml: Vec<u8>) {
+    fn start_validation(&self, xml: Vec<u8>, embedded: bool) {
         let generation = self.generation.get();
         self.set_validation_state(&ValidationState::Running);
         let this = self.clone();
         glib::spawn_future_local(async move {
             // The worker thread has its own language setting: pass it on.
             let language = texts::language();
-            let result = gio::spawn_blocking(move || validate(&xml, language)).await;
+            let result = gio::spawn_blocking(move || validate(&xml, embedded, language)).await;
             if this.generation.get() != generation {
                 return;
             }

@@ -13,6 +13,8 @@ use std::sync::{Mutex, Once};
 
 use libxml::bindings as ffi;
 
+use super::profile::{self, FacturX};
+
 /// The internal address scheme of the embedded schemas.
 const SCHEME: &str = "eiv-schema:/";
 
@@ -51,6 +53,8 @@ pub(super) enum Schema {
     Cii,
     UblInvoice,
     UblCreditNote,
+    /// The schema of a Factur-X profile (spec 0027).
+    FacturX(FacturX),
 }
 
 impl Schema {
@@ -59,14 +63,16 @@ impl Schema {
             Self::Cii => "cii/CrossIndustryInvoice_100pD16B.xsd",
             Self::UblInvoice => "ubl/maindoc/UBL-Invoice-2.1.xsd",
             Self::UblCreditNote => "ubl/maindoc/UBL-CreditNote-2.1.xsd",
+            Self::FacturX(profile) => profile.main_schema(),
         }
     }
 
     /// The schema's name as shown in the summary, e.g. `CII D16B`.
-    pub(super) fn name(self) -> &'static str {
+    pub(super) fn name(self) -> String {
         match self {
-            Self::Cii => "CII D16B",
-            Self::UblInvoice | Self::UblCreditNote => "UBL 2.1",
+            Self::Cii => "CII D16B".to_string(),
+            Self::UblInvoice | Self::UblCreditNote => "UBL 2.1".to_string(),
+            Self::FacturX(profile) => profile.schema_name(),
         }
     }
 }
@@ -272,6 +278,7 @@ fn embedded_file(address: &str) -> Option<&'static str> {
         .iter()
         .find(|(file, _)| *file == path)
         .map(|(_, text)| *text)
+        .or_else(|| profile::schema_file(path))
 }
 
 /// An embedded file being read.
@@ -337,7 +344,10 @@ mod tests {
 
     #[test]
     fn every_schema_compiles() {
-        for schema in [Schema::Cii, Schema::UblInvoice, Schema::UblCreditNote] {
+        for schema in [Schema::Cii, Schema::UblInvoice, Schema::UblCreditNote]
+            .into_iter()
+            .chain(FacturX::ALL.map(Schema::FacturX))
+        {
             assert!(!compiled(schema).is_null());
         }
     }

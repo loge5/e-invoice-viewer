@@ -91,6 +91,15 @@ fn xrechnung_expected() -> BTreeMap<String, BTreeSet<(String, String)>> {
     expected
 }
 
+/// Whether an invoice was checked against a Factur-X profile (spec 0027),
+/// which KoSIT does not do: its schema and profile findings differ by design.
+fn is_facturx(validation: &Validation) -> bool {
+    validation
+        .applied_rule_sets
+        .iter()
+        .any(|set| set.contains("Factur-X"))
+}
+
 struct Checked {
     key: String,
     xml: String,
@@ -164,6 +173,10 @@ fn matches_kosit_en16931_reference() {
                 .findings
                 .iter()
                 .filter(|finding| !is_xrechnung_rule(&finding.rule_id))
+                .filter(|finding| {
+                    !is_facturx(&checked[key].validation)
+                        || !matches!(finding.rule_id.as_str(), "XSD" | "FX")
+                })
                 .map(|finding| finding.rule_id.clone())
                 .collect();
             difference(key, expected, &fired)
@@ -258,6 +271,7 @@ fn schema_verdict_equals_kosit() {
     };
     let mut deviations: Vec<String> = checked()
         .values()
+        .filter(|checked| !is_facturx(&checked.validation))
         .filter(|checked| has_schema_error(&checked.validation))
         .map(|checked| format!("{}: schema error, KoSIT none", checked.key))
         .collect();
