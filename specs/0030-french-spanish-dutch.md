@@ -1,7 +1,7 @@
 ---
 id: 0030
 title: User interface and invoice content in French, Spanish and Dutch
-status: draft
+status: reviewed
 created: 2026-11-20
 depends_on: [0017, 0018, 0019, 0022]
 ---
@@ -116,9 +116,10 @@ checked by native speakers, inviting corrections (author, 2026-11-20).
   sizes, formatted per language today only for German), the language menu's
   own texts (written outside the catalogue today), concrete expected texts
   for sample A, and the issue tracker for corrections; the screenshot check
-  names the size and the sample.
+  names the size and the sample. Accepted by the author together with the
+  test list.
 
-## Test list (proposed)
+## Test list (approved 2026-11-20)
 
 - T1 `sample_a_in_french_spanish_dutch` (core): field model of CII and UBL
   sample A per language — seller section title, BT-112, BT-2 (AC1).

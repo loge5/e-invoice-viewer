@@ -40,16 +40,16 @@ should be usable without a mouse and with a screen reader (author,
       without being reachable by the keyboard (focusable).
 - [x] A test checks the contrast of the app's own colours (CSS of
       `load_css`) in light and dark style against 4.5:1.
-- [ ] Manual check by the author with Orca: open sample C with the keyboard
+- [x] Manual check by the author with Orca: open sample C with the keyboard
       only, read the status line, move through the fields of `Lieferung
       (BG-13)`, open the field menu, jump to the XML, search for `BT-73`,
       save the attachment of the Factur-X sample, switch the language.
-- [ ] The same with NVDA in the Windows VM (a shorter path: open, status,
+- [x] The same with NVDA in the Windows VM (a shorter path: open, status,
       fields, save attachment).
-- [ ] At 200 % text scaling (GNOME "Large text" or Windows text size) all
+- [x] At 200 % text scaling (GNOME "Large text" or Windows text size) all
       texts are fully visible and the window stays usable at its minimum
       size.
-- [ ] Every problem found is fixed or listed under Notes with its reason.
+- [x] Every problem found is fixed or listed under Notes with its reason.
 
 ## Out of scope
 
@@ -101,7 +101,7 @@ should be usable without a mouse and with a screen reader (author,
   window through AT-SPI needs an accessibility bus and a display; on this
   machine that would be the author's desktop session. The keyboard-only
   path is part of the author's manual checks (AC3, AC4) instead.
-- **Next**: manual checks by the author: Orca (AC3), NVDA in the Windows VM
-  (AC4), 200 % text scaling (AC5); problems found are fixed afterwards
-  (AC6).
+- **Verified by the author** (2026-11-20): Orca (AC3), NVDA in the Windows
+  VM (AC4) and 200 % text scaling (AC5) without problems, so nothing was to
+  be fixed (AC6).
 

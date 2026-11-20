@@ -76,7 +76,7 @@ Samples are defined in [fixtures.md](../docs/fixtures.md).
       existing timing tests).
 - [x] German and English texts for the summary exist; the catalogue check
       (0017) passes.
-- [ ] The AppImage and the Windows build contain the check and the embedded
+- [x] The AppImage and the Windows build contain the check and the embedded
       schemas: opening `cii-bad.xml` (sample A with `ram:Foo`) in both shows
       `1 error` (smoke check in a container for the AppImage; manual check in
       the VM for Windows).
@@ -163,7 +163,7 @@ Samples are defined in [fixtures.md](../docs/fixtures.md).
   - `every_schema_compiles` failed when it ran before every other test
     (Windows CI): compiling now registers the input callbacks itself.
   - CI run on `ci-trial` (`a9ad984`): Linux and Windows green.
-- **Next**: AC10 on Windows — the CI Windows job builds and tests with
-  libxml2; the manual check in the VM is collected with the other manual
-  checks.
+- **Verified by the author** (2026-11-20): AC10 on Windows — the build of
+  the release workflow on `ci-trial` shows `1 error` for `cii-bad.xml` in
+  the VM.
 
