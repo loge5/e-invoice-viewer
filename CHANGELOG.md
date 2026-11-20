@@ -6,6 +6,12 @@ All notable changes for users of E-Invoice Viewer. The format follows
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-11-20
+
+First public release. It contains everything listed for 0.1.0 to 0.4.0,
+which were test versions and not published; there are no further changes
+since 0.4.0.
+
 ## [0.4.0] - 2026-11-20
 
 ### Added
@@ -74,7 +80,7 @@ All notable changes for users of E-Invoice Viewer. The format follows
 
 ## [0.1.0] - 2026-11-18
 
-First public release.
+First test version.
 
 ### Added
 
@@ -90,7 +96,8 @@ First public release.
 - AppImage for x86_64 Linux; `scripts/install.sh` for an installation from
   source.
 
-[Unreleased]: https://github.com/loge5/e-invoice-viewer/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/loge5/e-invoice-viewer/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/loge5/e-invoice-viewer/compare/v0.4.0...v1.0.0
 [0.4.0]: https://github.com/loge5/e-invoice-viewer/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/loge5/e-invoice-viewer/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/loge5/e-invoice-viewer/compare/v0.1.0...v0.2.1
