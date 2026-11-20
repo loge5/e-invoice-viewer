@@ -1,7 +1,7 @@
 ---
 id: 0031
 title: Other data - elements without a business term
-status: draft
+status: reviewed
 created: 2026-11-20
 depends_on: [0004, 0005, 0006, 0013, 0014, 0024]
 ---
@@ -109,7 +109,7 @@ invoices:
   *Show in XML* work as for fields); label as path; FeRD names out of
   scope; a coverage check over all fixtures.
 
-## Test list (proposed)
+## Test list
 
 - T1 `nothing_is_invisible` (core): for every committed fixture invoice,
   every element with text is a field location, a used element or an
