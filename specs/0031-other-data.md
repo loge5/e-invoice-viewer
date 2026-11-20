@@ -1,7 +1,7 @@
 ---
 id: 0031
 title: Other data - elements without a business term
-status: in-progress
+status: implemented
 created: 2026-11-20
 depends_on: [0004, 0005, 0006, 0013, 0014, 0024]
 ---
