@@ -361,7 +361,7 @@ pub fn window_title(file_name: Option<&str>) -> String {
 }
 
 /// The label shown in a field row: other data (spec 0031) shows only the
-/// last element of its path, e.g. `…GlobalID` for `SpecifiedTradeProduct ›
+/// last element of its path, e.g. `… GlobalID` for `SpecifiedTradeProduct ›
 /// IncludedReferencedProduct › GlobalID`; `None` for other labels, which are
 /// shown as they are.
 pub fn short_label(field: &Field) -> Option<String> {
@@ -369,7 +369,7 @@ pub fn short_label(field: &Field) -> Option<String> {
         return None;
     }
     let (_, last) = field.label.rsplit_once(" › ")?;
-    Some(format!("…{last}"))
+    Some(format!("… {last}"))
 }
 
 /// One field row: `BT-1 · Invoice number · RE-2026-0042`; other data
@@ -1142,7 +1142,7 @@ mod tests {
                 "SpecifiedTradeProduct › IncludedReferencedProduct › GlobalID"
             ))
             .as_deref(),
-            Some("…GlobalID")
+            Some("… GlobalID")
         );
         assert_eq!(short_label(&field("", "Name")), None);
         assert_eq!(short_label(&field("BT-1", "Invoice number")), None);

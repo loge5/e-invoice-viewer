@@ -46,7 +46,7 @@ invoices:
   `Other data`.
   - Label: the path from the section's element to the element, in local
     names, e.g. `ExchangedDocument › Name`; no business term number. The
-    row shows only the last element after `…` (`…Name`), with a button
+    row shows only the last element after `… ` (`… Name`), with a button
     next to it that shows the whole path (author, 2026-11-20, after the
     first check in the app).
   - Value: the text, whitespace normalised; attributes of the element
@@ -129,7 +129,8 @@ invoices:
   `FERD_PACKAGE`), catalogue check (T8), the full workspace tests, fmt and
   clippy. The UBL/CII comparison tests compare business terms only (other
   data differs between the syntaxes by nature).
-- **Open**: P1 in the app (author).
+  - P1 (author, 2026-11-20): X08 in the app; the short label with the
+    full-path button fits, with a space after `…`.
 
 ## Notes
 
