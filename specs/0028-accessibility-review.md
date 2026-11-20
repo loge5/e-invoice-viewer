@@ -1,7 +1,7 @@
 ---
 id: 0028
 title: Accessibility - keyboard and screen reader review
-status: reviewed
+status: implemented
 created: 2026-11-19
 depends_on: [0007, 0011, 0014, 0016, 0019]
 ---

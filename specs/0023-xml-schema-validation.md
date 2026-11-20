@@ -1,7 +1,7 @@
 ---
 id: 0023
 title: Validate - XML schema check (CII D16B, UBL 2.1)
-status: reviewed
+status: implemented
 created: 2026-11-19
 depends_on: [0009, 0010, 0011, 0014]
 ---
