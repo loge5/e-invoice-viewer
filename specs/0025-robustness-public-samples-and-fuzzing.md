@@ -1,7 +1,7 @@
 ---
 id: 0025
 title: Robustness - public sample invoices and fuzzing
-status: reviewed
+status: implemented
 created: 2026-11-19
 depends_on: [0009, 0010, 0013, 0023, 0024]
 ---

@@ -1,7 +1,7 @@
 ---
 id: 0024
 title: Map every remaining EN 16931 business term
-status: reviewed
+status: implemented
 created: 2026-11-19
 depends_on: [0021]
 ---

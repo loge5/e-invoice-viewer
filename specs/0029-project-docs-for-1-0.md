@@ -1,7 +1,7 @@
 ---
 id: 0029
 title: Project docs - changelog, release guide, rule updates, requirements
-status: reviewed
+status: implemented
 created: 2026-11-19
 depends_on: [0020, 0022]
 ---

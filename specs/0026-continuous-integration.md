@@ -1,7 +1,7 @@
 ---
 id: 0026
 title: CI - tests on every push and pull request
-status: reviewed
+status: implemented
 created: 2026-11-19
 depends_on: [0020, 0022]
 ---
