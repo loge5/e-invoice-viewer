@@ -882,3 +882,6 @@ msgstr "Autres données"
 
 msgid "binary data, {size}"
 msgstr "données binaires, {size}"
+
+msgid "Show full path"
+msgstr "Afficher le chemin complet"

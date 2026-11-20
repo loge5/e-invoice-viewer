@@ -882,3 +882,6 @@ msgstr "Muud andmed"
 
 msgid "binary data, {size}"
 msgstr "binaarandmed, {size}"
+
+msgid "Show full path"
+msgstr "Näita täielikku rada"

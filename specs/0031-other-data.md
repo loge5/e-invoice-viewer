@@ -34,7 +34,7 @@ invoices:
   `ram:GlobalID` with `schemeID` (only `ram:ID` is mapped).
 - **Not business terms in EN 16931 invoices**: e.g. the project name
   `ram:SpecifiedProcuringProject/ram:Name` (required by CII next to BT-11),
-  `ram:DepartmentName` of a contact, the base quantity of the gross price.
+  the base quantity of the gross price.
 
 ## Requirement
 
@@ -45,7 +45,10 @@ invoices:
   every section below the root go to a last section `Weitere Angaben` /
   `Other data`.
   - Label: the path from the section's element to the element, in local
-    names, e.g. `ExchangedDocument › Name`; no business term number.
+    names, e.g. `ExchangedDocument › Name`; no business term number. The
+    row shows only the last element after `…` (`…Name`), with a button
+    next to it that shows the whole path (author, 2026-11-20, after the
+    first check in the app).
   - Value: the text, whitespace normalised; attributes of the element
     follow in brackets, e.g. `4012345000016 (schemeID: 0160)`; binary
     content is shown as `binary data, 12 kB`.
@@ -112,10 +115,13 @@ invoices:
     occurrences of a single field with the same value are recorded while
     mapping.
   - Gaps mapped (found by the scan and the coverage test): BT-29, BT-46,
-    BT-71 from `ram:GlobalID` with scheme; BT-29 of UBL repeatable; BG-17
+    BT-71 from `ram:GlobalID` with scheme; BT-41 and BT-56 from
+    `ram:DepartmentName` (CEN counts it as the contact point, CII-SR-465); BT-29 of UBL repeatable; BG-17
     (BT-84, BT-85, BT-86) once per payment means in CII and UBL; the scheme
     of BT-128 (CII `ram:ReferenceTypeCode`, UBL `schemeID`).
-  - App: rows without number (`field_name`, `field_row_text`).
+  - App: rows without number (`field_name`, `field_row_text`); other data
+    shows `…` and the last element, a button with a popover shows the
+    whole path (`short_label`, text `Show full path` in all languages).
   - Texts `Other data` and `binary data, {size}` in all 24 languages.
   - README and CHANGELOG.
 - **Verified** (2026-11-20): `other_data.rs` T1–T7 (coverage over all 400+
@@ -129,8 +135,7 @@ invoices:
 
 - Elements of EN 16931 invoices that are not business terms (AC4, list in
   `kosit_other_data_is_not_business_terms`): CII project name
-  (`ram:SpecifiedProcuringProject/ram:Name`), contact department
-  (`ram:DepartmentName`), base quantity of the gross price
+  (`ram:SpecifiedProcuringProject/ram:Name`), base quantity of the gross price
   (`ram:GrossPriceProductTradePrice/ram:BasisQuantity`), the payer's bank
   of a CII direct debit (`ram:PayerSpecifiedDebtorFinancialInstitution`),
   UBL card network (`cac:CardAccount/cbc:NetworkID`), UBL credit account

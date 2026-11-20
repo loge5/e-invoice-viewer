@@ -882,3 +882,6 @@ msgstr "Muut tiedot"
 
 msgid "binary data, {size}"
 msgstr "binääridataa, {size}"
+
+msgid "Show full path"
+msgstr "Näytä koko polku"

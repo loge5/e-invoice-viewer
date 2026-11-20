@@ -882,3 +882,6 @@ msgstr "Egyéb adatok"
 
 msgid "binary data, {size}"
 msgstr "bináris adat, {size}"
+
+msgid "Show full path"
+msgstr "Teljes útvonal megjelenítése"

@@ -349,6 +349,12 @@ const HEADER_SECTIONS: &[SectionDef] = &[
                 &[ram("DefinedTradeContact"), ram("PersonName")],
                 Format::Text,
             ),
+            // The contact point may also be a department (CII-SR-465).
+            field(
+                BT_41,
+                &[ram("DefinedTradeContact"), ram("DepartmentName")],
+                Format::Text,
+            ),
             field(
                 BT_42,
                 &[
@@ -404,6 +410,7 @@ const HEADER_SECTIONS: &[SectionDef] = &[
             field(BT_54, &[ADDRESS, SUBDIVISION], Format::Text),
             field(BT_55, &[ADDRESS, ram("CountryID")], Format::Text),
             field(BT_56, &[CONTACT, ram("PersonName")], Format::Text),
+            field(BT_56, &[CONTACT, ram("DepartmentName")], Format::Text),
             field(
                 BT_57,
                 &[

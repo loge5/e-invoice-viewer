@@ -890,3 +890,6 @@ msgstr "Ostali podaci"
 
 msgid "binary data, {size}"
 msgstr "binarni podaci, {size}"
+
+msgid "Show full path"
+msgstr "Prikaži cijeli put"

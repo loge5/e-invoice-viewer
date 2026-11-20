@@ -75,6 +75,8 @@ pub const VALIDATION_FAILED_REASON: &str = n_("internal error during validation"
 pub const RECENT_TITLE: &str = n_("Recently opened");
 pub const ATTACHMENTS_TITLE: &str = n_("Attachments");
 pub const SHOW_IN_XML: &str = n_("Show in XML");
+/// Tooltip of the button next to an other-data label (spec 0031).
+pub const SHOW_FULL_PATH: &str = n_("Show full path");
 pub const SHOW_IN_FIELDS: &str = n_("Show in fields");
 pub const NO_FIELD: &str = n_("No field assigned");
 pub const NO_ATTACHMENTS: &str = n_("No attachments");
@@ -356,6 +358,18 @@ pub fn window_title(file_name: Option<&str>) -> String {
         Some(name) => format!("{name} – {APP_TITLE}"),
         None => APP_TITLE.to_string(),
     }
+}
+
+/// The label shown in a field row: other data (spec 0031) shows only the
+/// last element of its path, e.g. `…GlobalID` for `SpecifiedTradeProduct ›
+/// IncludedReferencedProduct › GlobalID`; `None` for other labels, which are
+/// shown as they are.
+pub fn short_label(field: &Field) -> Option<String> {
+    if !field.id.is_empty() {
+        return None;
+    }
+    let (_, last) = field.label.rsplit_once(" › ")?;
+    Some(format!("…{last}"))
 }
 
 /// One field row: `BT-1 · Invoice number · RE-2026-0042`; other data
@@ -1110,5 +1124,27 @@ mod tests {
                 }
             }
         }
+    }
+
+    #[test]
+    fn other_data_shows_the_last_element() {
+        let field = |id: &str, label: &str| Field {
+            id: id.to_string(),
+            label: label.to_string(),
+            raw: String::new(),
+            display: String::new(),
+            location: String::new(),
+            attribute: None,
+        };
+        assert_eq!(
+            short_label(&field(
+                "",
+                "SpecifiedTradeProduct › IncludedReferencedProduct › GlobalID"
+            ))
+            .as_deref(),
+            Some("…GlobalID")
+        );
+        assert_eq!(short_label(&field("", "Name")), None);
+        assert_eq!(short_label(&field("BT-1", "Invoice number")), None);
     }
 }

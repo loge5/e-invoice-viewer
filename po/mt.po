@@ -898,3 +898,6 @@ msgstr "Data oħra"
 
 msgid "binary data, {size}"
 msgstr "data binarja, {size}"
+
+msgid "Show full path"
+msgstr "Uri l-mogħdija sħiħa"

@@ -882,3 +882,6 @@ msgstr "Øvrige oplysninger"
 
 msgid "binary data, {size}"
 msgstr "binære data, {size}"
+
+msgid "Show full path"
+msgstr "Vis hele stien"

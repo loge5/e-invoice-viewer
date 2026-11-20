@@ -890,3 +890,6 @@ msgstr "Alte date"
 
 msgid "binary data, {size}"
 msgstr "date binare, {size}"
+
+msgid "Show full path"
+msgstr "Afișează calea completă"

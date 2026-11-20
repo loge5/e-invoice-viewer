@@ -882,3 +882,6 @@ msgstr "Overige gegevens"
 
 msgid "binary data, {size}"
 msgstr "binaire gegevens, {size}"
+
+msgid "Show full path"
+msgstr "Volledig pad tonen"

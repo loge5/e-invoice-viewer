@@ -901,3 +901,6 @@ msgstr ""
 
 msgid "binary data, {size}"
 msgstr ""
+
+msgid "Show full path"
+msgstr ""

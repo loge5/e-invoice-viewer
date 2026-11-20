@@ -882,3 +882,6 @@ msgstr "Λοιπά στοιχεία"
 
 msgid "binary data, {size}"
 msgstr "δυαδικά δεδομένα, {size}"
+
+msgid "Show full path"
+msgstr "Εμφάνιση πλήρους διαδρομής"

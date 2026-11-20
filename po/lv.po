@@ -890,3 +890,6 @@ msgstr "Citi dati"
 
 msgid "binary data, {size}"
 msgstr "binārie dati, {size}"
+
+msgid "Show full path"
+msgstr "Rādīt pilnu ceļu"

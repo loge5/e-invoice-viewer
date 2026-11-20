@@ -890,3 +890,6 @@ msgstr "Kiti duomenys"
 
 msgid "binary data, {size}"
 msgstr "dvejetainiai duomenys, {size}"
+
+msgid "Show full path"
+msgstr "Rodyti visą kelią"

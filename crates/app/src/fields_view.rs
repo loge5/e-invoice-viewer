@@ -505,6 +505,19 @@ fn field_row(field: &Field) -> FieldRow {
         .max_width_chars(28)
         .wrap(true)
         .build();
+    // Other data shows the last element of its path; the button next to it
+    // shows the whole path (spec 0031).
+    let name = gtk::Box::builder()
+        .orientation(gtk::Orientation::Horizontal)
+        .spacing(2)
+        .valign(gtk::Align::Start)
+        .build();
+    name.append(&label);
+    if let Some(short) = texts::short_label(field) {
+        label.set_label(&short);
+        label.set_width_chars(15);
+        name.append(&full_path_button(&field.label));
+    }
     let value = gtk::Label::builder()
         .label(&field.display)
         .xalign(0.0)
@@ -532,7 +545,7 @@ fn field_row(field: &Field) -> FieldRow {
         .spacing(12)
         .build();
     line.append(&id);
-    line.append(&label);
+    line.append(&name);
     line.append(&value);
 
     let findings = findings_box();
@@ -558,6 +571,30 @@ fn field_row(field: &Field) -> FieldRow {
         findings,
         text,
     }
+}
+
+/// A small button that shows `path` in a popover, selectable.
+fn full_path_button(path: &str) -> gtk::MenuButton {
+    let text = gtk::Label::builder()
+        .label(path)
+        .wrap(true)
+        .wrap_mode(gtk::pango::WrapMode::WordChar)
+        .max_width_chars(48)
+        .selectable(true)
+        .xalign(0.0)
+        .margin_top(6)
+        .margin_bottom(6)
+        .margin_start(6)
+        .margin_end(6)
+        .build();
+    let popover = gtk::Popover::builder().child(&text).build();
+    gtk::MenuButton::builder()
+        .icon_name("dialog-information-symbolic")
+        .tooltip_text(texts::t(texts::SHOW_FULL_PATH))
+        .popover(&popover)
+        .valign(gtk::Align::Start)
+        .css_classes(["flat", "circular"])
+        .build()
 }
 
 /// The actions of the field pane, with the value or place as parameter, so

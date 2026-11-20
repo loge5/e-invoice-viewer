@@ -890,3 +890,6 @@ msgstr "Další údaje"
 
 msgid "binary data, {size}"
 msgstr "binární data, {size}"
+
+msgid "Show full path"
+msgstr "Zobrazit celou cestu"

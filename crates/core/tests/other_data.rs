@@ -227,7 +227,7 @@ fn sample_a_with_extended_elements() -> String {
     let xml = replace_once(
         &xml,
         "          <ram:PersonName>Erika Mustermann</ram:PersonName>\n",
-        "          <ram:PersonName>Erika Mustermann</ram:PersonName>\n          <ram:DepartmentName>Buchhaltung</ram:DepartmentName>\n",
+        "          <ram:PersonName>Erika Mustermann</ram:PersonName>\n          <ram:TypeCode>LB</ram:TypeCode>\n",
     );
     replace_once(
         &xml,
@@ -247,11 +247,7 @@ fn extended_elements_listed_at_their_place() {
     assert_eq!(
         rows,
         [
-            (
-                "Seller (BG-4)",
-                "DefinedTradeContact › DepartmentName",
-                "Buchhaltung"
-            ),
+            ("Seller (BG-4)", "DefinedTradeContact › TypeCode", "LB"),
             (
                 "Invoice line 1",
                 "SpecifiedTradeProduct › IncludedReferencedProduct › GlobalID",
@@ -310,9 +306,8 @@ fn samples_have_no_other_data() {
 
 /// Elements of EN 16931 invoices that are not business terms (notes of
 /// spec 0031), by their path without positions, from the invoice's root.
-const NOT_BUSINESS_TERMS: [&str; 10] = [
+const NOT_BUSINESS_TERMS: [&str; 9] = [
     "ram:SpecifiedProcuringProject/ram:Name",
-    "ram:DefinedTradeContact/ram:DepartmentName",
     "ram:GrossPriceProductTradePrice/ram:BasisQuantity",
     "ram:PayerSpecifiedDebtorFinancialInstitution/ram:BICID",
     "cac:CardAccount/cbc:NetworkID",

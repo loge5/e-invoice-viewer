@@ -906,3 +906,6 @@ msgstr "Sonraí eile"
 
 msgid "binary data, {size}"
 msgstr "sonraí dénártha, {size}"
+
+msgid "Show full path"
+msgstr "Taispeáin an cosán iomlán"
