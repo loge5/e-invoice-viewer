@@ -4,6 +4,7 @@
 //! (`cii.rs`); only the paths differ. Paths follow the UBL syntax binding of
 //! EN 16931.
 
+use super::other::FixedValue;
 use super::terms::*;
 use super::{
     Condition, Format, SectionDef, Step, SupportingDocumentsDef, SyntaxDef, absolute, field,
@@ -34,6 +35,20 @@ pub const SYNTAX: SyntaxDef = SyntaxDef {
         address: &[cac("Attachment"), cac("ExternalReference"), cbc("URI")],
         description: &[&[cbc("DocumentDescription")], &[cbc("ID")]],
     },
+    fixed_values: &[
+        // The tax scheme of every tax category is VAT.
+        FixedValue {
+            parent: cac("TaxScheme"),
+            element: cbc("ID"),
+            value: "VAT",
+        },
+        // The document type of an invoiced object identifier (BT-128).
+        FixedValue {
+            parent: cac("DocumentReference"),
+            element: cbc("DocumentTypeCode"),
+            value: "130",
+        },
+    ],
 };
 
 const fn cac(name: &'static str) -> Step {
@@ -179,7 +194,7 @@ const HEADER_SECTIONS: &[SectionDef] = &[
                 Format::Text,
             ),
             field(BT_28, &[cac("PartyName"), cbc("Name")], Format::Text),
-            field(BT_29, &PARTY_ID, Format::Text),
+            repeatable(BT_29, &PARTY_ID, Format::Text),
             field(
                 BT_30,
                 &[LEGAL_ENTITY, cbc("CompanyID")],
@@ -451,7 +466,11 @@ const LINE_SECTIONS: &[SectionDef] = &[SectionDef {
             &[LINE_TAX[0], LINE_TAX[1], cbc("Percent")],
             Format::Text,
         ),
-        field(BT_128, &[cac("DocumentReference"), cbc("ID")], Format::Text),
+        field(
+            BT_128,
+            &[cac("DocumentReference"), cbc("ID")],
+            Format::Scheme("schemeID"),
+        ),
         field(
             BT_132,
             &[cac("OrderLineReference"), cbc("LineID")],
@@ -527,25 +546,19 @@ const TRAILER_SECTIONS: &[SectionDef] = &[
             ),
             from_attribute(BT_82, &[PAYMENT_MEANS, cbc("PaymentMeansCode")], "name"),
             field(BT_83, &[PAYMENT_MEANS, cbc("PaymentID")], Format::Text),
-            field(
-                BT_84,
-                &[PAYMENT_MEANS, PAYEE_ACCOUNT, cbc("ID")],
-                Format::Iban,
-            ),
-            field(
-                BT_85,
-                &[PAYMENT_MEANS, PAYEE_ACCOUNT, cbc("Name")],
-                Format::Text,
-            ),
-            field(
-                BT_86,
+            // Credit transfer (BG-17) may occur more than once, one per
+            // payment means.
+            group(
+                &[PAYMENT_MEANS],
                 &[
-                    PAYMENT_MEANS,
-                    PAYEE_ACCOUNT,
-                    cac("FinancialInstitutionBranch"),
-                    cbc("ID"),
+                    field(BT_84, &[PAYEE_ACCOUNT, cbc("ID")], Format::Iban),
+                    field(BT_85, &[PAYEE_ACCOUNT, cbc("Name")], Format::Text),
+                    field(
+                        BT_86,
+                        &[PAYEE_ACCOUNT, cac("FinancialInstitutionBranch"), cbc("ID")],
+                        Format::Text,
+                    ),
                 ],
-                Format::Text,
             ),
             field(
                 BT_87,

@@ -900,3 +900,9 @@ msgstr "Próifíl Minimum: ní sonrasc iomlán é de réir EN 16931"
 
 msgid "Profile Basic WL: not a complete invoice according to EN 16931"
 msgstr "Próifíl Basic WL: ní sonrasc iomlán é de réir EN 16931"
+
+msgid "Other data"
+msgstr "Sonraí eile"
+
+msgid "binary data, {size}"
+msgstr "sonraí dénártha, {size}"

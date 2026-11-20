@@ -876,3 +876,9 @@ msgstr "Minimum profil: nem teljes számla az EN 16931 szerint"
 
 msgid "Profile Basic WL: not a complete invoice according to EN 16931"
 msgstr "Basic WL profil: nem teljes számla az EN 16931 szerint"
+
+msgid "Other data"
+msgstr "Egyéb adatok"
+
+msgid "binary data, {size}"
+msgstr "bináris adat, {size}"

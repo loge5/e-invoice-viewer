@@ -12,6 +12,13 @@ All notable changes for users of E-Invoice Viewer. The format follows
   of their profile (Factur-X 1.09.2 / ZUGFeRD 2.5.2, from FeRD), including
   Minimum and Basic WL. The profile schemas are based on CII D22B, so an
   invoice with several preceding invoices is no longer reported as wrong.
+- Other data: content of the invoice beyond the EN 16931 business terms
+  (ZUGFeRD Extended, XRechnung extension, …) is listed at the end of the
+  section it belongs to, with its element names, so that nothing is hidden.
+- All credit transfer accounts (BG-17) of an invoice are shown, not only the
+  first; the seller, buyer and delivery identifiers (BT-29, BT-46, BT-71)
+  given as `GlobalID` and every seller identifier of a UBL invoice; the
+  scheme of the invoiced object identifier of a line (BT-128).
 
 ### Changed
 

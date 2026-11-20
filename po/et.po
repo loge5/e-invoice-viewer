@@ -876,3 +876,9 @@ msgstr "Profiil Minimum: ei ole täielik arve standardi EN 16931 järgi"
 
 msgid "Profile Basic WL: not a complete invoice according to EN 16931"
 msgstr "Profiil Basic WL: ei ole täielik arve standardi EN 16931 järgi"
+
+msgid "Other data"
+msgstr "Muud andmed"
+
+msgid "binary data, {size}"
+msgstr "binaarandmed, {size}"

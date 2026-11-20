@@ -199,14 +199,21 @@ pub fn rule_sets_text(validation: &Validation) -> Option<String> {
     ))
 }
 
+/// A field's number and label, e.g. `BT-1 Invoice number`; other data
+/// (spec 0031) has no number.
+fn field_name(field: &Field) -> String {
+    if field.id.is_empty() {
+        field.label.clone()
+    } else {
+        format!("{} {}", field.id, field.label)
+    }
+}
+
 /// Where a finding belongs: `BT-112 Invoice total amount with VAT`,
 /// `Invoice line 2` or `Document`.
 pub fn target_text(model: &FieldModel, target: &Target) -> String {
     match *target {
-        Target::Field { section, field } => {
-            let field = &model.sections[section].fields[field];
-            format!("{} {}", field.id, field.label)
-        }
+        Target::Field { section, field } => field_name(&model.sections[section].fields[field]),
         Target::Section(section) => model.sections[section].title.clone(),
         Target::Document => t(DOCUMENT_TARGET).to_string(),
     }
@@ -317,9 +324,9 @@ pub fn assignment_text(model: &FieldModel, target: &Target) -> String {
             let section = &model.sections[section];
             let field = &section.fields[field];
             if section.repeated {
-                format!("{} {} · {}", field.id, field.label, section.title)
+                format!("{} · {}", field_name(field), section.title)
             } else {
-                format!("{} {}", field.id, field.label)
+                field_name(field)
             }
         }
         Target::Section(section) => model.sections[section].title.clone(),
@@ -351,9 +358,14 @@ pub fn window_title(file_name: Option<&str>) -> String {
     }
 }
 
-/// One field row: `BT-1 · Invoice number · RE-2026-0042`.
+/// One field row: `BT-1 · Invoice number · RE-2026-0042`; other data
+/// without number.
 pub fn field_row_text(field: &Field) -> String {
-    format!("{} · {} · {}", field.id, field.label, field.display)
+    if field.id.is_empty() {
+        format!("{} · {}", field.label, field.display)
+    } else {
+        format!("{} · {} · {}", field.id, field.label, field.display)
+    }
 }
 
 /// The value "Copy value" puts on the clipboard: the raw value.

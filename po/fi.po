@@ -876,3 +876,9 @@ msgstr "Profiili Minimum: ei täydellinen lasku EN 16931:n mukaan"
 
 msgid "Profile Basic WL: not a complete invoice according to EN 16931"
 msgstr "Profiili Basic WL: ei täydellinen lasku EN 16931:n mukaan"
+
+msgid "Other data"
+msgstr "Muut tiedot"
+
+msgid "binary data, {size}"
+msgstr "binääridataa, {size}"

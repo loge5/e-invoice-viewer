@@ -876,3 +876,9 @@ msgstr "Προφίλ Minimum: δεν είναι πλήρες τιμολόγιο 
 
 msgid "Profile Basic WL: not a complete invoice according to EN 16931"
 msgstr "Προφίλ Basic WL: δεν είναι πλήρες τιμολόγιο σύμφωνα με το EN 16931"
+
+msgid "Other data"
+msgstr "Λοιπά στοιχεία"
+
+msgid "binary data, {size}"
+msgstr "δυαδικά δεδομένα, {size}"

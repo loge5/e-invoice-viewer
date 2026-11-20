@@ -876,3 +876,9 @@ msgstr "Profil Minimum: inte en fullständig faktura enligt EN 16931"
 
 msgid "Profile Basic WL: not a complete invoice according to EN 16931"
 msgstr "Profil Basic WL: inte en fullständig faktura enligt EN 16931"
+
+msgid "Other data"
+msgstr "Övriga uppgifter"
+
+msgid "binary data, {size}"
+msgstr "binärdata, {size}"

@@ -1,5 +1,6 @@
 //! Where the business terms live in a CII invoice (spec 0004).
 
+use super::other::FixedValue;
 use super::terms::*;
 use super::{
     Condition, Format, SectionDef, Step, SupportingDocumentsDef, SyntaxDef, absolute, field,
@@ -44,6 +45,31 @@ pub const SYNTAX: SyntaxDef = SyntaxDef {
         address: &[ram("URIID")],
         description: &[&[ram("Name")], &[ram("IssuerAssignedID")]],
     },
+    // The tax scheme of every tax element is VAT.
+    fixed_values: &[
+        FixedValue {
+            parent: ram("ApplicableTradeTax"),
+            element: ram("TypeCode"),
+            value: "VAT",
+        },
+        FixedValue {
+            parent: ram("CategoryTradeTax"),
+            element: ram("TypeCode"),
+            value: "VAT",
+        },
+        FixedValue {
+            parent: ram("IncludedTradeTax"),
+            element: ram("TypeCode"),
+            value: "VAT",
+        },
+        // A price discount (BT-147) is an allowance; the charge indicator
+        // that CII requires on it is always false.
+        FixedValue {
+            parent: ram("ChargeIndicator"),
+            element: udt("Indicator"),
+            value: "false",
+        },
+    ],
 };
 
 const AGREEMENT: [Step; 2] = [
@@ -292,7 +318,8 @@ const HEADER_SECTIONS: &[SectionDef] = &[
         fields: &[
             field(BT_27, &[ram("Name")], Format::Text),
             field(BT_28, &[LEGAL, ram("TradingBusinessName")], Format::Text),
-            field(BT_29, &[ram("ID")], Format::Text),
+            repeatable(BT_29, &[ram("ID")], Format::Text),
+            repeatable(BT_29, &[ram("GlobalID")], Format::Scheme("schemeID")),
             field(BT_30, &[LEGAL, ram("ID")], Format::Scheme("schemeID")),
             field(
                 BT_31,
@@ -357,6 +384,7 @@ const HEADER_SECTIONS: &[SectionDef] = &[
             field(BT_44, &[ram("Name")], Format::Text),
             field(BT_45, &[LEGAL, ram("TradingBusinessName")], Format::Text),
             field(BT_46, &[ram("ID")], Format::Text),
+            field(BT_46, &[ram("GlobalID")], Format::Scheme("schemeID")),
             field(BT_47, &[LEGAL, ram("ID")], Format::Scheme("schemeID")),
             field(
                 BT_48,
@@ -443,6 +471,11 @@ const HEADER_SECTIONS: &[SectionDef] = &[
         fields: &[
             field(BT_70, &[SHIP_TO, ram("Name")], Format::Text),
             field(BT_71, &[SHIP_TO, ram("ID")], Format::Text),
+            field(
+                BT_71,
+                &[SHIP_TO, ram("GlobalID")],
+                Format::Scheme("schemeID"),
+            ),
             field(
                 BT_72,
                 &[
@@ -659,7 +692,7 @@ const LINE_SECTIONS: &[SectionDef] = &[SectionDef {
                 ram("AdditionalReferencedDocument"),
                 ram("IssuerAssignedID"),
             ],
-            Format::Text,
+            Format::SchemeElement(&[ram("ReferenceTypeCode")]),
         ),
         field(
             BT_132,
@@ -722,32 +755,33 @@ const TRAILER_SECTIONS: &[SectionDef] = &[
                 Format::Text,
             ),
             field(BT_83, &[ram("PaymentReference")], Format::Text),
-            field(
-                BT_84,
+            // Credit transfer (BG-17) may occur more than once, one per
+            // payment means.
+            group(
+                &[ram("SpecifiedTradeSettlementPaymentMeans")],
                 &[
-                    ram("SpecifiedTradeSettlementPaymentMeans"),
-                    ram("PayeePartyCreditorFinancialAccount"),
-                    ram("IBANID"),
+                    field(
+                        BT_84,
+                        &[ram("PayeePartyCreditorFinancialAccount"), ram("IBANID")],
+                        Format::Iban,
+                    ),
+                    field(
+                        BT_85,
+                        &[
+                            ram("PayeePartyCreditorFinancialAccount"),
+                            ram("AccountName"),
+                        ],
+                        Format::Text,
+                    ),
+                    field(
+                        BT_86,
+                        &[
+                            ram("PayeeSpecifiedCreditorFinancialInstitution"),
+                            ram("BICID"),
+                        ],
+                        Format::Text,
+                    ),
                 ],
-                Format::Iban,
-            ),
-            field(
-                BT_85,
-                &[
-                    ram("SpecifiedTradeSettlementPaymentMeans"),
-                    ram("PayeePartyCreditorFinancialAccount"),
-                    ram("AccountName"),
-                ],
-                Format::Text,
-            ),
-            field(
-                BT_86,
-                &[
-                    ram("SpecifiedTradeSettlementPaymentMeans"),
-                    ram("PayeeSpecifiedCreditorFinancialInstitution"),
-                    ram("BICID"),
-                ],
-                Format::Text,
             ),
             field(
                 BT_87,

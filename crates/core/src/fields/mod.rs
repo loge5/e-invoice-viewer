@@ -1,12 +1,16 @@
 //! The field model: invoice content as sections of labelled business terms
-//! (specs 0004 to 0006).
+//! (specs 0004 to 0006), and the other data of the invoice (spec 0031).
 
 mod cii;
 mod display;
+mod other;
 mod terms;
 mod ubl;
 
-use roxmltree::{Document, Node};
+use std::cell::RefCell;
+use std::collections::HashSet;
+
+use roxmltree::{Document, Node, NodeId};
 use thiserror::Error;
 
 use crate::attachments::{self, Attachment};
@@ -132,6 +136,7 @@ pub(crate) fn read_invoice(
             .first()
             .and_then(|node| node.text())
             .map(|text| text.trim().to_string()),
+        used: RefCell::new(HashSet::new()),
     };
 
     let sections = syntax
@@ -142,7 +147,16 @@ pub(crate) fn read_invoice(
         .flat_map(|def| map_section(root, def, &context))
         .collect();
     let supporting = supporting_documents(root, &syntax.supporting_documents);
-    Ok((FieldModel { sections }, supporting))
+    let mut model = FieldModel { sections };
+    other::add(
+        &mut model,
+        root,
+        syntax,
+        &context.used.borrow(),
+        &locations,
+        language,
+    );
+    Ok((model, supporting))
 }
 
 /// The supporting documents with embedded content or an external address.
@@ -186,6 +200,9 @@ struct SyntaxDef {
     /// trailer.
     sections: &'static [&'static [SectionDef]],
     supporting_documents: SupportingDocumentsDef,
+    /// Elements that belong to the syntax, not to the invoice content
+    /// (spec 0031).
+    fixed_values: &'static [other::FixedValue],
 }
 
 /// Where the additional supporting documents (BG-24) are.
@@ -264,6 +281,14 @@ impl Step {
         }
     }
 
+    /// Whether the element has the step's name, whatever its condition.
+    fn matches_name(&self, node: &Node) -> bool {
+        let name = node.tag_name().name();
+        node.is_element()
+            && node.tag_name().namespace() == Some(self.namespace)
+            && (name == self.name || Some(name) == self.alternative)
+    }
+
     fn matches(&self, node: &Node) -> bool {
         let name = node.tag_name().name();
         node.is_element()
@@ -324,6 +349,9 @@ enum Format {
     /// A value with its scheme from the named attribute, e.g. `schemeID`
     /// for electronic addresses (BT-34) or `listID` for classifications.
     Scheme(&'static str),
+    /// A value with its scheme from a sibling element, e.g. the reference
+    /// type code of a CII invoiced object identifier (BT-128-1).
+    SchemeElement(&'static [Step]),
     /// An amount in the currency of its own `currencyID` attribute (BT-111).
     OwnCurrencyAmount,
     /// The subject code of a UBL note written as `#AAI#text` (BT-21).
@@ -447,6 +475,8 @@ struct Context<'a, 'input> {
     root: Node<'a, 'input>,
     currency: Option<String>,
     locations: &'a Locations,
+    /// Further occurrences of single fields with the same value (spec 0031).
+    used: RefCell<HashSet<NodeId>>,
 }
 
 fn map_section(root: Node, def: &SectionDef, context: &Context) -> Vec<Section> {
@@ -505,6 +535,18 @@ fn section_title(anchor: Node, def: &SectionDef, language: Language) -> String {
 fn map_field(anchor: Node, def: &FieldDef, context: &Context) -> Vec<Field> {
     let mut nodes = find_all(if def.absolute { context.root } else { anchor }, def.path);
     if !def.repeatable {
+        // Further occurrences with the same value add nothing; others are
+        // listed as other data (spec 0031).
+        if let Some((first, further)) = nodes.split_first() {
+            let value = |node: &Node| match def.attribute {
+                Some(name) => node.attribute(name).map(str::trim).map(str::to_string),
+                None => node.text().map(str::trim).map(str::to_string),
+            };
+            let mut used = context.used.borrow_mut();
+            for node in further.iter().filter(|node| value(node) == value(first)) {
+                used.extend(node.descendants().map(|n| n.id()));
+            }
+        }
         nodes.truncate(1);
     }
     if let Some(fields) = def.group {
@@ -566,6 +608,13 @@ fn display_value(raw: &str, node: Node, format: Format, context: &Context) -> St
             display::specification_identifier(raw, context.detection)
         }
         Format::Scheme(attribute) => display::electronic_address(raw, node.attribute(attribute)),
+        Format::SchemeElement(path) => {
+            let scheme = node
+                .parent_element()
+                .and_then(|parent| find_all(parent, path).first().copied())
+                .and_then(|element| element.text());
+            display::electronic_address(raw, scheme)
+        }
         Format::OwnCurrencyAmount => display::amount(raw, node.attribute("currencyID"), language),
         Format::NoteSubject => display::note_parts(raw).0.unwrap_or_default().to_string(),
         Format::NoteText => display::note_parts(raw).1.to_string(),

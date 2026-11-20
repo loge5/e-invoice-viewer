@@ -895,3 +895,9 @@ msgstr ""
 
 msgid "Profile Basic WL: not a complete invoice according to EN 16931"
 msgstr ""
+
+msgid "Other data"
+msgstr ""
+
+msgid "binary data, {size}"
+msgstr ""

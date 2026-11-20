@@ -892,3 +892,9 @@ msgstr "Profil Minimum: ni popoln račun po EN 16931"
 
 msgid "Profile Basic WL: not a complete invoice according to EN 16931"
 msgstr "Profil Basic WL: ni popoln račun po EN 16931"
+
+msgid "Other data"
+msgstr "Drugi podatki"
+
+msgid "binary data, {size}"
+msgstr "binarni podatki, {size}"

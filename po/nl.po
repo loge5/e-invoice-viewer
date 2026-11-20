@@ -876,3 +876,9 @@ msgstr "Profiel Minimum: geen volledige factuur volgens EN 16931"
 
 msgid "Profile Basic WL: not a complete invoice according to EN 16931"
 msgstr "Profiel Basic WL: geen volledige factuur volgens EN 16931"
+
+msgid "Other data"
+msgstr "Overige gegevens"
+
+msgid "binary data, {size}"
+msgstr "binaire gegevens, {size}"

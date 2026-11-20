@@ -31,7 +31,9 @@ an online service and without uploading your business data anywhere.
   delivery and invoicing period, line items, payment, allowances and charges,
   VAT breakdown, totals. Every value carries its business term
   number (`BT-1`, `BG-4`, …) and is formatted for humans (dates, amounts,
-  IBANs, code lists).
+  IBANs, code lists). Content beyond the business terms — the ZUGFeRD
+  Extended profile, the XRechnung extension — is listed as *Other data*
+  with its element names, so that nothing in an invoice is hidden.
 - **Validation built in.** Checks against the XML schema (CII D16B, UBL 2.1),
   the official EN 16931 business rules, the XRechnung CIUS (`BR-DE-*`) and,
   for ZUGFeRD/Factur-X, the schema and rules of the invoice's profile. Findings are shown at the affected field

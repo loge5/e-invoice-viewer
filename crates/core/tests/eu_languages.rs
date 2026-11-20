@@ -124,8 +124,9 @@ fn sample_d_labels_are_translated() {
                 untranslated.push(theirs.title.clone());
             }
             for (field, english_field) in theirs.fields.iter().zip(&ours.fields) {
-                // Item attributes are labelled with their name from the invoice.
-                if field.id == "BT-161" {
+                // Item attributes are labelled with their name from the
+                // invoice, other data with its element names (spec 0031).
+                if field.id == "BT-161" || field.id.is_empty() {
                     continue;
                 }
                 if field.label == english_field.label

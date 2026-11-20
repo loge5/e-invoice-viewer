@@ -304,13 +304,18 @@ fn displays(model: &FieldModel) -> Vec<(String, String, String)> {
         .sections
         .iter()
         .flat_map(|section| {
-            section.fields.iter().map(|field| {
-                (
-                    section.title.clone(),
-                    field.id.clone(),
-                    field.display.clone(),
-                )
-            })
+            // Other data differs between the syntaxes (spec 0031).
+            section
+                .fields
+                .iter()
+                .filter(|field| !field.id.is_empty())
+                .map(|field| {
+                    (
+                        section.title.clone(),
+                        field.id.clone(),
+                        field.display.clone(),
+                    )
+                })
         })
         .collect()
 }

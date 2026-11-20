@@ -186,7 +186,8 @@ fn everything(model: &FieldModel) -> Vec<(String, String, String, String)> {
         .sections
         .iter()
         .flat_map(|s| {
-            s.fields.iter().map(|f| {
+            // Other data differs between the syntaxes (spec 0031).
+            s.fields.iter().filter(|f| !f.id.is_empty()).map(|f| {
                 (
                     s.title.clone(),
                     f.id.clone(),

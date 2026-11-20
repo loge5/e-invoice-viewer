@@ -892,3 +892,9 @@ msgstr "Profil Minimum: mhijiex fattura kompluta skont l-EN 16931"
 
 msgid "Profile Basic WL: not a complete invoice according to EN 16931"
 msgstr "Profil Basic WL: mhijiex fattura kompluta skont l-EN 16931"
+
+msgid "Other data"
+msgstr "Data oħra"
+
+msgid "binary data, {size}"
+msgstr "data binarja, {size}"

@@ -884,3 +884,9 @@ msgstr "Profils Minimum: nav pilnīgs rēķins saskaņā ar EN 16931"
 
 msgid "Profile Basic WL: not a complete invoice according to EN 16931"
 msgstr "Profils Basic WL: nav pilnīgs rēķins saskaņā ar EN 16931"
+
+msgid "Other data"
+msgstr "Citi dati"
+
+msgid "binary data, {size}"
+msgstr "binārie dati, {size}"

@@ -884,3 +884,9 @@ msgstr "Profil Minimum: nie je úplná faktúra podľa EN 16931"
 
 msgid "Profile Basic WL: not a complete invoice according to EN 16931"
 msgstr "Profil Basic WL: nie je úplná faktúra podľa EN 16931"
+
+msgid "Other data"
+msgstr "Ďalšie údaje"
+
+msgid "binary data, {size}"
+msgstr "binárne údaje, {size}"

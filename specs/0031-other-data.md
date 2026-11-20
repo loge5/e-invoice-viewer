@@ -1,7 +1,7 @@
 ---
 id: 0031
 title: Other data - elements without a business term
-status: reviewed
+status: in-progress
 created: 2026-11-20
 depends_on: [0004, 0005, 0006, 0013, 0014, 0024]
 ---
@@ -66,27 +66,30 @@ invoices:
 
 ## Acceptance criteria
 
-- [ ] For every committed fixture invoice (samples, KoSIT, public samples)
+- [x] For every committed fixture invoice (samples, KoSIT, public samples)
       and, locally, every FeRD sample: every element with text is shown as
       a field, used, or listed as other data — nothing is invisible
       (coverage check over the XML).
-- [ ] Given sample A with an Extended element in the document
+- [x] Given sample A with an Extended element in the document
       (`ram:ExchangedDocument/ram:Name`), one in the seller party and one
-      in the first line, then each is listed at the end of the invoice,
-      seller and first line section, with label, value and attributes.
-- [ ] Given samples A to D, then no other data is listed.
-- [ ] Given the committed KoSIT EN 16931 and XRechnung test invoices without
+      in the first line, then each is listed at the end of the seller and
+      first line section, and in the last section `Other data` for the
+      document, with label, value and attributes.
+- [x] Given samples A to D, then no other data is listed, except elements
+      that are not business terms (CII project name in C and D, the card
+      network in UBL D).
+- [x] Given the committed KoSIT EN 16931 and XRechnung test invoices without
       extension, then other data contains only elements that are not
       business terms, each listed in the notes of this spec.
-- [ ] Given a CII invoice whose seller identifier is
+- [x] Given a CII invoice whose seller identifier is
       `<ram:GlobalID schemeID="0088">…`, then BT-29 shows it with the scheme;
       the same for BT-46 and BT-71.
-- [ ] Given a CII invoice with two VAT breakdowns and the same BT-7, then
+- [x] Given a CII invoice with two VAT breakdowns and the same BT-7, then
       nothing is listed; with different dates, the second is listed.
-- [ ] Given a finding located at an other-data element (e.g. the `FX`
+- [x] Given a finding located at an other-data element (e.g. the `FX`
       finding of 0027 for an unused attribute's element), then it is shown
       at that row; *Show in XML* of the row selects the element.
-- [ ] The catalogue check passes for all languages.
+- [x] The catalogue check passes for all languages.
 
 ## Out of scope
 
@@ -95,13 +98,45 @@ invoices:
 - Attributes of shown elements that no field shows.
 - Editing or exporting other data.
 
+## Progress
+
+- **Done**:
+  - `fields/other.rs`: other data at the end of its section (document
+    level in a last section `Other data`); label as path, attributes in
+    brackets, binary content as size.
+  - *Used* elements are derived from the mapping tables: what conditions,
+    label names (BT-160), title suffixes and scheme elements read; fixed
+    values declared per syntax (`fixed_values`: tax scheme `VAT`, the
+    charge indicator `false` of a CII price discount, UBL document type
+    `130` of BT-128); the supporting documents as a whole. Further
+    occurrences of a single field with the same value are recorded while
+    mapping.
+  - Gaps mapped (found by the scan and the coverage test): BT-29, BT-46,
+    BT-71 from `ram:GlobalID` with scheme; BT-29 of UBL repeatable; BG-17
+    (BT-84, BT-85, BT-86) once per payment means in CII and UBL; the scheme
+    of BT-128 (CII `ram:ReferenceTypeCode`, UBL `schemeID`).
+  - App: rows without number (`field_name`, `field_row_text`).
+  - Texts `Other data` and `binary data, {size}` in all 24 languages.
+  - README and CHANGELOG.
+- **Verified** (2026-11-20): `other_data.rs` T1–T7 (coverage over all 400+
+  committed fixtures, and locally over all FeRD samples with
+  `FERD_PACKAGE`), catalogue check (T8), the full workspace tests, fmt and
+  clippy. The UBL/CII comparison tests compare business terms only (other
+  data differs between the syntaxes by nature).
+- **Open**: P1 in the app (author).
+
 ## Notes
 
-- Elements of EN 16931 invoices that are not business terms (to be
-  completed while implementing, AC4): CII project name
+- Elements of EN 16931 invoices that are not business terms (AC4, list in
+  `kosit_other_data_is_not_business_terms`): CII project name
   (`ram:SpecifiedProcuringProject/ram:Name`), contact department
   (`ram:DepartmentName`), base quantity of the gross price
-  (`ram:GrossPriceProductTradePrice/ram:BasisQuantity`).
+  (`ram:GrossPriceProductTradePrice/ram:BasisQuantity`), the payer's bank
+  of a CII direct debit (`ram:PayerSpecifiedDebtorFinancialInstitution`),
+  UBL card network (`cac:CardAccount/cbc:NetworkID`), UBL credit account
+  (`cac:CreditAccount/cbc:AccountID`), UBL order reference of a line
+  (`cac:OrderLineReference/cac:OrderReference/cbc:ID`), and a second tax
+  total in the invoice currency (negative test invoices).
 - Review on 2026-11-20 (Claude): scanned the FeRD samples and the KoSIT
   invoices (see Context); added *used* elements, further occurrences and
   the gaps BT-29/46/71; other data placed at the end of its section instead

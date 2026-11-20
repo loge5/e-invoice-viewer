@@ -876,3 +876,9 @@ msgstr "Профил Minimum: не е пълна фактура съгласно
 
 msgid "Profile Basic WL: not a complete invoice according to EN 16931"
 msgstr "Профил Basic WL: не е пълна фактура съгласно EN 16931"
+
+msgid "Other data"
+msgstr "Други данни"
+
+msgid "binary data, {size}"
+msgstr "двоични данни, {size}"
