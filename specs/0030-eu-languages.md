@@ -125,7 +125,7 @@ checked by native speakers, inviting corrections (author, 2026-11-20).
       header bar and status line texts) and in Greek and Bulgarian (other
       scripts); checked by screenshots on a private display, attached to the
       progress notes.
-- [ ] The desktop entry and the AppStream file validate with
+- [x] The desktop entry and the AppStream file validate with
       `desktop-file-validate` and `appstreamcli validate` and contain all
       new languages; the installer script lists the Inno Setup languages
       available for them.
@@ -241,9 +241,9 @@ checked by native speakers, inviting corrections (author, 2026-11-20).
     longer than the label column (18 to 28 characters, e.g. French
     `Identifiant de spécification`) widen it and move the value to the
     right, as long German labels do.
-- **Open**: AC11 for the Windows build — whether Inno Setup on the runner
-  has all 15 language files is shown only by the release workflow (started
-  by the author on `ci-trial`).
+  - AC11 Windows (author, 2026-11-20): the release workflow on `ci-trial`
+    built the installer with all 15 Inno Setup languages; build and tests
+    on Windows passed.
 - **Uncertain terms** reported by the translators (candidates for
   corrections): national names of the construction invoice types
   (BT-3), the VAT point date (BT-7, BT-8), self-billed invoice, clearing between partners, standing

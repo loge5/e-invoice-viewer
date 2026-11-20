@@ -137,7 +137,11 @@ files:
 The program is not signed, so Windows SmartScreen may warn about an unknown
 publisher on the first start. Choose **More info → Run anyway** if you
 downloaded the file from this repository's releases page. The language
-follows the Windows region format, or the choice in the app's menu.
+follows the Windows region format, or the choice in the app's menu. The
+installer itself asks for its language and offers English and the 15 EU
+languages Inno Setup is translated into; for Greek, Estonian, Irish,
+Croatian, Lithuanian, Latvian, Maltese and Romanian it is in English, the
+app is not.
 
 ### Building the AppImage
 
@@ -229,7 +233,8 @@ XRechnung rules in German).
 
 The translations other than German and English were made with an AI
 assistant and are not checked by native speakers. Corrections are welcome
-as an issue at <https://github.com/loge5/e-invoice-viewer/issues>.
+as an issue at <https://github.com/loge5/e-invoice-viewer/issues>, or as a
+change to the language's catalogue `po/<code>.po` (e.g. `po/fr.po`).
 
 Settings and the recent files list are kept in `~/.config/e-invoice-viewer`
 on Linux and in `%LOCALAPPDATA%\e-invoice-viewer` on Windows.
