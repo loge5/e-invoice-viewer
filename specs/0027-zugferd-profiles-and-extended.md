@@ -1,7 +1,7 @@
 ---
 id: 0027
 title: ZUGFeRD/Factur-X - profile schemas and profile rules
-status: draft
+status: reviewed
 created: 2026-11-19
 depends_on: [0003, 0009, 0023, 0024]
 ---
@@ -153,7 +153,7 @@ is not needed and not bundled.
   - `Other data` split off into 0031: it applies to every invoice, not
     only to Factur-X, and is tested independently.
 
-## Test list (proposed)
+## Test list
 
 - T1 `ferd_samples` (local, `FERD_PACKAGE`): every sample of the profiles
   Minimum to Extended, XML and PDF: profile schema and rules applied, no
