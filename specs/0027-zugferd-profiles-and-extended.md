@@ -1,7 +1,7 @@
 ---
 id: 0027
 title: ZUGFeRD/Factur-X - profile schemas and profile rules
-status: in-progress
+status: implemented
 created: 2026-11-19
 depends_on: [0003, 0009, 0023, 0024]
 ---
@@ -122,7 +122,7 @@ is not needed and not bundled.
       finding with that rule ID is reported.
 - [x] A plain CII XML invoice with the CEN identifier, UBL invoices and the
       XRechnung and KoSIT tests give the same results as before.
-- [ ] Validating the largest Extended sample takes no longer than 2 s in a
+- [x] Validating the largest Extended sample takes no longer than 2 s in a
       release build on the author's machine, including compiling the rules
       on first use.
 - [x] The bundled files are unchanged copies (checksums in `SOURCE.md`);
@@ -176,7 +176,8 @@ is not needed and not bundled.
     the author's (P1).
   - fmt, clippy clean; fuzz target `validate` also calls
     `validate_embedded` and warms up the five profiles.
-- **Open**: AC9 in the app (author).
+  - AC9 in the app (author, 2026-11-20): X05_03 (Extended) and a Minimum
+    sample open and validate quickly, summary and note as required.
 
 ## Notes
 
