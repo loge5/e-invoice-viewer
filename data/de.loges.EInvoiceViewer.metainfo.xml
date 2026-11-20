@@ -225,6 +225,14 @@
   <content_rating type="oars-1.1" />
 
   <releases>
+    <release version="0.3.0" date="2026-11-20">
+      <description>
+        <p>All 24 official EU languages; check against the XML schema; every
+          EN 16931 business term is shown.</p>
+        <p xml:lang="de">Alle 24 Amtssprachen der EU; Prüfung gegen das
+          XML-Schema; alle Geschäftsbegriffe der EN 16931 werden angezeigt.</p>
+      </description>
+    </release>
     <release version="0.2.1" date="2026-11-19">
       <description>
         <p>Windows support (portable ZIP and installer); more invoice fields:

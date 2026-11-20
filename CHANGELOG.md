@@ -6,6 +6,8 @@ All notable changes for users of E-Invoice Viewer. The format follows
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-11-20
+
 ### Added
 
 - The invoice XML is checked against its XML schema (CII D16B, UBL 2.1) like
@@ -66,6 +68,7 @@ First public release.
 - AppImage for x86_64 Linux; `scripts/install.sh` for an installation from
   source.
 
-[Unreleased]: https://github.com/loge5/e-invoice-viewer/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com/loge5/e-invoice-viewer/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/loge5/e-invoice-viewer/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/loge5/e-invoice-viewer/compare/v0.1.0...v0.2.1
 [0.1.0]: https://github.com/loge5/e-invoice-viewer/releases/tag/v0.1.0
