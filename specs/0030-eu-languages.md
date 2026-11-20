@@ -1,7 +1,7 @@
 ---
 id: 0030
 title: User interface and invoice content in every official EU language
-status: in-progress
+status: implemented
 created: 2026-11-20
 depends_on: [0017, 0018, 0019, 0022]
 ---
