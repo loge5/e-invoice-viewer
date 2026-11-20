@@ -31,7 +31,7 @@ way to close it, and crashed on Linux.
 | # | Topic | Decision |
 |---|---|---|
 | 1 | Input formats | ZUGFeRD/Factur-X PDF; plain XML in CII and UBL *(default)* |
-| 2 | Profiles | Full field view for EN 16931 (Comfort), XRechnung, Basic and Extended. Minimum and Basic WL are shown with a notice that they are not complete invoices *(default)*. For 1.0, every EN 16931 business term is shown (spec 0024), and content beyond EN 16931 (Extended) is planned (spec 0027) |
+| 2 | Profiles | Full field view for EN 16931 (Comfort), XRechnung, Basic and Extended. Minimum and Basic WL are shown with a notice that they are not complete invoices *(default)*. Every EN 16931 business term is shown (spec 0024); content beyond EN 16931 (Extended, XRechnung extension) is listed as other data (spec 0031) |
 | 3 | Editing | **Display only.** Creating or editing invoices is out of scope |
 | 4 | Attachments | Embedded attachments of the invoice (e.g. delivery note) are listed and can be saved (spec 0013) |
 | 5 | Rule set | XML schema (CII D16B, UBL 2.1; spec 0023, ADR 0006), EN 16931 business rules (CEN) and XRechnung CIUS (BR-DE-*). For ZUGFeRD/Factur-X invoices the schema and Schematron of their profile, Factur-X 1.09.2 / ZUGFeRD 2.5.2 (spec 0027) |
