@@ -225,6 +225,16 @@
   <content_rating type="oars-1.1" />
 
   <releases>
+    <release version="0.4.0" date="2026-11-20">
+      <description>
+        <p>ZUGFeRD/Factur-X invoices are checked against the schema and rules
+          of their profile; content beyond the EN 16931 business terms is
+          listed as other data.</p>
+        <p xml:lang="de">ZUGFeRD/Factur-X-Rechnungen werden gegen Schema und
+          Regeln ihres Profils geprüft; Inhalte über die Geschäftsbegriffe der
+          EN 16931 hinaus erscheinen als weitere Angaben.</p>
+      </description>
+    </release>
     <release version="0.3.0" date="2026-11-20">
       <description>
         <p>All 24 official EU languages; check against the XML schema; every

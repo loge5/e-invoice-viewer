@@ -6,6 +6,8 @@ All notable changes for users of E-Invoice Viewer. The format follows
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-11-20
+
 ### Added
 
 - ZUGFeRD/Factur-X invoices are checked against the XML schema and the rules
@@ -17,8 +19,9 @@ All notable changes for users of E-Invoice Viewer. The format follows
   section it belongs to, with its element names, so that nothing is hidden.
 - All credit transfer accounts (BG-17) of an invoice are shown, not only the
   first; the seller, buyer and delivery identifiers (BT-29, BT-46, BT-71)
-  given as `GlobalID` and every seller identifier of a UBL invoice; the
-  scheme of the invoiced object identifier of a line (BT-128).
+  given as `GlobalID` and every seller identifier of a UBL invoice; a
+  contact department as contact point (BT-41, BT-56); the scheme of the
+  invoiced object identifier of a line (BT-128).
 
 ### Changed
 
@@ -87,7 +90,8 @@ First public release.
 - AppImage for x86_64 Linux; `scripts/install.sh` for an installation from
   source.
 
-[Unreleased]: https://github.com/loge5/e-invoice-viewer/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/loge5/e-invoice-viewer/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/loge5/e-invoice-viewer/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/loge5/e-invoice-viewer/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/loge5/e-invoice-viewer/compare/v0.1.0...v0.2.1
 [0.1.0]: https://github.com/loge5/e-invoice-viewer/releases/tag/v0.1.0
