@@ -1,0 +1,878 @@
+# Estonian translation of E-Invoice Viewer.
+# This file is distributed under the same licence as E-Invoice Viewer
+# (GPL-3.0-or-later).
+# Not checked by a native speaker (spec 0030); corrections are welcome
+# as an issue on GitHub.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: E-Invoice Viewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-19 10:45+0100\n"
+"PO-Revision-Date: 2026-11-18 00:00+0100\n"
+"Last-Translator: E-Invoice Viewer contributors\n"
+"Language-Team: Estonian\n"
+"Language: et\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Open an invoice"
+msgstr "Ava arve"
+
+msgid "Invoices (PDF, XML)"
+msgstr "Arved (PDF, XML)"
+
+msgid "Open…"
+msgstr "Ava…"
+
+msgid "Close"
+msgstr "Sulge"
+
+msgid "Copy value"
+msgstr "Kopeeri väärtus"
+
+msgid "This PDF contains no electronic invoice"
+msgstr "See PDF ei sisalda e-arvet"
+
+msgid "The PDF pages cannot be shown"
+msgstr "PDF-i lehekülgi ei saa kuvada"
+
+msgid "Plain XML invoice – no PDF included"
+msgstr "Ainult XML-arve – PDF puudub"
+
+msgid "Fields"
+msgstr "Väljad"
+
+msgid "XML"
+msgstr "XML"
+
+msgid "Zoom in (Ctrl++)"
+msgstr "Suurenda (Ctrl++)"
+
+msgid "Zoom out (Ctrl+-)"
+msgstr "Vähenda (Ctrl+-)"
+
+msgid "Copy XML"
+msgstr "Kopeeri XML"
+
+msgid "Save XML as…"
+msgstr "Salvesta XML nimega…"
+
+msgid "The XML could not be saved"
+msgstr "XML-i ei õnnestunud salvestada"
+
+msgid "Search in the XML"
+msgstr "Otsi XML-ist"
+
+msgid "Validation result"
+msgstr "Valideerimise tulemus"
+
+msgid "Document"
+msgstr "Dokument"
+
+msgid "internal error during validation"
+msgstr "sisemine viga valideerimisel"
+
+msgid "Recently opened"
+msgstr "Hiljuti avatud"
+
+msgid "Attachments"
+msgstr "Manused"
+
+msgid "Show in XML"
+msgstr "Näita XML-is"
+
+msgid "Show in fields"
+msgstr "Näita väljadel"
+
+msgid "No field assigned"
+msgstr "Välja pole määratud"
+
+msgid "No attachments"
+msgstr "Manuseid pole"
+
+msgid "Save attachment…"
+msgstr "Salvesta manus…"
+
+msgid "No entries"
+msgstr "Kirjeid pole"
+
+msgid "Only one file per window – the first one was opened"
+msgstr "Ainult üks fail akna kohta – avati esimene"
+
+msgid "Main menu"
+msgstr "Peamenüü"
+
+msgid "Language"
+msgstr "Keel"
+
+msgid "System language"
+msgstr "Süsteemi keel"
+
+msgid "error"
+msgid_plural "errors"
+msgstr[0] "viga"
+msgstr[1] "viga"
+
+msgid "warning"
+msgid_plural "warnings"
+msgstr[0] "hoiatus"
+msgstr[1] "hoiatust"
+
+msgid "note"
+msgid_plural "notes"
+msgstr[0] "märkus"
+msgstr[1] "märkust"
+
+msgid "Error"
+msgid_plural "Errors"
+msgstr[0] "Viga"
+msgstr[1] "Vead"
+
+msgid "Warning"
+msgid_plural "Warnings"
+msgstr[0] "Hoiatus"
+msgstr[1] "Hoiatused"
+
+msgid "Note"
+msgid_plural "Notes"
+msgstr[0] "Märkus"
+msgstr[1] "Märkused"
+
+msgid "No findings"
+msgstr "Tähelepanekuid pole"
+
+msgid "No errors, {counts}"
+msgstr "Vigu pole, {counts}"
+
+msgid "Validating…"
+msgstr "Valideerimine…"
+
+msgid "Validation failed: {reason}"
+msgstr "Valideerimine ebaõnnestus: {reason}"
+
+msgid "{rule sets} and {last rule set}"
+msgstr "{rule sets} ja {last rule set}"
+
+msgid "Checked against {rule sets}"
+msgstr "Kontrollitud reeglistike järgi: {rule sets}"
+
+msgid "The address {address} is not a local file"
+msgstr "Aadress {address} ei ole kohalik fail"
+
+msgid "The file {file} was not found"
+msgstr "Faili {file} ei leitud"
+
+msgid "The file {file} cannot be read: {reason}"
+msgstr "Faili {file} ei saa lugeda: {reason}"
+
+msgid "{count} byte"
+msgid_plural "{count} bytes"
+msgstr[0] "{count} bait"
+msgstr[1] "{count} baiti"
+
+msgid "Invoice (BG-24)"
+msgstr "Arve (BG-24)"
+
+msgid "unknown"
+msgstr "tundmatu"
+
+msgid "Content not readable"
+msgstr "Sisu ei ole loetav"
+
+msgid "Too large (over {size} MB)"
+msgstr "Liiga suur (üle {size} MB)"
+
+msgid "The attachment {name} could not be saved: {reason}"
+msgstr "Manust {name} ei õnnestunud salvestada: {reason}"
+
+msgid "Page {page} of {count}"
+msgstr "Lehekülg {page}/{count}"
+
+msgid "No matches"
+msgstr "Vasteid pole"
+
+msgid "{current} of {total}"
+msgstr "{current}/{total}"
+
+msgid "{count} match"
+msgid_plural "{count} matches"
+msgstr[0] "{count} vaste"
+msgstr[1] "{count} vastet"
+
+msgid "The file {file} cannot be read as an invoice: {reason}"
+msgstr "Faili {file} ei saa lugeda arvena: {reason}"
+
+msgid "not a readable PDF file"
+msgstr "ei ole loetav PDF-fail"
+
+msgid "the embedded invoice {name} is empty"
+msgstr "manustatud arve {name} on tühi"
+
+msgid "XML is not well-formed (line {line})"
+msgstr "XML ei ole korrektselt vormistatud (rida {line})"
+
+msgid "XML contains a DOCTYPE declaration – not supported"
+msgstr "XML sisaldab DOCTYPE-deklaratsiooni – ei toetata"
+
+msgid "not an electronic invoice"
+msgstr "ei ole e-arve"
+
+msgid "ZUGFeRD 1.0 is not supported"
+msgstr "ZUGFeRD 1.0 ei ole toetatud"
+
+msgid "the character encoding {encoding} is not supported"
+msgstr "märgikodeeringut {encoding} ei toetata"
+
+msgid "XML is nested more than {limit} levels deep"
+msgstr "XML on pesastatud sügavamale kui {limit} taset"
+
+msgid "the invoice format is not supported"
+msgstr "arvevormingut ei toetata"
+
+msgid "Partial invoice"
+msgstr "Osaarve"
+
+msgid "Commercial invoice"
+msgstr "Kaubandusarve"
+
+msgid "Credit note"
+msgstr "Kreeditarve"
+
+msgid "Corrected invoice"
+msgstr "Parandatud arve"
+
+msgid "Self-billed invoice"
+msgstr "Ostja koostatud arve"
+
+msgid "Partial construction invoice"
+msgstr "Ehitustööde vahearve"
+
+msgid "Partial final construction invoice"
+msgstr "Ehitustööde osaline lõpparve"
+
+msgid "Final construction invoice"
+msgstr "Ehitustööde lõpparve"
+
+msgid "Instrument not defined"
+msgstr "Määramata"
+
+msgid "In cash"
+msgstr "Sularaha"
+
+msgid "Cheque"
+msgstr "Tšekk"
+
+msgid "Credit transfer"
+msgstr "Ülekanne"
+
+msgid "Payment to bank account"
+msgstr "Makse pangakontole"
+
+msgid "Bank card"
+msgstr "Pangakaart"
+
+msgid "Direct debit"
+msgstr "Otsekorraldus"
+
+msgid "Credit card"
+msgstr "Krediitkaart"
+
+msgid "Standing agreement"
+msgstr "Püsikokkulepe"
+
+msgid "SEPA credit transfer"
+msgstr "SEPA-ülekanne"
+
+msgid "SEPA direct debit"
+msgstr "SEPA-otsekorraldus"
+
+msgid "Clearing between partners"
+msgstr "Tasaarveldus partnerite vahel"
+
+msgid "Standard rate"
+msgstr "Standardmäär"
+
+msgid "Zero rated goods"
+msgstr "Nullmäär"
+
+msgid "Exempt from tax"
+msgstr "Maksuvaba"
+
+msgid "VAT reverse charge"
+msgstr "Pöördmaksustamine"
+
+msgid "Intra-community supply"
+msgstr "Ühendusesisene käive"
+
+msgid "Export outside the EU"
+msgstr "Eksport väljapoole ELi"
+
+msgid "Outside the scope of VAT"
+msgstr "Ei kuulu käibemaksu kohaldamisalasse"
+
+msgid "Canary Islands IGIC"
+msgstr "Kanaari saared (IGIC)"
+
+msgid "Ceuta and Melilla IPSI"
+msgstr "Ceuta ja Melilla (IPSI)"
+
+msgid "pieces"
+msgstr "tükki"
+
+msgid "hours"
+msgstr "tundi"
+
+msgid "days"
+msgstr "päeva"
+
+msgid "months"
+msgstr "kuud"
+
+msgid "kilograms"
+msgstr "kilogrammi"
+
+msgid "metres"
+msgstr "meetrit"
+
+msgid "litres"
+msgstr "liitrit"
+
+msgid "lump sum"
+msgstr "kindel summa"
+
+msgid "Invoice number"
+msgstr "Arve number"
+
+msgid "Invoice issue date"
+msgstr "Arve kuupäev"
+
+msgid "Invoice type code"
+msgstr "Arve liik"
+
+msgid "Invoice currency code"
+msgstr "Valuuta"
+
+msgid "VAT accounting currency code"
+msgstr "Käibemaksu valuuta"
+
+msgid "Value added tax point date"
+msgstr "Maksukohustuse tekkimise kuupäev"
+
+msgid "Value added tax point date code"
+msgstr "Maksukohustuse tekkimise kuupäev (kood)"
+
+msgid "Payment due date"
+msgstr "Maksetähtaeg"
+
+msgid "Buyer reference"
+msgstr "Ostja viide"
+
+msgid "Project reference"
+msgstr "Projekti viide"
+
+msgid "Contract reference"
+msgstr "Lepingu viide"
+
+msgid "Purchase order reference"
+msgstr "Ostutellimus"
+
+msgid "Sales order reference"
+msgstr "Müügitellimus"
+
+msgid "Receiving advice reference"
+msgstr "Vastuvõtuteatis"
+
+msgid "Despatch advice reference"
+msgstr "Lähetusteatis"
+
+msgid "Tender or lot reference"
+msgstr "Hanke või osa viide"
+
+msgid "Invoiced object identifier"
+msgstr "Objekti tunnus"
+
+msgid "Buyer accounting reference"
+msgstr "Raamatupidamise viide"
+
+msgid "Payment terms"
+msgstr "Maksetingimused"
+
+msgid "Invoice note subject code"
+msgstr "Märkuse teema (kood)"
+
+msgid "Invoice note"
+msgstr "Märkus"
+
+msgid "Business process type"
+msgstr "Äriprotsess"
+
+msgid "Specification identifier"
+msgstr "Spetsifikatsiooni tunnus"
+
+msgid "Preceding Invoice reference"
+msgstr "Arve number"
+
+msgid "Preceding Invoice issue date"
+msgstr "Arve kuupäev"
+
+msgid "Seller name"
+msgstr "Nimi"
+
+msgid "Seller trading name"
+msgstr "Ärinimi"
+
+msgid "Seller identifier"
+msgstr "Tunnus"
+
+msgid "Seller legal registration identifier"
+msgstr "Registrikood"
+
+msgid "Seller VAT identifier"
+msgstr "KMKR number"
+
+msgid "Seller tax registration identifier"
+msgstr "Maksunumber"
+
+msgid "Seller additional legal information"
+msgstr "Muu õiguslik teave"
+
+msgid "Seller electronic address"
+msgstr "Elektrooniline aadress"
+
+msgid "Seller address line 1"
+msgstr "Tänav"
+
+msgid "Seller address line 2"
+msgstr "Aadressi rida 2"
+
+msgid "Seller city"
+msgstr "Linn"
+
+msgid "Seller post code"
+msgstr "Postiindeks"
+
+msgid "Seller country subdivision"
+msgstr "Piirkond"
+
+msgid "Seller country code"
+msgstr "Riik"
+
+msgid "Seller contact point"
+msgstr "Kontaktisik"
+
+msgid "Seller contact telephone number"
+msgstr "Telefon"
+
+msgid "Seller contact email address"
+msgstr "E-post"
+
+msgid "Buyer name"
+msgstr "Nimi"
+
+msgid "Buyer trading name"
+msgstr "Ärinimi"
+
+msgid "Buyer identifier"
+msgstr "Tunnus"
+
+msgid "Buyer legal registration identifier"
+msgstr "Registrikood"
+
+msgid "Buyer VAT identifier"
+msgstr "KMKR number"
+
+msgid "Buyer electronic address"
+msgstr "Elektrooniline aadress"
+
+msgid "Buyer address line 1"
+msgstr "Tänav"
+
+msgid "Buyer address line 2"
+msgstr "Aadressi rida 2"
+
+msgid "Buyer city"
+msgstr "Linn"
+
+msgid "Buyer post code"
+msgstr "Postiindeks"
+
+msgid "Buyer country subdivision"
+msgstr "Piirkond"
+
+msgid "Buyer country code"
+msgstr "Riik"
+
+msgid "Buyer contact point"
+msgstr "Kontaktisik"
+
+msgid "Buyer contact telephone number"
+msgstr "Telefon"
+
+msgid "Buyer contact email address"
+msgstr "E-post"
+
+msgid "Payee name"
+msgstr "Nimi"
+
+msgid "Payee identifier"
+msgstr "Tunnus"
+
+msgid "Payee legal registration identifier"
+msgstr "Registrikood"
+
+msgid "Seller tax representative name"
+msgstr "Nimi"
+
+msgid "Seller tax representative VAT identifier"
+msgstr "KMKR number"
+
+msgid "Tax representative address line 1"
+msgstr "Tänav"
+
+msgid "Tax representative address line 2"
+msgstr "Aadressi rida 2"
+
+msgid "Tax representative city"
+msgstr "Linn"
+
+msgid "Tax representative post code"
+msgstr "Postiindeks"
+
+msgid "Tax representative country subdivision"
+msgstr "Piirkond"
+
+msgid "Tax representative country code"
+msgstr "Riik"
+
+msgid "Deliver to party name"
+msgstr "Saaja"
+
+msgid "Deliver to location identifier"
+msgstr "Tarnekoha tunnus"
+
+msgid "Actual delivery date"
+msgstr "Tarnekuupäev"
+
+msgid "Invoicing period start date"
+msgstr "Arveldusperiood alates"
+
+msgid "Invoicing period end date"
+msgstr "Arveldusperiood kuni"
+
+msgid "Deliver to address line 1"
+msgstr "Tänav"
+
+msgid "Deliver to address line 2"
+msgstr "Aadressi rida 2"
+
+msgid "Deliver to city"
+msgstr "Linn"
+
+msgid "Deliver to post code"
+msgstr "Postiindeks"
+
+msgid "Deliver to country subdivision"
+msgstr "Piirkond"
+
+msgid "Deliver to country code"
+msgstr "Riik"
+
+msgid "Payment means type code"
+msgstr "Makseviis"
+
+msgid "Payment means text"
+msgstr "Makseviis (tekst)"
+
+msgid "Remittance information"
+msgstr "Makse selgitus"
+
+msgid "Payment account identifier"
+msgstr "IBAN"
+
+msgid "Payment account name"
+msgstr "Konto omanik"
+
+msgid "Payment service provider identifier"
+msgstr "BIC"
+
+msgid "Payment card primary account number"
+msgstr "Kaardi number"
+
+msgid "Payment card holder name"
+msgstr "Kaardi omanik"
+
+msgid "Mandate reference identifier"
+msgstr "Mandaadi viide"
+
+msgid "Bank assigned creditor identifier"
+msgstr "Võlausaldaja tunnus"
+
+msgid "Debited account identifier"
+msgstr "Debiteeritav konto"
+
+msgid "Document level allowance amount"
+msgstr "Summa"
+
+msgid "Document level allowance base amount"
+msgstr "Baassumma"
+
+msgid "Document level allowance percentage"
+msgstr "Protsent"
+
+msgid "Document level allowance VAT category code"
+msgstr "Käibemaksu kategooria"
+
+msgid "Document level allowance VAT rate"
+msgstr "Käibemaksumäär"
+
+msgid "Document level allowance reason"
+msgstr "Põhjus"
+
+msgid "Document level allowance reason code"
+msgstr "Põhjus (kood)"
+
+msgid "Document level charge amount"
+msgstr "Summa"
+
+msgid "Document level charge base amount"
+msgstr "Baassumma"
+
+msgid "Document level charge percentage"
+msgstr "Protsent"
+
+msgid "Document level charge VAT category code"
+msgstr "Käibemaksu kategooria"
+
+msgid "Document level charge VAT rate"
+msgstr "Käibemaksumäär"
+
+msgid "Document level charge reason"
+msgstr "Põhjus"
+
+msgid "Document level charge reason code"
+msgstr "Põhjus (kood)"
+
+msgid "Sum of Invoice line net amount"
+msgstr "Ridade netosumma"
+
+msgid "Sum of allowances on document level"
+msgstr "Allahindlused kokku"
+
+msgid "Sum of charges on document level"
+msgstr "Lisatasud kokku"
+
+msgid "Invoice total amount without VAT"
+msgstr "Kokku ilma käibemaksuta"
+
+msgid "Invoice total VAT amount"
+msgstr "Käibemaks kokku"
+
+msgid "Invoice total VAT amount in accounting currency"
+msgstr "Käibemaks arvestusvaluutas"
+
+msgid "Invoice total amount with VAT"
+msgstr "Kokku koos käibemaksuga"
+
+msgid "Paid amount"
+msgstr "Ettemakstud"
+
+msgid "Rounding amount"
+msgstr "Ümardus"
+
+msgid "Amount due for payment"
+msgstr "Tasumisele kuuluv summa"
+
+msgid "VAT category taxable amount"
+msgstr "Maksustatav summa"
+
+msgid "VAT category tax amount"
+msgstr "Maksusumma"
+
+msgid "VAT category code"
+msgstr "Käibemaksu kategooria"
+
+msgid "VAT category rate"
+msgstr "Käibemaksumäär"
+
+msgid "VAT exemption reason text"
+msgstr "Maksuvabastuse põhjus"
+
+msgid "VAT exemption reason code"
+msgstr "Maksuvabastuse põhjus (kood)"
+
+msgid "Invoice line identifier"
+msgstr "Rea number"
+
+msgid "Invoice line note"
+msgstr "Rea märkus"
+
+msgid "Invoice line object identifier"
+msgstr "Objekti tunnus"
+
+msgid "Invoiced quantity"
+msgstr "Kogus"
+
+msgid "Invoiced quantity unit of measure code"
+msgstr "Ühik"
+
+msgid "Invoice line net amount"
+msgstr "Netosumma"
+
+msgid "Referenced purchase order line reference"
+msgstr "Tellimuse rida"
+
+msgid "Invoice line Buyer accounting reference"
+msgstr "Ostja raamatupidamise viide"
+
+msgid "Invoice line period start date"
+msgstr "Periood alates"
+
+msgid "Invoice line period end date"
+msgstr "Periood kuni"
+
+msgid "Invoice line allowance amount"
+msgstr "Summa"
+
+msgid "Invoice line allowance base amount"
+msgstr "Baassumma"
+
+msgid "Invoice line allowance percentage"
+msgstr "Protsent"
+
+msgid "Invoice line allowance reason"
+msgstr "Põhjus"
+
+msgid "Invoice line allowance reason code"
+msgstr "Põhjus (kood)"
+
+msgid "Invoice line charge amount"
+msgstr "Summa"
+
+msgid "Invoice line charge base amount"
+msgstr "Baassumma"
+
+msgid "Invoice line charge percentage"
+msgstr "Protsent"
+
+msgid "Invoice line charge reason"
+msgstr "Põhjus"
+
+msgid "Invoice line charge reason code"
+msgstr "Põhjus (kood)"
+
+msgid "Item net price"
+msgstr "Netohind"
+
+msgid "Item price discount"
+msgstr "Hinnaallahindlus"
+
+msgid "Item gross price"
+msgstr "Brutohind"
+
+msgid "Item price base quantity"
+msgstr "Hinna baaskogus"
+
+msgid "Item price base quantity unit of measure code"
+msgstr "Hinna baaskoguse ühik"
+
+msgid "Invoiced item VAT category code"
+msgstr "Käibemaksu kategooria"
+
+msgid "Invoiced item VAT rate"
+msgstr "Käibemaksumäär"
+
+msgid "Item name"
+msgstr "Kauba nimetus"
+
+msgid "Item description"
+msgstr "Kauba kirjeldus"
+
+msgid "Item Seller's identifier"
+msgstr "Kaubakood"
+
+msgid "Item Buyer's identifier"
+msgstr "Ostja kaubakood"
+
+msgid "Item standard identifier"
+msgstr "Standardtunnus"
+
+msgid "Item classification identifier"
+msgstr "Klassifikatsioon"
+
+msgid "Item country of origin"
+msgstr "Päritoluriik"
+
+msgid "Item attribute value"
+msgstr "Kauba atribuut"
+
+msgid "Seller address line 3"
+msgstr "Aadressi rida 3"
+
+msgid "Buyer address line 3"
+msgstr "Aadressi rida 3"
+
+msgid "Tax representative address line 3"
+msgstr "Aadressi rida 3"
+
+msgid "Deliver to address line 3"
+msgstr "Aadressi rida 3"
+
+msgid "Invoice"
+msgstr "Arve"
+
+msgid "Seller (BG-4)"
+msgstr "Müüja (BG-4)"
+
+msgid "Buyer (BG-7)"
+msgstr "Ostja (BG-7)"
+
+msgid "Preceding invoice reference (BG-3)"
+msgstr "Eelmine arve (BG-3)"
+
+msgid "Payee (BG-10)"
+msgstr "Makse saaja (BG-10)"
+
+msgid "Seller tax representative party (BG-11)"
+msgstr "Maksuesindaja (BG-11)"
+
+msgid "Delivery information (BG-13)"
+msgstr "Tarne (BG-13)"
+
+msgid "Invoice line"
+msgstr "Rida"
+
+msgid "Payment instructions (BG-16)"
+msgstr "Makse (BG-16)"
+
+msgid "Document level allowances (BG-20)"
+msgstr "Allahindlus (BG-20)"
+
+msgid "Document level charges (BG-21)"
+msgstr "Lisatasu (BG-21)"
+
+msgid "Invoice line allowances (BG-27)"
+msgstr "Allahindlus (BG-27)"
+
+msgid "Invoice line charges (BG-28)"
+msgstr "Lisatasu (BG-28)"
+
+msgid "VAT breakdown (BG-23)"
+msgstr "Käibemaksu jaotus (BG-23)"
+
+msgid "Document totals (BG-22)"
+msgstr "Kogusummad (BG-22)"
+
+msgid "XML schema {name}"
+msgstr "XML-skeem {name}"
+
+msgid "Checked against XRechnung {bundled}, invoice declares version {declared}"
+msgstr "Kontrollitud XRechnung {bundled} järgi, arve deklareerib versiooni {declared}"
+
+msgid "Profile Minimum: not a complete invoice according to EN 16931"
+msgstr "Profiil Minimum: ei ole täielik arve standardi EN 16931 järgi"
+
+msgid "Profile Basic WL: not a complete invoice according to EN 16931"
+msgstr "Profiil Basic WL: ei ole täielik arve standardi EN 16931 järgi"

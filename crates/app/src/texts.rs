@@ -272,11 +272,7 @@ pub fn size_text(bytes: usize) -> String {
         value /= 1000.0;
         unit += 1;
     }
-    let text = format!("{value:.1} {}", UNITS[unit]);
-    match language() {
-        Language::German => text.replace('.', ","),
-        Language::English => text,
-    }
+    format!("{value:.1} {}", UNITS[unit]).replace('.', &language().decimal_separator().to_string())
 }
 
 /// The details line of an attachment: source, type, size or reason, and the
@@ -849,6 +845,38 @@ mod tests {
         assert_eq!(page_indicator_text(1, 3), "Seite 2 von 3");
         assert_eq!(zoom_text(150.0), "150 %");
         assert_eq!(zoom_text(87.4), "87 %");
+    }
+
+    // Spec 0030 AC1, AC3: the status line of a valid invoice and the size of
+    // an attachment in every language.
+    #[test]
+    fn status_and_size_in_every_language() {
+        let valid = || status_text(&ValidationState::Done(validation(&[])));
+        for language in Language::ALL {
+            set_language(language);
+            let (status, size) = (valid(), size_text(1_500));
+            set_language(Language::German);
+            let expected_size = if language.decimal_separator() == ',' {
+                "1,5 kB"
+            } else {
+                "1.5 kB"
+            };
+            assert_eq!(size, expected_size, "{language:?}");
+            if language != Language::English {
+                assert_ne!(status, "No findings", "{language:?}");
+            }
+        }
+        for (language, status) in [
+            (Language::French, "Aucun constat"),
+            (Language::Spanish, "Sin observaciones"),
+            (Language::Dutch, "Geen bevindingen"),
+            (Language::English, "No findings"),
+        ] {
+            set_language(language);
+            let text = valid();
+            set_language(Language::German);
+            assert_eq!(text, status);
+        }
     }
 
     /// `texts` in German and in English.

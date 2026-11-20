@@ -1,0 +1,878 @@
+# French translation of E-Invoice Viewer.
+# This file is distributed under the same licence as E-Invoice Viewer
+# (GPL-3.0-or-later).
+# Not checked by a native speaker (spec 0030); corrections are welcome
+# as an issue on GitHub.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: E-Invoice Viewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-19 10:45+0100\n"
+"PO-Revision-Date: 2026-11-18 00:00+0100\n"
+"Last-Translator: E-Invoice Viewer contributors\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Open an invoice"
+msgstr "Ouvrir une facture"
+
+msgid "Invoices (PDF, XML)"
+msgstr "Factures (PDF, XML)"
+
+msgid "Open…"
+msgstr "Ouvrir…"
+
+msgid "Close"
+msgstr "Fermer"
+
+msgid "Copy value"
+msgstr "Copier la valeur"
+
+msgid "This PDF contains no electronic invoice"
+msgstr "Ce PDF ne contient pas de facture électronique"
+
+msgid "The PDF pages cannot be shown"
+msgstr "Les pages du PDF ne peuvent pas être affichées"
+
+msgid "Plain XML invoice – no PDF included"
+msgstr "Facture XML seule – aucun PDF inclus"
+
+msgid "Fields"
+msgstr "Champs"
+
+msgid "XML"
+msgstr "XML"
+
+msgid "Zoom in (Ctrl++)"
+msgstr "Agrandir (Ctrl++)"
+
+msgid "Zoom out (Ctrl+-)"
+msgstr "Réduire (Ctrl+-)"
+
+msgid "Copy XML"
+msgstr "Copier le XML"
+
+msgid "Save XML as…"
+msgstr "Enregistrer le XML sous…"
+
+msgid "The XML could not be saved"
+msgstr "Le XML n’a pas pu être enregistré"
+
+msgid "Search in the XML"
+msgstr "Rechercher dans le XML"
+
+msgid "Validation result"
+msgstr "Résultat de la validation"
+
+msgid "Document"
+msgstr "Document"
+
+msgid "internal error during validation"
+msgstr "erreur interne lors de la validation"
+
+msgid "Recently opened"
+msgstr "Ouverts récemment"
+
+msgid "Attachments"
+msgstr "Pièces jointes"
+
+msgid "Show in XML"
+msgstr "Afficher dans le XML"
+
+msgid "Show in fields"
+msgstr "Afficher dans les champs"
+
+msgid "No field assigned"
+msgstr "Aucun champ associé"
+
+msgid "No attachments"
+msgstr "Aucune pièce jointe"
+
+msgid "Save attachment…"
+msgstr "Enregistrer la pièce jointe…"
+
+msgid "No entries"
+msgstr "Aucune entrée"
+
+msgid "Only one file per window – the first one was opened"
+msgstr "Un seul fichier par fenêtre – le premier a été ouvert"
+
+msgid "Main menu"
+msgstr "Menu principal"
+
+msgid "Language"
+msgstr "Langue"
+
+msgid "System language"
+msgstr "Langue du système"
+
+msgid "error"
+msgid_plural "errors"
+msgstr[0] "erreur"
+msgstr[1] "erreurs"
+
+msgid "warning"
+msgid_plural "warnings"
+msgstr[0] "avertissement"
+msgstr[1] "avertissements"
+
+msgid "note"
+msgid_plural "notes"
+msgstr[0] "remarque"
+msgstr[1] "remarques"
+
+msgid "Error"
+msgid_plural "Errors"
+msgstr[0] "Erreur"
+msgstr[1] "Erreurs"
+
+msgid "Warning"
+msgid_plural "Warnings"
+msgstr[0] "Avertissement"
+msgstr[1] "Avertissements"
+
+msgid "Note"
+msgid_plural "Notes"
+msgstr[0] "Remarque"
+msgstr[1] "Remarques"
+
+msgid "No findings"
+msgstr "Aucun constat"
+
+msgid "No errors, {counts}"
+msgstr "Aucune erreur, {counts}"
+
+msgid "Validating…"
+msgstr "Validation…"
+
+msgid "Validation failed: {reason}"
+msgstr "Échec de la validation : {reason}"
+
+msgid "{rule sets} and {last rule set}"
+msgstr "{rule sets} et {last rule set}"
+
+msgid "Checked against {rule sets}"
+msgstr "Validé selon {rule sets}"
+
+msgid "The address {address} is not a local file"
+msgstr "L’adresse {address} n’est pas un fichier local"
+
+msgid "The file {file} was not found"
+msgstr "Le fichier {file} est introuvable"
+
+msgid "The file {file} cannot be read: {reason}"
+msgstr "Le fichier {file} ne peut pas être lu : {reason}"
+
+msgid "{count} byte"
+msgid_plural "{count} bytes"
+msgstr[0] "{count} octet"
+msgstr[1] "{count} octets"
+
+msgid "Invoice (BG-24)"
+msgstr "Facture (BG-24)"
+
+msgid "unknown"
+msgstr "inconnu"
+
+msgid "Content not readable"
+msgstr "Contenu illisible"
+
+msgid "Too large (over {size} MB)"
+msgstr "Trop volumineux (plus de {size} Mo)"
+
+msgid "The attachment {name} could not be saved: {reason}"
+msgstr "La pièce jointe {name} n’a pas pu être enregistrée : {reason}"
+
+msgid "Page {page} of {count}"
+msgstr "Page {page} sur {count}"
+
+msgid "No matches"
+msgstr "Aucun résultat"
+
+msgid "{current} of {total}"
+msgstr "{current} sur {total}"
+
+msgid "{count} match"
+msgid_plural "{count} matches"
+msgstr[0] "{count} résultat"
+msgstr[1] "{count} résultats"
+
+msgid "The file {file} cannot be read as an invoice: {reason}"
+msgstr "Le fichier {file} ne peut pas être lu comme facture : {reason}"
+
+msgid "not a readable PDF file"
+msgstr "pas un fichier PDF lisible"
+
+msgid "the embedded invoice {name} is empty"
+msgstr "la facture intégrée {name} est vide"
+
+msgid "XML is not well-formed (line {line})"
+msgstr "XML mal formé (ligne {line})"
+
+msgid "XML contains a DOCTYPE declaration – not supported"
+msgstr "le XML contient une déclaration DOCTYPE – non prise en charge"
+
+msgid "not an electronic invoice"
+msgstr "pas une facture électronique"
+
+msgid "ZUGFeRD 1.0 is not supported"
+msgstr "ZUGFeRD 1.0 n’est pas pris en charge"
+
+msgid "the character encoding {encoding} is not supported"
+msgstr "l’encodage de caractères {encoding} n’est pas pris en charge"
+
+msgid "XML is nested more than {limit} levels deep"
+msgstr "le XML est imbriqué sur plus de {limit} niveaux"
+
+msgid "the invoice format is not supported"
+msgstr "ce format de facture n’est pas pris en charge"
+
+msgid "Partial invoice"
+msgstr "Facture partielle"
+
+msgid "Commercial invoice"
+msgstr "Facture commerciale"
+
+msgid "Credit note"
+msgstr "Avoir"
+
+msgid "Corrected invoice"
+msgstr "Facture rectificative"
+
+msgid "Self-billed invoice"
+msgstr "Autofacture"
+
+msgid "Partial construction invoice"
+msgstr "Facture d’acompte (travaux)"
+
+msgid "Partial final construction invoice"
+msgstr "Facture de situation (travaux)"
+
+msgid "Final construction invoice"
+msgstr "Décompte final (travaux)"
+
+msgid "Instrument not defined"
+msgstr "Moyen non défini"
+
+msgid "In cash"
+msgstr "Espèces"
+
+msgid "Cheque"
+msgstr "Chèque"
+
+msgid "Credit transfer"
+msgstr "Virement"
+
+msgid "Payment to bank account"
+msgstr "Paiement sur compte bancaire"
+
+msgid "Bank card"
+msgstr "Carte bancaire"
+
+msgid "Direct debit"
+msgstr "Prélèvement"
+
+msgid "Credit card"
+msgstr "Carte de crédit"
+
+msgid "Standing agreement"
+msgstr "Ordre permanent"
+
+msgid "SEPA credit transfer"
+msgstr "Virement SEPA"
+
+msgid "SEPA direct debit"
+msgstr "Prélèvement SEPA"
+
+msgid "Clearing between partners"
+msgstr "Compensation entre partenaires"
+
+msgid "Standard rate"
+msgstr "Taux normal"
+
+msgid "Zero rated goods"
+msgstr "Taux zéro"
+
+msgid "Exempt from tax"
+msgstr "Exonéré de TVA"
+
+msgid "VAT reverse charge"
+msgstr "Autoliquidation"
+
+msgid "Intra-community supply"
+msgstr "Livraison intracommunautaire"
+
+msgid "Export outside the EU"
+msgstr "Exportation hors UE"
+
+msgid "Outside the scope of VAT"
+msgstr "Hors du champ de la TVA"
+
+msgid "Canary Islands IGIC"
+msgstr "Îles Canaries (IGIC)"
+
+msgid "Ceuta and Melilla IPSI"
+msgstr "Ceuta et Melilla (IPSI)"
+
+msgid "pieces"
+msgstr "pièces"
+
+msgid "hours"
+msgstr "heures"
+
+msgid "days"
+msgstr "jours"
+
+msgid "months"
+msgstr "mois"
+
+msgid "kilograms"
+msgstr "kilogrammes"
+
+msgid "metres"
+msgstr "mètres"
+
+msgid "litres"
+msgstr "litres"
+
+msgid "lump sum"
+msgstr "forfait"
+
+msgid "Invoice number"
+msgstr "Numéro de facture"
+
+msgid "Invoice issue date"
+msgstr "Date de facture"
+
+msgid "Invoice type code"
+msgstr "Type de facture"
+
+msgid "Invoice currency code"
+msgstr "Devise"
+
+msgid "VAT accounting currency code"
+msgstr "Devise de TVA"
+
+msgid "Value added tax point date"
+msgstr "Date d’exigibilité de la TVA"
+
+msgid "Value added tax point date code"
+msgstr "Exigibilité de la TVA (code)"
+
+msgid "Payment due date"
+msgstr "Date d’échéance"
+
+msgid "Buyer reference"
+msgstr "Référence acheteur"
+
+msgid "Project reference"
+msgstr "Référence de projet"
+
+msgid "Contract reference"
+msgstr "Référence de contrat"
+
+msgid "Purchase order reference"
+msgstr "Référence de commande"
+
+msgid "Sales order reference"
+msgstr "Référence de commande client"
+
+msgid "Receiving advice reference"
+msgstr "Avis de réception"
+
+msgid "Despatch advice reference"
+msgstr "Avis d’expédition"
+
+msgid "Tender or lot reference"
+msgstr "Référence d’appel d’offres ou de lot"
+
+msgid "Invoiced object identifier"
+msgstr "Identifiant d’objet"
+
+msgid "Buyer accounting reference"
+msgstr "Référence comptable"
+
+msgid "Payment terms"
+msgstr "Conditions de paiement"
+
+msgid "Invoice note subject code"
+msgstr "Objet de la note (code)"
+
+msgid "Invoice note"
+msgstr "Note"
+
+msgid "Business process type"
+msgstr "Processus métier"
+
+msgid "Specification identifier"
+msgstr "Identifiant de spécification"
+
+msgid "Preceding Invoice reference"
+msgstr "Numéro de facture"
+
+msgid "Preceding Invoice issue date"
+msgstr "Date de facture"
+
+msgid "Seller name"
+msgstr "Nom"
+
+msgid "Seller trading name"
+msgstr "Nom commercial"
+
+msgid "Seller identifier"
+msgstr "Identifiant"
+
+msgid "Seller legal registration identifier"
+msgstr "Numéro d’immatriculation"
+
+msgid "Seller VAT identifier"
+msgstr "Numéro de TVA"
+
+msgid "Seller tax registration identifier"
+msgstr "Numéro fiscal"
+
+msgid "Seller additional legal information"
+msgstr "Informations juridiques complémentaires"
+
+msgid "Seller electronic address"
+msgstr "Adresse électronique"
+
+msgid "Seller address line 1"
+msgstr "Adresse"
+
+msgid "Seller address line 2"
+msgstr "Complément d’adresse"
+
+msgid "Seller city"
+msgstr "Ville"
+
+msgid "Seller post code"
+msgstr "Code postal"
+
+msgid "Seller country subdivision"
+msgstr "Région"
+
+msgid "Seller country code"
+msgstr "Pays"
+
+msgid "Seller contact point"
+msgstr "Contact"
+
+msgid "Seller contact telephone number"
+msgstr "Téléphone"
+
+msgid "Seller contact email address"
+msgstr "E-mail"
+
+msgid "Buyer name"
+msgstr "Nom"
+
+msgid "Buyer trading name"
+msgstr "Nom commercial"
+
+msgid "Buyer identifier"
+msgstr "Identifiant"
+
+msgid "Buyer legal registration identifier"
+msgstr "Numéro d’immatriculation"
+
+msgid "Buyer VAT identifier"
+msgstr "Numéro de TVA"
+
+msgid "Buyer electronic address"
+msgstr "Adresse électronique"
+
+msgid "Buyer address line 1"
+msgstr "Adresse"
+
+msgid "Buyer address line 2"
+msgstr "Complément d’adresse"
+
+msgid "Buyer city"
+msgstr "Ville"
+
+msgid "Buyer post code"
+msgstr "Code postal"
+
+msgid "Buyer country subdivision"
+msgstr "Région"
+
+msgid "Buyer country code"
+msgstr "Pays"
+
+msgid "Buyer contact point"
+msgstr "Contact"
+
+msgid "Buyer contact telephone number"
+msgstr "Téléphone"
+
+msgid "Buyer contact email address"
+msgstr "E-mail"
+
+msgid "Payee name"
+msgstr "Nom"
+
+msgid "Payee identifier"
+msgstr "Identifiant"
+
+msgid "Payee legal registration identifier"
+msgstr "Numéro d’immatriculation"
+
+msgid "Seller tax representative name"
+msgstr "Nom"
+
+msgid "Seller tax representative VAT identifier"
+msgstr "Numéro de TVA"
+
+msgid "Tax representative address line 1"
+msgstr "Adresse"
+
+msgid "Tax representative address line 2"
+msgstr "Complément d’adresse"
+
+msgid "Tax representative city"
+msgstr "Ville"
+
+msgid "Tax representative post code"
+msgstr "Code postal"
+
+msgid "Tax representative country subdivision"
+msgstr "Région"
+
+msgid "Tax representative country code"
+msgstr "Pays"
+
+msgid "Deliver to party name"
+msgstr "Destinataire"
+
+msgid "Deliver to location identifier"
+msgstr "Identifiant du lieu de livraison"
+
+msgid "Actual delivery date"
+msgstr "Date de livraison"
+
+msgid "Invoicing period start date"
+msgstr "Période de facturation du"
+
+msgid "Invoicing period end date"
+msgstr "Période de facturation au"
+
+msgid "Deliver to address line 1"
+msgstr "Adresse"
+
+msgid "Deliver to address line 2"
+msgstr "Complément d’adresse"
+
+msgid "Deliver to city"
+msgstr "Ville"
+
+msgid "Deliver to post code"
+msgstr "Code postal"
+
+msgid "Deliver to country subdivision"
+msgstr "Région"
+
+msgid "Deliver to country code"
+msgstr "Pays"
+
+msgid "Payment means type code"
+msgstr "Moyen de paiement"
+
+msgid "Payment means text"
+msgstr "Moyen de paiement (texte)"
+
+msgid "Remittance information"
+msgstr "Référence de paiement"
+
+msgid "Payment account identifier"
+msgstr "IBAN"
+
+msgid "Payment account name"
+msgstr "Titulaire du compte"
+
+msgid "Payment service provider identifier"
+msgstr "BIC"
+
+msgid "Payment card primary account number"
+msgstr "Numéro de carte"
+
+msgid "Payment card holder name"
+msgstr "Titulaire de la carte"
+
+msgid "Mandate reference identifier"
+msgstr "Référence du mandat"
+
+msgid "Bank assigned creditor identifier"
+msgstr "Identifiant créancier"
+
+msgid "Debited account identifier"
+msgstr "Compte débité"
+
+msgid "Document level allowance amount"
+msgstr "Montant"
+
+msgid "Document level allowance base amount"
+msgstr "Montant de base"
+
+msgid "Document level allowance percentage"
+msgstr "Pourcentage"
+
+msgid "Document level allowance VAT category code"
+msgstr "Catégorie de TVA"
+
+msgid "Document level allowance VAT rate"
+msgstr "Taux de TVA"
+
+msgid "Document level allowance reason"
+msgstr "Motif"
+
+msgid "Document level allowance reason code"
+msgstr "Motif (code)"
+
+msgid "Document level charge amount"
+msgstr "Montant"
+
+msgid "Document level charge base amount"
+msgstr "Montant de base"
+
+msgid "Document level charge percentage"
+msgstr "Pourcentage"
+
+msgid "Document level charge VAT category code"
+msgstr "Catégorie de TVA"
+
+msgid "Document level charge VAT rate"
+msgstr "Taux de TVA"
+
+msgid "Document level charge reason"
+msgstr "Motif"
+
+msgid "Document level charge reason code"
+msgstr "Motif (code)"
+
+msgid "Sum of Invoice line net amount"
+msgstr "Total des lignes HT"
+
+msgid "Sum of allowances on document level"
+msgstr "Total des remises"
+
+msgid "Sum of charges on document level"
+msgstr "Total des frais"
+
+msgid "Invoice total amount without VAT"
+msgstr "Total HT"
+
+msgid "Invoice total VAT amount"
+msgstr "Total TVA"
+
+msgid "Invoice total VAT amount in accounting currency"
+msgstr "TVA en devise de TVA"
+
+msgid "Invoice total amount with VAT"
+msgstr "Total TTC"
+
+msgid "Paid amount"
+msgstr "Montant déjà payé"
+
+msgid "Rounding amount"
+msgstr "Arrondi"
+
+msgid "Amount due for payment"
+msgstr "Net à payer"
+
+msgid "VAT category taxable amount"
+msgstr "Base imposable"
+
+msgid "VAT category tax amount"
+msgstr "Montant de TVA"
+
+msgid "VAT category code"
+msgstr "Catégorie de TVA"
+
+msgid "VAT category rate"
+msgstr "Taux de TVA"
+
+msgid "VAT exemption reason text"
+msgstr "Motif d’exonération"
+
+msgid "VAT exemption reason code"
+msgstr "Motif d’exonération (code)"
+
+msgid "Invoice line identifier"
+msgstr "Numéro de ligne"
+
+msgid "Invoice line note"
+msgstr "Note de ligne"
+
+msgid "Invoice line object identifier"
+msgstr "Identifiant d’objet"
+
+msgid "Invoiced quantity"
+msgstr "Quantité"
+
+msgid "Invoiced quantity unit of measure code"
+msgstr "Unité"
+
+msgid "Invoice line net amount"
+msgstr "Montant net"
+
+msgid "Referenced purchase order line reference"
+msgstr "Ligne de commande"
+
+msgid "Invoice line Buyer accounting reference"
+msgstr "Référence comptable de l’acheteur"
+
+msgid "Invoice line period start date"
+msgstr "Période du"
+
+msgid "Invoice line period end date"
+msgstr "Période au"
+
+msgid "Invoice line allowance amount"
+msgstr "Montant"
+
+msgid "Invoice line allowance base amount"
+msgstr "Montant de base"
+
+msgid "Invoice line allowance percentage"
+msgstr "Pourcentage"
+
+msgid "Invoice line allowance reason"
+msgstr "Motif"
+
+msgid "Invoice line allowance reason code"
+msgstr "Motif (code)"
+
+msgid "Invoice line charge amount"
+msgstr "Montant"
+
+msgid "Invoice line charge base amount"
+msgstr "Montant de base"
+
+msgid "Invoice line charge percentage"
+msgstr "Pourcentage"
+
+msgid "Invoice line charge reason"
+msgstr "Motif"
+
+msgid "Invoice line charge reason code"
+msgstr "Motif (code)"
+
+msgid "Item net price"
+msgstr "Prix net"
+
+msgid "Item price discount"
+msgstr "Remise sur prix"
+
+msgid "Item gross price"
+msgstr "Prix brut"
+
+msgid "Item price base quantity"
+msgstr "Quantité de base"
+
+msgid "Item price base quantity unit of measure code"
+msgstr "Unité de la quantité de base"
+
+msgid "Invoiced item VAT category code"
+msgstr "Catégorie de TVA"
+
+msgid "Invoiced item VAT rate"
+msgstr "Taux de TVA"
+
+msgid "Item name"
+msgstr "Nom de l’article"
+
+msgid "Item description"
+msgstr "Description de l’article"
+
+msgid "Item Seller's identifier"
+msgstr "Référence article"
+
+msgid "Item Buyer's identifier"
+msgstr "Référence article de l’acheteur"
+
+msgid "Item standard identifier"
+msgstr "Identifiant standard"
+
+msgid "Item classification identifier"
+msgstr "Classification"
+
+msgid "Item country of origin"
+msgstr "Pays d’origine"
+
+msgid "Item attribute value"
+msgstr "Attribut de l’article"
+
+msgid "Seller address line 3"
+msgstr "Ligne d’adresse 3"
+
+msgid "Buyer address line 3"
+msgstr "Ligne d’adresse 3"
+
+msgid "Tax representative address line 3"
+msgstr "Ligne d’adresse 3"
+
+msgid "Deliver to address line 3"
+msgstr "Ligne d’adresse 3"
+
+msgid "Invoice"
+msgstr "Facture"
+
+msgid "Seller (BG-4)"
+msgstr "Vendeur (BG-4)"
+
+msgid "Buyer (BG-7)"
+msgstr "Acheteur (BG-7)"
+
+msgid "Preceding invoice reference (BG-3)"
+msgstr "Facture précédente (BG-3)"
+
+msgid "Payee (BG-10)"
+msgstr "Bénéficiaire (BG-10)"
+
+msgid "Seller tax representative party (BG-11)"
+msgstr "Représentant fiscal (BG-11)"
+
+msgid "Delivery information (BG-13)"
+msgstr "Livraison (BG-13)"
+
+msgid "Invoice line"
+msgstr "Ligne"
+
+msgid "Payment instructions (BG-16)"
+msgstr "Paiement (BG-16)"
+
+msgid "Document level allowances (BG-20)"
+msgstr "Remise (BG-20)"
+
+msgid "Document level charges (BG-21)"
+msgstr "Frais (BG-21)"
+
+msgid "Invoice line allowances (BG-27)"
+msgstr "Remise (BG-27)"
+
+msgid "Invoice line charges (BG-28)"
+msgstr "Frais (BG-28)"
+
+msgid "VAT breakdown (BG-23)"
+msgstr "TVA (BG-23)"
+
+msgid "Document totals (BG-22)"
+msgstr "Totaux (BG-22)"
+
+msgid "XML schema {name}"
+msgstr "Schéma XML {name}"
+
+msgid "Checked against XRechnung {bundled}, invoice declares version {declared}"
+msgstr "Validé selon XRechnung {bundled}, la facture déclare la version {declared}"
+
+msgid "Profile Minimum: not a complete invoice according to EN 16931"
+msgstr "Profil Minimum : pas une facture complète selon l’EN 16931"
+
+msgid "Profile Basic WL: not a complete invoice according to EN 16931"
+msgstr "Profil Basic WL : pas une facture complète selon l’EN 16931"

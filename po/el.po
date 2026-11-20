@@ -1,0 +1,878 @@
+# Greek translation of E-Invoice Viewer.
+# This file is distributed under the same licence as E-Invoice Viewer
+# (GPL-3.0-or-later).
+# Not checked by a native speaker (spec 0030); corrections are welcome
+# as an issue on GitHub.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: E-Invoice Viewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-19 10:45+0100\n"
+"PO-Revision-Date: 2026-11-18 00:00+0100\n"
+"Last-Translator: E-Invoice Viewer contributors\n"
+"Language-Team: Greek\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Open an invoice"
+msgstr "Άνοιγμα τιμολογίου"
+
+msgid "Invoices (PDF, XML)"
+msgstr "Τιμολόγια (PDF, XML)"
+
+msgid "Open…"
+msgstr "Άνοιγμα…"
+
+msgid "Close"
+msgstr "Κλείσιμο"
+
+msgid "Copy value"
+msgstr "Αντιγραφή τιμής"
+
+msgid "This PDF contains no electronic invoice"
+msgstr "Αυτό το PDF δεν περιέχει ηλεκτρονικό τιμολόγιο"
+
+msgid "The PDF pages cannot be shown"
+msgstr "Οι σελίδες του PDF δεν μπορούν να εμφανιστούν"
+
+msgid "Plain XML invoice – no PDF included"
+msgstr "Τιμολόγιο μόνο σε XML – δεν περιλαμβάνεται PDF"
+
+msgid "Fields"
+msgstr "Πεδία"
+
+msgid "XML"
+msgstr "XML"
+
+msgid "Zoom in (Ctrl++)"
+msgstr "Μεγέθυνση (Ctrl++)"
+
+msgid "Zoom out (Ctrl+-)"
+msgstr "Σμίκρυνση (Ctrl+-)"
+
+msgid "Copy XML"
+msgstr "Αντιγραφή XML"
+
+msgid "Save XML as…"
+msgstr "Αποθήκευση XML ως…"
+
+msgid "The XML could not be saved"
+msgstr "Δεν ήταν δυνατή η αποθήκευση του XML"
+
+msgid "Search in the XML"
+msgstr "Αναζήτηση στο XML"
+
+msgid "Validation result"
+msgstr "Αποτέλεσμα ελέγχου"
+
+msgid "Document"
+msgstr "Έγγραφο"
+
+msgid "internal error during validation"
+msgstr "εσωτερικό σφάλμα κατά τον έλεγχο"
+
+msgid "Recently opened"
+msgstr "Πρόσφατα"
+
+msgid "Attachments"
+msgstr "Συνημμένα"
+
+msgid "Show in XML"
+msgstr "Εμφάνιση στο XML"
+
+msgid "Show in fields"
+msgstr "Εμφάνιση στα πεδία"
+
+msgid "No field assigned"
+msgstr "Δεν έχει αντιστοιχιστεί πεδίο"
+
+msgid "No attachments"
+msgstr "Δεν υπάρχουν συνημμένα"
+
+msgid "Save attachment…"
+msgstr "Αποθήκευση συνημμένου…"
+
+msgid "No entries"
+msgstr "Δεν υπάρχουν καταχωρίσεις"
+
+msgid "Only one file per window – the first one was opened"
+msgstr "Μόνο ένα αρχείο ανά παράθυρο – άνοιξε το πρώτο"
+
+msgid "Main menu"
+msgstr "Κύριο μενού"
+
+msgid "Language"
+msgstr "Γλώσσα"
+
+msgid "System language"
+msgstr "Γλώσσα συστήματος"
+
+msgid "error"
+msgid_plural "errors"
+msgstr[0] "σφάλμα"
+msgstr[1] "σφάλματα"
+
+msgid "warning"
+msgid_plural "warnings"
+msgstr[0] "προειδοποίηση"
+msgstr[1] "προειδοποιήσεις"
+
+msgid "note"
+msgid_plural "notes"
+msgstr[0] "σημείωση"
+msgstr[1] "σημειώσεις"
+
+msgid "Error"
+msgid_plural "Errors"
+msgstr[0] "Σφάλμα"
+msgstr[1] "Σφάλματα"
+
+msgid "Warning"
+msgid_plural "Warnings"
+msgstr[0] "Προειδοποίηση"
+msgstr[1] "Προειδοποιήσεις"
+
+msgid "Note"
+msgid_plural "Notes"
+msgstr[0] "Σημείωση"
+msgstr[1] "Σημειώσεις"
+
+msgid "No findings"
+msgstr "Χωρίς ευρήματα"
+
+msgid "No errors, {counts}"
+msgstr "Χωρίς σφάλματα, {counts}"
+
+msgid "Validating…"
+msgstr "Έλεγχος…"
+
+msgid "Validation failed: {reason}"
+msgstr "Ο έλεγχος απέτυχε: {reason}"
+
+msgid "{rule sets} and {last rule set}"
+msgstr "{rule sets} και {last rule set}"
+
+msgid "Checked against {rule sets}"
+msgstr "Ελέγχθηκε σύμφωνα με {rule sets}"
+
+msgid "The address {address} is not a local file"
+msgstr "Η διεύθυνση {address} δεν είναι τοπικό αρχείο"
+
+msgid "The file {file} was not found"
+msgstr "Το αρχείο {file} δεν βρέθηκε"
+
+msgid "The file {file} cannot be read: {reason}"
+msgstr "Το αρχείο {file} δεν μπορεί να διαβαστεί: {reason}"
+
+msgid "{count} byte"
+msgid_plural "{count} bytes"
+msgstr[0] "{count} byte"
+msgstr[1] "{count} byte"
+
+msgid "Invoice (BG-24)"
+msgstr "Τιμολόγιο (BG-24)"
+
+msgid "unknown"
+msgstr "άγνωστο"
+
+msgid "Content not readable"
+msgstr "Μη αναγνώσιμο περιεχόμενο"
+
+msgid "Too large (over {size} MB)"
+msgstr "Πολύ μεγάλο (πάνω από {size} MB)"
+
+msgid "The attachment {name} could not be saved: {reason}"
+msgstr "Δεν ήταν δυνατή η αποθήκευση του συνημμένου {name}: {reason}"
+
+msgid "Page {page} of {count}"
+msgstr "Σελίδα {page} από {count}"
+
+msgid "No matches"
+msgstr "Δεν βρέθηκαν αποτελέσματα"
+
+msgid "{current} of {total}"
+msgstr "{current} από {total}"
+
+msgid "{count} match"
+msgid_plural "{count} matches"
+msgstr[0] "{count} αποτέλεσμα"
+msgstr[1] "{count} αποτελέσματα"
+
+msgid "The file {file} cannot be read as an invoice: {reason}"
+msgstr "Το αρχείο {file} δεν μπορεί να διαβαστεί ως τιμολόγιο: {reason}"
+
+msgid "not a readable PDF file"
+msgstr "δεν είναι αναγνώσιμο αρχείο PDF"
+
+msgid "the embedded invoice {name} is empty"
+msgstr "το ενσωματωμένο τιμολόγιο {name} είναι κενό"
+
+msgid "XML is not well-formed (line {line})"
+msgstr "Το XML δεν είναι σωστά διαμορφωμένο (γραμμή {line})"
+
+msgid "XML contains a DOCTYPE declaration – not supported"
+msgstr "Το XML περιέχει δήλωση DOCTYPE – δεν υποστηρίζεται"
+
+msgid "not an electronic invoice"
+msgstr "δεν είναι ηλεκτρονικό τιμολόγιο"
+
+msgid "ZUGFeRD 1.0 is not supported"
+msgstr "Το ZUGFeRD 1.0 δεν υποστηρίζεται"
+
+msgid "the character encoding {encoding} is not supported"
+msgstr "η κωδικοποίηση χαρακτήρων {encoding} δεν υποστηρίζεται"
+
+msgid "XML is nested more than {limit} levels deep"
+msgstr "Το XML έχει ένθεση βαθύτερη από {limit} επίπεδα"
+
+msgid "the invoice format is not supported"
+msgstr "η μορφή του τιμολογίου δεν υποστηρίζεται"
+
+msgid "Partial invoice"
+msgstr "Μερικό τιμολόγιο"
+
+msgid "Commercial invoice"
+msgstr "Εμπορικό τιμολόγιο"
+
+msgid "Credit note"
+msgstr "Πιστωτικό τιμολόγιο"
+
+msgid "Corrected invoice"
+msgstr "Διορθωτικό τιμολόγιο"
+
+msgid "Self-billed invoice"
+msgstr "Αυτοτιμολόγηση"
+
+msgid "Partial construction invoice"
+msgstr "Τιμολόγιο προκαταβολής (κατασκευές)"
+
+msgid "Partial final construction invoice"
+msgstr "Μερικό τελικό τιμολόγιο (κατασκευές)"
+
+msgid "Final construction invoice"
+msgstr "Τελικό τιμολόγιο (κατασκευές)"
+
+msgid "Instrument not defined"
+msgstr "Μη καθορισμένος"
+
+msgid "In cash"
+msgstr "Μετρητά"
+
+msgid "Cheque"
+msgstr "Επιταγή"
+
+msgid "Credit transfer"
+msgstr "Μεταφορά πίστωσης"
+
+msgid "Payment to bank account"
+msgstr "Πληρωμή σε τραπεζικό λογαριασμό"
+
+msgid "Bank card"
+msgstr "Τραπεζική κάρτα"
+
+msgid "Direct debit"
+msgstr "Άμεση χρέωση"
+
+msgid "Credit card"
+msgstr "Πιστωτική κάρτα"
+
+msgid "Standing agreement"
+msgstr "Πάγια εντολή"
+
+msgid "SEPA credit transfer"
+msgstr "Μεταφορά πίστωσης SEPA"
+
+msgid "SEPA direct debit"
+msgstr "Άμεση χρέωση SEPA"
+
+msgid "Clearing between partners"
+msgstr "Συμψηφισμός μεταξύ συναλλασσομένων"
+
+msgid "Standard rate"
+msgstr "Κανονικός συντελεστής"
+
+msgid "Zero rated goods"
+msgstr "Μηδενικός συντελεστής"
+
+msgid "Exempt from tax"
+msgstr "Απαλλάσσεται από ΦΠΑ"
+
+msgid "VAT reverse charge"
+msgstr "Αντίστροφη επιβάρυνση"
+
+msgid "Intra-community supply"
+msgstr "Ενδοκοινοτική παράδοση"
+
+msgid "Export outside the EU"
+msgstr "Εξαγωγή εκτός ΕΕ"
+
+msgid "Outside the scope of VAT"
+msgstr "Εκτός πεδίου εφαρμογής ΦΠΑ"
+
+msgid "Canary Islands IGIC"
+msgstr "Κανάριοι Νήσοι (IGIC)"
+
+msgid "Ceuta and Melilla IPSI"
+msgstr "Θέουτα και Μελίγια (IPSI)"
+
+msgid "pieces"
+msgstr "τεμάχια"
+
+msgid "hours"
+msgstr "ώρες"
+
+msgid "days"
+msgstr "ημέρες"
+
+msgid "months"
+msgstr "μήνες"
+
+msgid "kilograms"
+msgstr "κιλά"
+
+msgid "metres"
+msgstr "μέτρα"
+
+msgid "litres"
+msgstr "λίτρα"
+
+msgid "lump sum"
+msgstr "κατ’ αποκοπή"
+
+msgid "Invoice number"
+msgstr "Αριθμός τιμολογίου"
+
+msgid "Invoice issue date"
+msgstr "Ημερομηνία έκδοσης"
+
+msgid "Invoice type code"
+msgstr "Είδος τιμολογίου"
+
+msgid "Invoice currency code"
+msgstr "Νόμισμα"
+
+msgid "VAT accounting currency code"
+msgstr "Νόμισμα ΦΠΑ"
+
+msgid "Value added tax point date"
+msgstr "Ημερομηνία φορολογικού γεγονότος"
+
+msgid "Value added tax point date code"
+msgstr "Φορολογικό γεγονός (κωδικός)"
+
+msgid "Payment due date"
+msgstr "Ημερομηνία λήξης πληρωμής"
+
+msgid "Buyer reference"
+msgstr "Αναφορά αγοραστή"
+
+msgid "Project reference"
+msgstr "Αναφορά έργου"
+
+msgid "Contract reference"
+msgstr "Αναφορά σύμβασης"
+
+msgid "Purchase order reference"
+msgstr "Αριθμός παραγγελίας"
+
+msgid "Sales order reference"
+msgstr "Αριθμός παραγγελίας πώλησης"
+
+msgid "Receiving advice reference"
+msgstr "Δελτίο παραλαβής"
+
+msgid "Despatch advice reference"
+msgstr "Δελτίο αποστολής"
+
+msgid "Tender or lot reference"
+msgstr "Αναφορά διαγωνισμού ή τμήματος"
+
+msgid "Invoiced object identifier"
+msgstr "Αναγνωριστικό αντικειμένου"
+
+msgid "Buyer accounting reference"
+msgstr "Λογιστική αναφορά"
+
+msgid "Payment terms"
+msgstr "Όροι πληρωμής"
+
+msgid "Invoice note subject code"
+msgstr "Θέμα σημείωσης (κωδικός)"
+
+msgid "Invoice note"
+msgstr "Σημείωση"
+
+msgid "Business process type"
+msgstr "Επιχειρηματική διαδικασία"
+
+msgid "Specification identifier"
+msgstr "Αναγνωριστικό προδιαγραφής"
+
+msgid "Preceding Invoice reference"
+msgstr "Αριθμός τιμολογίου"
+
+msgid "Preceding Invoice issue date"
+msgstr "Ημερομηνία έκδοσης"
+
+msgid "Seller name"
+msgstr "Επωνυμία"
+
+msgid "Seller trading name"
+msgstr "Διακριτικός τίτλος"
+
+msgid "Seller identifier"
+msgstr "Αναγνωριστικό"
+
+msgid "Seller legal registration identifier"
+msgstr "Αριθμός μητρώου"
+
+msgid "Seller VAT identifier"
+msgstr "Αριθμός ΦΠΑ"
+
+msgid "Seller tax registration identifier"
+msgstr "Φορολογικός αριθμός"
+
+msgid "Seller additional legal information"
+msgstr "Πρόσθετα νομικά στοιχεία"
+
+msgid "Seller electronic address"
+msgstr "Ηλεκτρονική διεύθυνση"
+
+msgid "Seller address line 1"
+msgstr "Οδός"
+
+msgid "Seller address line 2"
+msgstr "Συμπλήρωμα διεύθυνσης"
+
+msgid "Seller city"
+msgstr "Πόλη"
+
+msgid "Seller post code"
+msgstr "Ταχ. κώδικας"
+
+msgid "Seller country subdivision"
+msgstr "Περιφέρεια"
+
+msgid "Seller country code"
+msgstr "Χώρα"
+
+msgid "Seller contact point"
+msgstr "Υπεύθυνος επικοινωνίας"
+
+msgid "Seller contact telephone number"
+msgstr "Τηλέφωνο"
+
+msgid "Seller contact email address"
+msgstr "Email"
+
+msgid "Buyer name"
+msgstr "Επωνυμία"
+
+msgid "Buyer trading name"
+msgstr "Διακριτικός τίτλος"
+
+msgid "Buyer identifier"
+msgstr "Αναγνωριστικό"
+
+msgid "Buyer legal registration identifier"
+msgstr "Αριθμός μητρώου"
+
+msgid "Buyer VAT identifier"
+msgstr "Αριθμός ΦΠΑ"
+
+msgid "Buyer electronic address"
+msgstr "Ηλεκτρονική διεύθυνση"
+
+msgid "Buyer address line 1"
+msgstr "Οδός"
+
+msgid "Buyer address line 2"
+msgstr "Συμπλήρωμα διεύθυνσης"
+
+msgid "Buyer city"
+msgstr "Πόλη"
+
+msgid "Buyer post code"
+msgstr "Ταχ. κώδικας"
+
+msgid "Buyer country subdivision"
+msgstr "Περιφέρεια"
+
+msgid "Buyer country code"
+msgstr "Χώρα"
+
+msgid "Buyer contact point"
+msgstr "Υπεύθυνος επικοινωνίας"
+
+msgid "Buyer contact telephone number"
+msgstr "Τηλέφωνο"
+
+msgid "Buyer contact email address"
+msgstr "Email"
+
+msgid "Payee name"
+msgstr "Επωνυμία"
+
+msgid "Payee identifier"
+msgstr "Αναγνωριστικό"
+
+msgid "Payee legal registration identifier"
+msgstr "Αριθμός μητρώου"
+
+msgid "Seller tax representative name"
+msgstr "Επωνυμία"
+
+msgid "Seller tax representative VAT identifier"
+msgstr "Αριθμός ΦΠΑ"
+
+msgid "Tax representative address line 1"
+msgstr "Οδός"
+
+msgid "Tax representative address line 2"
+msgstr "Συμπλήρωμα διεύθυνσης"
+
+msgid "Tax representative city"
+msgstr "Πόλη"
+
+msgid "Tax representative post code"
+msgstr "Ταχ. κώδικας"
+
+msgid "Tax representative country subdivision"
+msgstr "Περιφέρεια"
+
+msgid "Tax representative country code"
+msgstr "Χώρα"
+
+msgid "Deliver to party name"
+msgstr "Παραλήπτης"
+
+msgid "Deliver to location identifier"
+msgstr "Αναγνωριστικό τόπου παράδοσης"
+
+msgid "Actual delivery date"
+msgstr "Ημερομηνία παράδοσης"
+
+msgid "Invoicing period start date"
+msgstr "Περίοδος τιμολόγησης από"
+
+msgid "Invoicing period end date"
+msgstr "Περίοδος τιμολόγησης έως"
+
+msgid "Deliver to address line 1"
+msgstr "Οδός"
+
+msgid "Deliver to address line 2"
+msgstr "Συμπλήρωμα διεύθυνσης"
+
+msgid "Deliver to city"
+msgstr "Πόλη"
+
+msgid "Deliver to post code"
+msgstr "Ταχ. κώδικας"
+
+msgid "Deliver to country subdivision"
+msgstr "Περιφέρεια"
+
+msgid "Deliver to country code"
+msgstr "Χώρα"
+
+msgid "Payment means type code"
+msgstr "Τρόπος πληρωμής"
+
+msgid "Payment means text"
+msgstr "Τρόπος πληρωμής (κείμενο)"
+
+msgid "Remittance information"
+msgstr "Αιτιολογία πληρωμής"
+
+msgid "Payment account identifier"
+msgstr "IBAN"
+
+msgid "Payment account name"
+msgstr "Δικαιούχος λογαριασμού"
+
+msgid "Payment service provider identifier"
+msgstr "BIC"
+
+msgid "Payment card primary account number"
+msgstr "Αριθμός κάρτας"
+
+msgid "Payment card holder name"
+msgstr "Κάτοχος κάρτας"
+
+msgid "Mandate reference identifier"
+msgstr "Αναφορά εντολής"
+
+msgid "Bank assigned creditor identifier"
+msgstr "Αναγνωριστικό πιστωτή"
+
+msgid "Debited account identifier"
+msgstr "Λογαριασμός χρέωσης"
+
+msgid "Document level allowance amount"
+msgstr "Ποσό"
+
+msgid "Document level allowance base amount"
+msgstr "Βασικό ποσό"
+
+msgid "Document level allowance percentage"
+msgstr "Ποσοστό"
+
+msgid "Document level allowance VAT category code"
+msgstr "Κατηγορία ΦΠΑ"
+
+msgid "Document level allowance VAT rate"
+msgstr "Συντελεστής ΦΠΑ"
+
+msgid "Document level allowance reason"
+msgstr "Αιτία"
+
+msgid "Document level allowance reason code"
+msgstr "Αιτία (κωδικός)"
+
+msgid "Document level charge amount"
+msgstr "Ποσό"
+
+msgid "Document level charge base amount"
+msgstr "Βασικό ποσό"
+
+msgid "Document level charge percentage"
+msgstr "Ποσοστό"
+
+msgid "Document level charge VAT category code"
+msgstr "Κατηγορία ΦΠΑ"
+
+msgid "Document level charge VAT rate"
+msgstr "Συντελεστής ΦΠΑ"
+
+msgid "Document level charge reason"
+msgstr "Αιτία"
+
+msgid "Document level charge reason code"
+msgstr "Αιτία (κωδικός)"
+
+msgid "Sum of Invoice line net amount"
+msgstr "Σύνολο γραμμών (καθαρό)"
+
+msgid "Sum of allowances on document level"
+msgstr "Σύνολο εκπτώσεων"
+
+msgid "Sum of charges on document level"
+msgstr "Σύνολο επιβαρύνσεων"
+
+msgid "Invoice total amount without VAT"
+msgstr "Σύνολο χωρίς ΦΠΑ"
+
+msgid "Invoice total VAT amount"
+msgstr "Σύνολο ΦΠΑ"
+
+msgid "Invoice total VAT amount in accounting currency"
+msgstr "ΦΠΑ σε νόμισμα ΦΠΑ"
+
+msgid "Invoice total amount with VAT"
+msgstr "Σύνολο με ΦΠΑ"
+
+msgid "Paid amount"
+msgstr "Προπληρωθέν ποσό"
+
+msgid "Rounding amount"
+msgstr "Στρογγυλοποίηση"
+
+msgid "Amount due for payment"
+msgstr "Πληρωτέο ποσό"
+
+msgid "VAT category taxable amount"
+msgstr "Φορολογητέα αξία"
+
+msgid "VAT category tax amount"
+msgstr "Ποσό ΦΠΑ"
+
+msgid "VAT category code"
+msgstr "Κατηγορία ΦΠΑ"
+
+msgid "VAT category rate"
+msgstr "Συντελεστής ΦΠΑ"
+
+msgid "VAT exemption reason text"
+msgstr "Αιτία απαλλαγής"
+
+msgid "VAT exemption reason code"
+msgstr "Αιτία απαλλαγής (κωδικός)"
+
+msgid "Invoice line identifier"
+msgstr "Αριθμός γραμμής"
+
+msgid "Invoice line note"
+msgstr "Σημείωση γραμμής"
+
+msgid "Invoice line object identifier"
+msgstr "Αναγνωριστικό αντικειμένου"
+
+msgid "Invoiced quantity"
+msgstr "Ποσότητα"
+
+msgid "Invoiced quantity unit of measure code"
+msgstr "Μονάδα μέτρησης"
+
+msgid "Invoice line net amount"
+msgstr "Καθαρό ποσό"
+
+msgid "Referenced purchase order line reference"
+msgstr "Γραμμή παραγγελίας"
+
+msgid "Invoice line Buyer accounting reference"
+msgstr "Λογιστική αναφορά αγοραστή"
+
+msgid "Invoice line period start date"
+msgstr "Περίοδος από"
+
+msgid "Invoice line period end date"
+msgstr "Περίοδος έως"
+
+msgid "Invoice line allowance amount"
+msgstr "Ποσό"
+
+msgid "Invoice line allowance base amount"
+msgstr "Βασικό ποσό"
+
+msgid "Invoice line allowance percentage"
+msgstr "Ποσοστό"
+
+msgid "Invoice line allowance reason"
+msgstr "Αιτία"
+
+msgid "Invoice line allowance reason code"
+msgstr "Αιτία (κωδικός)"
+
+msgid "Invoice line charge amount"
+msgstr "Ποσό"
+
+msgid "Invoice line charge base amount"
+msgstr "Βασικό ποσό"
+
+msgid "Invoice line charge percentage"
+msgstr "Ποσοστό"
+
+msgid "Invoice line charge reason"
+msgstr "Αιτία"
+
+msgid "Invoice line charge reason code"
+msgstr "Αιτία (κωδικός)"
+
+msgid "Item net price"
+msgstr "Καθαρή τιμή"
+
+msgid "Item price discount"
+msgstr "Έκπτωση τιμής"
+
+msgid "Item gross price"
+msgstr "Μικτή τιμή"
+
+msgid "Item price base quantity"
+msgstr "Ποσότητα βάσης"
+
+msgid "Item price base quantity unit of measure code"
+msgstr "Μονάδα ποσότητας βάσης"
+
+msgid "Invoiced item VAT category code"
+msgstr "Κατηγορία ΦΠΑ"
+
+msgid "Invoiced item VAT rate"
+msgstr "Συντελεστής ΦΠΑ"
+
+msgid "Item name"
+msgstr "Όνομα είδους"
+
+msgid "Item description"
+msgstr "Περιγραφή είδους"
+
+msgid "Item Seller's identifier"
+msgstr "Κωδικός είδους"
+
+msgid "Item Buyer's identifier"
+msgstr "Κωδικός είδους αγοραστή"
+
+msgid "Item standard identifier"
+msgstr "Πρότυπο αναγνωριστικό"
+
+msgid "Item classification identifier"
+msgstr "Ταξινόμηση"
+
+msgid "Item country of origin"
+msgstr "Χώρα προέλευσης"
+
+msgid "Item attribute value"
+msgstr "Χαρακτηριστικό είδους"
+
+msgid "Seller address line 3"
+msgstr "Γραμμή διεύθυνσης 3"
+
+msgid "Buyer address line 3"
+msgstr "Γραμμή διεύθυνσης 3"
+
+msgid "Tax representative address line 3"
+msgstr "Γραμμή διεύθυνσης 3"
+
+msgid "Deliver to address line 3"
+msgstr "Γραμμή διεύθυνσης 3"
+
+msgid "Invoice"
+msgstr "Τιμολόγιο"
+
+msgid "Seller (BG-4)"
+msgstr "Πωλητής (BG-4)"
+
+msgid "Buyer (BG-7)"
+msgstr "Αγοραστής (BG-7)"
+
+msgid "Preceding invoice reference (BG-3)"
+msgstr "Προηγούμενο τιμολόγιο (BG-3)"
+
+msgid "Payee (BG-10)"
+msgstr "Δικαιούχος πληρωμής (BG-10)"
+
+msgid "Seller tax representative party (BG-11)"
+msgstr "Φορολογικός αντιπρόσωπος (BG-11)"
+
+msgid "Delivery information (BG-13)"
+msgstr "Παράδοση (BG-13)"
+
+msgid "Invoice line"
+msgstr "Γραμμή"
+
+msgid "Payment instructions (BG-16)"
+msgstr "Πληρωμή (BG-16)"
+
+msgid "Document level allowances (BG-20)"
+msgstr "Έκπτωση (BG-20)"
+
+msgid "Document level charges (BG-21)"
+msgstr "Επιβάρυνση (BG-21)"
+
+msgid "Invoice line allowances (BG-27)"
+msgstr "Έκπτωση (BG-27)"
+
+msgid "Invoice line charges (BG-28)"
+msgstr "Επιβάρυνση (BG-28)"
+
+msgid "VAT breakdown (BG-23)"
+msgstr "ΦΠΑ (BG-23)"
+
+msgid "Document totals (BG-22)"
+msgstr "Σύνολα (BG-22)"
+
+msgid "XML schema {name}"
+msgstr "Σχήμα XML {name}"
+
+msgid "Checked against XRechnung {bundled}, invoice declares version {declared}"
+msgstr "Ελέγχθηκε σύμφωνα με XRechnung {bundled}, το τιμολόγιο δηλώνει έκδοση {declared}"
+
+msgid "Profile Minimum: not a complete invoice according to EN 16931"
+msgstr "Προφίλ Minimum: δεν είναι πλήρες τιμολόγιο σύμφωνα με το EN 16931"
+
+msgid "Profile Basic WL: not a complete invoice according to EN 16931"
+msgstr "Προφίλ Basic WL: δεν είναι πλήρες τιμολόγιο σύμφωνα με το EN 16931"

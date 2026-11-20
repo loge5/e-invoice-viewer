@@ -1,0 +1,886 @@
+# Latvian translation of E-Invoice Viewer.
+# This file is distributed under the same licence as E-Invoice Viewer
+# (GPL-3.0-or-later).
+# Not checked by a native speaker (spec 0030); corrections are welcome
+# as an issue on GitHub.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: E-Invoice Viewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-19 10:45+0100\n"
+"PO-Revision-Date: 2026-11-18 00:00+0100\n"
+"Last-Translator: E-Invoice Viewer contributors\n"
+"Language-Team: Latvian\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=((n%10==1 && n%100!=11) ? 0 : n != 0 ? 1 : 2);\n"
+
+msgid "Open an invoice"
+msgstr "Atvērt rēķinu"
+
+msgid "Invoices (PDF, XML)"
+msgstr "Rēķini (PDF, XML)"
+
+msgid "Open…"
+msgstr "Atvērt…"
+
+msgid "Close"
+msgstr "Aizvērt"
+
+msgid "Copy value"
+msgstr "Kopēt vērtību"
+
+msgid "This PDF contains no electronic invoice"
+msgstr "Šis PDF nesatur elektronisku rēķinu"
+
+msgid "The PDF pages cannot be shown"
+msgstr "PDF lapas nevar parādīt"
+
+msgid "Plain XML invoice – no PDF included"
+msgstr "Tikai XML rēķins – PDF nav iekļauts"
+
+msgid "Fields"
+msgstr "Lauki"
+
+msgid "XML"
+msgstr "XML"
+
+msgid "Zoom in (Ctrl++)"
+msgstr "Tuvināt (Ctrl++)"
+
+msgid "Zoom out (Ctrl+-)"
+msgstr "Tālināt (Ctrl+-)"
+
+msgid "Copy XML"
+msgstr "Kopēt XML"
+
+msgid "Save XML as…"
+msgstr "Saglabāt XML kā…"
+
+msgid "The XML could not be saved"
+msgstr "XML nevarēja saglabāt"
+
+msgid "Search in the XML"
+msgstr "Meklēt XML"
+
+msgid "Validation result"
+msgstr "Validācijas rezultāts"
+
+msgid "Document"
+msgstr "Dokuments"
+
+msgid "internal error during validation"
+msgstr "iekšēja kļūda validācijas laikā"
+
+msgid "Recently opened"
+msgstr "Nesen atvērtie"
+
+msgid "Attachments"
+msgstr "Pielikumi"
+
+msgid "Show in XML"
+msgstr "Rādīt XML"
+
+msgid "Show in fields"
+msgstr "Rādīt laukos"
+
+msgid "No field assigned"
+msgstr "Nav piesaistīta lauka"
+
+msgid "No attachments"
+msgstr "Nav pielikumu"
+
+msgid "Save attachment…"
+msgstr "Saglabāt pielikumu…"
+
+msgid "No entries"
+msgstr "Nav ierakstu"
+
+msgid "Only one file per window – the first one was opened"
+msgstr "Tikai viens fails katrā logā – tika atvērts pirmais"
+
+msgid "Main menu"
+msgstr "Galvenā izvēlne"
+
+msgid "Language"
+msgstr "Valoda"
+
+msgid "System language"
+msgstr "Sistēmas valoda"
+
+msgid "error"
+msgid_plural "errors"
+msgstr[0] "kļūda"
+msgstr[1] "kļūdas"
+msgstr[2] "kļūdu"
+
+msgid "warning"
+msgid_plural "warnings"
+msgstr[0] "brīdinājums"
+msgstr[1] "brīdinājumi"
+msgstr[2] "brīdinājumu"
+
+msgid "note"
+msgid_plural "notes"
+msgstr[0] "piezīme"
+msgstr[1] "piezīmes"
+msgstr[2] "piezīmju"
+
+msgid "Error"
+msgid_plural "Errors"
+msgstr[0] "Kļūda"
+msgstr[1] "Kļūdas"
+msgstr[2] "Kļūdas"
+
+msgid "Warning"
+msgid_plural "Warnings"
+msgstr[0] "Brīdinājums"
+msgstr[1] "Brīdinājumi"
+msgstr[2] "Brīdinājumi"
+
+msgid "Note"
+msgid_plural "Notes"
+msgstr[0] "Piezīme"
+msgstr[1] "Piezīmes"
+msgstr[2] "Piezīmes"
+
+msgid "No findings"
+msgstr "Nav konstatējumu"
+
+msgid "No errors, {counts}"
+msgstr "Nav kļūdu, {counts}"
+
+msgid "Validating…"
+msgstr "Validē…"
+
+msgid "Validation failed: {reason}"
+msgstr "Validācija neizdevās: {reason}"
+
+msgid "{rule sets} and {last rule set}"
+msgstr "{rule sets} un {last rule set}"
+
+msgid "Checked against {rule sets}"
+msgstr "Pārbaudīts pēc: {rule sets}"
+
+msgid "The address {address} is not a local file"
+msgstr "Adrese {address} nav lokāls fails"
+
+msgid "The file {file} was not found"
+msgstr "Fails {file} netika atrasts"
+
+msgid "The file {file} cannot be read: {reason}"
+msgstr "Failu {file} nevar nolasīt: {reason}"
+
+msgid "{count} byte"
+msgid_plural "{count} bytes"
+msgstr[0] "{count} baits"
+msgstr[1] "{count} baiti"
+msgstr[2] "{count} baitu"
+
+msgid "Invoice (BG-24)"
+msgstr "Rēķins (BG-24)"
+
+msgid "unknown"
+msgstr "nezināms"
+
+msgid "Content not readable"
+msgstr "Saturs nav nolasāms"
+
+msgid "Too large (over {size} MB)"
+msgstr "Pārāk liels (virs {size} MB)"
+
+msgid "The attachment {name} could not be saved: {reason}"
+msgstr "Pielikumu {name} nevarēja saglabāt: {reason}"
+
+msgid "Page {page} of {count}"
+msgstr "{page}. lapa no {count}"
+
+msgid "No matches"
+msgstr "Nav rezultātu"
+
+msgid "{current} of {total}"
+msgstr "{current} no {total}"
+
+msgid "{count} match"
+msgid_plural "{count} matches"
+msgstr[0] "{count} rezultāts"
+msgstr[1] "{count} rezultāti"
+msgstr[2] "{count} rezultātu"
+
+msgid "The file {file} cannot be read as an invoice: {reason}"
+msgstr "Failu {file} nevar nolasīt kā rēķinu: {reason}"
+
+msgid "not a readable PDF file"
+msgstr "nav nolasāms PDF fails"
+
+msgid "the embedded invoice {name} is empty"
+msgstr "iegultais rēķins {name} ir tukšs"
+
+msgid "XML is not well-formed (line {line})"
+msgstr "XML nav pareizi veidots (rinda {line})"
+
+msgid "XML contains a DOCTYPE declaration – not supported"
+msgstr "XML satur DOCTYPE deklarāciju – netiek atbalstīts"
+
+msgid "not an electronic invoice"
+msgstr "nav elektronisks rēķins"
+
+msgid "ZUGFeRD 1.0 is not supported"
+msgstr "ZUGFeRD 1.0 netiek atbalstīts"
+
+msgid "the character encoding {encoding} is not supported"
+msgstr "rakstzīmju kodējums {encoding} netiek atbalstīts"
+
+msgid "XML is nested more than {limit} levels deep"
+msgstr "XML ligzdojums pārsniedz {limit} līmeņus"
+
+msgid "the invoice format is not supported"
+msgstr "rēķina formāts netiek atbalstīts"
+
+msgid "Partial invoice"
+msgstr "Daļējs rēķins"
+
+msgid "Commercial invoice"
+msgstr "Komercrēķins"
+
+msgid "Credit note"
+msgstr "Kredītrēķins"
+
+msgid "Corrected invoice"
+msgstr "Labots rēķins"
+
+msgid "Self-billed invoice"
+msgstr "Pircēja izrakstīts rēķins"
+
+msgid "Partial construction invoice"
+msgstr "Būvdarbu starprēķins"
+
+msgid "Partial final construction invoice"
+msgstr "Būvdarbu daļējs gala rēķins"
+
+msgid "Final construction invoice"
+msgstr "Būvdarbu gala rēķins"
+
+msgid "Instrument not defined"
+msgstr "Nav definēts"
+
+msgid "In cash"
+msgstr "Skaidrā naudā"
+
+msgid "Cheque"
+msgstr "Čeks"
+
+msgid "Credit transfer"
+msgstr "Pārskaitījums"
+
+msgid "Payment to bank account"
+msgstr "Maksājums uz bankas kontu"
+
+msgid "Bank card"
+msgstr "Bankas karte"
+
+msgid "Direct debit"
+msgstr "Tiešais debets"
+
+msgid "Credit card"
+msgstr "Kredītkarte"
+
+msgid "Standing agreement"
+msgstr "Pastāvīgā vienošanās"
+
+msgid "SEPA credit transfer"
+msgstr "SEPA pārskaitījums"
+
+msgid "SEPA direct debit"
+msgstr "SEPA tiešais debets"
+
+msgid "Clearing between partners"
+msgstr "Ieskaits starp partneriem"
+
+msgid "Standard rate"
+msgstr "Standarta likme"
+
+msgid "Zero rated goods"
+msgstr "Nulles likme"
+
+msgid "Exempt from tax"
+msgstr "Atbrīvots no nodokļa"
+
+msgid "VAT reverse charge"
+msgstr "Apgrieztā PVN maksāšana"
+
+msgid "Intra-community supply"
+msgstr "Piegāde Kopienas iekšienē"
+
+msgid "Export outside the EU"
+msgstr "Eksports ārpus ES"
+
+msgid "Outside the scope of VAT"
+msgstr "Ārpus PVN piemērošanas jomas"
+
+msgid "Canary Islands IGIC"
+msgstr "Kanāriju salas (IGIC)"
+
+msgid "Ceuta and Melilla IPSI"
+msgstr "Seuta un Melilja (IPSI)"
+
+msgid "pieces"
+msgstr "gab."
+
+msgid "hours"
+msgstr "stundas"
+
+msgid "days"
+msgstr "dienas"
+
+msgid "months"
+msgstr "mēneši"
+
+msgid "kilograms"
+msgstr "kilogrami"
+
+msgid "metres"
+msgstr "metri"
+
+msgid "litres"
+msgstr "litri"
+
+msgid "lump sum"
+msgstr "vienreizēja summa"
+
+msgid "Invoice number"
+msgstr "Rēķina numurs"
+
+msgid "Invoice issue date"
+msgstr "Rēķina datums"
+
+msgid "Invoice type code"
+msgstr "Rēķina veids"
+
+msgid "Invoice currency code"
+msgstr "Valūta"
+
+msgid "VAT accounting currency code"
+msgstr "PVN valūta"
+
+msgid "Value added tax point date"
+msgstr "Nodokļa iekasēšanas datums"
+
+msgid "Value added tax point date code"
+msgstr "Nodokļa iekasēšanas datums (kods)"
+
+msgid "Payment due date"
+msgstr "Apmaksas termiņš"
+
+msgid "Buyer reference"
+msgstr "Pircēja atsauce"
+
+msgid "Project reference"
+msgstr "Projekta atsauce"
+
+msgid "Contract reference"
+msgstr "Līguma atsauce"
+
+msgid "Purchase order reference"
+msgstr "Pirkuma pasūtījums"
+
+msgid "Sales order reference"
+msgstr "Pārdošanas pasūtījums"
+
+msgid "Receiving advice reference"
+msgstr "Saņemšanas paziņojums"
+
+msgid "Despatch advice reference"
+msgstr "Nosūtīšanas paziņojums"
+
+msgid "Tender or lot reference"
+msgstr "Iepirkuma vai daļas atsauce"
+
+msgid "Invoiced object identifier"
+msgstr "Objekta identifikators"
+
+msgid "Buyer accounting reference"
+msgstr "Grāmatvedības atsauce"
+
+msgid "Payment terms"
+msgstr "Maksājuma nosacījumi"
+
+msgid "Invoice note subject code"
+msgstr "Piezīmes temats (kods)"
+
+msgid "Invoice note"
+msgstr "Piezīme"
+
+msgid "Business process type"
+msgstr "Biznesa process"
+
+msgid "Specification identifier"
+msgstr "Specifikācijas identifikators"
+
+msgid "Preceding Invoice reference"
+msgstr "Rēķina numurs"
+
+msgid "Preceding Invoice issue date"
+msgstr "Rēķina datums"
+
+msgid "Seller name"
+msgstr "Nosaukums"
+
+msgid "Seller trading name"
+msgstr "Tirdzniecības nosaukums"
+
+msgid "Seller identifier"
+msgstr "Identifikators"
+
+msgid "Seller legal registration identifier"
+msgstr "Reģistrācijas numurs"
+
+msgid "Seller VAT identifier"
+msgstr "PVN numurs"
+
+msgid "Seller tax registration identifier"
+msgstr "Nodokļu maksātāja numurs"
+
+msgid "Seller additional legal information"
+msgstr "Papildu juridiskā informācija"
+
+msgid "Seller electronic address"
+msgstr "Elektroniskā adrese"
+
+msgid "Seller address line 1"
+msgstr "Iela"
+
+msgid "Seller address line 2"
+msgstr "Adreses rinda 2"
+
+msgid "Seller city"
+msgstr "Pilsēta"
+
+msgid "Seller post code"
+msgstr "Pasta indekss"
+
+msgid "Seller country subdivision"
+msgstr "Reģions"
+
+msgid "Seller country code"
+msgstr "Valsts"
+
+msgid "Seller contact point"
+msgstr "Kontaktpersona"
+
+msgid "Seller contact telephone number"
+msgstr "Tālrunis"
+
+msgid "Seller contact email address"
+msgstr "E-pasts"
+
+msgid "Buyer name"
+msgstr "Nosaukums"
+
+msgid "Buyer trading name"
+msgstr "Tirdzniecības nosaukums"
+
+msgid "Buyer identifier"
+msgstr "Identifikators"
+
+msgid "Buyer legal registration identifier"
+msgstr "Reģistrācijas numurs"
+
+msgid "Buyer VAT identifier"
+msgstr "PVN numurs"
+
+msgid "Buyer electronic address"
+msgstr "Elektroniskā adrese"
+
+msgid "Buyer address line 1"
+msgstr "Iela"
+
+msgid "Buyer address line 2"
+msgstr "Adreses rinda 2"
+
+msgid "Buyer city"
+msgstr "Pilsēta"
+
+msgid "Buyer post code"
+msgstr "Pasta indekss"
+
+msgid "Buyer country subdivision"
+msgstr "Reģions"
+
+msgid "Buyer country code"
+msgstr "Valsts"
+
+msgid "Buyer contact point"
+msgstr "Kontaktpersona"
+
+msgid "Buyer contact telephone number"
+msgstr "Tālrunis"
+
+msgid "Buyer contact email address"
+msgstr "E-pasts"
+
+msgid "Payee name"
+msgstr "Nosaukums"
+
+msgid "Payee identifier"
+msgstr "Identifikators"
+
+msgid "Payee legal registration identifier"
+msgstr "Reģistrācijas numurs"
+
+msgid "Seller tax representative name"
+msgstr "Nosaukums"
+
+msgid "Seller tax representative VAT identifier"
+msgstr "PVN numurs"
+
+msgid "Tax representative address line 1"
+msgstr "Iela"
+
+msgid "Tax representative address line 2"
+msgstr "Adreses rinda 2"
+
+msgid "Tax representative city"
+msgstr "Pilsēta"
+
+msgid "Tax representative post code"
+msgstr "Pasta indekss"
+
+msgid "Tax representative country subdivision"
+msgstr "Reģions"
+
+msgid "Tax representative country code"
+msgstr "Valsts"
+
+msgid "Deliver to party name"
+msgstr "Saņēmējs"
+
+msgid "Deliver to location identifier"
+msgstr "Piegādes vietas identifikators"
+
+msgid "Actual delivery date"
+msgstr "Piegādes datums"
+
+msgid "Invoicing period start date"
+msgstr "Rēķina periods no"
+
+msgid "Invoicing period end date"
+msgstr "Rēķina periods līdz"
+
+msgid "Deliver to address line 1"
+msgstr "Iela"
+
+msgid "Deliver to address line 2"
+msgstr "Adreses rinda 2"
+
+msgid "Deliver to city"
+msgstr "Pilsēta"
+
+msgid "Deliver to post code"
+msgstr "Pasta indekss"
+
+msgid "Deliver to country subdivision"
+msgstr "Reģions"
+
+msgid "Deliver to country code"
+msgstr "Valsts"
+
+msgid "Payment means type code"
+msgstr "Maksājuma veids"
+
+msgid "Payment means text"
+msgstr "Maksājuma veids (teksts)"
+
+msgid "Remittance information"
+msgstr "Maksājuma mērķis"
+
+msgid "Payment account identifier"
+msgstr "IBAN"
+
+msgid "Payment account name"
+msgstr "Konta turētājs"
+
+msgid "Payment service provider identifier"
+msgstr "BIC"
+
+msgid "Payment card primary account number"
+msgstr "Kartes numurs"
+
+msgid "Payment card holder name"
+msgstr "Kartes turētājs"
+
+msgid "Mandate reference identifier"
+msgstr "Mandāta atsauce"
+
+msgid "Bank assigned creditor identifier"
+msgstr "Kreditora identifikators"
+
+msgid "Debited account identifier"
+msgstr "Debetējamais konts"
+
+msgid "Document level allowance amount"
+msgstr "Summa"
+
+msgid "Document level allowance base amount"
+msgstr "Bāzes summa"
+
+msgid "Document level allowance percentage"
+msgstr "Procenti"
+
+msgid "Document level allowance VAT category code"
+msgstr "PVN kategorija"
+
+msgid "Document level allowance VAT rate"
+msgstr "PVN likme"
+
+msgid "Document level allowance reason"
+msgstr "Iemesls"
+
+msgid "Document level allowance reason code"
+msgstr "Iemesls (kods)"
+
+msgid "Document level charge amount"
+msgstr "Summa"
+
+msgid "Document level charge base amount"
+msgstr "Bāzes summa"
+
+msgid "Document level charge percentage"
+msgstr "Procenti"
+
+msgid "Document level charge VAT category code"
+msgstr "PVN kategorija"
+
+msgid "Document level charge VAT rate"
+msgstr "PVN likme"
+
+msgid "Document level charge reason"
+msgstr "Iemesls"
+
+msgid "Document level charge reason code"
+msgstr "Iemesls (kods)"
+
+msgid "Sum of Invoice line net amount"
+msgstr "Rindu neto summa"
+
+msgid "Sum of allowances on document level"
+msgstr "Atlaižu summa"
+
+msgid "Sum of charges on document level"
+msgstr "Piemaksu summa"
+
+msgid "Invoice total amount without VAT"
+msgstr "Kopā bez PVN"
+
+msgid "Invoice total VAT amount"
+msgstr "PVN kopā"
+
+msgid "Invoice total VAT amount in accounting currency"
+msgstr "PVN uzskaites valūtā"
+
+msgid "Invoice total amount with VAT"
+msgstr "Kopā ar PVN"
+
+msgid "Paid amount"
+msgstr "Samaksāts"
+
+msgid "Rounding amount"
+msgstr "Noapaļošana"
+
+msgid "Amount due for payment"
+msgstr "Maksājamā summa"
+
+msgid "VAT category taxable amount"
+msgstr "Ar nodokli apliekamā summa"
+
+msgid "VAT category tax amount"
+msgstr "Nodokļa summa"
+
+msgid "VAT category code"
+msgstr "PVN kategorija"
+
+msgid "VAT category rate"
+msgstr "PVN likme"
+
+msgid "VAT exemption reason text"
+msgstr "Atbrīvojuma iemesls"
+
+msgid "VAT exemption reason code"
+msgstr "Atbrīvojuma iemesls (kods)"
+
+msgid "Invoice line identifier"
+msgstr "Rindas numurs"
+
+msgid "Invoice line note"
+msgstr "Rindas piezīme"
+
+msgid "Invoice line object identifier"
+msgstr "Objekta identifikators"
+
+msgid "Invoiced quantity"
+msgstr "Daudzums"
+
+msgid "Invoiced quantity unit of measure code"
+msgstr "Mērvienība"
+
+msgid "Invoice line net amount"
+msgstr "Neto summa"
+
+msgid "Referenced purchase order line reference"
+msgstr "Pasūtījuma rinda"
+
+msgid "Invoice line Buyer accounting reference"
+msgstr "Pircēja grāmatvedības atsauce"
+
+msgid "Invoice line period start date"
+msgstr "Periods no"
+
+msgid "Invoice line period end date"
+msgstr "Periods līdz"
+
+msgid "Invoice line allowance amount"
+msgstr "Summa"
+
+msgid "Invoice line allowance base amount"
+msgstr "Bāzes summa"
+
+msgid "Invoice line allowance percentage"
+msgstr "Procenti"
+
+msgid "Invoice line allowance reason"
+msgstr "Iemesls"
+
+msgid "Invoice line allowance reason code"
+msgstr "Iemesls (kods)"
+
+msgid "Invoice line charge amount"
+msgstr "Summa"
+
+msgid "Invoice line charge base amount"
+msgstr "Bāzes summa"
+
+msgid "Invoice line charge percentage"
+msgstr "Procenti"
+
+msgid "Invoice line charge reason"
+msgstr "Iemesls"
+
+msgid "Invoice line charge reason code"
+msgstr "Iemesls (kods)"
+
+msgid "Item net price"
+msgstr "Neto cena"
+
+msgid "Item price discount"
+msgstr "Cenas atlaide"
+
+msgid "Item gross price"
+msgstr "Bruto cena"
+
+msgid "Item price base quantity"
+msgstr "Cenas bāzes daudzums"
+
+msgid "Item price base quantity unit of measure code"
+msgstr "Cenas bāzes daudzuma mērvienība"
+
+msgid "Invoiced item VAT category code"
+msgstr "PVN kategorija"
+
+msgid "Invoiced item VAT rate"
+msgstr "PVN likme"
+
+msgid "Item name"
+msgstr "Preces nosaukums"
+
+msgid "Item description"
+msgstr "Preces apraksts"
+
+msgid "Item Seller's identifier"
+msgstr "Preces kods"
+
+msgid "Item Buyer's identifier"
+msgstr "Pircēja preces kods"
+
+msgid "Item standard identifier"
+msgstr "Standarta identifikators"
+
+msgid "Item classification identifier"
+msgstr "Klasifikācija"
+
+msgid "Item country of origin"
+msgstr "Izcelsmes valsts"
+
+msgid "Item attribute value"
+msgstr "Preces atribūts"
+
+msgid "Seller address line 3"
+msgstr "Adreses rinda 3"
+
+msgid "Buyer address line 3"
+msgstr "Adreses rinda 3"
+
+msgid "Tax representative address line 3"
+msgstr "Adreses rinda 3"
+
+msgid "Deliver to address line 3"
+msgstr "Adreses rinda 3"
+
+msgid "Invoice"
+msgstr "Rēķins"
+
+msgid "Seller (BG-4)"
+msgstr "Pārdevējs (BG-4)"
+
+msgid "Buyer (BG-7)"
+msgstr "Pircējs (BG-7)"
+
+msgid "Preceding invoice reference (BG-3)"
+msgstr "Iepriekšējais rēķins (BG-3)"
+
+msgid "Payee (BG-10)"
+msgstr "Maksājuma saņēmējs (BG-10)"
+
+msgid "Seller tax representative party (BG-11)"
+msgstr "Nodokļu pārstāvis (BG-11)"
+
+msgid "Delivery information (BG-13)"
+msgstr "Piegāde (BG-13)"
+
+msgid "Invoice line"
+msgstr "Rinda"
+
+msgid "Payment instructions (BG-16)"
+msgstr "Maksājums (BG-16)"
+
+msgid "Document level allowances (BG-20)"
+msgstr "Atlaide (BG-20)"
+
+msgid "Document level charges (BG-21)"
+msgstr "Piemaksa (BG-21)"
+
+msgid "Invoice line allowances (BG-27)"
+msgstr "Atlaide (BG-27)"
+
+msgid "Invoice line charges (BG-28)"
+msgstr "Piemaksa (BG-28)"
+
+msgid "VAT breakdown (BG-23)"
+msgstr "PVN sadalījums (BG-23)"
+
+msgid "Document totals (BG-22)"
+msgstr "Kopsummas (BG-22)"
+
+msgid "XML schema {name}"
+msgstr "XML shēma {name}"
+
+msgid "Checked against XRechnung {bundled}, invoice declares version {declared}"
+msgstr "Pārbaudīts pēc XRechnung {bundled}, rēķinā norādīta versija {declared}"
+
+msgid "Profile Minimum: not a complete invoice according to EN 16931"
+msgstr "Profils Minimum: nav pilnīgs rēķins saskaņā ar EN 16931"
+
+msgid "Profile Basic WL: not a complete invoice according to EN 16931"
+msgstr "Profils Basic WL: nav pilnīgs rēķins saskaņā ar EN 16931"

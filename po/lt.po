@@ -1,0 +1,886 @@
+# Lithuanian translation of E-Invoice Viewer.
+# This file is distributed under the same licence as E-Invoice Viewer
+# (GPL-3.0-or-later).
+# Not checked by a native speaker (spec 0030); corrections are welcome
+# as an issue on GitHub.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: E-Invoice Viewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-19 10:45+0100\n"
+"PO-Revision-Date: 2026-11-18 00:00+0100\n"
+"Last-Translator: E-Invoice Viewer contributors\n"
+"Language-Team: Lithuanian\n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=((n%10==1 && n%100!=11) ? 0 : (n%10>=2 && (n%100<10 || n%100>=20)) ? 1 : 2);\n"
+
+msgid "Open an invoice"
+msgstr "Atidaryti sąskaitą faktūrą"
+
+msgid "Invoices (PDF, XML)"
+msgstr "Sąskaitos faktūros (PDF, XML)"
+
+msgid "Open…"
+msgstr "Atidaryti…"
+
+msgid "Close"
+msgstr "Uždaryti"
+
+msgid "Copy value"
+msgstr "Kopijuoti reikšmę"
+
+msgid "This PDF contains no electronic invoice"
+msgstr "Šiame PDF nėra elektroninės sąskaitos faktūros"
+
+msgid "The PDF pages cannot be shown"
+msgstr "PDF puslapių negalima parodyti"
+
+msgid "Plain XML invoice – no PDF included"
+msgstr "Tik XML sąskaita faktūra – PDF nepridėtas"
+
+msgid "Fields"
+msgstr "Laukai"
+
+msgid "XML"
+msgstr "XML"
+
+msgid "Zoom in (Ctrl++)"
+msgstr "Didinti (Ctrl++)"
+
+msgid "Zoom out (Ctrl+-)"
+msgstr "Mažinti (Ctrl+-)"
+
+msgid "Copy XML"
+msgstr "Kopijuoti XML"
+
+msgid "Save XML as…"
+msgstr "Įrašyti XML kaip…"
+
+msgid "The XML could not be saved"
+msgstr "XML nepavyko įrašyti"
+
+msgid "Search in the XML"
+msgstr "Ieškoti XML"
+
+msgid "Validation result"
+msgstr "Tikrinimo rezultatas"
+
+msgid "Document"
+msgstr "Dokumentas"
+
+msgid "internal error during validation"
+msgstr "vidinė klaida tikrinant"
+
+msgid "Recently opened"
+msgstr "Neseniai atidaryti"
+
+msgid "Attachments"
+msgstr "Priedai"
+
+msgid "Show in XML"
+msgstr "Rodyti XML"
+
+msgid "Show in fields"
+msgstr "Rodyti laukuose"
+
+msgid "No field assigned"
+msgstr "Laukas nepriskirtas"
+
+msgid "No attachments"
+msgstr "Priedų nėra"
+
+msgid "Save attachment…"
+msgstr "Įrašyti priedą…"
+
+msgid "No entries"
+msgstr "Įrašų nėra"
+
+msgid "Only one file per window – the first one was opened"
+msgstr "Viename lange tik vienas failas – atidarytas pirmasis"
+
+msgid "Main menu"
+msgstr "Pagrindinis meniu"
+
+msgid "Language"
+msgstr "Kalba"
+
+msgid "System language"
+msgstr "Sistemos kalba"
+
+msgid "error"
+msgid_plural "errors"
+msgstr[0] "klaida"
+msgstr[1] "klaidos"
+msgstr[2] "klaidų"
+
+msgid "warning"
+msgid_plural "warnings"
+msgstr[0] "įspėjimas"
+msgstr[1] "įspėjimai"
+msgstr[2] "įspėjimų"
+
+msgid "note"
+msgid_plural "notes"
+msgstr[0] "pastaba"
+msgstr[1] "pastabos"
+msgstr[2] "pastabų"
+
+msgid "Error"
+msgid_plural "Errors"
+msgstr[0] "Klaida"
+msgstr[1] "Klaidos"
+msgstr[2] "Klaidos"
+
+msgid "Warning"
+msgid_plural "Warnings"
+msgstr[0] "Įspėjimas"
+msgstr[1] "Įspėjimai"
+msgstr[2] "Įspėjimai"
+
+msgid "Note"
+msgid_plural "Notes"
+msgstr[0] "Pastaba"
+msgstr[1] "Pastabos"
+msgstr[2] "Pastabos"
+
+msgid "No findings"
+msgstr "Pastebėjimų nėra"
+
+msgid "No errors, {counts}"
+msgstr "Klaidų nėra, {counts}"
+
+msgid "Validating…"
+msgstr "Tikrinama…"
+
+msgid "Validation failed: {reason}"
+msgstr "Tikrinimas nepavyko: {reason}"
+
+msgid "{rule sets} and {last rule set}"
+msgstr "{rule sets} ir {last rule set}"
+
+msgid "Checked against {rule sets}"
+msgstr "Patikrinta pagal {rule sets}"
+
+msgid "The address {address} is not a local file"
+msgstr "Adresas {address} nėra vietinis failas"
+
+msgid "The file {file} was not found"
+msgstr "Failas {file} nerastas"
+
+msgid "The file {file} cannot be read: {reason}"
+msgstr "Failo {file} nepavyko perskaityti: {reason}"
+
+msgid "{count} byte"
+msgid_plural "{count} bytes"
+msgstr[0] "{count} baitas"
+msgstr[1] "{count} baitai"
+msgstr[2] "{count} baitų"
+
+msgid "Invoice (BG-24)"
+msgstr "Sąskaita faktūra (BG-24)"
+
+msgid "unknown"
+msgstr "nežinoma"
+
+msgid "Content not readable"
+msgstr "Turinys neperskaitomas"
+
+msgid "Too large (over {size} MB)"
+msgstr "Per didelis (daugiau kaip {size} MB)"
+
+msgid "The attachment {name} could not be saved: {reason}"
+msgstr "Priedo {name} nepavyko įrašyti: {reason}"
+
+msgid "Page {page} of {count}"
+msgstr "{page} psl. iš {count}"
+
+msgid "No matches"
+msgstr "Atitikmenų nėra"
+
+msgid "{current} of {total}"
+msgstr "{current} iš {total}"
+
+msgid "{count} match"
+msgid_plural "{count} matches"
+msgstr[0] "{count} atitikmuo"
+msgstr[1] "{count} atitikmenys"
+msgstr[2] "{count} atitikmenų"
+
+msgid "The file {file} cannot be read as an invoice: {reason}"
+msgstr "Failo {file} nepavyko perskaityti kaip sąskaitos faktūros: {reason}"
+
+msgid "not a readable PDF file"
+msgstr "neperskaitomas PDF failas"
+
+msgid "the embedded invoice {name} is empty"
+msgstr "įterpta sąskaita faktūra {name} tuščia"
+
+msgid "XML is not well-formed (line {line})"
+msgstr "XML netinkamai suformuotas ({line} eilutė)"
+
+msgid "XML contains a DOCTYPE declaration – not supported"
+msgstr "XML yra DOCTYPE deklaracija – nepalaikoma"
+
+msgid "not an electronic invoice"
+msgstr "ne elektroninė sąskaita faktūra"
+
+msgid "ZUGFeRD 1.0 is not supported"
+msgstr "ZUGFeRD 1.0 nepalaikomas"
+
+msgid "the character encoding {encoding} is not supported"
+msgstr "simbolių koduotė {encoding} nepalaikoma"
+
+msgid "XML is nested more than {limit} levels deep"
+msgstr "XML įdėtas giliau nei {limit} lygių"
+
+msgid "the invoice format is not supported"
+msgstr "sąskaitos faktūros formatas nepalaikomas"
+
+msgid "Partial invoice"
+msgstr "Dalinė sąskaita faktūra"
+
+msgid "Commercial invoice"
+msgstr "Komercinė sąskaita faktūra"
+
+msgid "Credit note"
+msgstr "Kreditinė sąskaita faktūra"
+
+msgid "Corrected invoice"
+msgstr "Pataisyta sąskaita faktūra"
+
+msgid "Self-billed invoice"
+msgstr "Pirkėjo išrašyta sąskaita faktūra"
+
+msgid "Partial construction invoice"
+msgstr "Tarpinė sąskaita faktūra (statyba)"
+
+msgid "Partial final construction invoice"
+msgstr "Dalinė galutinė sąskaita faktūra (statyba)"
+
+msgid "Final construction invoice"
+msgstr "Galutinė sąskaita faktūra (statyba)"
+
+msgid "Instrument not defined"
+msgstr "Neapibrėžta"
+
+msgid "In cash"
+msgstr "Grynaisiais"
+
+msgid "Cheque"
+msgstr "Čekis"
+
+msgid "Credit transfer"
+msgstr "Kredito pervedimas"
+
+msgid "Payment to bank account"
+msgstr "Mokėjimas į banko sąskaitą"
+
+msgid "Bank card"
+msgstr "Banko kortelė"
+
+msgid "Direct debit"
+msgstr "Tiesioginis debetas"
+
+msgid "Credit card"
+msgstr "Kredito kortelė"
+
+msgid "Standing agreement"
+msgstr "Periodinis mokėjimas"
+
+msgid "SEPA credit transfer"
+msgstr "SEPA kredito pervedimas"
+
+msgid "SEPA direct debit"
+msgstr "SEPA tiesioginis debetas"
+
+msgid "Clearing between partners"
+msgstr "Tarpusavio užskaita"
+
+msgid "Standard rate"
+msgstr "Standartinis tarifas"
+
+msgid "Zero rated goods"
+msgstr "Nulinis tarifas"
+
+msgid "Exempt from tax"
+msgstr "Neapmokestinama PVM"
+
+msgid "VAT reverse charge"
+msgstr "Atvirkštinis apmokestinimas"
+
+msgid "Intra-community supply"
+msgstr "Prekių tiekimas Bendrijos viduje"
+
+msgid "Export outside the EU"
+msgstr "Eksportas už ES ribų"
+
+msgid "Outside the scope of VAT"
+msgstr "Ne PVM objektas"
+
+msgid "Canary Islands IGIC"
+msgstr "Kanarų salos (IGIC)"
+
+msgid "Ceuta and Melilla IPSI"
+msgstr "Seuta ir Melilja (IPSI)"
+
+msgid "pieces"
+msgstr "vnt."
+
+msgid "hours"
+msgstr "val."
+
+msgid "days"
+msgstr "d."
+
+msgid "months"
+msgstr "mėn."
+
+msgid "kilograms"
+msgstr "kg"
+
+msgid "metres"
+msgstr "m"
+
+msgid "litres"
+msgstr "l"
+
+msgid "lump sum"
+msgstr "fiksuota suma"
+
+msgid "Invoice number"
+msgstr "Sąskaitos faktūros numeris"
+
+msgid "Invoice issue date"
+msgstr "Išrašymo data"
+
+msgid "Invoice type code"
+msgstr "Sąskaitos faktūros tipas"
+
+msgid "Invoice currency code"
+msgstr "Valiuta"
+
+msgid "VAT accounting currency code"
+msgstr "PVM valiuta"
+
+msgid "Value added tax point date"
+msgstr "PVM prievolės data"
+
+msgid "Value added tax point date code"
+msgstr "PVM prievolė (kodas)"
+
+msgid "Payment due date"
+msgstr "Mokėjimo terminas"
+
+msgid "Buyer reference"
+msgstr "Pirkėjo nuoroda"
+
+msgid "Project reference"
+msgstr "Projekto nuoroda"
+
+msgid "Contract reference"
+msgstr "Sutarties numeris"
+
+msgid "Purchase order reference"
+msgstr "Užsakymo numeris"
+
+msgid "Sales order reference"
+msgstr "Pardavimo užsakymo numeris"
+
+msgid "Receiving advice reference"
+msgstr "Priėmimo pranešimas"
+
+msgid "Despatch advice reference"
+msgstr "Siuntimo pranešimas"
+
+msgid "Tender or lot reference"
+msgstr "Konkurso ar pirkimo dalies nuoroda"
+
+msgid "Invoiced object identifier"
+msgstr "Objekto identifikatorius"
+
+msgid "Buyer accounting reference"
+msgstr "Apskaitos nuoroda"
+
+msgid "Payment terms"
+msgstr "Mokėjimo sąlygos"
+
+msgid "Invoice note subject code"
+msgstr "Pastabos tema (kodas)"
+
+msgid "Invoice note"
+msgstr "Pastaba"
+
+msgid "Business process type"
+msgstr "Verslo procesas"
+
+msgid "Specification identifier"
+msgstr "Specifikacijos identifikatorius"
+
+msgid "Preceding Invoice reference"
+msgstr "Sąskaitos faktūros numeris"
+
+msgid "Preceding Invoice issue date"
+msgstr "Išrašymo data"
+
+msgid "Seller name"
+msgstr "Pavadinimas"
+
+msgid "Seller trading name"
+msgstr "Prekybinis pavadinimas"
+
+msgid "Seller identifier"
+msgstr "Identifikatorius"
+
+msgid "Seller legal registration identifier"
+msgstr "Įmonės kodas"
+
+msgid "Seller VAT identifier"
+msgstr "PVM mokėtojo kodas"
+
+msgid "Seller tax registration identifier"
+msgstr "Mokesčių mokėtojo kodas"
+
+msgid "Seller additional legal information"
+msgstr "Papildoma teisinė informacija"
+
+msgid "Seller electronic address"
+msgstr "Elektroninis adresas"
+
+msgid "Seller address line 1"
+msgstr "Gatvė"
+
+msgid "Seller address line 2"
+msgstr "Adreso papildymas"
+
+msgid "Seller city"
+msgstr "Miestas"
+
+msgid "Seller post code"
+msgstr "Pašto kodas"
+
+msgid "Seller country subdivision"
+msgstr "Regionas"
+
+msgid "Seller country code"
+msgstr "Šalis"
+
+msgid "Seller contact point"
+msgstr "Kontaktinis asmuo"
+
+msgid "Seller contact telephone number"
+msgstr "Telefonas"
+
+msgid "Seller contact email address"
+msgstr "El. paštas"
+
+msgid "Buyer name"
+msgstr "Pavadinimas"
+
+msgid "Buyer trading name"
+msgstr "Prekybinis pavadinimas"
+
+msgid "Buyer identifier"
+msgstr "Identifikatorius"
+
+msgid "Buyer legal registration identifier"
+msgstr "Įmonės kodas"
+
+msgid "Buyer VAT identifier"
+msgstr "PVM mokėtojo kodas"
+
+msgid "Buyer electronic address"
+msgstr "Elektroninis adresas"
+
+msgid "Buyer address line 1"
+msgstr "Gatvė"
+
+msgid "Buyer address line 2"
+msgstr "Adreso papildymas"
+
+msgid "Buyer city"
+msgstr "Miestas"
+
+msgid "Buyer post code"
+msgstr "Pašto kodas"
+
+msgid "Buyer country subdivision"
+msgstr "Regionas"
+
+msgid "Buyer country code"
+msgstr "Šalis"
+
+msgid "Buyer contact point"
+msgstr "Kontaktinis asmuo"
+
+msgid "Buyer contact telephone number"
+msgstr "Telefonas"
+
+msgid "Buyer contact email address"
+msgstr "El. paštas"
+
+msgid "Payee name"
+msgstr "Pavadinimas"
+
+msgid "Payee identifier"
+msgstr "Identifikatorius"
+
+msgid "Payee legal registration identifier"
+msgstr "Įmonės kodas"
+
+msgid "Seller tax representative name"
+msgstr "Pavadinimas"
+
+msgid "Seller tax representative VAT identifier"
+msgstr "PVM mokėtojo kodas"
+
+msgid "Tax representative address line 1"
+msgstr "Gatvė"
+
+msgid "Tax representative address line 2"
+msgstr "Adreso papildymas"
+
+msgid "Tax representative city"
+msgstr "Miestas"
+
+msgid "Tax representative post code"
+msgstr "Pašto kodas"
+
+msgid "Tax representative country subdivision"
+msgstr "Regionas"
+
+msgid "Tax representative country code"
+msgstr "Šalis"
+
+msgid "Deliver to party name"
+msgstr "Gavėjas"
+
+msgid "Deliver to location identifier"
+msgstr "Pristatymo vietos identifikatorius"
+
+msgid "Actual delivery date"
+msgstr "Pristatymo data"
+
+msgid "Invoicing period start date"
+msgstr "Sąskaitos laikotarpis nuo"
+
+msgid "Invoicing period end date"
+msgstr "Sąskaitos laikotarpis iki"
+
+msgid "Deliver to address line 1"
+msgstr "Gatvė"
+
+msgid "Deliver to address line 2"
+msgstr "Adreso papildymas"
+
+msgid "Deliver to city"
+msgstr "Miestas"
+
+msgid "Deliver to post code"
+msgstr "Pašto kodas"
+
+msgid "Deliver to country subdivision"
+msgstr "Regionas"
+
+msgid "Deliver to country code"
+msgstr "Šalis"
+
+msgid "Payment means type code"
+msgstr "Mokėjimo būdas"
+
+msgid "Payment means text"
+msgstr "Mokėjimo būdas (tekstas)"
+
+msgid "Remittance information"
+msgstr "Mokėjimo paskirtis"
+
+msgid "Payment account identifier"
+msgstr "IBAN"
+
+msgid "Payment account name"
+msgstr "Sąskaitos savininkas"
+
+msgid "Payment service provider identifier"
+msgstr "BIC"
+
+msgid "Payment card primary account number"
+msgstr "Kortelės numeris"
+
+msgid "Payment card holder name"
+msgstr "Kortelės turėtojas"
+
+msgid "Mandate reference identifier"
+msgstr "Sutikimo identifikatorius"
+
+msgid "Bank assigned creditor identifier"
+msgstr "Kreditoriaus identifikatorius"
+
+msgid "Debited account identifier"
+msgstr "Debetuojama sąskaita"
+
+msgid "Document level allowance amount"
+msgstr "Suma"
+
+msgid "Document level allowance base amount"
+msgstr "Bazinė suma"
+
+msgid "Document level allowance percentage"
+msgstr "Procentas"
+
+msgid "Document level allowance VAT category code"
+msgstr "PVM kategorija"
+
+msgid "Document level allowance VAT rate"
+msgstr "PVM tarifas"
+
+msgid "Document level allowance reason"
+msgstr "Priežastis"
+
+msgid "Document level allowance reason code"
+msgstr "Priežastis (kodas)"
+
+msgid "Document level charge amount"
+msgstr "Suma"
+
+msgid "Document level charge base amount"
+msgstr "Bazinė suma"
+
+msgid "Document level charge percentage"
+msgstr "Procentas"
+
+msgid "Document level charge VAT category code"
+msgstr "PVM kategorija"
+
+msgid "Document level charge VAT rate"
+msgstr "PVM tarifas"
+
+msgid "Document level charge reason"
+msgstr "Priežastis"
+
+msgid "Document level charge reason code"
+msgstr "Priežastis (kodas)"
+
+msgid "Sum of Invoice line net amount"
+msgstr "Eilučių suma be PVM"
+
+msgid "Sum of allowances on document level"
+msgstr "Nuolaidų suma"
+
+msgid "Sum of charges on document level"
+msgstr "Priemokų suma"
+
+msgid "Invoice total amount without VAT"
+msgstr "Iš viso be PVM"
+
+msgid "Invoice total VAT amount"
+msgstr "PVM iš viso"
+
+msgid "Invoice total VAT amount in accounting currency"
+msgstr "PVM apskaitos valiuta"
+
+msgid "Invoice total amount with VAT"
+msgstr "Iš viso su PVM"
+
+msgid "Paid amount"
+msgstr "Sumokėta suma"
+
+msgid "Rounding amount"
+msgstr "Apvalinimas"
+
+msgid "Amount due for payment"
+msgstr "Mokėtina suma"
+
+msgid "VAT category taxable amount"
+msgstr "Apmokestinamoji vertė"
+
+msgid "VAT category tax amount"
+msgstr "PVM suma"
+
+msgid "VAT category code"
+msgstr "PVM kategorija"
+
+msgid "VAT category rate"
+msgstr "PVM tarifas"
+
+msgid "VAT exemption reason text"
+msgstr "Neapmokestinimo priežastis"
+
+msgid "VAT exemption reason code"
+msgstr "Neapmokestinimo priežastis (kodas)"
+
+msgid "Invoice line identifier"
+msgstr "Eilutės numeris"
+
+msgid "Invoice line note"
+msgstr "Eilutės pastaba"
+
+msgid "Invoice line object identifier"
+msgstr "Objekto identifikatorius"
+
+msgid "Invoiced quantity"
+msgstr "Kiekis"
+
+msgid "Invoiced quantity unit of measure code"
+msgstr "Matavimo vienetas"
+
+msgid "Invoice line net amount"
+msgstr "Suma be PVM"
+
+msgid "Referenced purchase order line reference"
+msgstr "Užsakymo eilutė"
+
+msgid "Invoice line Buyer accounting reference"
+msgstr "Pirkėjo apskaitos nuoroda"
+
+msgid "Invoice line period start date"
+msgstr "Laikotarpis nuo"
+
+msgid "Invoice line period end date"
+msgstr "Laikotarpis iki"
+
+msgid "Invoice line allowance amount"
+msgstr "Suma"
+
+msgid "Invoice line allowance base amount"
+msgstr "Bazinė suma"
+
+msgid "Invoice line allowance percentage"
+msgstr "Procentas"
+
+msgid "Invoice line allowance reason"
+msgstr "Priežastis"
+
+msgid "Invoice line allowance reason code"
+msgstr "Priežastis (kodas)"
+
+msgid "Invoice line charge amount"
+msgstr "Suma"
+
+msgid "Invoice line charge base amount"
+msgstr "Bazinė suma"
+
+msgid "Invoice line charge percentage"
+msgstr "Procentas"
+
+msgid "Invoice line charge reason"
+msgstr "Priežastis"
+
+msgid "Invoice line charge reason code"
+msgstr "Priežastis (kodas)"
+
+msgid "Item net price"
+msgstr "Kaina be PVM"
+
+msgid "Item price discount"
+msgstr "Kainos nuolaida"
+
+msgid "Item gross price"
+msgstr "Bruto kaina"
+
+msgid "Item price base quantity"
+msgstr "Bazinis kiekis"
+
+msgid "Item price base quantity unit of measure code"
+msgstr "Bazinio kiekio matavimo vienetas"
+
+msgid "Invoiced item VAT category code"
+msgstr "PVM kategorija"
+
+msgid "Invoiced item VAT rate"
+msgstr "PVM tarifas"
+
+msgid "Item name"
+msgstr "Prekės pavadinimas"
+
+msgid "Item description"
+msgstr "Prekės aprašymas"
+
+msgid "Item Seller's identifier"
+msgstr "Prekės kodas"
+
+msgid "Item Buyer's identifier"
+msgstr "Pirkėjo prekės kodas"
+
+msgid "Item standard identifier"
+msgstr "Standartinis identifikatorius"
+
+msgid "Item classification identifier"
+msgstr "Klasifikacija"
+
+msgid "Item country of origin"
+msgstr "Kilmės šalis"
+
+msgid "Item attribute value"
+msgstr "Prekės požymis"
+
+msgid "Seller address line 3"
+msgstr "Adreso eilutė 3"
+
+msgid "Buyer address line 3"
+msgstr "Adreso eilutė 3"
+
+msgid "Tax representative address line 3"
+msgstr "Adreso eilutė 3"
+
+msgid "Deliver to address line 3"
+msgstr "Adreso eilutė 3"
+
+msgid "Invoice"
+msgstr "Sąskaita faktūra"
+
+msgid "Seller (BG-4)"
+msgstr "Pardavėjas (BG-4)"
+
+msgid "Buyer (BG-7)"
+msgstr "Pirkėjas (BG-7)"
+
+msgid "Preceding invoice reference (BG-3)"
+msgstr "Ankstesnė sąskaita faktūra (BG-3)"
+
+msgid "Payee (BG-10)"
+msgstr "Gavėjas (BG-10)"
+
+msgid "Seller tax representative party (BG-11)"
+msgstr "Mokesčių atstovas (BG-11)"
+
+msgid "Delivery information (BG-13)"
+msgstr "Pristatymas (BG-13)"
+
+msgid "Invoice line"
+msgstr "Eilutė"
+
+msgid "Payment instructions (BG-16)"
+msgstr "Mokėjimas (BG-16)"
+
+msgid "Document level allowances (BG-20)"
+msgstr "Nuolaida (BG-20)"
+
+msgid "Document level charges (BG-21)"
+msgstr "Priemoka (BG-21)"
+
+msgid "Invoice line allowances (BG-27)"
+msgstr "Nuolaida (BG-27)"
+
+msgid "Invoice line charges (BG-28)"
+msgstr "Priemoka (BG-28)"
+
+msgid "VAT breakdown (BG-23)"
+msgstr "PVM (BG-23)"
+
+msgid "Document totals (BG-22)"
+msgstr "Sumos (BG-22)"
+
+msgid "XML schema {name}"
+msgstr "XML schema {name}"
+
+msgid "Checked against XRechnung {bundled}, invoice declares version {declared}"
+msgstr "Patikrinta pagal XRechnung {bundled}, sąskaitoje faktūroje nurodyta versija {declared}"
+
+msgid "Profile Minimum: not a complete invoice according to EN 16931"
+msgstr "Profilis Minimum: ne visa sąskaita faktūra pagal EN 16931"
+
+msgid "Profile Basic WL: not a complete invoice according to EN 16931"
+msgstr "Profilis Basic WL: ne visa sąskaita faktūra pagal EN 16931"

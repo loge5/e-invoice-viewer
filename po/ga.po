@@ -1,0 +1,902 @@
+# Irish translation of E-Invoice Viewer.
+# This file is distributed under the same licence as E-Invoice Viewer
+# (GPL-3.0-or-later).
+# Not checked by a native speaker (spec 0030); corrections are welcome
+# as an issue on GitHub.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: E-Invoice Viewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-19 10:45+0100\n"
+"PO-Revision-Date: 2026-11-18 00:00+0100\n"
+"Last-Translator: E-Invoice Viewer contributors\n"
+"Language-Team: Irish\n"
+"Language: ga\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 : (n>6 && n<11) ? 3 : 4);\n"
+
+msgid "Open an invoice"
+msgstr "Oscail sonrasc"
+
+msgid "Invoices (PDF, XML)"
+msgstr "Sonraisc (PDF, XML)"
+
+msgid "Open…"
+msgstr "Oscail…"
+
+msgid "Close"
+msgstr "Dún"
+
+msgid "Copy value"
+msgstr "Cóipeáil an luach"
+
+msgid "This PDF contains no electronic invoice"
+msgstr "Níl aon sonrasc leictreonach sa PDF seo"
+
+msgid "The PDF pages cannot be shown"
+msgstr "Ní féidir leathanaigh an PDF a thaispeáint"
+
+msgid "Plain XML invoice – no PDF included"
+msgstr "Sonrasc XML amháin – níl aon PDF ann"
+
+msgid "Fields"
+msgstr "Réimsí"
+
+msgid "XML"
+msgstr "XML"
+
+msgid "Zoom in (Ctrl++)"
+msgstr "Zúmáil isteach (Ctrl++)"
+
+msgid "Zoom out (Ctrl+-)"
+msgstr "Zúmáil amach (Ctrl+-)"
+
+msgid "Copy XML"
+msgstr "Cóipeáil an XML"
+
+msgid "Save XML as…"
+msgstr "Sábháil an XML mar…"
+
+msgid "The XML could not be saved"
+msgstr "Níorbh fhéidir an XML a shábháil"
+
+msgid "Search in the XML"
+msgstr "Cuardaigh san XML"
+
+msgid "Validation result"
+msgstr "Toradh an bhailíochtaithe"
+
+msgid "Document"
+msgstr "Doiciméad"
+
+msgid "internal error during validation"
+msgstr "earráid inmheánach le linn an bhailíochtaithe"
+
+msgid "Recently opened"
+msgstr "Osclaíodh le déanaí"
+
+msgid "Attachments"
+msgstr "Ceangaltáin"
+
+msgid "Show in XML"
+msgstr "Taispeáin san XML"
+
+msgid "Show in fields"
+msgstr "Taispeáin sna réimsí"
+
+msgid "No field assigned"
+msgstr "Níl aon réimse sannta"
+
+msgid "No attachments"
+msgstr "Níl aon cheangaltán ann"
+
+msgid "Save attachment…"
+msgstr "Sábháil an ceangaltán…"
+
+msgid "No entries"
+msgstr "Níl aon iontráil ann"
+
+msgid "Only one file per window – the first one was opened"
+msgstr "Comhad amháin in aghaidh na fuinneoige – osclaíodh an chéad cheann"
+
+msgid "Main menu"
+msgstr "Príomh-roghchlár"
+
+msgid "Language"
+msgstr "Teanga"
+
+msgid "System language"
+msgstr "Teanga an chórais"
+
+msgid "error"
+msgid_plural "errors"
+msgstr[0] "earráid"
+msgstr[1] "earráid"
+msgstr[2] "earráid"
+msgstr[3] "n-earráid"
+msgstr[4] "earráid"
+
+msgid "warning"
+msgid_plural "warnings"
+msgstr[0] "rabhadh"
+msgstr[1] "rabhadh"
+msgstr[2] "rabhadh"
+msgstr[3] "rabhadh"
+msgstr[4] "rabhadh"
+
+msgid "note"
+msgid_plural "notes"
+msgstr[0] "nóta"
+msgstr[1] "nóta"
+msgstr[2] "nóta"
+msgstr[3] "nóta"
+msgstr[4] "nóta"
+
+msgid "Error"
+msgid_plural "Errors"
+msgstr[0] "Earráid"
+msgstr[1] "Earráidí"
+msgstr[2] "Earráidí"
+msgstr[3] "Earráidí"
+msgstr[4] "Earráidí"
+
+msgid "Warning"
+msgid_plural "Warnings"
+msgstr[0] "Rabhadh"
+msgstr[1] "Rabhaidh"
+msgstr[2] "Rabhaidh"
+msgstr[3] "Rabhaidh"
+msgstr[4] "Rabhaidh"
+
+msgid "Note"
+msgid_plural "Notes"
+msgstr[0] "Nóta"
+msgstr[1] "Nótaí"
+msgstr[2] "Nótaí"
+msgstr[3] "Nótaí"
+msgstr[4] "Nótaí"
+
+msgid "No findings"
+msgstr "Níor aimsíodh aon fhadhb"
+
+msgid "No errors, {counts}"
+msgstr "Gan earráidí, {counts}"
+
+msgid "Validating…"
+msgstr "Á bhailíochtú…"
+
+msgid "Validation failed: {reason}"
+msgstr "Theip ar an mbailíochtú: {reason}"
+
+msgid "{rule sets} and {last rule set}"
+msgstr "{rule sets} agus {last rule set}"
+
+msgid "Checked against {rule sets}"
+msgstr "Seiceáilte de réir {rule sets}"
+
+msgid "The address {address} is not a local file"
+msgstr "Ní comhad logánta é an seoladh {address}"
+
+msgid "The file {file} was not found"
+msgstr "Níor aimsíodh an comhad {file}"
+
+msgid "The file {file} cannot be read: {reason}"
+msgstr "Ní féidir an comhad {file} a léamh: {reason}"
+
+msgid "{count} byte"
+msgid_plural "{count} bytes"
+msgstr[0] "{count} beart"
+msgstr[1] "{count} bheart"
+msgstr[2] "{count} bheart"
+msgstr[3] "{count} mbeart"
+msgstr[4] "{count} beart"
+
+msgid "Invoice (BG-24)"
+msgstr "Sonrasc (BG-24)"
+
+msgid "unknown"
+msgstr "anaithnid"
+
+msgid "Content not readable"
+msgstr "Ní féidir an t-ábhar a léamh"
+
+msgid "Too large (over {size} MB)"
+msgstr "Rómhór (os cionn {size} MB)"
+
+msgid "The attachment {name} could not be saved: {reason}"
+msgstr "Níorbh fhéidir an ceangaltán {name} a shábháil: {reason}"
+
+msgid "Page {page} of {count}"
+msgstr "Leathanach {page} as {count}"
+
+msgid "No matches"
+msgstr "Gan torthaí"
+
+msgid "{current} of {total}"
+msgstr "{current} as {total}"
+
+msgid "{count} match"
+msgid_plural "{count} matches"
+msgstr[0] "{count} toradh"
+msgstr[1] "{count} thoradh"
+msgstr[2] "{count} thoradh"
+msgstr[3] "{count} dtoradh"
+msgstr[4] "{count} toradh"
+
+msgid "The file {file} cannot be read as an invoice: {reason}"
+msgstr "Ní féidir an comhad {file} a léamh mar shonrasc: {reason}"
+
+msgid "not a readable PDF file"
+msgstr "ní comhad PDF inléite é"
+
+msgid "the embedded invoice {name} is empty"
+msgstr "tá an sonrasc leabaithe {name} folamh"
+
+msgid "XML is not well-formed (line {line})"
+msgstr "Níl an XML dea-chumtha (líne {line})"
+
+msgid "XML contains a DOCTYPE declaration – not supported"
+msgstr "Tá fógra DOCTYPE san XML – ní thacaítear leis"
+
+msgid "not an electronic invoice"
+msgstr "ní sonrasc leictreonach é"
+
+msgid "ZUGFeRD 1.0 is not supported"
+msgstr "Ní thacaítear le ZUGFeRD 1.0"
+
+msgid "the character encoding {encoding} is not supported"
+msgstr "ní thacaítear leis an ionchódú carachtar {encoding}"
+
+msgid "XML is nested more than {limit} levels deep"
+msgstr "tá an XML neadaithe níos doimhne ná {limit} leibhéal"
+
+msgid "the invoice format is not supported"
+msgstr "ní thacaítear le formáid an tsonraisc"
+
+msgid "Partial invoice"
+msgstr "Sonrasc páirteach"
+
+msgid "Commercial invoice"
+msgstr "Sonrasc tráchtála"
+
+msgid "Credit note"
+msgstr "Nóta creidmheasa"
+
+msgid "Corrected invoice"
+msgstr "Sonrasc ceartaithe"
+
+msgid "Self-billed invoice"
+msgstr "Sonrasc féinbhillithe"
+
+msgid "Partial construction invoice"
+msgstr "Sonrasc páirteach (tógáil)"
+
+msgid "Partial final construction invoice"
+msgstr "Sonrasc páirteach deiridh (tógáil)"
+
+msgid "Final construction invoice"
+msgstr "Sonrasc deiridh (tógáil)"
+
+msgid "Instrument not defined"
+msgstr "Modh nach bhfuil sainithe"
+
+msgid "In cash"
+msgstr "Airgead tirim"
+
+msgid "Cheque"
+msgstr "Seic"
+
+msgid "Credit transfer"
+msgstr "Aistriú creidmheasa"
+
+msgid "Payment to bank account"
+msgstr "Íocaíocht isteach i gcuntas bainc"
+
+msgid "Bank card"
+msgstr "Cárta bainc"
+
+msgid "Direct debit"
+msgstr "Dochar díreach"
+
+msgid "Credit card"
+msgstr "Cárta creidmheasa"
+
+msgid "Standing agreement"
+msgstr "Ordú seasta"
+
+msgid "SEPA credit transfer"
+msgstr "Aistriú creidmheasa SEPA"
+
+msgid "SEPA direct debit"
+msgstr "Dochar díreach SEPA"
+
+msgid "Clearing between partners"
+msgstr "Glanadh idir comhpháirtithe"
+
+msgid "Standard rate"
+msgstr "Ráta caighdeánach"
+
+msgid "Zero rated goods"
+msgstr "Ráta nialasach"
+
+msgid "Exempt from tax"
+msgstr "Díolmhaithe ó CBL"
+
+msgid "VAT reverse charge"
+msgstr "Aisiompú muirir CBL"
+
+msgid "Intra-community supply"
+msgstr "Soláthar laistigh den Chomhphobal"
+
+msgid "Export outside the EU"
+msgstr "Onnmhairiú lasmuigh den AE"
+
+msgid "Outside the scope of VAT"
+msgstr "Lasmuigh de raon feidhme CBL"
+
+msgid "Canary Islands IGIC"
+msgstr "Na hOileáin Chanáracha (IGIC)"
+
+msgid "Ceuta and Melilla IPSI"
+msgstr "Ceuta agus Melilla (IPSI)"
+
+msgid "pieces"
+msgstr "píosaí"
+
+msgid "hours"
+msgstr "uaireanta"
+
+msgid "days"
+msgstr "laethanta"
+
+msgid "months"
+msgstr "míonna"
+
+msgid "kilograms"
+msgstr "cileagraim"
+
+msgid "metres"
+msgstr "méadair"
+
+msgid "litres"
+msgstr "lítir"
+
+msgid "lump sum"
+msgstr "cnapshuim"
+
+msgid "Invoice number"
+msgstr "Uimhir an tsonraisc"
+
+msgid "Invoice issue date"
+msgstr "Dáta an tsonraisc"
+
+msgid "Invoice type code"
+msgstr "Cineál sonraisc"
+
+msgid "Invoice currency code"
+msgstr "Airgeadra"
+
+msgid "VAT accounting currency code"
+msgstr "Airgeadra CBL"
+
+msgid "Value added tax point date"
+msgstr "Dáta an phointe cánach"
+
+msgid "Value added tax point date code"
+msgstr "Pointe cánach (cód)"
+
+msgid "Payment due date"
+msgstr "Dáta dlite"
+
+msgid "Buyer reference"
+msgstr "Tagairt an cheannaitheora"
+
+msgid "Project reference"
+msgstr "Tagairt an tionscadail"
+
+msgid "Contract reference"
+msgstr "Tagairt an chonartha"
+
+msgid "Purchase order reference"
+msgstr "Tagairt an ordaithe ceannaigh"
+
+msgid "Sales order reference"
+msgstr "Tagairt an ordaithe díola"
+
+msgid "Receiving advice reference"
+msgstr "Fógra glactha"
+
+msgid "Despatch advice reference"
+msgstr "Fógra seolta"
+
+msgid "Tender or lot reference"
+msgstr "Tagairt tairisceana nó lota"
+
+msgid "Invoiced object identifier"
+msgstr "Aitheantóir an oibiachta"
+
+msgid "Buyer accounting reference"
+msgstr "Tagairt chuntasaíochta"
+
+msgid "Payment terms"
+msgstr "Téarmaí íocaíochta"
+
+msgid "Invoice note subject code"
+msgstr "Ábhar an nóta (cód)"
+
+msgid "Invoice note"
+msgstr "Nóta"
+
+msgid "Business process type"
+msgstr "Próiseas gnó"
+
+msgid "Specification identifier"
+msgstr "Aitheantóir sonraíochta"
+
+msgid "Preceding Invoice reference"
+msgstr "Uimhir an tsonraisc"
+
+msgid "Preceding Invoice issue date"
+msgstr "Dáta an tsonraisc"
+
+msgid "Seller name"
+msgstr "Ainm"
+
+msgid "Seller trading name"
+msgstr "Ainm trádála"
+
+msgid "Seller identifier"
+msgstr "Aitheantóir"
+
+msgid "Seller legal registration identifier"
+msgstr "Uimhir chláraithe"
+
+msgid "Seller VAT identifier"
+msgstr "Uimhir CBL"
+
+msgid "Seller tax registration identifier"
+msgstr "Uimhir chánach"
+
+msgid "Seller additional legal information"
+msgstr "Faisnéis dhlíthiúil bhreise"
+
+msgid "Seller electronic address"
+msgstr "Seoladh leictreonach"
+
+msgid "Seller address line 1"
+msgstr "Seoladh"
+
+msgid "Seller address line 2"
+msgstr "Seoladh (líne 2)"
+
+msgid "Seller city"
+msgstr "Baile"
+
+msgid "Seller post code"
+msgstr "Cód poist"
+
+msgid "Seller country subdivision"
+msgstr "Réigiún"
+
+msgid "Seller country code"
+msgstr "Tír"
+
+msgid "Seller contact point"
+msgstr "Teagmhálaí"
+
+msgid "Seller contact telephone number"
+msgstr "Guthán"
+
+msgid "Seller contact email address"
+msgstr "Ríomhphost"
+
+msgid "Buyer name"
+msgstr "Ainm"
+
+msgid "Buyer trading name"
+msgstr "Ainm trádála"
+
+msgid "Buyer identifier"
+msgstr "Aitheantóir"
+
+msgid "Buyer legal registration identifier"
+msgstr "Uimhir chláraithe"
+
+msgid "Buyer VAT identifier"
+msgstr "Uimhir CBL"
+
+msgid "Buyer electronic address"
+msgstr "Seoladh leictreonach"
+
+msgid "Buyer address line 1"
+msgstr "Seoladh"
+
+msgid "Buyer address line 2"
+msgstr "Seoladh (líne 2)"
+
+msgid "Buyer city"
+msgstr "Baile"
+
+msgid "Buyer post code"
+msgstr "Cód poist"
+
+msgid "Buyer country subdivision"
+msgstr "Réigiún"
+
+msgid "Buyer country code"
+msgstr "Tír"
+
+msgid "Buyer contact point"
+msgstr "Teagmhálaí"
+
+msgid "Buyer contact telephone number"
+msgstr "Guthán"
+
+msgid "Buyer contact email address"
+msgstr "Ríomhphost"
+
+msgid "Payee name"
+msgstr "Ainm"
+
+msgid "Payee identifier"
+msgstr "Aitheantóir"
+
+msgid "Payee legal registration identifier"
+msgstr "Uimhir chláraithe"
+
+msgid "Seller tax representative name"
+msgstr "Ainm"
+
+msgid "Seller tax representative VAT identifier"
+msgstr "Uimhir CBL"
+
+msgid "Tax representative address line 1"
+msgstr "Seoladh"
+
+msgid "Tax representative address line 2"
+msgstr "Seoladh (líne 2)"
+
+msgid "Tax representative city"
+msgstr "Baile"
+
+msgid "Tax representative post code"
+msgstr "Cód poist"
+
+msgid "Tax representative country subdivision"
+msgstr "Réigiún"
+
+msgid "Tax representative country code"
+msgstr "Tír"
+
+msgid "Deliver to party name"
+msgstr "Faighteoir"
+
+msgid "Deliver to location identifier"
+msgstr "Aitheantóir láthair an tseachadta"
+
+msgid "Actual delivery date"
+msgstr "Dáta seachadta"
+
+msgid "Invoicing period start date"
+msgstr "Tréimhse sonraisc ó"
+
+msgid "Invoicing period end date"
+msgstr "Tréimhse sonraisc go"
+
+msgid "Deliver to address line 1"
+msgstr "Seoladh"
+
+msgid "Deliver to address line 2"
+msgstr "Seoladh (líne 2)"
+
+msgid "Deliver to city"
+msgstr "Baile"
+
+msgid "Deliver to post code"
+msgstr "Cód poist"
+
+msgid "Deliver to country subdivision"
+msgstr "Réigiún"
+
+msgid "Deliver to country code"
+msgstr "Tír"
+
+msgid "Payment means type code"
+msgstr "Modh íocaíochta"
+
+msgid "Payment means text"
+msgstr "Modh íocaíochta (téacs)"
+
+msgid "Remittance information"
+msgstr "Tagairt íocaíochta"
+
+msgid "Payment account identifier"
+msgstr "IBAN"
+
+msgid "Payment account name"
+msgstr "Sealbhóir an chuntais"
+
+msgid "Payment service provider identifier"
+msgstr "BIC"
+
+msgid "Payment card primary account number"
+msgstr "Uimhir an chárta"
+
+msgid "Payment card holder name"
+msgstr "Sealbhóir an chárta"
+
+msgid "Mandate reference identifier"
+msgstr "Tagairt an tsainordaithe"
+
+msgid "Bank assigned creditor identifier"
+msgstr "Aitheantóir an chreidiúnaí"
+
+msgid "Debited account identifier"
+msgstr "Cuntas dochair"
+
+msgid "Document level allowance amount"
+msgstr "Méid"
+
+msgid "Document level allowance base amount"
+msgstr "Bunmhéid"
+
+msgid "Document level allowance percentage"
+msgstr "Céatadán"
+
+msgid "Document level allowance VAT category code"
+msgstr "Catagóir CBL"
+
+msgid "Document level allowance VAT rate"
+msgstr "Ráta CBL"
+
+msgid "Document level allowance reason"
+msgstr "Cúis"
+
+msgid "Document level allowance reason code"
+msgstr "Cúis (cód)"
+
+msgid "Document level charge amount"
+msgstr "Méid"
+
+msgid "Document level charge base amount"
+msgstr "Bunmhéid"
+
+msgid "Document level charge percentage"
+msgstr "Céatadán"
+
+msgid "Document level charge VAT category code"
+msgstr "Catagóir CBL"
+
+msgid "Document level charge VAT rate"
+msgstr "Ráta CBL"
+
+msgid "Document level charge reason"
+msgstr "Cúis"
+
+msgid "Document level charge reason code"
+msgstr "Cúis (cód)"
+
+msgid "Sum of Invoice line net amount"
+msgstr "Iomlán na línte gan CBL"
+
+msgid "Sum of allowances on document level"
+msgstr "Iomlán na lacáistí"
+
+msgid "Sum of charges on document level"
+msgstr "Iomlán na muirear"
+
+msgid "Invoice total amount without VAT"
+msgstr "Iomlán gan CBL"
+
+msgid "Invoice total VAT amount"
+msgstr "Iomlán CBL"
+
+msgid "Invoice total VAT amount in accounting currency"
+msgstr "CBL san airgeadra CBL"
+
+msgid "Invoice total amount with VAT"
+msgstr "Iomlán le CBL"
+
+msgid "Paid amount"
+msgstr "Méid íoctha"
+
+msgid "Rounding amount"
+msgstr "Slánú"
+
+msgid "Amount due for payment"
+msgstr "Méid le híoc"
+
+msgid "VAT category taxable amount"
+msgstr "Méid inchánach"
+
+msgid "VAT category tax amount"
+msgstr "Méid CBL"
+
+msgid "VAT category code"
+msgstr "Catagóir CBL"
+
+msgid "VAT category rate"
+msgstr "Ráta CBL"
+
+msgid "VAT exemption reason text"
+msgstr "Cúis díolúine"
+
+msgid "VAT exemption reason code"
+msgstr "Cúis díolúine (cód)"
+
+msgid "Invoice line identifier"
+msgstr "Uimhir líne"
+
+msgid "Invoice line note"
+msgstr "Nóta líne"
+
+msgid "Invoice line object identifier"
+msgstr "Aitheantóir an oibiachta"
+
+msgid "Invoiced quantity"
+msgstr "Cainníocht"
+
+msgid "Invoiced quantity unit of measure code"
+msgstr "Aonad"
+
+msgid "Invoice line net amount"
+msgstr "Glanmhéid"
+
+msgid "Referenced purchase order line reference"
+msgstr "Líne an ordaithe"
+
+msgid "Invoice line Buyer accounting reference"
+msgstr "Tagairt chuntasaíochta an cheannaitheora"
+
+msgid "Invoice line period start date"
+msgstr "Tréimhse ó"
+
+msgid "Invoice line period end date"
+msgstr "Tréimhse go"
+
+msgid "Invoice line allowance amount"
+msgstr "Méid"
+
+msgid "Invoice line allowance base amount"
+msgstr "Bunmhéid"
+
+msgid "Invoice line allowance percentage"
+msgstr "Céatadán"
+
+msgid "Invoice line allowance reason"
+msgstr "Cúis"
+
+msgid "Invoice line allowance reason code"
+msgstr "Cúis (cód)"
+
+msgid "Invoice line charge amount"
+msgstr "Méid"
+
+msgid "Invoice line charge base amount"
+msgstr "Bunmhéid"
+
+msgid "Invoice line charge percentage"
+msgstr "Céatadán"
+
+msgid "Invoice line charge reason"
+msgstr "Cúis"
+
+msgid "Invoice line charge reason code"
+msgstr "Cúis (cód)"
+
+msgid "Item net price"
+msgstr "Glanphraghas"
+
+msgid "Item price discount"
+msgstr "Lacáiste ar an bpraghas"
+
+msgid "Item gross price"
+msgstr "Praghas comhlán"
+
+msgid "Item price base quantity"
+msgstr "Bunchainníocht"
+
+msgid "Item price base quantity unit of measure code"
+msgstr "Aonad na bunchainníochta"
+
+msgid "Invoiced item VAT category code"
+msgstr "Catagóir CBL"
+
+msgid "Invoiced item VAT rate"
+msgstr "Ráta CBL"
+
+msgid "Item name"
+msgstr "Ainm an earra"
+
+msgid "Item description"
+msgstr "Cur síos ar an earra"
+
+msgid "Item Seller's identifier"
+msgstr "Cód earra"
+
+msgid "Item Buyer's identifier"
+msgstr "Cód earra an cheannaitheora"
+
+msgid "Item standard identifier"
+msgstr "Aitheantóir caighdeánach"
+
+msgid "Item classification identifier"
+msgstr "Aicmiú"
+
+msgid "Item country of origin"
+msgstr "Tír thionscnaimh"
+
+msgid "Item attribute value"
+msgstr "Tréith an earra"
+
+msgid "Seller address line 3"
+msgstr "Seoladh (líne 3)"
+
+msgid "Buyer address line 3"
+msgstr "Seoladh (líne 3)"
+
+msgid "Tax representative address line 3"
+msgstr "Seoladh (líne 3)"
+
+msgid "Deliver to address line 3"
+msgstr "Seoladh (líne 3)"
+
+msgid "Invoice"
+msgstr "Sonrasc"
+
+msgid "Seller (BG-4)"
+msgstr "Díoltóir (BG-4)"
+
+msgid "Buyer (BG-7)"
+msgstr "Ceannaitheoir (BG-7)"
+
+msgid "Preceding invoice reference (BG-3)"
+msgstr "Sonrasc roimhe seo (BG-3)"
+
+msgid "Payee (BG-10)"
+msgstr "Íocaí (BG-10)"
+
+msgid "Seller tax representative party (BG-11)"
+msgstr "Ionadaí cánach (BG-11)"
+
+msgid "Delivery information (BG-13)"
+msgstr "Seachadadh (BG-13)"
+
+msgid "Invoice line"
+msgstr "Líne"
+
+msgid "Payment instructions (BG-16)"
+msgstr "Íocaíocht (BG-16)"
+
+msgid "Document level allowances (BG-20)"
+msgstr "Lacáiste (BG-20)"
+
+msgid "Document level charges (BG-21)"
+msgstr "Muirear (BG-21)"
+
+msgid "Invoice line allowances (BG-27)"
+msgstr "Lacáiste (BG-27)"
+
+msgid "Invoice line charges (BG-28)"
+msgstr "Muirear (BG-28)"
+
+msgid "VAT breakdown (BG-23)"
+msgstr "CBL (BG-23)"
+
+msgid "Document totals (BG-22)"
+msgstr "Iomláin (BG-22)"
+
+msgid "XML schema {name}"
+msgstr "Scéimre XML {name}"
+
+msgid "Checked against XRechnung {bundled}, invoice declares version {declared}"
+msgstr "Seiceáilte de réir XRechnung {bundled}, fógraíonn an sonrasc leagan {declared}"
+
+msgid "Profile Minimum: not a complete invoice according to EN 16931"
+msgstr "Próifíl Minimum: ní sonrasc iomlán é de réir EN 16931"
+
+msgid "Profile Basic WL: not a complete invoice according to EN 16931"
+msgstr "Próifíl Basic WL: ní sonrasc iomlán é de réir EN 16931"

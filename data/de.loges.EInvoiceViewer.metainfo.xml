@@ -8,6 +8,28 @@
   <name>E-Invoice Viewer</name>
   <summary>View and check electronic invoices</summary>
   <summary xml:lang="de">Elektronische Rechnungen ansehen und prüfen</summary>
+  <summary xml:lang="bg">Преглед и проверка на електронни фактури</summary>
+  <summary xml:lang="cs">Prohlížení a kontrola elektronických faktur</summary>
+  <summary xml:lang="da">Vis og kontrollér elektroniske fakturaer</summary>
+  <summary xml:lang="el">Προβολή και έλεγχος ηλεκτρονικών τιμολογίων</summary>
+  <summary xml:lang="es">Ver y comprobar facturas electrónicas</summary>
+  <summary xml:lang="et">E-arvete vaatamine ja kontrollimine</summary>
+  <summary xml:lang="fi">Sähköisten laskujen katselu ja tarkistus</summary>
+  <summary xml:lang="fr">Afficher et vérifier des factures électroniques</summary>
+  <summary xml:lang="ga">Féach ar shonraisc leictreonacha agus seiceáil iad</summary>
+  <summary xml:lang="hr">Pregled i provjera elektroničkih računa</summary>
+  <summary xml:lang="hu">Elektronikus számlák megtekintése és ellenőrzése</summary>
+  <summary xml:lang="it">Visualizza e verifica fatture elettroniche</summary>
+  <summary xml:lang="lt">Elektroninių sąskaitų faktūrų peržiūra ir tikrinimas</summary>
+  <summary xml:lang="lv">Elektronisko rēķinu skatīšana un pārbaude</summary>
+  <summary xml:lang="mt">Ara u ivverifika fatturi elettroniċi</summary>
+  <summary xml:lang="nl">Elektronische facturen bekijken en controleren</summary>
+  <summary xml:lang="pl">Wyświetlanie i sprawdzanie faktur elektronicznych</summary>
+  <summary xml:lang="pt">Ver e verificar faturas eletrónicas</summary>
+  <summary xml:lang="ro">Vizualizarea și verificarea facturilor electronice</summary>
+  <summary xml:lang="sk">Prezeranie a kontrola elektronických faktúr</summary>
+  <summary xml:lang="sl">Ogled in preverjanje elektronskih računov</summary>
+  <summary xml:lang="sv">Visa och kontrollera elektroniska fakturor</summary>
 
   <developer id="de.loges">
     <name>Rolf Loges</name>
@@ -24,15 +46,125 @@
       Factur-X-PDFs mit dem eingebetteten XML sowie XRechnungen und Rechnungen
       nach EN 16931 als CII- oder UBL-XML.
     </p>
+    <p xml:lang="bg">E-Invoice Viewer показва електронните фактури в четим вид: PDF файлове ZUGFeRD и Factur-X с вградения XML, както и фактури XRechnung и EN 16931 като CII или UBL XML.</p>
+    <p xml:lang="cs">E-Invoice Viewer zobrazuje elektronické faktury v čitelné podobě: PDF ve formátu ZUGFeRD a Factur-X s vloženým XML a faktury XRechnung či EN 16931 jako XML ve formátu CII nebo UBL.</p>
+    <p xml:lang="da">E-Invoice Viewer viser elektroniske fakturaer i læsbar form: ZUGFeRD- og Factur-X-PDF’er med den indlejrede XML samt XRechnung- og EN 16931-fakturaer som CII- eller UBL-XML.</p>
+    <p xml:lang="el">Το E-Invoice Viewer εμφανίζει τα ηλεκτρονικά τιμολόγια σε ευανάγνωστη μορφή: αρχεία PDF ZUGFeRD και Factur-X με το ενσωματωμένο XML, καθώς και τιμολόγια XRechnung και EN 16931 ως CII ή UBL XML.</p>
+    <p xml:lang="es">E-Invoice Viewer muestra las facturas electrónicas de forma legible: PDF ZUGFeRD y Factur-X con su XML incrustado, y facturas XRechnung o EN 16931 en XML CII o UBL.</p>
+    <p xml:lang="et">E-Invoice Viewer näitab e-arveid loetaval kujul: ZUGFeRD- ja Factur-X-PDF-e koos manustatud XML-iga ning XRechnungi ja EN 16931 arveid CII- või UBL-XML-ina.</p>
+    <p xml:lang="fi">E-Invoice Viewer näyttää sähköiset laskut luettavassa muodossa: ZUGFeRD- ja Factur-X-PDF:t upotettuine XML-tiedostoineen sekä XRechnung- ja EN 16931 -laskut CII- tai UBL-XML-muodossa.</p>
+    <p xml:lang="fr">E-Invoice Viewer affiche les factures électroniques sous une forme lisible : PDF ZUGFeRD et Factur-X avec leur XML intégré, ainsi que factures XRechnung et EN 16931 en XML CII ou UBL.</p>
+    <p xml:lang="ga">Taispeánann E-Invoice Viewer sonraisc leictreonacha i bhfoirm inléite: comhaid PDF ZUGFeRD agus Factur-X lena XML leabaithe, agus sonraisc XRechnung agus EN 16931 mar XML CII nó UBL.</p>
+    <p xml:lang="hr">E-Invoice Viewer prikazuje elektroničke račune u čitljivom obliku: ZUGFeRD i Factur-X PDF-ove s ugrađenim XML-om te račune XRechnung i EN 16931 kao CII ili UBL XML.</p>
+    <p xml:lang="hu">Az E-Invoice Viewer olvasható formában jeleníti meg az elektronikus számlákat: a ZUGFeRD és Factur-X PDF-eket a beágyazott XML-lel, valamint az XRechnung és EN 16931 szerinti számlákat CII vagy UBL XML-ként.</p>
+    <p xml:lang="it">E-Invoice Viewer mostra le fatture elettroniche in forma leggibile: PDF ZUGFeRD e Factur-X con l’XML incorporato, e fatture XRechnung o EN 16931 in XML CII o UBL.</p>
+    <p xml:lang="lt">E-Invoice Viewer rodo elektronines sąskaitas faktūras skaitoma forma: ZUGFeRD ir Factur-X PDF su įterptu XML, taip pat XRechnung ir EN 16931 sąskaitas kaip CII arba UBL XML.</p>
+    <p xml:lang="lv">E-Invoice Viewer parāda elektroniskos rēķinus lasāmā veidā: ZUGFeRD un Factur-X PDF ar iegulto XML, kā arī XRechnung un EN 16931 rēķinus kā CII vai UBL XML.</p>
+    <p xml:lang="mt">E-Invoice Viewer juri l-fatturi elettroniċi f’forma li tinqara: PDFs ZUGFeRD u Factur-X bl-XML inkorporat, u fatturi XRechnung u EN 16931 bħala XML CII jew UBL.</p>
+    <p xml:lang="nl">E-Invoice Viewer toont elektronische facturen in leesbare vorm: ZUGFeRD- en Factur-X-PDF’s met de ingesloten XML, en XRechnung- en EN 16931-facturen als CII- of UBL-XML.</p>
+    <p xml:lang="pl">E-Invoice Viewer wyświetla faktury elektroniczne w czytelnej postaci: pliki PDF ZUGFeRD i Factur-X z osadzonym XML oraz faktury XRechnung i EN 16931 jako XML CII lub UBL.</p>
+    <p xml:lang="pt">O E-Invoice Viewer mostra as faturas eletrónicas de forma legível: PDF ZUGFeRD e Factur-X com o XML incorporado, e faturas XRechnung e EN 16931 em XML CII ou UBL.</p>
+    <p xml:lang="ro">E-Invoice Viewer afișează facturile electronice într-o formă lizibilă: PDF-uri ZUGFeRD și Factur-X cu XML-ul încorporat, precum și facturi XRechnung și EN 16931 ca XML CII sau UBL.</p>
+    <p xml:lang="sk">E-Invoice Viewer zobrazuje elektronické faktúry v čitateľnej podobe: PDF vo formáte ZUGFeRD a Factur-X s vloženým XML a faktúry XRechnung a EN 16931 ako XML vo formáte CII alebo UBL.</p>
+    <p xml:lang="sl">E-Invoice Viewer prikaže elektronske račune v berljivi obliki: PDF-je ZUGFeRD in Factur-X z vdelanim XML ter račune XRechnung in EN 16931 kot XML CII ali UBL.</p>
+    <p xml:lang="sv">E-Invoice Viewer visar elektroniska fakturor i läsbar form: ZUGFeRD- och Factur-X-PDF:er med inbäddad XML samt XRechnung- och EN 16931-fakturor som CII- eller UBL-XML.</p>
     <ul>
       <li>The invoice fields with their business terms, next to the PDF page</li>
       <li xml:lang="de">Die Rechnungsfelder mit ihren Geschäftsbegriffen, neben der PDF-Seite</li>
+      <li xml:lang="bg">Полетата на фактурата с бизнес термините, до страницата на PDF</li>
+      <li xml:lang="cs">Pole faktury s obchodními pojmy vedle stránky PDF</li>
+      <li xml:lang="da">Fakturafelterne med deres forretningsbegreber, ved siden af PDF-siden</li>
+      <li xml:lang="el">Τα πεδία του τιμολογίου με τους επιχειρηματικούς όρους τους, δίπλα στη σελίδα PDF</li>
+      <li xml:lang="es">Los campos de la factura con sus términos de negocio, junto a la página del PDF</li>
+      <li xml:lang="et">Arve väljad koos äriterminitega PDF-lehe kõrval</li>
+      <li xml:lang="fi">Laskun kentät liiketoimintatermeineen PDF-sivun vieressä</li>
+      <li xml:lang="fr">Les champs de la facture avec leurs termes métier, à côté de la page PDF</li>
+      <li xml:lang="ga">Réimsí an tsonraisc lena dtéarmaí gnó, in aice le leathanach an PDF</li>
+      <li xml:lang="hr">Polja računa s poslovnim pojmovima, pokraj stranice PDF-a</li>
+      <li xml:lang="hu">A számla mezői az üzleti fogalmakkal, a PDF-oldal mellett</li>
+      <li xml:lang="it">I campi della fattura con i loro termini di business, accanto alla pagina PDF</li>
+      <li xml:lang="lt">Sąskaitos laukai su verslo terminais šalia PDF puslapio</li>
+      <li xml:lang="lv">Rēķina lauki ar biznesa terminiem blakus PDF lapai</li>
+      <li xml:lang="mt">Il-kampi tal-fattura bit-termini kummerċjali tagħhom, ħdejn il-paġna tal-PDF</li>
+      <li xml:lang="nl">De factuurvelden met hun bedrijfstermen, naast de PDF-pagina</li>
+      <li xml:lang="pl">Pola faktury z ich terminami biznesowymi, obok strony PDF</li>
+      <li xml:lang="pt">Os campos da fatura com os termos de negócio, ao lado da página PDF</li>
+      <li xml:lang="ro">Câmpurile facturii cu termenii de afaceri, lângă pagina PDF</li>
+      <li xml:lang="sk">Polia faktúry s obchodnými pojmami vedľa strany PDF</li>
+      <li xml:lang="sl">Polja računa s poslovnimi izrazi, ob strani PDF</li>
+      <li xml:lang="sv">Fakturans fält med sina affärsbegrepp, bredvid PDF-sidan</li>
       <li>Validation against EN 16931 and XRechnung, findings shown at the fields</li>
       <li xml:lang="de">Prüfung nach EN 16931 und XRechnung, Befunde direkt an den Feldern</li>
+      <li xml:lang="bg">Проверка по EN 16931 и XRechnung, констатациите са показани при полетата</li>
+      <li xml:lang="cs">Kontrola podle EN 16931 a XRechnung, zjištění přímo u polí</li>
+      <li xml:lang="da">Validering efter EN 16931 og XRechnung, fund vist ved felterne</li>
+      <li xml:lang="el">Έλεγχος κατά EN 16931 και XRechnung, με τα ευρήματα στα πεδία</li>
+      <li xml:lang="es">Validación según EN 16931 y XRechnung, con las observaciones en los campos</li>
+      <li xml:lang="et">Kontroll EN 16931 ja XRechnungi järgi, leiud otse väljade juures</li>
+      <li xml:lang="fi">Tarkistus EN 16931:n ja XRechnungin mukaan, havainnot suoraan kenttien kohdalla</li>
+      <li xml:lang="fr">Validation selon l’EN 16931 et XRechnung, constats affichés aux champs</li>
+      <li xml:lang="ga">Bailíochtú de réir EN 16931 agus XRechnung, torthaí taispeánta ag na réimsí</li>
+      <li xml:lang="hr">Provjera prema EN 16931 i XRechnung, nalazi prikazani uz polja</li>
+      <li xml:lang="hu">Ellenőrzés az EN 16931 és az XRechnung szerint, az eltérések a mezőknél</li>
+      <li xml:lang="it">Verifica secondo EN 16931 e XRechnung, con i rilievi accanto ai campi</li>
+      <li xml:lang="lt">Tikrinimas pagal EN 16931 ir XRechnung, radiniai rodomi prie laukų</li>
+      <li xml:lang="lv">Pārbaude pēc EN 16931 un XRechnung, konstatējumi pie laukiem</li>
+      <li xml:lang="mt">Validazzjoni skont EN 16931 u XRechnung, bis-sejbiet murija fil-kampi</li>
+      <li xml:lang="nl">Validatie volgens EN 16931 en XRechnung, bevindingen bij de velden</li>
+      <li xml:lang="pl">Walidacja według EN 16931 i XRechnung, uwagi przy polach</li>
+      <li xml:lang="pt">Validação segundo a EN 16931 e a XRechnung, com as constatações nos campos</li>
+      <li xml:lang="ro">Validare conform EN 16931 și XRechnung, constatările afișate la câmpuri</li>
+      <li xml:lang="sk">Kontrola podľa EN 16931 a XRechnung, zistenia priamo pri poliach</li>
+      <li xml:lang="sl">Preverjanje po EN 16931 in XRechnung, ugotovitve ob poljih</li>
+      <li xml:lang="sv">Validering enligt EN 16931 och XRechnung, avvikelser vid fälten</li>
       <li>The XML source, linked with the fields</li>
       <li xml:lang="de">Der XML-Quelltext, verknüpft mit den Feldern</li>
+      <li xml:lang="bg">XML изходният код, свързан с полетата</li>
+      <li xml:lang="cs">Zdrojový kód XML propojený s poli</li>
+      <li xml:lang="da">XML-kildeteksten, forbundet med felterne</li>
+      <li xml:lang="el">Ο πηγαίος κώδικας XML, συνδεδεμένος με τα πεδία</li>
+      <li xml:lang="es">El código fuente XML, enlazado con los campos</li>
+      <li xml:lang="et">XML-lähtekood, seotud väljadega</li>
+      <li xml:lang="fi">XML-lähdekoodi linkitettynä kenttiin</li>
+      <li xml:lang="fr">Le code source XML, lié aux champs</li>
+      <li xml:lang="ga">An cód foinse XML, nasctha leis na réimsí</li>
+      <li xml:lang="hr">XML izvorni kod, povezan s poljima</li>
+      <li xml:lang="hu">Az XML-forráskód, a mezőkhöz kapcsolva</li>
+      <li xml:lang="it">Il sorgente XML, collegato ai campi</li>
+      <li xml:lang="lt">XML pirminis tekstas, susietas su laukais</li>
+      <li xml:lang="lv">XML pirmkods, saistīts ar laukiem</li>
+      <li xml:lang="mt">Il-kodiċi sors XML, marbut mal-kampi</li>
+      <li xml:lang="nl">De XML-broncode, gekoppeld aan de velden</li>
+      <li xml:lang="pl">Kod źródłowy XML powiązany z polami</li>
+      <li xml:lang="pt">O código-fonte XML, ligado aos campos</li>
+      <li xml:lang="ro">Codul sursă XML, legat de câmpuri</li>
+      <li xml:lang="sk">Zdrojový kód XML prepojený s poľami</li>
+      <li xml:lang="sl">Izvorna koda XML, povezana s polji</li>
+      <li xml:lang="sv">XML-källkoden, länkad till fälten</li>
       <li>Attachments listed and saved</li>
       <li xml:lang="de">Anhänge auflisten und speichern</li>
+      <li xml:lang="bg">Списък и запазване на прикачените файлове</li>
+      <li xml:lang="cs">Seznam a uložení příloh</li>
+      <li xml:lang="da">Vedhæftede filer vist og gemt</li>
+      <li xml:lang="el">Λίστα και αποθήκευση συνημμένων</li>
+      <li xml:lang="es">Lista y guardado de adjuntos</li>
+      <li xml:lang="et">Manuste loetelu ja salvestamine</li>
+      <li xml:lang="fi">Liitteiden luettelo ja tallennus</li>
+      <li xml:lang="fr">Liste et enregistrement des pièces jointes</li>
+      <li xml:lang="ga">Ceangaltáin liostaithe agus sábháilte</li>
+      <li xml:lang="hr">Popis i spremanje privitaka</li>
+      <li xml:lang="hu">Mellékletek listázása és mentése</li>
+      <li xml:lang="it">Elenco e salvataggio degli allegati</li>
+      <li xml:lang="lt">Priedų sąrašas ir išsaugojimas</li>
+      <li xml:lang="lv">Pielikumu saraksts un saglabāšana</li>
+      <li xml:lang="mt">Lista u ħażna tal-annessi</li>
+      <li xml:lang="nl">Bijlagen tonen en opslaan</li>
+      <li xml:lang="pl">Lista i zapisywanie załączników</li>
+      <li xml:lang="pt">Lista e gravação dos anexos</li>
+      <li xml:lang="ro">Listarea și salvarea atașamentelor</li>
+      <li xml:lang="sk">Zoznam a uloženie príloh</li>
+      <li xml:lang="sl">Seznam in shranjevanje prilog</li>
+      <li xml:lang="sv">Bilagor listas och sparas</li>
     </ul>
     <p>
       Everything happens locally: the app opens no network connection and never
@@ -42,6 +174,28 @@
       Alles geschieht lokal: Die App baut keine Netzwerkverbindung auf und
       verändert die Rechnung nie.
     </p>
+    <p xml:lang="bg">Всичко се случва локално: приложението не отваря мрежова връзка и никога не променя фактурата.</p>
+    <p xml:lang="cs">Vše probíhá lokálně: aplikace nenavazuje žádné síťové spojení a fakturu nikdy nemění.</p>
+    <p xml:lang="da">Alt sker lokalt: appen åbner ingen netværksforbindelse og ændrer aldrig fakturaen.</p>
+    <p xml:lang="el">Όλα γίνονται τοπικά: η εφαρμογή δεν ανοίγει καμία σύνδεση δικτύου και δεν αλλάζει ποτέ το τιμολόγιο.</p>
+    <p xml:lang="es">Todo ocurre de forma local: la aplicación no abre ninguna conexión de red y nunca modifica la factura.</p>
+    <p xml:lang="et">Kõik toimub kohapeal: rakendus ei loo võrguühendust ega muuda kunagi arvet.</p>
+    <p xml:lang="fi">Kaikki tapahtuu paikallisesti: sovellus ei avaa verkkoyhteyttä eikä koskaan muuta laskua.</p>
+    <p xml:lang="fr">Tout se passe en local : l’application n’ouvre aucune connexion réseau et ne modifie jamais la facture.</p>
+    <p xml:lang="ga">Tarlaíonn gach rud go háitiúil: ní osclaíonn an aip aon nasc líonra agus ní athraíonn sí an sonrasc riamh.</p>
+    <p xml:lang="hr">Sve se odvija lokalno: aplikacija ne otvara mrežnu vezu i nikad ne mijenja račun.</p>
+    <p xml:lang="hu">Minden helyben történik: az alkalmazás nem nyit hálózati kapcsolatot, és soha nem módosítja a számlát.</p>
+    <p xml:lang="it">Tutto avviene in locale: l’app non apre alcuna connessione di rete e non modifica mai la fattura.</p>
+    <p xml:lang="lt">Viskas vyksta vietoje: programa neatidaro jokio tinklo ryšio ir niekada nekeičia sąskaitos.</p>
+    <p xml:lang="lv">Viss notiek lokāli: lietotne neatver tīkla savienojumu un nekad nemaina rēķinu.</p>
+    <p xml:lang="mt">Kollox isir lokalment: l-app ma tiftaħ l-ebda konnessjoni man-netwerk u qatt ma tibdel il-fattura.</p>
+    <p xml:lang="nl">Alles gebeurt lokaal: de app maakt geen netwerkverbinding en wijzigt de factuur nooit.</p>
+    <p xml:lang="pl">Wszystko dzieje się lokalnie: aplikacja nie nawiązuje połączenia sieciowego i nigdy nie zmienia faktury.</p>
+    <p xml:lang="pt">Tudo acontece localmente: a aplicação não abre nenhuma ligação de rede e nunca altera a fatura.</p>
+    <p xml:lang="ro">Totul se întâmplă local: aplicația nu deschide nicio conexiune la rețea și nu modifică niciodată factura.</p>
+    <p xml:lang="sk">Všetko prebieha lokálne: aplikácia nenadväzuje žiadne sieťové spojenie a faktúru nikdy nemení.</p>
+    <p xml:lang="sl">Vse poteka lokalno: aplikacija ne odpre nobene omrežne povezave in računa nikoli ne spremeni.</p>
+    <p xml:lang="sv">Allt sker lokalt: appen öppnar ingen nätverksanslutning och ändrar aldrig fakturan.</p>
   </description>
 
   <launchable type="desktop-id">de.loges.EInvoiceViewer.desktop</launchable>

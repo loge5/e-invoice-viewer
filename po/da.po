@@ -1,0 +1,878 @@
+# Danish translation of E-Invoice Viewer.
+# This file is distributed under the same licence as E-Invoice Viewer
+# (GPL-3.0-or-later).
+# Not checked by a native speaker (spec 0030); corrections are welcome
+# as an issue on GitHub.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: E-Invoice Viewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-19 10:45+0100\n"
+"PO-Revision-Date: 2026-11-18 00:00+0100\n"
+"Last-Translator: E-Invoice Viewer contributors\n"
+"Language-Team: Danish\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Open an invoice"
+msgstr "Åbn en faktura"
+
+msgid "Invoices (PDF, XML)"
+msgstr "Fakturaer (PDF, XML)"
+
+msgid "Open…"
+msgstr "Åbn…"
+
+msgid "Close"
+msgstr "Luk"
+
+msgid "Copy value"
+msgstr "Kopiér værdi"
+
+msgid "This PDF contains no electronic invoice"
+msgstr "Denne PDF indeholder ingen elektronisk faktura"
+
+msgid "The PDF pages cannot be shown"
+msgstr "PDF-siderne kan ikke vises"
+
+msgid "Plain XML invoice – no PDF included"
+msgstr "Ren XML-faktura – ingen PDF vedlagt"
+
+msgid "Fields"
+msgstr "Felter"
+
+msgid "XML"
+msgstr "XML"
+
+msgid "Zoom in (Ctrl++)"
+msgstr "Zoom ind (Ctrl++)"
+
+msgid "Zoom out (Ctrl+-)"
+msgstr "Zoom ud (Ctrl+-)"
+
+msgid "Copy XML"
+msgstr "Kopiér XML"
+
+msgid "Save XML as…"
+msgstr "Gem XML som…"
+
+msgid "The XML could not be saved"
+msgstr "XML-filen kunne ikke gemmes"
+
+msgid "Search in the XML"
+msgstr "Søg i XML"
+
+msgid "Validation result"
+msgstr "Valideringsresultat"
+
+msgid "Document"
+msgstr "Dokument"
+
+msgid "internal error during validation"
+msgstr "intern fejl under valideringen"
+
+msgid "Recently opened"
+msgstr "Senest åbnet"
+
+msgid "Attachments"
+msgstr "Vedhæftede filer"
+
+msgid "Show in XML"
+msgstr "Vis i XML"
+
+msgid "Show in fields"
+msgstr "Vis i felter"
+
+msgid "No field assigned"
+msgstr "Intet felt tildelt"
+
+msgid "No attachments"
+msgstr "Ingen vedhæftede filer"
+
+msgid "Save attachment…"
+msgstr "Gem vedhæftet fil…"
+
+msgid "No entries"
+msgstr "Ingen poster"
+
+msgid "Only one file per window – the first one was opened"
+msgstr "Kun én fil pr. vindue – den første blev åbnet"
+
+msgid "Main menu"
+msgstr "Hovedmenu"
+
+msgid "Language"
+msgstr "Sprog"
+
+msgid "System language"
+msgstr "Systemsprog"
+
+msgid "error"
+msgid_plural "errors"
+msgstr[0] "fejl"
+msgstr[1] "fejl"
+
+msgid "warning"
+msgid_plural "warnings"
+msgstr[0] "advarsel"
+msgstr[1] "advarsler"
+
+msgid "note"
+msgid_plural "notes"
+msgstr[0] "bemærkning"
+msgstr[1] "bemærkninger"
+
+msgid "Error"
+msgid_plural "Errors"
+msgstr[0] "Fejl"
+msgstr[1] "Fejl"
+
+msgid "Warning"
+msgid_plural "Warnings"
+msgstr[0] "Advarsel"
+msgstr[1] "Advarsler"
+
+msgid "Note"
+msgid_plural "Notes"
+msgstr[0] "Bemærkning"
+msgstr[1] "Bemærkninger"
+
+msgid "No findings"
+msgstr "Ingen fund"
+
+msgid "No errors, {counts}"
+msgstr "Ingen fejl, {counts}"
+
+msgid "Validating…"
+msgstr "Validerer…"
+
+msgid "Validation failed: {reason}"
+msgstr "Validering mislykkedes: {reason}"
+
+msgid "{rule sets} and {last rule set}"
+msgstr "{rule sets} og {last rule set}"
+
+msgid "Checked against {rule sets}"
+msgstr "Valideret efter {rule sets}"
+
+msgid "The address {address} is not a local file"
+msgstr "Adressen {address} er ikke en lokal fil"
+
+msgid "The file {file} was not found"
+msgstr "Filen {file} blev ikke fundet"
+
+msgid "The file {file} cannot be read: {reason}"
+msgstr "Filen {file} kan ikke læses: {reason}"
+
+msgid "{count} byte"
+msgid_plural "{count} bytes"
+msgstr[0] "{count} byte"
+msgstr[1] "{count} bytes"
+
+msgid "Invoice (BG-24)"
+msgstr "Faktura (BG-24)"
+
+msgid "unknown"
+msgstr "ukendt"
+
+msgid "Content not readable"
+msgstr "Indhold kan ikke læses"
+
+msgid "Too large (over {size} MB)"
+msgstr "For stor (over {size} MB)"
+
+msgid "The attachment {name} could not be saved: {reason}"
+msgstr "Den vedhæftede fil {name} kunne ikke gemmes: {reason}"
+
+msgid "Page {page} of {count}"
+msgstr "Side {page} af {count}"
+
+msgid "No matches"
+msgstr "Ingen resultater"
+
+msgid "{current} of {total}"
+msgstr "{current} af {total}"
+
+msgid "{count} match"
+msgid_plural "{count} matches"
+msgstr[0] "{count} resultat"
+msgstr[1] "{count} resultater"
+
+msgid "The file {file} cannot be read as an invoice: {reason}"
+msgstr "Filen {file} kan ikke læses som faktura: {reason}"
+
+msgid "not a readable PDF file"
+msgstr "ikke en læsbar PDF-fil"
+
+msgid "the embedded invoice {name} is empty"
+msgstr "den indlejrede faktura {name} er tom"
+
+msgid "XML is not well-formed (line {line})"
+msgstr "XML er ikke velformet (linje {line})"
+
+msgid "XML contains a DOCTYPE declaration – not supported"
+msgstr "XML indeholder en DOCTYPE-erklæring – understøttes ikke"
+
+msgid "not an electronic invoice"
+msgstr "ikke en elektronisk faktura"
+
+msgid "ZUGFeRD 1.0 is not supported"
+msgstr "ZUGFeRD 1.0 understøttes ikke"
+
+msgid "the character encoding {encoding} is not supported"
+msgstr "tegnkodningen {encoding} understøttes ikke"
+
+msgid "XML is nested more than {limit} levels deep"
+msgstr "XML er indlejret mere end {limit} niveauer dybt"
+
+msgid "the invoice format is not supported"
+msgstr "fakturaformatet understøttes ikke"
+
+msgid "Partial invoice"
+msgstr "Delfaktura"
+
+msgid "Commercial invoice"
+msgstr "Handelsfaktura"
+
+msgid "Credit note"
+msgstr "Kreditnota"
+
+msgid "Corrected invoice"
+msgstr "Korrigeret faktura"
+
+msgid "Self-billed invoice"
+msgstr "Selvfaktura"
+
+msgid "Partial construction invoice"
+msgstr "Acontofaktura (byggeri)"
+
+msgid "Partial final construction invoice"
+msgstr "Delslutfaktura (byggeri)"
+
+msgid "Final construction invoice"
+msgstr "Slutfaktura (byggeri)"
+
+msgid "Instrument not defined"
+msgstr "Ikke defineret"
+
+msgid "In cash"
+msgstr "Kontant"
+
+msgid "Cheque"
+msgstr "Check"
+
+msgid "Credit transfer"
+msgstr "Bankoverførsel"
+
+msgid "Payment to bank account"
+msgstr "Betaling til bankkonto"
+
+msgid "Bank card"
+msgstr "Betalingskort"
+
+msgid "Direct debit"
+msgstr "Direkte debitering"
+
+msgid "Credit card"
+msgstr "Kreditkort"
+
+msgid "Standing agreement"
+msgstr "Stående aftale"
+
+msgid "SEPA credit transfer"
+msgstr "SEPA-overførsel"
+
+msgid "SEPA direct debit"
+msgstr "SEPA-direkte debitering"
+
+msgid "Clearing between partners"
+msgstr "Modregning mellem parter"
+
+msgid "Standard rate"
+msgstr "Standardsats"
+
+msgid "Zero rated goods"
+msgstr "Nulsats"
+
+msgid "Exempt from tax"
+msgstr "Momsfritaget"
+
+msgid "VAT reverse charge"
+msgstr "Omvendt betalingspligt"
+
+msgid "Intra-community supply"
+msgstr "Levering inden for EU"
+
+msgid "Export outside the EU"
+msgstr "Eksport uden for EU"
+
+msgid "Outside the scope of VAT"
+msgstr "Uden for momsens anvendelsesområde"
+
+msgid "Canary Islands IGIC"
+msgstr "De Kanariske Øer (IGIC)"
+
+msgid "Ceuta and Melilla IPSI"
+msgstr "Ceuta og Melilla (IPSI)"
+
+msgid "pieces"
+msgstr "stk."
+
+msgid "hours"
+msgstr "timer"
+
+msgid "days"
+msgstr "dage"
+
+msgid "months"
+msgstr "måneder"
+
+msgid "kilograms"
+msgstr "kilogram"
+
+msgid "metres"
+msgstr "meter"
+
+msgid "litres"
+msgstr "liter"
+
+msgid "lump sum"
+msgstr "fast beløb"
+
+msgid "Invoice number"
+msgstr "Fakturanummer"
+
+msgid "Invoice issue date"
+msgstr "Fakturadato"
+
+msgid "Invoice type code"
+msgstr "Fakturatype"
+
+msgid "Invoice currency code"
+msgstr "Valuta"
+
+msgid "VAT accounting currency code"
+msgstr "Momsvaluta"
+
+msgid "Value added tax point date"
+msgstr "Momstidspunkt"
+
+msgid "Value added tax point date code"
+msgstr "Momstidspunkt (kode)"
+
+msgid "Payment due date"
+msgstr "Forfaldsdato"
+
+msgid "Buyer reference"
+msgstr "Købers reference"
+
+msgid "Project reference"
+msgstr "Projektreference"
+
+msgid "Contract reference"
+msgstr "Kontraktreference"
+
+msgid "Purchase order reference"
+msgstr "Indkøbsordre"
+
+msgid "Sales order reference"
+msgstr "Salgsordre"
+
+msgid "Receiving advice reference"
+msgstr "Modtagelsesadvis"
+
+msgid "Despatch advice reference"
+msgstr "Forsendelsesadvis"
+
+msgid "Tender or lot reference"
+msgstr "Udbuds- eller delaftalereference"
+
+msgid "Invoiced object identifier"
+msgstr "Objekt-ID"
+
+msgid "Buyer accounting reference"
+msgstr "Konteringsreference"
+
+msgid "Payment terms"
+msgstr "Betalingsbetingelser"
+
+msgid "Invoice note subject code"
+msgstr "Emne for bemærkning (kode)"
+
+msgid "Invoice note"
+msgstr "Bemærkning"
+
+msgid "Business process type"
+msgstr "Forretningsproces"
+
+msgid "Specification identifier"
+msgstr "Specifikations-ID"
+
+msgid "Preceding Invoice reference"
+msgstr "Fakturanummer"
+
+msgid "Preceding Invoice issue date"
+msgstr "Fakturadato"
+
+msgid "Seller name"
+msgstr "Navn"
+
+msgid "Seller trading name"
+msgstr "Handelsnavn"
+
+msgid "Seller identifier"
+msgstr "ID"
+
+msgid "Seller legal registration identifier"
+msgstr "Registreringsnummer"
+
+msgid "Seller VAT identifier"
+msgstr "Momsnummer"
+
+msgid "Seller tax registration identifier"
+msgstr "Skattenummer"
+
+msgid "Seller additional legal information"
+msgstr "Yderligere juridiske oplysninger"
+
+msgid "Seller electronic address"
+msgstr "Elektronisk adresse"
+
+msgid "Seller address line 1"
+msgstr "Adresse"
+
+msgid "Seller address line 2"
+msgstr "Adresselinje 2"
+
+msgid "Seller city"
+msgstr "By"
+
+msgid "Seller post code"
+msgstr "Postnummer"
+
+msgid "Seller country subdivision"
+msgstr "Region"
+
+msgid "Seller country code"
+msgstr "Land"
+
+msgid "Seller contact point"
+msgstr "Kontaktperson"
+
+msgid "Seller contact telephone number"
+msgstr "Telefon"
+
+msgid "Seller contact email address"
+msgstr "E-mail"
+
+msgid "Buyer name"
+msgstr "Navn"
+
+msgid "Buyer trading name"
+msgstr "Handelsnavn"
+
+msgid "Buyer identifier"
+msgstr "ID"
+
+msgid "Buyer legal registration identifier"
+msgstr "Registreringsnummer"
+
+msgid "Buyer VAT identifier"
+msgstr "Momsnummer"
+
+msgid "Buyer electronic address"
+msgstr "Elektronisk adresse"
+
+msgid "Buyer address line 1"
+msgstr "Adresse"
+
+msgid "Buyer address line 2"
+msgstr "Adresselinje 2"
+
+msgid "Buyer city"
+msgstr "By"
+
+msgid "Buyer post code"
+msgstr "Postnummer"
+
+msgid "Buyer country subdivision"
+msgstr "Region"
+
+msgid "Buyer country code"
+msgstr "Land"
+
+msgid "Buyer contact point"
+msgstr "Kontaktperson"
+
+msgid "Buyer contact telephone number"
+msgstr "Telefon"
+
+msgid "Buyer contact email address"
+msgstr "E-mail"
+
+msgid "Payee name"
+msgstr "Navn"
+
+msgid "Payee identifier"
+msgstr "ID"
+
+msgid "Payee legal registration identifier"
+msgstr "Registreringsnummer"
+
+msgid "Seller tax representative name"
+msgstr "Navn"
+
+msgid "Seller tax representative VAT identifier"
+msgstr "Momsnummer"
+
+msgid "Tax representative address line 1"
+msgstr "Adresse"
+
+msgid "Tax representative address line 2"
+msgstr "Adresselinje 2"
+
+msgid "Tax representative city"
+msgstr "By"
+
+msgid "Tax representative post code"
+msgstr "Postnummer"
+
+msgid "Tax representative country subdivision"
+msgstr "Region"
+
+msgid "Tax representative country code"
+msgstr "Land"
+
+msgid "Deliver to party name"
+msgstr "Modtager"
+
+msgid "Deliver to location identifier"
+msgstr "Leveringssteds-ID"
+
+msgid "Actual delivery date"
+msgstr "Leveringsdato"
+
+msgid "Invoicing period start date"
+msgstr "Faktureringsperiode fra"
+
+msgid "Invoicing period end date"
+msgstr "Faktureringsperiode til"
+
+msgid "Deliver to address line 1"
+msgstr "Adresse"
+
+msgid "Deliver to address line 2"
+msgstr "Adresselinje 2"
+
+msgid "Deliver to city"
+msgstr "By"
+
+msgid "Deliver to post code"
+msgstr "Postnummer"
+
+msgid "Deliver to country subdivision"
+msgstr "Region"
+
+msgid "Deliver to country code"
+msgstr "Land"
+
+msgid "Payment means type code"
+msgstr "Betalingsmåde"
+
+msgid "Payment means text"
+msgstr "Betalingsmåde (tekst)"
+
+msgid "Remittance information"
+msgstr "Betalingsreference"
+
+msgid "Payment account identifier"
+msgstr "IBAN"
+
+msgid "Payment account name"
+msgstr "Kontohaver"
+
+msgid "Payment service provider identifier"
+msgstr "BIC"
+
+msgid "Payment card primary account number"
+msgstr "Kortnummer"
+
+msgid "Payment card holder name"
+msgstr "Kortholder"
+
+msgid "Mandate reference identifier"
+msgstr "Mandatreference"
+
+msgid "Bank assigned creditor identifier"
+msgstr "Kreditor-ID"
+
+msgid "Debited account identifier"
+msgstr "Debiteret konto"
+
+msgid "Document level allowance amount"
+msgstr "Beløb"
+
+msgid "Document level allowance base amount"
+msgstr "Grundbeløb"
+
+msgid "Document level allowance percentage"
+msgstr "Procentsats"
+
+msgid "Document level allowance VAT category code"
+msgstr "Momskategori"
+
+msgid "Document level allowance VAT rate"
+msgstr "Momssats"
+
+msgid "Document level allowance reason"
+msgstr "Årsag"
+
+msgid "Document level allowance reason code"
+msgstr "Årsag (kode)"
+
+msgid "Document level charge amount"
+msgstr "Beløb"
+
+msgid "Document level charge base amount"
+msgstr "Grundbeløb"
+
+msgid "Document level charge percentage"
+msgstr "Procentsats"
+
+msgid "Document level charge VAT category code"
+msgstr "Momskategori"
+
+msgid "Document level charge VAT rate"
+msgstr "Momssats"
+
+msgid "Document level charge reason"
+msgstr "Årsag"
+
+msgid "Document level charge reason code"
+msgstr "Årsag (kode)"
+
+msgid "Sum of Invoice line net amount"
+msgstr "Sum af linjebeløb"
+
+msgid "Sum of allowances on document level"
+msgstr "Sum af rabatter"
+
+msgid "Sum of charges on document level"
+msgstr "Sum af gebyrer"
+
+msgid "Invoice total amount without VAT"
+msgstr "Total ekskl. moms"
+
+msgid "Invoice total VAT amount"
+msgstr "Moms i alt"
+
+msgid "Invoice total VAT amount in accounting currency"
+msgstr "Moms i momsvaluta"
+
+msgid "Invoice total amount with VAT"
+msgstr "Total inkl. moms"
+
+msgid "Paid amount"
+msgstr "Forudbetalt beløb"
+
+msgid "Rounding amount"
+msgstr "Afrunding"
+
+msgid "Amount due for payment"
+msgstr "Beløb til betaling"
+
+msgid "VAT category taxable amount"
+msgstr "Momsgrundlag"
+
+msgid "VAT category tax amount"
+msgstr "Momsbeløb"
+
+msgid "VAT category code"
+msgstr "Momskategori"
+
+msgid "VAT category rate"
+msgstr "Momssats"
+
+msgid "VAT exemption reason text"
+msgstr "Fritagelsesårsag"
+
+msgid "VAT exemption reason code"
+msgstr "Fritagelsesårsag (kode)"
+
+msgid "Invoice line identifier"
+msgstr "Linjenummer"
+
+msgid "Invoice line note"
+msgstr "Linjebemærkning"
+
+msgid "Invoice line object identifier"
+msgstr "Objekt-ID"
+
+msgid "Invoiced quantity"
+msgstr "Antal"
+
+msgid "Invoiced quantity unit of measure code"
+msgstr "Enhed"
+
+msgid "Invoice line net amount"
+msgstr "Nettobeløb"
+
+msgid "Referenced purchase order line reference"
+msgstr "Ordrelinje"
+
+msgid "Invoice line Buyer accounting reference"
+msgstr "Købers konteringsreference"
+
+msgid "Invoice line period start date"
+msgstr "Periode fra"
+
+msgid "Invoice line period end date"
+msgstr "Periode til"
+
+msgid "Invoice line allowance amount"
+msgstr "Beløb"
+
+msgid "Invoice line allowance base amount"
+msgstr "Grundbeløb"
+
+msgid "Invoice line allowance percentage"
+msgstr "Procentsats"
+
+msgid "Invoice line allowance reason"
+msgstr "Årsag"
+
+msgid "Invoice line allowance reason code"
+msgstr "Årsag (kode)"
+
+msgid "Invoice line charge amount"
+msgstr "Beløb"
+
+msgid "Invoice line charge base amount"
+msgstr "Grundbeløb"
+
+msgid "Invoice line charge percentage"
+msgstr "Procentsats"
+
+msgid "Invoice line charge reason"
+msgstr "Årsag"
+
+msgid "Invoice line charge reason code"
+msgstr "Årsag (kode)"
+
+msgid "Item net price"
+msgstr "Nettopris"
+
+msgid "Item price discount"
+msgstr "Prisrabat"
+
+msgid "Item gross price"
+msgstr "Bruttopris"
+
+msgid "Item price base quantity"
+msgstr "Basismængde"
+
+msgid "Item price base quantity unit of measure code"
+msgstr "Enhed for basismængde"
+
+msgid "Invoiced item VAT category code"
+msgstr "Momskategori"
+
+msgid "Invoiced item VAT rate"
+msgstr "Momssats"
+
+msgid "Item name"
+msgstr "Varenavn"
+
+msgid "Item description"
+msgstr "Varebeskrivelse"
+
+msgid "Item Seller's identifier"
+msgstr "Varenummer"
+
+msgid "Item Buyer's identifier"
+msgstr "Købers varenummer"
+
+msgid "Item standard identifier"
+msgstr "Standard-ID"
+
+msgid "Item classification identifier"
+msgstr "Klassifikation"
+
+msgid "Item country of origin"
+msgstr "Oprindelsesland"
+
+msgid "Item attribute value"
+msgstr "Vareegenskab"
+
+msgid "Seller address line 3"
+msgstr "Adresselinje 3"
+
+msgid "Buyer address line 3"
+msgstr "Adresselinje 3"
+
+msgid "Tax representative address line 3"
+msgstr "Adresselinje 3"
+
+msgid "Deliver to address line 3"
+msgstr "Adresselinje 3"
+
+msgid "Invoice"
+msgstr "Faktura"
+
+msgid "Seller (BG-4)"
+msgstr "Sælger (BG-4)"
+
+msgid "Buyer (BG-7)"
+msgstr "Køber (BG-7)"
+
+msgid "Preceding invoice reference (BG-3)"
+msgstr "Tidligere faktura (BG-3)"
+
+msgid "Payee (BG-10)"
+msgstr "Betalingsmodtager (BG-10)"
+
+msgid "Seller tax representative party (BG-11)"
+msgstr "Momsrepræsentant (BG-11)"
+
+msgid "Delivery information (BG-13)"
+msgstr "Levering (BG-13)"
+
+msgid "Invoice line"
+msgstr "Linje"
+
+msgid "Payment instructions (BG-16)"
+msgstr "Betaling (BG-16)"
+
+msgid "Document level allowances (BG-20)"
+msgstr "Rabat (BG-20)"
+
+msgid "Document level charges (BG-21)"
+msgstr "Gebyr (BG-21)"
+
+msgid "Invoice line allowances (BG-27)"
+msgstr "Rabat (BG-27)"
+
+msgid "Invoice line charges (BG-28)"
+msgstr "Gebyr (BG-28)"
+
+msgid "VAT breakdown (BG-23)"
+msgstr "Moms (BG-23)"
+
+msgid "Document totals (BG-22)"
+msgstr "Totaler (BG-22)"
+
+msgid "XML schema {name}"
+msgstr "XML-skema {name}"
+
+msgid "Checked against XRechnung {bundled}, invoice declares version {declared}"
+msgstr "Valideret efter XRechnung {bundled}, fakturaen angiver version {declared}"
+
+msgid "Profile Minimum: not a complete invoice according to EN 16931"
+msgstr "Profil Minimum: ikke en fuldstændig faktura i henhold til EN 16931"
+
+msgid "Profile Basic WL: not a complete invoice according to EN 16931"
+msgstr "Profil Basic WL: ikke en fuldstændig faktura i henhold til EN 16931"

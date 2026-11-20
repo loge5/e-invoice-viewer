@@ -1,0 +1,894 @@
+# Maltese translation of E-Invoice Viewer.
+# This file is distributed under the same licence as E-Invoice Viewer
+# (GPL-3.0-or-later).
+# Not checked by a native speaker (spec 0030); corrections are welcome
+# as an issue on GitHub.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: E-Invoice Viewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-19 10:45+0100\n"
+"PO-Revision-Date: 2026-11-18 00:00+0100\n"
+"Last-Translator: E-Invoice Viewer contributors\n"
+"Language-Team: Maltese\n"
+"Language: mt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n==0 || (n%100>1 && n%100<11)) ? 1 : (n%100>10 && n%100<20) ? 2 : 3);\n"
+
+msgid "Open an invoice"
+msgstr "Iftaħ fattura"
+
+msgid "Invoices (PDF, XML)"
+msgstr "Fatturi (PDF, XML)"
+
+msgid "Open…"
+msgstr "Iftaħ…"
+
+msgid "Close"
+msgstr "Agħlaq"
+
+msgid "Copy value"
+msgstr "Ikkopja l-valur"
+
+msgid "This PDF contains no electronic invoice"
+msgstr "Dan il-PDF ma fih l-ebda fattura elettronika"
+
+msgid "The PDF pages cannot be shown"
+msgstr "Il-paġni tal-PDF ma jistgħux jintwerew"
+
+msgid "Plain XML invoice – no PDF included"
+msgstr "Fattura XML biss – l-ebda PDF inkluż"
+
+msgid "Fields"
+msgstr "Oqsma"
+
+msgid "XML"
+msgstr "XML"
+
+msgid "Zoom in (Ctrl++)"
+msgstr "Kabbar (Ctrl++)"
+
+msgid "Zoom out (Ctrl+-)"
+msgstr "Ċekken (Ctrl+-)"
+
+msgid "Copy XML"
+msgstr "Ikkopja l-XML"
+
+msgid "Save XML as…"
+msgstr "Issejvja l-XML bħala…"
+
+msgid "The XML could not be saved"
+msgstr "L-XML ma setax jiġi ssejvjat"
+
+msgid "Search in the XML"
+msgstr "Fittex fl-XML"
+
+msgid "Validation result"
+msgstr "Riżultat tal-validazzjoni"
+
+msgid "Document"
+msgstr "Dokument"
+
+msgid "internal error during validation"
+msgstr "żball intern waqt il-validazzjoni"
+
+msgid "Recently opened"
+msgstr "Miftuħa reċentement"
+
+msgid "Attachments"
+msgstr "Annessi"
+
+msgid "Show in XML"
+msgstr "Uri fl-XML"
+
+msgid "Show in fields"
+msgstr "Uri fl-oqsma"
+
+msgid "No field assigned"
+msgstr "L-ebda qasam assenjat"
+
+msgid "No attachments"
+msgstr "L-ebda anness"
+
+msgid "Save attachment…"
+msgstr "Issejvja l-anness…"
+
+msgid "No entries"
+msgstr "L-ebda entrata"
+
+msgid "Only one file per window – the first one was opened"
+msgstr "Fajl wieħed biss f’kull tieqa – infetaħ l-ewwel wieħed"
+
+msgid "Main menu"
+msgstr "Menu ewlieni"
+
+msgid "Language"
+msgstr "Lingwa"
+
+msgid "System language"
+msgstr "Lingwa tas-sistema"
+
+msgid "error"
+msgid_plural "errors"
+msgstr[0] "żball"
+msgstr[1] "żbalji"
+msgstr[2] "żball"
+msgstr[3] "żball"
+
+msgid "warning"
+msgid_plural "warnings"
+msgstr[0] "twissija"
+msgstr[1] "twissijiet"
+msgstr[2] "twissija"
+msgstr[3] "twissija"
+
+msgid "note"
+msgid_plural "notes"
+msgstr[0] "nota"
+msgstr[1] "noti"
+msgstr[2] "nota"
+msgstr[3] "nota"
+
+msgid "Error"
+msgid_plural "Errors"
+msgstr[0] "Żball"
+msgstr[1] "Żbalji"
+msgstr[2] "Żbalji"
+msgstr[3] "Żbalji"
+
+msgid "Warning"
+msgid_plural "Warnings"
+msgstr[0] "Twissija"
+msgstr[1] "Twissijiet"
+msgstr[2] "Twissijiet"
+msgstr[3] "Twissijiet"
+
+msgid "Note"
+msgid_plural "Notes"
+msgstr[0] "Nota"
+msgstr[1] "Noti"
+msgstr[2] "Noti"
+msgstr[3] "Noti"
+
+msgid "No findings"
+msgstr "L-ebda sejba"
+
+msgid "No errors, {counts}"
+msgstr "L-ebda żball, {counts}"
+
+msgid "Validating…"
+msgstr "Validazzjoni għaddejja…"
+
+msgid "Validation failed: {reason}"
+msgstr "Il-validazzjoni falliet: {reason}"
+
+msgid "{rule sets} and {last rule set}"
+msgstr "{rule sets} u {last rule set}"
+
+msgid "Checked against {rule sets}"
+msgstr "Ivverifikat skont {rule sets}"
+
+msgid "The address {address} is not a local file"
+msgstr "L-indirizz {address} mhuwiex fajl lokali"
+
+msgid "The file {file} was not found"
+msgstr "Il-fajl {file} ma nstabx"
+
+msgid "The file {file} cannot be read: {reason}"
+msgstr "Il-fajl {file} ma jistax jinqara: {reason}"
+
+msgid "{count} byte"
+msgid_plural "{count} bytes"
+msgstr[0] "{count} byte"
+msgstr[1] "{count} bytes"
+msgstr[2] "{count} byte"
+msgstr[3] "{count} byte"
+
+msgid "Invoice (BG-24)"
+msgstr "Fattura (BG-24)"
+
+msgid "unknown"
+msgstr "mhux magħruf"
+
+msgid "Content not readable"
+msgstr "Il-kontenut ma jinqarax"
+
+msgid "Too large (over {size} MB)"
+msgstr "Kbir wisq (aktar minn {size} MB)"
+
+msgid "The attachment {name} could not be saved: {reason}"
+msgstr "L-anness {name} ma setax jiġi ssejvjat: {reason}"
+
+msgid "Page {page} of {count}"
+msgstr "Paġna {page} minn {count}"
+
+msgid "No matches"
+msgstr "L-ebda riżultat"
+
+msgid "{current} of {total}"
+msgstr "{current} minn {total}"
+
+msgid "{count} match"
+msgid_plural "{count} matches"
+msgstr[0] "{count} riżultat"
+msgstr[1] "{count} riżultati"
+msgstr[2] "{count} riżultat"
+msgstr[3] "{count} riżultat"
+
+msgid "The file {file} cannot be read as an invoice: {reason}"
+msgstr "Il-fajl {file} ma jistax jinqara bħala fattura: {reason}"
+
+msgid "not a readable PDF file"
+msgstr "mhuwiex fajl PDF li jinqara"
+
+msgid "the embedded invoice {name} is empty"
+msgstr "il-fattura inkorporata {name} hija vojta"
+
+msgid "XML is not well-formed (line {line})"
+msgstr "L-XML mhuwiex iffurmat sew (linja {line})"
+
+msgid "XML contains a DOCTYPE declaration – not supported"
+msgstr "L-XML fih dikjarazzjoni DOCTYPE – mhix appoġġata"
+
+msgid "not an electronic invoice"
+msgstr "mhijiex fattura elettronika"
+
+msgid "ZUGFeRD 1.0 is not supported"
+msgstr "ZUGFeRD 1.0 mhuwiex appoġġat"
+
+msgid "the character encoding {encoding} is not supported"
+msgstr "il-kodifikazzjoni tal-karattri {encoding} mhijiex appoġġata"
+
+msgid "XML is nested more than {limit} levels deep"
+msgstr "l-XML huwa nnestjat f’aktar minn {limit} livelli"
+
+msgid "the invoice format is not supported"
+msgstr "il-format tal-fattura mhuwiex appoġġat"
+
+msgid "Partial invoice"
+msgstr "Fattura parzjali"
+
+msgid "Commercial invoice"
+msgstr "Fattura kummerċjali"
+
+msgid "Credit note"
+msgstr "Nota ta’ kreditu"
+
+msgid "Corrected invoice"
+msgstr "Fattura kkoreġuta"
+
+msgid "Self-billed invoice"
+msgstr "Awtofatturazzjoni"
+
+msgid "Partial construction invoice"
+msgstr "Fattura parzjali (kostruzzjoni)"
+
+msgid "Partial final construction invoice"
+msgstr "Fattura parzjali finali (kostruzzjoni)"
+
+msgid "Final construction invoice"
+msgstr "Fattura finali (kostruzzjoni)"
+
+msgid "Instrument not defined"
+msgstr "Mezz mhux definit"
+
+msgid "In cash"
+msgstr "Flus kontanti"
+
+msgid "Cheque"
+msgstr "Ċekk"
+
+msgid "Credit transfer"
+msgstr "Trasferiment ta’ kreditu"
+
+msgid "Payment to bank account"
+msgstr "Ħlas f’kont bankarju"
+
+msgid "Bank card"
+msgstr "Karta bankarja"
+
+msgid "Direct debit"
+msgstr "Debitu dirett"
+
+msgid "Credit card"
+msgstr "Karta tal-kreditu"
+
+msgid "Standing agreement"
+msgstr "Ordni permanenti"
+
+msgid "SEPA credit transfer"
+msgstr "Trasferiment ta’ kreditu SEPA"
+
+msgid "SEPA direct debit"
+msgstr "Debitu dirett SEPA"
+
+msgid "Clearing between partners"
+msgstr "Tpaċija bejn is-sħab"
+
+msgid "Standard rate"
+msgstr "Rata standard"
+
+msgid "Zero rated goods"
+msgstr "Rata żero"
+
+msgid "Exempt from tax"
+msgstr "Eżenti mill-VAT"
+
+msgid "VAT reverse charge"
+msgstr "Inverżjoni tal-ħlas tal-VAT"
+
+msgid "Intra-community supply"
+msgstr "Provvista intra-Komunitarja"
+
+msgid "Export outside the EU"
+msgstr "Esportazzjoni barra mill-UE"
+
+msgid "Outside the scope of VAT"
+msgstr "Barra mill-ambitu tal-VAT"
+
+msgid "Canary Islands IGIC"
+msgstr "Gżejjer Kanarji (IGIC)"
+
+msgid "Ceuta and Melilla IPSI"
+msgstr "Ceuta u Melilla (IPSI)"
+
+msgid "pieces"
+msgstr "biċċiet"
+
+msgid "hours"
+msgstr "sigħat"
+
+msgid "days"
+msgstr "jiem"
+
+msgid "months"
+msgstr "xhur"
+
+msgid "kilograms"
+msgstr "kilogrammi"
+
+msgid "metres"
+msgstr "metri"
+
+msgid "litres"
+msgstr "litri"
+
+msgid "lump sum"
+msgstr "somma f’daqqa"
+
+msgid "Invoice number"
+msgstr "Numru tal-fattura"
+
+msgid "Invoice issue date"
+msgstr "Data tal-fattura"
+
+msgid "Invoice type code"
+msgstr "Tip ta’ fattura"
+
+msgid "Invoice currency code"
+msgstr "Munita"
+
+msgid "VAT accounting currency code"
+msgstr "Munita tal-VAT"
+
+msgid "Value added tax point date"
+msgstr "Data tal-punt tat-taxxa"
+
+msgid "Value added tax point date code"
+msgstr "Punt tat-taxxa (kodiċi)"
+
+msgid "Payment due date"
+msgstr "Data tal-iskadenza"
+
+msgid "Buyer reference"
+msgstr "Referenza tax-xerrej"
+
+msgid "Project reference"
+msgstr "Referenza tal-proġett"
+
+msgid "Contract reference"
+msgstr "Referenza tal-kuntratt"
+
+msgid "Purchase order reference"
+msgstr "Referenza tal-ordni tax-xiri"
+
+msgid "Sales order reference"
+msgstr "Referenza tal-ordni tal-bejgħ"
+
+msgid "Receiving advice reference"
+msgstr "Avviż ta’ riċeviment"
+
+msgid "Despatch advice reference"
+msgstr "Avviż ta’ dispaċċ"
+
+msgid "Tender or lot reference"
+msgstr "Referenza tal-offerta jew tal-lott"
+
+msgid "Invoiced object identifier"
+msgstr "Identifikatur tal-oġġett"
+
+msgid "Buyer accounting reference"
+msgstr "Referenza tal-kontabbiltà"
+
+msgid "Payment terms"
+msgstr "Termini tal-ħlas"
+
+msgid "Invoice note subject code"
+msgstr "Suġġett tan-nota (kodiċi)"
+
+msgid "Invoice note"
+msgstr "Nota"
+
+msgid "Business process type"
+msgstr "Proċess tan-negozju"
+
+msgid "Specification identifier"
+msgstr "Identifikatur tal-ispeċifikazzjoni"
+
+msgid "Preceding Invoice reference"
+msgstr "Numru tal-fattura"
+
+msgid "Preceding Invoice issue date"
+msgstr "Data tal-fattura"
+
+msgid "Seller name"
+msgstr "Isem"
+
+msgid "Seller trading name"
+msgstr "Isem kummerċjali"
+
+msgid "Seller identifier"
+msgstr "Identifikatur"
+
+msgid "Seller legal registration identifier"
+msgstr "Numru tar-reġistrazzjoni"
+
+msgid "Seller VAT identifier"
+msgstr "Numru tal-VAT"
+
+msgid "Seller tax registration identifier"
+msgstr "Numru tat-taxxa"
+
+msgid "Seller additional legal information"
+msgstr "Informazzjoni legali addizzjonali"
+
+msgid "Seller electronic address"
+msgstr "Indirizz elettroniku"
+
+msgid "Seller address line 1"
+msgstr "Indirizz"
+
+msgid "Seller address line 2"
+msgstr "Indirizz (linja 2)"
+
+msgid "Seller city"
+msgstr "Belt"
+
+msgid "Seller post code"
+msgstr "Kodiċi postali"
+
+msgid "Seller country subdivision"
+msgstr "Reġjun"
+
+msgid "Seller country code"
+msgstr "Pajjiż"
+
+msgid "Seller contact point"
+msgstr "Persuna ta’ kuntatt"
+
+msgid "Seller contact telephone number"
+msgstr "Telefon"
+
+msgid "Seller contact email address"
+msgstr "Email"
+
+msgid "Buyer name"
+msgstr "Isem"
+
+msgid "Buyer trading name"
+msgstr "Isem kummerċjali"
+
+msgid "Buyer identifier"
+msgstr "Identifikatur"
+
+msgid "Buyer legal registration identifier"
+msgstr "Numru tar-reġistrazzjoni"
+
+msgid "Buyer VAT identifier"
+msgstr "Numru tal-VAT"
+
+msgid "Buyer electronic address"
+msgstr "Indirizz elettroniku"
+
+msgid "Buyer address line 1"
+msgstr "Indirizz"
+
+msgid "Buyer address line 2"
+msgstr "Indirizz (linja 2)"
+
+msgid "Buyer city"
+msgstr "Belt"
+
+msgid "Buyer post code"
+msgstr "Kodiċi postali"
+
+msgid "Buyer country subdivision"
+msgstr "Reġjun"
+
+msgid "Buyer country code"
+msgstr "Pajjiż"
+
+msgid "Buyer contact point"
+msgstr "Persuna ta’ kuntatt"
+
+msgid "Buyer contact telephone number"
+msgstr "Telefon"
+
+msgid "Buyer contact email address"
+msgstr "Email"
+
+msgid "Payee name"
+msgstr "Isem"
+
+msgid "Payee identifier"
+msgstr "Identifikatur"
+
+msgid "Payee legal registration identifier"
+msgstr "Numru tar-reġistrazzjoni"
+
+msgid "Seller tax representative name"
+msgstr "Isem"
+
+msgid "Seller tax representative VAT identifier"
+msgstr "Numru tal-VAT"
+
+msgid "Tax representative address line 1"
+msgstr "Indirizz"
+
+msgid "Tax representative address line 2"
+msgstr "Indirizz (linja 2)"
+
+msgid "Tax representative city"
+msgstr "Belt"
+
+msgid "Tax representative post code"
+msgstr "Kodiċi postali"
+
+msgid "Tax representative country subdivision"
+msgstr "Reġjun"
+
+msgid "Tax representative country code"
+msgstr "Pajjiż"
+
+msgid "Deliver to party name"
+msgstr "Destinatarju"
+
+msgid "Deliver to location identifier"
+msgstr "Identifikatur tal-post tal-kunsinna"
+
+msgid "Actual delivery date"
+msgstr "Data tal-kunsinna"
+
+msgid "Invoicing period start date"
+msgstr "Perjodu tal-fatturazzjoni minn"
+
+msgid "Invoicing period end date"
+msgstr "Perjodu tal-fatturazzjoni sa"
+
+msgid "Deliver to address line 1"
+msgstr "Indirizz"
+
+msgid "Deliver to address line 2"
+msgstr "Indirizz (linja 2)"
+
+msgid "Deliver to city"
+msgstr "Belt"
+
+msgid "Deliver to post code"
+msgstr "Kodiċi postali"
+
+msgid "Deliver to country subdivision"
+msgstr "Reġjun"
+
+msgid "Deliver to country code"
+msgstr "Pajjiż"
+
+msgid "Payment means type code"
+msgstr "Mezz tal-ħlas"
+
+msgid "Payment means text"
+msgstr "Mezz tal-ħlas (test)"
+
+msgid "Remittance information"
+msgstr "Referenza tal-ħlas"
+
+msgid "Payment account identifier"
+msgstr "IBAN"
+
+msgid "Payment account name"
+msgstr "Detentur tal-kont"
+
+msgid "Payment service provider identifier"
+msgstr "BIC"
+
+msgid "Payment card primary account number"
+msgstr "Numru tal-karta"
+
+msgid "Payment card holder name"
+msgstr "Detentur tal-karta"
+
+msgid "Mandate reference identifier"
+msgstr "Referenza tal-mandat"
+
+msgid "Bank assigned creditor identifier"
+msgstr "Identifikatur tal-kreditur"
+
+msgid "Debited account identifier"
+msgstr "Kont iddebitat"
+
+msgid "Document level allowance amount"
+msgstr "Ammont"
+
+msgid "Document level allowance base amount"
+msgstr "Ammont bażi"
+
+msgid "Document level allowance percentage"
+msgstr "Perċentwal"
+
+msgid "Document level allowance VAT category code"
+msgstr "Kategorija tal-VAT"
+
+msgid "Document level allowance VAT rate"
+msgstr "Rata tal-VAT"
+
+msgid "Document level allowance reason"
+msgstr "Raġuni"
+
+msgid "Document level allowance reason code"
+msgstr "Raġuni (kodiċi)"
+
+msgid "Document level charge amount"
+msgstr "Ammont"
+
+msgid "Document level charge base amount"
+msgstr "Ammont bażi"
+
+msgid "Document level charge percentage"
+msgstr "Perċentwal"
+
+msgid "Document level charge VAT category code"
+msgstr "Kategorija tal-VAT"
+
+msgid "Document level charge VAT rate"
+msgstr "Rata tal-VAT"
+
+msgid "Document level charge reason"
+msgstr "Raġuni"
+
+msgid "Document level charge reason code"
+msgstr "Raġuni (kodiċi)"
+
+msgid "Sum of Invoice line net amount"
+msgstr "Total tal-linji mingħajr VAT"
+
+msgid "Sum of allowances on document level"
+msgstr "Total tal-iskontijiet"
+
+msgid "Sum of charges on document level"
+msgstr "Total tal-ħlasijiet addizzjonali"
+
+msgid "Invoice total amount without VAT"
+msgstr "Total mingħajr VAT"
+
+msgid "Invoice total VAT amount"
+msgstr "Total tal-VAT"
+
+msgid "Invoice total VAT amount in accounting currency"
+msgstr "VAT fil-munita tal-VAT"
+
+msgid "Invoice total amount with VAT"
+msgstr "Total bil-VAT"
+
+msgid "Paid amount"
+msgstr "Ammont diġà mħallas"
+
+msgid "Rounding amount"
+msgstr "Arrotondament"
+
+msgid "Amount due for payment"
+msgstr "Ammont dovut"
+
+msgid "VAT category taxable amount"
+msgstr "Ammont taxxabbli"
+
+msgid "VAT category tax amount"
+msgstr "Ammont tal-VAT"
+
+msgid "VAT category code"
+msgstr "Kategorija tal-VAT"
+
+msgid "VAT category rate"
+msgstr "Rata tal-VAT"
+
+msgid "VAT exemption reason text"
+msgstr "Raġuni tal-eżenzjoni"
+
+msgid "VAT exemption reason code"
+msgstr "Raġuni tal-eżenzjoni (kodiċi)"
+
+msgid "Invoice line identifier"
+msgstr "Numru tal-linja"
+
+msgid "Invoice line note"
+msgstr "Nota tal-linja"
+
+msgid "Invoice line object identifier"
+msgstr "Identifikatur tal-oġġett"
+
+msgid "Invoiced quantity"
+msgstr "Kwantità"
+
+msgid "Invoiced quantity unit of measure code"
+msgstr "Unità"
+
+msgid "Invoice line net amount"
+msgstr "Ammont nett"
+
+msgid "Referenced purchase order line reference"
+msgstr "Linja tal-ordni"
+
+msgid "Invoice line Buyer accounting reference"
+msgstr "Referenza tal-kontabbiltà tax-xerrej"
+
+msgid "Invoice line period start date"
+msgstr "Perjodu minn"
+
+msgid "Invoice line period end date"
+msgstr "Perjodu sa"
+
+msgid "Invoice line allowance amount"
+msgstr "Ammont"
+
+msgid "Invoice line allowance base amount"
+msgstr "Ammont bażi"
+
+msgid "Invoice line allowance percentage"
+msgstr "Perċentwal"
+
+msgid "Invoice line allowance reason"
+msgstr "Raġuni"
+
+msgid "Invoice line allowance reason code"
+msgstr "Raġuni (kodiċi)"
+
+msgid "Invoice line charge amount"
+msgstr "Ammont"
+
+msgid "Invoice line charge base amount"
+msgstr "Ammont bażi"
+
+msgid "Invoice line charge percentage"
+msgstr "Perċentwal"
+
+msgid "Invoice line charge reason"
+msgstr "Raġuni"
+
+msgid "Invoice line charge reason code"
+msgstr "Raġuni (kodiċi)"
+
+msgid "Item net price"
+msgstr "Prezz nett"
+
+msgid "Item price discount"
+msgstr "Skont fuq il-prezz"
+
+msgid "Item gross price"
+msgstr "Prezz gross"
+
+msgid "Item price base quantity"
+msgstr "Kwantità bażi"
+
+msgid "Item price base quantity unit of measure code"
+msgstr "Unità tal-kwantità bażi"
+
+msgid "Invoiced item VAT category code"
+msgstr "Kategorija tal-VAT"
+
+msgid "Invoiced item VAT rate"
+msgstr "Rata tal-VAT"
+
+msgid "Item name"
+msgstr "Isem tal-oġġett"
+
+msgid "Item description"
+msgstr "Deskrizzjoni tal-oġġett"
+
+msgid "Item Seller's identifier"
+msgstr "Kodiċi tal-oġġett"
+
+msgid "Item Buyer's identifier"
+msgstr "Kodiċi tal-oġġett tax-xerrej"
+
+msgid "Item standard identifier"
+msgstr "Identifikatur standard"
+
+msgid "Item classification identifier"
+msgstr "Klassifikazzjoni"
+
+msgid "Item country of origin"
+msgstr "Pajjiż tal-oriġini"
+
+msgid "Item attribute value"
+msgstr "Attribut tal-oġġett"
+
+msgid "Seller address line 3"
+msgstr "Indirizz (linja 3)"
+
+msgid "Buyer address line 3"
+msgstr "Indirizz (linja 3)"
+
+msgid "Tax representative address line 3"
+msgstr "Indirizz (linja 3)"
+
+msgid "Deliver to address line 3"
+msgstr "Indirizz (linja 3)"
+
+msgid "Invoice"
+msgstr "Fattura"
+
+msgid "Seller (BG-4)"
+msgstr "Bejjiegħ (BG-4)"
+
+msgid "Buyer (BG-7)"
+msgstr "Xerrej (BG-7)"
+
+msgid "Preceding invoice reference (BG-3)"
+msgstr "Fattura preċedenti (BG-3)"
+
+msgid "Payee (BG-10)"
+msgstr "Benefiċjarju (BG-10)"
+
+msgid "Seller tax representative party (BG-11)"
+msgstr "Rappreżentant fiskali (BG-11)"
+
+msgid "Delivery information (BG-13)"
+msgstr "Kunsinna (BG-13)"
+
+msgid "Invoice line"
+msgstr "Linja"
+
+msgid "Payment instructions (BG-16)"
+msgstr "Ħlas (BG-16)"
+
+msgid "Document level allowances (BG-20)"
+msgstr "Skont (BG-20)"
+
+msgid "Document level charges (BG-21)"
+msgstr "Ħlas addizzjonali (BG-21)"
+
+msgid "Invoice line allowances (BG-27)"
+msgstr "Skont (BG-27)"
+
+msgid "Invoice line charges (BG-28)"
+msgstr "Ħlas addizzjonali (BG-28)"
+
+msgid "VAT breakdown (BG-23)"
+msgstr "VAT (BG-23)"
+
+msgid "Document totals (BG-22)"
+msgstr "Totali (BG-22)"
+
+msgid "XML schema {name}"
+msgstr "Skema XML {name}"
+
+msgid "Checked against XRechnung {bundled}, invoice declares version {declared}"
+msgstr "Ivverifikat skont XRechnung {bundled}, il-fattura tiddikjara l-verżjoni {declared}"
+
+msgid "Profile Minimum: not a complete invoice according to EN 16931"
+msgstr "Profil Minimum: mhijiex fattura kompluta skont l-EN 16931"
+
+msgid "Profile Basic WL: not a complete invoice according to EN 16931"
+msgstr "Profil Basic WL: mhijiex fattura kompluta skont l-EN 16931"

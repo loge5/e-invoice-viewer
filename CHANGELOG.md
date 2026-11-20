@@ -16,6 +16,14 @@ All notable changes for users of E-Invoice Viewer. The format follows
   allowances and charges of each line, and the VAT total in the VAT
   accounting currency.
 - Every push and pull request is tested on Linux and Windows.
+- The interface and the invoice content in all 24 official EU languages
+  (Bulgarian, Croatian, Czech, Danish, Dutch, Estonian, Finnish, French,
+  Greek, Hungarian, Irish, Italian, Latvian, Lithuanian, Maltese, Polish,
+  Portuguese, Romanian, Slovak, Slovenian, Spanish and Swedish in addition to
+  German and English), with the number and date formats of each language.
+  These translations were made with an AI assistant and are
+  not checked by native speakers; corrections are welcome as an issue at
+  <https://github.com/loge5/e-invoice-viewer/issues>.
 
 ### Changed
 

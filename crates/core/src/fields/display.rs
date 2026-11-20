@@ -25,8 +25,8 @@ pub fn iso_date(raw: &str, language: Language) -> String {
     .unwrap_or_else(|| raw.to_string())
 }
 
-/// A valid date given as four, two and two digits, written as `DD.MM.YYYY`
-/// in German and `YYYY-MM-DD` in English.
+/// A valid date given as four, two and two digits, written in the notation
+/// of `language`.
 fn valid_date((year, month, day): (&str, &str, &str), language: Language) -> Option<String> {
     let digits = |text: &str, len: usize| {
         (text.len() == len && text.bytes().all(|b| b.is_ascii_digit()))
@@ -34,10 +34,8 @@ fn valid_date((year, month, day): (&str, &str, &str), language: Language) -> Opt
             .flatten()
     };
     let (y, m, d) = (digits(year, 4)?, digits(month, 2)?, digits(day, 2)?);
-    ((1..=12).contains(&m) && (1..=days_in_month(y, m)).contains(&d)).then(|| match language {
-        Language::German => format!("{day}.{month}.{year}"),
-        Language::English => format!("{year}-{month}-{day}"),
-    })
+    ((1..=12).contains(&m) && (1..=days_in_month(y, m)).contains(&d))
+        .then(|| language.date(year, month, day))
 }
 
 fn days_in_month(year: u32, month: u32) -> u32 {
@@ -64,14 +62,6 @@ pub fn amount(raw: &str, currency: Option<&str>, language: Language) -> String {
     }
 }
 
-/// The decimal and thousands separators of `language`.
-fn separators(language: Language) -> (char, char) {
-    match language {
-        Language::German => (',', '.'),
-        Language::English => ('.', ','),
-    }
-}
-
 /// Formats a decimal number with the separators of `language`, padding the
 /// decimal part to at least `min_decimals` places. Returns `None` if `raw` is
 /// not a plain decimal number (optional sign, digits, optional `.` and
@@ -90,7 +80,8 @@ fn decimal(raw: &str, min_decimals: usize, language: Language) -> Option<String>
     let integer = integer.trim_start_matches('0');
     let integer = if integer.is_empty() { "0" } else { integer };
 
-    let (decimal_separator, thousands_separator) = separators(language);
+    let (decimal_separator, thousands_separator) =
+        (language.decimal_separator(), language.thousands_separator());
     let mut grouped = String::new();
     for (index, digit) in integer.chars().enumerate() {
         if index > 0 && (integer.len() - index).is_multiple_of(3) {
@@ -113,7 +104,7 @@ fn decimal(raw: &str, min_decimals: usize, language: Language) -> Option<String>
 /// code (`8 hours (HUR)`), or only the code for units without a known name
 /// (`2.5 XPP`).
 pub fn quantity(raw: &str, unit: Option<&str>, language: Language) -> String {
-    let (decimal_separator, _) = separators(language);
+    let decimal_separator = language.decimal_separator();
     let number = match decimal(raw, 0, language) {
         Some(number) if number.contains(decimal_separator) => number
             .trim_end_matches('0')

@@ -41,7 +41,7 @@ way to close it, and crashed on Linux.
 | 9 | Field ↔ XML | Fields and XML elements are linked in both directions (spec 0014) |
 | 10 | Windows & reopening | One invoice per window. **No** automatic reopening of the last file on start; a "recent files" list instead *(default)* |
 | 11 | Opening files | File dialog, drag & drop, command line argument, "Open with" from the file manager or Windows Explorer |
-| 12 | Language | German and English, following the system language, switchable in the app; translations as gettext `.po` files (decided 2026-11-18, [ADR 0003](adr/0003-translations-gettext-embedded.md), specs 0017–0019) |
+| 12 | Language | The 24 official EU languages (German and English since 2026-11-18, the others since 2026-11-20, not checked by native speakers), following the system language, switchable in the app; translations as gettext `.po` files ([ADR 0003](adr/0003-translations-gettext-embedded.md), specs 0017–0019, 0030) |
 | 13 | Toolkit & platforms | **GTK4 + libadwaita**. Linux (decided 2026-11-16) and, since 2026-11-19, Windows 10/11 x64 ([ADR 0005](adr/0005-windows-build-msys2-github-actions.md), spec 0022). No macOS |
 | 14 | PDF rendering & licence | Poppler; the app is therefore licensed **GPL-3.0-or-later** *(default)* |
 | 15 | Distribution | AppImage for Linux ([ADR 0004](adr/0004-appimage-built-in-container.md)), portable ZIP and installer for Windows (ADR 0005), and `scripts/install.sh` from source. Decided 2026-11-19: no Linux distribution packages (AUR, Flathub) and no Windows code signing before 1.0 |

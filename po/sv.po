@@ -1,0 +1,878 @@
+# Swedish translation of E-Invoice Viewer.
+# This file is distributed under the same licence as E-Invoice Viewer
+# (GPL-3.0-or-later).
+# Not checked by a native speaker (spec 0030); corrections are welcome
+# as an issue on GitHub.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: E-Invoice Viewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-19 10:45+0100\n"
+"PO-Revision-Date: 2026-11-18 00:00+0100\n"
+"Last-Translator: E-Invoice Viewer contributors\n"
+"Language-Team: Swedish\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Open an invoice"
+msgstr "Öppna en faktura"
+
+msgid "Invoices (PDF, XML)"
+msgstr "Fakturor (PDF, XML)"
+
+msgid "Open…"
+msgstr "Öppna…"
+
+msgid "Close"
+msgstr "Stäng"
+
+msgid "Copy value"
+msgstr "Kopiera värde"
+
+msgid "This PDF contains no electronic invoice"
+msgstr "Denna PDF innehåller ingen elektronisk faktura"
+
+msgid "The PDF pages cannot be shown"
+msgstr "PDF-sidorna kan inte visas"
+
+msgid "Plain XML invoice – no PDF included"
+msgstr "Ren XML-faktura – ingen PDF bifogad"
+
+msgid "Fields"
+msgstr "Fält"
+
+msgid "XML"
+msgstr "XML"
+
+msgid "Zoom in (Ctrl++)"
+msgstr "Zooma in (Ctrl++)"
+
+msgid "Zoom out (Ctrl+-)"
+msgstr "Zooma ut (Ctrl+-)"
+
+msgid "Copy XML"
+msgstr "Kopiera XML"
+
+msgid "Save XML as…"
+msgstr "Spara XML som…"
+
+msgid "The XML could not be saved"
+msgstr "XML-filen kunde inte sparas"
+
+msgid "Search in the XML"
+msgstr "Sök i XML"
+
+msgid "Validation result"
+msgstr "Valideringsresultat"
+
+msgid "Document"
+msgstr "Dokument"
+
+msgid "internal error during validation"
+msgstr "internt fel vid valideringen"
+
+msgid "Recently opened"
+msgstr "Senast öppnade"
+
+msgid "Attachments"
+msgstr "Bilagor"
+
+msgid "Show in XML"
+msgstr "Visa i XML"
+
+msgid "Show in fields"
+msgstr "Visa i fält"
+
+msgid "No field assigned"
+msgstr "Inget fält tilldelat"
+
+msgid "No attachments"
+msgstr "Inga bilagor"
+
+msgid "Save attachment…"
+msgstr "Spara bilaga…"
+
+msgid "No entries"
+msgstr "Inga poster"
+
+msgid "Only one file per window – the first one was opened"
+msgstr "Endast en fil per fönster – den första öppnades"
+
+msgid "Main menu"
+msgstr "Huvudmeny"
+
+msgid "Language"
+msgstr "Språk"
+
+msgid "System language"
+msgstr "Systemspråk"
+
+msgid "error"
+msgid_plural "errors"
+msgstr[0] "fel"
+msgstr[1] "fel"
+
+msgid "warning"
+msgid_plural "warnings"
+msgstr[0] "varning"
+msgstr[1] "varningar"
+
+msgid "note"
+msgid_plural "notes"
+msgstr[0] "anmärkning"
+msgstr[1] "anmärkningar"
+
+msgid "Error"
+msgid_plural "Errors"
+msgstr[0] "Fel"
+msgstr[1] "Fel"
+
+msgid "Warning"
+msgid_plural "Warnings"
+msgstr[0] "Varning"
+msgstr[1] "Varningar"
+
+msgid "Note"
+msgid_plural "Notes"
+msgstr[0] "Anmärkning"
+msgstr[1] "Anmärkningar"
+
+msgid "No findings"
+msgstr "Inga fynd"
+
+msgid "No errors, {counts}"
+msgstr "Inga fel, {counts}"
+
+msgid "Validating…"
+msgstr "Validerar…"
+
+msgid "Validation failed: {reason}"
+msgstr "Valideringen misslyckades: {reason}"
+
+msgid "{rule sets} and {last rule set}"
+msgstr "{rule sets} och {last rule set}"
+
+msgid "Checked against {rule sets}"
+msgstr "Validerad mot {rule sets}"
+
+msgid "The address {address} is not a local file"
+msgstr "Adressen {address} är inte en lokal fil"
+
+msgid "The file {file} was not found"
+msgstr "Filen {file} hittades inte"
+
+msgid "The file {file} cannot be read: {reason}"
+msgstr "Filen {file} kan inte läsas: {reason}"
+
+msgid "{count} byte"
+msgid_plural "{count} bytes"
+msgstr[0] "{count} byte"
+msgstr[1] "{count} byte"
+
+msgid "Invoice (BG-24)"
+msgstr "Faktura (BG-24)"
+
+msgid "unknown"
+msgstr "okänd"
+
+msgid "Content not readable"
+msgstr "Innehållet kan inte läsas"
+
+msgid "Too large (over {size} MB)"
+msgstr "För stor (över {size} MB)"
+
+msgid "The attachment {name} could not be saved: {reason}"
+msgstr "Bilagan {name} kunde inte sparas: {reason}"
+
+msgid "Page {page} of {count}"
+msgstr "Sida {page} av {count}"
+
+msgid "No matches"
+msgstr "Inga träffar"
+
+msgid "{current} of {total}"
+msgstr "{current} av {total}"
+
+msgid "{count} match"
+msgid_plural "{count} matches"
+msgstr[0] "{count} träff"
+msgstr[1] "{count} träffar"
+
+msgid "The file {file} cannot be read as an invoice: {reason}"
+msgstr "Filen {file} kan inte läsas som faktura: {reason}"
+
+msgid "not a readable PDF file"
+msgstr "inte en läsbar PDF-fil"
+
+msgid "the embedded invoice {name} is empty"
+msgstr "den inbäddade fakturan {name} är tom"
+
+msgid "XML is not well-formed (line {line})"
+msgstr "XML är inte välformad (rad {line})"
+
+msgid "XML contains a DOCTYPE declaration – not supported"
+msgstr "XML innehåller en DOCTYPE-deklaration – stöds inte"
+
+msgid "not an electronic invoice"
+msgstr "inte en elektronisk faktura"
+
+msgid "ZUGFeRD 1.0 is not supported"
+msgstr "ZUGFeRD 1.0 stöds inte"
+
+msgid "the character encoding {encoding} is not supported"
+msgstr "teckenkodningen {encoding} stöds inte"
+
+msgid "XML is nested more than {limit} levels deep"
+msgstr "XML är nästlad mer än {limit} nivåer djupt"
+
+msgid "the invoice format is not supported"
+msgstr "fakturaformatet stöds inte"
+
+msgid "Partial invoice"
+msgstr "Delfaktura"
+
+msgid "Commercial invoice"
+msgstr "Handelsfaktura"
+
+msgid "Credit note"
+msgstr "Kreditnota"
+
+msgid "Corrected invoice"
+msgstr "Korrigerad faktura"
+
+msgid "Self-billed invoice"
+msgstr "Självfaktura"
+
+msgid "Partial construction invoice"
+msgstr "A conto-faktura (bygg)"
+
+msgid "Partial final construction invoice"
+msgstr "Delslutfaktura (bygg)"
+
+msgid "Final construction invoice"
+msgstr "Slutfaktura (bygg)"
+
+msgid "Instrument not defined"
+msgstr "Ej definierat"
+
+msgid "In cash"
+msgstr "Kontant"
+
+msgid "Cheque"
+msgstr "Check"
+
+msgid "Credit transfer"
+msgstr "Kontoöverföring"
+
+msgid "Payment to bank account"
+msgstr "Betalning till bankkonto"
+
+msgid "Bank card"
+msgstr "Bankkort"
+
+msgid "Direct debit"
+msgstr "Autogiro"
+
+msgid "Credit card"
+msgstr "Kreditkort"
+
+msgid "Standing agreement"
+msgstr "Stående överenskommelse"
+
+msgid "SEPA credit transfer"
+msgstr "SEPA-överföring"
+
+msgid "SEPA direct debit"
+msgstr "SEPA-autogiro"
+
+msgid "Clearing between partners"
+msgstr "Kvittning mellan parter"
+
+msgid "Standard rate"
+msgstr "Normalskattesats"
+
+msgid "Zero rated goods"
+msgstr "Nollskattesats"
+
+msgid "Exempt from tax"
+msgstr "Undantagen från moms"
+
+msgid "VAT reverse charge"
+msgstr "Omvänd skattskyldighet"
+
+msgid "Intra-community supply"
+msgstr "Unionsintern leverans"
+
+msgid "Export outside the EU"
+msgstr "Export utanför EU"
+
+msgid "Outside the scope of VAT"
+msgstr "Utanför momsens tillämpningsområde"
+
+msgid "Canary Islands IGIC"
+msgstr "Kanarieöarna (IGIC)"
+
+msgid "Ceuta and Melilla IPSI"
+msgstr "Ceuta och Melilla (IPSI)"
+
+msgid "pieces"
+msgstr "styck"
+
+msgid "hours"
+msgstr "timmar"
+
+msgid "days"
+msgstr "dagar"
+
+msgid "months"
+msgstr "månader"
+
+msgid "kilograms"
+msgstr "kilogram"
+
+msgid "metres"
+msgstr "meter"
+
+msgid "litres"
+msgstr "liter"
+
+msgid "lump sum"
+msgstr "klumpsumma"
+
+msgid "Invoice number"
+msgstr "Fakturanummer"
+
+msgid "Invoice issue date"
+msgstr "Fakturadatum"
+
+msgid "Invoice type code"
+msgstr "Fakturatyp"
+
+msgid "Invoice currency code"
+msgstr "Valuta"
+
+msgid "VAT accounting currency code"
+msgstr "Momsvaluta"
+
+msgid "Value added tax point date"
+msgstr "Datum för skattskyldighet"
+
+msgid "Value added tax point date code"
+msgstr "Datum för skattskyldighet (kod)"
+
+msgid "Payment due date"
+msgstr "Förfallodatum"
+
+msgid "Buyer reference"
+msgstr "Köparens referens"
+
+msgid "Project reference"
+msgstr "Projektreferens"
+
+msgid "Contract reference"
+msgstr "Avtalsreferens"
+
+msgid "Purchase order reference"
+msgstr "Inköpsorder"
+
+msgid "Sales order reference"
+msgstr "Försäljningsorder"
+
+msgid "Receiving advice reference"
+msgstr "Mottagningsavisering"
+
+msgid "Despatch advice reference"
+msgstr "Leveransavisering"
+
+msgid "Tender or lot reference"
+msgstr "Upphandlings- eller delområdesreferens"
+
+msgid "Invoiced object identifier"
+msgstr "Objekt-id"
+
+msgid "Buyer accounting reference"
+msgstr "Konteringsreferens"
+
+msgid "Payment terms"
+msgstr "Betalningsvillkor"
+
+msgid "Invoice note subject code"
+msgstr "Ämne för anmärkning (kod)"
+
+msgid "Invoice note"
+msgstr "Anmärkning"
+
+msgid "Business process type"
+msgstr "Affärsprocess"
+
+msgid "Specification identifier"
+msgstr "Specifikations-id"
+
+msgid "Preceding Invoice reference"
+msgstr "Fakturanummer"
+
+msgid "Preceding Invoice issue date"
+msgstr "Fakturadatum"
+
+msgid "Seller name"
+msgstr "Namn"
+
+msgid "Seller trading name"
+msgstr "Handelsnamn"
+
+msgid "Seller identifier"
+msgstr "ID"
+
+msgid "Seller legal registration identifier"
+msgstr "Organisationsnummer"
+
+msgid "Seller VAT identifier"
+msgstr "Momsregistreringsnummer"
+
+msgid "Seller tax registration identifier"
+msgstr "Skatteregistreringsnummer"
+
+msgid "Seller additional legal information"
+msgstr "Ytterligare juridisk information"
+
+msgid "Seller electronic address"
+msgstr "Elektronisk adress"
+
+msgid "Seller address line 1"
+msgstr "Gatuadress"
+
+msgid "Seller address line 2"
+msgstr "Adressrad 2"
+
+msgid "Seller city"
+msgstr "Ort"
+
+msgid "Seller post code"
+msgstr "Postnummer"
+
+msgid "Seller country subdivision"
+msgstr "Region"
+
+msgid "Seller country code"
+msgstr "Land"
+
+msgid "Seller contact point"
+msgstr "Kontaktperson"
+
+msgid "Seller contact telephone number"
+msgstr "Telefon"
+
+msgid "Seller contact email address"
+msgstr "E-post"
+
+msgid "Buyer name"
+msgstr "Namn"
+
+msgid "Buyer trading name"
+msgstr "Handelsnamn"
+
+msgid "Buyer identifier"
+msgstr "ID"
+
+msgid "Buyer legal registration identifier"
+msgstr "Organisationsnummer"
+
+msgid "Buyer VAT identifier"
+msgstr "Momsregistreringsnummer"
+
+msgid "Buyer electronic address"
+msgstr "Elektronisk adress"
+
+msgid "Buyer address line 1"
+msgstr "Gatuadress"
+
+msgid "Buyer address line 2"
+msgstr "Adressrad 2"
+
+msgid "Buyer city"
+msgstr "Ort"
+
+msgid "Buyer post code"
+msgstr "Postnummer"
+
+msgid "Buyer country subdivision"
+msgstr "Region"
+
+msgid "Buyer country code"
+msgstr "Land"
+
+msgid "Buyer contact point"
+msgstr "Kontaktperson"
+
+msgid "Buyer contact telephone number"
+msgstr "Telefon"
+
+msgid "Buyer contact email address"
+msgstr "E-post"
+
+msgid "Payee name"
+msgstr "Namn"
+
+msgid "Payee identifier"
+msgstr "ID"
+
+msgid "Payee legal registration identifier"
+msgstr "Organisationsnummer"
+
+msgid "Seller tax representative name"
+msgstr "Namn"
+
+msgid "Seller tax representative VAT identifier"
+msgstr "Momsregistreringsnummer"
+
+msgid "Tax representative address line 1"
+msgstr "Gatuadress"
+
+msgid "Tax representative address line 2"
+msgstr "Adressrad 2"
+
+msgid "Tax representative city"
+msgstr "Ort"
+
+msgid "Tax representative post code"
+msgstr "Postnummer"
+
+msgid "Tax representative country subdivision"
+msgstr "Region"
+
+msgid "Tax representative country code"
+msgstr "Land"
+
+msgid "Deliver to party name"
+msgstr "Mottagare"
+
+msgid "Deliver to location identifier"
+msgstr "Leveransplats-id"
+
+msgid "Actual delivery date"
+msgstr "Leveransdatum"
+
+msgid "Invoicing period start date"
+msgstr "Faktureringsperiod från"
+
+msgid "Invoicing period end date"
+msgstr "Faktureringsperiod till"
+
+msgid "Deliver to address line 1"
+msgstr "Gatuadress"
+
+msgid "Deliver to address line 2"
+msgstr "Adressrad 2"
+
+msgid "Deliver to city"
+msgstr "Ort"
+
+msgid "Deliver to post code"
+msgstr "Postnummer"
+
+msgid "Deliver to country subdivision"
+msgstr "Region"
+
+msgid "Deliver to country code"
+msgstr "Land"
+
+msgid "Payment means type code"
+msgstr "Betalningssätt"
+
+msgid "Payment means text"
+msgstr "Betalningssätt (text)"
+
+msgid "Remittance information"
+msgstr "Betalningsreferens"
+
+msgid "Payment account identifier"
+msgstr "IBAN"
+
+msgid "Payment account name"
+msgstr "Kontoinnehavare"
+
+msgid "Payment service provider identifier"
+msgstr "BIC"
+
+msgid "Payment card primary account number"
+msgstr "Kortnummer"
+
+msgid "Payment card holder name"
+msgstr "Kortinnehavare"
+
+msgid "Mandate reference identifier"
+msgstr "Mandatreferens"
+
+msgid "Bank assigned creditor identifier"
+msgstr "Borgenärs-id"
+
+msgid "Debited account identifier"
+msgstr "Debiterat konto"
+
+msgid "Document level allowance amount"
+msgstr "Belopp"
+
+msgid "Document level allowance base amount"
+msgstr "Underlag"
+
+msgid "Document level allowance percentage"
+msgstr "Procentsats"
+
+msgid "Document level allowance VAT category code"
+msgstr "Momskategori"
+
+msgid "Document level allowance VAT rate"
+msgstr "Momssats"
+
+msgid "Document level allowance reason"
+msgstr "Orsak"
+
+msgid "Document level allowance reason code"
+msgstr "Orsak (kod)"
+
+msgid "Document level charge amount"
+msgstr "Belopp"
+
+msgid "Document level charge base amount"
+msgstr "Underlag"
+
+msgid "Document level charge percentage"
+msgstr "Procentsats"
+
+msgid "Document level charge VAT category code"
+msgstr "Momskategori"
+
+msgid "Document level charge VAT rate"
+msgstr "Momssats"
+
+msgid "Document level charge reason"
+msgstr "Orsak"
+
+msgid "Document level charge reason code"
+msgstr "Orsak (kod)"
+
+msgid "Sum of Invoice line net amount"
+msgstr "Summa radbelopp"
+
+msgid "Sum of allowances on document level"
+msgstr "Summa rabatter"
+
+msgid "Sum of charges on document level"
+msgstr "Summa avgifter"
+
+msgid "Invoice total amount without VAT"
+msgstr "Totalt exkl. moms"
+
+msgid "Invoice total VAT amount"
+msgstr "Total moms"
+
+msgid "Invoice total VAT amount in accounting currency"
+msgstr "Moms i redovisningsvaluta"
+
+msgid "Invoice total amount with VAT"
+msgstr "Totalt inkl. moms"
+
+msgid "Paid amount"
+msgstr "Redan betalt"
+
+msgid "Rounding amount"
+msgstr "Avrundning"
+
+msgid "Amount due for payment"
+msgstr "Att betala"
+
+msgid "VAT category taxable amount"
+msgstr "Beskattningsunderlag"
+
+msgid "VAT category tax amount"
+msgstr "Momsbelopp"
+
+msgid "VAT category code"
+msgstr "Momskategori"
+
+msgid "VAT category rate"
+msgstr "Momssats"
+
+msgid "VAT exemption reason text"
+msgstr "Undantagsskäl"
+
+msgid "VAT exemption reason code"
+msgstr "Undantagsskäl (kod)"
+
+msgid "Invoice line identifier"
+msgstr "Radnummer"
+
+msgid "Invoice line note"
+msgstr "Radanmärkning"
+
+msgid "Invoice line object identifier"
+msgstr "Objekt-id"
+
+msgid "Invoiced quantity"
+msgstr "Antal"
+
+msgid "Invoiced quantity unit of measure code"
+msgstr "Enhet"
+
+msgid "Invoice line net amount"
+msgstr "Nettobelopp"
+
+msgid "Referenced purchase order line reference"
+msgstr "Orderrad"
+
+msgid "Invoice line Buyer accounting reference"
+msgstr "Köparens konteringsreferens"
+
+msgid "Invoice line period start date"
+msgstr "Period från"
+
+msgid "Invoice line period end date"
+msgstr "Period till"
+
+msgid "Invoice line allowance amount"
+msgstr "Belopp"
+
+msgid "Invoice line allowance base amount"
+msgstr "Underlag"
+
+msgid "Invoice line allowance percentage"
+msgstr "Procentsats"
+
+msgid "Invoice line allowance reason"
+msgstr "Orsak"
+
+msgid "Invoice line allowance reason code"
+msgstr "Orsak (kod)"
+
+msgid "Invoice line charge amount"
+msgstr "Belopp"
+
+msgid "Invoice line charge base amount"
+msgstr "Underlag"
+
+msgid "Invoice line charge percentage"
+msgstr "Procentsats"
+
+msgid "Invoice line charge reason"
+msgstr "Orsak"
+
+msgid "Invoice line charge reason code"
+msgstr "Orsak (kod)"
+
+msgid "Item net price"
+msgstr "Nettopris"
+
+msgid "Item price discount"
+msgstr "Prisrabatt"
+
+msgid "Item gross price"
+msgstr "Bruttopris"
+
+msgid "Item price base quantity"
+msgstr "Basmängd"
+
+msgid "Item price base quantity unit of measure code"
+msgstr "Enhet för basmängd"
+
+msgid "Invoiced item VAT category code"
+msgstr "Momskategori"
+
+msgid "Invoiced item VAT rate"
+msgstr "Momssats"
+
+msgid "Item name"
+msgstr "Artikelnamn"
+
+msgid "Item description"
+msgstr "Artikelbeskrivning"
+
+msgid "Item Seller's identifier"
+msgstr "Artikelnummer"
+
+msgid "Item Buyer's identifier"
+msgstr "Köparens artikelnummer"
+
+msgid "Item standard identifier"
+msgstr "Standard-id"
+
+msgid "Item classification identifier"
+msgstr "Klassificering"
+
+msgid "Item country of origin"
+msgstr "Ursprungsland"
+
+msgid "Item attribute value"
+msgstr "Artikelegenskap"
+
+msgid "Seller address line 3"
+msgstr "Adressrad 3"
+
+msgid "Buyer address line 3"
+msgstr "Adressrad 3"
+
+msgid "Tax representative address line 3"
+msgstr "Adressrad 3"
+
+msgid "Deliver to address line 3"
+msgstr "Adressrad 3"
+
+msgid "Invoice"
+msgstr "Faktura"
+
+msgid "Seller (BG-4)"
+msgstr "Säljare (BG-4)"
+
+msgid "Buyer (BG-7)"
+msgstr "Köpare (BG-7)"
+
+msgid "Preceding invoice reference (BG-3)"
+msgstr "Tidigare faktura (BG-3)"
+
+msgid "Payee (BG-10)"
+msgstr "Betalningsmottagare (BG-10)"
+
+msgid "Seller tax representative party (BG-11)"
+msgstr "Skatterepresentant (BG-11)"
+
+msgid "Delivery information (BG-13)"
+msgstr "Leverans (BG-13)"
+
+msgid "Invoice line"
+msgstr "Rad"
+
+msgid "Payment instructions (BG-16)"
+msgstr "Betalning (BG-16)"
+
+msgid "Document level allowances (BG-20)"
+msgstr "Rabatt (BG-20)"
+
+msgid "Document level charges (BG-21)"
+msgstr "Avgift (BG-21)"
+
+msgid "Invoice line allowances (BG-27)"
+msgstr "Rabatt (BG-27)"
+
+msgid "Invoice line charges (BG-28)"
+msgstr "Avgift (BG-28)"
+
+msgid "VAT breakdown (BG-23)"
+msgstr "Moms (BG-23)"
+
+msgid "Document totals (BG-22)"
+msgstr "Summor (BG-22)"
+
+msgid "XML schema {name}"
+msgstr "XML-schema {name}"
+
+msgid "Checked against XRechnung {bundled}, invoice declares version {declared}"
+msgstr "Validerad mot XRechnung {bundled}, fakturan anger version {declared}"
+
+msgid "Profile Minimum: not a complete invoice according to EN 16931"
+msgstr "Profil Minimum: inte en fullständig faktura enligt EN 16931"
+
+msgid "Profile Basic WL: not a complete invoice according to EN 16931"
+msgstr "Profil Basic WL: inte en fullständig faktura enligt EN 16931"

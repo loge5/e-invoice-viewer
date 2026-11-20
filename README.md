@@ -43,9 +43,9 @@ an online service and without uploading your business data anywhere.
   the invoice (BG-24), and saves them where you choose.
 - **Plain XML invoices, too.** CII and UBL (invoice and credit note) files open
   without a PDF.
-- **German and English.** The interface and the invoice content (labels,
-  code lists, number and date formats) follow the system language, or the
-  language chosen in the app's main menu.
+- **All 24 official EU languages.** The interface and the invoice content
+  (labels, code lists, number and date formats) follow the system language,
+  or the language chosen in the app's main menu.
 - **Desktop integration.** Drag and drop, *Open with* from the file manager
   or Windows Explorer, a recent files list, one invoice per window. The
   window size is remembered, but never restored in a way that hides the
@@ -221,11 +221,18 @@ e-invoice-viewer invoice.pdf
 | <kbd>Ctrl</kbd>+<kbd>+</kbd> / <kbd>Ctrl</kbd>+<kbd>-</kbd> | Zoom the PDF in / out |
 | <kbd>Ctrl</kbd>+<kbd>0</kbd> | Fit the PDF to the pane width |
 
-The app speaks German and English. It follows the system language (on
-Windows: the region format) and falls back to English; the main menu
-(<kbd>F10</kbd>) lets you choose the language, which is remembered. Settings
-and the recent files list are kept in `~/.config/e-invoice-viewer` on Linux
-and in `%LOCALAPPDATA%\e-invoice-viewer` on Windows.
+The app speaks the 24 official languages of the EU. It follows the system
+language (on Windows: the region format) and falls back to English; the main
+menu (<kbd>F10</kbd>) lets you choose the language, which is remembered.
+The official rule messages stay as published (CEN rules in English,
+XRechnung rules in German).
+
+The translations other than German and English were made with an AI
+assistant and are not checked by native speakers. Corrections are welcome
+as an issue at <https://github.com/loge5/e-invoice-viewer/issues>.
+
+Settings and the recent files list are kept in `~/.config/e-invoice-viewer`
+on Linux and in `%LOCALAPPDATA%\e-invoice-viewer` on Windows.
 
 ## Limitations
 

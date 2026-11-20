@@ -81,7 +81,8 @@ For 1.0, every change is checked when it is pushed (author, 2026-11-19).
     failure blocks of the test harness, tests running longer than 60 s,
     panics and error lines, then the end of the output; tests stop after 30
     minutes instead of hanging until GitHub's 6-hour limit.
-  - The Linux job skips the catalogue check (`german_catalogue_is_complete`):
+  - The Linux job skips the catalogue check (`german_catalogue_is_complete`,
+    since 0030 `every_catalogue_is_complete`):
     xgettext of Ubuntu 24.04 (gettext 0.21) cannot read Rust; the Windows
     job runs it with a current gettext.
   - README badge.

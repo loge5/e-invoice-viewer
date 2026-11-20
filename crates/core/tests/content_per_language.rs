@@ -332,9 +332,9 @@ fn source_files(dir: &Path, files: &mut Vec<String>) {
     }
 }
 
-// AC9
+// AC9; spec 0030 AC9
 #[test]
-fn german_catalogue_is_complete() {
+fn every_catalogue_is_complete() {
     let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../..");
     let mut files = Vec::new();
     for crate_dir in ["crates/core/src", "crates/app/src"] {
@@ -360,18 +360,26 @@ fn german_catalogue_is_complete() {
         .collect();
     assert!(wanted.len() > 100, "only {} texts found", wanted.len());
 
-    let german = read_catalogue(&std::fs::read_to_string(root.join("po/de.po")).expect("po/de.po"));
-    let missing: Vec<_> = wanted.difference(&german.translated).collect();
-    let stale: Vec<_> = german
-        .translated
-        .union(&german.untranslated)
-        .filter(|msgid| !wanted.contains(*msgid))
-        .collect();
-    assert!(
-        missing.is_empty(),
-        "not translated in po/de.po: {missing:#?}"
-    );
-    assert!(stale.is_empty(), "stale in po/de.po: {stale:#?}");
-    assert!(german.fuzzy.is_empty(), "fuzzy: {:#?}", german.fuzzy);
-    assert_eq!(german.obsolete, 0, "obsolete entries in po/de.po");
+    // Spec 0030: the same for the catalogue of every language.
+    for language in Language::ALL {
+        if language == Language::English {
+            continue;
+        }
+        let file = format!("po/{}.po", language.code());
+        let catalogue = read_catalogue(&std::fs::read_to_string(root.join(&file)).expect(&file));
+        let missing: Vec<_> = wanted.difference(&catalogue.translated).collect();
+        let stale: Vec<_> = catalogue
+            .translated
+            .union(&catalogue.untranslated)
+            .filter(|msgid| !wanted.contains(*msgid))
+            .collect();
+        assert!(missing.is_empty(), "not translated in {file}: {missing:#?}");
+        assert!(stale.is_empty(), "stale in {file}: {stale:#?}");
+        assert!(
+            catalogue.fuzzy.is_empty(),
+            "fuzzy in {file}: {:#?}",
+            catalogue.fuzzy
+        );
+        assert_eq!(catalogue.obsolete, 0, "obsolete entries in {file}");
+    }
 }

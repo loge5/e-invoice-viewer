@@ -501,3 +501,53 @@ fn readme_links_changelog_and_release_guide() {
     assert!(readme.contains("(CHANGELOG.md)"));
     assert!(readme.contains("(docs/releasing.md)"));
 }
+
+// Spec 0030 AC11: desktop entry, AppStream file and installer carry the new
+// languages (both files are validated by the tests above).
+#[test]
+fn every_language_in_desktop_entry_metainfo_and_installer() {
+    use e_invoice_viewer_core::i18n::Language;
+    let desktop = desktop_entry();
+    let metainfo = read("data/de.loges.EInvoiceViewer.metainfo.xml");
+    let installer = read("scripts/windows/installer.iss");
+    // The languages Inno Setup 6 ships a translation for.
+    let inno = [
+        "bg", "cs", "da", "de", "es", "fi", "fr", "hu", "it", "nl", "pl", "pt", "sk", "sl", "sv",
+    ];
+    for language in Language::ALL {
+        let code = language.code();
+        if language == Language::English {
+            continue;
+        }
+        for key in ["GenericName", "Comment", "Keywords"] {
+            assert!(
+                desktop.contains(&format!("\n{key}[{code}]=")),
+                "{key}[{code}]"
+            );
+        }
+        // Summary, two paragraphs and four features.
+        let elements = metainfo.matches(&format!("xml:lang=\"{code}\"")).count();
+        assert!(elements >= 7, "{code}: {elements} elements in the metainfo");
+        assert_eq!(
+            installer.contains(&format!("Name: \"{code}\"; MessagesFile:")),
+            inno.contains(&code),
+            "installer language {code}"
+        );
+    }
+}
+
+// Spec 0030 AC12
+#[test]
+fn readme_and_changelog_note_the_translation_quality() {
+    for file in ["README.md", "CHANGELOG.md"] {
+        let text = read(file);
+        assert!(
+            text.contains("not checked by native speakers"),
+            "{file}: note on quality"
+        );
+        assert!(
+            text.contains("github.com/loge5/e-invoice-viewer/issues"),
+            "{file}: where to report corrections"
+        );
+    }
+}

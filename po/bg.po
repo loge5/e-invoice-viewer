@@ -1,0 +1,878 @@
+# Bulgarian translation of E-Invoice Viewer.
+# This file is distributed under the same licence as E-Invoice Viewer
+# (GPL-3.0-or-later).
+# Not checked by a native speaker (spec 0030); corrections are welcome
+# as an issue on GitHub.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: E-Invoice Viewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-19 10:45+0100\n"
+"PO-Revision-Date: 2026-11-18 00:00+0100\n"
+"Last-Translator: E-Invoice Viewer contributors\n"
+"Language-Team: Bulgarian\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Open an invoice"
+msgstr "Отваряне на фактура"
+
+msgid "Invoices (PDF, XML)"
+msgstr "Фактури (PDF, XML)"
+
+msgid "Open…"
+msgstr "Отваряне…"
+
+msgid "Close"
+msgstr "Затваряне"
+
+msgid "Copy value"
+msgstr "Копиране на стойността"
+
+msgid "This PDF contains no electronic invoice"
+msgstr "Този PDF не съдържа електронна фактура"
+
+msgid "The PDF pages cannot be shown"
+msgstr "Страниците на PDF не могат да бъдат показани"
+
+msgid "Plain XML invoice – no PDF included"
+msgstr "Само XML фактура – без включен PDF"
+
+msgid "Fields"
+msgstr "Полета"
+
+msgid "XML"
+msgstr "XML"
+
+msgid "Zoom in (Ctrl++)"
+msgstr "Увеличаване (Ctrl++)"
+
+msgid "Zoom out (Ctrl+-)"
+msgstr "Намаляване (Ctrl+-)"
+
+msgid "Copy XML"
+msgstr "Копиране на XML"
+
+msgid "Save XML as…"
+msgstr "Запазване на XML като…"
+
+msgid "The XML could not be saved"
+msgstr "XML не можа да бъде запазен"
+
+msgid "Search in the XML"
+msgstr "Търсене в XML"
+
+msgid "Validation result"
+msgstr "Резултат от проверката"
+
+msgid "Document"
+msgstr "Документ"
+
+msgid "internal error during validation"
+msgstr "вътрешна грешка при проверката"
+
+msgid "Recently opened"
+msgstr "Последно отваряни"
+
+msgid "Attachments"
+msgstr "Прикачени файлове"
+
+msgid "Show in XML"
+msgstr "Показване в XML"
+
+msgid "Show in fields"
+msgstr "Показване в полетата"
+
+msgid "No field assigned"
+msgstr "Няма свързано поле"
+
+msgid "No attachments"
+msgstr "Няма прикачени файлове"
+
+msgid "Save attachment…"
+msgstr "Запазване на прикачения файл…"
+
+msgid "No entries"
+msgstr "Няма записи"
+
+msgid "Only one file per window – the first one was opened"
+msgstr "Само един файл на прозорец – отворен е първият"
+
+msgid "Main menu"
+msgstr "Главно меню"
+
+msgid "Language"
+msgstr "Език"
+
+msgid "System language"
+msgstr "Системен език"
+
+msgid "error"
+msgid_plural "errors"
+msgstr[0] "грешка"
+msgstr[1] "грешки"
+
+msgid "warning"
+msgid_plural "warnings"
+msgstr[0] "предупреждение"
+msgstr[1] "предупреждения"
+
+msgid "note"
+msgid_plural "notes"
+msgstr[0] "забележка"
+msgstr[1] "забележки"
+
+msgid "Error"
+msgid_plural "Errors"
+msgstr[0] "Грешка"
+msgstr[1] "Грешки"
+
+msgid "Warning"
+msgid_plural "Warnings"
+msgstr[0] "Предупреждение"
+msgstr[1] "Предупреждения"
+
+msgid "Note"
+msgid_plural "Notes"
+msgstr[0] "Забележка"
+msgstr[1] "Забележки"
+
+msgid "No findings"
+msgstr "Няма констатации"
+
+msgid "No errors, {counts}"
+msgstr "Няма грешки, {counts}"
+
+msgid "Validating…"
+msgstr "Проверка…"
+
+msgid "Validation failed: {reason}"
+msgstr "Проверката е неуспешна: {reason}"
+
+msgid "{rule sets} and {last rule set}"
+msgstr "{rule sets} и {last rule set}"
+
+msgid "Checked against {rule sets}"
+msgstr "Проверено по {rule sets}"
+
+msgid "The address {address} is not a local file"
+msgstr "Адресът {address} не е локален файл"
+
+msgid "The file {file} was not found"
+msgstr "Файлът {file} не е намерен"
+
+msgid "The file {file} cannot be read: {reason}"
+msgstr "Файлът {file} не може да бъде прочетен: {reason}"
+
+msgid "{count} byte"
+msgid_plural "{count} bytes"
+msgstr[0] "{count} байт"
+msgstr[1] "{count} байта"
+
+msgid "Invoice (BG-24)"
+msgstr "Фактура (BG-24)"
+
+msgid "unknown"
+msgstr "неизвестно"
+
+msgid "Content not readable"
+msgstr "Съдържанието не може да бъде прочетено"
+
+msgid "Too large (over {size} MB)"
+msgstr "Твърде голям (над {size} МБ)"
+
+msgid "The attachment {name} could not be saved: {reason}"
+msgstr "Прикаченият файл {name} не можа да бъде запазен: {reason}"
+
+msgid "Page {page} of {count}"
+msgstr "Страница {page} от {count}"
+
+msgid "No matches"
+msgstr "Няма съвпадения"
+
+msgid "{current} of {total}"
+msgstr "{current} от {total}"
+
+msgid "{count} match"
+msgid_plural "{count} matches"
+msgstr[0] "{count} съвпадение"
+msgstr[1] "{count} съвпадения"
+
+msgid "The file {file} cannot be read as an invoice: {reason}"
+msgstr "Файлът {file} не може да бъде прочетен като фактура: {reason}"
+
+msgid "not a readable PDF file"
+msgstr "не е четим PDF файл"
+
+msgid "the embedded invoice {name} is empty"
+msgstr "вградената фактура {name} е празна"
+
+msgid "XML is not well-formed (line {line})"
+msgstr "XML не е добре оформен (ред {line})"
+
+msgid "XML contains a DOCTYPE declaration – not supported"
+msgstr "XML съдържа декларация DOCTYPE – не се поддържа"
+
+msgid "not an electronic invoice"
+msgstr "не е електронна фактура"
+
+msgid "ZUGFeRD 1.0 is not supported"
+msgstr "ZUGFeRD 1.0 не се поддържа"
+
+msgid "the character encoding {encoding} is not supported"
+msgstr "кодировката на символите {encoding} не се поддържа"
+
+msgid "XML is nested more than {limit} levels deep"
+msgstr "XML е вложен на повече от {limit} нива"
+
+msgid "the invoice format is not supported"
+msgstr "форматът на фактурата не се поддържа"
+
+msgid "Partial invoice"
+msgstr "Частична фактура"
+
+msgid "Commercial invoice"
+msgstr "Търговска фактура"
+
+msgid "Credit note"
+msgstr "Кредитно известие"
+
+msgid "Corrected invoice"
+msgstr "Коригирана фактура"
+
+msgid "Self-billed invoice"
+msgstr "Самофактуриране"
+
+msgid "Partial construction invoice"
+msgstr "Междинна фактура (строителство)"
+
+msgid "Partial final construction invoice"
+msgstr "Частична окончателна фактура (строителство)"
+
+msgid "Final construction invoice"
+msgstr "Окончателна фактура (строителство)"
+
+msgid "Instrument not defined"
+msgstr "Неопределен"
+
+msgid "In cash"
+msgstr "В брой"
+
+msgid "Cheque"
+msgstr "Чек"
+
+msgid "Credit transfer"
+msgstr "Кредитен превод"
+
+msgid "Payment to bank account"
+msgstr "Плащане по банкова сметка"
+
+msgid "Bank card"
+msgstr "Банкова карта"
+
+msgid "Direct debit"
+msgstr "Директен дебит"
+
+msgid "Credit card"
+msgstr "Кредитна карта"
+
+msgid "Standing agreement"
+msgstr "Постоянно нареждане"
+
+msgid "SEPA credit transfer"
+msgstr "SEPA кредитен превод"
+
+msgid "SEPA direct debit"
+msgstr "SEPA директен дебит"
+
+msgid "Clearing between partners"
+msgstr "Прихващане между партньори"
+
+msgid "Standard rate"
+msgstr "Стандартна ставка"
+
+msgid "Zero rated goods"
+msgstr "Нулева ставка"
+
+msgid "Exempt from tax"
+msgstr "Освободено от ДДС"
+
+msgid "VAT reverse charge"
+msgstr "Обратно начисляване"
+
+msgid "Intra-community supply"
+msgstr "Вътреобщностна доставка"
+
+msgid "Export outside the EU"
+msgstr "Износ извън ЕС"
+
+msgid "Outside the scope of VAT"
+msgstr "Извън обхвата на ДДС"
+
+msgid "Canary Islands IGIC"
+msgstr "Канарски острови (IGIC)"
+
+msgid "Ceuta and Melilla IPSI"
+msgstr "Сеута и Мелия (IPSI)"
+
+msgid "pieces"
+msgstr "броя"
+
+msgid "hours"
+msgstr "часа"
+
+msgid "days"
+msgstr "дни"
+
+msgid "months"
+msgstr "месеца"
+
+msgid "kilograms"
+msgstr "килограма"
+
+msgid "metres"
+msgstr "метра"
+
+msgid "litres"
+msgstr "литра"
+
+msgid "lump sum"
+msgstr "паушално"
+
+msgid "Invoice number"
+msgstr "Номер на фактура"
+
+msgid "Invoice issue date"
+msgstr "Дата на издаване"
+
+msgid "Invoice type code"
+msgstr "Вид фактура"
+
+msgid "Invoice currency code"
+msgstr "Валута"
+
+msgid "VAT accounting currency code"
+msgstr "Валута на ДДС"
+
+msgid "Value added tax point date"
+msgstr "Дата на данъчното събитие"
+
+msgid "Value added tax point date code"
+msgstr "Данъчно събитие (код)"
+
+msgid "Payment due date"
+msgstr "Падеж"
+
+msgid "Buyer reference"
+msgstr "Референция на купувача"
+
+msgid "Project reference"
+msgstr "Референция на проекта"
+
+msgid "Contract reference"
+msgstr "Номер на договор"
+
+msgid "Purchase order reference"
+msgstr "Номер на поръчка"
+
+msgid "Sales order reference"
+msgstr "Номер на поръчка за продажба"
+
+msgid "Receiving advice reference"
+msgstr "Известие за получаване"
+
+msgid "Despatch advice reference"
+msgstr "Известие за експедиция"
+
+msgid "Tender or lot reference"
+msgstr "Референция на търг или обособена позиция"
+
+msgid "Invoiced object identifier"
+msgstr "Идентификатор на обекта"
+
+msgid "Buyer accounting reference"
+msgstr "Счетоводна референция"
+
+msgid "Payment terms"
+msgstr "Условия на плащане"
+
+msgid "Invoice note subject code"
+msgstr "Тема на бележката (код)"
+
+msgid "Invoice note"
+msgstr "Бележка"
+
+msgid "Business process type"
+msgstr "Бизнес процес"
+
+msgid "Specification identifier"
+msgstr "Идентификатор на спецификацията"
+
+msgid "Preceding Invoice reference"
+msgstr "Номер на фактура"
+
+msgid "Preceding Invoice issue date"
+msgstr "Дата на издаване"
+
+msgid "Seller name"
+msgstr "Наименование"
+
+msgid "Seller trading name"
+msgstr "Търговско наименование"
+
+msgid "Seller identifier"
+msgstr "Идентификатор"
+
+msgid "Seller legal registration identifier"
+msgstr "Регистрационен номер"
+
+msgid "Seller VAT identifier"
+msgstr "ДДС номер"
+
+msgid "Seller tax registration identifier"
+msgstr "Данъчен номер"
+
+msgid "Seller additional legal information"
+msgstr "Допълнителна правна информация"
+
+msgid "Seller electronic address"
+msgstr "Електронен адрес"
+
+msgid "Seller address line 1"
+msgstr "Адрес"
+
+msgid "Seller address line 2"
+msgstr "Допълнение към адреса"
+
+msgid "Seller city"
+msgstr "Град"
+
+msgid "Seller post code"
+msgstr "Пощенски код"
+
+msgid "Seller country subdivision"
+msgstr "Област"
+
+msgid "Seller country code"
+msgstr "Държава"
+
+msgid "Seller contact point"
+msgstr "Лице за контакт"
+
+msgid "Seller contact telephone number"
+msgstr "Телефон"
+
+msgid "Seller contact email address"
+msgstr "Имейл"
+
+msgid "Buyer name"
+msgstr "Наименование"
+
+msgid "Buyer trading name"
+msgstr "Търговско наименование"
+
+msgid "Buyer identifier"
+msgstr "Идентификатор"
+
+msgid "Buyer legal registration identifier"
+msgstr "Регистрационен номер"
+
+msgid "Buyer VAT identifier"
+msgstr "ДДС номер"
+
+msgid "Buyer electronic address"
+msgstr "Електронен адрес"
+
+msgid "Buyer address line 1"
+msgstr "Адрес"
+
+msgid "Buyer address line 2"
+msgstr "Допълнение към адреса"
+
+msgid "Buyer city"
+msgstr "Град"
+
+msgid "Buyer post code"
+msgstr "Пощенски код"
+
+msgid "Buyer country subdivision"
+msgstr "Област"
+
+msgid "Buyer country code"
+msgstr "Държава"
+
+msgid "Buyer contact point"
+msgstr "Лице за контакт"
+
+msgid "Buyer contact telephone number"
+msgstr "Телефон"
+
+msgid "Buyer contact email address"
+msgstr "Имейл"
+
+msgid "Payee name"
+msgstr "Наименование"
+
+msgid "Payee identifier"
+msgstr "Идентификатор"
+
+msgid "Payee legal registration identifier"
+msgstr "Регистрационен номер"
+
+msgid "Seller tax representative name"
+msgstr "Наименование"
+
+msgid "Seller tax representative VAT identifier"
+msgstr "ДДС номер"
+
+msgid "Tax representative address line 1"
+msgstr "Адрес"
+
+msgid "Tax representative address line 2"
+msgstr "Допълнение към адреса"
+
+msgid "Tax representative city"
+msgstr "Град"
+
+msgid "Tax representative post code"
+msgstr "Пощенски код"
+
+msgid "Tax representative country subdivision"
+msgstr "Област"
+
+msgid "Tax representative country code"
+msgstr "Държава"
+
+msgid "Deliver to party name"
+msgstr "Получател"
+
+msgid "Deliver to location identifier"
+msgstr "Идентификатор на мястото на доставка"
+
+msgid "Actual delivery date"
+msgstr "Дата на доставка"
+
+msgid "Invoicing period start date"
+msgstr "Период на фактуриране от"
+
+msgid "Invoicing period end date"
+msgstr "Период на фактуриране до"
+
+msgid "Deliver to address line 1"
+msgstr "Адрес"
+
+msgid "Deliver to address line 2"
+msgstr "Допълнение към адреса"
+
+msgid "Deliver to city"
+msgstr "Град"
+
+msgid "Deliver to post code"
+msgstr "Пощенски код"
+
+msgid "Deliver to country subdivision"
+msgstr "Област"
+
+msgid "Deliver to country code"
+msgstr "Държава"
+
+msgid "Payment means type code"
+msgstr "Начин на плащане"
+
+msgid "Payment means text"
+msgstr "Начин на плащане (текст)"
+
+msgid "Remittance information"
+msgstr "Основание за плащане"
+
+msgid "Payment account identifier"
+msgstr "IBAN"
+
+msgid "Payment account name"
+msgstr "Титуляр на сметката"
+
+msgid "Payment service provider identifier"
+msgstr "BIC"
+
+msgid "Payment card primary account number"
+msgstr "Номер на картата"
+
+msgid "Payment card holder name"
+msgstr "Титуляр на картата"
+
+msgid "Mandate reference identifier"
+msgstr "Референция на мандата"
+
+msgid "Bank assigned creditor identifier"
+msgstr "Идентификатор на кредитора"
+
+msgid "Debited account identifier"
+msgstr "Дебитирана сметка"
+
+msgid "Document level allowance amount"
+msgstr "Сума"
+
+msgid "Document level allowance base amount"
+msgstr "Базова сума"
+
+msgid "Document level allowance percentage"
+msgstr "Процент"
+
+msgid "Document level allowance VAT category code"
+msgstr "Категория ДДС"
+
+msgid "Document level allowance VAT rate"
+msgstr "Ставка на ДДС"
+
+msgid "Document level allowance reason"
+msgstr "Основание"
+
+msgid "Document level allowance reason code"
+msgstr "Основание (код)"
+
+msgid "Document level charge amount"
+msgstr "Сума"
+
+msgid "Document level charge base amount"
+msgstr "Базова сума"
+
+msgid "Document level charge percentage"
+msgstr "Процент"
+
+msgid "Document level charge VAT category code"
+msgstr "Категория ДДС"
+
+msgid "Document level charge VAT rate"
+msgstr "Ставка на ДДС"
+
+msgid "Document level charge reason"
+msgstr "Основание"
+
+msgid "Document level charge reason code"
+msgstr "Основание (код)"
+
+msgid "Sum of Invoice line net amount"
+msgstr "Сума на редовете без ДДС"
+
+msgid "Sum of allowances on document level"
+msgstr "Сума на отстъпките"
+
+msgid "Sum of charges on document level"
+msgstr "Сума на надбавките"
+
+msgid "Invoice total amount without VAT"
+msgstr "Обща сума без ДДС"
+
+msgid "Invoice total VAT amount"
+msgstr "Общо ДДС"
+
+msgid "Invoice total VAT amount in accounting currency"
+msgstr "ДДС във валутата на ДДС"
+
+msgid "Invoice total amount with VAT"
+msgstr "Обща сума с ДДС"
+
+msgid "Paid amount"
+msgstr "Платена сума"
+
+msgid "Rounding amount"
+msgstr "Закръгляне"
+
+msgid "Amount due for payment"
+msgstr "Сума за плащане"
+
+msgid "VAT category taxable amount"
+msgstr "Данъчна основа"
+
+msgid "VAT category tax amount"
+msgstr "Сума на ДДС"
+
+msgid "VAT category code"
+msgstr "Категория ДДС"
+
+msgid "VAT category rate"
+msgstr "Ставка на ДДС"
+
+msgid "VAT exemption reason text"
+msgstr "Основание за освобождаване"
+
+msgid "VAT exemption reason code"
+msgstr "Основание за освобождаване (код)"
+
+msgid "Invoice line identifier"
+msgstr "Номер на реда"
+
+msgid "Invoice line note"
+msgstr "Бележка към реда"
+
+msgid "Invoice line object identifier"
+msgstr "Идентификатор на обекта"
+
+msgid "Invoiced quantity"
+msgstr "Количество"
+
+msgid "Invoiced quantity unit of measure code"
+msgstr "Мерна единица"
+
+msgid "Invoice line net amount"
+msgstr "Нетна сума"
+
+msgid "Referenced purchase order line reference"
+msgstr "Ред от поръчката"
+
+msgid "Invoice line Buyer accounting reference"
+msgstr "Счетоводна референция на купувача"
+
+msgid "Invoice line period start date"
+msgstr "Период от"
+
+msgid "Invoice line period end date"
+msgstr "Период до"
+
+msgid "Invoice line allowance amount"
+msgstr "Сума"
+
+msgid "Invoice line allowance base amount"
+msgstr "Базова сума"
+
+msgid "Invoice line allowance percentage"
+msgstr "Процент"
+
+msgid "Invoice line allowance reason"
+msgstr "Основание"
+
+msgid "Invoice line allowance reason code"
+msgstr "Основание (код)"
+
+msgid "Invoice line charge amount"
+msgstr "Сума"
+
+msgid "Invoice line charge base amount"
+msgstr "Базова сума"
+
+msgid "Invoice line charge percentage"
+msgstr "Процент"
+
+msgid "Invoice line charge reason"
+msgstr "Основание"
+
+msgid "Invoice line charge reason code"
+msgstr "Основание (код)"
+
+msgid "Item net price"
+msgstr "Нетна цена"
+
+msgid "Item price discount"
+msgstr "Отстъпка от цената"
+
+msgid "Item gross price"
+msgstr "Брутна цена"
+
+msgid "Item price base quantity"
+msgstr "Базово количество"
+
+msgid "Item price base quantity unit of measure code"
+msgstr "Мерна единица на базовото количество"
+
+msgid "Invoiced item VAT category code"
+msgstr "Категория ДДС"
+
+msgid "Invoiced item VAT rate"
+msgstr "Ставка на ДДС"
+
+msgid "Item name"
+msgstr "Наименование на артикула"
+
+msgid "Item description"
+msgstr "Описание на артикула"
+
+msgid "Item Seller's identifier"
+msgstr "Код на артикула"
+
+msgid "Item Buyer's identifier"
+msgstr "Код на артикула при купувача"
+
+msgid "Item standard identifier"
+msgstr "Стандартен идентификатор"
+
+msgid "Item classification identifier"
+msgstr "Класификация"
+
+msgid "Item country of origin"
+msgstr "Държава на произход"
+
+msgid "Item attribute value"
+msgstr "Атрибут на артикула"
+
+msgid "Seller address line 3"
+msgstr "Адресен ред 3"
+
+msgid "Buyer address line 3"
+msgstr "Адресен ред 3"
+
+msgid "Tax representative address line 3"
+msgstr "Адресен ред 3"
+
+msgid "Deliver to address line 3"
+msgstr "Адресен ред 3"
+
+msgid "Invoice"
+msgstr "Фактура"
+
+msgid "Seller (BG-4)"
+msgstr "Продавач (BG-4)"
+
+msgid "Buyer (BG-7)"
+msgstr "Купувач (BG-7)"
+
+msgid "Preceding invoice reference (BG-3)"
+msgstr "Предходна фактура (BG-3)"
+
+msgid "Payee (BG-10)"
+msgstr "Получател на плащането (BG-10)"
+
+msgid "Seller tax representative party (BG-11)"
+msgstr "Данъчен представител (BG-11)"
+
+msgid "Delivery information (BG-13)"
+msgstr "Доставка (BG-13)"
+
+msgid "Invoice line"
+msgstr "Ред"
+
+msgid "Payment instructions (BG-16)"
+msgstr "Плащане (BG-16)"
+
+msgid "Document level allowances (BG-20)"
+msgstr "Отстъпка (BG-20)"
+
+msgid "Document level charges (BG-21)"
+msgstr "Надбавка (BG-21)"
+
+msgid "Invoice line allowances (BG-27)"
+msgstr "Отстъпка (BG-27)"
+
+msgid "Invoice line charges (BG-28)"
+msgstr "Надбавка (BG-28)"
+
+msgid "VAT breakdown (BG-23)"
+msgstr "ДДС (BG-23)"
+
+msgid "Document totals (BG-22)"
+msgstr "Общи суми (BG-22)"
+
+msgid "XML schema {name}"
+msgstr "XML схема {name}"
+
+msgid "Checked against XRechnung {bundled}, invoice declares version {declared}"
+msgstr "Проверено по XRechnung {bundled}, фактурата декларира версия {declared}"
+
+msgid "Profile Minimum: not a complete invoice according to EN 16931"
+msgstr "Профил Minimum: не е пълна фактура съгласно EN 16931"
+
+msgid "Profile Basic WL: not a complete invoice according to EN 16931"
+msgstr "Профил Basic WL: не е пълна фактура съгласно EN 16931"

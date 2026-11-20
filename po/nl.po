@@ -1,0 +1,878 @@
+# Dutch translation of E-Invoice Viewer.
+# This file is distributed under the same licence as E-Invoice Viewer
+# (GPL-3.0-or-later).
+# Not checked by a native speaker (spec 0030); corrections are welcome
+# as an issue on GitHub.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: E-Invoice Viewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-19 10:45+0100\n"
+"PO-Revision-Date: 2026-11-18 00:00+0100\n"
+"Last-Translator: E-Invoice Viewer contributors\n"
+"Language-Team: Dutch\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Open an invoice"
+msgstr "Factuur openen"
+
+msgid "Invoices (PDF, XML)"
+msgstr "Facturen (PDF, XML)"
+
+msgid "Open…"
+msgstr "Openen…"
+
+msgid "Close"
+msgstr "Sluiten"
+
+msgid "Copy value"
+msgstr "Waarde kopiëren"
+
+msgid "This PDF contains no electronic invoice"
+msgstr "Deze PDF bevat geen elektronische factuur"
+
+msgid "The PDF pages cannot be shown"
+msgstr "De PDF-pagina’s kunnen niet worden weergegeven"
+
+msgid "Plain XML invoice – no PDF included"
+msgstr "Alleen XML-factuur – geen PDF bijgevoegd"
+
+msgid "Fields"
+msgstr "Velden"
+
+msgid "XML"
+msgstr "XML"
+
+msgid "Zoom in (Ctrl++)"
+msgstr "Inzoomen (Ctrl++)"
+
+msgid "Zoom out (Ctrl+-)"
+msgstr "Uitzoomen (Ctrl+-)"
+
+msgid "Copy XML"
+msgstr "XML kopiëren"
+
+msgid "Save XML as…"
+msgstr "XML opslaan als…"
+
+msgid "The XML could not be saved"
+msgstr "De XML kon niet worden opgeslagen"
+
+msgid "Search in the XML"
+msgstr "Zoeken in de XML"
+
+msgid "Validation result"
+msgstr "Validatieresultaat"
+
+msgid "Document"
+msgstr "Document"
+
+msgid "internal error during validation"
+msgstr "interne fout bij de validatie"
+
+msgid "Recently opened"
+msgstr "Recent geopend"
+
+msgid "Attachments"
+msgstr "Bijlagen"
+
+msgid "Show in XML"
+msgstr "In XML tonen"
+
+msgid "Show in fields"
+msgstr "In velden tonen"
+
+msgid "No field assigned"
+msgstr "Geen veld toegewezen"
+
+msgid "No attachments"
+msgstr "Geen bijlagen"
+
+msgid "Save attachment…"
+msgstr "Bijlage opslaan…"
+
+msgid "No entries"
+msgstr "Geen items"
+
+msgid "Only one file per window – the first one was opened"
+msgstr "Slechts één bestand per venster – het eerste is geopend"
+
+msgid "Main menu"
+msgstr "Hoofdmenu"
+
+msgid "Language"
+msgstr "Taal"
+
+msgid "System language"
+msgstr "Systeemtaal"
+
+msgid "error"
+msgid_plural "errors"
+msgstr[0] "fout"
+msgstr[1] "fouten"
+
+msgid "warning"
+msgid_plural "warnings"
+msgstr[0] "waarschuwing"
+msgstr[1] "waarschuwingen"
+
+msgid "note"
+msgid_plural "notes"
+msgstr[0] "opmerking"
+msgstr[1] "opmerkingen"
+
+msgid "Error"
+msgid_plural "Errors"
+msgstr[0] "Fout"
+msgstr[1] "Fouten"
+
+msgid "Warning"
+msgid_plural "Warnings"
+msgstr[0] "Waarschuwing"
+msgstr[1] "Waarschuwingen"
+
+msgid "Note"
+msgid_plural "Notes"
+msgstr[0] "Opmerking"
+msgstr[1] "Opmerkingen"
+
+msgid "No findings"
+msgstr "Geen bevindingen"
+
+msgid "No errors, {counts}"
+msgstr "Geen fouten, {counts}"
+
+msgid "Validating…"
+msgstr "Valideren…"
+
+msgid "Validation failed: {reason}"
+msgstr "Validatie mislukt: {reason}"
+
+msgid "{rule sets} and {last rule set}"
+msgstr "{rule sets} en {last rule set}"
+
+msgid "Checked against {rule sets}"
+msgstr "Gevalideerd volgens {rule sets}"
+
+msgid "The address {address} is not a local file"
+msgstr "Het adres {address} is geen lokaal bestand"
+
+msgid "The file {file} was not found"
+msgstr "Het bestand {file} is niet gevonden"
+
+msgid "The file {file} cannot be read: {reason}"
+msgstr "Het bestand {file} kan niet worden gelezen: {reason}"
+
+msgid "{count} byte"
+msgid_plural "{count} bytes"
+msgstr[0] "{count} byte"
+msgstr[1] "{count} bytes"
+
+msgid "Invoice (BG-24)"
+msgstr "Factuur (BG-24)"
+
+msgid "unknown"
+msgstr "onbekend"
+
+msgid "Content not readable"
+msgstr "Inhoud niet leesbaar"
+
+msgid "Too large (over {size} MB)"
+msgstr "Te groot (meer dan {size} MB)"
+
+msgid "The attachment {name} could not be saved: {reason}"
+msgstr "De bijlage {name} kon niet worden opgeslagen: {reason}"
+
+msgid "Page {page} of {count}"
+msgstr "Pagina {page} van {count}"
+
+msgid "No matches"
+msgstr "Geen resultaten"
+
+msgid "{current} of {total}"
+msgstr "{current} van {total}"
+
+msgid "{count} match"
+msgid_plural "{count} matches"
+msgstr[0] "{count} resultaat"
+msgstr[1] "{count} resultaten"
+
+msgid "The file {file} cannot be read as an invoice: {reason}"
+msgstr "Het bestand {file} kan niet als factuur worden gelezen: {reason}"
+
+msgid "not a readable PDF file"
+msgstr "geen leesbaar PDF-bestand"
+
+msgid "the embedded invoice {name} is empty"
+msgstr "de ingesloten factuur {name} is leeg"
+
+msgid "XML is not well-formed (line {line})"
+msgstr "XML is niet goed gevormd (regel {line})"
+
+msgid "XML contains a DOCTYPE declaration – not supported"
+msgstr "XML bevat een DOCTYPE-declaratie – niet ondersteund"
+
+msgid "not an electronic invoice"
+msgstr "geen elektronische factuur"
+
+msgid "ZUGFeRD 1.0 is not supported"
+msgstr "ZUGFeRD 1.0 wordt niet ondersteund"
+
+msgid "the character encoding {encoding} is not supported"
+msgstr "de tekencodering {encoding} wordt niet ondersteund"
+
+msgid "XML is nested more than {limit} levels deep"
+msgstr "XML is meer dan {limit} niveaus diep genest"
+
+msgid "the invoice format is not supported"
+msgstr "het factuurformaat wordt niet ondersteund"
+
+msgid "Partial invoice"
+msgstr "Deelfactuur"
+
+msgid "Commercial invoice"
+msgstr "Handelsfactuur"
+
+msgid "Credit note"
+msgstr "Creditnota"
+
+msgid "Corrected invoice"
+msgstr "Gecorrigeerde factuur"
+
+msgid "Self-billed invoice"
+msgstr "Zelffactuur"
+
+msgid "Partial construction invoice"
+msgstr "Termijnfactuur (bouw)"
+
+msgid "Partial final construction invoice"
+msgstr "Laatste termijnfactuur (bouw)"
+
+msgid "Final construction invoice"
+msgstr "Eindafrekening (bouw)"
+
+msgid "Instrument not defined"
+msgstr "Niet gedefinieerd"
+
+msgid "In cash"
+msgstr "Contant"
+
+msgid "Cheque"
+msgstr "Cheque"
+
+msgid "Credit transfer"
+msgstr "Overboeking"
+
+msgid "Payment to bank account"
+msgstr "Betaling op bankrekening"
+
+msgid "Bank card"
+msgstr "Bankpas"
+
+msgid "Direct debit"
+msgstr "Incasso"
+
+msgid "Credit card"
+msgstr "Creditcard"
+
+msgid "Standing agreement"
+msgstr "Doorlopende opdracht"
+
+msgid "SEPA credit transfer"
+msgstr "SEPA-overboeking"
+
+msgid "SEPA direct debit"
+msgstr "SEPA-incasso"
+
+msgid "Clearing between partners"
+msgstr "Verrekening tussen partners"
+
+msgid "Standard rate"
+msgstr "Standaardtarief"
+
+msgid "Zero rated goods"
+msgstr "Nultarief"
+
+msgid "Exempt from tax"
+msgstr "Vrijgesteld van btw"
+
+msgid "VAT reverse charge"
+msgstr "Btw verlegd"
+
+msgid "Intra-community supply"
+msgstr "Intracommunautaire levering"
+
+msgid "Export outside the EU"
+msgstr "Uitvoer buiten de EU"
+
+msgid "Outside the scope of VAT"
+msgstr "Buiten de reikwijdte van de btw"
+
+msgid "Canary Islands IGIC"
+msgstr "Canarische Eilanden (IGIC)"
+
+msgid "Ceuta and Melilla IPSI"
+msgstr "Ceuta en Melilla (IPSI)"
+
+msgid "pieces"
+msgstr "stuks"
+
+msgid "hours"
+msgstr "uren"
+
+msgid "days"
+msgstr "dagen"
+
+msgid "months"
+msgstr "maanden"
+
+msgid "kilograms"
+msgstr "kilogram"
+
+msgid "metres"
+msgstr "meter"
+
+msgid "litres"
+msgstr "liter"
+
+msgid "lump sum"
+msgstr "forfaitair"
+
+msgid "Invoice number"
+msgstr "Factuurnummer"
+
+msgid "Invoice issue date"
+msgstr "Factuurdatum"
+
+msgid "Invoice type code"
+msgstr "Factuurtype"
+
+msgid "Invoice currency code"
+msgstr "Valuta"
+
+msgid "VAT accounting currency code"
+msgstr "Btw-valuta"
+
+msgid "Value added tax point date"
+msgstr "Btw-belastingdatum"
+
+msgid "Value added tax point date code"
+msgstr "Btw-belastingdatum (code)"
+
+msgid "Payment due date"
+msgstr "Vervaldatum"
+
+msgid "Buyer reference"
+msgstr "Referentie koper"
+
+msgid "Project reference"
+msgstr "Projectreferentie"
+
+msgid "Contract reference"
+msgstr "Contractreferentie"
+
+msgid "Purchase order reference"
+msgstr "Inkoopordernummer"
+
+msgid "Sales order reference"
+msgstr "Verkoopordernummer"
+
+msgid "Receiving advice reference"
+msgstr "Ontvangstbevestiging"
+
+msgid "Despatch advice reference"
+msgstr "Verzendbericht"
+
+msgid "Tender or lot reference"
+msgstr "Aanbestedings- of perceelreferentie"
+
+msgid "Invoiced object identifier"
+msgstr "Objectkenmerk"
+
+msgid "Buyer accounting reference"
+msgstr "Boekingsreferentie"
+
+msgid "Payment terms"
+msgstr "Betalingsvoorwaarden"
+
+msgid "Invoice note subject code"
+msgstr "Onderwerp van de opmerking (code)"
+
+msgid "Invoice note"
+msgstr "Opmerking"
+
+msgid "Business process type"
+msgstr "Bedrijfsproces"
+
+msgid "Specification identifier"
+msgstr "Specificatiekenmerk"
+
+msgid "Preceding Invoice reference"
+msgstr "Factuurnummer"
+
+msgid "Preceding Invoice issue date"
+msgstr "Factuurdatum"
+
+msgid "Seller name"
+msgstr "Naam"
+
+msgid "Seller trading name"
+msgstr "Handelsnaam"
+
+msgid "Seller identifier"
+msgstr "Kenmerk"
+
+msgid "Seller legal registration identifier"
+msgstr "Registratienummer"
+
+msgid "Seller VAT identifier"
+msgstr "Btw-nummer"
+
+msgid "Seller tax registration identifier"
+msgstr "Fiscaal nummer"
+
+msgid "Seller additional legal information"
+msgstr "Aanvullende juridische informatie"
+
+msgid "Seller electronic address"
+msgstr "Elektronisch adres"
+
+msgid "Seller address line 1"
+msgstr "Straat"
+
+msgid "Seller address line 2"
+msgstr "Adresregel 2"
+
+msgid "Seller city"
+msgstr "Plaats"
+
+msgid "Seller post code"
+msgstr "Postcode"
+
+msgid "Seller country subdivision"
+msgstr "Regio"
+
+msgid "Seller country code"
+msgstr "Land"
+
+msgid "Seller contact point"
+msgstr "Contactpersoon"
+
+msgid "Seller contact telephone number"
+msgstr "Telefoon"
+
+msgid "Seller contact email address"
+msgstr "E-mail"
+
+msgid "Buyer name"
+msgstr "Naam"
+
+msgid "Buyer trading name"
+msgstr "Handelsnaam"
+
+msgid "Buyer identifier"
+msgstr "Kenmerk"
+
+msgid "Buyer legal registration identifier"
+msgstr "Registratienummer"
+
+msgid "Buyer VAT identifier"
+msgstr "Btw-nummer"
+
+msgid "Buyer electronic address"
+msgstr "Elektronisch adres"
+
+msgid "Buyer address line 1"
+msgstr "Straat"
+
+msgid "Buyer address line 2"
+msgstr "Adresregel 2"
+
+msgid "Buyer city"
+msgstr "Plaats"
+
+msgid "Buyer post code"
+msgstr "Postcode"
+
+msgid "Buyer country subdivision"
+msgstr "Regio"
+
+msgid "Buyer country code"
+msgstr "Land"
+
+msgid "Buyer contact point"
+msgstr "Contactpersoon"
+
+msgid "Buyer contact telephone number"
+msgstr "Telefoon"
+
+msgid "Buyer contact email address"
+msgstr "E-mail"
+
+msgid "Payee name"
+msgstr "Naam"
+
+msgid "Payee identifier"
+msgstr "Kenmerk"
+
+msgid "Payee legal registration identifier"
+msgstr "Registratienummer"
+
+msgid "Seller tax representative name"
+msgstr "Naam"
+
+msgid "Seller tax representative VAT identifier"
+msgstr "Btw-nummer"
+
+msgid "Tax representative address line 1"
+msgstr "Straat"
+
+msgid "Tax representative address line 2"
+msgstr "Adresregel 2"
+
+msgid "Tax representative city"
+msgstr "Plaats"
+
+msgid "Tax representative post code"
+msgstr "Postcode"
+
+msgid "Tax representative country subdivision"
+msgstr "Regio"
+
+msgid "Tax representative country code"
+msgstr "Land"
+
+msgid "Deliver to party name"
+msgstr "Ontvanger"
+
+msgid "Deliver to location identifier"
+msgstr "Kenmerk van de afleverlocatie"
+
+msgid "Actual delivery date"
+msgstr "Leverdatum"
+
+msgid "Invoicing period start date"
+msgstr "Factuurperiode van"
+
+msgid "Invoicing period end date"
+msgstr "Factuurperiode tot en met"
+
+msgid "Deliver to address line 1"
+msgstr "Straat"
+
+msgid "Deliver to address line 2"
+msgstr "Adresregel 2"
+
+msgid "Deliver to city"
+msgstr "Plaats"
+
+msgid "Deliver to post code"
+msgstr "Postcode"
+
+msgid "Deliver to country subdivision"
+msgstr "Regio"
+
+msgid "Deliver to country code"
+msgstr "Land"
+
+msgid "Payment means type code"
+msgstr "Betaalwijze"
+
+msgid "Payment means text"
+msgstr "Betaalwijze (tekst)"
+
+msgid "Remittance information"
+msgstr "Betalingskenmerk"
+
+msgid "Payment account identifier"
+msgstr "IBAN"
+
+msgid "Payment account name"
+msgstr "Rekeninghouder"
+
+msgid "Payment service provider identifier"
+msgstr "BIC"
+
+msgid "Payment card primary account number"
+msgstr "Kaartnummer"
+
+msgid "Payment card holder name"
+msgstr "Kaarthouder"
+
+msgid "Mandate reference identifier"
+msgstr "Machtigingskenmerk"
+
+msgid "Bank assigned creditor identifier"
+msgstr "Incassant-ID"
+
+msgid "Debited account identifier"
+msgstr "Te belasten rekening"
+
+msgid "Document level allowance amount"
+msgstr "Bedrag"
+
+msgid "Document level allowance base amount"
+msgstr "Grondslag"
+
+msgid "Document level allowance percentage"
+msgstr "Percentage"
+
+msgid "Document level allowance VAT category code"
+msgstr "Btw-categorie"
+
+msgid "Document level allowance VAT rate"
+msgstr "Btw-tarief"
+
+msgid "Document level allowance reason"
+msgstr "Reden"
+
+msgid "Document level allowance reason code"
+msgstr "Reden (code)"
+
+msgid "Document level charge amount"
+msgstr "Bedrag"
+
+msgid "Document level charge base amount"
+msgstr "Grondslag"
+
+msgid "Document level charge percentage"
+msgstr "Percentage"
+
+msgid "Document level charge VAT category code"
+msgstr "Btw-categorie"
+
+msgid "Document level charge VAT rate"
+msgstr "Btw-tarief"
+
+msgid "Document level charge reason"
+msgstr "Reden"
+
+msgid "Document level charge reason code"
+msgstr "Reden (code)"
+
+msgid "Sum of Invoice line net amount"
+msgstr "Som van de regelbedragen"
+
+msgid "Sum of allowances on document level"
+msgstr "Som van de kortingen"
+
+msgid "Sum of charges on document level"
+msgstr "Som van de toeslagen"
+
+msgid "Invoice total amount without VAT"
+msgstr "Totaal exclusief btw"
+
+msgid "Invoice total VAT amount"
+msgstr "Totaal btw"
+
+msgid "Invoice total VAT amount in accounting currency"
+msgstr "Btw in btw-valuta"
+
+msgid "Invoice total amount with VAT"
+msgstr "Totaal inclusief btw"
+
+msgid "Paid amount"
+msgstr "Reeds betaald"
+
+msgid "Rounding amount"
+msgstr "Afronding"
+
+msgid "Amount due for payment"
+msgstr "Te betalen bedrag"
+
+msgid "VAT category taxable amount"
+msgstr "Btw-grondslag"
+
+msgid "VAT category tax amount"
+msgstr "Btw-bedrag"
+
+msgid "VAT category code"
+msgstr "Btw-categorie"
+
+msgid "VAT category rate"
+msgstr "Btw-tarief"
+
+msgid "VAT exemption reason text"
+msgstr "Reden van vrijstelling"
+
+msgid "VAT exemption reason code"
+msgstr "Reden van vrijstelling (code)"
+
+msgid "Invoice line identifier"
+msgstr "Regelnummer"
+
+msgid "Invoice line note"
+msgstr "Regelopmerking"
+
+msgid "Invoice line object identifier"
+msgstr "Objectkenmerk"
+
+msgid "Invoiced quantity"
+msgstr "Aantal"
+
+msgid "Invoiced quantity unit of measure code"
+msgstr "Eenheid"
+
+msgid "Invoice line net amount"
+msgstr "Nettobedrag"
+
+msgid "Referenced purchase order line reference"
+msgstr "Orderregel"
+
+msgid "Invoice line Buyer accounting reference"
+msgstr "Boekingsreferentie van de koper"
+
+msgid "Invoice line period start date"
+msgstr "Periode van"
+
+msgid "Invoice line period end date"
+msgstr "Periode tot en met"
+
+msgid "Invoice line allowance amount"
+msgstr "Bedrag"
+
+msgid "Invoice line allowance base amount"
+msgstr "Grondslag"
+
+msgid "Invoice line allowance percentage"
+msgstr "Percentage"
+
+msgid "Invoice line allowance reason"
+msgstr "Reden"
+
+msgid "Invoice line allowance reason code"
+msgstr "Reden (code)"
+
+msgid "Invoice line charge amount"
+msgstr "Bedrag"
+
+msgid "Invoice line charge base amount"
+msgstr "Grondslag"
+
+msgid "Invoice line charge percentage"
+msgstr "Percentage"
+
+msgid "Invoice line charge reason"
+msgstr "Reden"
+
+msgid "Invoice line charge reason code"
+msgstr "Reden (code)"
+
+msgid "Item net price"
+msgstr "Nettoprijs"
+
+msgid "Item price discount"
+msgstr "Prijskorting"
+
+msgid "Item gross price"
+msgstr "Brutoprijs"
+
+msgid "Item price base quantity"
+msgstr "Basishoeveelheid"
+
+msgid "Item price base quantity unit of measure code"
+msgstr "Eenheid van de basishoeveelheid"
+
+msgid "Invoiced item VAT category code"
+msgstr "Btw-categorie"
+
+msgid "Invoiced item VAT rate"
+msgstr "Btw-tarief"
+
+msgid "Item name"
+msgstr "Artikelnaam"
+
+msgid "Item description"
+msgstr "Artikelomschrijving"
+
+msgid "Item Seller's identifier"
+msgstr "Artikelnummer"
+
+msgid "Item Buyer's identifier"
+msgstr "Artikelnummer van de koper"
+
+msgid "Item standard identifier"
+msgstr "Standaardkenmerk"
+
+msgid "Item classification identifier"
+msgstr "Classificatie"
+
+msgid "Item country of origin"
+msgstr "Land van herkomst"
+
+msgid "Item attribute value"
+msgstr "Artikelkenmerk"
+
+msgid "Seller address line 3"
+msgstr "Adresregel 3"
+
+msgid "Buyer address line 3"
+msgstr "Adresregel 3"
+
+msgid "Tax representative address line 3"
+msgstr "Adresregel 3"
+
+msgid "Deliver to address line 3"
+msgstr "Adresregel 3"
+
+msgid "Invoice"
+msgstr "Factuur"
+
+msgid "Seller (BG-4)"
+msgstr "Verkoper (BG-4)"
+
+msgid "Buyer (BG-7)"
+msgstr "Koper (BG-7)"
+
+msgid "Preceding invoice reference (BG-3)"
+msgstr "Voorgaande factuur (BG-3)"
+
+msgid "Payee (BG-10)"
+msgstr "Begunstigde (BG-10)"
+
+msgid "Seller tax representative party (BG-11)"
+msgstr "Fiscaal vertegenwoordiger (BG-11)"
+
+msgid "Delivery information (BG-13)"
+msgstr "Levering (BG-13)"
+
+msgid "Invoice line"
+msgstr "Regel"
+
+msgid "Payment instructions (BG-16)"
+msgstr "Betaling (BG-16)"
+
+msgid "Document level allowances (BG-20)"
+msgstr "Korting (BG-20)"
+
+msgid "Document level charges (BG-21)"
+msgstr "Toeslag (BG-21)"
+
+msgid "Invoice line allowances (BG-27)"
+msgstr "Korting (BG-27)"
+
+msgid "Invoice line charges (BG-28)"
+msgstr "Toeslag (BG-28)"
+
+msgid "VAT breakdown (BG-23)"
+msgstr "Btw (BG-23)"
+
+msgid "Document totals (BG-22)"
+msgstr "Totalen (BG-22)"
+
+msgid "XML schema {name}"
+msgstr "XML-schema {name}"
+
+msgid "Checked against XRechnung {bundled}, invoice declares version {declared}"
+msgstr "Gevalideerd volgens XRechnung {bundled}, factuur vermeldt versie {declared}"
+
+msgid "Profile Minimum: not a complete invoice according to EN 16931"
+msgstr "Profiel Minimum: geen volledige factuur volgens EN 16931"
+
+msgid "Profile Basic WL: not a complete invoice according to EN 16931"
+msgstr "Profiel Basic WL: geen volledige factuur volgens EN 16931"

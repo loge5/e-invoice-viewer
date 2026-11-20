@@ -1,0 +1,878 @@
+# Hungarian translation of E-Invoice Viewer.
+# This file is distributed under the same licence as E-Invoice Viewer
+# (GPL-3.0-or-later).
+# Not checked by a native speaker (spec 0030); corrections are welcome
+# as an issue on GitHub.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: E-Invoice Viewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-19 10:45+0100\n"
+"PO-Revision-Date: 2026-11-18 00:00+0100\n"
+"Last-Translator: E-Invoice Viewer contributors\n"
+"Language-Team: Hungarian\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Open an invoice"
+msgstr "Számla megnyitása"
+
+msgid "Invoices (PDF, XML)"
+msgstr "Számlák (PDF, XML)"
+
+msgid "Open…"
+msgstr "Megnyitás…"
+
+msgid "Close"
+msgstr "Bezárás"
+
+msgid "Copy value"
+msgstr "Érték másolása"
+
+msgid "This PDF contains no electronic invoice"
+msgstr "Ez a PDF nem tartalmaz elektronikus számlát"
+
+msgid "The PDF pages cannot be shown"
+msgstr "A PDF oldalai nem jeleníthetők meg"
+
+msgid "Plain XML invoice – no PDF included"
+msgstr "Csak XML számla – PDF nincs mellékelve"
+
+msgid "Fields"
+msgstr "Mezők"
+
+msgid "XML"
+msgstr "XML"
+
+msgid "Zoom in (Ctrl++)"
+msgstr "Nagyítás (Ctrl++)"
+
+msgid "Zoom out (Ctrl+-)"
+msgstr "Kicsinyítés (Ctrl+-)"
+
+msgid "Copy XML"
+msgstr "XML másolása"
+
+msgid "Save XML as…"
+msgstr "XML mentése másként…"
+
+msgid "The XML could not be saved"
+msgstr "Az XML nem menthető"
+
+msgid "Search in the XML"
+msgstr "Keresés az XML-ben"
+
+msgid "Validation result"
+msgstr "Ellenőrzés eredménye"
+
+msgid "Document"
+msgstr "Dokumentum"
+
+msgid "internal error during validation"
+msgstr "belső hiba az ellenőrzés során"
+
+msgid "Recently opened"
+msgstr "Legutóbb megnyitott"
+
+msgid "Attachments"
+msgstr "Mellékletek"
+
+msgid "Show in XML"
+msgstr "Megjelenítés az XML-ben"
+
+msgid "Show in fields"
+msgstr "Megjelenítés a mezőkben"
+
+msgid "No field assigned"
+msgstr "Nincs hozzárendelt mező"
+
+msgid "No attachments"
+msgstr "Nincsenek mellékletek"
+
+msgid "Save attachment…"
+msgstr "Melléklet mentése…"
+
+msgid "No entries"
+msgstr "Nincsenek bejegyzések"
+
+msgid "Only one file per window – the first one was opened"
+msgstr "Ablakonként csak egy fájl – az első lett megnyitva"
+
+msgid "Main menu"
+msgstr "Főmenü"
+
+msgid "Language"
+msgstr "Nyelv"
+
+msgid "System language"
+msgstr "Rendszer nyelve"
+
+msgid "error"
+msgid_plural "errors"
+msgstr[0] "hiba"
+msgstr[1] "hiba"
+
+msgid "warning"
+msgid_plural "warnings"
+msgstr[0] "figyelmeztetés"
+msgstr[1] "figyelmeztetés"
+
+msgid "note"
+msgid_plural "notes"
+msgstr[0] "megjegyzés"
+msgstr[1] "megjegyzés"
+
+msgid "Error"
+msgid_plural "Errors"
+msgstr[0] "Hiba"
+msgstr[1] "Hibák"
+
+msgid "Warning"
+msgid_plural "Warnings"
+msgstr[0] "Figyelmeztetés"
+msgstr[1] "Figyelmeztetések"
+
+msgid "Note"
+msgid_plural "Notes"
+msgstr[0] "Megjegyzés"
+msgstr[1] "Megjegyzések"
+
+msgid "No findings"
+msgstr "Nincs megállapítás"
+
+msgid "No errors, {counts}"
+msgstr "Nincs hiba, {counts}"
+
+msgid "Validating…"
+msgstr "Ellenőrzés…"
+
+msgid "Validation failed: {reason}"
+msgstr "Az ellenőrzés sikertelen: {reason}"
+
+msgid "{rule sets} and {last rule set}"
+msgstr "{rule sets} és {last rule set}"
+
+msgid "Checked against {rule sets}"
+msgstr "Ellenőrizve: {rule sets}"
+
+msgid "The address {address} is not a local file"
+msgstr "A(z) {address} cím nem helyi fájl"
+
+msgid "The file {file} was not found"
+msgstr "A(z) {file} fájl nem található"
+
+msgid "The file {file} cannot be read: {reason}"
+msgstr "A(z) {file} fájl nem olvasható: {reason}"
+
+msgid "{count} byte"
+msgid_plural "{count} bytes"
+msgstr[0] "{count} bájt"
+msgstr[1] "{count} bájt"
+
+msgid "Invoice (BG-24)"
+msgstr "Számla (BG-24)"
+
+msgid "unknown"
+msgstr "ismeretlen"
+
+msgid "Content not readable"
+msgstr "A tartalom nem olvasható"
+
+msgid "Too large (over {size} MB)"
+msgstr "Túl nagy (több mint {size} MB)"
+
+msgid "The attachment {name} could not be saved: {reason}"
+msgstr "A(z) {name} melléklet nem menthető: {reason}"
+
+msgid "Page {page} of {count}"
+msgstr "{page}. oldal / {count}"
+
+msgid "No matches"
+msgstr "Nincs találat"
+
+msgid "{current} of {total}"
+msgstr "{current} / {total}"
+
+msgid "{count} match"
+msgid_plural "{count} matches"
+msgstr[0] "{count} találat"
+msgstr[1] "{count} találat"
+
+msgid "The file {file} cannot be read as an invoice: {reason}"
+msgstr "A(z) {file} fájl nem olvasható számlaként: {reason}"
+
+msgid "not a readable PDF file"
+msgstr "nem olvasható PDF-fájl"
+
+msgid "the embedded invoice {name} is empty"
+msgstr "a beágyazott {name} számla üres"
+
+msgid "XML is not well-formed (line {line})"
+msgstr "Az XML nem jól formázott ({line}. sor)"
+
+msgid "XML contains a DOCTYPE declaration – not supported"
+msgstr "Az XML DOCTYPE-deklarációt tartalmaz – nem támogatott"
+
+msgid "not an electronic invoice"
+msgstr "nem elektronikus számla"
+
+msgid "ZUGFeRD 1.0 is not supported"
+msgstr "A ZUGFeRD 1.0 nem támogatott"
+
+msgid "the character encoding {encoding} is not supported"
+msgstr "A(z) {encoding} karakterkódolás nem támogatott"
+
+msgid "XML is nested more than {limit} levels deep"
+msgstr "Az XML több mint {limit} szint mélyen van egymásba ágyazva"
+
+msgid "the invoice format is not supported"
+msgstr "a számla formátuma nem támogatott"
+
+msgid "Partial invoice"
+msgstr "Részszámla"
+
+msgid "Commercial invoice"
+msgstr "Kereskedelmi számla"
+
+msgid "Credit note"
+msgstr "Jóváíró számla"
+
+msgid "Corrected invoice"
+msgstr "Helyesbítő számla"
+
+msgid "Self-billed invoice"
+msgstr "Önszámlázás"
+
+msgid "Partial construction invoice"
+msgstr "Részletszámla (építőipar)"
+
+msgid "Partial final construction invoice"
+msgstr "Rész-végszámla (építőipar)"
+
+msgid "Final construction invoice"
+msgstr "Végszámla (építőipar)"
+
+msgid "Instrument not defined"
+msgstr "Nincs meghatározva"
+
+msgid "In cash"
+msgstr "Készpénz"
+
+msgid "Cheque"
+msgstr "Csekk"
+
+msgid "Credit transfer"
+msgstr "Átutalás"
+
+msgid "Payment to bank account"
+msgstr "Fizetés bankszámlára"
+
+msgid "Bank card"
+msgstr "Bankkártya"
+
+msgid "Direct debit"
+msgstr "Csoportos beszedés"
+
+msgid "Credit card"
+msgstr "Hitelkártya"
+
+msgid "Standing agreement"
+msgstr "Állandó átutalási megbízás"
+
+msgid "SEPA credit transfer"
+msgstr "SEPA-átutalás"
+
+msgid "SEPA direct debit"
+msgstr "SEPA-beszedés"
+
+msgid "Clearing between partners"
+msgstr "Elszámolás a felek között"
+
+msgid "Standard rate"
+msgstr "Általános adókulcs"
+
+msgid "Zero rated goods"
+msgstr "Nulla kulcs"
+
+msgid "Exempt from tax"
+msgstr "Adómentes"
+
+msgid "VAT reverse charge"
+msgstr "Fordított adózás"
+
+msgid "Intra-community supply"
+msgstr "Közösségen belüli termékértékesítés"
+
+msgid "Export outside the EU"
+msgstr "Export az EU-n kívülre"
+
+msgid "Outside the scope of VAT"
+msgstr "Az áfa hatályán kívül"
+
+msgid "Canary Islands IGIC"
+msgstr "Kanári-szigetek (IGIC)"
+
+msgid "Ceuta and Melilla IPSI"
+msgstr "Ceuta és Melilla (IPSI)"
+
+msgid "pieces"
+msgstr "darab"
+
+msgid "hours"
+msgstr "óra"
+
+msgid "days"
+msgstr "nap"
+
+msgid "months"
+msgstr "hónap"
+
+msgid "kilograms"
+msgstr "kilogramm"
+
+msgid "metres"
+msgstr "méter"
+
+msgid "litres"
+msgstr "liter"
+
+msgid "lump sum"
+msgstr "átalány"
+
+msgid "Invoice number"
+msgstr "Számlaszám"
+
+msgid "Invoice issue date"
+msgstr "Számla kelte"
+
+msgid "Invoice type code"
+msgstr "Számla típusa"
+
+msgid "Invoice currency code"
+msgstr "Pénznem"
+
+msgid "VAT accounting currency code"
+msgstr "Áfa pénzneme"
+
+msgid "Value added tax point date"
+msgstr "Teljesítés dátuma"
+
+msgid "Value added tax point date code"
+msgstr "Teljesítés dátuma (kód)"
+
+msgid "Payment due date"
+msgstr "Fizetési határidő"
+
+msgid "Buyer reference"
+msgstr "Vevői hivatkozás"
+
+msgid "Project reference"
+msgstr "Projekthivatkozás"
+
+msgid "Contract reference"
+msgstr "Szerződésszám"
+
+msgid "Purchase order reference"
+msgstr "Megrendelésszám"
+
+msgid "Sales order reference"
+msgstr "Vevői rendelés száma"
+
+msgid "Receiving advice reference"
+msgstr "Átvételi értesítő"
+
+msgid "Despatch advice reference"
+msgstr "Szállítási értesítő"
+
+msgid "Tender or lot reference"
+msgstr "Pályázat vagy rész azonosítója"
+
+msgid "Invoiced object identifier"
+msgstr "Objektumazonosító"
+
+msgid "Buyer accounting reference"
+msgstr "Könyvelési hivatkozás"
+
+msgid "Payment terms"
+msgstr "Fizetési feltételek"
+
+msgid "Invoice note subject code"
+msgstr "Megjegyzés tárgya (kód)"
+
+msgid "Invoice note"
+msgstr "Megjegyzés"
+
+msgid "Business process type"
+msgstr "Üzleti folyamat"
+
+msgid "Specification identifier"
+msgstr "Specifikáció azonosítója"
+
+msgid "Preceding Invoice reference"
+msgstr "Számlaszám"
+
+msgid "Preceding Invoice issue date"
+msgstr "Számla kelte"
+
+msgid "Seller name"
+msgstr "Név"
+
+msgid "Seller trading name"
+msgstr "Kereskedelmi név"
+
+msgid "Seller identifier"
+msgstr "Azonosító"
+
+msgid "Seller legal registration identifier"
+msgstr "Cégjegyzékszám"
+
+msgid "Seller VAT identifier"
+msgstr "Közösségi adószám"
+
+msgid "Seller tax registration identifier"
+msgstr "Adószám"
+
+msgid "Seller additional legal information"
+msgstr "További jogi információk"
+
+msgid "Seller electronic address"
+msgstr "Elektronikus cím"
+
+msgid "Seller address line 1"
+msgstr "Utca"
+
+msgid "Seller address line 2"
+msgstr "Címkiegészítés"
+
+msgid "Seller city"
+msgstr "Település"
+
+msgid "Seller post code"
+msgstr "Irányítószám"
+
+msgid "Seller country subdivision"
+msgstr "Régió"
+
+msgid "Seller country code"
+msgstr "Ország"
+
+msgid "Seller contact point"
+msgstr "Kapcsolattartó"
+
+msgid "Seller contact telephone number"
+msgstr "Telefon"
+
+msgid "Seller contact email address"
+msgstr "E-mail"
+
+msgid "Buyer name"
+msgstr "Név"
+
+msgid "Buyer trading name"
+msgstr "Kereskedelmi név"
+
+msgid "Buyer identifier"
+msgstr "Azonosító"
+
+msgid "Buyer legal registration identifier"
+msgstr "Cégjegyzékszám"
+
+msgid "Buyer VAT identifier"
+msgstr "Közösségi adószám"
+
+msgid "Buyer electronic address"
+msgstr "Elektronikus cím"
+
+msgid "Buyer address line 1"
+msgstr "Utca"
+
+msgid "Buyer address line 2"
+msgstr "Címkiegészítés"
+
+msgid "Buyer city"
+msgstr "Település"
+
+msgid "Buyer post code"
+msgstr "Irányítószám"
+
+msgid "Buyer country subdivision"
+msgstr "Régió"
+
+msgid "Buyer country code"
+msgstr "Ország"
+
+msgid "Buyer contact point"
+msgstr "Kapcsolattartó"
+
+msgid "Buyer contact telephone number"
+msgstr "Telefon"
+
+msgid "Buyer contact email address"
+msgstr "E-mail"
+
+msgid "Payee name"
+msgstr "Név"
+
+msgid "Payee identifier"
+msgstr "Azonosító"
+
+msgid "Payee legal registration identifier"
+msgstr "Cégjegyzékszám"
+
+msgid "Seller tax representative name"
+msgstr "Név"
+
+msgid "Seller tax representative VAT identifier"
+msgstr "Közösségi adószám"
+
+msgid "Tax representative address line 1"
+msgstr "Utca"
+
+msgid "Tax representative address line 2"
+msgstr "Címkiegészítés"
+
+msgid "Tax representative city"
+msgstr "Település"
+
+msgid "Tax representative post code"
+msgstr "Irányítószám"
+
+msgid "Tax representative country subdivision"
+msgstr "Régió"
+
+msgid "Tax representative country code"
+msgstr "Ország"
+
+msgid "Deliver to party name"
+msgstr "Címzett"
+
+msgid "Deliver to location identifier"
+msgstr "Szállítási hely azonosítója"
+
+msgid "Actual delivery date"
+msgstr "Teljesítés napja"
+
+msgid "Invoicing period start date"
+msgstr "Elszámolási időszak kezdete"
+
+msgid "Invoicing period end date"
+msgstr "Elszámolási időszak vége"
+
+msgid "Deliver to address line 1"
+msgstr "Utca"
+
+msgid "Deliver to address line 2"
+msgstr "Címkiegészítés"
+
+msgid "Deliver to city"
+msgstr "Település"
+
+msgid "Deliver to post code"
+msgstr "Irányítószám"
+
+msgid "Deliver to country subdivision"
+msgstr "Régió"
+
+msgid "Deliver to country code"
+msgstr "Ország"
+
+msgid "Payment means type code"
+msgstr "Fizetési mód"
+
+msgid "Payment means text"
+msgstr "Fizetési mód (szöveg)"
+
+msgid "Remittance information"
+msgstr "Közlemény"
+
+msgid "Payment account identifier"
+msgstr "IBAN"
+
+msgid "Payment account name"
+msgstr "Számlatulajdonos"
+
+msgid "Payment service provider identifier"
+msgstr "BIC"
+
+msgid "Payment card primary account number"
+msgstr "Kártyaszám"
+
+msgid "Payment card holder name"
+msgstr "Kártyabirtokos"
+
+msgid "Mandate reference identifier"
+msgstr "Megbízás azonosítója"
+
+msgid "Bank assigned creditor identifier"
+msgstr "Hitelezőazonosító"
+
+msgid "Debited account identifier"
+msgstr "Terhelt számla"
+
+msgid "Document level allowance amount"
+msgstr "Összeg"
+
+msgid "Document level allowance base amount"
+msgstr "Alapösszeg"
+
+msgid "Document level allowance percentage"
+msgstr "Százalék"
+
+msgid "Document level allowance VAT category code"
+msgstr "Áfakategória"
+
+msgid "Document level allowance VAT rate"
+msgstr "Áfakulcs"
+
+msgid "Document level allowance reason"
+msgstr "Ok"
+
+msgid "Document level allowance reason code"
+msgstr "Ok (kód)"
+
+msgid "Document level charge amount"
+msgstr "Összeg"
+
+msgid "Document level charge base amount"
+msgstr "Alapösszeg"
+
+msgid "Document level charge percentage"
+msgstr "Százalék"
+
+msgid "Document level charge VAT category code"
+msgstr "Áfakategória"
+
+msgid "Document level charge VAT rate"
+msgstr "Áfakulcs"
+
+msgid "Document level charge reason"
+msgstr "Ok"
+
+msgid "Document level charge reason code"
+msgstr "Ok (kód)"
+
+msgid "Sum of Invoice line net amount"
+msgstr "Tételek nettó összege"
+
+msgid "Sum of allowances on document level"
+msgstr "Engedmények összege"
+
+msgid "Sum of charges on document level"
+msgstr "Felárak összege"
+
+msgid "Invoice total amount without VAT"
+msgstr "Nettó végösszeg"
+
+msgid "Invoice total VAT amount"
+msgstr "Áfa összesen"
+
+msgid "Invoice total VAT amount in accounting currency"
+msgstr "Áfa az áfa pénznemében"
+
+msgid "Invoice total amount with VAT"
+msgstr "Bruttó végösszeg"
+
+msgid "Paid amount"
+msgstr "Már kifizetett összeg"
+
+msgid "Rounding amount"
+msgstr "Kerekítés"
+
+msgid "Amount due for payment"
+msgstr "Fizetendő összeg"
+
+msgid "VAT category taxable amount"
+msgstr "Adóalap"
+
+msgid "VAT category tax amount"
+msgstr "Áfa összege"
+
+msgid "VAT category code"
+msgstr "Áfakategória"
+
+msgid "VAT category rate"
+msgstr "Áfakulcs"
+
+msgid "VAT exemption reason text"
+msgstr "Mentesség oka"
+
+msgid "VAT exemption reason code"
+msgstr "Mentesség oka (kód)"
+
+msgid "Invoice line identifier"
+msgstr "Tétel sorszáma"
+
+msgid "Invoice line note"
+msgstr "Tétel megjegyzése"
+
+msgid "Invoice line object identifier"
+msgstr "Objektumazonosító"
+
+msgid "Invoiced quantity"
+msgstr "Mennyiség"
+
+msgid "Invoiced quantity unit of measure code"
+msgstr "Mértékegység"
+
+msgid "Invoice line net amount"
+msgstr "Nettó összeg"
+
+msgid "Referenced purchase order line reference"
+msgstr "Megrendelés tétele"
+
+msgid "Invoice line Buyer accounting reference"
+msgstr "Vevő könyvelési hivatkozása"
+
+msgid "Invoice line period start date"
+msgstr "Időszak kezdete"
+
+msgid "Invoice line period end date"
+msgstr "Időszak vége"
+
+msgid "Invoice line allowance amount"
+msgstr "Összeg"
+
+msgid "Invoice line allowance base amount"
+msgstr "Alapösszeg"
+
+msgid "Invoice line allowance percentage"
+msgstr "Százalék"
+
+msgid "Invoice line allowance reason"
+msgstr "Ok"
+
+msgid "Invoice line allowance reason code"
+msgstr "Ok (kód)"
+
+msgid "Invoice line charge amount"
+msgstr "Összeg"
+
+msgid "Invoice line charge base amount"
+msgstr "Alapösszeg"
+
+msgid "Invoice line charge percentage"
+msgstr "Százalék"
+
+msgid "Invoice line charge reason"
+msgstr "Ok"
+
+msgid "Invoice line charge reason code"
+msgstr "Ok (kód)"
+
+msgid "Item net price"
+msgstr "Nettó egységár"
+
+msgid "Item price discount"
+msgstr "Árengedmény"
+
+msgid "Item gross price"
+msgstr "Bruttó egységár"
+
+msgid "Item price base quantity"
+msgstr "Alapmennyiség"
+
+msgid "Item price base quantity unit of measure code"
+msgstr "Alapmennyiség mértékegysége"
+
+msgid "Invoiced item VAT category code"
+msgstr "Áfakategória"
+
+msgid "Invoiced item VAT rate"
+msgstr "Áfakulcs"
+
+msgid "Item name"
+msgstr "Termék neve"
+
+msgid "Item description"
+msgstr "Termék leírása"
+
+msgid "Item Seller's identifier"
+msgstr "Cikkszám"
+
+msgid "Item Buyer's identifier"
+msgstr "Vevői cikkszám"
+
+msgid "Item standard identifier"
+msgstr "Szabványos azonosító"
+
+msgid "Item classification identifier"
+msgstr "Besorolás"
+
+msgid "Item country of origin"
+msgstr "Származási ország"
+
+msgid "Item attribute value"
+msgstr "Termékjellemző"
+
+msgid "Seller address line 3"
+msgstr "Címsor 3"
+
+msgid "Buyer address line 3"
+msgstr "Címsor 3"
+
+msgid "Tax representative address line 3"
+msgstr "Címsor 3"
+
+msgid "Deliver to address line 3"
+msgstr "Címsor 3"
+
+msgid "Invoice"
+msgstr "Számla"
+
+msgid "Seller (BG-4)"
+msgstr "Eladó (BG-4)"
+
+msgid "Buyer (BG-7)"
+msgstr "Vevő (BG-7)"
+
+msgid "Preceding invoice reference (BG-3)"
+msgstr "Előzményszámla (BG-3)"
+
+msgid "Payee (BG-10)"
+msgstr "Kedvezményezett (BG-10)"
+
+msgid "Seller tax representative party (BG-11)"
+msgstr "Adóügyi képviselő (BG-11)"
+
+msgid "Delivery information (BG-13)"
+msgstr "Szállítás (BG-13)"
+
+msgid "Invoice line"
+msgstr "Tétel"
+
+msgid "Payment instructions (BG-16)"
+msgstr "Fizetés (BG-16)"
+
+msgid "Document level allowances (BG-20)"
+msgstr "Engedmény (BG-20)"
+
+msgid "Document level charges (BG-21)"
+msgstr "Felár (BG-21)"
+
+msgid "Invoice line allowances (BG-27)"
+msgstr "Engedmény (BG-27)"
+
+msgid "Invoice line charges (BG-28)"
+msgstr "Felár (BG-28)"
+
+msgid "VAT breakdown (BG-23)"
+msgstr "Áfa (BG-23)"
+
+msgid "Document totals (BG-22)"
+msgstr "Végösszegek (BG-22)"
+
+msgid "XML schema {name}"
+msgstr "XML-séma: {name}"
+
+msgid "Checked against XRechnung {bundled}, invoice declares version {declared}"
+msgstr "Ellenőrizve: XRechnung {bundled}, a számla a(z) {declared} verziót adja meg"
+
+msgid "Profile Minimum: not a complete invoice according to EN 16931"
+msgstr "Minimum profil: nem teljes számla az EN 16931 szerint"
+
+msgid "Profile Basic WL: not a complete invoice according to EN 16931"
+msgstr "Basic WL profil: nem teljes számla az EN 16931 szerint"

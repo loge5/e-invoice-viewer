@@ -1,0 +1,886 @@
+# Romanian translation of E-Invoice Viewer.
+# This file is distributed under the same licence as E-Invoice Viewer
+# (GPL-3.0-or-later).
+# Not checked by a native speaker (spec 0030); corrections are welcome
+# as an issue on GitHub.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: E-Invoice Viewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-19 10:45+0100\n"
+"PO-Revision-Date: 2026-11-18 00:00+0100\n"
+"Last-Translator: E-Invoice Viewer contributors\n"
+"Language-Team: Romanian\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
+
+msgid "Open an invoice"
+msgstr "Deschide o factură"
+
+msgid "Invoices (PDF, XML)"
+msgstr "Facturi (PDF, XML)"
+
+msgid "Open…"
+msgstr "Deschide…"
+
+msgid "Close"
+msgstr "Închide"
+
+msgid "Copy value"
+msgstr "Copiază valoarea"
+
+msgid "This PDF contains no electronic invoice"
+msgstr "Acest PDF nu conține nicio factură electronică"
+
+msgid "The PDF pages cannot be shown"
+msgstr "Paginile PDF nu pot fi afișate"
+
+msgid "Plain XML invoice – no PDF included"
+msgstr "Factură doar XML – fără PDF inclus"
+
+msgid "Fields"
+msgstr "Câmpuri"
+
+msgid "XML"
+msgstr "XML"
+
+msgid "Zoom in (Ctrl++)"
+msgstr "Mărește (Ctrl++)"
+
+msgid "Zoom out (Ctrl+-)"
+msgstr "Micșorează (Ctrl+-)"
+
+msgid "Copy XML"
+msgstr "Copiază XML-ul"
+
+msgid "Save XML as…"
+msgstr "Salvează XML-ul ca…"
+
+msgid "The XML could not be saved"
+msgstr "XML-ul nu a putut fi salvat"
+
+msgid "Search in the XML"
+msgstr "Caută în XML"
+
+msgid "Validation result"
+msgstr "Rezultatul validării"
+
+msgid "Document"
+msgstr "Document"
+
+msgid "internal error during validation"
+msgstr "eroare internă la validare"
+
+msgid "Recently opened"
+msgstr "Deschise recent"
+
+msgid "Attachments"
+msgstr "Atașamente"
+
+msgid "Show in XML"
+msgstr "Arată în XML"
+
+msgid "Show in fields"
+msgstr "Arată în câmpuri"
+
+msgid "No field assigned"
+msgstr "Niciun câmp asociat"
+
+msgid "No attachments"
+msgstr "Niciun atașament"
+
+msgid "Save attachment…"
+msgstr "Salvează atașamentul…"
+
+msgid "No entries"
+msgstr "Nicio intrare"
+
+msgid "Only one file per window – the first one was opened"
+msgstr "Un singur fișier per fereastră – a fost deschis primul"
+
+msgid "Main menu"
+msgstr "Meniu principal"
+
+msgid "Language"
+msgstr "Limbă"
+
+msgid "System language"
+msgstr "Limba sistemului"
+
+msgid "error"
+msgid_plural "errors"
+msgstr[0] "eroare"
+msgstr[1] "erori"
+msgstr[2] "de erori"
+
+msgid "warning"
+msgid_plural "warnings"
+msgstr[0] "avertisment"
+msgstr[1] "avertismente"
+msgstr[2] "de avertismente"
+
+msgid "note"
+msgid_plural "notes"
+msgstr[0] "notă"
+msgstr[1] "note"
+msgstr[2] "de note"
+
+msgid "Error"
+msgid_plural "Errors"
+msgstr[0] "Eroare"
+msgstr[1] "Erori"
+msgstr[2] "Erori"
+
+msgid "Warning"
+msgid_plural "Warnings"
+msgstr[0] "Avertisment"
+msgstr[1] "Avertismente"
+msgstr[2] "Avertismente"
+
+msgid "Note"
+msgid_plural "Notes"
+msgstr[0] "Notă"
+msgstr[1] "Note"
+msgstr[2] "Note"
+
+msgid "No findings"
+msgstr "Nicio constatare"
+
+msgid "No errors, {counts}"
+msgstr "Nicio eroare, {counts}"
+
+msgid "Validating…"
+msgstr "Se validează…"
+
+msgid "Validation failed: {reason}"
+msgstr "Validarea a eșuat: {reason}"
+
+msgid "{rule sets} and {last rule set}"
+msgstr "{rule sets} și {last rule set}"
+
+msgid "Checked against {rule sets}"
+msgstr "Validat conform {rule sets}"
+
+msgid "The address {address} is not a local file"
+msgstr "Adresa {address} nu este un fișier local"
+
+msgid "The file {file} was not found"
+msgstr "Fișierul {file} nu a fost găsit"
+
+msgid "The file {file} cannot be read: {reason}"
+msgstr "Fișierul {file} nu poate fi citit: {reason}"
+
+msgid "{count} byte"
+msgid_plural "{count} bytes"
+msgstr[0] "{count} octet"
+msgstr[1] "{count} octeți"
+msgstr[2] "{count} de octeți"
+
+msgid "Invoice (BG-24)"
+msgstr "Factură (BG-24)"
+
+msgid "unknown"
+msgstr "necunoscut"
+
+msgid "Content not readable"
+msgstr "Conținut ilizibil"
+
+msgid "Too large (over {size} MB)"
+msgstr "Prea mare (peste {size} MB)"
+
+msgid "The attachment {name} could not be saved: {reason}"
+msgstr "Atașamentul {name} nu a putut fi salvat: {reason}"
+
+msgid "Page {page} of {count}"
+msgstr "Pagina {page} din {count}"
+
+msgid "No matches"
+msgstr "Niciun rezultat"
+
+msgid "{current} of {total}"
+msgstr "{current} din {total}"
+
+msgid "{count} match"
+msgid_plural "{count} matches"
+msgstr[0] "{count} rezultat"
+msgstr[1] "{count} rezultate"
+msgstr[2] "{count} de rezultate"
+
+msgid "The file {file} cannot be read as an invoice: {reason}"
+msgstr "Fișierul {file} nu poate fi citit ca factură: {reason}"
+
+msgid "not a readable PDF file"
+msgstr "nu este un fișier PDF lizibil"
+
+msgid "the embedded invoice {name} is empty"
+msgstr "factura încorporată {name} este goală"
+
+msgid "XML is not well-formed (line {line})"
+msgstr "XML-ul nu este bine format (linia {line})"
+
+msgid "XML contains a DOCTYPE declaration – not supported"
+msgstr "XML-ul conține o declarație DOCTYPE – nu este acceptată"
+
+msgid "not an electronic invoice"
+msgstr "nu este o factură electronică"
+
+msgid "ZUGFeRD 1.0 is not supported"
+msgstr "ZUGFeRD 1.0 nu este acceptat"
+
+msgid "the character encoding {encoding} is not supported"
+msgstr "codificarea de caractere {encoding} nu este acceptată"
+
+msgid "XML is nested more than {limit} levels deep"
+msgstr "XML-ul este imbricat pe mai mult de {limit} niveluri"
+
+msgid "the invoice format is not supported"
+msgstr "formatul facturii nu este acceptat"
+
+msgid "Partial invoice"
+msgstr "Factură parțială"
+
+msgid "Commercial invoice"
+msgstr "Factură comercială"
+
+msgid "Credit note"
+msgstr "Factură de credit"
+
+msgid "Corrected invoice"
+msgstr "Factură corectată"
+
+msgid "Self-billed invoice"
+msgstr "Autofactură"
+
+msgid "Partial construction invoice"
+msgstr "Factură parțială (construcții)"
+
+msgid "Partial final construction invoice"
+msgstr "Factură parțială finală (construcții)"
+
+msgid "Final construction invoice"
+msgstr "Factură finală (construcții)"
+
+msgid "Instrument not defined"
+msgstr "Instrument nedefinit"
+
+msgid "In cash"
+msgstr "Numerar"
+
+msgid "Cheque"
+msgstr "Cec"
+
+msgid "Credit transfer"
+msgstr "Transfer bancar"
+
+msgid "Payment to bank account"
+msgstr "Plată în cont bancar"
+
+msgid "Bank card"
+msgstr "Card bancar"
+
+msgid "Direct debit"
+msgstr "Debit direct"
+
+msgid "Credit card"
+msgstr "Card de credit"
+
+msgid "Standing agreement"
+msgstr "Ordin de plată permanent"
+
+msgid "SEPA credit transfer"
+msgstr "Transfer SEPA"
+
+msgid "SEPA direct debit"
+msgstr "Debit direct SEPA"
+
+msgid "Clearing between partners"
+msgstr "Compensare între parteneri"
+
+msgid "Standard rate"
+msgstr "Cota standard"
+
+msgid "Zero rated goods"
+msgstr "Cota zero"
+
+msgid "Exempt from tax"
+msgstr "Scutit de TVA"
+
+msgid "VAT reverse charge"
+msgstr "Taxare inversă"
+
+msgid "Intra-community supply"
+msgstr "Livrare intracomunitară"
+
+msgid "Export outside the EU"
+msgstr "Export în afara UE"
+
+msgid "Outside the scope of VAT"
+msgstr "În afara sferei de aplicare a TVA"
+
+msgid "Canary Islands IGIC"
+msgstr "Insulele Canare (IGIC)"
+
+msgid "Ceuta and Melilla IPSI"
+msgstr "Ceuta și Melilla (IPSI)"
+
+msgid "pieces"
+msgstr "bucăți"
+
+msgid "hours"
+msgstr "ore"
+
+msgid "days"
+msgstr "zile"
+
+msgid "months"
+msgstr "luni"
+
+msgid "kilograms"
+msgstr "kilograme"
+
+msgid "metres"
+msgstr "metri"
+
+msgid "litres"
+msgstr "litri"
+
+msgid "lump sum"
+msgstr "forfetar"
+
+msgid "Invoice number"
+msgstr "Număr factură"
+
+msgid "Invoice issue date"
+msgstr "Data facturii"
+
+msgid "Invoice type code"
+msgstr "Tip factură"
+
+msgid "Invoice currency code"
+msgstr "Moneda"
+
+msgid "VAT accounting currency code"
+msgstr "Moneda TVA"
+
+msgid "Value added tax point date"
+msgstr "Data exigibilității TVA"
+
+msgid "Value added tax point date code"
+msgstr "Exigibilitate TVA (cod)"
+
+msgid "Payment due date"
+msgstr "Data scadenței"
+
+msgid "Buyer reference"
+msgstr "Referința cumpărătorului"
+
+msgid "Project reference"
+msgstr "Referința proiectului"
+
+msgid "Contract reference"
+msgstr "Referința contractului"
+
+msgid "Purchase order reference"
+msgstr "Referința comenzii"
+
+msgid "Sales order reference"
+msgstr "Referința comenzii de vânzare"
+
+msgid "Receiving advice reference"
+msgstr "Aviz de recepție"
+
+msgid "Despatch advice reference"
+msgstr "Aviz de expediție"
+
+msgid "Tender or lot reference"
+msgstr "Referința licitației sau a lotului"
+
+msgid "Invoiced object identifier"
+msgstr "Identificatorul obiectului"
+
+msgid "Buyer accounting reference"
+msgstr "Referință contabilă"
+
+msgid "Payment terms"
+msgstr "Condiții de plată"
+
+msgid "Invoice note subject code"
+msgstr "Subiectul notei (cod)"
+
+msgid "Invoice note"
+msgstr "Notă"
+
+msgid "Business process type"
+msgstr "Proces de afaceri"
+
+msgid "Specification identifier"
+msgstr "Identificatorul specificației"
+
+msgid "Preceding Invoice reference"
+msgstr "Număr factură"
+
+msgid "Preceding Invoice issue date"
+msgstr "Data facturii"
+
+msgid "Seller name"
+msgstr "Nume"
+
+msgid "Seller trading name"
+msgstr "Denumire comercială"
+
+msgid "Seller identifier"
+msgstr "Identificator"
+
+msgid "Seller legal registration identifier"
+msgstr "Număr de înregistrare"
+
+msgid "Seller VAT identifier"
+msgstr "Cod de TVA"
+
+msgid "Seller tax registration identifier"
+msgstr "Cod fiscal"
+
+msgid "Seller additional legal information"
+msgstr "Informații juridice suplimentare"
+
+msgid "Seller electronic address"
+msgstr "Adresă electronică"
+
+msgid "Seller address line 1"
+msgstr "Adresă"
+
+msgid "Seller address line 2"
+msgstr "Adresă (rândul 2)"
+
+msgid "Seller city"
+msgstr "Localitate"
+
+msgid "Seller post code"
+msgstr "Cod poștal"
+
+msgid "Seller country subdivision"
+msgstr "Județ/regiune"
+
+msgid "Seller country code"
+msgstr "Țară"
+
+msgid "Seller contact point"
+msgstr "Persoană de contact"
+
+msgid "Seller contact telephone number"
+msgstr "Telefon"
+
+msgid "Seller contact email address"
+msgstr "E-mail"
+
+msgid "Buyer name"
+msgstr "Nume"
+
+msgid "Buyer trading name"
+msgstr "Denumire comercială"
+
+msgid "Buyer identifier"
+msgstr "Identificator"
+
+msgid "Buyer legal registration identifier"
+msgstr "Număr de înregistrare"
+
+msgid "Buyer VAT identifier"
+msgstr "Cod de TVA"
+
+msgid "Buyer electronic address"
+msgstr "Adresă electronică"
+
+msgid "Buyer address line 1"
+msgstr "Adresă"
+
+msgid "Buyer address line 2"
+msgstr "Adresă (rândul 2)"
+
+msgid "Buyer city"
+msgstr "Localitate"
+
+msgid "Buyer post code"
+msgstr "Cod poștal"
+
+msgid "Buyer country subdivision"
+msgstr "Județ/regiune"
+
+msgid "Buyer country code"
+msgstr "Țară"
+
+msgid "Buyer contact point"
+msgstr "Persoană de contact"
+
+msgid "Buyer contact telephone number"
+msgstr "Telefon"
+
+msgid "Buyer contact email address"
+msgstr "E-mail"
+
+msgid "Payee name"
+msgstr "Nume"
+
+msgid "Payee identifier"
+msgstr "Identificator"
+
+msgid "Payee legal registration identifier"
+msgstr "Număr de înregistrare"
+
+msgid "Seller tax representative name"
+msgstr "Nume"
+
+msgid "Seller tax representative VAT identifier"
+msgstr "Cod de TVA"
+
+msgid "Tax representative address line 1"
+msgstr "Adresă"
+
+msgid "Tax representative address line 2"
+msgstr "Adresă (rândul 2)"
+
+msgid "Tax representative city"
+msgstr "Localitate"
+
+msgid "Tax representative post code"
+msgstr "Cod poștal"
+
+msgid "Tax representative country subdivision"
+msgstr "Județ/regiune"
+
+msgid "Tax representative country code"
+msgstr "Țară"
+
+msgid "Deliver to party name"
+msgstr "Destinatar"
+
+msgid "Deliver to location identifier"
+msgstr "Identificatorul locului de livrare"
+
+msgid "Actual delivery date"
+msgstr "Data livrării"
+
+msgid "Invoicing period start date"
+msgstr "Perioada de facturare de la"
+
+msgid "Invoicing period end date"
+msgstr "Perioada de facturare până la"
+
+msgid "Deliver to address line 1"
+msgstr "Adresă"
+
+msgid "Deliver to address line 2"
+msgstr "Adresă (rândul 2)"
+
+msgid "Deliver to city"
+msgstr "Localitate"
+
+msgid "Deliver to post code"
+msgstr "Cod poștal"
+
+msgid "Deliver to country subdivision"
+msgstr "Județ/regiune"
+
+msgid "Deliver to country code"
+msgstr "Țară"
+
+msgid "Payment means type code"
+msgstr "Modalitate de plată"
+
+msgid "Payment means text"
+msgstr "Modalitate de plată (text)"
+
+msgid "Remittance information"
+msgstr "Detalii plată"
+
+msgid "Payment account identifier"
+msgstr "IBAN"
+
+msgid "Payment account name"
+msgstr "Titularul contului"
+
+msgid "Payment service provider identifier"
+msgstr "BIC"
+
+msgid "Payment card primary account number"
+msgstr "Numărul cardului"
+
+msgid "Payment card holder name"
+msgstr "Titularul cardului"
+
+msgid "Mandate reference identifier"
+msgstr "Referința mandatului"
+
+msgid "Bank assigned creditor identifier"
+msgstr "Identificatorul creditorului"
+
+msgid "Debited account identifier"
+msgstr "Cont debitat"
+
+msgid "Document level allowance amount"
+msgstr "Valoare"
+
+msgid "Document level allowance base amount"
+msgstr "Valoare de bază"
+
+msgid "Document level allowance percentage"
+msgstr "Procent"
+
+msgid "Document level allowance VAT category code"
+msgstr "Categorie TVA"
+
+msgid "Document level allowance VAT rate"
+msgstr "Cota TVA"
+
+msgid "Document level allowance reason"
+msgstr "Motiv"
+
+msgid "Document level allowance reason code"
+msgstr "Motiv (cod)"
+
+msgid "Document level charge amount"
+msgstr "Valoare"
+
+msgid "Document level charge base amount"
+msgstr "Valoare de bază"
+
+msgid "Document level charge percentage"
+msgstr "Procent"
+
+msgid "Document level charge VAT category code"
+msgstr "Categorie TVA"
+
+msgid "Document level charge VAT rate"
+msgstr "Cota TVA"
+
+msgid "Document level charge reason"
+msgstr "Motiv"
+
+msgid "Document level charge reason code"
+msgstr "Motiv (cod)"
+
+msgid "Sum of Invoice line net amount"
+msgstr "Total linii fără TVA"
+
+msgid "Sum of allowances on document level"
+msgstr "Total reduceri"
+
+msgid "Sum of charges on document level"
+msgstr "Total taxe suplimentare"
+
+msgid "Invoice total amount without VAT"
+msgstr "Total fără TVA"
+
+msgid "Invoice total VAT amount"
+msgstr "Total TVA"
+
+msgid "Invoice total VAT amount in accounting currency"
+msgstr "TVA în moneda TVA"
+
+msgid "Invoice total amount with VAT"
+msgstr "Total cu TVA"
+
+msgid "Paid amount"
+msgstr "Sumă plătită"
+
+msgid "Rounding amount"
+msgstr "Rotunjire"
+
+msgid "Amount due for payment"
+msgstr "Sumă de plată"
+
+msgid "VAT category taxable amount"
+msgstr "Bază impozabilă"
+
+msgid "VAT category tax amount"
+msgstr "Valoare TVA"
+
+msgid "VAT category code"
+msgstr "Categorie TVA"
+
+msgid "VAT category rate"
+msgstr "Cota TVA"
+
+msgid "VAT exemption reason text"
+msgstr "Motivul scutirii"
+
+msgid "VAT exemption reason code"
+msgstr "Motivul scutirii (cod)"
+
+msgid "Invoice line identifier"
+msgstr "Număr linie"
+
+msgid "Invoice line note"
+msgstr "Notă linie"
+
+msgid "Invoice line object identifier"
+msgstr "Identificatorul obiectului"
+
+msgid "Invoiced quantity"
+msgstr "Cantitate"
+
+msgid "Invoiced quantity unit of measure code"
+msgstr "Unitate de măsură"
+
+msgid "Invoice line net amount"
+msgstr "Valoare netă"
+
+msgid "Referenced purchase order line reference"
+msgstr "Linia comenzii"
+
+msgid "Invoice line Buyer accounting reference"
+msgstr "Referința contabilă a cumpărătorului"
+
+msgid "Invoice line period start date"
+msgstr "Perioada de la"
+
+msgid "Invoice line period end date"
+msgstr "Perioada până la"
+
+msgid "Invoice line allowance amount"
+msgstr "Valoare"
+
+msgid "Invoice line allowance base amount"
+msgstr "Valoare de bază"
+
+msgid "Invoice line allowance percentage"
+msgstr "Procent"
+
+msgid "Invoice line allowance reason"
+msgstr "Motiv"
+
+msgid "Invoice line allowance reason code"
+msgstr "Motiv (cod)"
+
+msgid "Invoice line charge amount"
+msgstr "Valoare"
+
+msgid "Invoice line charge base amount"
+msgstr "Valoare de bază"
+
+msgid "Invoice line charge percentage"
+msgstr "Procent"
+
+msgid "Invoice line charge reason"
+msgstr "Motiv"
+
+msgid "Invoice line charge reason code"
+msgstr "Motiv (cod)"
+
+msgid "Item net price"
+msgstr "Preț net"
+
+msgid "Item price discount"
+msgstr "Reducere de preț"
+
+msgid "Item gross price"
+msgstr "Preț brut"
+
+msgid "Item price base quantity"
+msgstr "Cantitate de bază"
+
+msgid "Item price base quantity unit of measure code"
+msgstr "Unitatea cantității de bază"
+
+msgid "Invoiced item VAT category code"
+msgstr "Categorie TVA"
+
+msgid "Invoiced item VAT rate"
+msgstr "Cota TVA"
+
+msgid "Item name"
+msgstr "Denumire articol"
+
+msgid "Item description"
+msgstr "Descriere articol"
+
+msgid "Item Seller's identifier"
+msgstr "Cod articol"
+
+msgid "Item Buyer's identifier"
+msgstr "Codul articolului la cumpărător"
+
+msgid "Item standard identifier"
+msgstr "Identificator standard"
+
+msgid "Item classification identifier"
+msgstr "Clasificare"
+
+msgid "Item country of origin"
+msgstr "Țara de origine"
+
+msgid "Item attribute value"
+msgstr "Atribut articol"
+
+msgid "Seller address line 3"
+msgstr "Adresă (rândul 3)"
+
+msgid "Buyer address line 3"
+msgstr "Adresă (rândul 3)"
+
+msgid "Tax representative address line 3"
+msgstr "Adresă (rândul 3)"
+
+msgid "Deliver to address line 3"
+msgstr "Adresă (rândul 3)"
+
+msgid "Invoice"
+msgstr "Factură"
+
+msgid "Seller (BG-4)"
+msgstr "Vânzător (BG-4)"
+
+msgid "Buyer (BG-7)"
+msgstr "Cumpărător (BG-7)"
+
+msgid "Preceding invoice reference (BG-3)"
+msgstr "Factură anterioară (BG-3)"
+
+msgid "Payee (BG-10)"
+msgstr "Beneficiarul plății (BG-10)"
+
+msgid "Seller tax representative party (BG-11)"
+msgstr "Reprezentant fiscal (BG-11)"
+
+msgid "Delivery information (BG-13)"
+msgstr "Livrare (BG-13)"
+
+msgid "Invoice line"
+msgstr "Linia"
+
+msgid "Payment instructions (BG-16)"
+msgstr "Plată (BG-16)"
+
+msgid "Document level allowances (BG-20)"
+msgstr "Reducere (BG-20)"
+
+msgid "Document level charges (BG-21)"
+msgstr "Taxă suplimentară (BG-21)"
+
+msgid "Invoice line allowances (BG-27)"
+msgstr "Reducere (BG-27)"
+
+msgid "Invoice line charges (BG-28)"
+msgstr "Taxă suplimentară (BG-28)"
+
+msgid "VAT breakdown (BG-23)"
+msgstr "TVA (BG-23)"
+
+msgid "Document totals (BG-22)"
+msgstr "Totaluri (BG-22)"
+
+msgid "XML schema {name}"
+msgstr "Schemă XML {name}"
+
+msgid "Checked against XRechnung {bundled}, invoice declares version {declared}"
+msgstr "Validat conform XRechnung {bundled}, factura declară versiunea {declared}"
+
+msgid "Profile Minimum: not a complete invoice according to EN 16931"
+msgstr "Profil Minimum: nu este o factură completă conform EN 16931"
+
+msgid "Profile Basic WL: not a complete invoice according to EN 16931"
+msgstr "Profil Basic WL: nu este o factură completă conform EN 16931"

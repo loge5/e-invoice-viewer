@@ -1,0 +1,886 @@
+# Czech translation of E-Invoice Viewer.
+# This file is distributed under the same licence as E-Invoice Viewer
+# (GPL-3.0-or-later).
+# Not checked by a native speaker (spec 0030); corrections are welcome
+# as an issue on GitHub.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: E-Invoice Viewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-19 10:45+0100\n"
+"PO-Revision-Date: 2026-11-18 00:00+0100\n"
+"Last-Translator: E-Invoice Viewer contributors\n"
+"Language-Team: Czech\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
+
+msgid "Open an invoice"
+msgstr "Otevřít fakturu"
+
+msgid "Invoices (PDF, XML)"
+msgstr "Faktury (PDF, XML)"
+
+msgid "Open…"
+msgstr "Otevřít…"
+
+msgid "Close"
+msgstr "Zavřít"
+
+msgid "Copy value"
+msgstr "Kopírovat hodnotu"
+
+msgid "This PDF contains no electronic invoice"
+msgstr "Toto PDF neobsahuje elektronickou fakturu"
+
+msgid "The PDF pages cannot be shown"
+msgstr "Stránky PDF nelze zobrazit"
+
+msgid "Plain XML invoice – no PDF included"
+msgstr "Samostatná faktura XML – bez PDF"
+
+msgid "Fields"
+msgstr "Pole"
+
+msgid "XML"
+msgstr "XML"
+
+msgid "Zoom in (Ctrl++)"
+msgstr "Zvětšit (Ctrl++)"
+
+msgid "Zoom out (Ctrl+-)"
+msgstr "Zmenšit (Ctrl+-)"
+
+msgid "Copy XML"
+msgstr "Kopírovat XML"
+
+msgid "Save XML as…"
+msgstr "Uložit XML jako…"
+
+msgid "The XML could not be saved"
+msgstr "XML se nepodařilo uložit"
+
+msgid "Search in the XML"
+msgstr "Hledat v XML"
+
+msgid "Validation result"
+msgstr "Výsledek kontroly"
+
+msgid "Document"
+msgstr "Dokument"
+
+msgid "internal error during validation"
+msgstr "interní chyba při kontrole"
+
+msgid "Recently opened"
+msgstr "Nedávno otevřené"
+
+msgid "Attachments"
+msgstr "Přílohy"
+
+msgid "Show in XML"
+msgstr "Zobrazit v XML"
+
+msgid "Show in fields"
+msgstr "Zobrazit v polích"
+
+msgid "No field assigned"
+msgstr "Není přiřazeno žádné pole"
+
+msgid "No attachments"
+msgstr "Žádné přílohy"
+
+msgid "Save attachment…"
+msgstr "Uložit přílohu…"
+
+msgid "No entries"
+msgstr "Žádné položky"
+
+msgid "Only one file per window – the first one was opened"
+msgstr "Jen jeden soubor na okno – otevřen byl první"
+
+msgid "Main menu"
+msgstr "Hlavní nabídka"
+
+msgid "Language"
+msgstr "Jazyk"
+
+msgid "System language"
+msgstr "Jazyk systému"
+
+msgid "error"
+msgid_plural "errors"
+msgstr[0] "chyba"
+msgstr[1] "chyby"
+msgstr[2] "chyb"
+
+msgid "warning"
+msgid_plural "warnings"
+msgstr[0] "varování"
+msgstr[1] "varování"
+msgstr[2] "varování"
+
+msgid "note"
+msgid_plural "notes"
+msgstr[0] "poznámka"
+msgstr[1] "poznámky"
+msgstr[2] "poznámek"
+
+msgid "Error"
+msgid_plural "Errors"
+msgstr[0] "Chyba"
+msgstr[1] "Chyby"
+msgstr[2] "Chyby"
+
+msgid "Warning"
+msgid_plural "Warnings"
+msgstr[0] "Varování"
+msgstr[1] "Varování"
+msgstr[2] "Varování"
+
+msgid "Note"
+msgid_plural "Notes"
+msgstr[0] "Poznámka"
+msgstr[1] "Poznámky"
+msgstr[2] "Poznámky"
+
+msgid "No findings"
+msgstr "Žádná zjištění"
+
+msgid "No errors, {counts}"
+msgstr "Žádné chyby, {counts}"
+
+msgid "Validating…"
+msgstr "Kontroluje se…"
+
+msgid "Validation failed: {reason}"
+msgstr "Kontrola selhala: {reason}"
+
+msgid "{rule sets} and {last rule set}"
+msgstr "{rule sets} a {last rule set}"
+
+msgid "Checked against {rule sets}"
+msgstr "Zkontrolováno podle {rule sets}"
+
+msgid "The address {address} is not a local file"
+msgstr "Adresa {address} není místní soubor"
+
+msgid "The file {file} was not found"
+msgstr "Soubor {file} nebyl nalezen"
+
+msgid "The file {file} cannot be read: {reason}"
+msgstr "Soubor {file} nelze přečíst: {reason}"
+
+msgid "{count} byte"
+msgid_plural "{count} bytes"
+msgstr[0] "{count} bajt"
+msgstr[1] "{count} bajty"
+msgstr[2] "{count} bajtů"
+
+msgid "Invoice (BG-24)"
+msgstr "Faktura (BG-24)"
+
+msgid "unknown"
+msgstr "neznámé"
+
+msgid "Content not readable"
+msgstr "Obsah nelze přečíst"
+
+msgid "Too large (over {size} MB)"
+msgstr "Příliš velké (přes {size} MB)"
+
+msgid "The attachment {name} could not be saved: {reason}"
+msgstr "Přílohu {name} se nepodařilo uložit: {reason}"
+
+msgid "Page {page} of {count}"
+msgstr "Strana {page} z {count}"
+
+msgid "No matches"
+msgstr "Žádné shody"
+
+msgid "{current} of {total}"
+msgstr "{current} z {total}"
+
+msgid "{count} match"
+msgid_plural "{count} matches"
+msgstr[0] "{count} shoda"
+msgstr[1] "{count} shody"
+msgstr[2] "{count} shod"
+
+msgid "The file {file} cannot be read as an invoice: {reason}"
+msgstr "Soubor {file} nelze přečíst jako fakturu: {reason}"
+
+msgid "not a readable PDF file"
+msgstr "není čitelný soubor PDF"
+
+msgid "the embedded invoice {name} is empty"
+msgstr "vložená faktura {name} je prázdná"
+
+msgid "XML is not well-formed (line {line})"
+msgstr "XML není správně utvořené (řádek {line})"
+
+msgid "XML contains a DOCTYPE declaration – not supported"
+msgstr "XML obsahuje deklaraci DOCTYPE – není podporováno"
+
+msgid "not an electronic invoice"
+msgstr "není elektronická faktura"
+
+msgid "ZUGFeRD 1.0 is not supported"
+msgstr "ZUGFeRD 1.0 není podporován"
+
+msgid "the character encoding {encoding} is not supported"
+msgstr "kódování znaků {encoding} není podporováno"
+
+msgid "XML is nested more than {limit} levels deep"
+msgstr "XML je vnořeno hlouběji než {limit} úrovní"
+
+msgid "the invoice format is not supported"
+msgstr "formát faktury není podporován"
+
+msgid "Partial invoice"
+msgstr "Dílčí faktura"
+
+msgid "Commercial invoice"
+msgstr "Faktura"
+
+msgid "Credit note"
+msgstr "Dobropis"
+
+msgid "Corrected invoice"
+msgstr "Opravná faktura"
+
+msgid "Self-billed invoice"
+msgstr "Faktura vystavená odběratelem"
+
+msgid "Partial construction invoice"
+msgstr "Zálohová faktura (stavebnictví)"
+
+msgid "Partial final construction invoice"
+msgstr "Dílčí konečná faktura (stavebnictví)"
+
+msgid "Final construction invoice"
+msgstr "Konečná faktura (stavebnictví)"
+
+msgid "Instrument not defined"
+msgstr "Nedefinováno"
+
+msgid "In cash"
+msgstr "Hotově"
+
+msgid "Cheque"
+msgstr "Šek"
+
+msgid "Credit transfer"
+msgstr "Převodem"
+
+msgid "Payment to bank account"
+msgstr "Platba na bankovní účet"
+
+msgid "Bank card"
+msgstr "Bankovní karta"
+
+msgid "Direct debit"
+msgstr "Inkaso"
+
+msgid "Credit card"
+msgstr "Kreditní karta"
+
+msgid "Standing agreement"
+msgstr "Trvalý příkaz"
+
+msgid "SEPA credit transfer"
+msgstr "Úhrada SEPA"
+
+msgid "SEPA direct debit"
+msgstr "Inkaso SEPA"
+
+msgid "Clearing between partners"
+msgstr "Zápočet"
+
+msgid "Standard rate"
+msgstr "Základní sazba"
+
+msgid "Zero rated goods"
+msgstr "Nulová sazba"
+
+msgid "Exempt from tax"
+msgstr "Osvobozeno od daně"
+
+msgid "VAT reverse charge"
+msgstr "Přenesení daňové povinnosti"
+
+msgid "Intra-community supply"
+msgstr "Dodání do jiného členského státu"
+
+msgid "Export outside the EU"
+msgstr "Vývoz mimo EU"
+
+msgid "Outside the scope of VAT"
+msgstr "Nepodléhá DPH"
+
+msgid "Canary Islands IGIC"
+msgstr "Kanárské ostrovy (IGIC)"
+
+msgid "Ceuta and Melilla IPSI"
+msgstr "Ceuta a Melilla (IPSI)"
+
+msgid "pieces"
+msgstr "kusy"
+
+msgid "hours"
+msgstr "hodiny"
+
+msgid "days"
+msgstr "dny"
+
+msgid "months"
+msgstr "měsíce"
+
+msgid "kilograms"
+msgstr "kilogramy"
+
+msgid "metres"
+msgstr "metry"
+
+msgid "litres"
+msgstr "litry"
+
+msgid "lump sum"
+msgstr "paušál"
+
+msgid "Invoice number"
+msgstr "Číslo faktury"
+
+msgid "Invoice issue date"
+msgstr "Datum vystavení"
+
+msgid "Invoice type code"
+msgstr "Typ faktury"
+
+msgid "Invoice currency code"
+msgstr "Měna"
+
+msgid "VAT accounting currency code"
+msgstr "Měna DPH"
+
+msgid "Value added tax point date"
+msgstr "Datum zdanitelného plnění"
+
+msgid "Value added tax point date code"
+msgstr "Datum plnění (kód)"
+
+msgid "Payment due date"
+msgstr "Datum splatnosti"
+
+msgid "Buyer reference"
+msgstr "Reference kupujícího"
+
+msgid "Project reference"
+msgstr "Reference projektu"
+
+msgid "Contract reference"
+msgstr "Číslo smlouvy"
+
+msgid "Purchase order reference"
+msgstr "Číslo objednávky"
+
+msgid "Sales order reference"
+msgstr "Číslo zakázky"
+
+msgid "Receiving advice reference"
+msgstr "Příjemka"
+
+msgid "Despatch advice reference"
+msgstr "Dodací list"
+
+msgid "Tender or lot reference"
+msgstr "Číslo zakázky nebo části"
+
+msgid "Invoiced object identifier"
+msgstr "Identifikátor objektu"
+
+msgid "Buyer accounting reference"
+msgstr "Účetní reference"
+
+msgid "Payment terms"
+msgstr "Platební podmínky"
+
+msgid "Invoice note subject code"
+msgstr "Předmět poznámky (kód)"
+
+msgid "Invoice note"
+msgstr "Poznámka"
+
+msgid "Business process type"
+msgstr "Obchodní proces"
+
+msgid "Specification identifier"
+msgstr "Identifikátor specifikace"
+
+msgid "Preceding Invoice reference"
+msgstr "Číslo faktury"
+
+msgid "Preceding Invoice issue date"
+msgstr "Datum vystavení"
+
+msgid "Seller name"
+msgstr "Název"
+
+msgid "Seller trading name"
+msgstr "Obchodní název"
+
+msgid "Seller identifier"
+msgstr "Identifikátor"
+
+msgid "Seller legal registration identifier"
+msgstr "IČO"
+
+msgid "Seller VAT identifier"
+msgstr "DIČ"
+
+msgid "Seller tax registration identifier"
+msgstr "Daňové registrační číslo"
+
+msgid "Seller additional legal information"
+msgstr "Další právní údaje"
+
+msgid "Seller electronic address"
+msgstr "Elektronická adresa"
+
+msgid "Seller address line 1"
+msgstr "Ulice"
+
+msgid "Seller address line 2"
+msgstr "Doplněk adresy"
+
+msgid "Seller city"
+msgstr "Obec"
+
+msgid "Seller post code"
+msgstr "PSČ"
+
+msgid "Seller country subdivision"
+msgstr "Kraj"
+
+msgid "Seller country code"
+msgstr "Země"
+
+msgid "Seller contact point"
+msgstr "Kontaktní osoba"
+
+msgid "Seller contact telephone number"
+msgstr "Telefon"
+
+msgid "Seller contact email address"
+msgstr "E-mail"
+
+msgid "Buyer name"
+msgstr "Název"
+
+msgid "Buyer trading name"
+msgstr "Obchodní název"
+
+msgid "Buyer identifier"
+msgstr "Identifikátor"
+
+msgid "Buyer legal registration identifier"
+msgstr "IČO"
+
+msgid "Buyer VAT identifier"
+msgstr "DIČ"
+
+msgid "Buyer electronic address"
+msgstr "Elektronická adresa"
+
+msgid "Buyer address line 1"
+msgstr "Ulice"
+
+msgid "Buyer address line 2"
+msgstr "Doplněk adresy"
+
+msgid "Buyer city"
+msgstr "Obec"
+
+msgid "Buyer post code"
+msgstr "PSČ"
+
+msgid "Buyer country subdivision"
+msgstr "Kraj"
+
+msgid "Buyer country code"
+msgstr "Země"
+
+msgid "Buyer contact point"
+msgstr "Kontaktní osoba"
+
+msgid "Buyer contact telephone number"
+msgstr "Telefon"
+
+msgid "Buyer contact email address"
+msgstr "E-mail"
+
+msgid "Payee name"
+msgstr "Název"
+
+msgid "Payee identifier"
+msgstr "Identifikátor"
+
+msgid "Payee legal registration identifier"
+msgstr "IČO"
+
+msgid "Seller tax representative name"
+msgstr "Název"
+
+msgid "Seller tax representative VAT identifier"
+msgstr "DIČ"
+
+msgid "Tax representative address line 1"
+msgstr "Ulice"
+
+msgid "Tax representative address line 2"
+msgstr "Doplněk adresy"
+
+msgid "Tax representative city"
+msgstr "Obec"
+
+msgid "Tax representative post code"
+msgstr "PSČ"
+
+msgid "Tax representative country subdivision"
+msgstr "Kraj"
+
+msgid "Tax representative country code"
+msgstr "Země"
+
+msgid "Deliver to party name"
+msgstr "Příjemce"
+
+msgid "Deliver to location identifier"
+msgstr "Identifikátor místa dodání"
+
+msgid "Actual delivery date"
+msgstr "Datum dodání"
+
+msgid "Invoicing period start date"
+msgstr "Fakturační období od"
+
+msgid "Invoicing period end date"
+msgstr "Fakturační období do"
+
+msgid "Deliver to address line 1"
+msgstr "Ulice"
+
+msgid "Deliver to address line 2"
+msgstr "Doplněk adresy"
+
+msgid "Deliver to city"
+msgstr "Obec"
+
+msgid "Deliver to post code"
+msgstr "PSČ"
+
+msgid "Deliver to country subdivision"
+msgstr "Kraj"
+
+msgid "Deliver to country code"
+msgstr "Země"
+
+msgid "Payment means type code"
+msgstr "Způsob platby"
+
+msgid "Payment means text"
+msgstr "Způsob platby (text)"
+
+msgid "Remittance information"
+msgstr "Zpráva pro příjemce"
+
+msgid "Payment account identifier"
+msgstr "IBAN"
+
+msgid "Payment account name"
+msgstr "Majitel účtu"
+
+msgid "Payment service provider identifier"
+msgstr "BIC"
+
+msgid "Payment card primary account number"
+msgstr "Číslo karty"
+
+msgid "Payment card holder name"
+msgstr "Držitel karty"
+
+msgid "Mandate reference identifier"
+msgstr "Reference mandátu"
+
+msgid "Bank assigned creditor identifier"
+msgstr "Identifikátor věřitele"
+
+msgid "Debited account identifier"
+msgstr "Účet k inkasu"
+
+msgid "Document level allowance amount"
+msgstr "Částka"
+
+msgid "Document level allowance base amount"
+msgstr "Základ"
+
+msgid "Document level allowance percentage"
+msgstr "Procento"
+
+msgid "Document level allowance VAT category code"
+msgstr "Kategorie DPH"
+
+msgid "Document level allowance VAT rate"
+msgstr "Sazba DPH"
+
+msgid "Document level allowance reason"
+msgstr "Důvod"
+
+msgid "Document level allowance reason code"
+msgstr "Důvod (kód)"
+
+msgid "Document level charge amount"
+msgstr "Částka"
+
+msgid "Document level charge base amount"
+msgstr "Základ"
+
+msgid "Document level charge percentage"
+msgstr "Procento"
+
+msgid "Document level charge VAT category code"
+msgstr "Kategorie DPH"
+
+msgid "Document level charge VAT rate"
+msgstr "Sazba DPH"
+
+msgid "Document level charge reason"
+msgstr "Důvod"
+
+msgid "Document level charge reason code"
+msgstr "Důvod (kód)"
+
+msgid "Sum of Invoice line net amount"
+msgstr "Součet položek bez DPH"
+
+msgid "Sum of allowances on document level"
+msgstr "Součet slev"
+
+msgid "Sum of charges on document level"
+msgstr "Součet příplatků"
+
+msgid "Invoice total amount without VAT"
+msgstr "Celkem bez DPH"
+
+msgid "Invoice total VAT amount"
+msgstr "DPH celkem"
+
+msgid "Invoice total VAT amount in accounting currency"
+msgstr "DPH v měně DPH"
+
+msgid "Invoice total amount with VAT"
+msgstr "Celkem s DPH"
+
+msgid "Paid amount"
+msgstr "Zaplaceno předem"
+
+msgid "Rounding amount"
+msgstr "Zaokrouhlení"
+
+msgid "Amount due for payment"
+msgstr "K úhradě"
+
+msgid "VAT category taxable amount"
+msgstr "Základ daně"
+
+msgid "VAT category tax amount"
+msgstr "Výše DPH"
+
+msgid "VAT category code"
+msgstr "Kategorie DPH"
+
+msgid "VAT category rate"
+msgstr "Sazba DPH"
+
+msgid "VAT exemption reason text"
+msgstr "Důvod osvobození"
+
+msgid "VAT exemption reason code"
+msgstr "Důvod osvobození (kód)"
+
+msgid "Invoice line identifier"
+msgstr "Číslo řádku"
+
+msgid "Invoice line note"
+msgstr "Poznámka k řádku"
+
+msgid "Invoice line object identifier"
+msgstr "Identifikátor objektu"
+
+msgid "Invoiced quantity"
+msgstr "Množství"
+
+msgid "Invoiced quantity unit of measure code"
+msgstr "Jednotka"
+
+msgid "Invoice line net amount"
+msgstr "Částka bez DPH"
+
+msgid "Referenced purchase order line reference"
+msgstr "Řádek objednávky"
+
+msgid "Invoice line Buyer accounting reference"
+msgstr "Účetní reference kupujícího"
+
+msgid "Invoice line period start date"
+msgstr "Období od"
+
+msgid "Invoice line period end date"
+msgstr "Období do"
+
+msgid "Invoice line allowance amount"
+msgstr "Částka"
+
+msgid "Invoice line allowance base amount"
+msgstr "Základ"
+
+msgid "Invoice line allowance percentage"
+msgstr "Procento"
+
+msgid "Invoice line allowance reason"
+msgstr "Důvod"
+
+msgid "Invoice line allowance reason code"
+msgstr "Důvod (kód)"
+
+msgid "Invoice line charge amount"
+msgstr "Částka"
+
+msgid "Invoice line charge base amount"
+msgstr "Základ"
+
+msgid "Invoice line charge percentage"
+msgstr "Procento"
+
+msgid "Invoice line charge reason"
+msgstr "Důvod"
+
+msgid "Invoice line charge reason code"
+msgstr "Důvod (kód)"
+
+msgid "Item net price"
+msgstr "Cena bez DPH"
+
+msgid "Item price discount"
+msgstr "Sleva z ceny"
+
+msgid "Item gross price"
+msgstr "Hrubá cena"
+
+msgid "Item price base quantity"
+msgstr "Základní množství"
+
+msgid "Item price base quantity unit of measure code"
+msgstr "Jednotka základního množství"
+
+msgid "Invoiced item VAT category code"
+msgstr "Kategorie DPH"
+
+msgid "Invoiced item VAT rate"
+msgstr "Sazba DPH"
+
+msgid "Item name"
+msgstr "Název položky"
+
+msgid "Item description"
+msgstr "Popis položky"
+
+msgid "Item Seller's identifier"
+msgstr "Kód zboží"
+
+msgid "Item Buyer's identifier"
+msgstr "Kód zboží kupujícího"
+
+msgid "Item standard identifier"
+msgstr "Standardní identifikátor"
+
+msgid "Item classification identifier"
+msgstr "Klasifikace"
+
+msgid "Item country of origin"
+msgstr "Země původu"
+
+msgid "Item attribute value"
+msgstr "Vlastnost položky"
+
+msgid "Seller address line 3"
+msgstr "Řádek adresy 3"
+
+msgid "Buyer address line 3"
+msgstr "Řádek adresy 3"
+
+msgid "Tax representative address line 3"
+msgstr "Řádek adresy 3"
+
+msgid "Deliver to address line 3"
+msgstr "Řádek adresy 3"
+
+msgid "Invoice"
+msgstr "Faktura"
+
+msgid "Seller (BG-4)"
+msgstr "Prodávající (BG-4)"
+
+msgid "Buyer (BG-7)"
+msgstr "Kupující (BG-7)"
+
+msgid "Preceding invoice reference (BG-3)"
+msgstr "Předchozí faktura (BG-3)"
+
+msgid "Payee (BG-10)"
+msgstr "Příjemce platby (BG-10)"
+
+msgid "Seller tax representative party (BG-11)"
+msgstr "Daňový zástupce (BG-11)"
+
+msgid "Delivery information (BG-13)"
+msgstr "Dodání (BG-13)"
+
+msgid "Invoice line"
+msgstr "Řádek"
+
+msgid "Payment instructions (BG-16)"
+msgstr "Platba (BG-16)"
+
+msgid "Document level allowances (BG-20)"
+msgstr "Sleva (BG-20)"
+
+msgid "Document level charges (BG-21)"
+msgstr "Příplatek (BG-21)"
+
+msgid "Invoice line allowances (BG-27)"
+msgstr "Sleva (BG-27)"
+
+msgid "Invoice line charges (BG-28)"
+msgstr "Příplatek (BG-28)"
+
+msgid "VAT breakdown (BG-23)"
+msgstr "DPH (BG-23)"
+
+msgid "Document totals (BG-22)"
+msgstr "Součty (BG-22)"
+
+msgid "XML schema {name}"
+msgstr "Schéma XML {name}"
+
+msgid "Checked against XRechnung {bundled}, invoice declares version {declared}"
+msgstr "Zkontrolováno podle XRechnung {bundled}, faktura uvádí verzi {declared}"
+
+msgid "Profile Minimum: not a complete invoice according to EN 16931"
+msgstr "Profil Minimum: není úplná faktura podle EN 16931"
+
+msgid "Profile Basic WL: not a complete invoice according to EN 16931"
+msgstr "Profil Basic WL: není úplná faktura podle EN 16931"

@@ -1,0 +1,886 @@
+# Croatian translation of E-Invoice Viewer.
+# This file is distributed under the same licence as E-Invoice Viewer
+# (GPL-3.0-or-later).
+# Not checked by a native speaker (spec 0030); corrections are welcome
+# as an issue on GitHub.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: E-Invoice Viewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-19 10:45+0100\n"
+"PO-Revision-Date: 2026-11-18 00:00+0100\n"
+"Last-Translator: E-Invoice Viewer contributors\n"
+"Language-Team: Croatian\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=((n%10==1 && n%100!=11) ? 0 : (n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20)) ? 1 : 2);\n"
+
+msgid "Open an invoice"
+msgstr "Otvori račun"
+
+msgid "Invoices (PDF, XML)"
+msgstr "Računi (PDF, XML)"
+
+msgid "Open…"
+msgstr "Otvori…"
+
+msgid "Close"
+msgstr "Zatvori"
+
+msgid "Copy value"
+msgstr "Kopiraj vrijednost"
+
+msgid "This PDF contains no electronic invoice"
+msgstr "Ovaj PDF ne sadrži elektronički račun"
+
+msgid "The PDF pages cannot be shown"
+msgstr "Stranice PDF-a ne mogu se prikazati"
+
+msgid "Plain XML invoice – no PDF included"
+msgstr "Samo XML račun – bez PDF-a"
+
+msgid "Fields"
+msgstr "Polja"
+
+msgid "XML"
+msgstr "XML"
+
+msgid "Zoom in (Ctrl++)"
+msgstr "Povećaj (Ctrl++)"
+
+msgid "Zoom out (Ctrl+-)"
+msgstr "Smanji (Ctrl+-)"
+
+msgid "Copy XML"
+msgstr "Kopiraj XML"
+
+msgid "Save XML as…"
+msgstr "Spremi XML kao…"
+
+msgid "The XML could not be saved"
+msgstr "XML nije moguće spremiti"
+
+msgid "Search in the XML"
+msgstr "Traži u XML-u"
+
+msgid "Validation result"
+msgstr "Rezultat provjere"
+
+msgid "Document"
+msgstr "Dokument"
+
+msgid "internal error during validation"
+msgstr "interna pogreška pri provjeri"
+
+msgid "Recently opened"
+msgstr "Nedavno otvoreno"
+
+msgid "Attachments"
+msgstr "Privici"
+
+msgid "Show in XML"
+msgstr "Prikaži u XML-u"
+
+msgid "Show in fields"
+msgstr "Prikaži u poljima"
+
+msgid "No field assigned"
+msgstr "Nije dodijeljeno polje"
+
+msgid "No attachments"
+msgstr "Nema privitaka"
+
+msgid "Save attachment…"
+msgstr "Spremi privitak…"
+
+msgid "No entries"
+msgstr "Nema unosa"
+
+msgid "Only one file per window – the first one was opened"
+msgstr "Samo jedna datoteka po prozoru – otvorena je prva"
+
+msgid "Main menu"
+msgstr "Glavni izbornik"
+
+msgid "Language"
+msgstr "Jezik"
+
+msgid "System language"
+msgstr "Jezik sustava"
+
+msgid "error"
+msgid_plural "errors"
+msgstr[0] "greška"
+msgstr[1] "greške"
+msgstr[2] "grešaka"
+
+msgid "warning"
+msgid_plural "warnings"
+msgstr[0] "upozorenje"
+msgstr[1] "upozorenja"
+msgstr[2] "upozorenja"
+
+msgid "note"
+msgid_plural "notes"
+msgstr[0] "napomena"
+msgstr[1] "napomene"
+msgstr[2] "napomena"
+
+msgid "Error"
+msgid_plural "Errors"
+msgstr[0] "Greška"
+msgstr[1] "Greške"
+msgstr[2] "Greške"
+
+msgid "Warning"
+msgid_plural "Warnings"
+msgstr[0] "Upozorenje"
+msgstr[1] "Upozorenja"
+msgstr[2] "Upozorenja"
+
+msgid "Note"
+msgid_plural "Notes"
+msgstr[0] "Napomena"
+msgstr[1] "Napomene"
+msgstr[2] "Napomene"
+
+msgid "No findings"
+msgstr "Nema nalaza"
+
+msgid "No errors, {counts}"
+msgstr "Nema grešaka, {counts}"
+
+msgid "Validating…"
+msgstr "Provjera…"
+
+msgid "Validation failed: {reason}"
+msgstr "Provjera nije uspjela: {reason}"
+
+msgid "{rule sets} and {last rule set}"
+msgstr "{rule sets} i {last rule set}"
+
+msgid "Checked against {rule sets}"
+msgstr "Provjereno prema {rule sets}"
+
+msgid "The address {address} is not a local file"
+msgstr "Adresa {address} nije lokalna datoteka"
+
+msgid "The file {file} was not found"
+msgstr "Datoteka {file} nije pronađena"
+
+msgid "The file {file} cannot be read: {reason}"
+msgstr "Datoteku {file} nije moguće pročitati: {reason}"
+
+msgid "{count} byte"
+msgid_plural "{count} bytes"
+msgstr[0] "{count} bajt"
+msgstr[1] "{count} bajta"
+msgstr[2] "{count} bajtova"
+
+msgid "Invoice (BG-24)"
+msgstr "Račun (BG-24)"
+
+msgid "unknown"
+msgstr "nepoznato"
+
+msgid "Content not readable"
+msgstr "Sadržaj nije čitljiv"
+
+msgid "Too large (over {size} MB)"
+msgstr "Prevelik (više od {size} MB)"
+
+msgid "The attachment {name} could not be saved: {reason}"
+msgstr "Privitak {name} nije moguće spremiti: {reason}"
+
+msgid "Page {page} of {count}"
+msgstr "Stranica {page} od {count}"
+
+msgid "No matches"
+msgstr "Nema rezultata"
+
+msgid "{current} of {total}"
+msgstr "{current} od {total}"
+
+msgid "{count} match"
+msgid_plural "{count} matches"
+msgstr[0] "{count} rezultat"
+msgstr[1] "{count} rezultata"
+msgstr[2] "{count} rezultata"
+
+msgid "The file {file} cannot be read as an invoice: {reason}"
+msgstr "Datoteku {file} nije moguće pročitati kao račun: {reason}"
+
+msgid "not a readable PDF file"
+msgstr "nije čitljiva PDF datoteka"
+
+msgid "the embedded invoice {name} is empty"
+msgstr "ugrađeni račun {name} je prazan"
+
+msgid "XML is not well-formed (line {line})"
+msgstr "XML nije ispravno oblikovan (redak {line})"
+
+msgid "XML contains a DOCTYPE declaration – not supported"
+msgstr "XML sadrži deklaraciju DOCTYPE – nije podržano"
+
+msgid "not an electronic invoice"
+msgstr "nije elektronički račun"
+
+msgid "ZUGFeRD 1.0 is not supported"
+msgstr "ZUGFeRD 1.0 nije podržan"
+
+msgid "the character encoding {encoding} is not supported"
+msgstr "kodiranje znakova {encoding} nije podržano"
+
+msgid "XML is nested more than {limit} levels deep"
+msgstr "XML je ugniježđen dublje od {limit} razina"
+
+msgid "the invoice format is not supported"
+msgstr "format računa nije podržan"
+
+msgid "Partial invoice"
+msgstr "Djelomični račun"
+
+msgid "Commercial invoice"
+msgstr "Račun"
+
+msgid "Credit note"
+msgstr "Odobrenje"
+
+msgid "Corrected invoice"
+msgstr "Ispravljeni račun"
+
+msgid "Self-billed invoice"
+msgstr "Samoizdani račun"
+
+msgid "Partial construction invoice"
+msgstr "Privremena situacija (graditeljstvo)"
+
+msgid "Partial final construction invoice"
+msgstr "Djelomična okončana situacija (graditeljstvo)"
+
+msgid "Final construction invoice"
+msgstr "Okončana situacija (graditeljstvo)"
+
+msgid "Instrument not defined"
+msgstr "Nije definirano"
+
+msgid "In cash"
+msgstr "Gotovina"
+
+msgid "Cheque"
+msgstr "Ček"
+
+msgid "Credit transfer"
+msgstr "Kreditni transfer"
+
+msgid "Payment to bank account"
+msgstr "Uplata na bankovni račun"
+
+msgid "Bank card"
+msgstr "Bankovna kartica"
+
+msgid "Direct debit"
+msgstr "Izravno terećenje"
+
+msgid "Credit card"
+msgstr "Kreditna kartica"
+
+msgid "Standing agreement"
+msgstr "Trajni nalog"
+
+msgid "SEPA credit transfer"
+msgstr "SEPA kreditni transfer"
+
+msgid "SEPA direct debit"
+msgstr "SEPA izravno terećenje"
+
+msgid "Clearing between partners"
+msgstr "Kompenzacija"
+
+msgid "Standard rate"
+msgstr "Opća stopa"
+
+msgid "Zero rated goods"
+msgstr "Nulta stopa"
+
+msgid "Exempt from tax"
+msgstr "Oslobođeno PDV-a"
+
+msgid "VAT reverse charge"
+msgstr "Prijenos porezne obveze"
+
+msgid "Intra-community supply"
+msgstr "Isporuka unutar EU"
+
+msgid "Export outside the EU"
+msgstr "Izvoz izvan EU"
+
+msgid "Outside the scope of VAT"
+msgstr "Ne podliježe PDV-u"
+
+msgid "Canary Islands IGIC"
+msgstr "Kanarski otoci (IGIC)"
+
+msgid "Ceuta and Melilla IPSI"
+msgstr "Ceuta i Melilla (IPSI)"
+
+msgid "pieces"
+msgstr "komadi"
+
+msgid "hours"
+msgstr "sati"
+
+msgid "days"
+msgstr "dani"
+
+msgid "months"
+msgstr "mjeseci"
+
+msgid "kilograms"
+msgstr "kilogrami"
+
+msgid "metres"
+msgstr "metri"
+
+msgid "litres"
+msgstr "litre"
+
+msgid "lump sum"
+msgstr "paušal"
+
+msgid "Invoice number"
+msgstr "Broj računa"
+
+msgid "Invoice issue date"
+msgstr "Datum izdavanja"
+
+msgid "Invoice type code"
+msgstr "Vrsta računa"
+
+msgid "Invoice currency code"
+msgstr "Valuta"
+
+msgid "VAT accounting currency code"
+msgstr "Valuta PDV-a"
+
+msgid "Value added tax point date"
+msgstr "Datum nastanka porezne obveze"
+
+msgid "Value added tax point date code"
+msgstr "Nastanak porezne obveze (šifra)"
+
+msgid "Payment due date"
+msgstr "Datum dospijeća"
+
+msgid "Buyer reference"
+msgstr "Referenca kupca"
+
+msgid "Project reference"
+msgstr "Referenca projekta"
+
+msgid "Contract reference"
+msgstr "Broj ugovora"
+
+msgid "Purchase order reference"
+msgstr "Broj narudžbenice"
+
+msgid "Sales order reference"
+msgstr "Broj prodajnog naloga"
+
+msgid "Receiving advice reference"
+msgstr "Primka"
+
+msgid "Despatch advice reference"
+msgstr "Otpremnica"
+
+msgid "Tender or lot reference"
+msgstr "Broj natječaja ili grupe"
+
+msgid "Invoiced object identifier"
+msgstr "Identifikator objekta"
+
+msgid "Buyer accounting reference"
+msgstr "Računovodstvena referenca"
+
+msgid "Payment terms"
+msgstr "Uvjeti plaćanja"
+
+msgid "Invoice note subject code"
+msgstr "Predmet napomene (šifra)"
+
+msgid "Invoice note"
+msgstr "Napomena"
+
+msgid "Business process type"
+msgstr "Poslovni proces"
+
+msgid "Specification identifier"
+msgstr "Identifikator specifikacije"
+
+msgid "Preceding Invoice reference"
+msgstr "Broj računa"
+
+msgid "Preceding Invoice issue date"
+msgstr "Datum izdavanja"
+
+msgid "Seller name"
+msgstr "Naziv"
+
+msgid "Seller trading name"
+msgstr "Trgovački naziv"
+
+msgid "Seller identifier"
+msgstr "Identifikator"
+
+msgid "Seller legal registration identifier"
+msgstr "Matični broj"
+
+msgid "Seller VAT identifier"
+msgstr "PDV ID broj"
+
+msgid "Seller tax registration identifier"
+msgstr "Porezni broj"
+
+msgid "Seller additional legal information"
+msgstr "Dodatni pravni podaci"
+
+msgid "Seller electronic address"
+msgstr "Elektronička adresa"
+
+msgid "Seller address line 1"
+msgstr "Ulica"
+
+msgid "Seller address line 2"
+msgstr "Dodatak adresi"
+
+msgid "Seller city"
+msgstr "Mjesto"
+
+msgid "Seller post code"
+msgstr "Poštanski broj"
+
+msgid "Seller country subdivision"
+msgstr "Regija"
+
+msgid "Seller country code"
+msgstr "Država"
+
+msgid "Seller contact point"
+msgstr "Kontakt osoba"
+
+msgid "Seller contact telephone number"
+msgstr "Telefon"
+
+msgid "Seller contact email address"
+msgstr "E-pošta"
+
+msgid "Buyer name"
+msgstr "Naziv"
+
+msgid "Buyer trading name"
+msgstr "Trgovački naziv"
+
+msgid "Buyer identifier"
+msgstr "Identifikator"
+
+msgid "Buyer legal registration identifier"
+msgstr "Matični broj"
+
+msgid "Buyer VAT identifier"
+msgstr "PDV ID broj"
+
+msgid "Buyer electronic address"
+msgstr "Elektronička adresa"
+
+msgid "Buyer address line 1"
+msgstr "Ulica"
+
+msgid "Buyer address line 2"
+msgstr "Dodatak adresi"
+
+msgid "Buyer city"
+msgstr "Mjesto"
+
+msgid "Buyer post code"
+msgstr "Poštanski broj"
+
+msgid "Buyer country subdivision"
+msgstr "Regija"
+
+msgid "Buyer country code"
+msgstr "Država"
+
+msgid "Buyer contact point"
+msgstr "Kontakt osoba"
+
+msgid "Buyer contact telephone number"
+msgstr "Telefon"
+
+msgid "Buyer contact email address"
+msgstr "E-pošta"
+
+msgid "Payee name"
+msgstr "Naziv"
+
+msgid "Payee identifier"
+msgstr "Identifikator"
+
+msgid "Payee legal registration identifier"
+msgstr "Matični broj"
+
+msgid "Seller tax representative name"
+msgstr "Naziv"
+
+msgid "Seller tax representative VAT identifier"
+msgstr "PDV ID broj"
+
+msgid "Tax representative address line 1"
+msgstr "Ulica"
+
+msgid "Tax representative address line 2"
+msgstr "Dodatak adresi"
+
+msgid "Tax representative city"
+msgstr "Mjesto"
+
+msgid "Tax representative post code"
+msgstr "Poštanski broj"
+
+msgid "Tax representative country subdivision"
+msgstr "Regija"
+
+msgid "Tax representative country code"
+msgstr "Država"
+
+msgid "Deliver to party name"
+msgstr "Primatelj"
+
+msgid "Deliver to location identifier"
+msgstr "Identifikator mjesta isporuke"
+
+msgid "Actual delivery date"
+msgstr "Datum isporuke"
+
+msgid "Invoicing period start date"
+msgstr "Obračunsko razdoblje od"
+
+msgid "Invoicing period end date"
+msgstr "Obračunsko razdoblje do"
+
+msgid "Deliver to address line 1"
+msgstr "Ulica"
+
+msgid "Deliver to address line 2"
+msgstr "Dodatak adresi"
+
+msgid "Deliver to city"
+msgstr "Mjesto"
+
+msgid "Deliver to post code"
+msgstr "Poštanski broj"
+
+msgid "Deliver to country subdivision"
+msgstr "Regija"
+
+msgid "Deliver to country code"
+msgstr "Država"
+
+msgid "Payment means type code"
+msgstr "Način plaćanja"
+
+msgid "Payment means text"
+msgstr "Način plaćanja (tekst)"
+
+msgid "Remittance information"
+msgstr "Opis plaćanja"
+
+msgid "Payment account identifier"
+msgstr "IBAN"
+
+msgid "Payment account name"
+msgstr "Vlasnik računa"
+
+msgid "Payment service provider identifier"
+msgstr "BIC"
+
+msgid "Payment card primary account number"
+msgstr "Broj kartice"
+
+msgid "Payment card holder name"
+msgstr "Vlasnik kartice"
+
+msgid "Mandate reference identifier"
+msgstr "Referenca ovlaštenja"
+
+msgid "Bank assigned creditor identifier"
+msgstr "Identifikator vjerovnika"
+
+msgid "Debited account identifier"
+msgstr "Terećeni račun"
+
+msgid "Document level allowance amount"
+msgstr "Iznos"
+
+msgid "Document level allowance base amount"
+msgstr "Osnovica"
+
+msgid "Document level allowance percentage"
+msgstr "Postotak"
+
+msgid "Document level allowance VAT category code"
+msgstr "Kategorija PDV-a"
+
+msgid "Document level allowance VAT rate"
+msgstr "Stopa PDV-a"
+
+msgid "Document level allowance reason"
+msgstr "Razlog"
+
+msgid "Document level allowance reason code"
+msgstr "Razlog (šifra)"
+
+msgid "Document level charge amount"
+msgstr "Iznos"
+
+msgid "Document level charge base amount"
+msgstr "Osnovica"
+
+msgid "Document level charge percentage"
+msgstr "Postotak"
+
+msgid "Document level charge VAT category code"
+msgstr "Kategorija PDV-a"
+
+msgid "Document level charge VAT rate"
+msgstr "Stopa PDV-a"
+
+msgid "Document level charge reason"
+msgstr "Razlog"
+
+msgid "Document level charge reason code"
+msgstr "Razlog (šifra)"
+
+msgid "Sum of Invoice line net amount"
+msgstr "Zbroj stavki bez PDV-a"
+
+msgid "Sum of allowances on document level"
+msgstr "Zbroj popusta"
+
+msgid "Sum of charges on document level"
+msgstr "Zbroj troškova"
+
+msgid "Invoice total amount without VAT"
+msgstr "Ukupno bez PDV-a"
+
+msgid "Invoice total VAT amount"
+msgstr "PDV ukupno"
+
+msgid "Invoice total VAT amount in accounting currency"
+msgstr "PDV u valuti PDV-a"
+
+msgid "Invoice total amount with VAT"
+msgstr "Ukupno s PDV-om"
+
+msgid "Paid amount"
+msgstr "Plaćeno unaprijed"
+
+msgid "Rounding amount"
+msgstr "Zaokruženje"
+
+msgid "Amount due for payment"
+msgstr "Za plaćanje"
+
+msgid "VAT category taxable amount"
+msgstr "Porezna osnovica"
+
+msgid "VAT category tax amount"
+msgstr "Iznos PDV-a"
+
+msgid "VAT category code"
+msgstr "Kategorija PDV-a"
+
+msgid "VAT category rate"
+msgstr "Stopa PDV-a"
+
+msgid "VAT exemption reason text"
+msgstr "Razlog oslobođenja"
+
+msgid "VAT exemption reason code"
+msgstr "Razlog oslobođenja (šifra)"
+
+msgid "Invoice line identifier"
+msgstr "Broj stavke"
+
+msgid "Invoice line note"
+msgstr "Napomena stavke"
+
+msgid "Invoice line object identifier"
+msgstr "Identifikator objekta"
+
+msgid "Invoiced quantity"
+msgstr "Količina"
+
+msgid "Invoiced quantity unit of measure code"
+msgstr "Jedinica"
+
+msgid "Invoice line net amount"
+msgstr "Neto iznos"
+
+msgid "Referenced purchase order line reference"
+msgstr "Stavka narudžbenice"
+
+msgid "Invoice line Buyer accounting reference"
+msgstr "Računovodstvena referenca kupca"
+
+msgid "Invoice line period start date"
+msgstr "Razdoblje od"
+
+msgid "Invoice line period end date"
+msgstr "Razdoblje do"
+
+msgid "Invoice line allowance amount"
+msgstr "Iznos"
+
+msgid "Invoice line allowance base amount"
+msgstr "Osnovica"
+
+msgid "Invoice line allowance percentage"
+msgstr "Postotak"
+
+msgid "Invoice line allowance reason"
+msgstr "Razlog"
+
+msgid "Invoice line allowance reason code"
+msgstr "Razlog (šifra)"
+
+msgid "Invoice line charge amount"
+msgstr "Iznos"
+
+msgid "Invoice line charge base amount"
+msgstr "Osnovica"
+
+msgid "Invoice line charge percentage"
+msgstr "Postotak"
+
+msgid "Invoice line charge reason"
+msgstr "Razlog"
+
+msgid "Invoice line charge reason code"
+msgstr "Razlog (šifra)"
+
+msgid "Item net price"
+msgstr "Neto cijena"
+
+msgid "Item price discount"
+msgstr "Popust na cijenu"
+
+msgid "Item gross price"
+msgstr "Bruto cijena"
+
+msgid "Item price base quantity"
+msgstr "Osnovna količina"
+
+msgid "Item price base quantity unit of measure code"
+msgstr "Jedinica osnovne količine"
+
+msgid "Invoiced item VAT category code"
+msgstr "Kategorija PDV-a"
+
+msgid "Invoiced item VAT rate"
+msgstr "Stopa PDV-a"
+
+msgid "Item name"
+msgstr "Naziv artikla"
+
+msgid "Item description"
+msgstr "Opis artikla"
+
+msgid "Item Seller's identifier"
+msgstr "Šifra artikla"
+
+msgid "Item Buyer's identifier"
+msgstr "Šifra artikla kupca"
+
+msgid "Item standard identifier"
+msgstr "Standardni identifikator"
+
+msgid "Item classification identifier"
+msgstr "Klasifikacija"
+
+msgid "Item country of origin"
+msgstr "Zemlja podrijetla"
+
+msgid "Item attribute value"
+msgstr "Svojstvo artikla"
+
+msgid "Seller address line 3"
+msgstr "Redak adrese 3"
+
+msgid "Buyer address line 3"
+msgstr "Redak adrese 3"
+
+msgid "Tax representative address line 3"
+msgstr "Redak adrese 3"
+
+msgid "Deliver to address line 3"
+msgstr "Redak adrese 3"
+
+msgid "Invoice"
+msgstr "Račun"
+
+msgid "Seller (BG-4)"
+msgstr "Prodavatelj (BG-4)"
+
+msgid "Buyer (BG-7)"
+msgstr "Kupac (BG-7)"
+
+msgid "Preceding invoice reference (BG-3)"
+msgstr "Prethodni račun (BG-3)"
+
+msgid "Payee (BG-10)"
+msgstr "Primatelj plaćanja (BG-10)"
+
+msgid "Seller tax representative party (BG-11)"
+msgstr "Porezni zastupnik (BG-11)"
+
+msgid "Delivery information (BG-13)"
+msgstr "Isporuka (BG-13)"
+
+msgid "Invoice line"
+msgstr "Stavka"
+
+msgid "Payment instructions (BG-16)"
+msgstr "Plaćanje (BG-16)"
+
+msgid "Document level allowances (BG-20)"
+msgstr "Popust (BG-20)"
+
+msgid "Document level charges (BG-21)"
+msgstr "Trošak (BG-21)"
+
+msgid "Invoice line allowances (BG-27)"
+msgstr "Popust (BG-27)"
+
+msgid "Invoice line charges (BG-28)"
+msgstr "Trošak (BG-28)"
+
+msgid "VAT breakdown (BG-23)"
+msgstr "PDV (BG-23)"
+
+msgid "Document totals (BG-22)"
+msgstr "Ukupni iznosi (BG-22)"
+
+msgid "XML schema {name}"
+msgstr "XML shema {name}"
+
+msgid "Checked against XRechnung {bundled}, invoice declares version {declared}"
+msgstr "Provjereno prema XRechnung {bundled}, račun navodi verziju {declared}"
+
+msgid "Profile Minimum: not a complete invoice according to EN 16931"
+msgstr "Profil Minimum: nije potpun račun prema EN 16931"
+
+msgid "Profile Basic WL: not a complete invoice according to EN 16931"
+msgstr "Profil Basic WL: nije potpun račun prema EN 16931"

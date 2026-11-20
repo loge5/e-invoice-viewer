@@ -19,12 +19,17 @@ pub enum Choice {
 }
 
 impl Choice {
-    /// All choices in menu order.
-    pub const ALL: [Self; 3] = [
-        Self::System,
-        Self::Fixed(Language::German),
-        Self::Fixed(Language::English),
-    ];
+    /// All choices in menu order: the system language, then every language
+    /// in the order of `Language::ALL` (0030).
+    pub const ALL: [Self; Language::ALL.len() + 1] = {
+        let mut all = [Self::System; Language::ALL.len() + 1];
+        let mut index = 0;
+        while index < Language::ALL.len() {
+            all[index + 1] = Self::Fixed(Language::ALL[index]);
+            index += 1;
+        }
+        all
+    };
 
     /// The stored form, also the target of the action `app.language`.
     pub fn code(self) -> &'static str {
@@ -51,8 +56,7 @@ impl Choice {
     pub fn label(self) -> &'static str {
         match self {
             Self::System => texts::t(texts::SYSTEM_LANGUAGE),
-            Self::Fixed(Language::German) => "Deutsch",
-            Self::Fixed(Language::English) => "English",
+            Self::Fixed(language) => language.name(),
         }
     }
 }
@@ -169,24 +173,37 @@ mod tests {
         assert_eq!(content.trim(), "[Language]\nchoice=de");
     }
 
-    // AC1
+    // 0019 AC1, 0030 AC7: the system language in the current language, then
+    // every language named in itself, in the EU protocol order.
     #[test]
     fn language_choice_labels() {
-        for language in Language::ALL {
+        let languages: Vec<&str> = Language::ALL.iter().map(|l| l.name()).collect();
+        for (language, system, menu) in [
+            (Language::German, "Systemsprache", "Sprache"),
+            (Language::English, "System language", "Language"),
+            (Language::French, "Langue du système", "Langue"),
+            (Language::Spanish, "Idioma del sistema", "Idioma"),
+            (Language::Dutch, "Systeemtaal", "Taal"),
+        ] {
             texts::set_language(language);
             let labels: Vec<&str> = Choice::ALL.into_iter().map(Choice::label).collect();
-            let system = match language {
-                Language::German => "Systemsprache",
-                Language::English => "System language",
-            };
-            assert_eq!(labels, [system, "Deutsch", "English"]);
-            assert_eq!(
-                texts::t(texts::LANGUAGE_MENU),
-                match language {
-                    Language::German => "Sprache",
-                    Language::English => "Language",
-                }
-            );
+            assert_eq!(labels[0], system);
+            assert_eq!(labels[1..], languages[..]);
+            assert_eq!(texts::t(texts::LANGUAGE_MENU), menu);
+        }
+        // In every other language both texts are translated.
+        texts::set_language(Language::English);
+        let english = (
+            texts::t(texts::SYSTEM_LANGUAGE),
+            texts::t(texts::LANGUAGE_MENU),
+        );
+        for language in Language::ALL {
+            if language == Language::English {
+                continue;
+            }
+            texts::set_language(language);
+            assert_ne!(texts::t(texts::SYSTEM_LANGUAGE), english.0, "{language:?}");
+            assert_ne!(texts::t(texts::LANGUAGE_MENU), english.1, "{language:?}");
         }
         texts::set_language(Language::German);
     }
